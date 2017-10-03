@@ -31,7 +31,12 @@ function selectQuery($sql)
 	global $conn;
 
 	$result = $conn->query($sql);
-	if ($result->num_rows > 0)
+	if ($result->num_rows == 1)
+	{
+		$row = $result->fetch_assoc();
+		return $row;
+	}
+	else if ($result->num_rows > 1)
 	{
 		return $result;
 	}

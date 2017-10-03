@@ -4,9 +4,9 @@
 //which will be sent to db_functions.
 
 //require "connect.php";
-require "db_functions.php";
+require "dbFunctions.php";
 
-//TEST-QUERIES______________________________________________________________________
+//TEST-QUERY______________________________________________________________________
 // Checks all account information in the database for the right combination.
 // Returns true or false.
 function checkLogin($username, $password)
@@ -30,23 +30,6 @@ function checkLogin($username, $password)
 	return false;
 }
 
-// Inserts a new set of tour-data into the database
-// $date:		The date of the performance
-// $Location:	The city the performance is given
-// $venue:		The venue the performance is given at
-// $buylink:	A link to a ticket-selling service
-function insertTourData($date, $location, $venue, $buylink)
-{
-	$sql = "INSERT INTO agenda (`date`, location, venue, buylink) VALUES ('$date', '$location', '$venue' ,'$buylink')";
-
-	$varArray = array($date, $location, $venue, $buylink);
-
-	$data = Query($sql, $varArray);
-	if ($data == true) 
-	{
-		echo "Tour Data created";
-	}
-}
 //TEST QUERIES________________________________________________________________________
 
 function testQuery($test)
