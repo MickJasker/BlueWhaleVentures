@@ -49,9 +49,20 @@ function insertTourData($date, $location, $venue, $buylink)
 }
 //TEST QUERIES________________________________________________________________________
 
-function testQuery()
+function testQuery($test)
 {
-	$sql = "SELECT * FROM Login";
-	print_r(Query($sql));
+	$sql = "SELECT * FROM tabel WHERE ID = '$test'";
+	$data = query($sql);
+
+	while($row = $data->fetch_assoc())
+	{
+		echo "<br>" . $row["ID"];
+	}
+}
+
+function insertQuery($test2)
+{
+	$sql = "INSERT INTO tabel(ID) VALUES('$test2')";
+	query($sql);
 }
 ?>
