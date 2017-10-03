@@ -3,10 +3,10 @@
 //Each function will prepare an sql-string, and an optional array of variables, 
 //which will be sent to db_functions.
 
-require "connect.php";
+//require "connect.php";
 require "db_functions.php";
 
-//TEST-QUERIES
+//TEST-QUERIES______________________________________________________________________
 // Checks all account information in the database for the right combination.
 // Returns true or false.
 function checkLogin($username, $password)
@@ -46,5 +46,12 @@ function insertTourData($date, $location, $venue, $buylink)
 	{
 		echo "Tour Data created";
 	}
+}
+//TEST QUERIES________________________________________________________________________
+
+function testQuery()
+{
+	$sql = "SELECT * FROM Login";
+	print_r(Query($sql));
 }
 ?>

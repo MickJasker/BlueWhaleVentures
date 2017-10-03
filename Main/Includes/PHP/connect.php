@@ -17,5 +17,7 @@ if ($conn->connect_error)
 else
 	{
 		echo "Connected succesfully";
+		require "queries.php";
+		testQuery();
 	}
 ?>

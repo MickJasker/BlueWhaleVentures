@@ -1,31 +1,32 @@
 <?php
 // This file contains all the databasequery-related functions. Calling each one of these functions with an sql-string, and an optional array of variables will execute database queries, and return the results of said queries
-function Query($sql, $varArray = array(''))
+function Query($sql)
 {
+	echo "<br>" . $sql;
 	//Gets the database-connection
 	global $conn;
 
-	$varArray = ProtectData($varArray);
+	//$varArray = ProtectData($varArray);
 
 	//Checks if string is a SELECT-Query
 	if (strpos($sql, "SELECT") !== FALSE)
 	{
-		return SelectQuery($sql, $varArray);
+		return SelectQuery($sql);
 	}
 	//Checks if string is a INSERT-Query
 	else if (strpos($sql, "INSERT") !== FALSE)
 	{
-		return InsertQuery($sql, $varArray);
+		return InsertQuery($sql);
 	}
 	//Checks if string is a UPDATE-Query
 	else if (strpos($sql, "UPDATE") !== FALSE)
 	{
-		return UpdateQuery($sql, $varArray);
+		return UpdateQuery($sql);
 	}
 	//Checks if string is a DELETE-Query
 	else if (strpos($sql, "DELETE") !== FALSE)
 	{
-		return DeleteQuery($sql, $varArray);
+		return DeleteQuery($sql);
 	}
 	//If string is none of the above
 	else
@@ -35,7 +36,8 @@ function Query($sql, $varArray = array(''))
 	}
 }
 
-
+//DOESN'T WORK, LEAVING IT AS A REMINDER TO SECURE CODE
+/*
 // Changes the data of the variables to a mysqli_real_escape_string, preventing injection
 function ProtectData($varArray = array())
 {
@@ -52,18 +54,39 @@ function ProtectData($varArray = array())
 
     return $insertArray;
 }
+*/
 
 //Creates and executes a SELECT-query, and returns an arrya with the results
-function SelectQuery($sql, $varArray = array(''))
+function SelectQuery($sql)
 {
 	global $conn;
 
-	$varArray = ProtectData($varArray);
+	echo "<br> Start";
 
 	$result = $conn->query($sql);
+
+	echo "<br> Test connection";
+
 	if ($result->num_rows > 0) 
 	{
+		echo "<br> Records";
         return $result;
+	}
+	else
+	{
+		echo "<br> No records";
+	}
+}
+
+function ChangeQuery()
+{		
+	if ($conn->query($sql)) 
+	{
+    	return true; 
+	} 
+	else 
+	{
+    	return false;
 	}
 }
 
