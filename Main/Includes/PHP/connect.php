@@ -1,14 +1,21 @@
 <?php
+
+$servername = "Localhost";
+$username = "root";
+$password = "";
+$dbname = "test";
+
 //Account settings 
-$host = "martijnfl.nl";
+/*
+$servername = "martijnfl.nl";
 $username = "BW-User";
 $password = "bwtomatoes";
-$database = "BW_Portal";
+$dbname = "BW_Portal";
+*/
 
 //Create connection
 global $conn;
-$conn = mysqli_connect($host, $username, $password, $database);
-
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 //Check connection 
 if ($conn->connect_error) 
 	{
@@ -18,6 +25,6 @@ else
 	{
 		echo "Connected succesfully";
 		require "queries.php";
-		testQuery();
+		testQuery(6);
 	}
 ?>
