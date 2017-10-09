@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<dwsync>
+<file name=".csscomb.json" server="mickjasker.nl//testing_server/" local="131498557850000000" remote="131508339000000000" Dst="2" />
+<file name=".csslintrc" server="mickjasker.nl//testing_server/" local="131498557850000000" remote="131508339000000000" Dst="2" />
+<file name="alerts.less" server="mickjasker.nl//testing_server/" local="131498557850000000" remote="131508339000000000" Dst="2" />
+<file name="bootstrap.less" server="mickjasker.nl//testing_server/" local="131508052590000000" remote="131508339000000000" Dst="2" />
+<file name="breadcrumbs.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="badges.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="buttons.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="carousel.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="button-groups.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="code.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="component-animations.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="close.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="forms.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="dropdowns.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="glyphicons.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="grid.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="input-groups.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="list-group.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="jumbotron.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="labels.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="media.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="mixins.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="modals.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="navbar.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="navs.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="pager.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="pagination.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="normalize.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="popovers.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="print.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="panels.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="responsive-embed.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="responsive-utilities.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="progress-bars.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="theme.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="scaffolding.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="tables.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="tooltip.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="type.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="thumbnails.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="wells.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="utilities.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+<file name="variables.less" server="mickjasker.nl//testing_server/" local="131498557860000000" remote="131508339000000000" Dst="2" />
+</dwsync>
