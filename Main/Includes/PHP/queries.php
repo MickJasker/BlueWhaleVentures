@@ -30,6 +30,73 @@ function checkLogin($username, $password)
 	return false;
 }
 
+function checkKey($key)
+{
+	$sql = "SELECT ID, RoleID FROM User WHERE KeyCode = '$key'";
+	if($data = query($sql))
+	{
+		while($row = $data->fetch_assoc())
+		{
+			$id = $row["id"];
+			$role = $row["role"];
+		}
+		
+		$sql = "DELETE FROM `RegisterKey` WHERE ID = '$id'";
+		if($data = query($sql))
+		{
+			return $role;
+		}
+	}
+	else
+	{
+		echo "The key doesn't exist";
+		return false;
+	}
+}
+
+//Creates an account
+function createAccount($role, $user_name, $company_mail, $password)
+{
+	$password = password_hash($password, PASSWORD_DEFAULT);
+	$sql = "INSERT INTO `User`(`RoleID`,`Language`, `Name`, `Locked`) VALUES ('$role','English','$user_name', '1')";
+	
+	if (query($sql))
+	{
+		$sql = "SELECT ID FROM User WHERE Name = '$user_name'";
+		if($data = query($sql))
+		{	
+			while($row = $data->fetch_assoc())
+			{
+				$id = $row["ID"];
+			}
+			
+			if ($id != "")
+			{
+				$sql = "INSERT INTO `Login`(`UserID`, `Email`, `Password`) VALUES ('$id', '$company_mail', '$password')";
+				if (query($sql))
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			else 
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		return false;
+	}
+}
 //TEST QUERIES________________________________________________________________________
 
 function testQuery($test)

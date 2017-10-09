@@ -1,4 +1,5 @@
 <?php
+	require '../Includes/PHP/queries.php';
 	require '../Includes/PHP/functions.php';
 ?>
 <!DOCTYPE html>
@@ -9,8 +10,12 @@
    <body>
    <?php
 	//Get key form url	
-	$key = htmlentities($_GET['key']); //$key = htmlentities(mysqli_real_escape_string($conn, $_POST['key']));
-	
+	$key = htmlentities(mysqli_real_escape_string($conn, $_POST['key']));
+	if ($key == 0)
+	{
+		echo "Wrong url!";
+	}
+	else{
 	//Implement check key, get user data from db function
 	
    ?>
@@ -27,10 +32,12 @@
 		
 		if (isset($_POST['create_account']))
 		{
-			$user_name = htmlentities($_POST['user_name']); //$name = htmlentities(mysqli_real_escape_string($conn, $_POST['user_name']));
-			$company_mail = htmlentities($_POST['company_mail']); //$company_mail = htmlentities(mysqli_real_escape_string($conn, $_POST['company_mail']));
-			$password = htmlentities($_POST['password']); //$password = htmlentities(mysqli_real_escape_string($conn, $_POST['password']));
-			$password2 = htmlentities($_POST['password2']); //$password2 = htmlentities(mysqli_real_escape_string($conn, $_POST['password2']));
+			$name = htmlentities(mysqli_real_escape_string($conn, $_POST['user_name']));
+			$company_mail = htmlentities(mysqli_real_escape_string($conn, $_POST['company_mail']));
+			$password = htmlentities(mysqli_real_escape_string($conn, $_POST['password']));
+			$password2 = htmlentities(mysqli_real_escape_string($conn, $_POST['password2']));
+			$key = htmlentities(mysqli_real_escape_string($conn, $_GET["key"]));
+			$role = "";
 			
 			if (!(strlen($firstname) >= 1 && strlen($firstname) <= 32))
 			{
@@ -54,7 +61,9 @@
 			}
 			else
 			{
-				/*	if (createaccount($user_name, $company_mail, $password)) 
+				if($role = checkKey($key))
+				{
+					if (createAccount($role, $user_name, $company_mail, $password)) 
 					{
 						header('Location: ../../Admin_Portal/Pages/index.php');
 					}
@@ -62,9 +71,15 @@
 					{
 						echo "Error creating account";
 					}
-				*/
+				
+				}
+				else
+				{
+					echo "- Error -";
+				}
 			}
 		}
+	}//Close if ($key == 0)
 
 		?>
 	

@@ -39,7 +39,7 @@ function selectQuery($sql)
 	}
 	else
 	{
-		echo "<br> No records";
+		return false;
 	}
 }
 
