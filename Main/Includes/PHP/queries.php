@@ -34,7 +34,7 @@ function checkLogin($username, $password)
 
 function testQuery($test)
 {
-	$sql = "SELECT * FROM tabel WHERE ID = '$test'";
+	$sql = "SELECT * FROM User WHERE ID = '$test'";
 	$data = query($sql);
 
 	while($row = $data->fetch_assoc())
@@ -45,7 +45,7 @@ function testQuery($test)
 
 function insertQuery($test2)
 {
-	$sql = "INSERT INTO tabel(ID) VALUES('$test2')";
+	$sql = "INSERT INTO User(ID) VALUES('$test2')";
 	query($sql);
 }
 ?>
