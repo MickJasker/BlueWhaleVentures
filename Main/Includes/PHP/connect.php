@@ -12,14 +12,12 @@ $dbname = "BW_Portal";
 global $conn;
 $conn = mysqli_connect($servername, $username, $password, $dbname, 3307);
 //Check connection 
-if ($conn->connect_error) 
+	if ($conn->connect_error) 
 	{
 		die("Connection failed: ". $conn->connect_error);
 	}
-else
+	else
 	{
-		echo "Connected succesfully";
-		require "queries.php";
-		testQuery(6);
+		//echo "Connected succesfully";
 	}
 ?>
