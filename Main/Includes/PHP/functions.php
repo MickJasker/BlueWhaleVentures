@@ -1,4 +1,7 @@
 <?php
+require "queries.php";
+session_start();
+
 
 //This functions generates an random key and sends an email to the user
 function generate_key($email, $name, $role)
@@ -34,5 +37,29 @@ function generate_key($email, $name, $role)
 	{
 		return false;
 	}*/
+}
+
+function createSession($Email)
+{
+	$_SESSION["LoggedIn"] = true;
+	$_SESSION["Role"] = selectRole($Email);
+	$_SESSION["UserID"] = selectUser($Email);
+}
+
+function checkSession($AllowedRole)
+{
+	if (!$_SESSION["LoggedIn"] || $_SESSION["Role"] != $AllowedRole)
+	{
+		return false;
+	}
+
+	return true;
+}
+
+function destroySession()
+{
+	unset($_SESSION["LoggedIn"]);
+	unset($_SESSION["Role"]);
+	unset($_SESSION["UserID"]);
 }
 ?>

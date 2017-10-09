@@ -48,4 +48,71 @@ function insertQuery($test2)
 	$sql = "INSERT INTO User(ID) VALUES('$test2')";
 	query($sql);
 }
+
+function selectUser($Email)
+{
+	$sql = "SELECT u.ID FROM User u 
+	INNER JOIN Login l ON l.UserID = U.ID
+	WHERE l.Email = '$Email'";
+
+	if ($data = query($sql))
+	{
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+		return $row;
+	}
+}
+
+function selectRole($ID)
+{
+	$sql = "SELECT r.Name FROM Role r
+	INNER JOIN User u ON u.roleID = r.ID
+	WHERE u.ID = '$ID'";
+
+	if ($data = query($sql))
+	{
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+		return $row;
+	}
+}
+
+function selectUserName($Email)
+{
+	$ID = selectUser($Email);
+
+	$sql = "SELECT u.ID, u.Name FROM Role r 
+	INNER JOIN User u ON  u.RoleID = r.ID
+	INNER JOIN Company c ON c.FunctionID = 
+	WHERE u.ID = '$ID'";
+
+	if ($data = query($sql))
+	{
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+	}
+}
+
+function selectCompanyName($UserID)
+{
+	$sql = "SELECT c.Name FROM Company c
+	INNER JOIN User u ON u.ID = c.FunctionID
+	WHERE u.ID = '$UserID'";
+
+	if ($data = query($sql))
+	{
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+		return $row;
+	}
+}
+
+function selectUserName($ID)
+{
+	$sql = "SELECT c.Name FROM Company c
+	WHERE c.ID = '$ID'";
+
+	if ($data = query($sql))
+	{
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+		return $row;
+	}
+}
+
 ?>
