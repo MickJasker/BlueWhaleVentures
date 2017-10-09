@@ -16,13 +16,17 @@
 		echo "Wrong url!";
 	}
 	else{
-	//Implement check key, get user data from db function
+	$data = getKey($key);
+	if ($data[0] == "true")
+	{
+		$company_mail = $data[1];
+		$firstname = $data[2];
 	
    ?>
    
 	<form method="POST" action="#">
-		<input type="text" name="user_name" placeholder="Name"> <br>
-		<input type="text" name="company_mail" placeholder="E-mail"> <br>
+		<input type="text" name="user_name" placeholder="Name" value="<?php echo $firstname; ?>"> <br>
+		<input type="text" name="company_mail" placeholder="E-mail" value="<?php echo $company_mail; ?>"> <br>
 		<input type="password" name="password" placeholder="Password"> <br>
 		<input type="password" name="password2" placeholder="Confirm Password"> <br>
 		<input name="create_account" type="submit" value="Create account">
@@ -57,10 +61,12 @@
 			}
 			else if (!filter_var($company_mail, FILTER_VALIDATE_EMAIL))
 			{
+				echo $company_mail;
 				echo "The E-mail adress is not correct";
 			}
 			else
 			{
+				//Implement check key, get user data from db function
 				if($role = checkKey($key))
 				{
 					if (createAccount($role, $user_name, $company_mail, $password)) 
@@ -79,9 +85,14 @@
 				}
 			}
 		}
+	}
+	else
+	{
+		echo "The key is not correct";
+	}
 	}//Close if ($key == 0)
 
-		?>
+	?>
 	
 	</body>
 </html>

@@ -30,15 +30,36 @@ function checkLogin($username, $password)
 	return false;
 }
 
+function getKey($key)
+{
+	$sql = "SELECT Email, Name FROM RegisterKey WHERE `KeyCode` = '$key'";
+	if($data = query($sql))
+	{
+		$db_data = array("true");
+		while($row = $data->fetch_assoc())
+		{
+			$mail = $row["Email"];
+			$name = $row["Name"];
+			array_push($db_data, $mail, $name);
+		}
+		return $db_data;
+	}
+	else
+	{
+		echo "The key doesn't exist";
+		return false;
+	}
+}
+
 function checkKey($key)
 {
-	$sql = "SELECT ID, RoleID FROM RegisterKey WHERE `KeyCode` = 'G83DG3'";
+	$sql = "SELECT ID, RoleID FROM RegisterKey WHERE `KeyCode` = '$key'";
 	if($data = query($sql))
 	{
 		while($row = $data->fetch_assoc())
 		{
 			$id = $row["ID"];
-			$role = $row["ROLEID"];
+			$role = $row["RoleID"];
 		}
 		
 		$sql = "DELETE FROM `RegisterKey` WHERE ID = '$id'";
