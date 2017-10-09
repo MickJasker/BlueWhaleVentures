@@ -10,8 +10,8 @@
    <body>
    <?php
 	//Get key form url	
-	$key = htmlentities(mysqli_real_escape_string($conn, $_POST['key']));
-	if ($key == 0)
+	$key = htmlentities(mysqli_real_escape_string($conn, $_GET['key']));
+	if ($key == "")
 	{
 		echo "Wrong url!";
 	}
@@ -32,7 +32,7 @@
 		
 		if (isset($_POST['create_account']))
 		{
-			$name = htmlentities(mysqli_real_escape_string($conn, $_POST['user_name']));
+			$firstname = htmlentities(mysqli_real_escape_string($conn, $_POST['user_name']));
 			$company_mail = htmlentities(mysqli_real_escape_string($conn, $_POST['company_mail']));
 			$password = htmlentities(mysqli_real_escape_string($conn, $_POST['password']));
 			$password2 = htmlentities(mysqli_real_escape_string($conn, $_POST['password2']));

@@ -3,7 +3,7 @@
 //Each function will prepare an sql-string, and an optional array of variables, 
 //which will be sent to db_functions.
 
-//require "connect.php";
+require "connect.php";
 require "dbFunctions.php";
 
 //TEST-QUERY______________________________________________________________________
@@ -32,13 +32,13 @@ function checkLogin($username, $password)
 
 function checkKey($key)
 {
-	$sql = "SELECT ID, RoleID FROM User WHERE KeyCode = '$key'";
+	$sql = "SELECT ID, RoleID FROM RegisterKey WHERE `KeyCode` = 'G83DG3'";
 	if($data = query($sql))
 	{
 		while($row = $data->fetch_assoc())
 		{
-			$id = $row["id"];
-			$role = $row["role"];
+			$id = $row["ID"];
+			$role = $row["ROLEID"];
 		}
 		
 		$sql = "DELETE FROM `RegisterKey` WHERE ID = '$id'";
