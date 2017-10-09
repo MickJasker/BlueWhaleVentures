@@ -136,4 +136,38 @@ function insertQuery($test2)
 	$sql = "INSERT INTO User(ID) VALUES('$test2')";
 	query($sql);
 }
+
+
+//Admin portal blokken
+function getAdminBlockInfo()
+{
+    $sql = "SELECT ID, Name, Logo FROM Company";
+
+    if($data = Query($sql)) {
+
+        while ($row = $data->fetch_assoc()) {
+            $ID = $row["ID"];
+            $Logo = $row["Logo"];
+            $Name = $row["Name"];
+
+            ?>
+
+            <section id="Block">
+                <a href="../../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $ID ?>">
+                    <div class="BlockLogo">
+                            <img src="../../<?php echo $Logo ?>" alt="Company Logo">
+                    </div>
+                    <div class="BlockTitle">
+                        <h1> <?php echo $Name ?> </h1>
+                    </div>
+                </a>
+            </section>
+
+            <?php
+        }
+    }
+}
+
 ?>
+
+
