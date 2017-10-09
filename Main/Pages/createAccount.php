@@ -1,4 +1,5 @@
 <?php
+	require '../Includes/PHP/queries.php';
 	require '../Includes/PHP/functions.php';
 ?>
 <!DOCTYPE html>
@@ -9,15 +10,23 @@
    <body>
    <?php
 	//Get key form url	
-	$key = htmlentities($_GET['key']); //$key = htmlentities(mysqli_real_escape_string($conn, $_POST['key']));
-	
-	//Implement check key, get user data from db function
+	$key = htmlentities(mysqli_real_escape_string($conn, $_GET['key']));
+	if ($key == "")
+	{
+		echo "Wrong url!";
+	}
+	else{
+	$data = getKey($key);
+	if ($data[0] == "true")
+	{
+		$company_mail = $data[1];
+		$firstname = $data[2];
 	
    ?>
    
 	<form method="POST" action="#">
-		<input type="text" name="user_name" placeholder="Name"> <br>
-		<input type="text" name="company_mail" placeholder="E-mail"> <br>
+		<input type="text" name="user_name" placeholder="Name" value="<?php echo $firstname; ?>"> <br>
+		<input type="text" name="company_mail" placeholder="E-mail" value="<?php echo $company_mail; ?>"> <br>
 		<input type="password" name="password" placeholder="Password"> <br>
 		<input type="password" name="password2" placeholder="Confirm Password"> <br>
 		<input name="create_account" type="submit" value="Create account">
@@ -27,10 +36,12 @@
 		
 		if (isset($_POST['create_account']))
 		{
-			$user_name = htmlentities($_POST['user_name']); //$name = htmlentities(mysqli_real_escape_string($conn, $_POST['user_name']));
-			$company_mail = htmlentities($_POST['company_mail']); //$company_mail = htmlentities(mysqli_real_escape_string($conn, $_POST['company_mail']));
-			$password = htmlentities($_POST['password']); //$password = htmlentities(mysqli_real_escape_string($conn, $_POST['password']));
-			$password2 = htmlentities($_POST['password2']); //$password2 = htmlentities(mysqli_real_escape_string($conn, $_POST['password2']));
+			$firstname = htmlentities(mysqli_real_escape_string($conn, $_POST['user_name']));
+			$company_mail = htmlentities(mysqli_real_escape_string($conn, $_POST['company_mail']));
+			$password = htmlentities(mysqli_real_escape_string($conn, $_POST['password']));
+			$password2 = htmlentities(mysqli_real_escape_string($conn, $_POST['password2']));
+			$key = htmlentities(mysqli_real_escape_string($conn, $_GET["key"]));
+			$role = "";
 			
 			if (!(strlen($firstname) >= 1 && strlen($firstname) <= 32))
 			{
@@ -50,11 +61,15 @@
 			}
 			else if (!filter_var($company_mail, FILTER_VALIDATE_EMAIL))
 			{
+				echo $company_mail;
 				echo "The E-mail adress is not correct";
 			}
 			else
 			{
-				/*	if (createaccount($user_name, $company_mail, $password)) 
+				//Implement check key, get user data from db function
+				if($role = checkKey($key))
+				{
+					if (createAccount($role, $user_name, $company_mail, $password)) 
 					{
 						header('Location: ../../Admin_Portal/Pages/index.php');
 					}
@@ -62,11 +77,22 @@
 					{
 						echo "Error creating account";
 					}
-				*/
+				
+				}
+				else
+				{
+					echo "- Error -";
+				}
 			}
 		}
+	}
+	else
+	{
+		echo "The key is not correct";
+	}
+	}//Close if ($key == 0)
 
-		?>
+	?>
 	
 	</body>
 </html>
