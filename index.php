@@ -2,11 +2,11 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Test Document</title>
+        <title>Login</title>
         <link rel="stylesheet" href="Main/Includes/CSS/main.css">
     </head>
 
-    <body id="wrapper">
+    <body id="wrapper-login">
         <main class="row">
             <div class="col-lg-6 login_col"></div>
             <div class="col-lg-6 login_col login row">
@@ -18,11 +18,7 @@
                         <input type="password" placeholder="Password"><br>
                         <input type="button" class="button" value="Login">
                 </div>
-
-
             </div>
-
-
         </main>
     </body>
 </html>
