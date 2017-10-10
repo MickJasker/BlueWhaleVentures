@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb44298c-7bb9-4007-b8b8-c9a4e39aa8cc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Admin_Portal/Pages/addClient.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Main/Pages/login.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/Admin_Portal/Pages/AdminBlokken.php" afterPath="$PROJECT_DIR$/Admin_Portal/Pages/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Admin_Portal/Pages/Create_Company.php" afterPath="$PROJECT_DIR$/Admin_Portal/Pages/Create_Company.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Admin_Portal/Pages/clientProfile.php" afterPath="$PROJECT_DIR$/Admin_Portal/Pages/clientProfile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/Includes/CSS/main.css" afterPath="$PROJECT_DIR$/Main/Includes/CSS/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/Includes/LESS/style/style.less" afterPath="$PROJECT_DIR$/Main/Includes/LESS/style/style.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/Includes/PHP/functions.php" afterPath="$PROJECT_DIR$/Main/Includes/PHP/functions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/Includes/PHP/queries.php" afterPath="$PROJECT_DIR$/Main/Includes/PHP/queries.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/Pages/createAccount.php" afterPath="$PROJECT_DIR$/Main/Pages/createAccount.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/Includes/nav.php" afterPath="$PROJECT_DIR$/Main/Includes/nav.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,8 +21,8 @@
       <file leaf-file-name="nav.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main/Includes/nav.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="45" column="6" lean-forward="false" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
+            <state relative-caret-position="165">
+              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -39,18 +31,8 @@
       <file leaf-file-name="style.less" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main/Includes/LESS/style/style.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="navbar.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Main/Includes/Javascript/navbar.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+            <state relative-caret-position="257">
+              <caret line="180" column="35" lean-forward="true" selection-start-line="180" selection-start-column="35" selection-end-line="180" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -68,6 +50,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>#logo</find>
+      <find>myfunctio</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -82,6 +65,7 @@
         <option value="$PROJECT_DIR$/Main/Includes/PHP/functions.php" />
         <option value="$PROJECT_DIR$/Main/Includes/Javascript/main.js" />
         <option value="$PROJECT_DIR$/Main/Includes/Javascript/navbar.js" />
+        <option value="$PROJECT_DIR$/Main/Includes/test.php" />
         <option value="$PROJECT_DIR$/Main/Includes/nav.php" />
         <option value="$PROJECT_DIR$/Main/Includes/LESS/style/style.less" />
       </list>
@@ -139,13 +123,6 @@
               <item name="BlueWhaleVentures" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Main" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Includes" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="BlueWhaleVentures" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BlueWhaleVentures" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Main" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Includes" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Javascript" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -250,12 +227,12 @@
       <updated>1507535308395</updated>
       <workItem from="1507535309584" duration="912000" />
       <workItem from="1507537252665" duration="7357000" />
-      <workItem from="1507619081760" duration="7139000" />
+      <workItem from="1507619081760" duration="9018000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="25777000" />
+    <option name="totallyTimeSpent" value="27656000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="677" y="153" width="957" height="752" extended-state="0" />
@@ -347,13 +324,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Main/Pages/login.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -414,14 +384,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="18" lean-forward="true" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Main/Includes/Javascript/jquery-3.2.1.min.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -448,6 +410,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Main/Includes/Javascript/navbar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -456,18 +426,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="42" lean-forward="true" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main/Includes/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Main/Includes/nav.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="45" column="6" lean-forward="false" selection-start-line="45" selection-start-column="6" selection-end-line="45" selection-end-column="6" />
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main/Includes/LESS/style/style.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+        <state relative-caret-position="257">
+          <caret line="180" column="35" lean-forward="true" selection-start-line="180" selection-start-column="35" selection-end-line="180" selection-end-column="35" />
           <folding />
         </state>
       </provider>

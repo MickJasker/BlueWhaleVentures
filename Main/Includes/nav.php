@@ -17,6 +17,23 @@
                 Welcome, <span id="user">Startup</span>
             </h4>
 
+                <div id="clientswitch">
+
+                    <h4 id="left">
+                        <span id="user">Mentor</span>
+                    </h4>
+
+                    <label class="switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+
+                    <h4 id="left">
+                        <span id="user">Client</span>
+                    </h4>
+
+                </div>
+
             <div id="searchdiv">
 
                 <input type="search" id="searchbar" placeholder="Search for Experiment">
