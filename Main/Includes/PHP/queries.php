@@ -128,18 +128,57 @@ function createCode($email, $name, $generatedkey, $activetime, $role)
 }
 
 //Selects logininfo from DB
-function selectLoginInfo($email)
+function selectLoginInfo($email, $password)
 {
-	$sql = "SELECT Password FROM Login WHERE Email = '$email'";
+	$sql = "SELECT UserID, Password FROM Login WHERE Email = '$email'";
 		if($data = query($sql))
 		{	
 			while($row = $data->fetch_assoc())
 			{
-				return $email;
+				$dbpassword = $row["Password"];
+				
+				//Check if the password is correct
+				if (password_verify($password, $dbpassword) != 0)
+				{
+					$UserID = $row["UserID"];
+					
+					$sql = "SELECT RoleID FROM User WHERE ID = '$UserID'";
+						if($data = query($sql))
+						{	
+							while($row = $data->fetch_assoc())
+							{
+								$RoleID = $row["RoleID"];
+								$Role = "";
+								
+								//Change roleID to role
+								if ($RoleID == "6")
+								{
+									$Role = "Admin";
+								}
+								else if ($RoleID == "7")
+								{
+									$Role = "Mentor";
+								}
+								else if ($RoleID == "8")
+								{
+									$Role = "Company";
+								}
+								
+								return $Role;
+							}
+						}
+				}
+				else 
+				{
+					// Password is not correct
+					echo "The username and/or password 	are/is not correct";
+					return false;
+				}
 			}
 		}
 		else
 		{
+			echo "The username and/or password 	are/is not correct";
 			return false;
 		}
 }
