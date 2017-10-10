@@ -3,3 +3,6 @@ Main/Includes/PHP/queries.php
 *.iml
 *.xml
 .idea/workspace.xml
+.idea/workspace.xml
+.idea/workspace.xml
+.idea/codeStyleSettings.xml

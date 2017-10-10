@@ -2,7 +2,7 @@
 //This file contains all the functions preparing the database queries. 
 //Each function will prepare an sql-string, and an optional array of variables, 
 //which will be sent to db_functions.
-
+ 
 require "connect.php";
 require "dbFunctions.php";
 
@@ -127,23 +127,6 @@ function createCode($email, $name, $generatedkey, $activetime, $role)
 	}
 }
 
-//Selects logininfo from DB
-function selectLoginInfo($email)
-{
-	$sql = "SELECT Password FROM Login WHERE Email = '$email'";
-		if($data = query($sql))
-		{	
-			while($row = $data->fetch_assoc())
-			{
-				return $email;
-			}
-		}
-		else
-		{
-			return false;
-		}
-}
-
 function selectUser($Email)
 {
 	$sql = "SELECT u.ID FROM User u 
@@ -260,7 +243,7 @@ function getMentorBlockInfo()
             <section id="Block">
                 <a href="../../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
-                            <img src="../../<?php echo $ProfilePicture ?>" alt="Mentor Profile">
+                            <img src="../../<?php echo $ProfilePicture; ?>" alt="Mentor Profile">
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Name ?> </h1>
@@ -273,87 +256,44 @@ function getMentorBlockInfo()
     }
 }
 
-//Client Portal Experiment blokken
-function getExperimentBlockInfo($UserID)
+function selectCompanyMentors($CompanyID)
 {
-    $sql = "SELECT e.ID, e.CompanyID, e.Title, e.Thumbnail, e.Completed FROM Experiment e 
-            INNER JOIN Company c ON c.ID = e.CompanyID
-            INNER JOIN User u ON u.ID = c.UserID
-            WHERE u.ID = '$UserID'";
+	$sql = "SELECT m.ID, u.Name, u.ProfilePicture FROM Mentor m
+	INNER JOIN User u ON u.ID = m.UserID
+	INNER JOIN Mentor_Company mc ON mc.MentorID = m.ID
+	INNER JOIN Company c ON c.ID = mc.CompanyID
+	Where c.ID = '$CompanyID'";
 
-    if($data = Query($sql))
+	?>
+	<section id="BottomCol">
+	<?php
+
+	if($data = Query($sql)) 
     {
-        while ($row = $data->fetch_assoc())
-        {
-            $ID = $row["ID"];
-            $Title = $row["Title"];
-            $Thumbnail = $row["Thumbnail"];
-
-            // Nodig voor frontend, als iets klaar is wordt het grijs
-            $Completed = $row["Completed"];
-
-            ?>
-
-            <section id="Block">
-                <a href="../../../Client_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
-                    <div class="BlockLogo">
-                        <img src="../../<?php echo $Thumbnail ?>" alt="Mentor Profile">
-                    </div>
-                    <div class="BlockTitle">
-                        <h1> <?php echo $Title ?> </h1>
-                    </div>
-                </a>
-            </section>
-
-            <?php
-        }
+    	while ($row = $data->fetch_assoc())
+    	{
+    		?>
+			<div id="Mentorportait" >
+				<a href="../../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID'] ?>">link</a>
+				<img src="../../<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
+				<h1> <?php echo $row['Name'] ?> </h1>
+			</div>
+			<?php
+    	}
     }
-}
-
-//Client Portal Expirement blokken
-function getMentorAssignedBlockInfo($UserID)
-{
-    $sql = "SELECT c.ID, c.Name, c.Logo FROM Company c 
-            INNER JOIN Mentor_Company mc ON c.ID = mc.CompanyID
-            INNER JOIN Mentor m ON m.ID = mc.MentorID
-            INNER JOIN User u on u.ID = m.UserID
-            WHERE u.ID = '$UserID'";
-
-    if($data = Query($sql))
+    else
     {
-        while ($row = $data->fetch_assoc())
-        {
-            $ID = $row["ID"];
-            $Name = $row["Name"];
-            $Logo = $row["Logo"];
-
-            ?>
-
-            <section id="Block">
-                <a href="../../../Client_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
-                    <div class="BlockLogo">
-                        <img src="../../<?php echo $Logo ?>" alt="Mentor Profile">
-                    </div>
-                    <div class="BlockTitle">
-                        <h1> <?php echo $Name ?> </h1>
-                    </div>
-                </a>
-            </section>
-
-            <?php
-        }
+    	echo "<br> No mentors assigned";
     }
-}
 
-
-function selectCompanyMentors()
-{
-	$sql = "";
+	?>
+	</section>
+	<?php    
 }
 
 function selectCompanyInfo($CompanyID)
 {
-	$sql = "SELECT c.Name, c.Logo, c.Email, c.Phone, c.Address FROM Company c
+	$sql = "SELECT c.Name, c.Logo, c.Description, c.Email, c.Phone, c.Address FROM Company c
 	WHERE c.ID = '$CompanyID'";
 
 	if($data = Query($sql)) 
@@ -362,24 +302,31 @@ function selectCompanyInfo($CompanyID)
 
     	?>
 
-    	<section id="TempColumn">
+    	<section class="TempColumn">
     		<div class="TempColLogo">
-    			<img src="../../<?php echo $row['c.Logo'] ?>" alt="Company Logo">
+    			<img src="../../<?php echo $row['Logo']; ?>" alt="Company Logo">
     		</div>
 			<div class="TempColDescription">
-				<h1> <?php echo "Description doesnt exist yet!" ?> </h1>
+				<h1> <?php echo $row['Description']; ?> </h1>
 			</div>
 		</section>
 
-		<section id="TempColumn">
+		<section class="TempColumn">
 			<div class="Temptable">
 				<table>
 					<tr>
-						<th>Phone</th>
-						<td><?php echo "AA"; ?></td>
+						<th>Phone: </th>
+						<td><?php echo $row["Phone"]; ?></td>
+					</tr>
+					<tr>
+						<th>Email: </th>
+						<td><?php echo $row["Email"]; ?></td>
+					</tr>
+					<tr>
+						<th>Address: </th>
+						<td><?php echo $row["Address"]; ?></td>
 					</tr>
 				</table>
-
 		</section>
 		<?php
     }
