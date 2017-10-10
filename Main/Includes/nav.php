@@ -14,15 +14,23 @@
 
 
             <h4 id="left">
-                Welcome, <span>Startup</span>
+                Welcome, <span id="user">Startup</span>
             </h4>
 
-            <input  type="search" id="searchbar" placeholder="Search for Experiment">
+            <input type="search" id="searchbar" placeholder="Search for Experiment">
+
+            <div class="dropdown">
+                <input type="search" onclick="myFunction()" class="dropbtn" placeholder="Filter">
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#">Games</a>
+                    <a href="#">Navigation</a>
+                    <a href="#">Fashion</a>
+                </div>
+            </div>
 
             <h4 id="right">
-                Home Profile Logout
+                <a href="" >Home </a> <a href="" >Profile</a> <a href="">Logout</a>
             </h4>
-
 
 
         </div>
