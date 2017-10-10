@@ -24,7 +24,9 @@
 
             <?php
 
-            getAdminBlockInfo();
+            getCompanyBlockInfo();
+
+            getMentorBlockInfo();
 
             ?>
 
