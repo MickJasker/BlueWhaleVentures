@@ -17,11 +17,15 @@
                 Welcome, <span id="user">Startup</span>
             </h4>
 
-            <input type="search" id="searchbar" placeholder="Search for Experiment">
+            <div id="searchdiv">
 
-            <div class="dropdown">
-                <input type="search" onclick="myFunction()" class="dropbtn" placeholder="Filter">
-                <div id="myDropdown" class="dropdown-content">
+                <input type="search" id="searchbar" placeholder="Search for Experiment">
+
+            </div>
+
+            <div class="filter">
+                <input type="search" onclick="showFilter()" class="filterbtn" placeholder="Filter">
+                <div id="content" class="filter-content">
                     <a href="#">Games</a>
                     <a href="#">Navigation</a>
                     <a href="#">Fashion</a>
@@ -32,8 +36,11 @@
                 <a href="" >Home </a> <a href="" >Profile</a> <a href="">Logout</a>
             </h4>
 
-
         </div>
+
+
     </main>
+
+    <script src="Javascript/navbar.js"></script>
 </body>
 </html>

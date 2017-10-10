@@ -1,87 +1,110 @@
 #wrapper-login {
-	font-family: "open-sans", Helvetica, sans-serif;
-	font-weight: 400;
-	text-align: center;
-	opacity: 0;
-	.row {
-		margin: 0;
-	}
-	
-	main {
-		width: 100%;
-		background-image: url("../../Files/Images/stockimages/Square 9.2.jpg");
-		background-size: cover;
+  font-family: "open-sans", Helvetica, sans-serif;
+  font-weight: 400;
+  text-align: center;
+  display: none;
+  .row {
+    margin: 0;
+  }
 
-		.login {
-			background-color: rgba(0, 153, 255, 0.9);
-			height: 100%;
-		}
-		
-		.login_col {
-			margin: 0;
-			height: 100vh;
-			
-			.login_block {
-				text-align: center;
-				background-color: white;
-				margin: 150px;
-				padding: 30px;
-				
-				img {
-					width: 40%;
-					margin: 5px;
-				}
-				
-				form {
-					
-					input {
-						text-align: left;
-						margin: 5px;
-						padding: 7px;
-						background-color: @offwhite;
-						border: none;
-						font-size: 18px;
-						width: 15vw;
-						&:focus {
-							border: none;
-							background-color: white;
-							border: solid thin @blue;
-						}
-					}
-					.button {
-						width: 15vw;
-						background-color: @blue;
-						color: white;
-						transition: 0.3s ease;
-						
-						&:hover {
-							transition: 0.3s ease;
-							background-color: @grey;
-						}
-					}
-				}
-			}
-		}
-	}
+  main {
+    width: 100%;
+    background-image: url("../../Files/Images/stockImages/stock (20).jpg");
+    background-size: cover;
+    background-position: center;
+
+    .login {
+      background-color: rgba(0, 153, 255, 0.9);
+      height: 100%;
+    }
+
+    .login_col {
+      margin: 0;
+      height: 100vh;
+
+      .login_block {
+        text-align: center;
+        background-color: white;
+        margin: 150px;
+        padding: 30px;
+
+        img {
+          width: 40%;
+          margin: 5px;
+        }
+
+        form {
+
+          input {
+            text-align: left;
+            margin: 5px;
+            padding: 7px;
+            background-color: @offwhite;
+            border: none;
+            border: solid thin white;
+            font-size: 18px;
+            width: 100%;
+            transition: 0.3s ease;
+            &:focus {
+              border: none;
+              background-color: white;
+              border: solid thin @blue;
+              transition: 0.3s ease;
+            }
+          }
+          a {
+            text-align: left;
+            text-decoration: none;
+            color: @blue;
+            transition: 0.3s ease;
+            display: inherit;
+            margin: 6px;
+            &:hover {
+              color: @grey;
+              text-decoration: none;
+              transition: 0.3s ease;
+            }
+          }
+          .button {
+            background-color: @blue;
+            color: white;
+            transition: 0.3s ease;
+            &:hover {
+              transition: 0.3s ease;
+              background-color: @grey;
+            }
+          }
+          #error {
+            color: red;
+            text-align: left;
+            margin: 6px;
+            display: inherit;
+          }
+        }
+      }
+    }
+  }
 }
 
 // Admin page styling
 
 #wrapper-admin {
-	
-	h1 {
-		color: @blue;
-	}
+
+  h1 {
+    color: @blue;
+  }
 }
 
 #wrapper-nav {
+
 	background-color: @offwhite;
 
 	main {
 		width: 100%;
 		height: 100%;
 
-		#nav {
+		#nav
+		{
 			width: 100%;
 			height: 80px;
 			position: absolute;
@@ -117,66 +140,90 @@
 				a{
 					color: @grey;
 					padding: 0 5px 0 0;
+					text-decoration: none;
+
+					&:hover{
+						color: @blue;
+					}
 				}
 			}
 
-			#searchbar{
-				outline: none;
-				float: right;
-				font-family: "Open Sans";
-				font-style: italic;
-				border-color: @grey;
-				border-style: solid;
-				border-width: 1px;
-				margin: auto 2% 0 0;
-				padding: 2px 10px 2px 10px;
-				font-size: 15px;
-			}
-
-			/* Dropdown Button */
-			.dropbtn {
-				font-size: 15px;
-				font-style: italic;
-				font-family: "Open Sans";
-				outline: none;
-				border-color: @grey;
-				border-style: solid;
-				border-width: 1px;
-				padding: 2px 10px 2px 10px;
-			}
-
-			/* The container <div> - needed to position the dropdown content */
-			.dropdown {
+			#searchdiv{
+				height: 80px;
+				padding: 0 2% 0 0;
 				position: relative;
 				display: inline-block;
 				float: right;
+
+					#searchbar{
+						outline: none;
+						float: right;
+						font-family: "Open Sans";
+						font-style: italic;
+						border-color: @grey;
+						border-style: solid;
+						border-width: 1px;
+						margin: 12.5% 0 0 0;
+						padding: 2px 10px 2px 10px;
+						font-size: 15px;
+						line-height: 30px;
+						position: relative;
+					}
 			}
 
-			/* Dropdown Content (Hidden by Default) */
-			.dropdown-content {
-				display: none;
-				position: absolute;
-				min-width: 160px;
-				z-index: 1;
-				outline: none;
-				border-color: @grey;
-				border-style: solid;
-				border-width: 1px;
+			.filter
+			{
+				position: relative;
+				display: inline-block;
+				float: right;
+				height: 80px;
+				padding: 0 2% 0 0;
+
+				.filterbtn{
+					font-size: 15px;
+					font-style: italic;
+					font-family: "Open Sans";
+					outline: none;
+					border-color: @grey;
+					border-style: solid;
+					border-width: 1px;
+					padding: 2px 10px 2px 10px;
+					line-height: 30px;
+					margin: 12.5% 0 0 0;
+				}
+
+				.filter-content{
+					display: none;
+					background-color: @white;
+					position: absolute;
+					min-width: 160px;
+					z-index: 1;
+					outline: none;
+					border-color: @grey;
+					border-style: solid;
+					border-width: 1px;
+					border-bottom: none;
+					border-top: none;
+				}
+
+				.filter-content a{
+					color: black;
+					padding: 8%;
+					text-decoration: none;
+					display: block;
+					border-bottom: solid;
+					border-color: @grey;
+					border-width: 1px;
+				}
+
+				.filter-content a:hover{
+					background-color: @offwhite;
+				}
+
+				.show{
+					display:block;
+				}
 			}
-
-			/* Links inside the dropdown */
-			.dropdown-content a {
-				color: @grey;
-				padding: 12px 16px;
-				text-decoration: none;
-				display: block;
-			}
-
-			/* Change color of dropdown links on hover */
-			.dropdown-content a:hover {background-color: #f1f1f1}
-
-			/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-			.show {display:block;}
 		}
 	}
 }
