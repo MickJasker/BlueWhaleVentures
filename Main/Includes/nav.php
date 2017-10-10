@@ -1,7 +1,6 @@
+ <div id="nav">
 
-        <div id="nav">
-
-            <img id="logo" src="../Files/Images/logo.svg">
+            <img id="logo" src="../../Main/Files/Images/logo.svg">
 
 
             <h4 id="left">
