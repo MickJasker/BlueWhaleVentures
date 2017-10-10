@@ -192,7 +192,7 @@ function selectCompanyName($UserID)
 	}
 }
 
-function selectUserName($ID)
+function selectUserName2($ID)
 {
 	$sql = "SELECT c.Name FROM Company c
 	WHERE c.ID = '$ID'";
