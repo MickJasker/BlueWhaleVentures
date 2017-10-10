@@ -205,7 +205,7 @@ function selectUserName($ID)
 }
 
 //Admin portal blokken
-function getAdminBlockInfo()
+function getCompanyBlockInfo()
 {
     $sql = "SELECT ID, Name, Logo FROM Company";
 
@@ -231,6 +231,60 @@ function getAdminBlockInfo()
 
             <?php
         }
+    }
+}
+
+//Admin portal blokken
+function getMentorBlockInfo()
+{
+    $sql = "SELECT u.ID, u.Name, u.ProfilePicture FROM User u
+    INNER JOIN Role r ON r.ID = u.RoleID
+    WHERE r.Role = Mentor";
+
+    if($data = Query($sql)) 
+    {
+        while ($row = $data->fetch_assoc()) 
+        {
+            $ID = $row["ID"];
+            $Logo = $row["ProfilePicture"];
+            $Name = $row["Name"];
+
+            ?>
+
+            <section id="Block">
+                <a href="../../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $ID ?>">
+                    <div class="BlockLogo">
+                            <img src="../../<?php echo $ProfilePicture ?>" alt="Mentor Profile">
+                    </div>
+                    <div class="BlockTitle">
+                        <h1> <?php echo $Name ?> </h1>
+                    </div>
+                </a>
+            </section>
+
+            <?php
+        }
+    }
+}
+
+function selectCompanyInfo($CompanyID)
+{
+	$sql = "SELECT c.Name, c.Logo, c.Email, c.Phone, c.Address FROM Company c
+	WHERE c.ID = '$CompanyID'";
+
+	if($data = Query($sql)) 
+    {
+    	$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+
+    	?>
+
+    	<section id="TempColumn">
+    		<div class="TempColLogo">
+    			<img src="../../<?php echo $row['c.Logo'] ?>" alt="Company Logo">
+    		</div>
+			<div class="TempColDescription">
+				<h1> <?php echo $ ?> </h1>
+			</div>
     }
 }
 
