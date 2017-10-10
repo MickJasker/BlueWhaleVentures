@@ -40,29 +40,27 @@
             margin: 5px;
             padding: 7px;
             background-color: @offwhite;
-            border: none;
-            border: solid thin white;
+						border: none;
             font-size: 18px;
             width: 100%;
-            transition: 0.3s ease;
+            transition: 0.2s ease;
             &:focus {
-              border: none;
-              background-color: white;
-              border: solid thin @blue;
-              transition: 0.3s ease;
+              outline: @blue solid;
+              transition: 0.2s ease;
+							background-color: white;
             }
           }
           a {
             text-align: left;
             text-decoration: none;
             color: @blue;
-            transition: 0.3s ease;
+            transition: 0.2s ease;
             display: inherit;
             margin: 6px;
             &:hover {
               color: @grey;
               text-decoration: none;
-              transition: 0.3s ease;
+              transition: 0.2s ease;
             }
           }
           .button {
@@ -73,6 +71,12 @@
               transition: 0.3s ease;
               background-color: @grey;
             }
+						&:focus {
+							transition: 0.3s ease;
+							background-color: @offwhite;
+							outline: none;
+							color: @blue;
+						}
           }
           #error {
             color: red;
