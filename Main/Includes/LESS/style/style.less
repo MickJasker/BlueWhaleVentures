@@ -1,80 +1,102 @@
 #wrapper-login {
-	font-family: "open-sans", Helvetica, sans-serif;
-	font-weight: 400;
-	text-align: center;
-	opacity: 0;
-	.row {
-		margin: 0;
-	}
-	
-	main {
-		width: 100%;
-		background-image: url("../../Files/Images/stockimages/Square 9.2.jpg");
-		background-size: cover;
+  font-family: "open-sans", Helvetica, sans-serif;
+  font-weight: 400;
+  text-align: center;
+  display: none;
+  .row {
+    margin: 0;
+  }
 
-		.login {
-			background-color: rgba(0, 153, 255, 0.9);
-			height: 100%;
-		}
-		
-		.login_col {
-			margin: 0;
-			height: 100vh;
-			
-			.login_block {
-				text-align: center;
-				background-color: white;
-				margin: 150px;
-				padding: 30px;
-				
-				img {
-					width: 40%;
-					margin: 5px;
-				}
-				
-				form {
-					
-					input {
-						text-align: left;
-						margin: 5px;
-						padding: 7px;
-						background-color: @offwhite;
-						border: none;
-						font-size: 18px;
-						width: 15vw;
-						&:focus {
-							border: none;
-							background-color: white;
-							border: solid thin @blue;
-						}
-					}
-					.button {
-						width: 15vw;
-						background-color: @blue;
-						color: white;
-						transition: 0.3s ease;
-						
-						&:hover {
-							transition: 0.3s ease;
-							background-color: @grey;
-						}
-					}
-				}
-			}
-		}
-	}
+  main {
+    width: 100%;
+    background-image: url("../../Files/Images/stockImages/stock (20).jpg");
+    background-size: cover;
+    background-position: center;
+
+    .login {
+      background-color: rgba(0, 153, 255, 0.9);
+      height: 100%;
+    }
+
+    .login_col {
+      margin: 0;
+      height: 100vh;
+
+      .login_block {
+        text-align: center;
+        background-color: white;
+        margin: 150px;
+        padding: 30px;
+
+        img {
+          width: 40%;
+          margin: 5px;
+        }
+
+        form {
+
+          input {
+            text-align: left;
+            margin: 5px;
+            padding: 7px;
+            background-color: @offwhite;
+            border: none;
+            border: solid thin white;
+            font-size: 18px;
+            width: 100%;
+            transition: 0.3s ease;
+            &:focus {
+              border: none;
+              background-color: white;
+              border: solid thin @blue;
+              transition: 0.3s ease;
+            }
+          }
+          a {
+            text-align: left;
+            text-decoration: none;
+            color: @blue;
+            transition: 0.3s ease;
+            display: inherit;
+            margin: 6px;
+            &:hover {
+              color: @grey;
+              text-decoration: none;
+              transition: 0.3s ease;
+            }
+          }
+          .button {
+            background-color: @blue;
+            color: white;
+            transition: 0.3s ease;
+            &:hover {
+              transition: 0.3s ease;
+              background-color: @grey;
+            }
+          }
+          #error {
+            color: red;
+            text-align: left;
+            margin: 6px;
+            display: inherit;
+          }
+        }
+      }
+    }
+  }
 }
 
 // Admin page styling
 
 #wrapper-admin {
-	
-	h1 {
-		color: @blue;
-	}
+
+  h1 {
+    color: @blue;
+  }
 }
 
 #wrapper-nav {
+
 	background-color: @offwhite;
 
 	main {

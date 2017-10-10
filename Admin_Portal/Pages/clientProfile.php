@@ -10,6 +10,8 @@
         <main class="row">
             <?php
                 require "../../Main/Includes/PHP/queries.php";
+                session_start();
+                selectCompanyInfo($_GET["ID"]);
             ?>
         </main>
     </body>
