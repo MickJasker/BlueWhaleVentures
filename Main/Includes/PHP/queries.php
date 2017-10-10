@@ -224,6 +224,79 @@ function getMentorBlockInfo()
     }
 }
 
+//Client Portal Experiment blokken
+function getExperimentBlockInfo($UserID)
+{
+    $sql = "SELECT e.ID, e.CompanyID, e.Title, e.Thumbnail, e.Completed FROM Experiment e 
+            INNER JOIN Company c ON c.ID = e.CompanyID
+            INNER JOIN User u ON u.ID = c.UserID
+            WHERE u.ID = '$UserID'";
+
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+            $ID = $row["ID"];
+            $Title = $row["Title"];
+            $Thumbnail = $row["Thumbnail"];
+
+            // Nodig voor frontend, als iets klaar is wordt het grijs
+            $Completed = $row["Completed"];
+
+            ?>
+
+            <section id="Block">
+                <a href="../../../Client_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
+                    <div class="BlockLogo">
+                        <img src="../../<?php echo $Thumbnail ?>" alt="Mentor Profile">
+                    </div>
+                    <div class="BlockTitle">
+                        <h1> <?php echo $Title ?> </h1>
+                    </div>
+                </a>
+            </section>
+
+            <?php
+        }
+    }
+}
+
+//Client Portal Expirement blokken
+function getMentorAssignedBlockInfo($UserID)
+{
+    $sql = "SELECT c.ID, c.Name, c.Logo FROM Company c 
+            INNER JOIN Mentor_Company mc ON c.ID = mc.CompanyID
+            INNER JOIN Mentor m ON m.ID = mc.MentorID
+            INNER JOIN User u on u.ID = m.UserID
+            WHERE u.ID = '$UserID'";
+
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+            $ID = $row["ID"];
+            $Name = $row["Name"];
+            $Logo = $row["Logo"];
+
+            ?>
+
+            <section id="Block">
+                <a href="../../../Client_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
+                    <div class="BlockLogo">
+                        <img src="../../<?php echo $Logo ?>" alt="Mentor Profile">
+                    </div>
+                    <div class="BlockTitle">
+                        <h1> <?php echo $Name ?> </h1>
+                    </div>
+                </a>
+            </section>
+
+            <?php
+        }
+    }
+}
+
+
 function selectCompanyMentors()
 {
 	$sql = "";
