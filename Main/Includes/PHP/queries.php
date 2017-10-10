@@ -127,6 +127,31 @@ function createCode($email, $name, $generatedkey, $activetime, $role)
 	}
 }
 
+//Selects all experiment textareas etc
+function getDesignSheetForm()
+{
+	$sql = "SELECT title, description FROM Segment WHERE DesignSheetID = '1'";
+		if($data = query($sql))
+		{	
+			echo '<form method="POST" action="#">';
+			
+			$i = 1;
+			while($row = $data->fetch_assoc())
+			{
+				echo '<h3>'.$row["title"].'</h3>';
+				echo '<textarea name="input'.$i.'" type="text" placeholder="'.$row["description"].'"></textarea>';
+				$i++;
+			}
+			echo '<input name="submit_designsheet" type="submit" value="Enter" >';
+			echo '</form>';
+		}
+		else
+		{
+			echo "Error retrieving experimentdata";
+			return false;
+		}
+}
+
 function selectUser($Email)
 {
 	$sql = "SELECT u.ID FROM User u 
