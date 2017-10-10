@@ -1,16 +1,6 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="CSS/main.css">
-</head>
+ <div id="nav">
 
-<body id="wrapper-nav">
-    <main>
-
-        <div id="nav">
-
-            <img id="logo" src="../Files/Images/logo.svg">
+            <img id="logo" src="../../Main/Files/Images/logo.svg">
 
 
             <h4 id="left">
@@ -54,10 +44,3 @@
             </h4>
 
         </div>
-
-
-    </main>
-
-    <script src="Javascript/navbar.js"></script>
-</body>
-</html>

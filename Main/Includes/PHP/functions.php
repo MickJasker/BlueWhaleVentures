@@ -59,4 +59,14 @@ function destroySession()
 	unset($_SESSION["Role"]);
 	unset($_SESSION["UserID"]);
 }
+
+function createExperiment($UserID, $Title, $Thumbnail, $Description)
+{	echo "1";
+	$CompanyID = selectCompanyID($UserID);
+		echo "2";
+	if (insertExperiment($CompanyID, $Title, $Thumbnail, $Description) == true)
+	{echo "3";
+		//Upload image
+	}
+}
 ?>
