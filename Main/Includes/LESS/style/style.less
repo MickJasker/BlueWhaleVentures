@@ -2,15 +2,16 @@
 	font-family: "open-sans", Helvetica, sans-serif;
 	font-weight: 400;
 	text-align: center;
-	opacity: 0;
+	display: none;
 	.row {
 		margin: 0;
 	}
 	
 	main {
 		width: 100%;
-		background-image: url("../../Files/Images/stockimages/Square 9.2.jpg");
+		background-image: url("../../Files/Images/stockImages/stock (20).jpg");
 		background-size: cover;
+		background-position: center;
 
 		.login {
 			background-color: rgba(0, 153, 255, 0.9);
@@ -33,31 +34,51 @@
 				}
 				
 				form {
-					
+
 					input {
 						text-align: left;
 						margin: 5px;
 						padding: 7px;
 						background-color: @offwhite;
 						border: none;
+						border: solid thin white;
 						font-size: 18px;
-						width: 15vw;
+						width: 100%;
+						transition: 0.3s ease;
 						&:focus {
 							border: none;
 							background-color: white;
 							border: solid thin @blue;
+							transition: 0.3s ease;
+						}
+					}
+					a {
+						text-align: left;
+						text-decoration: none;
+						color: @blue;
+						transition: 0.3s ease;
+						display: inherit;
+						margin: 6px;
+						&:hover {
+							color: @grey;
+							text-decoration: none;
+							transition: 0.3s ease;
 						}
 					}
 					.button {
-						width: 15vw;
 						background-color: @blue;
 						color: white;
 						transition: 0.3s ease;
-						
 						&:hover {
 							transition: 0.3s ease;
 							background-color: @grey;
 						}
+					}
+					#error {
+						color: red;
+						text-align: left;
+						margin: 6px;
+						display: inherit;
 					}
 				}
 			}
