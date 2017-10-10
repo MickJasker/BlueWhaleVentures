@@ -267,6 +267,11 @@ function getMentorBlockInfo()
     }
 }
 
+function selectCompanyMentors()
+{
+	$sql = "";
+}
+
 function selectCompanyInfo($CompanyID)
 {
 	$sql = "SELECT c.Name, c.Logo, c.Email, c.Phone, c.Address FROM Company c
@@ -283,8 +288,21 @@ function selectCompanyInfo($CompanyID)
     			<img src="../../<?php echo $row['c.Logo'] ?>" alt="Company Logo">
     		</div>
 			<div class="TempColDescription">
-				<h1> <?php echo $ ?> </h1>
+				<h1> <?php echo "Description doesnt exist yet!" ?> </h1>
 			</div>
+		</section>
+
+		<section id="TempColumn">
+			<div class="Temptable">
+				<table>
+					<tr>
+						<th>Phone</th>
+						<td><?php echo "AA"; ?></td>
+					</tr>
+				</table>
+
+		</section>
+		<?php
     }
 }
 
