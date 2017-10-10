@@ -9,13 +9,13 @@
 		<script src="../../Main/Includes/Javascript/load.js"></script>
 	</head>
 
-	<body id="wrapper-nav" id="wrapper-ClientProfile">
+	<body id="wrapper-nav" class="wrapper-ClientProfile">
 		<header class="row">
 			<?php
 			require "../../Main/Includes/PHP/nav.php"
 			?>
 		</header>
-		<main class="row">
+		<main>
 			<?php /*
                 require "../../Main/Includes/PHP/queries.php";
                 session_start();
@@ -23,7 +23,26 @@
 
                 selectCompanyMentors($_GET["ID"]);
             */ ?>
-			
+            
+            <div class="wrapper-profile">
+	            <div class="row">
+		            <div class="profile-block col-md-4">
+			            <div class="container-fluid">
+			            	<h3>Company Profile</h3>
+			            </div>
+		            </div>
+		            <div class="company-information-block col-md-4">
+			            <div class="container-fluid">
+			            	<h3>Contact</h3>
+			            </div>
+		            </div>
+		            <div class="analytics-block col-md-4">
+			            <div class="container-fluid">
+			            	<h3>Analytics</h3>
+			            </div>
+		            </div>
+	            </div>
+            </div>    
 		</main>
 		<script src="../../Main/Includes/Javascript/navbar.js"></script>
 	</body>
