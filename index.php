@@ -11,7 +11,7 @@
 
 	<body id="wrapper-login">
 		<main class="row">
-			<div class="col-lg-6 login_col"></div>
+			<div class="col-lg-6"></div>
 			<div class="col-lg-6 login_col login row">
 				<div class="login_block ">
 					<img src="Main/Files/Images/logo_text.svg" alt="logo">

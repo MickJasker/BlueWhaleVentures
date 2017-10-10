@@ -13,7 +13,7 @@ require '../Includes/PHP/functions.php';
 	</head>
 	<body id="wrapper-login">
       <?php
-	Get key form url
+	//Get key form url
 	$key = htmlentities(mysqli_real_escape_string($conn, $_GET['key']));
 	if ($key == "")
 	{
@@ -43,7 +43,7 @@ require '../Includes/PHP/functions.php';
 				</div>
 
 			</div>
-			<div class="col-lg-6 login_col"></div>
+			<div class="col-lg-6"></div>
 		</main>
 
 
