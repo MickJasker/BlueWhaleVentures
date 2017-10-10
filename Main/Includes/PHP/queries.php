@@ -6,6 +6,7 @@
 require "connect.php";
 require "dbFunctions.php";
 
+//Get email and name from key, and check if it exists
 function getKey($key)
 {
 	$sql = "SELECT Email, Name FROM RegisterKey WHERE `KeyCode` = '$key'";
@@ -27,6 +28,7 @@ function getKey($key)
 	}
 }
 
+//Check if the key exists and delete the key from the database
 function checkKey($key)
 {
 	$sql = "SELECT ID, RoleID FROM RegisterKey WHERE `KeyCode` = '$key'";
@@ -55,7 +57,7 @@ function checkKey($key)
 function createAccount($role, $user_name, $company_mail, $password)
 {
 	$password = password_hash($password, PASSWORD_DEFAULT);
-	$sql = "INSERT INTO `User`(`RoleID`,`Language`, `Name`, `Locked`) VALUES ('$role','English','$user_name', '1')";
+	$sql = "INSERT INTO `User`(`RoleID`,`Language`, `Name`, `Locked`) VALUES ('$role','English','$user_name', '0')";
 	
 	if (query($sql))
 	{
@@ -88,6 +90,36 @@ function createAccount($role, $user_name, $company_mail, $password)
 		{
 			return false;
 		}
+	}
+	else
+	{
+		return false;
+	}
+}
+
+//Insert generated code in the database
+function createCode($email, $name, $generatedkey, $activetime, $role)
+{
+	//Change role to roleID
+	$RoleID = "";
+	if ($role == "Admin")
+	{
+		$RoleID = "6";
+	}
+	else if ($role == "Mentor")
+	{
+		$RoleID = "7";
+	}
+	else if ($role == "Company")
+	{
+		$RoleID = "8";
+	}
+	
+	//Insert in db
+	$sql = "INSERT INTO `RegisterKey`(`RoleID`, `KeyCode`, `Email`, `Name`, `ActiveTime`) VALUES ('$RoleID','$generatedkey','$email','$name','$activetime')";
+	if (query($sql))
+	{
+		return true;
 	}
 	else
 	{
@@ -196,14 +228,14 @@ function getMentorBlockInfo()
 {
     $sql = "SELECT u.ID, u.Name, u.ProfilePicture FROM User u
     INNER JOIN Role r ON r.ID = u.RoleID
-    WHERE r.Role = Mentor";
+    WHERE r.Name = 'Mentor'";
 
     if($data = Query($sql)) 
     {
         while ($row = $data->fetch_assoc()) 
         {
             $ID = $row["ID"];
-            $Logo = $row["ProfilePicture"];
+            $ProfilePicture = $row["ProfilePicture"];
             $Name = $row["Name"];
 
             ?>

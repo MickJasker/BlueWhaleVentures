@@ -121,7 +121,7 @@
 				color: @grey;
 				margin: 0;
 				line-height: 80px;
-				span {
+				#user {
 					color: @blue;
 				}
 			}
@@ -134,20 +134,70 @@
 			#right {
 				float: right;
 				padding: 0 2% 0 0;
+
+				a{
+					color: @grey;
+					padding: 0 5px 0 0;
+				}
 			}
 
 			#searchbar{
 				outline: none;
 				float: right;
 				font-family: "Open Sans";
+				font-style: italic;
 				border-color: @grey;
 				border-style: solid;
 				border-width: 1px;
 				margin: auto 2% 0 0;
 				padding: 2px 10px 2px 10px;
 				font-size: 15px;
-				background: url('../../../Files/Images/lookingglass.svg') left center no-repeat;
 			}
+
+			/* Dropdown Button */
+			.dropbtn {
+				font-size: 15px;
+				font-style: italic;
+				font-family: "Open Sans";
+				outline: none;
+				border-color: @grey;
+				border-style: solid;
+				border-width: 1px;
+				padding: 2px 10px 2px 10px;
+			}
+
+			/* The container <div> - needed to position the dropdown content */
+			.dropdown {
+				position: relative;
+				display: inline-block;
+				float: right;
+			}
+
+			/* Dropdown Content (Hidden by Default) */
+			.dropdown-content {
+				display: none;
+				position: absolute;
+				min-width: 160px;
+				z-index: 1;
+				outline: none;
+				border-color: @grey;
+				border-style: solid;
+				border-width: 1px;
+			}
+
+			/* Links inside the dropdown */
+			.dropdown-content a {
+				color: @grey;
+				padding: 12px 16px;
+				text-decoration: none;
+				display: block;
+			}
+
+			/* Change color of dropdown links on hover */
+			.dropdown-content a:hover {background-color: #f1f1f1}
+
+			/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+			.show {display:block;}
 		}
 	}
 }

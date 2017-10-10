@@ -1,3 +1,5 @@
 Main/Includes/PHP/queries.php
 Main/Includes/PHP/queries.php
 *.iml
+*.xml
+.idea/workspace.xml
