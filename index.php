@@ -17,6 +17,7 @@
                         <input type="text" placeholder="User name"><br>
                         <input type="password" placeholder="Password"><br>
                         <input type="button" class="button" value="Login">
+                    </form>
                 </div>
             </div>
         </main>
