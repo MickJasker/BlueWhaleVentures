@@ -507,4 +507,14 @@ function insertExperiment($CompanyID, $Title, $Thumbnail, $Description)
 	return $data;
 }
 
+function insertQuestion($QuestionPost) {
+
+    foreach ($QuestionPost AS $Question) {
+
+        $sql = "INSERT INTO Question(QuestionaireID, Question) VALUES ('1','$Question')";
+        Query($sql);
+
+    }
+}
+
 ?>

@@ -3,7 +3,8 @@
 
 
 
-
+    //Database functie fixen
+    insertQuestion($_POST);
 
 ?>
 <!DOCTYPE html>
