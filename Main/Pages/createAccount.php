@@ -1,14 +1,19 @@
 <?php
-	require '../Includes/PHP/functions.php';
+require '../Includes/PHP/functions.php';
 ?>
 <!DOCTYPE html>
 <html>
-   <head>
-	<title> Create an Account </title>
-   </head>
-   <body>
-   <?php
-	//Get key form url	
+	<head>
+		<meta charset="utf-8">
+		<title>Create account</title>
+		<link rel="stylesheet" href="../Includes/CSS/main.css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,800" rel="stylesheet">
+		<script src="../Includes/Javascript/jquery-3.2.1.min.js"></script>
+		<script src="../Includes/Javascript/load.js"></script>
+	</head>
+	<body id="wrapper-login">
+      <?php
+	Get key form url
 	$key = htmlentities(mysqli_real_escape_string($conn, $_GET['key']));
 	if ($key == "")
 	{
@@ -21,17 +26,28 @@
 		$company_mail = $data[1];
 		$firstname = $data[2];
 	
-   ?>
-   
-	<form method="POST" action="#">
-		<input type="text" name="user_name" placeholder="Name" value="<?php echo $firstname; ?>"> <br>
-		<input type="text" name="company_mail" placeholder="E-mail" value="<?php echo $company_mail; ?>"> <br>
-		<input type="password" name="password" placeholder="Password"> <br>
-		<input type="password" name="password2" placeholder="Confirm Password"> <br>
-		<input name="create_account" type="submit" value="Create account">
-	</form>
-	
-	<?php	
+    ?>
+		<main class="row">
+
+			<div class="col-lg-6 login_col login">
+				<div class="login_block">
+					<img src="../Files/Images/logo_text.svg" alt="logo">
+					<form method="POST" action="#">
+						<input type="text" name="user_name" placeholder="Name" value="<?php echo $firstname; ?>"> <br>
+						<input type="text" name="company_mail" placeholder="E-mail" value="<?php echo $company_mail; ?>"> <br>
+						<input type="password" name="password" placeholder="Password"> <br>
+						<input type="password" name="password2" placeholder="Confirm Password"> <br>
+						<input name="create_account" type="submit" value="Create account" class="button">
+						<p id="error">PHP error handeling!!!</p>
+					</form>
+				</div>
+
+			</div>
+			<div class="col-lg-6 login_col"></div>
+		</main>
+
+
+      <?php
 		
 		if (isset($_POST['create_account']))
 		{
@@ -91,7 +107,7 @@
 	}
 	}//Close if ($key == 0)
 
-	?>
+	 ?>
 	
 	</body>
 </html>
