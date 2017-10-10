@@ -243,7 +243,7 @@ function getMentorBlockInfo()
             <section id="Block">
                 <a href="../../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
-                            <img src="../../<?php echo $ProfilePicture ?>" alt="Mentor Profile">
+                            <img src="../../<?php echo $ProfilePicture; ?>" alt="Mentor Profile">
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Name ?> </h1>
@@ -256,14 +256,44 @@ function getMentorBlockInfo()
     }
 }
 
-function selectCompanyMentors()
+function selectCompanyMentors($CompanyID)
 {
-	$sql = "";
+	$sql = "SELECT m.ID, u.Name, u.ProfilePicture FROM Mentor m
+	INNER JOIN User u ON u.ID = m.UserID
+	INNER JOIN Mentor_Company mc ON mc.MentorID = m.ID
+	INNER JOIN Company c ON c.ID = mc.CompanyID
+	Where c.ID = '$CompanyID'";
+
+	?>
+	<section id="BottomCol">
+	<?php
+
+	if($data = Query($sql)) 
+    {
+    	while ($row = $data->fetch_assoc())
+    	{
+    		?>
+			<div id="Mentorportait" >
+				<a href="../../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID'] ?>">link</a>
+				<img src="../../<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
+				<h1> <?php echo $row['Name'] ?> </h1>
+			</div>
+			<?php
+    	}
+    }
+    else
+    {
+    	echo "<br> No mentors assigned";
+    }
+
+	?>
+	</section>
+	<?php    
 }
 
 function selectCompanyInfo($CompanyID)
 {
-	$sql = "SELECT c.Name, c.Logo, c.Email, c.Phone, c.Address FROM Company c
+	$sql = "SELECT c.Name, c.Logo, c.Description, c.Email, c.Phone, c.Address FROM Company c
 	WHERE c.ID = '$CompanyID'";
 
 	if($data = Query($sql)) 
@@ -272,24 +302,31 @@ function selectCompanyInfo($CompanyID)
 
     	?>
 
-    	<section id="TempColumn">
+    	<section class="TempColumn">
     		<div class="TempColLogo">
-    			<img src="../../<?php echo $row['c.Logo'] ?>" alt="Company Logo">
+    			<img src="../../<?php echo $row['Logo']; ?>" alt="Company Logo">
     		</div>
 			<div class="TempColDescription">
-				<h1> <?php echo "Description doesnt exist yet!" ?> </h1>
+				<h1> <?php echo $row['Description']; ?> </h1>
 			</div>
 		</section>
 
-		<section id="TempColumn">
+		<section class="TempColumn">
 			<div class="Temptable">
 				<table>
 					<tr>
-						<th>Phone</th>
-						<td><?php echo "AA"; ?></td>
+						<th>Phone: </th>
+						<td><?php echo $row["Phone"]; ?></td>
+					</tr>
+					<tr>
+						<th>Email: </th>
+						<td><?php echo $row["Email"]; ?></td>
+					</tr>
+					<tr>
+						<th>Address: </th>
+						<td><?php echo $row["Address"]; ?></td>
 					</tr>
 				</table>
-
 		</section>
 		<?php
     }
