@@ -1,5 +1,4 @@
 <?php
-	require '../Includes/PHP/queries.php';
 	require '../Includes/PHP/functions.php';
 ?>
 <!DOCTYPE html>
@@ -71,7 +70,7 @@
 				{
 					if (createAccount($role, $user_name, $company_mail, $password)) 
 					{
-						header('Location: ../../Admin_Portal/Pages/index.php');
+						header('Location: ../../index.php');
 					}
 					else
 					{

@@ -127,6 +127,23 @@ function createCode($email, $name, $generatedkey, $activetime, $role)
 	}
 }
 
+//Selects logininfo from DB
+function selectLoginInfo($email)
+{
+	$sql = "SELECT Password FROM Login WHERE Email = '$email'";
+		if($data = query($sql))
+		{	
+			while($row = $data->fetch_assoc())
+			{
+				return $email;
+			}
+		}
+		else
+		{
+			return false;
+		}
+}
+
 function selectUser($Email)
 {
 	$sql = "SELECT u.ID FROM User u 
