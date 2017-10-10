@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Login</title>
+        <title>Client Profile</title>
         <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
     </head>
 
@@ -12,6 +12,8 @@
                 require "../../Main/Includes/PHP/queries.php";
                 session_start();
                 selectCompanyInfo($_GET["ID"]);
+
+                selectCompanyMentors($_GET["ID"]);
             ?>
         </main>
     </body>
