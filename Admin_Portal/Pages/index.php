@@ -8,8 +8,15 @@
 		<link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 	</head>
 	<body id="wrapper-admin">
+
+        <header>
+
+            <?php include '../../Main/Includes/nav.php';?>
+
+        </header>
+
         <Main>
-            <h1>Salty Mundi</h1>
+
             <section id="Block">
                 <a href="#">
                     <div class="BlockLogo">
@@ -23,7 +30,7 @@
 
             <?php
 
-            getCompanyBlockInfo();
+            //getCompanyBlockInfo();
 
             ?>
 
@@ -41,10 +48,11 @@
 
             <?php
 
-            getMentorBlockInfo();
+            //getMentorBlockInfo();
 
             ?>
 
+            <script src="../../Main/Includes/Javascript/navbar.js"></script>
 
         </Main>
 	</body>
