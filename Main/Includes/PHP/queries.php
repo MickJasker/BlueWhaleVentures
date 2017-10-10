@@ -2,7 +2,7 @@
 //This file contains all the functions preparing the database queries. 
 //Each function will prepare an sql-string, and an optional array of variables, 
 //which will be sent to db_functions.
-
+ 
 require "connect.php";
 require "dbFunctions.php";
 
