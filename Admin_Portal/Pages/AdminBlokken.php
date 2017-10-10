@@ -2,7 +2,6 @@
 <html lang="en">
     <head>
         <?php
-            require '../../Main/Includes/PHP/queries.php';
             require '../../Main/Includes/PHP/functions.php';
         ?>
     </head>

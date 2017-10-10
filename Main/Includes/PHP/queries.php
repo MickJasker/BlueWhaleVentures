@@ -196,14 +196,14 @@ function getMentorBlockInfo()
 {
     $sql = "SELECT u.ID, u.Name, u.ProfilePicture FROM User u
     INNER JOIN Role r ON r.ID = u.RoleID
-    WHERE r.Role = Mentor";
+    WHERE r.Name = 'Mentor'";
 
     if($data = Query($sql)) 
     {
         while ($row = $data->fetch_assoc()) 
         {
             $ID = $row["ID"];
-            $Logo = $row["ProfilePicture"];
+            $ProfilePicture = $row["ProfilePicture"];
             $Name = $row["Name"];
 
             ?>
