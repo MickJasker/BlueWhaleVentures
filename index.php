@@ -4,6 +4,9 @@
         <meta charset="utf-8">
         <title>Login</title>
         <link rel="stylesheet" href="Main/Includes/CSS/main.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,800" rel="stylesheet">
+        <script src="Main/Includes/Javascript/jquery-3.2.1.min.js"></script>
+        <script src="Main/Includes/Javascript/load.js"></script>
     </head>
 
     <body id="wrapper-login">
@@ -17,6 +20,7 @@
                         <input type="text" placeholder="User name"><br>
                         <input type="password" placeholder="Password"><br>
                         <input type="button" class="button" value="Login">
+                    </form>
                 </div>
             </div>
         </main>
