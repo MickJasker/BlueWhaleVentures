@@ -429,4 +429,12 @@ function selectCompanyInfo($CompanyID)
     }
 }
 
+function insertExperiment($CompanyID, $Title, $Thumbnail, $Description)
+{
+	$sql = "INSERT INTO Experiment(CompanyID, Title, Thumbnail, Description, Completed) VALUES ('$CompanyID', '$Title', '$Thumbnail', '$Description', 0)";
+
+	$data = Query($sql);
+	return $data;
+}
+
 ?>
