@@ -25,18 +25,15 @@ function generate_key($email, $name, $role)
 	//Time + 31 days YYYY-MM-DD HH:MI:SS
 	$activetime = date("Y-m-d H:i:s",strtotime(date("Y-m-d H:i:s")." +31 days"));
 	
-	//send mail here 
-	echo $link . "<br> To:" . $name . " - " . $email . "<br> Active till:" . $activetime;
-	
 	//Insert the code in the db
-	/*if (createcode($email, $name, $generate_key, $activetime, $role)) //Insert key in db, Doesnt work yet
+	if (createCode($email, $name, $generatedkey, $activetime, $role)) //Insert key in db, Doesnt work yet
 	{	
 		return true;
 	}	
 	else
 	{
 		return false;
-	}*/
+	}
 }
 
 function createSession($Email)
