@@ -127,7 +127,7 @@
 				color: @grey;
 				margin: 0;
 				line-height: 80px;
-				#user {
+				.user {
 					color: @blue;
 				}
 			}
@@ -158,16 +158,35 @@
 
 			}
 
+			#client{
+				float: left;
+			}
+
+			#mentor{
+				float: left;
+			}
+
+			.blue{
+				color: @blue;
+			}
+
 			.switch {
 				position: relative;
 				display: inline-block;
 				width: 60px;
 				height: 34px;
 				float: left;
-				margin: 23px 0 0 1.5%;
+				margin: 23px 1% 0 1%;
 			}
 
-			.switch input {display:none;}
+			.switch input
+			{
+				display:none;
+
+				&:hover{
+					cursor: pointer;
+				}
+			}
 
 			.slider {
 				position: absolute;
@@ -178,7 +197,7 @@
 				bottom: 0;
 				background-color: @blue;
 				-webkit-transition: .4s;
-				transition: .4s;
+				transition: .2s;
 			}
 
 			.slider:before {

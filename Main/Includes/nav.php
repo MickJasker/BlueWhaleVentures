@@ -14,22 +14,22 @@
 
 
             <h4 id="left">
-                Welcome, <span id="user">Startup</span>
+                Welcome, <span class="user">Startup</span>
             </h4>
 
                 <div id="clientswitch">
 
-                    <h4 id="left">
-                        <span id="user">Mentor</span>
+                    <h4>
+                        <span id="mentor">Mentor</span>
                     </h4>
 
                     <label class="switch">
-                        <input type="checkbox" checked>
+                        <input onclick="selectclientormentor()" type="checkbox" checked>
                         <span class="slider round"></span>
                     </label>
 
-                    <h4 id="left">
-                        <span id="user">Client</span>
+                    <h4>
+                        <span id="client" class="blue">Client</span>
                     </h4>
 
                 </div>

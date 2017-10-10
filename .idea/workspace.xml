@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb44298c-7bb9-4007-b8b8-c9a4e39aa8cc" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Admin_Portal/Pages/clientProfile.php" afterPath="$PROJECT_DIR$/Admin_Portal/Pages/clientProfile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Client_Portal/Pages/index.php" afterPath="$PROJECT_DIR$/Client_Portal/Pages/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/Includes/CSS/main.css" afterPath="$PROJECT_DIR$/Main/Includes/CSS/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/Includes/Javascript/navbar.js" afterPath="$PROJECT_DIR$/Main/Includes/Javascript/navbar.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/Includes/LESS/style/style.less" afterPath="$PROJECT_DIR$/Main/Includes/LESS/style/style.less" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/Includes/PHP/queries.php" afterPath="$PROJECT_DIR$/Main/Includes/PHP/queries.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Main/Includes/nav.php" afterPath="$PROJECT_DIR$/Main/Includes/nav.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,21 +19,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="nav.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="nav.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Main/Includes/nav.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="466">
+              <caret line="58" column="11" lean-forward="true" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.less" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main/Includes/LESS/style/style.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+            <state relative-caret-position="822">
+              <caret line="311" column="13" lean-forward="true" selection-start-line="311" selection-start-column="13" selection-end-line="311" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navbar.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Main/Includes/Javascript/navbar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -55,6 +62,7 @@
     <findStrings>
       <find>#logo</find>
       <find>myfunctio</find>
+      <find>user</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -68,10 +76,10 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/Main/Includes/PHP/functions.php" />
         <option value="$PROJECT_DIR$/Main/Includes/Javascript/main.js" />
-        <option value="$PROJECT_DIR$/Main/Includes/Javascript/navbar.js" />
         <option value="$PROJECT_DIR$/Main/Includes/test.php" />
-        <option value="$PROJECT_DIR$/Main/Includes/nav.php" />
         <option value="$PROJECT_DIR$/Main/Includes/LESS/style/style.less" />
+        <option value="$PROJECT_DIR$/Main/Includes/Javascript/navbar.js" />
+        <option value="$PROJECT_DIR$/Main/Includes/nav.php" />
       </list>
     </option>
   </component>
@@ -86,8 +94,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="677" />
-    <option name="y" value="153" />
+    <option name="x" value="472" />
+    <option name="y" value="101" />
     <option name="width" value="957" />
     <option name="height" value="752" />
   </component>
@@ -127,6 +135,13 @@
               <item name="BlueWhaleVentures" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Main" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Includes" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="BlueWhaleVentures" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BlueWhaleVentures" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Main" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Includes" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Javascript" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="BlueWhaleVentures" type="b2602c69:ProjectViewProjectNode" />
@@ -251,10 +266,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27718000" />
+    <option name="totallyTimeSpent" value="30605000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="677" y="153" width="957" height="752" extended-state="0" />
+    <frame x="472" y="101" width="957" height="752" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22988506" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -598,6 +613,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -605,6 +623,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -622,13 +641,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Main/Includes/Javascript/navbar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -638,18 +650,26 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main/Includes/test.php" />
-    <entry file="file://$PROJECT_DIR$/Main/Includes/nav.php">
+    <entry file="file://$PROJECT_DIR$/Main/Includes/Javascript/navbar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        <state relative-caret-position="135">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Main/Includes/LESS/style/style.less">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        <state relative-caret-position="822">
+          <caret line="311" column="13" lean-forward="true" selection-start-line="311" selection-start-column="13" selection-end-line="311" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main/Includes/nav.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="58" column="11" lean-forward="true" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
           <folding />
         </state>
       </provider>
