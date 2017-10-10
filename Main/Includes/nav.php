@@ -1,12 +1,3 @@
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="CSS/main.css">
-</head>
-
-<body id="wrapper-nav">
-    <main>
 
         <div id="nav">
 
@@ -54,10 +45,3 @@
             </h4>
 
         </div>
-
-
-    </main>
-
-    <script src="Javascript/navbar.js"></script>
-</body>
-</html>

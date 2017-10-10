@@ -7,7 +7,7 @@
 		<title> Admin Portal </title>
 		<link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 	</head>
-	<body id="wrapper-admin">
+	<body id="wrapper-nav" id="wrapper-admin">
 
         <header>
 
