@@ -60,8 +60,10 @@ function destroySession()
 	unset($_SESSION["UserID"]);
 }
 
-function createExperiment($CompanyID, $Title, $Thumbnail, $Description)
+function createExperiment($UserID, $Title, $Thumbnail, $Description)
 {
+	$CompanyID = selectCompanyID($UserID);
+
 	if (insertExperiment($CompanyID, $Title, $Thumbnail, $Description) == true)
 	{
 		//Upload image

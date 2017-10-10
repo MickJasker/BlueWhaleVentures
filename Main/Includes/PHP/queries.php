@@ -262,6 +262,19 @@ function selectCompanyName($UserID)
 	}
 }
 
+function selectCompanyID($UserID)
+{
+	$sql = "SELECT c.ID FROM Company c
+	INNER JOIN User u ON u.ID = c.FunctionID
+	WHERE u.ID = '$UserID'";
+
+	if ($data = query($sql))
+	{
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+		return $row;
+	}
+}
+
 function selectUserName2($ID)
 {
 	$sql = "SELECT c.Name FROM Company c
@@ -273,6 +286,7 @@ function selectUserName2($ID)
 		return $row;
 	}
 }
+
 
 //Admin portal blokken
 function getCompanyBlockInfo()

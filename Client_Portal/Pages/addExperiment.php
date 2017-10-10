@@ -1,6 +1,9 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
-session_start();
+if (isset($_POST["submit"]))
+{
+    createExperiment($_SESSION["UserID"], $_POST["experimentTitle"], $_POST["experimentThumb"], $_POST["experimentDesc"]);
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,7 +13,12 @@ session_start();
 </head>
     <body id="wrapper-admin">
         <Main>
-            
+            <form method="POST" action="#">
+                <input type="text" placeholder="Name" name="experimentTitle"><br><br>
+                <input type="file" placeholder="Thumbnail" name="experimentThumb"><br><br>
+                <input type="textarea" placeholder="Description" name="experimentDesc"><br>             
+                <input type="submit" placeholder="Create experiment" name="submit">
+            </form>
         </Main>
     </body>
 </html>
