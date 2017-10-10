@@ -141,10 +141,10 @@ function selectLoginInfo($email, $password)
 				if (password_verify($password, $dbpassword) != 0)
 				{
 					$UserID = $row["UserID"];
-					
 					$sql = "SELECT RoleID FROM User WHERE ID = '$UserID'";
 						if($data = query($sql))
 						{	
+							$db_data = array("true");
 							while($row = $data->fetch_assoc())
 							{
 								$RoleID = $row["RoleID"];
@@ -163,9 +163,10 @@ function selectLoginInfo($email, $password)
 								{
 									$Role = "Company";
 								}
-								
-								return $Role;
+			
+								array_push($db_data, $Role, $UserID);
 							}
+							return $db_data;
 						}
 				}
 				else 
@@ -206,6 +207,43 @@ function getDesignSheetForm()
 			echo "Error retrieving experimentdata";
 			return false;
 		}
+}
+
+function loginlog($UserID, $state)
+{
+	//Current date displayed like: monday-01-01-17
+	$date = date("l-d-m-y");
+	
+	//Current time displayed like: 03-15-45-pm 
+	$time = date("h-i-s-a");
+	
+	//ip adress from the user
+	$ip = $_SERVER['REMOTE_ADDR'];
+	
+	//Host name ip
+	$host_name = Detect::ipHostname(); 
+	
+	//provider
+	$organisation = Detect::ipOrg(); 
+	
+	//device type : computer or mobile etc
+	$device_type = Detect::deviceType();
+	
+	//operating system device
+	$operating_system = Detect::os(); 
+	
+	//browser
+	$browser = Detect::browser(); 
+	
+	//brand of mobile device
+	$brand = Detect::brand(); 
+	
+	//country
+	$location = Detect::ipCountry(); 
+	
+	$sql = "INSERT INTO `Log`(`UserID`, `Date`, `Time`, `State`, `IP`, `HostName`, `Organisation`, `DeviceType`, `OperatingSystem`, `Browser`, `Brand`, `Location`) 
+	VALUES ('$UserID', '$date', '$time', '$state', '$ip', '$host_name', '$organisation', '$device_type', '$operating_system', '$browser', '$brand', '$location')";
+	query($sql);
 }
 
 function selectUser($Email)

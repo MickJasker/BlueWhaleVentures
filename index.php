@@ -23,14 +23,20 @@
 						<p id="error">
 							<?php
 							require 'Main/Includes/PHP/functions.php';
+							require "Main/Includes/Plugins/detectDevice/detect.php";
 								
 							if (isset($_POST['login']))
 							{	
 								$user_name = htmlentities(mysqli_real_escape_string($conn, $_POST['user_name']));
 								$password = htmlentities(mysqli_real_escape_string($conn, $_POST['password']));
+								$state = "failed";
 								
-								if ($role = selectLoginInfo($user_name, $password))
+								$data = selectLoginInfo($user_name, $password);
+								if ($data[0] == "true")
 								{
+									$role= $data[1];
+									$UserID = $data[2];
+									
 									$header = "login";
 									if ($role == "Admin")
 									{
@@ -44,7 +50,11 @@
 									{
 										$header = "Client_Portal/Pages/index.php";
 									}
-									createSession($user_name);
+									
+									$state = "successful";
+									loginlog($UserID, $state);
+									
+									createSession($UserID);
 									header('Location:' . $header);
 								}
 								else
