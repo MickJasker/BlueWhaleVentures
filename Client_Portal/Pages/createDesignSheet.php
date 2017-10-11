@@ -1,5 +1,6 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
+checkSession('Company');
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,7 +22,9 @@ require '../../Main/Includes/PHP/functions.php';
 							$value = htmlentities(mysqli_real_escape_string($conn, $value));
 						}
 					}
-					insertDesignSheet($experimentId, $_POST,1);					
+					
+					$language = $_SESSION["Language"];
+					insertDesignSheet($_POST, 1, $language, $experimentId);
 				}
 			?>
 		</Main>

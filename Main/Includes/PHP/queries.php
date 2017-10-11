@@ -209,7 +209,8 @@ function selectLoginInfo($email, $password)
 //Selects all experiment textareas etc
 function getDesignSheetForm($sheetType = "Experiment", $Language = "English")
 {
-	$sql = "SELECT title, description FROM Segment WHERE Type = '$sheetType' AND Language = '$Language'";
+	//$sql = "SELECT title, description FROM Segment WHERE Type = '$sheetType' AND Language = '$Language'"; //Ask Sven to work
+	$sql = "SELECT title, description FROM Segment WHERE `DesignSheetID` = '1'"; //Temp query
 		if($data = query($sql))
 		{	
 			echo '<form method="POST" action="#">';
@@ -256,12 +257,6 @@ function createExperiment($title, $description, $imagepath, $companyid)
 	{
 		return false;
 	}
-}
-
-//Insert designsheet in database
-function insertDesignSheet()
-{
-	
 }
 
 //Keep log on inlog
@@ -716,7 +711,7 @@ function selectAdminProfile($ID)
 	}
 }
 
-function insertDesignSheet($textArray, $sheetType, $Language, $experimentID = 1)
+function insertDesignSheet($textArray, $sheetType, $Language, $experimentID)
 {
 	$sql = "SELECT s.ID FROM Segment s
 	INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
@@ -727,7 +722,7 @@ function insertDesignSheet($textArray, $sheetType, $Language, $experimentID = 1)
 		//Start insert query
 		$sql = "INSERT INTO Answer (SegmentID, ExperimentID, `Text`) Values ";
 
-		while ($row = $data->fetch_assoc()
+		while ($row = $data->fetch_assoc())
 		{ 	
 			//Every time the code goes through this, add 1 record to the sql string.
 			$counter = 0;

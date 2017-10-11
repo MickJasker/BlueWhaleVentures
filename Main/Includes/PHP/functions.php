@@ -61,7 +61,7 @@ function createSession($Email)
 
 function checkSession($AllowedRole)
 {
-	if (!$_SESSION["LoggedIn"] || $_SESSION["Role"] != $AllowedRole)
+	if (!$_SESSION["LoggedIn"] || $_SESSION["Role"] != $AllowedRole) //not safe check if it is logged in or else redirect :: Notice: Undefined index: LoggedIn in C:\xampp\htdocs\BW-Ventures\Main\Includes\PHP\functions.php on line 64
 	{
 		return false;
 	}
@@ -74,6 +74,7 @@ function destroySession()
 	unset($_SESSION["LoggedIn"]);
 	unset($_SESSION["Role"]);
 	unset($_SESSION["UserID"]);
+	unset($_SESSION["Language"]);
 	unset($_SESSION["CompanyID"]);
 }
 
