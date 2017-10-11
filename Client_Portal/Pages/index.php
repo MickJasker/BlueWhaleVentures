@@ -11,7 +11,7 @@ require '../../Main/Includes/PHP/functions.php';
         <Main>
             <h1>Salty Mundi</h1>
             <section id="Block">
-                <a href="#">
+                <a href="createExperiment.php">
                     <div class="BlockLogo">
                         <img src="../../Main/Files/Images/blue_plus.png" alt="Add Client">
                     </div>

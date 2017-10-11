@@ -221,7 +221,7 @@ function getDesignSheetForm()
 				echo '<textarea name="input'.$i.'" type="text" placeholder="'.$row["description"].'"></textarea>';
 				$i++;
 			}
-			echo '<input name="submit_designsheet" type="submit" value="Enter" >';
+			echo '<input name="submitDesignsheet" type="submit" value="Enter" >';
 			echo '</form>';
 		}
 		else
@@ -236,7 +236,21 @@ function createExperiment($title, $description, $imagepath, $companyid)
 	$sql = "INSERT INTO `Experiment`(`CompanyID`, `Title`, `Thumbnail`, `Description`, `Progress`, `Completed`, `Reviewed`, `ReviewScore`) VALUES ('$companyid','$title','$imagepath','$description',0,0,0,0)";
 	if (query($sql))
 	{
-		return true;
+		$sql = "SELECT ID FROM Experiment WHERE CompanyID = '$companyid' AND title = '$title' AND description = '$description' ORDER BY ID ASC";
+		if($data = query($sql))
+		{	
+			
+			while($row = $data->fetch_assoc())
+			{
+				$experimentId = $row["ID"];
+			}
+			return $experimentId;
+		}
+		else 
+		{
+			return false;
+		}
+		
 	}
 	else
 	{
@@ -455,7 +469,7 @@ function getExperimentBlockInfo($UserID)
             <section id="Block">
                 <a href="../../../Client_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
-                        <img src="../../<?php echo $Thumbnail ?>" alt="Mentor Profile">
+                        <img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Title ?> </h1>
@@ -590,54 +604,24 @@ function insertQuestion($QuestionPost)
 {
     foreach ($QuestionPost AS $ID => $Question) 
     {
-		$sql = "SELECT Question FROM Question WHERE ID = $ID";
+		$sql = "SELECT Question FROM Question WHERE ID = '$ID'";
 
 		if(Query($sql))
 		{
 			if($Question != "Save")
 			{
-				$sql = "UPDATE Question SET Question = '$Question' WHERE ID = $ID";
-				Query($sql);
+                $sql = "UPDATE Question SET Question = '$Question' WHERE ID = '$ID'";
+                Query($sql);
 			}
 		}
 		else
 		{
 			if($Question != "Save")
 			{
-				$sql = "INSERT INTO Question(QuestionaireID, Question) VALUES ('2','$Question')";
-				Query($sql);
+                $sql = "INSERT INTO Question(QuestionaireID, Question) VALUES (2,'$Question')";
+                Query($sql);
 			}
 		}
-
-
-
-/*
-            if(Query($sql) == false) {
-
-                if($Question == "Save")
-                {
-
-                }
-                else {
-
-                    $sql = "INSERT INTO Question(QuestionaireID, Question) VALUES ('2','$Question')";
-                    Query($sql);
-
-                }
-
-            }
-            else {
-                if($Question == "Save"){
-
-                }
-                else {
-
-                    $sql = "UPDATE Question SET Question = '$Question' WHERE ID = $ID";
-                    Query($sql);
-
-                }
-        }
-        */
     }
 }
 
