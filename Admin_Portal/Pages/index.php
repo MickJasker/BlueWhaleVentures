@@ -7,15 +7,15 @@
 		<title> Admin Portal </title>
 		<link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 	</head>
-	<body class="wrapper-nav" id="wrapper-admin">
+	<body>
 
-        <header>
+        <header class="wrapper-nav">
 
             <?php include '../../Main/Includes/nav.php';?>
 
         </header>
 
-        <Main>
+        <Main id="wrapper-admin">
             <div class="row">
 
                 <section id="Block" class="col-lg-4">
@@ -151,8 +151,8 @@
 
                 ?>-->
 
-            <script src="../../Main/Includes/Javascript/main.js"></script>
-
         </Main>
+
+        <script src="../../Main/Includes/Javascript/main.js"></script>
 	</body>
 </html>
