@@ -6,6 +6,10 @@ function showFilter() {
 function selectclientormentor(){
     document.getElementById("mentor").classList.toggle("blue");
     document.getElementById("client").classList.toggle("blue");
+
+    var client = $.get("client.php", function( data ) {
+        $( '#wrapper-admin' ).html( data );});
+    $("#wrapper-admin").html("client");
 }
 
 window.onclick = function(event) {
