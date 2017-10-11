@@ -9,10 +9,10 @@
 		<script src="../../Main/Includes/Javascript/load.js"></script>
 	</head>
 
-	<body class="wrapper-nav" id="wrapper-ClientProfile">
-		<header class="row">
+	<body id="wrapper-ClientProfile">
+		<header class="row wrapper-nav">
 			<?php
-			require "../../Main/Includes/PHP/nav.php"
+			require "../../Main/Includes/nav.php"
 			?>
 		</header>
 		<main>
@@ -27,23 +27,40 @@
             <div class="wrapper-profile">
 	            <div class="row">
 		            <section class="block">
-			            <div class="title col-md-4">
-				            <h1>title</h1>
-			            </div>
 						<div class="content">
-							<h1>content</h1>
+							<div class="container-fluid logo">
+								<img src="../../Main/Files/Images/google.png">
+							</div>
+							<div class="container-fluid discription">
+								<h3>Google Inc.</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et 											dolor.magn aaliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 									commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 										nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 									id est laborum.
+								</p>
+							</div>
 						</div>
 					</section>
 					<section class="block">
-			            <div class="title col-md-4">
-				            <h1>title</h1>
-			            </div> 
+			            <div class="title-profile col-md-4">
+				            <h3>Company Information</h3>
+			            </div>
+						<div class="content">
+							<div class="container-fluid logo">
+								<p>Lorem ipsum</p>
+							</div>
+						</div>
 					</section>
 					<section class="block">
-			            <div class="title col-md-4">
-				            <h1>title</h1>
-			            </div> 
-					</section
+			            <div class="title-profile col-md-4">
+				            <h3>Analytics</h3>
+			            </div>
+						<div class="content">
+							<div class="container-fluid logo">
+								<img src="../../Main/Files/Images/google.png">
+							</div>
+							<div class="container-fluid discription">
+							<p>Analytics</p>
+							</div>
+						</div>
+					</section>
 	            </div>
             </div>    
 		</main>

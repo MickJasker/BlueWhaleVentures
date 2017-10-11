@@ -50,11 +50,15 @@
 									{
 										$header = "Client_Portal/Pages/index.php";
 									}
+									else
+									{
+										//User has no role
+									}
 									
 									$state = "successful";
 									loginlog($UserID, $state);
 									
-									createSession($UserID);
+									createSession($user_name);
 									header('Location:' . $header);
 								}
 								else
