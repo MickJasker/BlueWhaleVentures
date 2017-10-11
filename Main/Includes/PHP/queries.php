@@ -716,9 +716,32 @@ function selectAdminProfile($ID)
 	}
 }
 
-function insertDesignSheet($postArray, $sheetType, $Language)
+function insertDesignSheet($textArray, $sheetType, $Language, $experimentID = 1)
 {
-	$sql = "SELECT ";
+	$sql = "SELECT s.ID FROM Segment s
+	INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
+	WHERE d.Type = '$sheetType' AND d.Language = '$Language'";
+
+	if($data = Query($sql))
+	{
+		//Start insert query
+		$sql = "INSERT INTO Answer (SegmentID, ExperimentID, `Text`) Values ";
+
+		while ($row = $data->fetch_assoc()
+		{ 	
+			//Every time the code goes through this, add 1 record to the sql string.
+			$counter = 0;
+			$sql += "(" . $row['ID'] . ", $experimentID, " . $textArray[$counter] . "), ";
+			$counter++;
+		}
+		//Trim the last comma of the sql string
+		$sql = rtrim($string, ',');
+
+		if($data = Query($sql))
+		{
+			return $data;
+		}
+	}
 }
 
 ?>
