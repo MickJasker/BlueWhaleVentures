@@ -1,93 +1,93 @@
 #wrapper-login {
-  font-family: "open-sans", Helvetica, sans-serif;
-  font-weight: 400;
-  text-align: center;
-  display: none;
-  .row {
-    margin: 0;
-  }
+	font-family: "open-sans", Helvetica, sans-serif;
+	font-weight: 400;
+	text-align: center;
+	display: none;
+	.row {
+		margin: 0;
+	}
 
-  main {
-    width: 100%;
-    background-image: url("../../Files/Images/stockImages/stock (20).jpg");
-    background-size: cover;
-    background-position: center;
+	main {
+		width: 100%;
+		background-image: url("../../Files/Images/stockImages/stock (20).jpg");
+		background-size: cover;
+		background-position: center;
 
-    .login {
-      background-color: rgba(0, 153, 255, 0.9);
-      height: 100%;
-    }
+		.login {
+			background-color: rgba(0, 153, 255, 0.9);
+			height: 100%;
+		}
 
-    .login_col {
-      margin: 0;
-      height: 100vh;
+		.login_col {
+			margin: 0;
+			height: 100vh;
 			max-height: 100vh;
-      .login_block {
-        text-align: center;
-        background-color: white;
-        margin: 150px;
-        padding: 30px;
+			.login_block {
+				text-align: center;
+				background-color: white;
+				margin: 150px;
+				padding: 30px;
 				margin-bottom: 0;
-        img {
-          width: 40%;
-          margin: 5px;
-        }
+				img {
+					width: 40%;
+					margin: 5px;
+				}
 
-        form {
+				form {
 
-          input {
-            text-align: left;
-            margin: 5px;
-            padding: 7px;
-            background-color: @offwhite;
+					input {
+						text-align: left;
+						margin: 5px;
+						padding: 7px;
+						background-color: @offwhite;
 						border: none;
-            font-size: 18px;
-            width: 100%;
-            transition: 0.2s ease;
-            &:focus {
-              outline: @blue solid;
-              transition: 0.2s ease;
+						font-size: 18px;
+						width: 100%;
+						transition: 0.2s ease;
+						&:focus {
+							outline: @blue solid;
+							transition: 0.2s ease;
 							background-color: white;
-            }
-          }
-          a {
-            text-align: left;
-            text-decoration: none;
-            color: @blue;
-            transition: 0.2s ease;
-            display: inherit;
-            margin: 6px;
-            &:hover {
-              color: @grey;
-              text-decoration: none;
-              transition: 0.2s ease;
-            }
-          }
-          .button {
-            background-color: @blue;
-            color: white;
-            transition: 0.3s ease;
-            &:hover {
-              transition: 0.3s ease;
-              background-color: @grey;
-            }
+						}
+					}
+					a {
+						text-align: left;
+						text-decoration: none;
+						color: @blue;
+						transition: 0.2s ease;
+						display: inherit;
+						margin: 6px;
+						&:hover {
+							color: @grey;
+							text-decoration: none;
+							transition: 0.2s ease;
+						}
+					}
+					.button {
+						background-color: @blue;
+						color: white;
+						transition: 0.3s ease;
+						&:hover {
+							transition: 0.3s ease;
+							background-color: @grey;
+						}
 						&:focus {
 							transition: 0.3s ease;
 							background-color: @offwhite;
 							outline: none;
 							color: @blue;
 						}
-          }
-          #error {
-            color: red;
-            text-align: left;
-            margin: 6px;
-            display: inherit;
-          }
-        }
-      }
-    }
-  }
+					}
+					#error {
+						color: red;
+						text-align: left;
+						margin: 6px;
+						display: inherit;
+					}
+				}
+			}
+		}
+	}
 }
 
 // Admin page styling
@@ -97,31 +97,31 @@
 	background-image: url('../../../../Main/Files/Images/stockImages/stock (10).jpg');
 	background-size: cover;
 
-	a{
+	a {
 		text-decoration: none;
 	}
 
-	.row{
+	.row {
 		margin: 2% 3% 2% 3%;
 		display: flex;
 		justify-content: space-between;
+		min-width: 80%;
 	}
 
-	#Block{
+	#Block {
 
-		background-color: black;
 		padding: 0;
 		height: 40vh;
 		width: 31%;
 		position: relative;
 
-		.BlockLogo{
+		.BlockLogo {
 			background-color: @offwhite;
 			width: auto;
 			height: 80%;
 			position: relative;
 
-			img{
+			img {
 				max-width: 100%;
 				max-height: 100%;
 				width: auto;
@@ -138,7 +138,7 @@
 			}
 		}
 
-		.BlockTitle{
+		.BlockTitle {
 
 			width: 100%;
 			height: 20%;
@@ -169,17 +169,15 @@
 		height: 100%;
 		margin: 0;
 
-		#nav
-		{
+		#nav {
+
+			margin: 0;
 			width: 100%;
 			height: 80px;
-			background-color: @white;
+			background-color: @offwhite;
 
 			#logo {
 				height: 80px;
-				position: relative;
-				float: left;
-				padding: 0 0 0 2%;
 			}
 
 			h4 {
@@ -193,41 +191,33 @@
 				}
 			}
 
-			#left{
-				float: left;
-				padding: 0 0 0 1.5%;
-			}
-
 			#right {
-				float: right;
-				padding: 0 2% 0 0;
-
-				a{
+				a {
 					color: @grey;
 					padding: 0 5px 0 0;
 					text-decoration: none;
 
-					&:hover{
+					&:hover {
 						color: @blue;
 					}
 				}
 			}
 
-			#clientswitch{
-				margin-left: 30%;
+			#clientswitch {
+
 				position: relative;
 
 			}
 
-			#client{
+			#client {
 				float: left;
 			}
 
-			#mentor{
+			#mentor {
 				float: left;
 			}
 
-			.blue{
+			.blue {
 				color: @blue;
 			}
 
@@ -240,11 +230,10 @@
 				margin: 23px 1% 0 1%;
 			}
 
-			.switch input
-			{
-				display:none;
+			.switch input {
+				display: none;
 
-				&:hover{
+				&:hover {
 					cursor: pointer;
 				}
 			}
@@ -295,82 +284,82 @@
 				border-radius: 50%;
 			}
 
-			#searchdiv{
-				height: 80px;
-				padding: 0 2% 0 0;
-				position: relative;
-				display: inline-block;
-				float: right;
+			.input_fields {
+				#searchdiv {
+					height: 80px;
+					margin: 0 10px 10px 0;
+					position: relative;
+					display: inline-block;
 
-					#searchbar{
+					#searchbar {
 						outline: none;
-						float: right;
+
 						font-family: "Open Sans";
 						font-style: italic;
 						border-color: @grey;
 						border-style: solid;
 						border-width: 1px;
-						margin: 12.5% 0 0 0;
+						margin: 22px auto;
 						padding: 2px 10px 2px 10px;
 						font-size: 15px;
 						line-height: 30px;
 						position: relative;
 					}
+				}
+
+				.filter {
+					position: relative;
+					display: inline-block;
+					margin: 0 10px 10px 0;
+					height: 80px;
+
+					.filterbtn {
+						font-size: 15px;
+						font-style: italic;
+						font-family: "Open Sans";
+						outline: none;
+						border-color: @grey;
+						border-style: solid;
+						border-width: 1px;
+						padding: 2px 10px 2px 10px;
+						line-height: 30px;
+						margin: 22px auto;
+					}
+
+					.filter-content {
+						display: none;
+						background-color: @white;
+						position: absolute;
+						min-width: 160px;
+						z-index: 1;
+						outline: none;
+						border-color: @grey;
+						border-style: solid;
+						border-width: 1px;
+						border-bottom: none;
+						border-top: none;
+					}
+
+					.filter-content a {
+						color: black;
+						padding: 8%;
+						text-decoration: none;
+						display: block;
+						border-bottom: solid;
+						border-color: @grey;
+						border-width: 1px;
+					}
+
+					.filter-content a:hover {
+						background-color: @offwhite;
+					}
+
+					.show {
+						display: block;
+					}
+				}
 			}
 
-			.filter
-			{
-				position: relative;
-				display: inline-block;
-				float: right;
-				height: 80px;
-				padding: 0 2% 0 0;
-
-				.filterbtn{
-					font-size: 15px;
-					font-style: italic;
-					font-family: "Open Sans";
-					outline: none;
-					border-color: @grey;
-					border-style: solid;
-					border-width: 1px;
-					padding: 2px 10px 2px 10px;
-					line-height: 30px;
-					margin: 12.5% 0 0 0;
-				}
-
-				.filter-content{
-					display: none;
-					background-color: @white;
-					position: absolute;
-					min-width: 160px;
-					z-index: 1;
-					outline: none;
-					border-color: @grey;
-					border-style: solid;
-					border-width: 1px;
-					border-bottom: none;
-					border-top: none;
-				}
-
-				.filter-content a{
-					color: black;
-					padding: 8%;
-					text-decoration: none;
-					display: block;
-					border-bottom: solid;
-					border-color: @grey;
-					border-width: 1px;
-				}
-
-				.filter-content a:hover{
-					background-color: @offwhite;
-				}
-
-				.show{
-					display:block;
-				}
-			}
 		}
 	}
 }
