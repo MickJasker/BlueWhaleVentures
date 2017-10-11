@@ -9,7 +9,7 @@
 		<script src="../../Main/Includes/Javascript/load.js"></script>
 	</head>
 
-	<body id="wrapper-nav" class="wrapper-ClientProfile">
+	<body class="wrapper-nav" id="wrapper-ClientProfile">
 		<header class="row">
 			<?php
 			require "../../Main/Includes/PHP/nav.php"
@@ -26,21 +26,24 @@
             
             <div class="wrapper-profile">
 	            <div class="row">
-		            <div class="profile-block col-md-4">
-			            <div class="container-fluid">
-			            	<h3>Company Profile</h3>
+		            <section class="block">
+			            <div class="title col-md-4">
+				            <h1>title</h1>
 			            </div>
-		            </div>
-		            <div class="company-information-block col-md-4">
-			            <div class="container-fluid">
-			            	<h3>Contact</h3>
-			            </div>
-		            </div>
-		            <div class="analytics-block col-md-4">
-			            <div class="container-fluid">
-			            	<h3>Analytics</h3>
-			            </div>
-		            </div>
+						<div class="content">
+							<h1>content</h1>
+						</div>
+					</section>
+					<section class="block">
+			            <div class="title col-md-4">
+				            <h1>title</h1>
+			            </div> 
+					</section>
+					<section class="block">
+			            <div class="title col-md-4">
+				            <h1>title</h1>
+			            </div> 
+					</section
 	            </div>
             </div>    
 		</main>
