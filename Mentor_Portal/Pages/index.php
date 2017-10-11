@@ -1,5 +1,5 @@
 <?php
-//require '../../Main/Includes/PHP/functions.php';
+require '../../Main/Includes/PHP/functions.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,13 +10,13 @@
 		<script src="../../Main/Includes/Javascript/load.js"></script>
 		<link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 	</head>
-	<body id="wrapper-admin">
+	<body>
 		<header class="wrapper-nav">
 			<?php
 			require "../../Main/Includes/nav.php"
 			?>
 		</header>
-		<Main>
+		<Main id="wrapper-admin">
 			<div class="row">
 
 				<section id="Block" class="col-lg-4">
@@ -119,7 +119,7 @@
 
 			<?php
 
-			//getMentorAssignedBlockInfo(10)
+			getMentorAssignedBlockInfo(10)
 
 			?>
 			<script src="../../Main/Includes/Javascript/main.js"></script>
