@@ -209,6 +209,26 @@ function getDesignSheetForm()
 		}
 }
 
+function createExperiment($title, $description, $imagepath, $companyid)
+{
+	$sql = "INSERT INTO `Experiment`(`CompanyID`, `Title`, `Thumbnail`, `Description`, `Progress`, `Completed`, `Reviewed`, `ReviewScore`) VALUES ('$companyid','$title','$imagepath','$description',0,0,0,0)";
+	if (query($sql))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+//Insert designsheet in database
+function insertDesignSheet()
+{
+	
+}
+
+//Keep log on inlog
 function loginlog($UserID, $state)
 {
 	//Current date displayed like: monday-01-01-17
