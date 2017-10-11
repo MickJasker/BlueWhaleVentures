@@ -7,6 +7,4 @@ function addQuestion() {
     document.getElementById('hiddenP').innerHTML = i;
 
     i++;
-
-
 }
