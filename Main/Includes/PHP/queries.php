@@ -6,6 +6,7 @@
 require "connect.php";
 require "dbFunctions.php";
 
+//Gets the email from Login and RegisterKey, if it doesn't exist, return true
 function checkEmailAvailability($email)
 {
 	$sql = "SELECT Email FROM Login WHERE Email = '$email'";
@@ -289,14 +290,13 @@ function loginlog($UserID, $state)
 
 function selectUser($Email)
 {
-	$sql = "SELECT u.ID FROM User u 
-	INNER JOIN Login l ON l.UserID = U.ID
-	WHERE l.Email = '$Email'";
+	$sql = "SELECT ID FROM Login
+	WHERE Email = '$Email'";
 
 	if ($data = query($sql))
 	{
 		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		return $row;
+		return $row['ID'];
 	}
 }
 
@@ -350,19 +350,20 @@ function selectCompanyID($UserID)
 	if ($data = query($sql))
 	{
 		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		return $row;
+		return $row['ID'];
 	}
 }
 
-function selectUserName2($ID)
+function selectUserID($Email)
 {
-	$sql = "SELECT c.Name FROM Company c
-	WHERE c.ID = '$ID'";
+	$sql = "SELECT u.ID FROM User u
+	INNER JOIN Login l ON l.UserID = u.ID
+	WHERE l.Email = '$Email'";
 
 	if ($data = query($sql))
 	{
 		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		return $row;
+		return $row['ID'];
 	}
 }
 
@@ -545,7 +546,6 @@ function selectCompanyInfo($CompanyID)
 	if($data = Query($sql)) 
     {
     	$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-
     	?>
 
     	<section class="TempColumn">
@@ -642,6 +642,57 @@ function SelectQuestion() {
     }
     $i++;
     return $i;
+}
+
+function updateAdminProfile($ID, $AdminName, $AdminPic, $AdminLang)
+{
+	$sql = "UPDATE User 
+	SET Name = '$AdminName', ProfilePicture = '$AdminPic', Language = '$adminLang'
+	WHERE ID = '$ID'";
+}
+
+function selectAdminProfile($ID)
+{
+
+	$sql = "SELECT Name, ProfilePicture, Language From User
+	WHERE ID = '$ID'";
+
+	if($data = Query($sql)) 
+	{	
+		echo "WAT";
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+		?>
+		<form method="POST" action="#">
+			<p>Name:</p><br>
+            <input type="text" placeholder="Name" name="adminName" value="<?php echo $row['Name'];?>"><br>
+
+            <p>Profile Picture:</p><br>
+            <img src="../../<?php echo $row['ProfilePicture'] ?>" alt="Profile picture"><br>
+            <input type="file" placeholder="Profile picture" name="adminPic"><br>
+
+            <p>Language:</p><br>
+            <select>
+            	<option 
+            	<?php if($row['Language'] == "English") 
+            		{
+            			echo 'selected';
+            		} ?> 
+            	value="English">English</option>
+            	<option 
+            	<?php if($row['Language'] == "Nederlands") 
+            		{
+            			echo 'selected';
+            		} ?> 
+            	value="Nederlands">Nederlands</option>
+            </select>
+
+        	<input type="submit" placeholder="Save changes" name="submit">
+		</form>
+		<?php
+	}
+	echo $_SESSION["UserID"];
+	echo $data;
+	echo "????";
 }
 
 ?>

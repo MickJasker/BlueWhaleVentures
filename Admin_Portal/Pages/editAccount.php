@@ -2,7 +2,7 @@
 require '../../Main/Includes/PHP/functions.php';
 if (isset($_POST["submit"]))
 {
-    createExperiment($_SESSION["UserID"], $_POST["experimentTitle"], $_POST["experimentThumb"], $_POST["experimentDesc"]);
+    updateAdminProfile($_SESSION["UserID"], $_POST["adminName"], $_POST["adminPic"], $_POST["adminLang"]);
 }
 ?>
 <!DOCTYPE html>
@@ -13,12 +13,9 @@ if (isset($_POST["submit"]))
 </head>
     <body id="wrapper-admin">
         <Main>
-            <form method="POST" action="#">
-                <input type="text" placeholder="Name" name="adminName"><br><br>
-                <input type="file" placeholder="Profile picture" name="adminPic"><br><br>
-                <input type="select" placeholder="Description" name="experimentDesc"><br>             
-                <input type="submit" placeholder="Create experiment" name="submit">
-            </form>
+            <?php
+                selectAdminProfile($_SESSION["UserID"]);
+            ?>
         </Main>
     </body>
 </html>

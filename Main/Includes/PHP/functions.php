@@ -46,8 +46,17 @@ function createSession($Email)
 {
 	$_SESSION["LoggedIn"] = true;
 	$_SESSION["Role"] = selectRole($Email);
-	$_SESSION["UserID"] = selectUser($Email);
+	$_SESSION["UserID"] = selectUserID($Email);
+	$_SESSION["CompanyID"] = selectCompanyID($_SESSION["UserID"]);
+	
+	/*
+	echo "Logged in: " . $_SESSION["LoggedIn"] . "<br>";	
+	echo "Role: " . $_SESSION["Role"] . "<br>";
+	echo "UserID: " . $_SESSION["UserID"] . "<br>";	
+	echo "CompanyID: " . $_SESSION["CompanyID"];	
+	*/
 }
+
 
 function checkSession($AllowedRole)
 {
@@ -64,6 +73,7 @@ function destroySession()
 	unset($_SESSION["LoggedIn"]);
 	unset($_SESSION["Role"]);
 	unset($_SESSION["UserID"]);
+	unset($_SESSION["CompanyID"]);
 }
 
 // Checks if the file is ready for upload
