@@ -14,7 +14,7 @@
 		</h4>
 
 		<label class="switch">
-			<input onclick="selectclientormentor()" type="checkbox" checked>
+			<input id="checkbox" onclick="selectclientormentor()" type="checkbox" checked>
 			<span class="slider round"></span>
 		</label>
 
