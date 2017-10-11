@@ -207,9 +207,9 @@ function selectLoginInfo($email, $password)
 }
 
 //Selects all experiment textareas etc
-function getDesignSheetForm()
+function getDesignSheetForm($sheetType = "Experiment", $Language = "English")
 {
-	$sql = "SELECT title, description FROM Segment WHERE DesignSheetID = '1'";
+	$sql = "SELECT title, description FROM Segment WHERE Type = '$sheetType' AND Language = '$Language'";
 		if($data = query($sql))
 		{	
 			echo '<form method="POST" action="#">';
@@ -378,6 +378,17 @@ function selectUserID($Email)
 	{
 		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
 		return $row['ID'];
+	}
+}
+
+function selectUserLanguage($ID)
+{
+	$sql = "SELECT Language FROM User WHERE ID = '$ID'";
+	
+	if ($data = query($sql))
+	{
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+		return $row['Language'];
 	}
 }
 
@@ -703,6 +714,11 @@ function selectAdminProfile($ID)
 		</form>
 		<?php
 	}
+}
+
+function insertDesignSheet($postArray, $sheetType, $Language)
+{
+	$sql = "SELECT ";
 }
 
 ?>
