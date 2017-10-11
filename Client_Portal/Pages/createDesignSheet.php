@@ -21,7 +21,7 @@ require '../../Main/Includes/PHP/functions.php';
 							$value = htmlentities(mysqli_real_escape_string($conn, $value));
 						}
 					}
-					insertDesignSheet($experimentId, $_POST);					
+					insertDesignSheet($experimentId, $_POST,1);					
 				}
 			?>
 		</Main>
