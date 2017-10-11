@@ -588,12 +588,60 @@ function insertExperiment($CompanyID, $Title, $Thumbnail, $Description)
 
 function insertQuestion($QuestionPost) {
 
-    foreach ($QuestionPost AS $Question) {
+    foreach ($QuestionPost AS $ID => $Question) {
 
-        $sql = "INSERT INTO Question(QuestionaireID, Question) VALUES ('1','$Question')";
-        Query($sql);
+            $sql = "SELECT Question FROM Question WHERE ID = $ID";
 
+            if(Query($sql) == false) {
+
+                if($Question == "Save"){
+
+                }
+                else {
+
+                    $sql = "INSERT INTO Question(QuestionaireID, Question) VALUES ('2','$Question')";
+                    Query($sql);
+
+                }
+
+            }
+            else {
+                if($Question == "Save"){
+
+                }
+                else {
+
+                    $sql = "UPDATE Question SET Question = '$Question' WHERE ID = $ID";
+                    Query($sql);
+
+                }
+        }
     }
+}
+
+function SelectQuestion() {
+
+    $sql = "SELECT ID, Question FROM Question
+            WHERE QuestionaireID = 2";
+
+    $i = 0;
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+            $i++;
+            $QuestionID = $row["ID"];
+            $Question = $row["Question"];
+
+            ?>
+
+            <textarea id="question<?php echo $i?>" name="<?php echo $QuestionID?>"><?php echo $Question?></textarea>
+
+            <?php
+        }
+    }
+    $i++;
+    return $i;
 }
 
 ?>
