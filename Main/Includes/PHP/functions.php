@@ -66,16 +66,6 @@ function destroySession()
 	unset($_SESSION["UserID"]);
 }
 
-function createExperiment($UserID, $Title, $Thumbnail, $Description)
-{	echo "1";
-	$CompanyID = selectCompanyID($UserID);
-		echo "2";
-	if (insertExperiment($CompanyID, $Title, $Thumbnail, $Description) == true)
-	{echo "3";
-		//Upload image
-	}
-}
-
 // Checks if the file is ready for upload
 function uploadCheck($file_name, $file_tmp_name, $file_size, $type, $target_dir)
 {
