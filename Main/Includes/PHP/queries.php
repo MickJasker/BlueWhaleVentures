@@ -6,6 +6,27 @@
 require "connect.php";
 require "dbFunctions.php";
 
+function checkEmailAvailability($email)
+{
+	$sql = "SELECT Email FROM Login WHERE Email = '$email'";
+
+	if (!query($sql))
+	{
+		return false;
+	}
+	else
+	{
+		$sql = "SELECT Email FROM RegisterKey WHERE Email = '$email'";
+
+		if (!query($sql))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
 //Get email and name from key, and check if it exists
 function getKey($key)
 {
@@ -209,6 +230,26 @@ function getDesignSheetForm()
 		}
 }
 
+function createExperiment($title, $description, $imagepath, $companyid)
+{
+	$sql = "INSERT INTO `Experiment`(`CompanyID`, `Title`, `Thumbnail`, `Description`, `Progress`, `Completed`, `Reviewed`, `ReviewScore`) VALUES ('$companyid','$title','$imagepath','$description',0,0,0,0)";
+	if (query($sql))
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+//Insert designsheet in database
+function insertDesignSheet()
+{
+	
+}
+
+//Keep log on inlog
 function loginlog($UserID, $state)
 {
 	//Current date displayed like: monday-01-01-17
@@ -278,7 +319,7 @@ function selectUserName($Email)
 
 	$sql = "SELECT u.ID, u.Name FROM Role r 
 	INNER JOIN User u ON  u.RoleID = r.ID
-	INNER JOIN Company c ON c.FunctionID = 
+	INNER JOIN Company c ON c.UserID = 
 	WHERE u.ID = '$ID'";
 
 	if ($data = query($sql))
@@ -290,7 +331,7 @@ function selectUserName($Email)
 function selectCompanyName($UserID)
 {
 	$sql = "SELECT c.Name FROM Company c
-	INNER JOIN User u ON u.ID = c.FunctionID
+	INNER JOIN User u ON u.ID = c.UserID
 	WHERE u.ID = '$UserID'";
 
 	if ($data = query($sql))
@@ -303,7 +344,7 @@ function selectCompanyName($UserID)
 function selectCompanyID($UserID)
 {
 	$sql = "SELECT c.ID FROM Company c
-	INNER JOIN User u ON u.ID = c.FunctionID
+	INNER JOIN User u ON u.ID = c.UserID
 	WHERE u.ID = '$UserID'";
 
 	if ($data = query($sql))
