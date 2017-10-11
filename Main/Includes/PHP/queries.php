@@ -592,11 +592,11 @@ function insertQuestion($QuestionPost)
     {
 		$sql = "SELECT Question FROM Question WHERE ID = $ID";
 
-		if(!Query($sql))
+		if(Query($sql))
 		{
 			if($Question != "Save")
 			{
-				$sql = "INSERT INTO Question(QuestionaireID, Question) VALUES ('2','$Question')";
+				$sql = "UPDATE Question SET Question = '$Question' WHERE ID = $ID";
 				Query($sql);
 			}
 		}
@@ -604,7 +604,7 @@ function insertQuestion($QuestionPost)
 		{
 			if($Question != "Save")
 			{
-				$sql = "UPDATE Question SET Question = '$Question' WHERE ID = $ID";
+				$sql = "INSERT INTO Question(QuestionaireID, Question) VALUES ('2','$Question')";
 				Query($sql);
 			}
 		}
