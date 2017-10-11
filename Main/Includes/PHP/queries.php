@@ -586,15 +586,36 @@ function insertExperiment($CompanyID, $Title, $Thumbnail, $Description)
 	return $data;
 }
 
-function insertQuestion($QuestionPost) {
+function insertQuestion($QuestionPost) 
+{
+    foreach ($QuestionPost AS $ID => $Question) 
+    {
+		$sql = "SELECT Question FROM Question WHERE ID = $ID";
 
-    foreach ($QuestionPost AS $ID => $Question) {
+		if(!Query($sql))
+		{
+			if($Question != "Save")
+			{
+				$sql = "INSERT INTO Question(QuestionaireID, Question) VALUES ('2','$Question')";
+				Query($sql);
+			}
+		}
+		else
+		{
+			if($Question != "Save")
+			{
+				$sql = "UPDATE Question SET Question = '$Question' WHERE ID = $ID";
+				Query($sql);
+			}
+		}
 
-            $sql = "SELECT Question FROM Question WHERE ID = $ID";
 
+
+/*
             if(Query($sql) == false) {
 
-                if($Question == "Save"){
+                if($Question == "Save")
+                {
 
                 }
                 else {
@@ -616,6 +637,7 @@ function insertQuestion($QuestionPost) {
 
                 }
         }
+        */
     }
 }
 
@@ -646,31 +668,38 @@ function SelectQuestion() {
 
 function updateAdminProfile($ID, $AdminName, $AdminPic, $AdminLang)
 {
-	$sql = "UPDATE User 
-	SET Name = '$AdminName', ProfilePicture = '$AdminPic', Language = '$adminLang'
-	WHERE ID = '$ID'";
+	if(is_null($adminPic))
+	{
+		$sql = "UPDATE User
+		SET Name = '$AdminName', Language = '$adminLang'
+		WHERE ID = '$ID'";
+	}
+	else
+	{
+		$sql = "UPDATE User 
+		SET Name = '$AdminName', ProfilePicture = '$AdminPic', Language = '$adminLang'
+		WHERE ID = '$ID'";
+	}
 }
 
 function selectAdminProfile($ID)
 {
-
 	$sql = "SELECT Name, ProfilePicture, Language From User
 	WHERE ID = '$ID'";
 
 	if($data = Query($sql)) 
-	{	
-		echo "WAT";
+	{
 		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
 		?>
 		<form method="POST" action="#">
-			<p>Name:</p><br>
+			<p>Name:</p>
             <input type="text" placeholder="Name" name="adminName" value="<?php echo $row['Name'];?>"><br>
 
-            <p>Profile Picture:</p><br>
+            <p>Profile Picture:</p>
             <img src="../../<?php echo $row['ProfilePicture'] ?>" alt="Profile picture"><br>
             <input type="file" placeholder="Profile picture" name="adminPic"><br>
 
-            <p>Language:</p><br>
+            <p>Language:</p>
             <select>
             	<option 
             	<?php if($row['Language'] == "English") 
@@ -690,9 +719,6 @@ function selectAdminProfile($ID)
 		</form>
 		<?php
 	}
-	echo $_SESSION["UserID"];
-	echo $data;
-	echo "????";
 }
 
 ?>

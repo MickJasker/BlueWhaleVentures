@@ -14,6 +14,7 @@ if (isset($_POST["submit"]))
     <body id="wrapper-admin">
         <Main>
             <?php
+
                 selectAdminProfile($_SESSION["UserID"]);
             ?>
         </Main>
