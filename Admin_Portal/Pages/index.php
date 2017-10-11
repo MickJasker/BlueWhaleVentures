@@ -10,10 +10,12 @@
 		<script src="../../Main/Includes/Javascript/load.js"></script>
 		<link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
         <link rel="icon" href="../../Main/Files/Images/icon.svg"/>
-        <script src="../../Main/Includes/Javascript/load.js"></script>
         <script src="../../Main/Includes/Javascript/jquery-3.2.1.min.js"></script>
     </head>
 	<body>
+
+    <script src="../../Main/Includes/Javascript/load.js"></script>
+
 
     <header class="wrapper-nav">
 
@@ -22,6 +24,8 @@
     </header>
 
         <Main id="wrapper-admin">
+
+            <?php include 'client.php';?>
 
         </Main>
 

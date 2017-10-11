@@ -6,27 +6,30 @@ function showFilter() {
 
 function selectclientormentor(){
 
-    var classclient = document.getElementById("client");
-    var classmentor = document.getElementById("mentor");
-    var mentor = $.get("mentor.php", function( data ) {
-        $( '#wrapper-admin' ).html( data );});
-    var client = $.get("client.php", function( data ){
-        $( '#wrapper-admin' ).html( data );});
+    var client = document.getElementById("client");
+    var mentor = document.getElementById("mentor");
 
-    classmentor.classList.toggle("blue");
-    classclient.classList.toggle("blue");
+    mentor.classList.toggle("blue");
+    client.classList.toggle("blue");
 
-    if(classclient.className == 'blue'){
+    if(client.className === 'blue'){
 
-        $("#wrapper-admin").html(mentor);
-        console.log(classclient.className);
+        $.get("client.php", function( data ){
+            $('#wrapper-admin').fadeOut(500, function(){
+                $('#wrapper-admin' ).html( data );
+                $('#wrapper-admin').fadeIn(1300);
+            });
+        });
+        console.log('client');
+    }else {
 
-
-    }else if(classclient.className != 'blue'){
-
-        $("#wrapper-admin").html(client);
-        console.log(classclient.className);
-
+        $.get("mentor.php", function( data ) {
+            $('#wrapper-admin').fadeOut(500, function(){
+                $('#wrapper-admin' ).html( data );
+                $('#wrapper-admin').fadeIn(1300);
+            });
+        });
+        console.log('mentor');
     }
 }
 

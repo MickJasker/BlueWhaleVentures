@@ -1,5 +1,4 @@
-window.onload = function () {
+$("#wrapper-admin").ready(function() {
 
-    $('body').fadeIn(300);
-
-}
+    $('#wrapper-admin').fadeIn(1000);
+});
