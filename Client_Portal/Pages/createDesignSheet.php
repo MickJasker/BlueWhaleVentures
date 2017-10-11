@@ -10,7 +10,19 @@ require '../../Main/Includes/PHP/functions.php';
 		<Main>
 			<?php
 				getDesignSheetForm();
-				insertDesignSheet();
+				if (isset($_POST['submitDesignsheet']))
+				{
+					$experimentId = $_GET['experimentId'];
+					
+					foreach ($_POST as $value)
+					{
+						if ($value != "submit")
+						{
+							$value = htmlentities(mysqli_real_escape_string($conn, $value));
+						}
+					}
+					insertDesignSheet($experimentId, $_POST,1);					
+				}
 			?>
 		</Main>
 	</body>

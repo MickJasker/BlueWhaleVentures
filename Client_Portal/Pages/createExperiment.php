@@ -1,5 +1,6 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
+checkSession('Company')
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,11 +10,11 @@ require '../../Main/Includes/PHP/functions.php';
 	<body id="wrapper-admin">
 		<Main>
 		<h1> New experiment </h1>
-			<form method="POST" action="#">
-				Title: <input type="text" name="title" value="Title"> <br>
-				Thumbnail: <input type="file" name="fileToUpload" id="fileToUpload"> <br>
+			<form method="POST" action="#" enctype="multipart/form-data">
+				Title: <input type="text" name="title" placeholder="Title"> <br>
+				Thumbnail: <input type="file" name="file1"> <br>
 				Description: <br>
-				<textarea name="input'.$i.'" type="text" placeholder="Description"></textarea> <br>
+				<textarea name="description" type="text" placeholder="Description"></textarea> <br>
 				<input name="submitExperiment" type="submit" value="Enter" >
 			</form>
 			<?php
@@ -23,7 +24,11 @@ require '../../Main/Includes/PHP/functions.php';
 					$description = htmlentities(mysqli_real_escape_string($conn, $_POST['description']));
 					
 					//Image check
-					$type = "img"; $path = "../Uploads/ExperimentThumbnail"; $file1_name = $_FILES['fileToUpload']['name']; $file1_tmp_name = $_FILES['fileToUpload']['tmp_name']; $file1_size = $_FILES['fileToUpload']['size'];
+					$type = "img"; 
+					$path = "../Uploads/ExperimentThumbnail/"; 
+					$file1_name = $_FILES['file1']['name']; 
+					$file1_tmp_name = $_FILES['file1']['tmp_name']; 
+					$file1_size = $_FILES['file1']['size'];
 					
 					if (uploadCheck($file1_name, $file1_tmp_name, $file1_size, $type, $path) == false)
 					{
@@ -40,10 +45,11 @@ require '../../Main/Includes/PHP/functions.php';
 					else 
 					{
 						//upload the image
-						$imgResult = uploadExecute($file_name, $file_tmp_name, $target_dir);
+						$imgResult = uploadExecute($file1_name, $file1_tmp_name, $path);
+						$upload = true;
 						if ($imgResult[0] == 1)
 						{
-							$imagepath = $result[1]; 
+							$imagepath = $imgResult[1]; 
 						}
 						else
 						{
@@ -52,10 +58,11 @@ require '../../Main/Includes/PHP/functions.php';
 						
 						if ($upload)
 						{
+							$companyid = $_SESSION["CompanyID"];
 							//upload data to the database
-							if ($id = createExperiment($title, $description, $imagepath, $companyid))
+							if ($experimentId = createExperiment($title, $description, $imagepath, $companyid))
 							{
-								//header("Location: edit.php?id=" . $id . "&type=first");
+								header("Location: createDesignSheet.php?experimentId=" . $experimentId);
 							}
 							else
 							{
