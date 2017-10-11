@@ -1,10 +1,12 @@
 <?php
     require '../../Main/Includes/PHP/functions.php';
 
+    if(isset($_POST['submit'])) {
+        insertQuestion($_POST);
+     //   header('Location: index.php');
+    }
 
 
-    //Database functie fixen
-    insertQuestion($_POST);
 
 ?>
 <!DOCTYPE html>
@@ -17,28 +19,19 @@
     <body id="wrapper-admin">
         <Main>
             <h1> New Interview </h1>
-            <form action="#" method="POST">
-                <div id="questionForm">
-                <?php
+            <div id="questionForm">
+                <form id="form" action="#" method="POST">
+                    <?php
 
-                for ($i = 1; $i <= 1; $i++) {
+                    $i = SelectQuestion();
 
-                ?>
+                    ?>
 
-                    <textarea name="question<?php echo $i?>" placeholder="Question"></textarea>
-
-                <?php
-
-                }
-
-                ?>
-
-                </div>
-                <button type="button" onclick="addQuestion()">Add Question</button>
-                <input type="submit" value="Save">
-                <p hidden id="hiddenP"><?php echo $i?></p>
-            </form>
-
+                    <button type="button" onclick="addQuestion()">Add Question</button>
+                    <input type="submit" name="submit" value="Save">
+                    <p hidden id="hiddenP"><?php echo $i?></p>
+                </form>
+            </div>
         </Main>
     </body>
 </html>
