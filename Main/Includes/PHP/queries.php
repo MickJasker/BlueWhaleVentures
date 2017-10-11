@@ -590,54 +590,24 @@ function insertQuestion($QuestionPost)
 {
     foreach ($QuestionPost AS $ID => $Question) 
     {
-		$sql = "SELECT Question FROM Question WHERE ID = $ID";
+		$sql = "SELECT Question FROM Question WHERE ID = '$ID'";
 
-		if(!Query($sql))
+		if(Query($sql))
 		{
 			if($Question != "Save")
 			{
-				$sql = "INSERT INTO Question(QuestionaireID, Question) VALUES ('2','$Question')";
-				Query($sql);
+                $sql = "UPDATE Question SET Question = '$Question' WHERE ID = '$ID'";
+                Query($sql);
 			}
 		}
 		else
 		{
 			if($Question != "Save")
 			{
-				$sql = "UPDATE Question SET Question = '$Question' WHERE ID = $ID";
-				Query($sql);
+                $sql = "INSERT INTO Question(QuestionaireID, Question) VALUES (2,'$Question')";
+                Query($sql);
 			}
 		}
-
-
-
-/*
-            if(Query($sql) == false) {
-
-                if($Question == "Save")
-                {
-
-                }
-                else {
-
-                    $sql = "INSERT INTO Question(QuestionaireID, Question) VALUES ('2','$Question')";
-                    Query($sql);
-
-                }
-
-            }
-            else {
-                if($Question == "Save"){
-
-                }
-                else {
-
-                    $sql = "UPDATE Question SET Question = '$Question' WHERE ID = $ID";
-                    Query($sql);
-
-                }
-        }
-        */
     }
 }
 
