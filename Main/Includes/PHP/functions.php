@@ -6,19 +6,22 @@ session_start();
 //This functions generates an random key and sends an email to the user
 function generate_key($email, $name, $role)
 {
-	if (checkEmailAvailability(@email))
+	if (checkEmailAvailability($email))
 	{
 		//array with alphabet + numbers
 		$numbers = range(chr(48),chr(57));
 		$letters = range(chr(65),chr(90));
 		$characters = array_merge($numbers, $letters);
-				
-		//Generate 6 random numbers
-		$number = mt_rand(0, 35); $number2 = mt_rand(0, 35); $number3 = mt_rand(0, 35); 
-		$number4 = mt_rand(0, 35); $number5 = mt_rand(0, 35); $number6 = mt_rand(0, 35);
-				
-		//Get characters from array with the random generated numbers
-		$generatedkey = $characters[$number] . $characters[$number2] . $characters[$number3] . $characters[$number4] . $characters[$number5] . $characters[$number6];
+		
+		$i = 0;
+		$generatedkey = "";
+		
+		//Generate an random character 6 times and merge that to one variable code
+		while ($i < 6)
+		{
+			$generatedkey = $generatedkey . $characters[mt_rand(0, 35)];
+			$i++;
+		}
 						
 		//Make url
 		$url = "http://localhost/BW-Ventures/main/pages/createAccount.php"; //Put the url in here 
@@ -30,7 +33,6 @@ function generate_key($email, $name, $role)
 		//Insert the code in the db
 		if (createCode($email, $name, $generatedkey, $activetime, $role))
 		{	
-			echo "gelukt";
 			return true;
 		}	
 		else
@@ -38,8 +40,10 @@ function generate_key($email, $name, $role)
 			return false;
 		}
 	}
-
-	echo "Email is not available!";
+	else
+	{
+		echo "Email is not available!";
+	}
 }
 
 function createSession($Email)
