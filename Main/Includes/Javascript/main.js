@@ -18,18 +18,18 @@ function selectclientormentor(){
             $('#wrapper-admin').fadeOut(500, function(){
                 $('#wrapper-admin' ).html( data );
                 $('#wrapper-admin').fadeIn(1300);
+                console.log('client');
             });
         });
-        console.log('client');
     }else {
 
         $.get("mentor.php", function( data ) {
             $('#wrapper-admin').fadeOut(500, function(){
                 $('#wrapper-admin' ).html( data );
                 $('#wrapper-admin').fadeIn(1300);
+                console.log('mentor');
             });
         });
-        console.log('mentor');
     }
 }
 

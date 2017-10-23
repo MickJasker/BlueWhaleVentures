@@ -12,7 +12,7 @@
         <link rel="icon" href="../../Main/Files/Images/icon.svg"/>
         <script src="../../Main/Includes/Javascript/jquery-3.2.1.min.js"></script>
     </head>
-	<body>
+	<body id="wrapper-admin-body">
 
     <script src="../../Main/Includes/Javascript/load.js"></script>
 
