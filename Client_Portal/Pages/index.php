@@ -27,7 +27,7 @@ require '../../Main/Includes/PHP/functions.php';
 
             <?php
 
-            getExperimentBlockInfo(7)
+            getExperimentBlockInfo(7);
 
             ?>
 
