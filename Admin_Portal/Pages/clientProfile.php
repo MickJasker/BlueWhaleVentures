@@ -33,7 +33,7 @@
 							</div>
 							<div class="container-fluid discription">
 								<h3>Google Inc.</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et 											dolor.magn aaliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea 									commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat 										nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 									id est laborum.
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolor.magn aaliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eacommodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 	id est laborum.
 								</p>
 							</div>
 						</div>
@@ -61,6 +61,20 @@
 							</div>
 						</div>
 					</section>
+	            </div>
+	            <div class="row">
+		            <section class="mentor col-md-8">
+			            <div class="title-mentor">
+				            <h3>Mentors</h3>
+			            </div>
+			            <div class="content">
+				            <div class="container-fluid logo">
+					            <img src="../../Main/Files/Images/google.png">
+				            </div>
+				            <div class="container-fluid discription">
+					            <p>Analytics</p>
+				            </div>
+		            </section>
 	            </div>
             </div>    
 		</main>

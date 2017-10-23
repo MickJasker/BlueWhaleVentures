@@ -17,7 +17,7 @@ checkSession('Company');
 					$language = $_SESSION["Language"];
 					insertDesignSheet($_POST, "Experiment", $language, $experimentId);
 
-					//redirect to select execution page.
+					header('Location: chooseExecution.php?experimentID=' . $_GET['experimentID']);
 				}
 			?>
 		</Main>
