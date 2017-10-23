@@ -2,7 +2,6 @@
     require '../../Main/Includes/PHP/functions.php';
     if(isset($_POST['save'])) {
         insertPitch($_POST['preparationText'], $_SESSION['insertedID']);
-        //   header('Location: index.php');
     }
 ?>
 <!DOCTYPE html>

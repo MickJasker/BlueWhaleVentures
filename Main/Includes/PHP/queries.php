@@ -232,6 +232,43 @@ function getDesignSheetForm($sheetType = "Experiment", $Language = "English")
 		}
 }
 
+//Selects all experiment textareas etc
+function getDesignSheetData($ExperimentID, $sheetType = "Experiment", $Language = "English")
+{
+	$sql = "SELECT SegmentID, Text  FROM `Answer` WHERE ExperimentID = '$ExperimentID' ORDER BY SegmentID";
+	if($data1 = query($sql))
+	{	
+		echo '<form method="POST" action="#">';
+		while($row1 = $data1->fetch_assoc())
+		{
+			$id = $row1["SegmentID"];
+			$sql = "SELECT title, description FROM Segment WHERE `DesignSheetID` = '1' AND id = '$id'"; //Temp query
+			if($data2 = query($sql))
+			{	
+				$i = 0;
+				while($row2 = $data2->fetch_assoc())
+				{
+					echo '<h3>'.$row2["title"].'</h3>';
+					echo '<textarea disabled class="textarea1" name="input'.$i.'"  type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
+					$i++;
+				}		
+			}
+			else
+			{
+				echo "Error retrieving experimentdata";
+				return false;
+			}
+		}
+		echo '<br><input type="hidden" name="submitDesignsheet" value="Enter" id="submit1">';
+		echo '</form>';
+	}
+	else
+	{
+		echo "Error retrieving experimentdata";
+		return false;
+	}
+}
+
 function createExperiment($title, $description, $imagepath, $companyid)
 {
 	$sql = "INSERT INTO `Experiment`(`CompanyID`, `Title`, `Thumbnail`, `Description`, `Progress`, `Completed`, `Reviewed`, `ReviewScore`) VALUES ('$companyid','$title','$imagepath','$description',0,0,0,0)";
@@ -731,7 +768,7 @@ function insertDesignSheet($answerPost, $sheetType, $Language, $experimentID)
 	//Select the design
 	$sql = "SELECT s.ID FROM Segment s
 	INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
-    WHERE d.Type = '$sheetType' AND d.Language = '$Language'";
+	WHERE d.Type = '$sheetType' AND d.Language = '$Language'";
 
 	if($data = Query($sql))
 	{
@@ -750,13 +787,13 @@ function insertDesignSheet($answerPost, $sheetType, $Language, $experimentID)
 	}
 }
 
-function sendExecution($ExecutionPost)
+function sendExecution($ExecutionPost, $ExperimentID)
 {
 	global $conn;
 
     foreach ($ExecutionPost AS $ID => $Execution) {
         if ($ID == "interview") {
-            $sql = "INSERT INTO Questionaire(ID, ExperimentID) VALUES (DEFAULT, 1)";
+            $sql = "INSERT INTO Questionaire(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
             $_SESSION['insertedID'] = mysqli_insert_id($conn);
@@ -765,20 +802,18 @@ function sendExecution($ExecutionPost)
         }
 
         if ($ID == "pitch") {
-            $sql = "INSERT INTO Pitch(ID, ExperimentID) VALUES (DEFAULT, 1)";
+            $sql = "INSERT INTO Pitch(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
             $_SESSION['insertedID'] = mysqli_insert_id($conn);
-            header('Location: ../../Client_Portal/Pages/newPitch.php');
 
         }
 
         if ($ID == "prototype") {
-            $sql = "INSERT INTO Prototype(ID, ExperimentID) VALUES (DEFAULT, 1)";
+            $sql = "INSERT INTO Prototype(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
             $_SESSION['insertedID'] = mysqli_insert_id($conn);
-            header('Location: ../../Client_Portal/Pages/newPrototype.php');
 
         }
     }
@@ -793,10 +828,6 @@ function insertPitch($Text, $PitchID) {
 
 function insertPrototype($ImagePath, $Explain, $PrototypeID) {
 
-    echo $ImagePath;
-    echo $Explain;
-    echo $PrototypeID;
-
     $sql = "INSERT INTO Explanation(PrototypeID, Media, Text) VALUES ('$PrototypeID', '$ImagePath', '$Explain') ";
     if (Query($sql))
     {
@@ -809,4 +840,66 @@ function insertPrototype($ImagePath, $Explain, $PrototypeID) {
 
 }
 
+function updatePitch($VideoPath, $Preparation, $Conclusion) {
+
+    $sql = "UPDATE Pitch SET Preparation = '$Preparation', Media = '$VideoPath', Conclusion = '$Conclusion' WHERE ExperimentID = 1";
+    if (Query($sql))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+}
+
+function selectPitch($ExperimentID)
+{
+    $sql = "SELECT Preparation, Media, Conclusion FROM Pitch WHERE ExperimentID = '$ExperimentID'";
+
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+            $Preparation = $row["Preparation"];
+            $Media = $row["Media"];
+            $Conclusion = $row["Conclusion"];
+
+            ?>
+
+            Preparation: <br/>
+            <textarea name="preparationText" placeholder="Prepare for your pitch"><?php echo $Preparation?></textarea>
+
+            <input type="file" name="file1" id="fileToUpload">
+
+
+            <?php
+
+            if ($Media != "") {
+
+                ?>
+
+                <video controls>
+                    <source src="<?php echo $Media ?>" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video> <br/>
+
+                <?php
+
+            }
+            else {
+
+            }
+
+            ?>
+
+            Conclusion: <br/>
+            <textarea name="conclusionText" placeholder="Conclusion of your pitch"><?php echo $Conclusion?></textarea> <br/>
+            <input type="submit" name="save" value="Save">
+
+            <?php
+        }
+    }
+}
 ?>
