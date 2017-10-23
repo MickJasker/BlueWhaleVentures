@@ -13,18 +13,11 @@ checkSession('Company');
 				getDesignSheetForm();
 				if (isset($_POST['submitDesignsheet']))
 				{
-					$experimentId = $_GET['experimentId'];
-					
-					foreach ($_POST as $value)
-					{
-						if ($value != "submit")
-						{
-							$value = htmlentities(mysqli_real_escape_string($conn, $value));
-						}
-					}
-					
+					$experimentId = $_GET['experimentID'];
 					$language = $_SESSION["Language"];
-					insertDesignSheet($_POST, 1, $language, $experimentId);
+					insertDesignSheet($_POST, "Experiment", $language, $experimentId);
+
+					//redirect to execution page
 				}
 			?>
 		</Main>

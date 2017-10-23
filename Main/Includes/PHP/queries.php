@@ -215,11 +215,11 @@ function getDesignSheetForm($sheetType = "Experiment", $Language = "English")
 		{	
 			echo '<form method="POST" action="#">';
 			
-			$i = 1;
+			$i = 0;
 			while($row = $data->fetch_assoc())
 			{
 				echo '<h3>'.$row["title"].'</h3>';
-				echo '<textarea name="input'.$i.'" type="text" placeholder="'.$row["description"].'"></textarea>';
+				echo '<textarea name="input'.$i.'"  type="text" placeholder="'.$row["description"].'"></textarea>';
 				$i++;
 			}
 			echo '<input name="submitDesignsheet" type="submit" value="Enter" >';
@@ -473,7 +473,7 @@ function getExperimentBlockInfo($UserID)
             ?>
 
             <section id="Block">
-                <a href="../../../Client_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
+                <a href="../../Client_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
                     </div>
@@ -606,7 +606,7 @@ function insertExperiment($CompanyID, $Title, $Thumbnail, $Description)
 	return $data;
 }
 
-function insertQuestion($QuestionPost) 
+function insertQuestion($QuestionPost)
 {
     foreach ($QuestionPost AS $ID => $Question) 
     {
@@ -631,8 +631,8 @@ function insertQuestion($QuestionPost)
     }
 }
 
-function SelectQuestion() {
-
+function SelectQuestion()
+{
     $sql = "SELECT ID, Question FROM Question
             WHERE QuestionaireID = 2";
 
@@ -711,30 +711,39 @@ function selectAdminProfile($ID)
 	}
 }
 
-function insertDesignSheet($textArray, $sheetType, $Language, $experimentID)
+function insertDesignSheet($answerPost, $sheetType, $Language, $experimentID)
 {
+	global $conn;
+
+	//Select input field data, and put it in answerArray
+	$answerArray = array();
+	foreach ($answerPost AS $postID => $answer)
+	{
+		if ($postID != "submitDesignsheet")
+		{
+			$value = htmlentities(mysqli_real_escape_string($conn, $answer));
+			array_push($answerArray, $value);
+		}
+	}
+
+	//Select the design
 	$sql = "SELECT s.ID FROM Segment s
 	INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
 	WHERE d.Type = '$sheetType' AND d.Language = '$Language'";
 
 	if($data = Query($sql))
 	{
-		//Start insert query
-		$sql = "INSERT INTO Answer (SegmentID, ExperimentID, `Text`) Values ";
-
+		$counter = 0;
+		//Foreach segment, add a value from answerArray
 		while ($row = $data->fetch_assoc())
-		{ 	
-			//Every time the code goes through this, add 1 record to the sql string.
-			$counter = 0;
-			$sql += "(" . $row['ID'] . ", $experimentID, " . $textArray[$counter] . "), ";
-			$counter++;
-		}
-		//Trim the last comma of the sql string
-		$sql = rtrim($string, ',');
-
-		if($data = Query($sql))
 		{
-			return $data;
+			$segment = $row["ID"];
+			$answer = $answerArray[$counter];
+
+			$sql = "INSERT INTO Answer (SegmentID, ExperimentID, `Text`) Values ('$segment', '$experimentID', '$answer')";
+			Query($sql);
+
+			$counter++;
 		}
 	}
 }
