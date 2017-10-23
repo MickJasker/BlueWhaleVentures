@@ -54,20 +54,29 @@ function createSession($Email)
 	$_SESSION["Language"] =  selectUserLanguage($_SESSION["UserID"]);
 	$_SESSION["CompanyID"] = selectCompanyID($_SESSION["UserID"]);
 	
-	/*
+	
 	echo "Logged in: " . $_SESSION["LoggedIn"] . "<br>";	
 	echo "Role: " . $_SESSION["Role"] . "<br>";
 	echo "UserID: " . $_SESSION["UserID"] . "<br>";	
 	echo "CompanyID: " . $_SESSION["CompanyID"];	
-	*/
+	
 }
 
 
 function checkSession($AllowedRole)
 {
-	if (!$_SESSION["LoggedIn"] || $_SESSION["Role"] != $AllowedRole) //not safe check if it is logged in or else redirect :: Notice: Undefined index: LoggedIn in C:\xampp\htdocs\BW-Ventures\Main\Includes\PHP\functions.php on line 64
+	if (isset($_SESSION["LoggedIn"]))
 	{
-		return false;
+		if ($_SESSION["Role"] != $AllowedRole)
+		{
+			//header('Location: ../../'.$_SESSION["Role"].'_portal/index.php');
+		}
+		
+		
+	}
+	else 
+	{
+		header('Location: ../../index.php');
 	}
 
 	return true;
