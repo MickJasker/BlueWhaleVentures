@@ -1,9 +1,4 @@
 //Navbar
-function showFilter() {
-    document.getElementById("content").classList.toggle("show");
-}
-
-
 function selectclientormentor(){
 
     var client = document.getElementById("client");
@@ -17,31 +12,42 @@ function selectclientormentor(){
         $.get("client.php", function( data ){
             $('#wrapper-admin').fadeOut(500, function(){
                 $('#wrapper-admin' ).html( data );
-                $('#wrapper-admin').fadeIn(1300);
+                $('#wrapper-admin').fadeIn(500);
             });
         });
-        console.log('client');
     }else {
 
         $.get("mentor.php", function( data ) {
             $('#wrapper-admin').fadeOut(500, function(){
                 $('#wrapper-admin' ).html( data );
-                $('#wrapper-admin').fadeIn(1300);
+                $('#wrapper-admin').fadeIn(500);
             });
         });
-        console.log('mentor');
     }
 }
 
-window.onclick = function(event) {
-    if (!event.target.matches('.filterbtn')) {
-        var dropdowns = document.getElementsByClassName("filter-content");
-        var i;
-        for (i = 0; i < dropdowns.length; i++){
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains('show')) {
-                openDropdown.classList.remove('show');
-            }
+
+function filterfunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("input");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("content");
+    li = ul.getElementsByTagName("li");
+    var input = document.getElementById('input').value;
+
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
         }
     }
-};
+
+    if(input != ""){
+        document.getElementById("content").classList.add("show");
+        console.log(input);
+    }else if(input == ""){
+        document.getElementById("content").classList.remove("show");
+    }
+}
