@@ -1,3 +1,7 @@
+html{
+  height: 100%;
+}
+
 #wrapper-login {
   font-family: "open-sans", Helvetica, sans-serif;
   font-weight: 400;
@@ -94,17 +98,22 @@
 
 body{
   overflow-y: scroll;
+  min-height: 100%;
+  width: 100%;
 }
 
-#wrapper-admin {
-
-  overflow-y: scroll;
-  margin: 0;
+#wrapper-admin-body{
   background-image: url('../../Files/Images/stockImages/adminbackground.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  margin-top: 80px;
+}
+
+#wrapper-admin {
+
+  margin: 0;
+  padding-top: 80px;
+  height: 100%;
 
   a {
     text-decoration: none;
