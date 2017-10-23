@@ -207,10 +207,10 @@ function selectLoginInfo($email, $password)
 }
 
 //Selects all experiment textareas etc
-function getDesignSheetForm($sheetType = "Experiment", $Language = "English")
+function getDesignSheetForm($sheetType, $language)
 {
-	//$sql = "SELECT title, description FROM Segment WHERE Type = '$sheetType' AND Language = '$Language'"; //Ask Sven to work
-	$sql = "SELECT title, description FROM Segment WHERE `DesignSheetID` = '1'"; //Temp query
+	$sql = "SELECT s.title, s.description FROM Segment s INNER JOIN DesignSheet d ON  d.ID = s.DesignSheetID WHERE d.Type = '$sheetType' AND d.Language = '$language'";
+
 		if($data = query($sql))
 		{	
 			echo '<form method="POST" action="#">';
