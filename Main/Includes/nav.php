@@ -35,7 +35,7 @@
                 <li><a href="#">Games</a></li>
                 <li><a href="#">Navigation</a></li>
                 <li><a href="#">Fashion</a></li>
-			</ul>
+            </ul>
 
 		</div>
 

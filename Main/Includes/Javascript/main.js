@@ -15,7 +15,7 @@ function selectclientormentor(){
                 $('#wrapper-admin').fadeIn(500);
             });
         });
-    }else {
+    }else if(mentor.className === 'blue'){
 
         $.get("mentor.php", function( data ) {
             $('#wrapper-admin').fadeOut(500, function(){
