@@ -731,7 +731,7 @@ function insertDesignSheet($answerPost, $sheetType, $Language, $experimentID)
 	//Select the design
 	$sql = "SELECT s.ID FROM Segment s
 	INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
-	WHERE d.Type = '$sheetType' AND d.Language = '$Language'";
+    WHERE d.Type = '$sheetType' AND d.Language = '$Language'";
 
 	if($data = Query($sql))
 	{
@@ -769,6 +769,7 @@ function sendExecution($ExecutionPost)
             Query($sql);
 
             $_SESSION['insertedID'] = mysqli_insert_id($conn);
+            header('Location: ../../Client_Portal/Pages/newPitch.php');
 
         }
 
@@ -777,8 +778,35 @@ function sendExecution($ExecutionPost)
             Query($sql);
 
             $_SESSION['insertedID'] = mysqli_insert_id($conn);
+            header('Location: ../../Client_Portal/Pages/newPrototype.php');
 
         }
     }
 }
+
+function insertPitch($Text, $PitchID) {
+
+    $sql = "UPDATE Pitch SET Preparation = '$Text' WHERE ID = '$PitchID'";
+    Query($sql);
+
+}
+
+function insertPrototype($ImagePath, $Explain, $PrototypeID) {
+
+    echo $ImagePath;
+    echo $Explain;
+    echo $PrototypeID;
+
+    $sql = "INSERT INTO Explanation(PrototypeID, Media, Text) VALUES ('$PrototypeID', '$ImagePath', '$Explain') ";
+    if (Query($sql))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+}
+
 ?>
