@@ -259,7 +259,7 @@ function getDesignSheetData($ExperimentID, $sheetType = "Experiment", $Language 
 				return false;
 			}
 		}
-		echo '<br><input type="hidden" name="submitDesignsheet" value="Enter" id="submit1">';
+		echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1">';
 		echo '</form>';
 	}
 	else
