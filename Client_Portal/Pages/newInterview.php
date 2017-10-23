@@ -2,7 +2,7 @@
     require '../../Main/Includes/PHP/functions.php';
 
     if(isset($_POST['submit'])) {
-        insertQuestion($_POST);
+        insertQuestion($_POST, $_SESSION['insertedID']);
      //   header('Location: index.php');
     }
 
@@ -23,7 +23,7 @@
                 <form id="form" action="#" method="POST">
                     <?php
 
-                    $i = SelectQuestion();
+                    $i = SelectQuestion($_SESSION['insertedID']);
 
                     ?>
 
