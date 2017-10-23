@@ -4,7 +4,8 @@ function addQuestion() {
 
     document.getElementById('form').innerHTML += '<textarea name="question' + i +'" placeholder="Question"></textarea>';
 
+    i++;
+
     document.getElementById('hiddenP').innerHTML = i;
 
-    i++;
 }

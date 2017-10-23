@@ -7,9 +7,13 @@ require '../../Main/Includes/PHP/functions.php';
     <title> Client Portal </title>
     <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 </head>
-    <body id="wrapper-admin">
+    <body id="wrapper-client">
+    <header class="row wrapper-nav">
+        <?php
+        require "../../Main/Includes/nav.php"
+        ?>
+    </header>
         <Main>
-            <h1>Salty Mundi</h1>
             <section id="Block">
                 <a href="createExperiment.php">
                     <div class="BlockLogo">
