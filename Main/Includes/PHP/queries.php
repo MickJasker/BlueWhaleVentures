@@ -232,6 +232,43 @@ function getDesignSheetForm($sheetType = "Experiment", $Language = "English")
 		}
 }
 
+//Selects all experiment textareas etc
+function getDesignSheetData($ExperimentID, $sheetType = "Experiment", $Language = "English")
+{
+	$sql = "SELECT SegmentID, Text  FROM `Answer` WHERE ExperimentID = '$ExperimentID' ORDER BY SegmentID";
+	if($data1 = query($sql))
+	{	
+		echo '<form method="POST" action="#">';
+		while($row1 = $data1->fetch_assoc())
+		{
+			$id = $row1["SegmentID"];
+			$sql = "SELECT title, description FROM Segment WHERE `DesignSheetID` = '1' AND id = '$id'"; //Temp query
+			if($data2 = query($sql))
+			{	
+				$i = 0;
+				while($row2 = $data2->fetch_assoc())
+				{
+					echo '<h3>'.$row2["title"].'</h3>';
+					echo '<textarea disabled class="textarea1" name="input'.$i.'"  type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
+					$i++;
+				}		
+			}
+			else
+			{
+				echo "Error retrieving experimentdata";
+				return false;
+			}
+		}
+		echo '<br><input type="hidden" name="submitDesignsheet" value="Enter" id="submit1">';
+		echo '</form>';
+	}
+	else
+	{
+		echo "Error retrieving experimentdata";
+		return false;
+	}
+}
+
 function createExperiment($title, $description, $imagepath, $companyid)
 {
 	$sql = "INSERT INTO `Experiment`(`CompanyID`, `Title`, `Thumbnail`, `Description`, `Progress`, `Completed`, `Reviewed`, `ReviewScore`) VALUES ('$companyid','$title','$imagepath','$description',0,0,0,0)";
