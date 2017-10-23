@@ -92,7 +92,7 @@
 
 // Admin page styling
 
-body{
+body {
   overflow-y: scroll;
 }
 
@@ -202,262 +202,284 @@ body{
       }
     }
 
-        #left {
-          float: left;
-          padding: 0 0 0 1.5%;
-        }
+    #left {
+      float: left;
+      padding: 0 0 0 1.5%;
+    }
 
-        #right {
-          padding: 0 2% 0 0;
+    #right {
+      padding: 0 2% 0 0;
 
-          a {
-            color: @grey;
-            padding: 0 5px 0 0;
-            text-decoration: none;
+      a {
+        color: @grey;
+        padding: 0 5px 0 0;
+        text-decoration: none;
 
-            &:hover {
-              color: @blue;
-            }
-          }
-        }
-
-        #clientswitch {
-          //margin-left: 30%;
-          position: relative;
-
-        }
-
-        #client {
-          float: left;
-        }
-
-        #mentor {
-          float: left;
-        }
-
-        .blue {
+        &:hover {
           color: @blue;
-        }
-
-        .switch {
-          position: relative;
-          display: inline-block;
-          width: 60px;
-          height: 34px;
-          float: left;
-          margin: 23px 1% 0 1%;
-        }
-
-        .switch input {
-          display: none;
-
-          &:hover {
-            cursor: pointer;
-          }
-        }
-
-        .slider {
-          position: absolute;
-          cursor: pointer;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: @blue;
-          -webkit-transition: .4s;
-          transition: .2s;
-        }
-
-        .slider:before {
-          position: absolute;
-          content: "";
-          height: 26px;
-          width: 26px;
-          left: 4px;
-          bottom: 4px;
-          background-color: white;
-          -webkit-transition: .4s;
-          transition: .4s;
-        }
-
-        input:checked + .slider {
-          background-color: @blue;
-        }
-
-        input:focus + .slider {
-          box-shadow: 0 0 1px @blue;
-        }
-
-        input:checked + .slider:before {
-          -webkit-transform: translateX(26px);
-          -ms-transform: translateX(26px);
-          transform: translateX(26px);
-        }
-
-        .slider.round {
-          border-radius: 34px;
-        }
-
-        .slider.round:before {
-          border-radius: 50%;
-        }
-
-        #searchdiv {
-          height: 80px;
-          padding: 0 2% 0 0;
-          position: relative;
-          display: inline-block;
-
-          #searchbar {
-            outline: none;
-            font-family: "Open Sans";
-            font-style: italic;
-            border-color: @grey;
-            border-style: solid;
-            border-width: 1px;
-            margin: 12.5% 0 0 0;
-            padding: 2px 10px 2px 10px;
-            font-size: 15px;
-            line-height: 30px;
-            position: relative;
-          }
-        }
-
-        .filter {
-          position: relative;
-          display: inline-block;
-          height: 80px;
-          padding: 0 2% 0 0;
-
-          .filterbtn {
-            font-size: 15px;
-            font-style: italic;
-            font-family: "Open Sans";
-            outline: none;
-            border-color: @grey;
-            border-style: solid;
-            border-width: 1px;
-            padding: 2px 10px 2px 10px;
-            line-height: 30px;
-            margin: 12.5% 0 0 0;
-          }
-
-          .filter-content {
-            display: none;
-            background-color: @white;
-            position: absolute;
-            min-width: 160px;
-            z-index: 1;
-            outline: none;
-            border-color: @grey;
-            border-style: solid;
-            border-width: 1px;
-            border-bottom: none;
-            border-top: none;
-          }
-
-          .filter-content a {
-            color: black;
-            padding: 8%;
-            text-decoration: none;
-            display: block;
-            border-bottom: solid;
-            border-color: @grey;
-            border-width: 1px;
-          }
-
-          .filter-content a:hover {
-            background-color: @offwhite;
-          }
-
-          .show {
-            display: block;
-          }
         }
       }
     }
 
-  #wrapper-ClientProfile {
-    main {
-      margin-top: 80px;
+    #clientswitch {
+      //margin-left: 30%;
+      position: relative;
 
-      .wrapper-profile {
-        margin-left: 10px;
-        margin-top: 2vh;
+    }
 
-        .block {
+    #client {
+      float: left;
+    }
 
-          position: relative;
-          float: left;
-          width: 32%;
-          margin-left: 15px;
-          max-height: 30%;
+    #mentor {
+      float: left;
+    }
+
+    .blue {
+      color: @blue;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+      float: left;
+      margin: 23px 1% 0 1%;
+    }
+
+    .switch input {
+      display: none;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: @blue;
+      -webkit-transition: .4s;
+      transition: .2s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked + .slider {
+      background-color: @blue;
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px @blue;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
+
+    #searchdiv {
+      height: 80px;
+      padding: 0 2% 0 0;
+      position: relative;
+      display: inline-block;
+
+      #searchbar {
+        outline: none;
+        font-family: "Open Sans";
+        font-style: italic;
+        border-color: @grey;
+        border-style: solid;
+        border-width: 1px;
+        margin: 12.5% 0 0 0;
+        padding: 2px 10px 2px 10px;
+        font-size: 15px;
+        line-height: 30px;
+        position: relative;
+      }
+    }
+
+    .filter {
+      position: relative;
+      display: inline-block;
+      height: 80px;
+      padding: 0 2% 0 0;
+
+      .filterbtn {
+        font-size: 15px;
+        font-style: italic;
+        font-family: "Open Sans";
+        outline: none;
+        border-color: @grey;
+        border-style: solid;
+        border-width: 1px;
+        padding: 2px 10px 2px 10px;
+        line-height: 30px;
+        margin: 12.5% 0 0 0;
+      }
+
+      .filter-content {
+        display: none;
+        background-color: @white;
+        position: absolute;
+        min-width: 160px;
+        z-index: 1;
+        outline: none;
+        border-color: @grey;
+        border-style: solid;
+        border-width: 1px;
+        border-bottom: none;
+        border-top: none;
+      }
+
+      .filter-content a {
+        color: black;
+        padding: 8%;
+        text-decoration: none;
+        display: block;
+        border-bottom: solid;
+        border-color: @grey;
+        border-width: 1px;
+      }
+
+      .filter-content a:hover {
+        background-color: @offwhite;
+      }
+
+      .show {
+        display: block;
+      }
+    }
+  }
+}
+
+#wrapper-ClientProfile {
+  main {
+    margin-top: 80px;
+
+    .wrapper-profile {
+      margin-left: 10px;
+      margin-top: 2vh;
+
+      .block {
+
+        position: relative;
+        float: left;
+        width: 32%;
+        margin-left: 15px;
+        max-height: 30%;
+
+        h2 {
+          color: @white;
+        }
+
+        .title {
+
+          background-color: @blue;
+          width: 100%;
+
+          h1 {
+            color: @white
+          }
+        }
+
+        .title-profile {
+
+          background-color: @blue;
+          width: 100%;
+
+          h1 {
+            color: @white
+          }
 
           h2 {
             color: @white;
           }
+        }
 
-          .title {
+        .content {
+          width: 100%;
+          background-color: @offwhite;
 
-            background-color: @blue;
+          h3 {
+            color: @white;
+          }
+
+          p {
+            color: @white;
+          }
+
+        }
+
+        .logo {
+
+          img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            margin: auto;
+
+            display: block;
+            padding: 10px;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            position: relative;
+          }
+        }
+
+        .discription {
+          background-color: @blue;
+        }
+      }
+    }
+  }
+}
+
+#wrapper-client {
+  background-image: url("../../Files/Images/stockImages/stock (1).jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  main {
+    padding-top: 80px;
+    width: 100%;
+    section {
+      width: calc(100% / 3%);
+      margin: 0;
+      background-color: white;
+      a {
+        .BlockLogo {
+          img {
             width: 100%;
-
-            h1 {
-              color: @white
-            }
-          }
-
-          .title-profile {
-
-            background-color: @blue;
-            width: 100%;
-
-            h1 {
-              color: @white
-            }
-
-            h2 {
-              color: @white;
-            }
-          }
-
-          .content {
-            width: 100%;
-            background-color: @offwhite;
-
-            h3 {
-              color: @white;
-            }
-
-            p {
-              color: @white;
-            }
-
-          }
-
-          .logo {
-
-            img {
-              max-width: 100%;
-              max-height: 100%;
-              width: auto;
-              height: auto;
-              margin: auto;
-
-              display: block;
-              padding: 10px;
-              top: 0;
-              bottom: 0;
-              right: 0;
-              left: 0;
-              position: relative;
-            }
-          }
-
-          .discription {
-            background-color: @blue;
           }
         }
       }
     }
   }
+}
