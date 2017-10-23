@@ -750,8 +750,10 @@ function insertDesignSheet($answerPost, $sheetType, $Language, $experimentID)
 	}
 }
 
-function sendExecution($ExecutionPost, $conn)
+function sendExecution($ExecutionPost)
 {
+	global $conn;
+
     foreach ($ExecutionPost AS $ID => $Execution) {
         if ($ID == "interview") {
             $sql = "INSERT INTO Questionaire(ID, ExperimentID) VALUES (DEFAULT, 1)";
