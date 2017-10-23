@@ -1,4 +1,4 @@
-<div id="nav" class="row">
+<div id="nav">
 
 	<img id="logo" src="../../Main/Files/Images/logo.svg" class="col-md-1">
 
@@ -28,17 +28,20 @@
 	</h4>
 	<div class="input_fields col-md-4">
 		<div class="filter">
-			<input type="search" onclick="showFilter()" class="filterbtn" placeholder="Filter">
-			<div id="content" class="filter-content">
-				<a href="#">Games</a>
-				<a href="#">Navigation</a>
-				<a href="#">Fashion</a>
-			</div>
+
+			<input onkeyup="filterfunction()" id="input" type="text" class="filterbtn" placeholder="Filter">
+
+            <ul id="content" class="filter-content">
+                <li><a href="#">Games</a></li>
+                <li><a href="#">Navigation</a></li>
+                <li><a href="#">Fashion</a></li>
+            </ul>
+
 		</div>
 
 		<div id="searchdiv">
 
-			<input type="search" id="searchbar" placeholder="Search for Experiment">
+			<input type="text" id="searchbar" placeholder="Search for Experiment">
 
 		</div>
 	</div>
