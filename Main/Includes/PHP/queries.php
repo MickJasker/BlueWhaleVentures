@@ -11,7 +11,7 @@ function checkEmailAvailability($email)
 {
 	$sql = "SELECT Email FROM Login WHERE Email = '$email'";
 
-	if (!query($sql))
+	if (query($sql))
 	{
 		return false;
 	}
@@ -19,7 +19,7 @@ function checkEmailAvailability($email)
 	{
 		$sql = "SELECT Email FROM RegisterKey WHERE Email = '$email'";
 
-		if (!query($sql))
+		if (query($sql))
 		{
 			return false;
 		}
