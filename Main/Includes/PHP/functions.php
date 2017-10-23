@@ -118,13 +118,22 @@ function uploadCheck($file_name, $file_tmp_name, $file_size, $type, $target_dir)
 		// Allow certain file formats
 		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 		&& $imageFileType != "gif" && $imageFileType != "JPG" && $imageFileType != "PNG" && $imageFileType != "JPEG"
-		&& $imageFileType != "GIF") 
+		&& $imageFileType != "GIF")
 		{
 		    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
 		    $uploadok = 0;
 		}
 	}
-	
+    else if ($type == "video")
+    {
+        // Allow certain file formats
+        if($imageFileType != "mp4")
+        {
+            echo "Sorry, only MP4 files are allowed.";
+            $uploadok = 0;
+        }
+    }
+
 	// Check if $uploadOk is set to 0 by an error
 	if ($uploadok == 0) 
 	{

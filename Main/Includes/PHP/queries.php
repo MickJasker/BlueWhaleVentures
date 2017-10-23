@@ -793,10 +793,6 @@ function insertPitch($Text, $PitchID) {
 
 function insertPrototype($ImagePath, $Explain, $PrototypeID) {
 
-    echo $ImagePath;
-    echo $Explain;
-    echo $PrototypeID;
-
     $sql = "INSERT INTO Explanation(PrototypeID, Media, Text) VALUES ('$PrototypeID', '$ImagePath', '$Explain') ";
     if (Query($sql))
     {
@@ -807,6 +803,69 @@ function insertPrototype($ImagePath, $Explain, $PrototypeID) {
         return false;
     }
 
+}
+
+function updatePitch($VideoPath, $Preparation, $Conclusion) {
+
+    $sql = "UPDATE Pitch SET Preparation = '$Preparation', Media = '$VideoPath', Conclusion = '$Conclusion' WHERE ExperimentID = 1";
+    if (Query($sql))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+}
+
+function selectPitch($ExperimentID)
+{
+    $sql = "SELECT Preparation, Media, Conclusion FROM Pitch WHERE ExperimentID = '$ExperimentID'";
+
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+            $Preparation = $row["Preparation"];
+            $Media = $row["Media"];
+            $Conclusion = $row["Conclusion"];
+
+            ?>
+
+            Preparation: <br/>
+            <textarea name="preparationText" placeholder="Prepare for your pitch"><?php echo $Preparation?></textarea>
+
+            <input type="file" name="file1" id="fileToUpload">
+
+
+            <?php
+
+            if ($Media != "") {
+
+                ?>
+
+                <video controls>
+                    <source src="<?php echo $Media ?>" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video> <br/>
+
+                <?php
+
+            }
+            else {
+
+            }
+
+            ?>
+
+            Conclusion: <br/>
+            <textarea name="conclusionText" placeholder="Conclusion of your pitch"><?php echo $Conclusion?></textarea> <br/>
+            <input type="submit" name="save" value="Save">
+
+            <?php
+        }
+    }
 }
 
 ?>
