@@ -606,7 +606,7 @@ function insertExperiment($CompanyID, $Title, $Thumbnail, $Description)
 	return $data;
 }
 
-function insertQuestion($QuestionPost) 
+function insertQuestion($QuestionPost, $ExecutionID)
 {
     foreach ($QuestionPost AS $ID => $Question) 
     {
@@ -624,17 +624,17 @@ function insertQuestion($QuestionPost)
 		{
 			if($Question != "Save")
 			{
-                $sql = "INSERT INTO Question(QuestionaireID, Question) VALUES (2,'$Question')";
+                $sql = "INSERT INTO Question(QuestionaireID, Question) VALUES ($ExecutionID,'$Question')";
                 Query($sql);
 			}
 		}
     }
 }
 
-function SelectQuestion() {
+function SelectQuestion($ExecutionID) {
 
     $sql = "SELECT ID, Question FROM Question
-            WHERE QuestionaireID = 2";
+            WHERE QuestionaireID = $ExecutionID";
 
     $i = 0;
     if($data = Query($sql))
@@ -658,16 +658,16 @@ function SelectQuestion() {
 
 function updateAdminProfile($ID, $AdminName, $AdminPic, $AdminLang)
 {
-	if(is_null($adminPic))
+	if(is_null($AdminPic))
 	{
 		$sql = "UPDATE User
-		SET Name = '$AdminName', Language = '$adminLang'
+		SET Name = '$AdminName', Language = '$AdminLang'
 		WHERE ID = '$ID'";
 	}
 	else
 	{
 		$sql = "UPDATE User 
-		SET Name = '$AdminName', ProfilePicture = '$AdminPic', Language = '$adminLang'
+		SET Name = '$AdminName', ProfilePicture = '$AdminPic', Language = '$AdminLang'
 		WHERE ID = '$ID'";
 	}
 }
@@ -739,4 +739,33 @@ function insertDesignSheet($textArray, $sheetType, $Language, $experimentID)
 	}
 }
 
+function sendExecution($ExecutionPost, $conn)
+{
+    foreach ($ExecutionPost AS $ID => $Execution) {
+        if ($ID == "interview") {
+            $sql = "INSERT INTO Questionaire(ID, ExperimentID) VALUES (DEFAULT, 1)";
+            Query($sql);
+
+            $_SESSION['insertedID'] = mysqli_insert_id($conn);
+            header('Location: ../../Client_Portal/Pages/newInterview.php');
+
+        }
+
+        if ($ID == "pitch") {
+            $sql = "INSERT INTO Pitch(ID, ExperimentID) VALUES (DEFAULT, 1)";
+            Query($sql);
+
+            $_SESSION['insertedID'] = mysqli_insert_id($conn);
+
+        }
+
+        if ($ID == "prototype") {
+            $sql = "INSERT INTO Prototype(ID, ExperimentID) VALUES (DEFAULT, 1)";
+            Query($sql);
+
+            $_SESSION['insertedID'] = mysqli_insert_id($conn);
+
+        }
+    }
+}
 ?>
