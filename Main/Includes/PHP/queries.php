@@ -750,13 +750,13 @@ function insertDesignSheet($answerPost, $sheetType, $Language, $experimentID)
 	}
 }
 
-function sendExecution($ExecutionPost)
+function sendExecution($ExecutionPost, $ExperimentID)
 {
 	global $conn;
 
     foreach ($ExecutionPost AS $ID => $Execution) {
         if ($ID == "interview") {
-            $sql = "INSERT INTO Questionaire(ID, ExperimentID) VALUES (DEFAULT, 1)";
+            $sql = "INSERT INTO Questionaire(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
             $_SESSION['insertedID'] = mysqli_insert_id($conn);
@@ -765,7 +765,7 @@ function sendExecution($ExecutionPost)
         }
 
         if ($ID == "pitch") {
-            $sql = "INSERT INTO Pitch(ID, ExperimentID) VALUES (DEFAULT, 1)";
+            $sql = "INSERT INTO Pitch(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
             $_SESSION['insertedID'] = mysqli_insert_id($conn);
@@ -774,7 +774,7 @@ function sendExecution($ExecutionPost)
         }
 
         if ($ID == "prototype") {
-            $sql = "INSERT INTO Prototype(ID, ExperimentID) VALUES (DEFAULT, 1)";
+            $sql = "INSERT INTO Prototype(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
             $_SESSION['insertedID'] = mysqli_insert_id($conn);
