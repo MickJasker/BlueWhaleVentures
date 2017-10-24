@@ -1073,4 +1073,17 @@ function selectPrototype($ExperimentID) {
     return $OldArray;
 }
 
+function updatePrototype($ExperimentID, $Media1, $Explanation1, $Media2, $Explanation2) {
+
+    $sql = "UPDATE Prototype SET Media1 = '$Media1', Explanation1 = '$Explanation1', Media2 = '$Media2', Explanation2 = '$Explanation2' WHERE ExperimentID = '$ExperimentID'";
+    if (Query($sql))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 ?>
