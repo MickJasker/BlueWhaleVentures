@@ -496,7 +496,7 @@ body {
   }
 }
 
-#wrapper-client {
+/*#wrapper-client {
   background-image: url("../../Files/Images/stockImages/stock (1).jpg");
   background-size: cover;
   background-attachment: fixed;
@@ -543,6 +543,59 @@ body {
           }
         }
 
+      }
+    }
+  }
+}*/
+
+#wrapper-experiment {
+  background-image: url("../../Files/Images/stockImages/stock (15).jpg");
+  background-size: cover;
+  #wrapper-createExperiment {
+    padding-top: 80px;
+    .row {
+      section {
+        background-color: rgba(0, 153, 255, 0.9);
+        height: calc(~"100vh - 80px");
+        div {
+          background-color: @offwhite;
+          margin: 100px;
+          padding: 30px;
+          form {
+            input {
+              padding: 5px;
+              border: none;
+              color: @gray;
+              margin-top: 5px;
+            }
+            label {
+              padding: 5px;
+              background-color: @blue;
+              color: white;
+              margin-top: 5px;
+              transition: 0.3s ease;
+              &:hover {
+                background-color: @gray;
+                transition: 0.3s ease;
+                cursor: pointer;
+              }
+            }
+            #button {
+              padding: 5px;
+              background-color: @blue;
+              color: white;
+              margin-top: 5px;
+              transition: 0.3s ease;
+              &:hover {
+                background-color: @gray;
+                transition: 0.3s ease;
+              }
+            }
+            #file1 {
+              display: none;
+            }
+          }
+        }
       }
     }
   }

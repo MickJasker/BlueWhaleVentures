@@ -15,23 +15,24 @@ CheckSession("Client");
         ?>
     </header>
         <Main id="wrapper-admin">
-            <section id="Block">
-                <a href="createExperiment.php">
-                    <div class="BlockLogo">
-                        <img src="../../Main/Files/Images/blue_plus.png" alt="Add Client">
-                    </div>
-                    <div class="BlockTitle">
-                        <h1> Add Experiment </h1>
-                    </div>
-                </a>
-            </section>
+            <div class="row">
+                <section id="Block">
+                    <a href="createExperiment.php">
+                        <div class="BlockLogo">
+                            <img src="../../Main/Files/Images/blue_plus.png" alt="Add Client">
+                        </div>
+                        <div class="BlockTitle">
+                            <h1> Add Experiment </h1>
+                        </div>
+                    </a>
+                </section>
 
-            <?php
+                <?php
 
-            getExperimentBlockInfo(7);
+                getExperimentBlockInfo(7);
 
-            ?>
-
+                ?>
+            </div>
         </Main>
     </body>
 </html>
