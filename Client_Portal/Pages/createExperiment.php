@@ -62,7 +62,7 @@ checkSession('Company');
 							//upload data to the database
 							if ($experimentId = createExperiment($title, $description, $imagepath, $companyid))
 							{
-								header("Location: createDesignSheet.php?experimentId=" . $experimentId);
+								header("Location: createDesignSheet.php?experimentID=" . $experimentId);
 							}
 							else
 							{
