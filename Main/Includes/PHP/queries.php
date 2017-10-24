@@ -439,7 +439,7 @@ function getCompanyBlockInfo()
 
             ?>
 
-            <section id="Block">
+            <li id="Block" class="col-lg-4">
                 <a href="../../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                             <img src="../../<?php echo $Logo ?>" alt="Company Logo">
@@ -448,7 +448,7 @@ function getCompanyBlockInfo()
                         <h1> <?php echo $Name ?> </h1>
                     </div>
                 </a>
-            </section>
+            </li>
 
             <?php
         }
@@ -549,7 +549,7 @@ function getMentorBlockInfo()
 
             ?>
 
-            <section id="Block">
+            <li id="Block" class="col-lg-4">
                 <a href="../../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                             <img src="../../<?php echo $ProfilePicture; ?>" alt="Mentor Profile">
@@ -558,7 +558,7 @@ function getMentorBlockInfo()
                         <h1> <?php echo $Name ?> </h1>
                     </div>
                 </a>
-            </section>
+            </li>
 
             <?php
         }
@@ -586,7 +586,7 @@ function getExperimentBlockInfo($UserID)
 
             ?>
 
-            <section id="Block">
+            <li id="Block" class="col-lg-4">
                 <a href="../../Client_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
@@ -595,7 +595,7 @@ function getExperimentBlockInfo($UserID)
                         <h1> <?php echo $Title ?> </h1>
                     </div>
                 </a>
-            </section>
+            </li>
 
             <?php
         }
@@ -621,7 +621,7 @@ function getMentorAssignedBlockInfo($UserID)
 
             ?>
 
-            <section id="Block">
+            <li id="Block" class="col-lg-4">
                 <a href="../../../Client_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <img src="../../<?php echo $Logo ?>" alt="Mentor Profile">
@@ -630,7 +630,7 @@ function getMentorAssignedBlockInfo($UserID)
                         <h1> <?php echo $Name ?> </h1>
                     </div>
                 </a>
-            </section>
+            </li>
 
             <?php
         }
