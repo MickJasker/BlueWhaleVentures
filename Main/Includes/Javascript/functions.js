@@ -13,3 +13,8 @@ function editPage(textareas)
 	document.getElementById("edit1").style.display = 'none';
     document.getElementById("submit1").type = 'submit';
 }
+
+function sendHeader(path)
+{
+	location.replace(path);
+}

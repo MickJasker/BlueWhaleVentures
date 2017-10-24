@@ -455,6 +455,83 @@ function getCompanyBlockInfo()
     }
 }
 
+//Get experiment info
+function getExperiment($id)
+{	
+	$header = "designSheet.php";
+	$name = "";
+	
+	$sql = "SELECT ID, Preparation FROM Pitch WHERE ExperimentID = '$id'";
+	if ($data = query($sql))
+	{
+		while($row = $data->fetch_assoc())
+		{
+			if ($row["Preparation"] == "")
+			{
+				$name = "New pitch";
+				$header = "newPitch.php";
+			}
+			else
+			{
+				$name = "Pitch";
+				$header = "Pitch.php";
+			}
+		}
+	}
+	
+	
+	$questionaire = "0";
+
+	$sql = "SELECT ID FROM Questionaire WHERE ExperimentID = '$id'";
+	if ($data = query($sql))
+	{
+		$questionaireID = "";
+		$name = "Add an interview";
+		$header = "newInterview.php";
+		while($row = $data->fetch_assoc())
+		{
+				$questionaireID = $row["ID"];
+		}
+		
+		$sql = "SELECT `Question` FROM `Question` WHERE `QuestionaireID` = '$questionaireID'";
+		if ($data2 = query($sql))
+		{
+			$name = "Interview";
+			$header = "Interview.php";
+		}
+	}
+	
+	
+	
+	$sql = "SELECT ID FROM Prototype WHERE ExperimentID = '$id'";
+	if ($data = query($sql))
+	{
+		
+	}
+	
+	$sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
+	if($data = query($sql))
+	{
+		while($row = $data->fetch_assoc())
+		{
+			$header = $header . "?experimentID=" . $id;
+			//echo $row["Title"];
+			echo '<h1>' . $row["Title"] . '</h1>';
+			echo '<p>' . $row["Description"] .  '</p>';
+			echo '<p> Progress: ' . $row["Progress"] . '</p>';
+			echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
+			echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
+			echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
+			echo '<button> Results </button>';
+			echo '<button> Results sheet </button>';
+		}
+	}
+	else
+	{
+		return false;
+	}
+}
+
 //Admin portal blokken
 function getMentorBlockInfo()
 {
