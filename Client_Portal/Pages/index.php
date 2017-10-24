@@ -28,7 +28,7 @@ CheckSession("Client");
 
             <?php
 
-            getExperimentBlockInfo(7);
+            getExperimentBlockInfo(12);
 
             ?>
 
