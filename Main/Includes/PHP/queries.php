@@ -1043,6 +1043,7 @@ function selectPrototype($ExperimentID) {
             ?>
 
             <textarea name="explanation2" placeholder="Explain your prototype."><?php echo $Explanation2?></textarea> <br/>
+            <input type="submit" name="save" value="Save">
 
         <?php
         }
