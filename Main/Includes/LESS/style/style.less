@@ -121,7 +121,9 @@ body {
   }
 
   .row {
-   
+    margin: 5% 0 5% 0;
+    display: flex;
+    justify-content: space-between;
   }
 
   #Block {
@@ -130,6 +132,8 @@ body {
     height: 33vh;
     width: 31%;
     position: relative;
+    list-style-type: none;
+
 
     .BlockLogo {
       background-color: @offwhite;
@@ -492,7 +496,7 @@ body {
   }
 }
 
-#wrapper-client {
+/*#wrapper-client {
   background-image: url("../../Files/Images/stockImages/stock (1).jpg");
   background-size: cover;
   background-attachment: fixed;
@@ -506,12 +510,13 @@ body {
       position: relative;
       display: inline-block;
       margin: 15px;
+
       a {
         .BlockLogo {
           img {
             background-color: @offwhite;
             width: auto;
-            height: 80%;
+            height: 30vh;
             position: relative;
             border: solid;
             border-color: @grey;
@@ -538,6 +543,59 @@ body {
           }
         }
 
+      }
+    }
+  }
+}*/
+
+#wrapper-experiment {
+  background-image: url("../../Files/Images/stockImages/stock (15).jpg");
+  background-size: cover;
+  #wrapper-createExperiment {
+    padding-top: 80px;
+    .row {
+      section {
+        background-color: rgba(0, 153, 255, 0.9);
+        height: calc(~"100vh - 80px");
+        div {
+          background-color: @offwhite;
+          margin: 100px;
+          padding: 30px;
+          form {
+            input {
+              padding: 5px;
+              border: none;
+              color: @gray;
+              margin-top: 5px;
+            }
+            label {
+              padding: 5px;
+              background-color: @blue;
+              color: white;
+              margin-top: 5px;
+              transition: 0.3s ease;
+              &:hover {
+                background-color: @gray;
+                transition: 0.3s ease;
+                cursor: pointer;
+              }
+            }
+            #button {
+              padding: 5px;
+              background-color: @blue;
+              color: white;
+              margin-top: 5px;
+              transition: 0.3s ease;
+              &:hover {
+                background-color: @gray;
+                transition: 0.3s ease;
+              }
+            }
+            #file1 {
+              display: none;
+            }
+          }
+        }
       }
     }
   }

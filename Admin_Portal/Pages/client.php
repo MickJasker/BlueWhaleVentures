@@ -1,6 +1,7 @@
+<ul class="list">
 <div class="row">
 
-    <section id="Block" class="col-lg-4">
+    <li id="Block" class="col-lg-4">
         <a href="#">
             <div class="BlockLogo">
                 <img src="../../Main/Files/Images/add.svg" alt="Add Client">
@@ -9,9 +10,9 @@
                 <h1> Add Client </h1>
             </div>
         </a>
-    </section>
+    </li>
 
-    <section id="Block" class="col-lg-4">
+    <li id="Block" class="col-lg-4">
         <a href="#">
             <div class="BlockLogo">
                 <img src="../../Main/Files/Images/google.png" alt="Add Client">
@@ -20,9 +21,9 @@
                 <h1> Google </h1>
             </div>
         </a>
-    </section>
+    </li>
 
-    <section id="Block" class="col-lg-4">
+    <li id="Block" class="col-lg-4">
         <a href="#">
             <div class="BlockLogo">
                 <img src="../../Main/Files/Images/amazon.png" alt="Add Client">
@@ -31,13 +32,13 @@
                 <h1> Amazon </h1>
             </div>
         </a>
-    </section>
+    </li>
 
 </div>
 
 <div class="row">
 
-    <section id="Block" class="col-lg-4">
+    <li id="Block" class="col-lg-4">
         <a href="#">
             <div class="BlockLogo">
                 <img src="../../Main/Files/Images/poliana.png" alt="Add Client">
@@ -46,9 +47,9 @@
                 <h1> Poliana </h1>
             </div>
         </a>
-    </section>
+    </li>
 
-    <section id="Block" class="col-lg-4">
+    <li id="Block" class="col-lg-4">
         <a href="#">
             <div class="BlockLogo">
                 <img src="../../Main/Files/Images/microsoft.png" alt="Add Client">
@@ -57,9 +58,9 @@
                 <h1> Microsoft </h1>
             </div>
         </a>
-    </section>
+    </li>
 
-    <section id="Block" class="col-lg-4">
+    <li id="Block" class="col-lg-4">
         <a href="#">
             <div class="BlockLogo">
                 <img src="../../Main/Files/Images/paypal.png" alt="Add Client">
@@ -68,13 +69,13 @@
                 <h1> PayPal </h1>
             </div>
         </a>
-    </section>
+    </li>
 
 </div>
 
 <div class="row">
 
-    <section id="Block" class="col-lg-4">
+    <li id="Block" class="col-lg-4">
         <a href="#">
             <div class="BlockLogo">
                 <img src="../../Main/Files/Images/poliana.png" alt="Add Client">
@@ -83,9 +84,9 @@
                 <h1> Poliana </h1>
             </div>
         </a>
-    </section>
+    </li>
 
-    <section id="Block" class="col-lg-4">
+    <li id="Block" class="col-lg-4">
         <a href="#">
             <div class="BlockLogo">
                 <img src="../../Main/Files/Images/microsoft.png" alt="Add Client">
@@ -94,9 +95,10 @@
                 <h1> Microsoft </h1>
             </div>
         </a>
-    </section>
+    </li>
 
 </div>
+</ul>
 
 
 

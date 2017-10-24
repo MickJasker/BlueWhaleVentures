@@ -32,20 +32,17 @@
 			<input onkeyup="filterfunction()" id="input" type="text" class="filterbtn" placeholder="Filter">
 
             <ul id="content" class="filter-content">
-                <li><a href="#">Games</a></li>
-                <li><a href="#">Navigation</a></li>
-                <li><a href="#">Fashion</a></li>
+                <li><a href="#" onclick="showhtml()">Games</a></li>
+                <li><a href="#" onclick="showhtml()">Navigation</a></li>
+                <li><a href="#" onclick="showhtml()">Fashion</a></li>
             </ul>
 
 		</div>
 
 		<div id="searchdiv">
 
-			<input type="text" id="searchbar" placeholder="Search for Experiment">
+			<input onkeyup="searchbarfunction()" type="text" id="searchbar" placeholder="Search for Experiment">
 
 		</div>
 	</div>
-
-
-
 </div>

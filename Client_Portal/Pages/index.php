@@ -8,30 +8,30 @@ CheckSession("Client");
     <title> Client Portal </title>
     <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 </head>
-    <body id="wrapper-client">
-    <header class="row wrapper-nav">
+<body id="wrapper-admin-body">
+<header class="row wrapper-nav">
+    <?php
+    require "../../Main/Includes/nav.php"
+    ?>
+</header>
+<Main id="wrapper-admin">
+    <div class="row">
+        <section id="Block">
+            <a href="createExperiment.php">
+                <div class="BlockLogo">
+                    <img src="../../Main/Files/Images/blue_plus.png" alt="Add Client">
+                </div>
+                <div class="BlockTitle">
+                    <h1> Add Experiment </h1>
+                </div>
+            </a>
+        </section>
+
         <?php
-        require "../../Main/Includes/nav.php"
+        getExperimentBlockInfo(12);
+
         ?>
-    </header>
-        <Main>
-            <section id="Block">
-                <a href="createExperiment.php">
-                    <div class="BlockLogo">
-                        <img src="../../Main/Files/Images/blue_plus.png" alt="Add Client">
-                    </div>
-                    <div class="BlockTitle">
-                        <h1> Add Experiment </h1>
-                    </div>
-                </a>
-            </section>
-
-            <?php
-
-            getExperimentBlockInfo(12);
-
-            ?>
-
-        </Main>
-    </body>
+    </div>
+</Main>
+</body>
 </html>

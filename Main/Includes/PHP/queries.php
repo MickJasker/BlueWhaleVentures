@@ -883,6 +883,8 @@ function sendExecution($ExecutionPost, $ExperimentID)
             Query($sql);
 
             $_SESSION['insertedID'] = mysqli_insert_id($conn);
+            header('Location: ../../Client_Portal/Pages/newPitch.php');
+
 
         }
 
@@ -891,6 +893,8 @@ function sendExecution($ExecutionPost, $ExperimentID)
             Query($sql);
 
             $_SESSION['insertedID'] = mysqli_insert_id($conn);
+            header('Location: ../../Client_Portal/Pages/newPrototype.php?experimentID=' . $ExperimentID);
+
 
         }
     }
@@ -903,9 +907,11 @@ function insertPitch($Text, $PitchID) {
 
 }
 
-function insertPrototype($ImagePath, $Explain, $PrototypeID) {
+function insertPrototype($ImagePath, $Explain, $ExperimentID) {
 
-    $sql = "INSERT INTO Explanation(PrototypeID, Media, Text) VALUES ('$PrototypeID', '$ImagePath', '$Explain') ";
+    $sql = "UPDATE Prototype SET Media1 = '$ImagePath', Explanation1 = '$Explain' WHERE ExperimentID = '$ExperimentID'";
+
+
     if (Query($sql))
     {
         return true;
@@ -978,5 +984,73 @@ function selectPitch($ExperimentID)
             <?php
         }
     }
+    return $Media;
 }
+
+function selectPrototype($ExperimentID) {
+
+    $OldArray = array();
+
+    $sql = "SELECT Media1, Explanation1, Media2, Explanation2 FROM Prototype WHERE ExperimentID = '$ExperimentID'";
+
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+            $Media1 = $row["Media1"];
+            $Explanation1 = $row["Explanation1"];
+            $Media2 = $row["Media2"];
+            $Explanation2 = $row["Explanation2"];
+
+
+            ?>
+
+            <input type="file" name="file1" id="fileToUpload">
+
+            <?php
+
+            if ($Media1 != "") {
+                array_push($OldArray,$Media1);
+
+                ?>
+
+
+                <img src="<?php echo $Media1 ?>" alt="Prototype 1">
+
+                <?php
+
+            }
+            ?>
+
+
+            <textarea name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br/>
+
+            <input type="file" name="file2" id="fileToUpload2">
+
+            <?php
+
+            if ($Media2 != "") {
+                array_push($OldArray,$Media2);
+
+                ?>
+
+
+                <img src="<?php echo $Media2 ?>" alt="Prototype 2">
+
+                <?php
+
+            }
+            ?>
+
+            <textarea name="explanation2" placeholder="Explain your prototype."><?php echo $Explanation2?></textarea> <br/>
+
+        <?php
+
+
+        }
+    }
+
+    return $OldArray;
+}
+
 ?>

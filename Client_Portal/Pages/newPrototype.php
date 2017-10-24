@@ -32,7 +32,7 @@ require '../../Main/Includes/PHP/functions.php';
             if ($upload)
             {
                 //upload data to the database
-                if (insertPrototype($imagepath ,$_POST['explanationText'], $_SESSION['insertedID']))
+                if (insertPrototype($imagepath ,$_POST['explanationText'], $_GET["experimentID"]))
                 {
                     //header("Location: ");
                 }

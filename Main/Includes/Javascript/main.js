@@ -33,7 +33,7 @@ function filterfunction() {
     filter = input.value.toUpperCase();
     ul = document.getElementById("content");
     li = ul.getElementsByTagName("li");
-    var input = document.getElementById('input').value;
+    var text = document.getElementById('input').value;
 
     for (i = 0; i < li.length; i++) {
         a = li[i].getElementsByTagName("a")[0];
@@ -44,10 +44,26 @@ function filterfunction() {
         }
     }
 
-    if(input != ""){
+    if(text != ""){
         document.getElementById("content").classList.add("show");
-        console.log(input);
-    }else if(input == ""){
+    }else if(text == ""){
         document.getElementById("content").classList.remove("show");
+    }
+}
+
+function searchbarfunction(){
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("searchbar");
+    filter = input.value.toUpperCase();
+    ul = document.getElementsByClassName("list")[0];
+    li = ul.getElementsByTagName("li");
+
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("h1")[0];
+        if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
     }
 }
