@@ -1,4 +1,5 @@
-<ul class="row">
+<ul class="list">
+<div class="row">
 
     <li id="Block" class="col-lg-4">
         <a href="#">
@@ -33,9 +34,9 @@
         </a>
     </li>
 
-</ul>
+</div>
 
-<ul class="row">
+<div class="row">
 
     <li id="Block" class="col-lg-4">
         <a href="#">
@@ -70,9 +71,9 @@
         </a>
     </li>
 
-</ul>
+</div>
 
-<ul class="row">
+<div class="row">
 
     <li id="Block" class="col-lg-4">
         <a href="#">
@@ -96,6 +97,7 @@
         </a>
     </li>
 
+</div>
 </ul>
 
 

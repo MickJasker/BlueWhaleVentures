@@ -46,7 +46,6 @@ function filterfunction() {
 
     if(text != ""){
         document.getElementById("content").classList.add("show");
-        console.log(input);
     }else if(text == ""){
         document.getElementById("content").classList.remove("show");
     }
@@ -56,12 +55,11 @@ function searchbarfunction(){
     var input, filter, ul, li, a, i;
     input = document.getElementById("searchbar");
     filter = input.value.toUpperCase();
-    ul = document.getElementById("row");
+    ul = document.getElementsByClassName("list")[0];
     li = ul.getElementsByTagName("li");
 
     for (i = 0; i < li.length; i++) {
         a = li[i].getElementsByTagName("h1")[0];
-        console.log(a);
         if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
             li[i].style.display = "";
         } else {
