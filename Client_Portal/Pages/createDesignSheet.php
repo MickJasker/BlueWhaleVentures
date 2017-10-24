@@ -10,7 +10,7 @@ checkSession('Company');
 	<body id="wrapper-admin">
 		<Main>
 			<?php
-				getDesignSheetForm();
+				getDesignSheetForm("Experiment", $_SESSION['Language']);
 				if (isset($_POST['submitDesignsheet']))
 				{
 					$experimentId = $_GET['experimentID'];

@@ -9,11 +9,12 @@ require '../../Main/Includes/PHP/functions.php';
 </head>
     <body id="wrapper-admin">
 		<h1> Experiment 2</h1>
-		<p> Experiment description , thumbnail? </p>
+		<p> Experiment description </p>
 		<p> Progress: </p>
 		<p> Reviewscore: </p>
-		<button> Edit design sheet </button>
-		<button> Add / Edit questionaire / pitch / prototype </button>
-		<button> Add / Edit results </button> 
+		<a href ="designSheet.php"><button> Design sheet </button></a>
+		<button> Questionaire / pitch / prototype </button>
+		<button> Results </button> 
+		<button> Results sheet </button> 
 	</body>
 </html>
