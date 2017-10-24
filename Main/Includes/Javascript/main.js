@@ -3,6 +3,7 @@ function selectclientormentor(){
 
     var client = document.getElementById("client");
     var mentor = document.getElementById("mentor");
+    var searchbar = document.getElementById("searchbar");
 
     mentor.classList.toggle("blue");
     client.classList.toggle("blue");
@@ -13,6 +14,7 @@ function selectclientormentor(){
             $('#wrapper-admin').fadeOut(500, function(){
                 $('#wrapper-admin' ).html( data );
                 $('#wrapper-admin').fadeIn(500);
+                searchbar.placeholder = "Search for Experiment";
             });
         });
     }else if(mentor.className === 'blue'){
@@ -21,6 +23,7 @@ function selectclientormentor(){
             $('#wrapper-admin').fadeOut(500, function(){
                 $('#wrapper-admin' ).html( data );
                 $('#wrapper-admin').fadeIn(500);
+                searchbar.placeholder = "Search for Mentor";
             });
         });
     }
