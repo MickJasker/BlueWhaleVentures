@@ -461,20 +461,25 @@ function getExperiment($id)
 	$header = "designSheet.php";
 	$name = "";
 	
-	$sql = "SELECT ID, Preparation FROM Pitch WHERE ExperimentID = '$id'";
+	$sql = "SELECT Preparation, Conclusion FROM Pitch WHERE ExperimentID = '$id'";
 	if ($data = query($sql))
 	{
 		while($row = $data->fetch_assoc())
 		{
 			if ($row["Preparation"] == "")
 			{
-				$name = "New pitch";
+				$name = "Add a pitch";
 				$header = "newPitch.php";
+			}
+			else if ($row["Conclusion"] == "")
+			{
+				$name = "Add the conclusion";
+				$header = "pitch.php";
 			}
 			else
 			{
-				$name = "Pitch";
-				$header = "Pitch.php";
+				$name = "View the results";
+				$header = "pitch.php";
 			}
 		}
 	}
@@ -503,10 +508,27 @@ function getExperiment($id)
 	
 	
 	
-	$sql = "SELECT ID FROM Prototype WHERE ExperimentID = '$id'";
+	$sql = "SELECT Explanation1, Explanation2 FROM Prototype WHERE ExperimentID = '$id'";
 	if ($data = query($sql))
 	{
-		
+		while($row = $data->fetch_assoc())
+		{
+			if ($row["Explanation1"] == "")
+			{
+				$name = "Add a prototype";
+				$header = "newPrototype.php";
+			}
+			else if ($row["Explanation2"] == "")
+			{
+				$name = "Add the prototype result";
+				$header = "prototype.php";
+			}
+			else
+			{
+				$name = "View the results";
+				$header = "prototype.php";
+			}
+		}
 	}
 	
 	$sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
@@ -523,7 +545,7 @@ function getExperiment($id)
 			echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
 			echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
 			echo '<button> Results </button>';
-			echo '<a href ="resultSheet.php?experimentid=<?php echo $_GET["id"];?>"><button> Results sheet </button> ';
+			echo '<a href="resultSheet.php?experimentid='.$_GET["id"].'"><button> Results sheet </button> </a>';
 		}
 	}
 	else
