@@ -806,6 +806,8 @@ function sendExecution($ExecutionPost, $ExperimentID)
             Query($sql);
 
             $_SESSION['insertedID'] = mysqli_insert_id($conn);
+            header('Location: ../../Client_Portal/Pages/newPitch.php');
+
 
         }
 
@@ -814,6 +816,8 @@ function sendExecution($ExecutionPost, $ExperimentID)
             Query($sql);
 
             $_SESSION['insertedID'] = mysqli_insert_id($conn);
+            header('Location: ../../Client_Portal/Pages/newPrototype.php');
+
 
         }
     }
