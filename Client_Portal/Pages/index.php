@@ -8,13 +8,13 @@ CheckSession("Client");
     <title> Client Portal </title>
     <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 </head>
-    <body id="wrapper-client">
+    <body id="wrapper-admin-body">
     <header class="row wrapper-nav">
         <?php
         require "../../Main/Includes/nav.php"
         ?>
     </header>
-        <Main>
+        <Main id="wrapper-admin">
             <section id="Block">
                 <a href="createExperiment.php">
                     <div class="BlockLogo">
