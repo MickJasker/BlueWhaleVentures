@@ -1027,7 +1027,7 @@ function selectPrototype($ExperimentID) {
 
             ?>
 
-            <input type="file" name="file1" id="fileToUpload">
+            <input id="file2" type="hidden" name="file1" id="fileToUpload">
 
             <?php
 
@@ -1045,9 +1045,9 @@ function selectPrototype($ExperimentID) {
             ?>
 
 
-            <textarea name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br/>
+            <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br/>
 
-            <input type="file" name="file2" id="fileToUpload2">
+            <input id="file3" type="hidden" name="file2" id="fileToUpload2">
 
             <?php
 
@@ -1064,8 +1064,8 @@ function selectPrototype($ExperimentID) {
             }
             ?>
 
-            <textarea name="explanation2" placeholder="Explain your prototype."><?php echo $Explanation2?></textarea> <br/>
-            <input type="submit" name="save" value="Save">
+            <textarea disabled class="textarea1" name="explanation2" placeholder="Explain your prototype."><?php echo $Explanation2?></textarea> <br/>
+            <input id="submit1" type="hidden" name="save" value="Save">
 
         <?php
         }

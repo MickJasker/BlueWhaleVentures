@@ -9,10 +9,18 @@ function editPage(textareas, type)
 		x[i].disabled = false;
 		i++;
 	}
-	 if (type == "pitch")
-	 {
+	
+	if (type == "pitch")
+	{
 		document.getElementById("file1").type = 'file';
-	 }
+	}
+	 
+	if (type == "prototype")
+	{
+		document.getElementById("file2").type = 'file';
+		document.getElementById("file3").type = 'file';
+	}
+	 
 	document.getElementById("edit1").style.display = 'none';
     document.getElementById("submit1").type = 'submit';
 }
