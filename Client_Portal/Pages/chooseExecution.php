@@ -2,6 +2,7 @@
 require '../../Main/Includes/PHP/functions.php';
 if(isset($_POST['interview']) || isset($_POST['pitch']) || isset($_POST['prototype'])) {
     sendExecution($_POST, $_GET["experimentID"]);
+
 }
 
 ?>
