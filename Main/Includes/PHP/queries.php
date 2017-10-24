@@ -974,9 +974,9 @@ function selectPitch($ExperimentID)
             ?>
 
             Preparation: <br/>
-            <textarea name="preparationText" placeholder="Prepare for your pitch"><?php echo $Preparation?></textarea>
+            <textarea disabled class="textarea1" name="preparationText" typeplaceholder="Prepare for your pitch"><?php echo $Preparation?></textarea>
 
-            <input type="file" name="file1" id="fileToUpload">
+            <input id="file1" type="hidden" name="file1" id="fileToUpload">
 
 
             <?php
@@ -1000,8 +1000,8 @@ function selectPitch($ExperimentID)
             ?>
 
             Conclusion: <br/>
-            <textarea name="conclusionText" placeholder="Conclusion of your pitch"><?php echo $Conclusion?></textarea> <br/>
-            <input type="submit" name="save" value="Save">
+            <textarea disabled class="textarea1" name="conclusionText" placeholder="Conclusion of your pitch"><?php echo $Conclusion?></textarea> <br/>
+            <input id="submit1" type="hidden" name="save" value="Save">
 
             <?php
         }

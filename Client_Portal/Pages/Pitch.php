@@ -6,6 +6,7 @@ require '../../Main/Includes/PHP/functions.php';
 <head>
     <title> Pitch </title>
     <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
+	<script src="../../Main/Includes/Javascript/functions.js"></script>
 </head>
 <body id="wrapper-admin">
 <Main>
@@ -69,6 +70,7 @@ require '../../Main/Includes/PHP/functions.php';
             ?>
 
         </form>
+		<button id="edit1" onclick='editPage(2, "pitch")'> Edit </button>
     </div>
 </Main>
 </body>

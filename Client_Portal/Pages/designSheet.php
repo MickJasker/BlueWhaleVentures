@@ -13,6 +13,6 @@ require '../../Main/Includes/PHP/functions.php';
 		<?php
 			getDesignSheetData($_GET["experimentID"], "Experiment", $_SESSION["Language"]);
 		?>
-		<button id="edit1" onclick="editPage(7)"> Edit </button>
+		<button id="edit1" onclick='editPage(7, "designSheet")'> Edit </button>
 	</body>
 </html>
