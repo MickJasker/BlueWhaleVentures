@@ -1045,11 +1045,8 @@ function selectPrototype($ExperimentID) {
             <textarea name="explanation2" placeholder="Explain your prototype."><?php echo $Explanation2?></textarea> <br/>
 
         <?php
-
-
         }
     }
-
     return $OldArray;
 }
 
