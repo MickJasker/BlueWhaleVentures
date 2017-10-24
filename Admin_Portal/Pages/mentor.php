@@ -1,6 +1,7 @@
-<div class="row">
+<ul class="list">
+<div class="content">
 
-    <section id="Block" class="col-lg-4">
+    <li id="Block" class="col-lg-4">
         <a href="#">
             <div class="BlockLogo">
                 <img src="../../Main/Files/Images/add.svg" alt="Add Client">
@@ -9,9 +10,9 @@
                 <h1> Add Mentor </h1>
             </div>
         </a>
-    </section>
+    </li>
 
-    <section id="Block" class="col-lg-4">
+    <li id="Block" class="col-lg-4">
         <a href="#">
             <div class="BlockLogo">
                 <img src="../../Main/Files/Images/jan.jpg" alt="Add Client">
@@ -20,9 +21,9 @@
                 <h1> Jan Smeets </h1>
             </div>
         </a>
-    </section>
+    </li>
 
-    <section id="Block" class="col-lg-4">
+    <li id="Block" class="col-lg-4">
         <a href="#">
             <div class="BlockLogo">
                 <img src="../../Main/Files/Images/peter.jpg" alt="Add Client">
@@ -31,13 +32,9 @@
                 <h1> Peter van Bommel </h1>
             </div>
         </a>
-    </section>
+    </li>
 
-</div>
-
-<div class="row">
-
-    <section id="Block" class="col-lg-4">
+    <li id="Block" class="col-lg-4">
         <a href="#">
             <div class="BlockLogo">
                 <img src="../../Main/Files/Images/sanne.jpg" alt="Add Client">
@@ -46,9 +43,9 @@
                 <h1> Sanne Janssen </h1>
             </div>
         </a>
-    </section>
+    </li>
 
-    <section id="Block" class="col-lg-4">
+    <li id="Block" class="col-lg-4">
         <a href="#">
             <div class="BlockLogo">
                 <img src="../../Main/Files/Images/gerard.jpg" alt="Add Client">
@@ -57,9 +54,9 @@
                 <h1> Gerard Joling </h1>
             </div>
         </a>
-    </section>
+    </li>
 
-    <section id="Block" class="col-lg-4">
+    <li id="Block" class="col-lg-4">
         <a href="#">
             <div class="BlockLogo">
                 <img src="../../Main/Files/Images/shaniqua.jpg" alt="Add Client">
@@ -68,9 +65,10 @@
                 <h1> Shaniqua Klaassen </h1>
             </div>
         </a>
-    </section>
+    </li>
 
 </div>
+</ul>
 
 
 
