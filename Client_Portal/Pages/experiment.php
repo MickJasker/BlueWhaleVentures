@@ -12,9 +12,9 @@ require '../../Main/Includes/PHP/functions.php';
 		<p> Experiment description </p>
 		<p> Progress: </p>
 		<p> Reviewscore: </p>
-		<a href ="designSheet.php"><button> Design sheet </button></a>
+		<a href ="designSheet.php?experimentid=<?php echo $_GET["id"];?>"><button> Design sheet </button></a>
 		<button> Questionaire / pitch / prototype </button>
 		<button> Results </button> 
-		<button> Results sheet </button> 
+		<a href ="resultSheet.php?experimentid=<?php echo $_GET["id"];?>"><button> Results sheet </button> 
 	</body>
 </html>
