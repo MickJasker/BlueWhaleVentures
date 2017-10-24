@@ -523,7 +523,7 @@ function getExperiment($id)
 			echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
 			echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
 			echo '<button> Results </button>';
-			echo '<button> Results sheet </button>';
+			echo '<a href ="resultSheet.php?experimentid=<?php echo $_GET["id"];?>"><button> Results sheet </button> ';
 		}
 	}
 	else
