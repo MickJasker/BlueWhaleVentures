@@ -105,24 +105,13 @@
 
 <!--<?php
 
-//getCompanyBlockInfo();
+getCompanyBlockInfo();
 
-?>
+?>-->
 
 
-                <section id="Block" class="col-lg-4">
-                    <a href="#">
-                        <div class="BlockLogo">
-                            <img src="../../Main/Files/Images/blue_plus.png" alt="Add Client">
-                        </div>
-                        <div class="BlockTitle">
-                            <h1> Add Mentor </h1>
-                        </div>
-                    </a>
-                </section>
+<!--<?php
 
-                <?php
-
-//getMentorBlockInfo();
+getMentorBlockInfo();
 
 ?>-->
