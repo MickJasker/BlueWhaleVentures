@@ -54,12 +54,12 @@ function createSession($Email)
 	$_SESSION["Language"] =  selectUserLanguage($_SESSION["UserID"]);
 	$_SESSION["CompanyID"] = selectCompanyID($_SESSION["UserID"]);
 	
-	
+	/*
 	echo "Logged in: " . $_SESSION["LoggedIn"] . "<br>";	
 	echo "Role: " . $_SESSION["Role"] . "<br>";
 	echo "UserID: " . $_SESSION["UserID"] . "<br>";	
 	echo "CompanyID: " . $_SESSION["CompanyID"];	
-	
+	*/
 }
 
 function checkSession($AllowedRole)

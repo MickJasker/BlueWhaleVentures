@@ -78,12 +78,15 @@ function checkKey($key)
 //Creates an account
 function createAccount($role, $user_name, $company_mail, $password)
 {
+	//Insert new user account
 	$password = password_hash($password, PASSWORD_DEFAULT);
 	$sql = "INSERT INTO `User`(`RoleID`,`Language`, `Name`, `Locked`) VALUES ('$role','English','$user_name', '0')";
 	
 	if (query($sql))
 	{
+		//Select ID from new user
 		$sql = "SELECT ID FROM User WHERE Name = '$user_name'";
+
 		if($data = query($sql))
 		{	
 			while($row = $data->fetch_assoc())
@@ -93,30 +96,77 @@ function createAccount($role, $user_name, $company_mail, $password)
 			
 			if ($id != "")
 			{
+				//create new login record
 				$sql = "INSERT INTO `Login`(`UserID`, `Email`, `Password`) VALUES ('$id', '$company_mail', '$password')";
 				if (query($sql))
 				{
-					return true;
-				}
-				else
-				{
-					return false;
+					return insertRoleInfo($id);
 				}
 			}
-			else 
-			{
-				return false;
-			}
-		}
-		else
-		{
-			return false;
 		}
 	}
-	else
+
+	return false;
+}
+
+function insertRoleInfo($userID)
+{
+	$role = selectRole($userID);
+
+	if($data = query($sql))
 	{
-		return false;
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+		if ($row["Name"] == "Company")
+		{
+			return insertCompany($userID);
+		}
+
+		if ($row["Name"] == "Mentor")
+		{
+			return insertMentor($userID);
+		}
+
+		//If admin, do nothing, admin currently has no extra information
 	}
+}
+
+function insertCompany($userID)
+{
+	$sql = "INSERT INTO Company (UserID) VALUES ('$userID')";
+
+	return query($sql);
+}
+
+function insertMentor($userID)
+{
+	$sql = "INSERT INTO Mentor (UserID) VALUES ('$userID')";
+
+	return query($sql);
+}
+
+function updateCompany($UserID, $Name, $Description, $Logo, $Email, $Phone, $Address, $Branch)
+{
+	$sql = "UPDATE Company SET 
+	Name = '$Name', 
+	Description = '$Description', 
+	Logo = '$Logo', 
+	Email = '$Email',
+	Phone = '$Phone', 
+	Address = '$Address',
+	Branch = '$Branch' 
+	WHERE UserID = '$UserID'";
+
+	return query($sql);
+}
+
+function updateMentor($UserID, $CompanyName, $Phone)
+{
+	$sql = "UPDATE Mentor SET 
+	CompanyName = '$CompanyName',
+	Phone = '$Phone'
+	WHERE UserID = '$UserID'";
+
+	return query($sql);
 }
 
 //Insert generated code in the database
@@ -233,25 +283,27 @@ function getDesignSheetForm($sheetType, $language)
 }
 
 //Selects all experiment textareas etc
-function getDesignSheetData($ExperimentID, $sheetType = "Experiment", $Language = "English")
+function getDesignSheetData($ExperimentID, $sheetType, $Language)
 {
 	$sql = "SELECT SegmentID, Text  FROM `Answer` WHERE ExperimentID = '$ExperimentID' ORDER BY SegmentID";
 	if($data1 = query($sql))
 	{	
 		echo '<form method="POST" action="#">';
+		$i = 0;
 		while($row1 = $data1->fetch_assoc())
 		{
 			$id = $row1["SegmentID"];
-			$sql = "SELECT title, description FROM Segment WHERE `DesignSheetID` = '1' AND id = '$id'"; //Temp query
+
+			$sql = "SELECT s.title, s.description FROM Segment s
+			INNER JOIN DesignSheet d ON d.ID = s.DesignSheetID 
+			WHERE d.Type = '$sheetType' AND s.id = '$id'";
+
 			if($data2 = query($sql))
-			{	
-				$i = 0;
-				while($row2 = $data2->fetch_assoc())
-				{
-					echo '<h3>'.$row2["title"].'</h3>';
-					echo '<textarea disabled class="textarea1" name="input'.$i.'"  type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
-					$i++;
-				}		
+			{
+				$row2 = mysqli_fetch_array($data2,MYSQLI_ASSOC);
+				echo '<h3>'.$row2["title"].'</h3>';
+				echo '<textarea disabled class="textarea1" name="input'.$i.'"  type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
+				$i++;
 			}
 			else
 			{
@@ -428,19 +480,21 @@ function selectUserLanguage($ID)
 //Admin portal blokken
 function getCompanyBlockInfo()
 {
-    $sql = "SELECT ID, Name, Logo FROM Company";
+    $sql = "SELECT ID, Name, Logo, Branch FROM Company";
 
-    if($data = Query($sql)) {
-
-        while ($row = $data->fetch_assoc()) {
+    if($data = Query($sql)) 
+    {
+        while ($row = $data->fetch_assoc()) 
+        {
             $ID = $row["ID"];
             $Logo = $row["Logo"];
             $Name = $row["Name"];
+            $Branch = $row["Branch"];
 
             ?>
 
-            <li id="Block" class="col-lg-4">
-                <a href="../../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $ID ?>">
+            <li id="Block" class="<?php echo $Branch;?> col-lg-4">
+                <a href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                             <img src="../../<?php echo $Logo ?>" alt="Company Logo">
                     </div>
@@ -676,10 +730,11 @@ function selectCompanyMentors($CompanyID)
     	while ($row = $data->fetch_assoc())
     	{
     		?>
-			<div id="Mentorportait" >
-				<a href="../../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID'] ?>">link</a>
-				<img src="../../<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
-				<h1> <?php echo $row['Name'] ?> </h1>
+			<div class="mentor-preview col-md-3">
+				<a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID'] ?>">
+					<img src="../../<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
+					<h1> <?php echo $row['Name'] ?> </h1>
+				</a>
 			</div>
 			<?php
     	}
@@ -879,6 +934,43 @@ function insertDesignSheet($answerPost, $sheetType, $Language, $experimentID)
 			$answer = $answerArray[$counter];
 
 			$sql = "INSERT INTO Answer (SegmentID, ExperimentID, `Text`) Values ('$segment', '$experimentID', '$answer')";
+			Query($sql);
+
+			$counter++;
+		}
+	}
+}
+
+function updateDesignSheet($answerPost, $sheetType, $Language, $experimentID)
+{
+	global $conn;
+
+	//Select input field data, and put it in answerArray
+	$answerArray = array();
+	foreach ($answerPost AS $postID => $answer)
+	{
+		if ($postID != "submitDesignsheet")
+		{
+			$value = htmlentities(mysqli_real_escape_string($conn, $answer));
+			array_push($answerArray, $value);
+		}
+	}
+
+	//Select the design
+	$sql = "SELECT s.ID FROM Segment s
+	INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
+	WHERE d.Type = '$sheetType' AND d.Language = '$Language'";
+
+	if($data = Query($sql))
+	{
+		$counter = 0;
+		//Foreach segment, add a value from answerArray
+		while ($row = $data->fetch_assoc())
+		{
+			$segment = $row["ID"];
+			$answer = $answerArray[$counter];
+
+			$sql = "UPDATE Answer SET `Text` = '$answer' WHERE SegmentID = '$segment' AND experimentID = '$experimentID'";
 			Query($sql);
 
 			$counter++;

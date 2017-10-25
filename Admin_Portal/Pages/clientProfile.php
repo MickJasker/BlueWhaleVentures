@@ -1,4 +1,10 @@
-<!doctype html>
+<?php
+/*
+require '../../Main/Includes/PHP/functions.php';
+CheckSession("Client");
+*/
+?>
+<!DOCTYPE HTML>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -16,13 +22,13 @@
 			?>
 		</header>
 		<main>
-			<?php /*
+			<?php
                 require "../../Main/Includes/PHP/queries.php";
                 session_start();
                 selectCompanyInfo($_GET["ID"]);
 
                 selectCompanyMentors($_GET["ID"]);
-            */ ?>
+             ?>
             
             <div class="wrapper-profile">
 	            <div class="row">
@@ -39,7 +45,7 @@
 						</div>
 					</section>
 					<section class="block">
-			            <div class="title-profile col-md-4">
+			            <div class="title-mentor col-md-4">
 				            <h3>Company Information</h3>
 			            </div>
 						<div class="content">
@@ -49,7 +55,7 @@
 						</div>
 					</section>
 					<section class="block">
-			            <div class="title-profile col-md-4">
+			            <div class="title-mentor col-md-4">
 				            <h3>Analytics</h3>
 			            </div>
 						<div class="content">
@@ -62,27 +68,21 @@
 						</div>
 					</section>
 	            </div>
-	            <div class="row">
+	            <div class="row mentor-row">
 		            <section class="mentor col-md-8">
 			            <div class="title-mentor">
-				            <h2>Mentors</h2>
+				            <h3>Mentors</h3>
 			            </div>
 			            <div class="content">
-				            <div class="container-fluid logo">
-					            <img src="../../Main/Files/Images/google.png">
-				            </div>
-				            <div class="container-fluid discription">
-					            <p>Analytics</p>
+				            <div class="row">
+					            <?php selectCompanyMentors($_GET["id"]); ?>
 				            </div>
 			            </div>
 		            </section>
 		            <section class="block">
 			            <div class="content">
-				            <div class="container-fluid logo">
-					            <img src="../../Main/Files/Images/google.png">
-				            </div>
 				            <div class="container-fluid discription">
-					            <h3>Google Inc.</h3>
+					            <h3>Experiments</h3>
 					            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolor.magn aaliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eacommodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 	id est laborum.
 					            </p>
 				            </div>
