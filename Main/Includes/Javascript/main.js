@@ -1,13 +1,17 @@
 //Navbar
+
+//client/mentorswitch
 function selectclientormentor(){
 
     var client = document.getElementById("client");
     var mentor = document.getElementById("mentor");
     var searchbar = document.getElementById("searchbar");
 
+    //verander de kleur vd letters als de knop ingedrukt wordt
     mentor.classList.toggle("blue");
     client.classList.toggle("blue");
 
+    //Als client geselecteerd is laad client.php in de body
     if(client.className === 'blue'){
 
         $.get("client.php", function( data ){
@@ -17,6 +21,8 @@ function selectclientormentor(){
                 searchbar.placeholder = "Search for Experiment";
             });
         });
+
+    //Als mentor geselecteerd is laad mentor.php in de body
     }else if(mentor.className === 'blue'){
 
         $.get("mentor.php", function( data ) {
@@ -29,7 +35,7 @@ function selectclientormentor(){
     }
 }
 
-
+//filterfunctie
 function filterfunction() {
     var input, filter, ul, li, a, i;
     input = document.getElementById("input");
@@ -38,6 +44,7 @@ function filterfunction() {
     li = ul.getElementsByTagName("li");
     var text = document.getElementById('input').value;
 
+    //als er elementen in de dropdown zitten die overeenkomen met de getypte tekst laat die zien
     for (i = 0; i < li.length; i++) {
         a = li[i].getElementsByTagName("a")[0];
         if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
@@ -47,6 +54,7 @@ function filterfunction() {
         }
     }
 
+    //als er tekst in de zoekbalk staat laat de dropdown elementen zien
     if(text != ""){
         document.getElementById("content").classList.add("show");
     }else if(text == ""){
@@ -54,6 +62,41 @@ function filterfunction() {
     }
 }
 
+//filter op klik functie
+function getEventTarget(e) {
+    e = e || window.event;
+    return e.target || e.srcElement;
+}
+
+function filterclick(){
+    //verkrijg de geselecteerde tekst
+    var input = document.getElementById("content");
+    input.onclick = function(event) {
+        //zet de geselecteerde tekst in variabel en maak hoofdletters
+        var target = getEventTarget(event).innerHTML.toUpperCase();
+
+        console.log(target);
+
+        ul = document.getElementsByClassName("list")[0];
+        li = ul.getElementsByTagName("li");
+
+        console.log(ul);
+
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("h1")[0];
+
+            console.log(a.innerHTML.toUpperCase());
+
+            if (a.innerHTML.toUpperCase().indexOf(target) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    };
+}
+
+//zoekbalk functie
 function searchbarfunction(){
     var input, filter, ul, li, a, i;
     input = document.getElementById("searchbar");
@@ -61,6 +104,7 @@ function searchbarfunction(){
     ul = document.getElementsByClassName("list")[0];
     li = ul.getElementsByTagName("li");
 
+    //als de getypte tekst overeenkomt met een h1 van de ul laat deze zien, de rest niet
     for (i = 0; i < li.length; i++) {
         a = li[i].getElementsByTagName("h1")[0];
         if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
@@ -71,25 +115,21 @@ function searchbarfunction(){
     }
 }
 
+//add client form
 function createcompany(){
-    // Get the modal
+
     var modal = document.getElementById('clientform');
-
-    // Get the button that opens the modal
-    var btn = document.getElementById("clientbutton");
-
-    // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks the button, open the modal
+    //als je op de knop add client drukt verschijnt de form
         modal.style.display = "block";
 
-    // When the user clicks on <span> (x), close the modal
+    // als je op het kruisje drukt sluit het element
     span.onclick = function() {
         modal.style.display = "none";
     }
 
-    // When the user clicks anywhere outside of the modal, close it
+    //als je buiten het element klikt sluit het element
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
@@ -97,25 +137,21 @@ function createcompany(){
     }
 }
 
+//add mentor form
 function creatementor(){
-    // Get the modal
+
     var modal = document.getElementById('mentorform');
-
-    // Get the button that opens the modal
-    var btn = document.getElementById("mentorbutton");
-
-    // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks the button, open the modal
+    //als je op de knop add mentor drukt verschijnt de form
         modal.style.display = "block";
 
-    // When the user clicks on <span> (x), close the modal
+    //als je op het kruisje drukt sluit het element
     span.onclick = function() {
         modal.style.display = "none";
     }
 
-    // When the user clicks anywhere outside of the modal, close it
+    // als je buiten het element klikt sluit het
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";

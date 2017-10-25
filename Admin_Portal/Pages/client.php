@@ -13,7 +13,7 @@
          </div>
          <div class="clientmodal-body">
              <form method="POST" action="#">
-                 <input id="field" type="text" name="user_name" placeholder="User name"> <br>
+                 <input id="field" type="text" name="user_name" placeholder="Name"> <br>
                  <input id="field" type="text" name="company_mail" placeholder="E-mail"> <br>
                  <input id="submitbtn" name="generate_companykey" type="submit" value="Add company">
              </form>
@@ -24,7 +24,7 @@
 
  <ul class="list">
      <div class="content">
-         <li onclick="createcompany()" id="Block" class="col-lg-4">
+         <div onclick="createcompany()" id="Block" class="col-lg-4">
              <a class="clientbutton" href="#">
                  <div class="BlockLogo">
                      <img src="../../Main/Files/Images/add.svg" alt="Add Client">
@@ -33,7 +33,7 @@
                      <h1> Add Client </h1>
                  </div>
              </a>
-         </li>
+         </div>
 
          <?php
 

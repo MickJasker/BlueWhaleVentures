@@ -32,9 +32,9 @@
 			<input onkeyup="filterfunction()" id="input" type="text" class="filterbtn" placeholder="Filter">
 
             <ul id="content" class="filter-content">
-                <li><a href="#" onclick="showhtml()">Games</a></li>
-                <li><a href="#" onclick="showhtml()">Navigation</a></li>
-                <li><a href="#" onclick="showhtml()">Fashion</a></li>
+                <li><a href="#" onclick="filterclick()">Games</a></li>
+                <li><a href="#" onclick="filterclick()">Navigation</a></li>
+                <li><a href="#" onclick="filterclick()">Fashion</a></li>
             </ul>
 
 		</div>
