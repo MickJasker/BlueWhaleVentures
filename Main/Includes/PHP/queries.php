@@ -283,18 +283,23 @@ function getDesignSheetForm($sheetType, $language)
 }
 
 //Selects all experiment textareas etc
-function getDesignSheetData($ExperimentID, $sheetType = "Experiment", $Language = "English")
+function getDesignSheetData($ExperimentID, $sheetType, $Language)
 {
 	$sql = "SELECT SegmentID, Text  FROM `Answer` WHERE ExperimentID = '$ExperimentID' ORDER BY SegmentID";
 	if($data1 = query($sql))
 	{	
 		echo '<form method="POST" action="#">';
+
 		while($row1 = $data1->fetch_assoc())
 		{
 			$id = $row1["SegmentID"];
-			$sql = "SELECT title, description FROM Segment WHERE `DesignSheetID` = '1' AND id = '$id'"; //Temp query
+
+			$sql = "SELECT s.title, s.description FROM Segment s
+			INNER JOIN DesignSheet d ON d.ID = s.DesignSheetID 
+			WHERE d.Type = '$sheetType' AND s.id = '$id'";
+
 			if($data2 = query($sql))
-			{	
+			{
 				$i = 0;
 				while($row2 = $data2->fetch_assoc())
 				{
@@ -935,6 +940,11 @@ function insertDesignSheet($answerPost, $sheetType, $Language, $experimentID)
 			$counter++;
 		}
 	}
+}
+
+function updateDesignSheet()
+{
+
 }
 
 function sendExecution($ExecutionPost, $ExperimentID)
