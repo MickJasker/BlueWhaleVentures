@@ -1,3 +1,7 @@
+<?php
+require '../../Main/Includes/PHP/functions.php';
+CheckSession("Admin");
+?>
 <!DOCTYPE html>
 <html>
 <head>

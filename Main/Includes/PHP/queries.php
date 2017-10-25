@@ -482,18 +482,19 @@ function getCompanyBlockInfo()
 {
     $sql = "SELECT ID, Name, Logo, Branch FROM Company";
 
-    if($data = Query($sql)) {
-
-        while ($row = $data->fetch_assoc()) {
+    if($data = Query($sql)) 
+    {
+        while ($row = $data->fetch_assoc()) 
+        {
             $ID = $row["ID"];
             $Logo = $row["Logo"];
             $Name = $row["Name"];
             $Branch = $row["Branch"];
-            // Still need to add branch to css
+
             ?>
 
             <li id="Block" class="<?php echo $Branch;?> col-lg-4">
-                <a href="../../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $ID ?>">
+                <a href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                             <img src="../../<?php echo $Logo ?>" alt="Company Logo">
                     </div>
@@ -729,10 +730,11 @@ function selectCompanyMentors($CompanyID)
     	while ($row = $data->fetch_assoc())
     	{
     		?>
-			<div id="Mentorportait" >
-				<a href="../../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID'] ?>">link</a>
-				<img src="../../<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
-				<h1> <?php echo $row['Name'] ?> </h1>
+			<div class="mentor-preview col-md-3">
+				<a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID'] ?>">
+					<img src="../../<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
+					<h1> <?php echo $row['Name'] ?> </h1>
+				</a>
 			</div>
 			<?php
     	}

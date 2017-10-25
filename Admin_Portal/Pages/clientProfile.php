@@ -1,4 +1,8 @@
-<!doctype html>
+<?php
+require '../../Main/Includes/PHP/functions.php';
+CheckSession("Client");
+?>
+<!DOCTYPE HTML>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -69,18 +73,7 @@
 			            </div>
 			            <div class="content">
 				            <div class="row">
-					            <div class="mentor-preview col-md-3">
-						            <h3>Mentor</h3>
-					            </div>
-					            <div class="mentor-preview col-md-3">
-						            <h3>Mentor</h3>
-					            </div>
-					            <div class="mentor-preview col-md-3">
-						            <h3>Mentor</h3>
-					            </div>
-					            <div class="mentor-preview col-md-3">
-						            <h3>Mentor</h3>
-					            </div>
+					            <?php selectCompanyMentors($_GET["id"]); ?>
 				            </div>
 			            </div>
 		            </section>
