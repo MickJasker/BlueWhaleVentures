@@ -1,5 +1,11 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
+
+if (isset($_POST["submitDesignsheet"])) 
+{
+	updateDesignSheet($_POST, "Experiment", $_SESSION["Language"], $_GET["experimentID"]);
+}
+
 ?>
 <!DOCTYPE html>
 <html>
