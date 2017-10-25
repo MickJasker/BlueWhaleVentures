@@ -39,7 +39,7 @@
 						</div>
 					</section>
 					<section class="block">
-			            <div class="title-profile col-md-4">
+			            <div class="title-mentor col-md-4">
 				            <h3>Company Information</h3>
 			            </div>
 						<div class="content">
@@ -49,7 +49,7 @@
 						</div>
 					</section>
 					<section class="block">
-			            <div class="title-profile col-md-4">
+			            <div class="title-mentor col-md-4">
 				            <h3>Analytics</h3>
 			            </div>
 						<div class="content">
@@ -65,20 +65,20 @@
 	            <div class="row mentor-row">
 		            <section class="mentor col-md-8">
 			            <div class="title-mentor">
-				            <h2>Mentors</h2>
+				            <h3>Mentors</h3>
 			            </div>
 			            <div class="content">
 				            <div class="row">
-					            <div class="col-md-3">
+					            <div class="mentor-preview col-md-3">
 						            <h3>Mentor</h3>
 					            </div>
-					            <div class="col-md-3">
+					            <div class="mentor-preview col-md-3">
 						            <h3>Mentor</h3>
 					            </div>
-					            <div class="col-md-3">
+					            <div class="mentor-preview col-md-3">
 						            <h3>Mentor</h3>
 					            </div>
-					            <div class="col-md-3">
+					            <div class="mentor-preview col-md-3">
 						            <h3>Mentor</h3>
 					            </div>
 				            </div>
