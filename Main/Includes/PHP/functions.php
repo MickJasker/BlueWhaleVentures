@@ -62,7 +62,6 @@ function createSession($Email)
 	
 }
 
-
 function checkSession($AllowedRole)
 {
 	if (isset($_SESSION["LoggedIn"]))
@@ -89,6 +88,12 @@ function destroySession()
 	unset($_SESSION["UserID"]);
 	unset($_SESSION["Language"]);
 	unset($_SESSION["CompanyID"]);
+}
+
+function secure($x)
+{
+	global $conn;
+	return htmlentities(mysqli_real_escape_string($conn, $x));
 }
 
 // Checks if the file is ready for upload

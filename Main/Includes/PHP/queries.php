@@ -1009,6 +1009,78 @@ function selectPitch($ExperimentID)
     return $Media;
 }
 
+function getClientProfile($ID)
+{
+	$results = array();	
+	$succes = 0;
+	
+	$sql = "SELECT Language, Name, ProfilePicture FROM User WHERE ID = '$ID'";
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+			array_push($results, $row["Language"], $row["Name"], $row["ProfilePicture"]);
+			$succes = $succes + 1;
+		}
+	}
+	
+	$sql = "SELECT Email, Password FROM Login WHERE UserID = '$ID'";
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+			array_push($results, $row["Email"], $row["Password"]);
+			$succes = $succes + 1;
+		}
+	}
+	
+	$sql = "SELECT Name, Description, Logo, Phone, Address, Branch FROM Company WHERE UserID = '$ID'";
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+			array_push($results, $row["Name"], $row["Description"], $row["Logo"], $row["Phone"], $row["Address"], $row["Branch"]);
+			$succes = $succes + 1;
+		}
+	}
+	
+	if ($succes == 3)
+	{
+		return $results;
+	}
+	return false;
+}
+
+function updateClientProfile($ID, $name, $email, $language, $companyName, $companyDescription, $phone, $address, $branch, $PFPath, $LPath)
+{
+	$sql = "UPDATE `User` SET `Language`='$language', `Name`='$name', `ProfilePicture`='$PFPath' WHERE ID = '$ID'";
+	if(Query($sql))
+    {
+		$sql = "UPDATE `Login` SET `Email`='$email' WHERE UserID = '$ID'";
+		if(Query($sql))
+		{
+			$sql = "UPDATE `Company` SET `Name`='$companyName',`Description`='$companyDescription',`Logo`='$LPath',`Phone`='$phone',`Address`='$address',`Branch`='$branch' WHERE UserID = '$ID'";
+			if(Query($sql))
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+function selectLanguage()
+{
+	$sql = "SELECT DISTINCT Language FROM User";
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+			echo '<option value="'.$row["Language"].'">'.$row["Language"].'</option>';
+		}
+	}
+}
+
 function selectPrototype($ExperimentID) {
 
     $OldArray = array();
