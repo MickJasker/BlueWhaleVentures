@@ -1,6 +1,7 @@
 <?php
-/*
+
 require '../../Main/Includes/PHP/functions.php';
+/*
 CheckSession("Client");
 */
 ?>
@@ -23,11 +24,9 @@ CheckSession("Client");
 		</header>
 		<main>
 			<?php
-                require "../../Main/Includes/PHP/queries.php";
-                session_start();
-                selectCompanyInfo($_GET["ID"]);
+                selectCompanyInfo($_GET["id"]);
 
-                selectCompanyMentors($_GET["ID"]);
+                selectCompanyMentors($_GET["id"]);
              ?>
             
             <div class="wrapper-profile">
