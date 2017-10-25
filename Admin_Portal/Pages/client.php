@@ -1,3 +1,10 @@
+<?php
+
+require '../../Main/Includes/PHP/functions.php';
+/*
+CheckSession("Admin");
+*/
+?>
  <div id="clientform" class="clientmodal">
 
      <!-- Modal content -->
