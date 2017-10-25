@@ -54,14 +54,13 @@ function createSession($Email)
 	$_SESSION["Language"] =  selectUserLanguage($_SESSION["UserID"]);
 	$_SESSION["CompanyID"] = selectCompanyID($_SESSION["UserID"]);
 	
-	
+	/*
 	echo "Logged in: " . $_SESSION["LoggedIn"] . "<br>";	
 	echo "Role: " . $_SESSION["Role"] . "<br>";
 	echo "UserID: " . $_SESSION["UserID"] . "<br>";	
 	echo "CompanyID: " . $_SESSION["CompanyID"];	
-	
+	*/
 }
-
 
 function checkSession($AllowedRole)
 {
@@ -89,6 +88,12 @@ function destroySession()
 	unset($_SESSION["UserID"]);
 	unset($_SESSION["Language"]);
 	unset($_SESSION["CompanyID"]);
+}
+
+function secure($x)
+{
+	global $conn;
+	return htmlentities(mysqli_real_escape_string($conn, $x));
 }
 
 // Checks if the file is ready for upload
