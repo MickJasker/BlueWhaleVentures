@@ -78,12 +78,15 @@ function checkKey($key)
 //Creates an account
 function createAccount($role, $user_name, $company_mail, $password)
 {
+	//Insert new user account
 	$password = password_hash($password, PASSWORD_DEFAULT);
 	$sql = "INSERT INTO `User`(`RoleID`,`Language`, `Name`, `Locked`) VALUES ('$role','English','$user_name', '0')";
 	
 	if (query($sql))
 	{
+		//Select ID from new user
 		$sql = "SELECT ID FROM User WHERE Name = '$user_name'";
+
 		if($data = query($sql))
 		{	
 			while($row = $data->fetch_assoc())
@@ -93,30 +96,77 @@ function createAccount($role, $user_name, $company_mail, $password)
 			
 			if ($id != "")
 			{
+				//create new login record
 				$sql = "INSERT INTO `Login`(`UserID`, `Email`, `Password`) VALUES ('$id', '$company_mail', '$password')";
 				if (query($sql))
 				{
-					return true;
-				}
-				else
-				{
-					return false;
+					return insertRoleInfo($id);
 				}
 			}
-			else 
-			{
-				return false;
-			}
-		}
-		else
-		{
-			return false;
 		}
 	}
-	else
+
+	return false;
+}
+
+function insertRoleInfo($userID)
+{
+	$role = selectRole($userID);
+
+	if($data = query($sql))
 	{
-		return false;
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+		if ($row["Name"] == "Company")
+		{
+			return insertCompany($userID);
+		}
+
+		if ($row["Name"] == "Mentor")
+		{
+			return insertMentor($userID);
+		}
+
+		//If admin, do nothing, admin currently has no extra information
 	}
+}
+
+function insertCompany($userID)
+{
+	$sql = "INSERT INTO Company (UserID) VALUES ('$userID')";
+
+	return query($sql);
+}
+
+function insertMentor($userID)
+{
+	$sql = "INSERT INTO Mentor (UserID) VALUES ('$userID')";
+
+	return query($sql);
+}
+
+function updateCompany($UserID, $Name, $Description, $Logo, $Email, $Phone, $Address, $Branch)
+{
+	$sql = "UPDATE Company SET 
+	Name = '$Name', 
+	Description = '$Description', 
+	Logo = '$Logo', 
+	Email = '$Email',
+	Phone = '$Phone', 
+	Address = '$Address',
+	Branch = '$Branch' 
+	WHERE UserID = '$UserID'";
+
+	return query($sql);
+}
+
+function updateMentor($UserID, $CompanyName, $Phone)
+{
+	$sql = "UPDATE Mentor SET 
+	CompanyName = '$CompanyName',
+	Phone = '$Phone'
+	WHERE UserID = '$UserID'";
+
+	return query($sql);
 }
 
 //Insert generated code in the database
@@ -428,7 +478,7 @@ function selectUserLanguage($ID)
 //Admin portal blokken
 function getCompanyBlockInfo()
 {
-    $sql = "SELECT ID, Name, Logo FROM Company";
+    $sql = "SELECT ID, Name, Logo, Branch FROM Company";
 
     if($data = Query($sql)) {
 
@@ -436,10 +486,11 @@ function getCompanyBlockInfo()
             $ID = $row["ID"];
             $Logo = $row["Logo"];
             $Name = $row["Name"];
-
+            $Branch = $row["Branch"];
+            // Still need to add branch to css
             ?>
 
-            <li id="Block" class="col-lg-4">
+            <li id="Block" class="<?php echo $Branch;?> col-lg-4">
                 <a href="../../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                             <img src="../../<?php echo $Logo ?>" alt="Company Logo">
