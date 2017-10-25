@@ -20,13 +20,13 @@ CheckSession("Client");
 			?>
 		</header>
 		<main>
-			<?php /*
+			<?php
                 require "../../Main/Includes/PHP/queries.php";
                 session_start();
                 selectCompanyInfo($_GET["ID"]);
 
                 selectCompanyMentors($_GET["ID"]);
-            */ ?>
+             ?>
             
             <div class="wrapper-profile">
 	            <div class="row">
