@@ -721,6 +721,48 @@ body {
   }
 }
 
+#wrapper-designSheet {
+  background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  main {
+    padding-top: 80px;
+    #switch {
+      position: fixed;
+      right: 80px;
+      top: 160px;
+      button {
+        padding: 10px;
+        border: none;
+        background: none;
+        font-size: 20px;
+        transition: 0.3s ease;
+        &:hover {
+          border-bottom: @gray medium solid;
+          transition: 0.3s ease;
+        }
+        #switchActive {
+          border-bottom: @blue solid medium;
+        }
+      }
+    }
+
+
+    form {
+      margin: 80px;
+      textarea {
+        width: 600px;
+        height: 150px;
+        transition: 0.3s ease;
+        &:focus {
+          outline: @blue solid;
+          transition: 0.3s ease;
+        }
+      }
+    }
+  }
+}
+
 #wrapper-error {
   font-family: "open-sans", sans-serif;
   background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
