@@ -10,16 +10,16 @@
 	<div id="clientswitch" class="col-md-3">
 
 		<h4>
-			<span id="mentor">Mentor</span>
+			<span id="client" class="blue">Client</span>
 		</h4>
 
 		<label class="switch">
-			<input id="checkbox" onclick="selectclientormentor()" type="checkbox" checked>
+			<input id="checkbox" onclick="selectclientormentor()" type="checkbox">
 			<span class="slider round"></span>
 		</label>
 
 		<h4>
-			<span id="client" class="blue">Client</span>
+			<span id="mentor">Mentor</span>
 		</h4>
 
 	</div>
