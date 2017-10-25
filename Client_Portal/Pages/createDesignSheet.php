@@ -6,8 +6,14 @@ checkSession('Company');
 <html>
 <head>
     <title> Create a new design sheet </title>
+    <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 </head>
 	<body id="wrapper-admin">
+    <header class="wrapper-nav">
+        <?php
+        require "../../Main/Includes/nav.php"
+        ?>
+    </header>
 		<Main>
 			<?php
 				getDesignSheetForm("Experiment", $_SESSION['Language']);
