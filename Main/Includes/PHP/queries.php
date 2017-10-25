@@ -289,7 +289,7 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
 	if($data1 = query($sql))
 	{	
 		echo '<form method="POST" action="#">';
-
+		$i = 0;
 		while($row1 = $data1->fetch_assoc())
 		{
 			$id = $row1["SegmentID"];
@@ -300,13 +300,10 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
 
 			if($data2 = query($sql))
 			{
-				$i = 0;
-				while($row2 = $data2->fetch_assoc())
-				{
-					echo '<h3>'.$row2["title"].'</h3>';
-					echo '<textarea disabled class="textarea1" name="input'.$i.'"  type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
-					$i++;
-				}		
+				$row2 = mysqli_fetch_array($data2,MYSQLI_ASSOC);
+				echo '<h3>'.$row2["title"].'</h3>';
+				echo '<textarea disabled class="textarea1" name="input'.$i.'"  type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
+				$i++;
 			}
 			else
 			{
@@ -942,9 +939,41 @@ function insertDesignSheet($answerPost, $sheetType, $Language, $experimentID)
 	}
 }
 
-function updateDesignSheet()
+function updateDesignSheet($answerPost, $sheetType, $Language, $experimentID)
 {
+	global $conn;
 
+	//Select input field data, and put it in answerArray
+	$answerArray = array();
+	foreach ($answerPost AS $postID => $answer)
+	{
+		if ($postID != "submitDesignsheet")
+		{
+			$value = htmlentities(mysqli_real_escape_string($conn, $answer));
+			array_push($answerArray, $value);
+		}
+	}
+
+	//Select the design
+	$sql = "SELECT s.ID FROM Segment s
+	INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
+	WHERE d.Type = '$sheetType' AND d.Language = '$Language'";
+
+	if($data = Query($sql))
+	{
+		$counter = 0;
+		//Foreach segment, add a value from answerArray
+		while ($row = $data->fetch_assoc())
+		{
+			$segment = $row["ID"];
+			$answer = $answerArray[$counter];
+
+			$sql = "UPDATE Answer SET `Text` = '$answer' WHERE SegmentID = '$segment' AND experimentID = '$experimentID'";
+			Query($sql);
+
+			$counter++;
+		}
+	}
 }
 
 function sendExecution($ExecutionPost, $ExperimentID)
