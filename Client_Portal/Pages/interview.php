@@ -17,10 +17,10 @@ require '../../Main/Includes/PHP/functions.php';
 
             <?php
 
-                selectQuestions($_GET['experimentID']);
+                $i = selectQuestions($_GET['experimentID']);
 
             ?>
-
+            <p hidden id="hiddenP"><?php echo $i?></p>
         </form>
     </div>
 </Main>

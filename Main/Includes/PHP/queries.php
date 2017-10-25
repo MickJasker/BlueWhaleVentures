@@ -1257,6 +1257,8 @@ function selectQuestions($ExperimentID) {
             INNER JOIN Experiment e ON e.ID = q.ExperimentID
             WHERE e.ID = '$ExperimentID'";
 
+    $i = 1;
+
     if($data = Query($sql)) {
         while ($row = $data->fetch_assoc()) {
             $ID = $row["ID"];
@@ -1266,10 +1268,10 @@ function selectQuestions($ExperimentID) {
 
             <div id="questionDiv">
                 <div id="question">
-                    <textarea id="question<?php echo $ID?>" name="<?php echo $ID?>"><?php echo $Question?></textarea>
+                    <textarea id="question<?php echo $ID?>" name="question"><?php echo $Question?></textarea>
                     <div id="answers">
                         <?php
-                            selectAnswers($ID);
+                            $i  = selectAnswers($ID, $i);
                         ?>
                     </div>
                 </div>
@@ -1277,12 +1279,12 @@ function selectQuestions($ExperimentID) {
 
 
             <?php
-
         }
     }
+    return $i;
 }
 
-function selectAnswers($questionID){
+function selectAnswers($questionID, $i){
 
     $sql = "SELECT ID, Answer FROM Response WHERE QuestionID = '$questionID'";
 
@@ -1290,12 +1292,13 @@ function selectAnswers($questionID){
         while ($row = $data->fetch_assoc()) {
             $ID = $row["ID"];
             $Answer = $row["Answer"];
-
             ?>
 
-            <textarea id="answer<?php echo $ID ?>" name="<?php echo $ID ?>"><?php echo $Answer ?></textarea>
+            <textarea id="answer<?php echo $ID ?>" name="answer"><?php echo $Answer ?></textarea>
 
             <?php
+
+            $i++;
 
         }
     }
@@ -1304,5 +1307,6 @@ function selectAnswers($questionID){
         <button type="button" onclick="addAnswer()">Add Answer</button>
 
     <?php
+    return $i;
 }
 ?>
