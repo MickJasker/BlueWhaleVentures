@@ -731,19 +731,24 @@ body {
       position: fixed;
       right: 80px;
       top: 160px;
+      .switchActive {
+        border-bottom: @blue solid medium;
+      }
       button {
         padding: 10px;
         border: none;
         background: none;
         font-size: 20px;
         transition: 0.3s ease;
+        border-bottom: rgba(0, 0, 0, 0) solid medium;
         &:hover {
           border-bottom: @gray medium solid;
           transition: 0.3s ease;
         }
-        #switchActive {
-          border-bottom: @blue solid medium;
+        &:focus {
+          outline: none;
         }
+
       }
     }
 
@@ -754,6 +759,7 @@ body {
         width: 600px;
         height: 150px;
         transition: 0.3s ease;
+        outline: rgba(0, 0, 0, 0) solid;
         &:focus {
           outline: @blue solid;
           transition: 0.3s ease;
