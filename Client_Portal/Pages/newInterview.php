@@ -3,7 +3,6 @@
 
     if(isset($_POST['submit'])) {
         insertQuestion($_POST, $_SESSION['insertedID']);
-     //   header('Location: index.php');
     }
 
 
@@ -15,7 +14,7 @@
     <title> Client Portal </title>
     <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
     <script type="text/javascript" src="../../Main/Includes/Javascript/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="../../Main/Includes/Javascript/newInterviewTemp.js"></script>
+    <script type="text/javascript" src="../../Main/Includes/Javascript/functions.js"></script>
 </head>
     <body id="wrapper-admin">
         <Main>

@@ -1250,4 +1250,59 @@ function updatePrototype($ExperimentID, $Media1, $Explanation1, $Media2, $Explan
     }
 }
 
+function selectQuestions($ExperimentID) {
+
+    $sql = "SELECT qu.ID, qu.Question FROM Question qu
+            INNER JOIN Questionaire q ON q.ID = qu.QuestionaireID
+            INNER JOIN Experiment e ON e.ID = q.ExperimentID
+            WHERE e.ID = '$ExperimentID'";
+
+    if($data = Query($sql)) {
+        while ($row = $data->fetch_assoc()) {
+            $ID = $row["ID"];
+            $Question = $row["Question"];
+
+            ?>
+
+            <div id="questionDiv">
+                <div id="question">
+                    <textarea id="question<?php echo $ID?>" name="<?php echo $ID?>"><?php echo $Question?></textarea>
+                    <div id="answers">
+                        <?php
+                            selectAnswers($ID);
+                        ?>
+                    </div>
+                </div>
+            </div>
+
+
+            <?php
+
+        }
+    }
+}
+
+function selectAnswers($questionID){
+
+    $sql = "SELECT ID, Answer FROM Response WHERE QuestionID = '$questionID'";
+
+    if ($data = Query($sql)) {
+        while ($row = $data->fetch_assoc()) {
+            $ID = $row["ID"];
+            $Answer = $row["Answer"];
+
+            ?>
+
+            <textarea id="answer<?php echo $ID ?>" name="<?php echo $ID ?>"><?php echo $Answer ?></textarea>
+
+            <?php
+
+        }
+    }
+    ?>
+
+        <button type="button" onclick="addAnswer()">Add Answer</button>
+
+    <?php
+}
 ?>
