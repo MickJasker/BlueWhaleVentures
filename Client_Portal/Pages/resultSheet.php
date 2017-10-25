@@ -11,8 +11,8 @@ require '../../Main/Includes/PHP/functions.php';
     <body id="wrapper-admin">
 		<h1>Design sheet : Experiment 2</h1>
 		<?php
-			getDesignSheetData($_GET["experimentID"], "Experiment", $_SESSION["Language"]);
+			getDesignSheetData($_GET["experimentid"], "Result", $_SESSION["Language"]);
 		?>
-		<button id="edit1" onclick='editPage(7, "designSheet")'> Edit </button>
+		<button id="edit1" onclick="editPage(7)"> Edit </button>
 	</body>
 </html>

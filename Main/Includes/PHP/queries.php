@@ -439,7 +439,7 @@ function getCompanyBlockInfo()
 
             ?>
 
-            <section id="Block">
+            <li id="Block" class="col-lg-4">
                 <a href="../../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                             <img src="../../<?php echo $Logo ?>" alt="Company Logo">
@@ -448,11 +448,110 @@ function getCompanyBlockInfo()
                         <h1> <?php echo $Name ?> </h1>
                     </div>
                 </a>
-            </section>
+            </li>
 
             <?php
         }
     }
+}
+
+//Get experiment info
+function getExperiment($id)
+{	
+	$header = "designSheet.php";
+	$name = "";
+	
+	$sql = "SELECT Preparation, Conclusion FROM Pitch WHERE ExperimentID = '$id'";
+	if ($data = query($sql))
+	{
+		while($row = $data->fetch_assoc())
+		{
+			if ($row["Preparation"] == "")
+			{
+				$name = "Add a pitch";
+				$header = "newPitch.php";
+			}
+			else if ($row["Conclusion"] == "")
+			{
+				$name = "Add the conclusion";
+				$header = "pitch.php";
+			}
+			else
+			{
+				$name = "View the results";
+				$header = "pitch.php";
+			}
+		}
+	}
+	
+	
+	$questionaire = "0";
+
+	$sql = "SELECT ID FROM Questionaire WHERE ExperimentID = '$id'";
+	if ($data = query($sql))
+	{
+		$questionaireID = "";
+		$name = "Add an interview";
+		$header = "newInterview.php";
+		while($row = $data->fetch_assoc())
+		{
+				$questionaireID = $row["ID"];
+		}
+		
+		$sql = "SELECT `Question` FROM `Question` WHERE `QuestionaireID` = '$questionaireID'";
+		if ($data2 = query($sql))
+		{
+			$name = "Interview";
+			$header = "Interview.php";
+		}
+	}
+	
+	
+	
+	$sql = "SELECT Explanation1, Explanation2 FROM Prototype WHERE ExperimentID = '$id'";
+	if ($data = query($sql))
+	{
+		while($row = $data->fetch_assoc())
+		{
+			if ($row["Explanation1"] == "")
+			{
+				$name = "Add a prototype";
+				$header = "newPrototype.php";
+			}
+			else if ($row["Explanation2"] == "")
+			{
+				$name = "Add the prototype result";
+				$header = "prototype.php";
+			}
+			else
+			{
+				$name = "View the results";
+				$header = "prototype.php";
+			}
+		}
+	}
+	
+	$sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
+	if($data = query($sql))
+	{
+		while($row = $data->fetch_assoc())
+		{
+			$header = $header . "?experimentID=" . $id;
+			//echo $row["Title"];
+			echo '<h1>' . $row["Title"] . '</h1>';
+			echo '<p>' . $row["Description"] .  '</p>';
+			echo '<p> Progress: ' . $row["Progress"] . '</p>';
+			echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
+			echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
+			echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
+			echo '<button> Results </button>';
+			echo '<a href="resultSheet.php?experimentid='.$_GET["id"].'"><button> Results sheet </button> </a>';
+		}
+	}
+	else
+	{
+		return false;
+	}
 }
 
 //Admin portal blokken
@@ -472,7 +571,7 @@ function getMentorBlockInfo()
 
             ?>
 
-            <section id="Block">
+            <li id="Block" class="col-lg-4">
                 <a href="../../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                             <img src="../../<?php echo $ProfilePicture; ?>" alt="Mentor Profile">
@@ -481,7 +580,7 @@ function getMentorBlockInfo()
                         <h1> <?php echo $Name ?> </h1>
                     </div>
                 </a>
-            </section>
+            </li>
 
             <?php
         }
@@ -509,7 +608,7 @@ function getExperimentBlockInfo($UserID)
 
             ?>
 
-            <section id="Block">
+            <li id="Block" class="col-lg-4">
                 <a href="../../Client_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
@@ -518,7 +617,7 @@ function getExperimentBlockInfo($UserID)
                         <h1> <?php echo $Title ?> </h1>
                     </div>
                 </a>
-            </section>
+            </li>
 
             <?php
         }
@@ -544,7 +643,7 @@ function getMentorAssignedBlockInfo($UserID)
 
             ?>
 
-            <section id="Block">
+            <li id="Block" class="col-lg-4">
                 <a href="../../../Client_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <img src="../../<?php echo $Logo ?>" alt="Mentor Profile">
@@ -553,7 +652,7 @@ function getMentorAssignedBlockInfo($UserID)
                         <h1> <?php echo $Name ?> </h1>
                     </div>
                 </a>
-            </section>
+            </li>
 
             <?php
         }
@@ -816,7 +915,7 @@ function sendExecution($ExecutionPost, $ExperimentID)
             Query($sql);
 
             $_SESSION['insertedID'] = mysqli_insert_id($conn);
-            header('Location: ../../Client_Portal/Pages/newPrototype.php');
+            header('Location: ../../Client_Portal/Pages/newPrototype.php?experimentID=' . $ExperimentID);
 
 
         }
@@ -830,9 +929,11 @@ function insertPitch($Text, $PitchID) {
 
 }
 
-function insertPrototype($ImagePath, $Explain, $PrototypeID) {
+function insertPrototype($ImagePath, $Explain, $ExperimentID) {
 
-    $sql = "INSERT INTO Explanation(PrototypeID, Media, Text) VALUES ('$PrototypeID', '$ImagePath', '$Explain') ";
+    $sql = "UPDATE Prototype SET Media1 = '$ImagePath', Explanation1 = '$Explain' WHERE ExperimentID = '$ExperimentID'";
+
+
     if (Query($sql))
     {
         return true;
@@ -873,9 +974,9 @@ function selectPitch($ExperimentID)
             ?>
 
             Preparation: <br/>
-            <textarea name="preparationText" placeholder="Prepare for your pitch"><?php echo $Preparation?></textarea>
+            <textarea disabled class="textarea1" name="preparationText" typeplaceholder="Prepare for your pitch"><?php echo $Preparation?></textarea>
 
-            <input type="file" name="file1" id="fileToUpload">
+            <input id="file1" type="hidden" name="file1" id="fileToUpload">
 
 
             <?php
@@ -899,11 +1000,90 @@ function selectPitch($ExperimentID)
             ?>
 
             Conclusion: <br/>
-            <textarea name="conclusionText" placeholder="Conclusion of your pitch"><?php echo $Conclusion?></textarea> <br/>
-            <input type="submit" name="save" value="Save">
+            <textarea disabled class="textarea1" name="conclusionText" placeholder="Conclusion of your pitch"><?php echo $Conclusion?></textarea> <br/>
+            <input id="submit1" type="hidden" name="save" value="Save">
 
             <?php
         }
     }
+    return $Media;
 }
+
+function selectPrototype($ExperimentID) {
+
+    $OldArray = array();
+
+    $sql = "SELECT Media1, Explanation1, Media2, Explanation2 FROM Prototype WHERE ExperimentID = '$ExperimentID'";
+
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+            $Media1 = $row["Media1"];
+            $Explanation1 = $row["Explanation1"];
+            $Media2 = $row["Media2"];
+            $Explanation2 = $row["Explanation2"];
+
+
+            ?>
+
+            <input id="file2" type="hidden" name="file1" id="fileToUpload">
+
+            <?php
+
+            if ($Media1 != "") {
+                array_push($OldArray,$Media1);
+
+                ?>
+
+
+                <img src="<?php echo $Media1 ?>" alt="Prototype 1">
+
+                <?php
+
+            }
+            ?>
+
+
+            <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br/>
+
+            <input id="file3" type="hidden" name="file2" id="fileToUpload2">
+
+            <?php
+
+            if ($Media2 != "") {
+                array_push($OldArray,$Media2);
+
+                ?>
+
+
+                <img src="<?php echo $Media2 ?>" alt="Prototype 2">
+
+                <?php
+
+            }
+            ?>
+
+            <textarea disabled class="textarea1" name="explanation2" placeholder="Explain your prototype."><?php echo $Explanation2?></textarea> <br/>
+            <input id="submit1" type="hidden" name="save" value="Save">
+
+        <?php
+        }
+    }
+    return $OldArray;
+}
+
+function updatePrototype($ExperimentID, $Media1, $Explanation1, $Media2, $Explanation2) {
+
+    $sql = "UPDATE Prototype SET Media1 = '$Media1', Explanation1 = '$Explanation1', Media2 = '$Media2', Explanation2 = '$Explanation2' WHERE ExperimentID = '$ExperimentID'";
+    if (Query($sql))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 ?>

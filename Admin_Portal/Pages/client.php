@@ -1,136 +1,44 @@
-<ul class="list">
-<div class="row">
+ <?php
+ require '../../Main/Includes/PHP/functions.php';
+ checkSession("Admin");
+ ?>
 
-    <li id="Block" class="col-lg-4">
-        <a href="#">
-            <div class="BlockLogo">
-                <img src="../../Main/Files/Images/add.svg" alt="Add Client">
-            </div>
-            <div class="BlockTitle">
-                <h1> Add Client </h1>
-            </div>
-        </a>
-    </li>
+ <div id="clientform" class="clientmodal">
 
-    <li id="Block" class="col-lg-4">
-        <a href="#">
-            <div class="BlockLogo">
-                <img src="../../Main/Files/Images/google.png" alt="Add Client">
-            </div>
-            <div class="BlockTitle">
-                <h1> Google </h1>
-            </div>
-        </a>
-    </li>
+     <!-- Modal content -->
+     <div class="clientmodal-content">
+         <div class="clientmodal-header">
+             <span class="close">&times;</span>
+             <h2>Add Client</h2>
+         </div>
+         <div class="clientmodal-body">
+             <form method="POST" action="#">
+                 <input id="field" type="text" name="user_name" placeholder="User name"> <br>
+                 <input id="field" type="text" name="company_mail" placeholder="E-mail"> <br>
+                 <input id="submitbtn" name="generate_companykey" type="submit" value="Add company">
+             </form>
+         </div>
+     </div>
 
-    <li id="Block" class="col-lg-4">
-        <a href="#">
-            <div class="BlockLogo">
-                <img src="../../Main/Files/Images/amazon.png" alt="Add Client">
-            </div>
-            <div class="BlockTitle">
-                <h1> Amazon </h1>
-            </div>
-        </a>
-    </li>
+ </div>
 
-</div>
+ <ul class="list">
+     <div class="content">
+         <li onclick="createcompany()" id="Block" class="col-lg-4">
+             <a class="clientbutton" href="#">
+                 <div class="BlockLogo">
+                     <img src="../../Main/Files/Images/add.svg" alt="Add Client">
+                 </div>
+                 <div class="BlockTitle">
+                     <h1> Add Client </h1>
+                 </div>
+             </a>
+         </li>
 
-<div class="row">
+         <?php
 
-    <li id="Block" class="col-lg-4">
-        <a href="#">
-            <div class="BlockLogo">
-                <img src="../../Main/Files/Images/poliana.png" alt="Add Client">
-            </div>
-            <div class="BlockTitle">
-                <h1> Poliana </h1>
-            </div>
-        </a>
-    </li>
+         getCompanyBlockInfo();
 
-    <li id="Block" class="col-lg-4">
-        <a href="#">
-            <div class="BlockLogo">
-                <img src="../../Main/Files/Images/microsoft.png" alt="Add Client">
-            </div>
-            <div class="BlockTitle">
-                <h1> Microsoft </h1>
-            </div>
-        </a>
-    </li>
-
-    <li id="Block" class="col-lg-4">
-        <a href="#">
-            <div class="BlockLogo">
-                <img src="../../Main/Files/Images/paypal.png" alt="Add Client">
-            </div>
-            <div class="BlockTitle">
-                <h1> PayPal </h1>
-            </div>
-        </a>
-    </li>
-
-</div>
-
-<div class="row">
-
-    <li id="Block" class="col-lg-4">
-        <a href="#">
-            <div class="BlockLogo">
-                <img src="../../Main/Files/Images/poliana.png" alt="Add Client">
-            </div>
-            <div class="BlockTitle">
-                <h1> Poliana </h1>
-            </div>
-        </a>
-    </li>
-
-    <li id="Block" class="col-lg-4">
-        <a href="#">
-            <div class="BlockLogo">
-                <img src="../../Main/Files/Images/microsoft.png" alt="Add Client">
-            </div>
-            <div class="BlockTitle">
-                <h1> Microsoft </h1>
-            </div>
-        </a>
-    </li>
-
-</div>
-</ul>
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<?php
-
-//getCompanyBlockInfo();
-
-?>
-
-
-                <section id="Block" class="col-lg-4">
-                    <a href="#">
-                        <div class="BlockLogo">
-                            <img src="../../Main/Files/Images/blue_plus.png" alt="Add Client">
-                        </div>
-                        <div class="BlockTitle">
-                            <h1> Add Mentor </h1>
-                        </div>
-                    </a>
-                </section>
-
-                <?php
-
-//getMentorBlockInfo();
-
-?>-->
+         ?>
+     </div>
+ </ul>

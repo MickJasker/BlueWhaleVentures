@@ -1,7 +1,3 @@
-<?php
-require '../../Main/Includes/PHP/functions.php';
-checkSession("Admin");
-?>
 <!DOCTYPE html>
 <html>
 <head>

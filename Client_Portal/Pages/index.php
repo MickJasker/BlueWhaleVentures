@@ -28,9 +28,8 @@ CheckSession("Client");
         </section>
 
         <?php
-        getExperimentBlockInfo(12);
-        ?>
 
+        getExperimentBlockInfo(12);
 
         ?>
     </div>
