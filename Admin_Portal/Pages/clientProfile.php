@@ -25,8 +25,6 @@ CheckSession("Client");
 		<main>
 			<?php
                 selectCompanyInfo($_GET["id"]);
-
-                selectCompanyMentors($_GET["id"]);
              ?>
             
             <div class="wrapper-profile">
