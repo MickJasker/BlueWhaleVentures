@@ -4,7 +4,7 @@
 
 
 	<h4 id="left" class="col-md-2">
-		Welcome, <span class="user">Startup</span>
+		Welcome, <span class="user">Admin</span>
 	</h4>
 
 	<div id="clientswitch" class="col-md-3">
@@ -26,7 +26,7 @@
 	<h4 id="right" class="col-md-2">
 		<a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/index.php">Home </a>
 		<a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/Profile.php">Profile</a>
-		<a href="../../Main/Pages/logout.php">Logout</a>
+		<a href="../Main/Pages/logout.php">Logout</a>
 	</h4>
 	<div class="input_fields col-md-4">
 		<div class="filter">
@@ -43,7 +43,7 @@
 
 		<div id="searchdiv">
 
-			<input onkeyup="searchbarfunction()" type="text" id="searchbar" placeholder="Search for Experiment">
+			<input onkeyup="searchbarfunction()" type="text" id="searchbar" placeholder="Search for Client">
 
 		</div>
 	</div>

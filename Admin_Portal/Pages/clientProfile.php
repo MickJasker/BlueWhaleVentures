@@ -15,7 +15,7 @@ require '../../Main/Includes/PHP/functions.php';
 	<body id="wrapper-ClientProfile">
 		<header class="row wrapper-nav">
 			<?php
-			require "../../Main/Includes/nav.php"
+            require "../../Main/Includes/nav.php"
 			?>
 		</header>
 		<main>
