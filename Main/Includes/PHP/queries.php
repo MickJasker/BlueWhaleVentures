@@ -269,7 +269,7 @@ function getDesignSheetForm($sheetType, $language)
 			while($row = $data->fetch_assoc())
 			{
 				echo '<h3>'.$row["title"].'</h3>';
-				echo '<textarea name="input'.$i.'"  type="text" placeholder="'.$row["description"].'"></textarea>';
+				echo '<textarea name="input'.$i.'"  type="text" placeholder="'.$row["description"].'"></textarea><br>';
 				$i++;
 			}
 			echo '<input name="submitDesignsheet" type="submit" value="Enter" >';

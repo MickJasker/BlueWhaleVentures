@@ -7481,19 +7481,30 @@ body {
   transition: 0.3s ease;
 }
 #wrapper-designSheet main form input {
-  padding: 5px;
-  border: none;
   background-color: #0099ff;
+  color: white;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
-  color: white;
+  border: none;
+  font-size: 18px;
+  padding: 5px;
+  width: 150px;
+  text-align: left;
 }
 #wrapper-designSheet main form input:hover {
-  background-color: #555555;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
+  background-color: #a0a0a0;
+}
+#wrapper-designSheet main form input:focus {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  background-color: #f2f2f2;
+  outline: none;
+  color: #0099ff;
 }
 #wrapper-error {
   font-family: "open-sans", sans-serif;
