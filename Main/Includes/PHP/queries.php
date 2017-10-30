@@ -1411,7 +1411,6 @@ function selectAnswers($questionID, $i){
 function insertAnswer($POSTData, $ExperimentID)
 {
 
-
     $sql = "SELECT qu.QuestionaireID FROM Question qu
             INNER JOIN Questionaire q ON q.ID = qu.QuestionaireID
             INNER JOIN Experiment e ON e.ID = q.ExperimentID
