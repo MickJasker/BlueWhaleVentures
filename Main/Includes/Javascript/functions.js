@@ -59,29 +59,30 @@ function addQuestion() {
 
 }
 
-function addAnswer() {
+function addAnswer(questionID) {
 
     var questionArray = [];
     var answerArray = [];
     var i = document.getElementById('hiddenP').innerHTML;
     var x = 0;
     var y = 0;
+    var z = 0;
 
 
-    $("#question textarea[name='question']").each(
+    $("textarea[name='question']").each(
         function(){
             questionArray.push($(this).val());
         }
     );
 
-    $('#answers textarea').each(
+    $("textarea[name='answer']").each(
         function(){
             answerArray.push({id: $(this).attr('id'), answer: $(this).val()});
         }
     );
 
 
-    document.getElementById('answers').innerHTML += '<textarea id="answer' + i +'" name="answer" placeholder="Answer"></textarea>';
+    document.getElementById('question' + questionID + '').innerHTML += '<textarea id="answer' + i +'" name="answer" placeholder="Answer"></textarea>';
 
     $("#question textarea[name='question']").each(
         function(){
@@ -91,16 +92,12 @@ function addAnswer() {
     );
 
 
-    answerArray.forEach(
-		function(){
+    for( a = 0, l = answerArray.length; a < l; a++ ) {
 
-			var ID = $(this).id;
-            $("#answers textarea[id=ID]") = $(this).answer
+        var ID = answerArray[a].id;
+        document.getElementById('' + ID + '').value = answerArray[a].answer;
 
-        }
-
-	);
-
+    }
 
     i++;
 
@@ -109,6 +106,5 @@ function addAnswer() {
 
     console.log(questionArray);
     console.log(answerArray);
-
 
 }

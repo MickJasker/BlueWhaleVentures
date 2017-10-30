@@ -1269,7 +1269,7 @@ function selectQuestions($ExperimentID) {
             ?>
 
             <div id="questionDiv">
-                <div id="question">
+                <div id="question<?php echo $ID?>">
                     <textarea id="question<?php echo $ID?>" name="question"><?php echo $Question?></textarea>
                     <div id="answers">
                         <?php
@@ -1306,9 +1306,27 @@ function selectAnswers($questionID, $i){
     }
     ?>
 
-        <button type="button" onclick="addAnswer()">Add Answer</button>
+        <button type="button" onclick="addAnswer(<?php echo $questionID?>)">Add Answer</button>
 
     <?php
     return $i;
 }
+
+function insertAnswer($POSTData, $ExperimentID) {
+
+
+    var_dump($POSTData);
+
+
+
+
+}
+
+
+
+
+
+
+
+
 ?>
