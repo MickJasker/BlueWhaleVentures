@@ -1,7 +1,9 @@
 <?php
 require "queries.php";
-if (session_status() != PHP_SESSION_ACTIVE) 
+
+if(session_status() == PHP_SESSION_NONE)
 {
+    //session has not started
     session_start();
 }
 
