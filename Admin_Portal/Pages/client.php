@@ -1,8 +1,7 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
 CheckSession("Admin");
-?>
-<?php	
+
 					if (isset($_POST['generate_companykey']))
 					{
 						echo '<p>';
@@ -23,7 +22,7 @@ CheckSession("Admin");
 						}
 						echo '</p>';
 					}
-?></p>
+?>
  <div id="clientform" class="clientmodal">
      <!-- Modal content -->
      <div class="clientmodal-content">
