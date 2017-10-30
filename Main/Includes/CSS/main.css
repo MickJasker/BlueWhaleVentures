@@ -7434,6 +7434,29 @@ body {
   background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
   background-size: cover;
 }
+#wrapper-experimentExecuteable main h1 {
+  font-size: 24px;
+}
+#wrapper-experimentExecuteable main a {
+  margin: 25px;
+  color: white;
+}
+#wrapper-experimentExecuteable main a button {
+  width: 200px;
+  font-size: 18px;
+  padding: 5px;
+  border: none;
+  background-color: #0099ff;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+#wrapper-experimentExecuteable main a button:hover {
+  background-color: #555555;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
 #wrapper-designSheet {
   background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
   background-size: cover;

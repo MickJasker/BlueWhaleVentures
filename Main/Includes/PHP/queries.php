@@ -514,6 +514,7 @@ function getCompanyBlockInfo()
 function getExperiment($id)
 {	
 	$header = "designSheet.php";
+	$header = "designSheet.php";
 	$name = "";
 	
 	$sql = "SELECT Preparation, Conclusion FROM Pitch WHERE ExperimentID = '$id'";
@@ -599,7 +600,7 @@ function getExperiment($id)
 			echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
 			echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
 			echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
-			echo '<button> Results </button>';
+			echo '<a href=""><button> Results </button></a>';
 			echo '<a href="resultSheet.php?experimentid='.$_GET["id"].'"><button> Results sheet </button> </a>';
 		}
 	}
