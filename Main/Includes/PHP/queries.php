@@ -525,9 +525,10 @@ function getExperimentsPreview($CompanyID)
 
     	while ($row = $data->fetch_assoc()) 
         {
-        	 echo "<a href=../../Admin_Portal/Pages/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></br>";
+        	 echo "<li><a href=../../Admin_Portal/Pages/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br>";
         }
 
+        echo "<li><a href=../../Admin_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
        	echo "</ul>";
     }
 }
@@ -622,7 +623,6 @@ function getExperiment($id)
 			echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
 			echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
 			echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
-			echo '<a href=""><button> Results </button></a>';
 			echo '<a href="resultSheet.php?experimentid='.$_GET["id"].'"><button> Results sheet </button> </a>';
 		}
 	}
@@ -686,7 +686,7 @@ function getExperimentBlockInfo($CompanyID)
             ?>
 
             <li id="Block" class="col-lg-4">
-                <a href="../../Client_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
+                <a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
                     </div>
@@ -1431,6 +1431,61 @@ function selectAnswers($questionID, $i){
         <button type="button" onclick="addAnswer(<?php echo $questionID?>)">Add Answer</button>
 
     <?php
+    return $i;
+}
+
+function selectQuestionsView($ExperimentID)
+{
+
+    $sql = "SELECT qu.ID, qu.Question FROM Question qu
+            INNER JOIN Questionaire q ON q.ID = qu.QuestionaireID
+            INNER JOIN Experiment e ON e.ID = q.ExperimentID
+            WHERE e.ID = '$ExperimentID'";
+
+    $i = 1;
+
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+            $ID = $row["ID"];
+            $Question = $row["Question"];
+
+            ?>
+            <div id="questionDiv">
+                <div id="question<?php echo $ID?>">
+                    <textarea disabled id="question" name="question<?php echo $ID?>"><?php echo $Question?></textarea>
+                    <div id="answers">
+                        <?php
+                            $i  = selectanswersView($ID, $i);
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+    }
+
+    return $i;
+}
+
+function selectanswersView($questionID, $i)
+{
+    $sql = "SELECT ID, Answer FROM Response WHERE QuestionID = '$questionID'";
+
+    if ($data = Query($sql)) 
+    {
+        while ($row = $data->fetch_assoc()) 
+        {
+            $ID = $row["ID"];
+            $Answer = $row["Answer"];
+            ?>
+            <textarea disabled id="answer" name="answer<?php echo $ID ?>"><?php echo $Answer ?></textarea>
+            <?php
+            $i++;
+        }
+    }
+
     return $i;
 }
 
