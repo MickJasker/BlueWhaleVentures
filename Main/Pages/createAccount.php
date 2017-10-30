@@ -70,7 +70,6 @@ require '../Includes/PHP/functions.php';
 							}
 							else if (!filter_var($company_mail, FILTER_VALIDATE_EMAIL))
 							{
-								echo $company_mail;
 								echo "The E-mail adress is not correct";
 							}
 							else

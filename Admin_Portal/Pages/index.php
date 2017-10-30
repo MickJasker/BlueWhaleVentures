@@ -16,7 +16,7 @@
 
 <header class="wrapper-nav">
 
-    <?php include '../../Main/Includes/nav.php'; ?>
+    <?php include '../nav.php'; ?>
 
 </header>
 
