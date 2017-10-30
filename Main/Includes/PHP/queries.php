@@ -1173,6 +1173,34 @@ function selectLanguage()
 	}
 }
 
+function updatePassword($ID, $passwordold, $password)
+{
+	$sql = "SELECT Password FROM Login WHERE `UserID` = '$ID'";
+		if($data = query($sql))
+		{	
+			while($row = $data->fetch_assoc())
+			{
+				$dbpassword = $row["Password"];
+				
+				//Check if the password is correct
+				if (password_verify($passwordold, $dbpassword) != 0)
+				{
+					$password = password_hash($password, PASSWORD_DEFAULT);
+					$sql = "UPDATE `Login` SET `Password`='$password' WHERE `UserID` = '$ID'";
+					if(Query($sql))
+					{
+						return true;
+					}
+				}
+				else
+				{
+					echo "The old password entered is not correct";
+				}
+			}
+		}
+	return false;
+}
+
 function selectPrototype($ExperimentID) {
 
     $OldArray = array();
