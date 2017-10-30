@@ -1,8 +1,10 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
 
-if(isset($_POST['submit'])) {
+    if(isset($_POST['submit'])) {
+
     insertAnswer($_POST, secure($_GET['experimentID']));
+
 }
 
 

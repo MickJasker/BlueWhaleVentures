@@ -2,6 +2,7 @@
 require '../../Main/Includes/PHP/functions.php';
 checkSession("Mentor");
 ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,19 +12,25 @@ checkSession("Mentor");
 		<script src="../../Main/Includes/Javascript/load.js"></script>
 		<link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 	</head>
-	<body>
+	<body id="wrapper-admin-body">
 		<header class="wrapper-nav">
 			<?php
-			require "../../Main/Includes/nav.php"
+            require "../nav_mentor.php"
 			?>
 		</header>
 		<Main id="wrapper-admin">
 
-			<?php
+            <ul class="list">
+                <div class="content">
 
-			getMentorAssignedBlockInfo(10);
+			        <?php
 
-			?>
+			        getMentorAssignedBlockInfo(10);
+
+			        ?>
+
+                </div>
+            </ul>
 			<script src="../../Main/Includes/Javascript/main.js"></script>
 		</Main>
 	</body>

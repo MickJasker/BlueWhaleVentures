@@ -18,7 +18,7 @@ function selectclientormentor(){
             $('#wrapper-admin').fadeOut(500, function(){
                 $('#wrapper-admin' ).html( data );
                 $('#wrapper-admin').fadeIn(500);
-                searchbar.placeholder = "Search for Experiment";
+                searchbar.placeholder = "Search for Client";
             });
         });
 
