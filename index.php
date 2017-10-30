@@ -48,7 +48,7 @@
 									{
 										$header = "Mentor_Portal/Pages/index.php";
 									}
-									else if ($_SESSION["Role"] == "Company")
+									else if ($_SESSION["Role"] == "Client")
 									{
 										$header = "Client_Portal/Pages/index.php";
 									}
