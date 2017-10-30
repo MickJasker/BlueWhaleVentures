@@ -34,19 +34,21 @@
 								$data = selectLoginInfo($user_name, $password);
 								if ($data[0] == "true")
 								{
-									$role= $data[1];
+									$role = $data[1];
 									$UserID = $data[2];
 									
+									createSession($user_name);
+
 									$header = "login";
-									if ($role == "Admin")
+									if ($_SESSION["Role"] == "Admin")
 									{
 										$header = "Admin_Portal/Pages/index.php";
 									}
-									else if ($role == "Mentor")
+									else if ($_SESSION["Role"] == "Mentor")
 									{
 										$header = "Mentor_Portal/Pages/index.php";
 									}
-									else if ($role == "Company")
+									else if ($_SESSION["Role"] == "Company")
 									{
 										$header = "Client_Portal/Pages/index.php";
 									}
@@ -57,8 +59,6 @@
 									
 									$state = "successful";
 									loginlog($UserID, $state);
-									
-									createSession($user_name);
 									header('Location:' . $header);
 								}
 								else

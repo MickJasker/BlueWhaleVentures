@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php require '../../Main/Includes/PHP/functions.php'; ?>
 <html>
 <head>
     <title> Admin Portal </title>

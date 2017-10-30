@@ -50,7 +50,7 @@ function createSession($Email)
 {
 	$_SESSION["LoggedIn"] = true;
 	$_SESSION["UserID"] = selectUserID($Email);	
-	$_SESSION["Role"] = selectRole($Email);
+	$_SESSION["Role"] = selectRole($_SESSION["UserID"]);
 	$_SESSION["Language"] =  selectUserLanguage($_SESSION["UserID"]);
 	$_SESSION["CompanyID"] = selectCompanyID($_SESSION["UserID"]);
 	
@@ -59,7 +59,7 @@ function createSession($Email)
 	echo "Role: " . $_SESSION["Role"] . "<br>";
 	echo "UserID: " . $_SESSION["UserID"] . "<br>";	
 	echo "CompanyID: " . $_SESSION["CompanyID"];	
-	*/
+	*/	
 }
 
 function checkSession($AllowedRole)
