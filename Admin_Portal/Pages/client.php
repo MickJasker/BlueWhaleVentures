@@ -1,4 +1,5 @@
 <?php
+require '../../Main/Includes/PHP/functions.php';
 /*
 CheckSession("Admin");
 */
