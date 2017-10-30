@@ -15,9 +15,7 @@ CheckSession("Admin");
 
 	<body id="wrapper-ClientProfile">
 		<header class="row wrapper-nav">
-			<?php
-            require "../nav.php"
-			?>
+			<?php require "../nav_nosearchadmin.php"; ?>
 		</header>
 		<main>
 			<?php

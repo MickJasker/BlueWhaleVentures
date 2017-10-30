@@ -11,7 +11,7 @@ require '../../Main/Includes/PHP/functions.php';
 
 	<body id="wrapper-experimentExecuteable">
 	    <header class="wrapper-nav">
-	        <?php require "../nav_nosearch.php";?>
+	        <?php require "../nav_nosearchadmin.php";?>
 	    </header>
 	    <main>
 	        <?php getExperiment($_GET["id"]); ?>
