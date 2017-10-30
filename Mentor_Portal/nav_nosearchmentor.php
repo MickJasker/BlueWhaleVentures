@@ -10,6 +10,6 @@
 	<h4 id="right">
 		<a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/index.php">Home </a>
 		<a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/Profile.php">Profile</a>
-		<a href="../Main/Pages/logout.php">Logout</a>
+		<a href="../../Main/Pages/logout.php">Logout</a>
 	</h4>
 </div>
