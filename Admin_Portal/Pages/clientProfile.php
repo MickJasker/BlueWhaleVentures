@@ -1,6 +1,6 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
-//CheckSession("Admin");
+CheckSession("Admin");
 ?>
 <!DOCTYPE HTML>
 <html>
