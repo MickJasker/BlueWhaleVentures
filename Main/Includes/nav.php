@@ -34,7 +34,6 @@
 			<input onkeyup="filterfunction()" id="input" type="text" class="filterbtn" placeholder="Filter">
 
             <ul id="content" class="filter-content">
-                <li><a href="#" onclick="filterclick()">All</a></li>
                 <li><a href="#" onclick="filterclick()">Games</a></li>
                 <li><a href="#" onclick="filterclick()">Navigation</a></li>
                 <li><a href="#" onclick="filterclick()">Fashion</a></li>

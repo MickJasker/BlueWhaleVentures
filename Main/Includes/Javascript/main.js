@@ -60,6 +60,15 @@ function filterfunction() {
     }else if(text == ""){
         document.getElementById("content").classList.remove("show");
     }
+
+    list = document.getElementsByClassName("content")[0];
+    listitem = list.getElementsByTagName("li");
+    if (input.value === ""){
+
+        for(i = 0; i < listitem.length; i++){
+            listitem[i].style.display = "";
+        }
+    }
 }
 
 //filter op klik functie
@@ -83,14 +92,13 @@ function filterclick(){
 
             if (target === a) {
                 li[i].style.display = "";
-            } else if(target === "ALL"){
-                li[i].style.display = "";
             }else {
                 li[i].style.display = "none";
             }
         }
     };
 }
+
 
 //zoekbalk functie
 function searchbarfunction(){
