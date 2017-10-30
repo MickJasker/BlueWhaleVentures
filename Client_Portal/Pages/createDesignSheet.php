@@ -16,10 +16,7 @@ checkSession('Company');
         ?>
     </header>
 		<Main>
-            <div id="switch">
-                <button class="switchButton1" onclick="switchDesignSheet($(".switchButton2"), $(".switchButton1")">Design sheet</button>
-                <button  class="switchButton2">Executable</button>
-            </div>
+
 			<?php
 				getDesignSheetForm("Experiment", $_SESSION['Language']);
 				if (isset($_POST['submitDesignsheet']))
@@ -31,6 +28,7 @@ checkSession('Company');
 					header('Location: chooseExecution.php?experimentID=' . $_GET['experimentID']);
 				}
 			?>
+            <div id="executable"></div>
 		</Main>
     <script src="../../Main/Includes/Javascript/designSheet.js"></script>
 	</body>

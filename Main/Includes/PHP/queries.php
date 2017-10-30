@@ -263,13 +263,13 @@ function getDesignSheetForm($sheetType, $language)
 
 		if($data = query($sql))
 		{	
-			echo '<form method="POST" action="#">';
+			echo '<form id="designSheetForm" method="POST" action="#">';
 			
 			$i = 0;
 			while($row = $data->fetch_assoc())
 			{
 				echo '<h3>'.$row["title"].'</h3>';
-				echo '<textarea name="input'.$i.'"  type="text" placeholder="'.$row["description"].'"></textarea>';
+				echo '<textarea name="input'.$i.'"  type="text" placeholder="'.$row["description"].'"></textarea><br>';
 				$i++;
 			}
 			echo '<input name="submitDesignsheet" type="submit" value="Enter" >';
@@ -407,7 +407,8 @@ function selectRole($ID)
 	if ($data = query($sql))
 	{
 		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		return $row;
+		echo "Database: " . $row['Name'];
+		return $row['Name'];
 	}
 }
 
@@ -423,6 +424,7 @@ function selectUserName($Email)
 	if ($data = query($sql))
 	{
 		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+		return $row['Name'];
 	}
 }
 
@@ -435,7 +437,7 @@ function selectCompanyName($UserID)
 	if ($data = query($sql))
 	{
 		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		return $row;
+		return $row['Name'];
 	}
 }
 
@@ -733,7 +735,7 @@ function selectCompanyMentors($CompanyID)
 			<div class="mentor-preview col-md-3">
 				<a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID'] ?>">
 					<img src="../../<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
-					<h1> <?php echo $row['Name'] ?> </h1>
+					<h4> <?php echo $row['Name'] ?> </h4>
 				</a>
 			</div>
 			<?php
@@ -1267,7 +1269,7 @@ function selectQuestions($ExperimentID) {
             ?>
 
             <div id="questionDiv">
-                <div id="question">
+                <div id="question<?php echo $ID?>">
                     <textarea id="question<?php echo $ID?>" name="question"><?php echo $Question?></textarea>
                     <div id="answers">
                         <?php
@@ -1304,9 +1306,27 @@ function selectAnswers($questionID, $i){
     }
     ?>
 
-        <button type="button" onclick="addAnswer()">Add Answer</button>
+        <button type="button" onclick="addAnswer(<?php echo $questionID?>)">Add Answer</button>
 
     <?php
     return $i;
 }
+
+function insertAnswer($POSTData, $ExperimentID) {
+
+
+    var_dump($POSTData);
+
+
+
+
+}
+
+
+
+
+
+
+
+
 ?>
