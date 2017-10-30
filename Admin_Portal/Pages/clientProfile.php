@@ -1,6 +1,5 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
-CheckSession("Client");
 ?>
 <!DOCTYPE HTML>
 <html>
