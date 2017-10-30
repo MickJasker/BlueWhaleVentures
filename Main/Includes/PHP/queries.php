@@ -407,7 +407,8 @@ function selectRole($ID)
 	if ($data = query($sql))
 	{
 		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		return $row;
+		echo "Database: " . $row['Name'];
+		return $row['Name'];
 	}
 }
 
@@ -423,6 +424,7 @@ function selectUserName($Email)
 	if ($data = query($sql))
 	{
 		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+		return $row['Name'];
 	}
 }
 
@@ -435,7 +437,7 @@ function selectCompanyName($UserID)
 	if ($data = query($sql))
 	{
 		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		return $row;
+		return $row['Name'];
 	}
 }
 
@@ -733,7 +735,7 @@ function selectCompanyMentors($CompanyID)
 			<div class="mentor-preview col-md-3">
 				<a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID'] ?>">
 					<img src="../../<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
-					<h1> <?php echo $row['Name'] ?> </h1>
+					<h4> <?php echo $row['Name'] ?> </h4>
 				</a>
 			</div>
 			<?php
