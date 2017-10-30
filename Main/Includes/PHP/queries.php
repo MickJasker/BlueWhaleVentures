@@ -779,36 +779,83 @@ function selectCompanyInfo($CompanyID)
 
 	if($data = Query($sql)) 
     {
-    	$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-    	?>
+        while ($row = $data->fetch_assoc()) {
+            $Name = $row["Name"];
+            $Logo = $row["Logo"];
+            $Description = $row["Description"];
+            $Email = $row["Email"];
+            $Phone = $row["Phone"];
+            $Address = $row["Address"];
+        }
 
-    	<section class="TempColumn">
-    		<div class="TempColLogo">
-    			<img src="../../<?php echo $row['Logo']; ?>" alt="Company Logo">
-    		</div>
-			<div class="TempColDescription">
-				<h1> <?php echo $row['Description']; ?> </h1>
-			</div>
-		</section>
 
-		<section class="TempColumn">
-			<div class="Temptable">
-				<table>
-					<tr>
-						<th>Phone: </th>
-						<td><?php echo $row["Phone"]; ?></td>
-					</tr>
-					<tr>
-						<th>Email: </th>
-						<td><?php echo $row["Email"]; ?></td>
-					</tr>
-					<tr>
-						<th>Address: </th>
-						<td><?php echo $row["Address"]; ?></td>
-					</tr>
-				</table>
-		</section>
-		<?php
+            ?>
+
+        <div class="wrapper-profile">
+            <div class="row">
+                <section class="block">
+                    <div class="content">
+                        <div class="container-fluid logo">
+                            <img src="../../<?php echo $Logo ?>">
+                        </div>
+                        <div class="container-fluid discription">
+                            <h3><?php echo $Name ?></h3>
+                            <p><?php echo $Description ?>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section class="block">
+                    <div class="title-mentor col-md-4">
+                        <h3>Company Information</h3>
+                    </div>
+                    <div class="content">
+                        <div class="container-fluid logo">
+                            <p>
+                                Email: <?php echo $Email ?> <br/>
+                                Phone: <?php echo $Phone ?> <br/>
+                                Address: <?php echo $Address ?> <br/>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section class="block">
+                    <div class="title-mentor col-md-4">
+                        <h3>Analytics</h3>
+                    </div>
+                    <div class="content">
+                        <div class="container-fluid title">
+
+                        </div>
+                        <div class="container-fluid">
+                            <p>Analytics</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="row mentor-row">
+                <section class="mentor col-md-8">
+                    <div class="title-mentor">
+                        <h3>Mentors</h3>
+                    </div>
+                    <div class="content">
+                        <div class="row">
+                            <?php selectCompanyMentors($_GET["id"]); ?>
+                        </div>
+                    </div>
+                </section>
+                <section class="block">
+                    <div class="content">
+                        <div class="container-fluid discription">
+                            <h3>Experiments</h3>
+                            <?php getExperimentsPreview($_GET["id"]); ?>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <?php
     }
 }
 
