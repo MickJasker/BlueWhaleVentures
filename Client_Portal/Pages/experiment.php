@@ -10,7 +10,7 @@ require '../../Main/Includes/PHP/functions.php';
 </head>
     <body id="wrapper-experimentExecuteable">
     <header class="wrapper-nav">
-
+        <?php require "../nav_nosearch.php"?>
     </header>
     <main>
         <?php
