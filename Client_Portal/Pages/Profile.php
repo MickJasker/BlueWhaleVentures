@@ -12,7 +12,7 @@ CheckSession("Client");
 	<body id="wrapper-admin-body">
 		<header class="row wrapper-nav">
 		<?php
-        require "../../Main/Includes/nav.php"
+        require "../nav_client.php"
 		?>
 		</header>
 		<Main id="wrapper-admin">
