@@ -1175,6 +1175,34 @@ function selectLanguage()
 	}
 }
 
+function updatePassword($ID, $passwordold, $password)
+{
+	$sql = "SELECT Password FROM Login WHERE `UserID` = '$ID'";
+		if($data = query($sql))
+		{	
+			while($row = $data->fetch_assoc())
+			{
+				$dbpassword = $row["Password"];
+				
+				//Check if the password is correct
+				if (password_verify($passwordold, $dbpassword) != 0)
+				{
+					$password = password_hash($password, PASSWORD_DEFAULT);
+					$sql = "UPDATE `Login` SET `Password`='$password' WHERE `UserID` = '$ID'";
+					if(Query($sql))
+					{
+						return true;
+					}
+				}
+				else
+				{
+					echo "The old password entered is not correct";
+				}
+			}
+		}
+	return false;
+}
+
 function selectPrototype($ExperimentID) {
 
     $OldArray = array();
@@ -1270,7 +1298,7 @@ function selectQuestions($ExperimentID) {
 
             <div id="questionDiv">
                 <div id="question<?php echo $ID?>">
-                    <textarea id="question<?php echo $ID?>" name="question"><?php echo $Question?></textarea>
+                    <textarea id="question" name="question<?php echo $ID?>"><?php echo $Question?></textarea>
                     <div id="answers">
                         <?php
                             $i  = selectAnswers($ID, $i);
@@ -1296,7 +1324,7 @@ function selectAnswers($questionID, $i){
             $Answer = $row["Answer"];
             ?>
 
-            <textarea id="answer<?php echo $ID ?>" name="answer"><?php echo $Answer ?></textarea>
+            <textarea id="answer" name="answer<?php echo $ID ?>"><?php echo $Answer ?></textarea>
 
             <?php
 
@@ -1312,21 +1340,67 @@ function selectAnswers($questionID, $i){
     return $i;
 }
 
-function insertAnswer($POSTData, $ExperimentID) {
+function insertAnswer($POSTData, $ExperimentID)
+{
 
 
-    var_dump($POSTData);
+    $sql = "SELECT qu.QuestionaireID FROM Question qu
+            INNER JOIN Questionaire q ON q.ID = qu.QuestionaireID
+            INNER JOIN Experiment e ON e.ID = q.ExperimentID
+            WHERE e.ID = '$ExperimentID'
+            LIMIT 1";
 
+    if ($data = Query($sql)) {
+        while ($row = $data->fetch_assoc()) {
 
+            $QuestionaireID = $row['QuestionaireID'];
 
+        }
+
+    } else {
+        echo "Shits fucked yo";
+    }
+
+    foreach ($POSTData AS $Key => $Text) {
+
+        if (strpos($Key, 'question') !== false) {
+
+            $ID = substr($Key, 8);
+            $sql = "SELECT ID FROM Question WHERE ID = '$ID'";
+
+            if ($data = Query($sql)) {
+                while ($row = $data->fetch_assoc()) {
+
+                    $QuestionID = $row['ID'];
+
+                }
+
+                if (Query($sql)) {
+                    $sql = "UPDATE Question SET Question = '$Text' WHERE ID = '$ID'";
+                    Query($sql);
+                } else {
+                    $sql = "INSERT INTO Question(QuestionaireID, Question) VALUES ('$QuestionaireID','$Text')";
+                    Query($sql);
+                }
+            }
+        }
+
+        elseif (strpos($Key, 'answer') !== false) {
+
+            $ID = substr($Key, 6);
+            $sql = "SELECT ID FROM Response WHERE ID = '$ID'";
+
+            if (Query($sql)) {
+                $sql = "UPDATE Response SET Answer = '$Text' WHERE ID = '$ID'";
+                Query($sql);
+            } else {
+                $sql = "INSERT INTO Response(QuestionID, Answer) VALUES ('$QuestionID','$Text')";
+                Query($sql);
+            }
+
+        }
+    }
 
 }
-
-
-
-
-
-
-
 
 ?>

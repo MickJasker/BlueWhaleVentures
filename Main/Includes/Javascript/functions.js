@@ -69,22 +69,22 @@ function addAnswer(questionID) {
     var z = 0;
 
 
-    $("textarea[name='question']").each(
+    $("textarea[id='question']").each(
         function(){
             questionArray.push($(this).val());
         }
     );
 
-    $("textarea[name='answer']").each(
+    $("textarea[id='answer']").each(
         function(){
-            answerArray.push({id: $(this).attr('id'), answer: $(this).val()});
+            answerArray.push({id: $(this).attr('name'), answer: $(this).val()});
         }
     );
 
 
-    document.getElementById('question' + questionID + '').innerHTML += '<textarea id="answer' + i +'" name="answer" placeholder="Answer"></textarea>';
+    document.getElementById('question' + questionID + '').innerHTML += '<textarea name="answer' + i + '" id="answer" placeholder="Answer"></textarea>';
 
-    $("#question textarea[name='question']").each(
+    $("#question textarea[id='question']").each(
         function(){
             $(this).text(questionArray[x]);
             x++;
@@ -95,7 +95,9 @@ function addAnswer(questionID) {
     for( a = 0, l = answerArray.length; a < l; a++ ) {
 
         var ID = answerArray[a].id;
-        document.getElementById('' + ID + '').value = answerArray[a].answer;
+        console.log(ID);
+
+        document.getElementsByName('' + ID + '')[0].value = answerArray[a].answer;
 
     }
 
