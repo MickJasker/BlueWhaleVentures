@@ -1,7 +1,8 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
 checkSession("Admin");
-
+?>
+<?php		
 				if (isset($_POST['generate_mentorkey']))
 				{
 					echo '<p>';
