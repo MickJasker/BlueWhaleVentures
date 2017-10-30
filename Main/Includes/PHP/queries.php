@@ -263,7 +263,7 @@ function getDesignSheetForm($sheetType, $language)
 
 		if($data = query($sql))
 		{	
-			echo '<form method="POST" action="#">';
+			echo '<form id="designSheetForm" method="POST" action="#">';
 			
 			$i = 0;
 			while($row = $data->fetch_assoc())
