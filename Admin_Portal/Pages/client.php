@@ -23,7 +23,7 @@ CheckSession("Admin");
 						}
 						echo '</p>';
 					}
-?></p>
+?>
  <div id="clientform" class="clientmodal">
      <!-- Modal content -->
      <div class="clientmodal-content">

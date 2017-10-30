@@ -622,7 +622,6 @@ function getExperiment($id)
 			echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
 			echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
 			echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
-			echo '<a href=""><button> Results </button></a>';
 			echo '<a href="resultSheet.php?experimentid='.$_GET["id"].'"><button> Results sheet </button> </a>';
 		}
 	}
@@ -630,6 +629,36 @@ function getExperiment($id)
 	{
 		return false;
 	}
+}
+
+function getFeedback($ID)
+{
+	$sql = "SELECT Text, UserID FROM `Comment` WHERE ExperimentID = '$ID'";
+	if ($data = query($sql))
+	{
+		while($row = $data->fetch_assoc())
+		{
+			$UserID = $row["UserID"];
+			$sql = "SELECT Name, RoleID FROM User WHERE ID = '$UserID'";
+			if ($data2 = query($sql))
+			{
+				while($row2 = $data2->fetch_assoc())
+				{
+					$RoleID = $row2["RoleID"];
+					$sql = "SELECT Name FROM Role WHERE ID = '$RoleID'";
+					if ($data3 = query($sql))
+					{
+						while($row3 = $data3->fetch_assoc())
+						{
+							echo '<h3>'. $row3["Name"] . ': ' . $row2["Name"] . '</h3>';
+							echo '<p>' . $row["Text"] . '</p>';
+						}
+					}
+				}
+			}
+		}
+	}
+	
 }
 
 //Admin portal blokken

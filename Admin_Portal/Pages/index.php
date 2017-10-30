@@ -14,7 +14,6 @@
 
 <script src="../../Main/Includes/Javascript/load.js"></script>
 
-
 <header class="wrapper-nav">
 
     <?php include '../nav.php'; ?>

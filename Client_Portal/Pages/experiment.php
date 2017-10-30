@@ -1,5 +1,6 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
+$ID = secure($_GET["id"])
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,16 +14,11 @@ require '../../Main/Includes/PHP/functions.php';
         <?php require "../nav_nosearch.php";?>
     </header>
     <main>
-        <?php getExperiment($_GET["id"]); ?>
+        <?php getExperiment($ID); ?>
     </main>
-
-		<!--<h1> Experiment 2</h1>
-		<p> Experiment description </p>
-		<p> Progress: </p>
-		<p> Reviewscore: </p>
-		<a href ="designSheet.php?experimentid=<?php //echo $_GET["id"];?>"><button> Design sheet </button></a>
-		<button> Questionaire / pitch / prototype </button>
-		<button> Results </button> 
-		<a href ="resultSheet.php?experimentid=<?php// echo $_GET["id"];?>"><button> Results sheet </button> -->
+	<h2> Feedback </h2>
+	<div>
+		<?php getFeedback($ID); ?>
+	</div>
 	</body>
 </html>
