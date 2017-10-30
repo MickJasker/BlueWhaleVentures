@@ -735,7 +735,7 @@ function selectCompanyMentors($CompanyID)
 			<div class="mentor-preview col-md-3">
 				<a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID'] ?>">
 					<img src="../../<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
-					<h1> <?php echo $row['Name'] ?> </h1>
+					<h4> <?php echo $row['Name'] ?> </h4>
 				</a>
 			</div>
 			<?php
