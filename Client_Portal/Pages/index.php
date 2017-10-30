@@ -27,11 +27,8 @@ CheckSession("Client");
             </a>
         </section>
 
-        <?php
-
-        getExperimentBlockInfo(12);
-
-        ?>
+        <?php getExperimentBlockInfo($_SESSION["CompanyID"]); ?>
+        
     </div>
 </Main>
 </body>

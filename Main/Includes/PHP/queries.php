@@ -510,6 +510,28 @@ function getCompanyBlockInfo()
     }
 }
 
+//gets the 3 latest 
+function getExperimentsPreview($CompanyID)
+{
+	$sql = "SELECT e.ID, e.Title
+			FROM Experiment e 
+            INNER JOIN Company c ON c.ID = e.CompanyID
+            WHERE c.ID = '$CompanyID'
+            ORDER BY e.ID DESC LIMIT 3";
+
+    if ($data = query($sql))
+    {
+    	echo "<ul style=list-style-type:none>";
+
+    	while ($row = $data->fetch_assoc()) 
+        {
+        	 echo "<a href=../../Admin_Portal/Pages/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></br>";
+        }
+
+       	echo "</ul>";
+    }
+}
+
 //Get experiment info
 function getExperiment($id)
 {	
@@ -643,12 +665,11 @@ function getMentorBlockInfo()
 }
 
 //Client Portal Experiment blokken
-function getExperimentBlockInfo($UserID)
+function getExperimentBlockInfo($CompanyID)
 {
     $sql = "SELECT e.ID, e.CompanyID, e.Title, e.Thumbnail, e.Completed FROM Experiment e 
             INNER JOIN Company c ON c.ID = e.CompanyID
-            INNER JOIN User u ON u.ID = c.UserID
-            WHERE u.ID = '$UserID'";
+            WHERE c.ID = '$CompanyID'";
 
     if($data = Query($sql))
     {
