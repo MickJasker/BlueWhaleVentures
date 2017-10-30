@@ -17,8 +17,8 @@ checkSession('Company');
     </header>
 		<Main>
             <div id="switch">
-                <button class="switchButton1" onclick="switchDesignSheet($(".switchButton2"), $(".switchButton1")">Design sheet</button>
-                <button  class="switchButton2">Executable</button>
+                <button class="switchButton1 switchActive">Design sheet</button>
+                <button  class="switchButton2" >Executable</button>
             </div>
 			<?php
 				getDesignSheetForm("Experiment", $_SESSION['Language']);

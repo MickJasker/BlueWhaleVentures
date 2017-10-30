@@ -731,7 +731,7 @@ body {
     #switch {
       position: fixed;
       right: 80px;
-      top: 160px;
+      top: 100px;
       .switchActive {
         border-bottom: @blue solid medium;
       }
@@ -756,6 +756,7 @@ body {
 
     form {
       margin: 80px;
+      display: none;
       textarea {
         width: 600px;
         height: 150px;
@@ -763,6 +764,17 @@ body {
         outline: rgba(0, 0, 0, 0) solid;
         &:focus {
           outline: @blue solid;
+          transition: 0.3s ease;
+        }
+      }
+      input {
+        padding: 5px;
+        border: none;
+        background-color: @blue;
+        transition: 0.3s ease;
+        color: white;
+        &:hover {
+          background-color: @gray;
           transition: 0.3s ease;
         }
       }
