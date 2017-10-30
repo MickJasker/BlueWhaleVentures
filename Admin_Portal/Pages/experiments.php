@@ -20,7 +20,7 @@ require '../../Main/Includes/PHP/functions.php';
 		</header>
 
 		<Main id="wrapper-admin">
-		    <?php getExperimentBlockInfo($_GET["companyID"]); ?>
+		    <?php getExperimentBlockInfo($_GET["id"]); ?>
 		</Main>
 
 		<script src="../../Main/Includes/Javascript/main.js"></script>

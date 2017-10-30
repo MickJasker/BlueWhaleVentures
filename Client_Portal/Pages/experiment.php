@@ -10,13 +10,10 @@ require '../../Main/Includes/PHP/functions.php';
 </head>
     <body id="wrapper-experimentExecuteable">
     <header class="wrapper-nav">
-        <?php require "../nav_nosearch.php"?>
+        <?php require "../nav_nosearch.php";?>
     </header>
     <main>
-        <?php
-        getExperiment($_GET["id"]);
-
-        ?>
+        <?php getExperiment($_GET["id"]); ?>
     </main>
 
 		<!--<h1> Experiment 2</h1>
