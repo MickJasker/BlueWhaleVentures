@@ -640,7 +640,7 @@ function getFeedback($ID)
 		while($row = $data->fetch_assoc())
 		{
 			$UserID = $row["UserID"];
-			$sql = "SELECT Name, RoleID FROM User WHERE ID = '$UserID'";
+			$sql = "SELECT Name, RoleID, ProfilePicture FROM User WHERE ID = '$UserID'";
 			if ($data2 = query($sql))
 			{
 				while($row2 = $data2->fetch_assoc())
@@ -651,6 +651,7 @@ function getFeedback($ID)
 					{
 						while($row3 = $data3->fetch_assoc())
 						{
+							echo '<img alt="profile picture" src="../../'.$row2["ProfilePicture"].'">';
 							echo '<h3>'. $row3["Name"] . ': ' . $row2["Name"] . '</h3>';
 							echo '<p>' . $row["Text"] . '</p>';
 						}

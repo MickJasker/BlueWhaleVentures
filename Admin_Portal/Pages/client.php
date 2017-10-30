@@ -1,5 +1,5 @@
 <?php
-require '../../Main/Includes/PHP/functions.php';
+include_once '../../Main/Includes/PHP/functions.php';
 CheckSession("Admin");
 ?>
 <?php	
