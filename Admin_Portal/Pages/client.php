@@ -1,10 +1,6 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
-
-			 
-/*
 CheckSession("Admin");
-*/
 ?>
 <?php	
 					if (isset($_POST['generate_companykey']))
