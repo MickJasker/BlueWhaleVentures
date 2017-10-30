@@ -11,28 +11,22 @@ CheckSession("Client");
 <body id="wrapper-admin-body">
 <header class="row wrapper-nav">
     <?php
-    require "../../Main/Includes/nav.php"
+    require "../nav_client.php"
     ?>
 </header>
 <Main id="wrapper-admin">
-    <div class="row">
-        <section id="Block">
-            <a href="createExperiment.php">
-                <div class="BlockLogo">
-                    <img src="../../Main/Files/Images/blue_plus.png" alt="Add Client">
-                </div>
-                <div class="BlockTitle">
-                    <h1> Add Experiment </h1>
-                </div>
-            </a>
-        </section>
+    <ul class="list">
+        <div class="content">
+            <?php
 
-        <?php
+            getExperimentBlockInfo(12);
 
-        getExperimentBlockInfo(12);
-
-        ?>
-    </div>
+            ?>
+        </div>
+    </ul>
 </Main>
+
+<script src="../../Main/Includes/Javascript/main.js"></script>
+
 </body>
 </html>

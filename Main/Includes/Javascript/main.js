@@ -18,7 +18,7 @@ function selectclientormentor(){
             $('#wrapper-admin').fadeOut(500, function(){
                 $('#wrapper-admin' ).html( data );
                 $('#wrapper-admin').fadeIn(500);
-                searchbar.placeholder = "Search for Experiment";
+                searchbar.placeholder = "Search for Client";
             });
         });
 
@@ -60,6 +60,15 @@ function filterfunction() {
     }else if(text == ""){
         document.getElementById("content").classList.remove("show");
     }
+
+    list = document.getElementsByClassName("content")[0];
+    listitem = list.getElementsByTagName("li");
+    if (input.value === ""){
+
+        for(i = 0; i < listitem.length; i++){
+            listitem[i].style.display = "";
+        }
+    }
 }
 
 //filter op klik functie
@@ -75,26 +84,21 @@ function filterclick(){
         //zet de geselecteerde tekst in variabel en maak hoofdletters
         var target = getEventTarget(event).innerHTML.toUpperCase();
 
-        console.log(target);
-
         ul = document.getElementsByClassName("list")[0];
         li = ul.getElementsByTagName("li");
 
-        console.log(ul);
-
         for (i = 0; i < li.length; i++) {
-            a = li[i].getElementsByTagName("h1")[0];
+            a = li[i].classList[0].toUpperCase();
 
-            console.log(a.innerHTML.toUpperCase());
-
-            if (a.innerHTML.toUpperCase().indexOf(target) > -1) {
+            if (target === a) {
                 li[i].style.display = "";
-            } else {
+            }else {
                 li[i].style.display = "none";
             }
         }
     };
 }
+
 
 //zoekbalk functie
 function searchbarfunction(){

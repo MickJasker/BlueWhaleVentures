@@ -722,6 +722,36 @@ body {
   }
 }
 
+#wrapper-experimentExecuteable {
+  text-align: center;
+  display: inline-block;
+  background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
+  background-size: cover;
+  main {
+    padding-top: 80px;
+    h1 {
+      font-size: 24px;
+    }
+    a {
+      margin: 25px;
+      color: white;
+      button {
+        width: 200px;
+        font-size: 18px;
+        padding: 5px;
+        border: none;
+        background-color: @blue;
+        transition: 0.3s ease;
+
+        &:hover {
+          background-color: @gray;
+          transition: 0.3s ease;
+        }
+      }
+    }
+  }
+}
+
 #wrapper-designSheet {
   background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
   background-size: cover;
@@ -731,7 +761,7 @@ body {
     #switch {
       position: fixed;
       right: 80px;
-      top: 160px;
+      top: 100px;
       .switchActive {
         border-bottom: @blue solid medium;
       }
@@ -764,6 +794,26 @@ body {
         &:focus {
           outline: @blue solid;
           transition: 0.3s ease;
+        }
+      }
+      input {
+        background-color: @blue;
+        color: white;
+        transition: 0.3s ease;
+        border: none;
+        font-size: 18px;
+        padding: 5px;
+        width: 150px;
+        text-align: left;
+        &:hover {
+          transition: 0.3s ease;
+          background-color: @grey;
+        }
+        &:focus {
+          transition: 0.3s ease;
+          background-color: @offwhite;
+          outline: none;
+          color: @blue;
         }
       }
     }

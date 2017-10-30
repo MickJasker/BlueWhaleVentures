@@ -2,6 +2,7 @@
 require '../../Main/Includes/PHP/functions.php';
 checkSession("Mentor");
 ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,118 +12,25 @@ checkSession("Mentor");
 		<script src="../../Main/Includes/Javascript/load.js"></script>
 		<link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 	</head>
-	<body>
+	<body id="wrapper-admin-body">
 		<header class="wrapper-nav">
 			<?php
-			require "../../Main/Includes/nav.php"
+            require "../nav_mentor.php"
 			?>
 		</header>
 		<Main id="wrapper-admin">
-			<div class="row">
 
-				<section id="Block" class="col-lg-4">
-					<a href="#">
-						<div class="BlockLogo">
-							<img src="../../Main/Files/Images/add.svg" alt="Add Client">
-						</div>
-						<div class="BlockTitle">
-							<h1> Add Client </h1>
-						</div>
-					</a>
-				</section>
+            <ul class="list">
+                <div class="content">
 
-				<section id="Block" class="col-lg-4">
-					<a href="#">
-						<div class="BlockLogo">
-							<img src="../../Main/Files/Images/google.png" alt="Add Client">
-						</div>
-						<div class="BlockTitle">
-							<h1> Google </h1>
-						</div>
-					</a>
-				</section>
+			        <?php
 
-				<section id="Block" class="col-lg-4">
-					<a href="#">
-						<div class="BlockLogo">
-							<img src="../../Main/Files/Images/amazon.png" alt="Add Client">
-						</div>
-						<div class="BlockTitle">
-							<h1> Amazon </h1>
-						</div>
-					</a>
-				</section>
+			        getMentorAssignedBlockInfo(10);
 
-			</div>
+			        ?>
 
-			<div class="row">
-
-				<section id="Block" class="col-lg-4">
-					<a href="#">
-						<div class="BlockLogo">
-							<img src="../../Main/Files/Images/poliana.png" alt="Add Client">
-						</div>
-						<div class="BlockTitle">
-							<h1> Poliana </h1>
-						</div>
-					</a>
-				</section>
-
-				<section id="Block" class="col-lg-4">
-					<a href="#">
-						<div class="BlockLogo">
-							<img src="../../Main/Files/Images/microsoft.png" alt="Add Client">
-						</div>
-						<div class="BlockTitle">
-							<h1> Microsoft </h1>
-						</div>
-					</a>
-				</section>
-
-				<section id="Block" class="col-lg-4">
-					<a href="#">
-						<div class="BlockLogo">
-							<img src="../../Main/Files/Images/paypal.png" alt="Add Client">
-						</div>
-						<div class="BlockTitle">
-							<h1> PayPal </h1>
-						</div>
-					</a>
-				</section>
-
-			</div>
-
-			<div class="row">
-
-				<section id="Block" class="col-lg-4">
-					<a href="#">
-						<div class="BlockLogo">
-							<img src="../../Main/Files/Images/poliana.png" alt="Add Client">
-						</div>
-						<div class="BlockTitle">
-							<h1> Poliana </h1>
-						</div>
-					</a>
-				</section>
-
-				<section id="Block" class="col-lg-4">
-					<a href="#">
-						<div class="BlockLogo">
-							<img src="../../Main/Files/Images/microsoft.png" alt="Add Client">
-						</div>
-						<div class="BlockTitle">
-							<h1> Microsoft </h1>
-						</div>
-					</a>
-				</section>
-
-			</div>
-
-			<?php
-
-			getMentorAssignedBlockInfo(10)
-
-			?>
+                </div>
+            </ul>
 			<script src="../../Main/Includes/Javascript/main.js"></script>
 		</Main>
 	</body>

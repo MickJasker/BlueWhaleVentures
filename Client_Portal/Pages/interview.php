@@ -1,5 +1,11 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
+
+if(isset($_POST['submit'])) {
+    insertAnswer($_POST, secure($_GET['experimentID']));
+}
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,6 +27,7 @@ require '../../Main/Includes/PHP/functions.php';
 
             ?>
             <p hidden id="hiddenP"><?php echo $i?></p>
+            <input type="submit" name="submit" value="Save">
         </form>
     </div>
 </Main>
