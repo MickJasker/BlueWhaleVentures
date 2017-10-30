@@ -8,11 +8,14 @@ require '../../Main/Includes/PHP/functions.php';
     <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 	<script src="../../Main/Includes/Javascript/functions.js"></script>
 </head>
-    <body id="wrapper-admin">
-	<?php  
-		getExperiment($_GET["id"]);
-	
-	?>
+    <body id="wrapper-experimentExecuteable">
+    <main>
+        <?php
+        getExperiment($_GET["id"]);
+
+        ?>
+    </main>
+
 		<!--<h1> Experiment 2</h1>
 		<p> Experiment description </p>
 		<p> Progress: </p>
@@ -20,6 +23,6 @@ require '../../Main/Includes/PHP/functions.php';
 		<a href ="designSheet.php?experimentid=<?php //echo $_GET["id"];?>"><button> Design sheet </button></a>
 		<button> Questionaire / pitch / prototype </button>
 		<button> Results </button> 
-		<a href ="resultSheet.php?experimentid=<?php// echo $_GET["id"];?>"><button> Results sheet </button> 
+		<a href ="resultSheet.php?experimentid=<?php// echo $_GET["id"];?>"><button> Results sheet </button> -->
 	</body>
 </html>
