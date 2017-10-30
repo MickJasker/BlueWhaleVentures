@@ -1,5 +1,6 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
+CheckSession("Admin");
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -52,10 +53,10 @@ require '../../Main/Includes/PHP/functions.php';
 				            <h3>Analytics</h3>
 			            </div>
 						<div class="content">
-							<div class="container-fluid logo">
-								<img src="../../Main/Files/Images/google.png">
+							<div class="container-fluid title">
+
 							</div>
-							<div class="container-fluid discription">
+							<div class="container-fluid">
 							<p>Analytics</p>
 							</div>
 						</div>
@@ -76,8 +77,7 @@ require '../../Main/Includes/PHP/functions.php';
 			            <div class="content">
 				            <div class="container-fluid discription">
 					            <h3>Experiments</h3>
-					            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolor.magn aaliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eacommodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim 	id est laborum.
-					            </p>
+					            <?php getExperimentsPreview($_GET["id"]); ?>
 				            </div>
 			            </div>
 		            </section>

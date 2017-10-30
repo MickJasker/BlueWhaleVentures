@@ -315,6 +315,7 @@ body {
 
     #right {
       padding: 0 2% 0 0;
+      float: right;
 
       a {
         color: @grey;
@@ -408,11 +409,17 @@ body {
       border-radius: 50%;
     }
 
+    .input_fields {
+      float: right;
+      margin-right: 2%;
+    }
     #searchdiv {
       height: 80px;
       padding: 0 2% 0 0;
-      position: relative;
-      display: inline-block;
+      float: left;
+      width: 47%;
+      display: flex;
+      align-items: center;
 
       #searchbar {
         outline: none;
@@ -421,19 +428,23 @@ body {
         border-color: @grey;
         border-style: solid;
         border-width: 1px;
-        margin: 12.5% 0 0 0;
         padding: 2px 10px 2px 10px;
         font-size: 15px;
         line-height: 30px;
         position: relative;
+        vertical-align: middle;
       }
     }
 
     .filter {
       position: relative;
-      display: inline-block;
       height: 80px;
       padding: 0 2% 0 0;
+      margin-right: 6%;
+      float: left;
+      width: 47%;
+      display: flex;
+      align-items: center;
 
       #content{
         list-style-type: none;
@@ -450,7 +461,6 @@ body {
         border-width: 1px;
         padding: 2px 10px 2px 10px;
         line-height: 30px;
-        margin: 12.5% 0 0 0;
       }
 
       .filter-content {
@@ -491,7 +501,6 @@ body {
 #wrapper-ClientProfile {
   main {
     margin-top: 80px;
-
     .wrapper-profile {
       margin-left: 10px;
       margin-top: 2vh;
@@ -503,8 +512,7 @@ body {
           .title-mentor {
             background-color: @blue;
             width: 100%;
-            padding: 5px;
-
+            padding: 5px 9px;
             h1 {
               color: @white
             }
@@ -531,24 +539,16 @@ body {
         }
 
         .title {
-
           background-color: @blue;
           width: 100%;
-
           h1 {
-            color: @white
+            color: white
           }
-
-
-          background-color: @blue;
-          width: 100%;
-
-          h1 {
-            color: @white
-          }
-
           h2 {
-            color: @white;
+            color: white;
+          }
+          h3 {
+            color: white;
           }
         }
 

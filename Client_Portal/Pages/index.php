@@ -17,11 +17,7 @@ CheckSession("Client");
 <Main id="wrapper-admin">
     <ul class="list">
         <div class="content">
-            <?php
-
-            getExperimentBlockInfo(12);
-
-            ?>
+            <?php getExperimentBlockInfo($_SESSION["CompanyID"]); ?>
         </div>
     </ul>
 </Main>

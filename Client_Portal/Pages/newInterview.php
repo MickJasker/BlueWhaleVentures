@@ -2,7 +2,9 @@
     require '../../Main/Includes/PHP/functions.php';
 
     if(isset($_POST['submit'])) {
-        insertQuestion($_POST, $_SESSION['insertedID']);
+
+            insertQuestion($_POST, $_SESSION['insertedID']);
+
     }
 
 
