@@ -16,11 +16,15 @@ require '../../Main/Includes/PHP/functions.php';
 		<script src="../../Main/Includes/Javascript/load.js"></script>
 
 		<header class="wrapper-nav">
-		    <?php include '../../Main/Includes/nav.php'; ?>
+		    <?php include '../nav_experiment.php'; ?>
 		</header>
 
 		<Main id="wrapper-admin">
-		    <?php getExperimentBlockInfo($_GET["id"]); ?>
+			<ul class="list">
+     			<div class="content">
+		    		<?php getExperimentBlockInfo($_GET["id"]); ?>
+				</div>
+			</ul>
 		</Main>
 
 		<script src="../../Main/Includes/Javascript/main.js"></script>
