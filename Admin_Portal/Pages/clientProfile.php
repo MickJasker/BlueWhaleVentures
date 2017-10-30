@@ -52,10 +52,10 @@ require '../../Main/Includes/PHP/functions.php';
 				            <h3>Analytics</h3>
 			            </div>
 						<div class="content">
-							<div class="container-fluid logo">
-								<img src="../../Main/Files/Images/google.png">
+							<div class="container-fluid title">
+
 							</div>
-							<div class="container-fluid discription">
+							<div class="container-fluid">
 							<p>Analytics</p>
 							</div>
 						</div>
