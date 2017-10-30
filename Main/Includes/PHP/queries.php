@@ -407,7 +407,6 @@ function selectRole($ID)
 	if ($data = query($sql))
 	{
 		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		echo "Database: " . $row['Name'];
 		return $row['Name'];
 	}
 }
