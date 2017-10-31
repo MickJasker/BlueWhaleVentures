@@ -646,11 +646,10 @@ function getExperimentView($id)
 		}
 		else
 		{
-			$name = "Pitch";
+			$name = "Pitch";	
+			$header = "pitch.php";
 			$buttonstate = "";
 		}
-
-		$header = "pitch.php";
 	}
 	
 	//if the execution is an Interview
@@ -683,12 +682,12 @@ function getExperimentView($id)
 
 		if ($row["Explanation1"] == "")
 		{
-			$name = "No prototype added yet";
+			$name = "Prototype";
+			$buttonstate = "";
 		}
 		else
 		{
-			$name = "Result";
-			$buttonstate = "";
+			$name = "No prototype added yet";
 		}
 	}
 	
@@ -704,13 +703,15 @@ function getExperimentView($id)
 		echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
 
 		designSheetButton($id, "Experiment");
-		if ($header == "?experimentID=". $id)
+		if ($buttonstate == "")
 		{
-			echo '<a><button '.$buttonstate.'> No execution chosen </button></a>';
+			//if the button is enabled
+			echo '<a href="'.$header.'"><button '.$buttonstate.'> '.$name.' </button></a>';	
 		}
 		else
 		{
-			echo '<a href="'.$header.'"><button '.$buttonstate.'> '.$name.' </button></a>';			
+			//if the button is disabled
+			echo '<a><button '.$buttonstate.'> No execution chosen </button></a>';	
 		}
 
 		designSheetButton($id, "Result");
@@ -866,7 +867,7 @@ function getExperimentBlockInfo($CompanyID)
             ?>
 
             <li id="Block" class="col-lg-4">
-                <a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
+                <a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/experiment.php?id=<?php echo $CompanyID ?>">
                     <div class="BlockLogo">
                         <img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
                     </div>
