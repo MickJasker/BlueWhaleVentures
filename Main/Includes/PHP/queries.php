@@ -124,7 +124,6 @@ function insertRoleInfo($userID)
 		}
 
 		//If admin, do nothing, admin currently has no extra information
-	}
 }
 
 function insertCompany($userID)
