@@ -883,8 +883,8 @@ function selectCompanyMentors($CompanyID)
 					<img src="../../<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
 					<h4> <?php echo $row['Name'] ?> </h4>
 				</a>
-                <a href="../../Admin_Portal/Pages/mentorProfile.php?action=delete&id=<?php echo $row['ID']; ?>">
-                    <img src="../../<?php echo $row['ProfilePicture']; ?>" alt="Delete mentor">
+                <a onclick="return confirm('Are you sure you want to delete the item?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
+                    <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
                 </a>
 			</div>
 			<?php
@@ -1056,7 +1056,7 @@ function SelectQuestion($ExecutionID)
     return $i;
 }
 
-function updateAdminProfile($ID, $name, $email, $language, $PFPath))
+function updateAdminProfile($ID, $name, $email, $language, $PFPath)
 {
 	
 }
@@ -1780,5 +1780,16 @@ function assignMentor($CompanyID, $Mentor)
     }
 }
 
+function unassignMentor($CompanyID, $MentorID) {
+
+    $sql = "DELETE FROM `Mentor_Company` WHERE MentorID = '$MentorID' AND CompanyID = '$CompanyID'";
+
+    if (query($sql)) {
+        header('Location: clientProfile.php?id=' . $CompanyID);
+    }
+    else {
+        echo "Unanble to unassign mentor.";
+    }
+}
 
 ?>
