@@ -1659,4 +1659,102 @@ function insertAnswer($POSTData, $ExperimentID)
 
 }
 
+function selectMentorDropdown($CompanyID) {
+
+    $sql = "SELECT u.Name FROM User u
+            INNER JOIN Role r ON r.ID = u.RoleID
+            WHERE u.RoleID = '7'";
+
+    if ($data = Query($sql)) {
+
+        ?>
+
+            <select name="mentor">
+
+        <?php
+        while ($row = $data->fetch_assoc()) {
+
+                $Name = $row['Name'];
+
+                $sql = "SELECT m.ID FROM Mentor m
+                INNER JOIN User u ON u.ID = m.UserID
+                WHERE u.Name = '$Name'";
+
+                if ($data2 = Query($sql)) {
+
+                    while ($row2 = $data2->fetch_assoc()) {
+
+                        $MentorID = $row2['ID'];
+
+
+                        $sql = "SELECT * FROM Mentor_Company
+                            WHERE MentorID = '$MentorID' AND CompanyID = '$CompanyID'";
+
+                    if (Query($sql)) {
+
+                        ?>
+                        <option disabled value="<?php echo $Name;?>"><?php echo $Name;?></option>
+
+                        <?php
+
+                    }
+
+                    else {
+
+                        ?>
+                        <option value="<?php echo $Name;?>"><?php echo $Name;?></option>
+
+                        <?php
+
+                    }
+                }
+
+                    }
+                    else {
+                        echo "Shits fucked yo 2";
+                    }
+                }
+
+
+
+        ?>
+
+            </select>
+
+        <?php
+    }
+    else {
+        echo "Shits fucked yo 1";
+    }
+
+}
+
+function assignMentor($CompanyID, $Mentor)
+{
+
+    $sql = "SELECT m.ID FROM Mentor m
+            INNER JOIN User u ON u.ID = m.UserID
+            WHERE u.Name = '$Mentor'";
+
+    if ($data = Query($sql)) {
+        while ($row = $data->fetch_assoc()) {
+
+            $MentorID = $row['ID'];
+
+        }
+
+        $sql = "INSERT INTO `Mentor_Company`(`MentorID`, `CompanyID`) VALUES ('$MentorID','$CompanyID')";
+        if (query($sql)) {
+
+        }
+        else {
+            echo "Shits fucked yo";
+        }
+    }
+    else {
+        echo "Shits fucked yo";
+    }
+}
+
+
 ?>
