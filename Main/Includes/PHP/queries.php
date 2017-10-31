@@ -706,14 +706,67 @@ function getExperimentView($id)
 		echo '<p>' . $row["Description"] .  '</p>';
 		echo '<p> Progress: ' . $row["Progress"] . '</p>';
 		echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
-		echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
+
+		designSheetButton($id, "Experiment");
+
 		echo '<a href="'.$header.'"><button '.$buttonstate.'> '.$name.' </button></a>';
-		echo '<a href="resultSheet.php?experimentid='.$_GET["id"].'"><button> Results sheet </button> </a>';
+
+		designSheetButton($id, "Result");
 	}
 	else
 	{
 		return false;
 	}
+}
+
+function designSheetButton($ID, $type)
+{
+	$sql = "SELECT a.ID FROM Answer a
+	INNER JOIN Segment s ON a.SegmentID = s.ID
+	INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
+	WHERE a.ExperimentID  = '$ID' AND d.Type = '$type'";
+
+	echo '<a href="';
+
+	if ($type == 'Experiment')
+	{
+		echo "designSheet.php";
+	}
+	else if ($type == 'Result')
+	{
+		echo "resultSheet.php";
+	}
+
+	echo '?experimentID='.$ID.'"><button';
+
+	if($data = query($sql))
+	{
+		echo '>';	
+
+		if ($type == 'Experiment')
+		{
+			echo "Design sheet";
+		}
+		else if ($type == 'Result')
+		{
+			echo "Result sheet";
+		}	
+	}
+	else
+	{		
+		echo ' disabled class="is_disabled">';
+
+		if ($type == 'Experiment')
+		{
+			echo "No design sheet started";
+		}
+		else if ($type == 'Result')
+		{
+			echo "No result sheet started";
+		}	
+	}
+
+	echo '</button></a>';
 }
 
 function getFeedback($ID)
