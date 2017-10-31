@@ -867,7 +867,7 @@ function getExperimentBlockInfo($CompanyID)
             ?>
 
             <li id="Block" class="col-lg-4">
-                <a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
+                <a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/experiment.php?id=<?php echo $CompanyID ?>">
                     <div class="BlockLogo">
                         <img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
                     </div>

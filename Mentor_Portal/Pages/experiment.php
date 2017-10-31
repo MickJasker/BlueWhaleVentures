@@ -13,10 +13,12 @@ $UserID = $_SESSION["UserID"];
 
 	<body id="wrapper-experimentExecuteable">
 	    <header class="wrapper-nav">
-	        <?php require "../nav_nosearchadmin.php";?>
+	        <?php require "../nav_nosearchmentor.php";?>
 	    </header>
 	    <main>
-	        <?php getExperimentView($ID); ?>
+	        <?php 
+	        echo "string"; 
+	        getExperimentView($ID); ?>
 			<h2> Feedback </h2>
 			<div>
 				<form id="form" action="#" method="POST">
