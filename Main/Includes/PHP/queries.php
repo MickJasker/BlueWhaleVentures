@@ -663,6 +663,16 @@ function getFeedback($ID)
 	
 }
 
+function insertFeedback($experimentID, $UserID, $feedback)
+{
+	$sql = "INSERT INTO `Comment`(`UserID`, `ExperimentID`, `Text`) VALUES ('$UserID', '$experimentID','$feedback')";
+	if (query($sql))
+	{
+		return true;
+	}
+	return false;
+}
+
 //Admin portal blokken
 function getMentorBlockInfo()
 {

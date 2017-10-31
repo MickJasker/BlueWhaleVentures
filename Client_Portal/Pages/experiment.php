@@ -1,6 +1,6 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
-$ID = secure($_GET["id"])
+$ID = secure($_GET["id"]);
 ?>
 <!DOCTYPE html>
 <html>
