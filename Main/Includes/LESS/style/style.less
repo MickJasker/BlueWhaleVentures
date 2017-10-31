@@ -280,27 +280,29 @@ body {
     position:fixed;
     left:0px;
     bottom:0px;
-    height:70px;
+    height:60px;
     width:100%;
-    background: transparent;
+    background: white;
     z-index: 1;
 
     #progressbar {
       position: relative;
-      margin: 1% auto 0 auto;
+      margin: 1.5% auto 0 auto;
       width: 1000px;
       background-color: @offwhite;
     }
 
     #bar {
       border-radius: 25px;
-      height: 8px;
+      height: 5px;
       background-color: @blue;
       position: relative;
+
     }
     .milestone{
       background-color: @blue;
       float: left;
+      left: -5px;
       z-index: 1;
       position: relative;
       color: @white;
@@ -308,19 +310,20 @@ body {
       text-align: center;
     }
     .left1, .left2, .right{
-      top: -19px;
-      width: 30px;
-      height: 30px;
+      top: -14px;
+      width: 25px;
+      left: 5px;
+      height: 25px;
       border-radius: 600px;
-      line-height: 30px;
+      line-height: 25px;
       font-size: 1.2vh;
     }
     #grow{
-      top: -24px;
-      width: 40px;
-      height: 40px;
+      top: -19px;
+      width: 35px;
+      height: 35px;
       border-radius: 800px;
-      line-height: 40px;
+      line-height: 35px;
       font-size: 2vh;
       transition: ease .6s;
     }
@@ -332,6 +335,7 @@ body {
     }
     .right{
       float: right;
+      right: -5px;
     }
   }
 }

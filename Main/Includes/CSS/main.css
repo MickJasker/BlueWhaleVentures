@@ -7036,26 +7036,27 @@ body {
   position: fixed;
   left: 0px;
   bottom: 0px;
-  height: 70px;
+  height: 60px;
   width: 100%;
-  background: transparent;
+  background: white;
   z-index: 1;
 }
 #wrapper-admin-body footer #progressbar {
   position: relative;
-  margin: 1% auto 0 auto;
+  margin: 1.5% auto 0 auto;
   width: 1000px;
   background-color: #f2f2f2;
 }
 #wrapper-admin-body footer #bar {
   border-radius: 25px;
-  height: 8px;
+  height: 5px;
   background-color: #0099ff;
   position: relative;
 }
 #wrapper-admin-body footer .milestone {
   background-color: #0099ff;
   float: left;
+  left: -5px;
   z-index: 1;
   position: relative;
   color: #ffffff;
@@ -7065,19 +7066,20 @@ body {
 #wrapper-admin-body footer .left1,
 #wrapper-admin-body footer .left2,
 #wrapper-admin-body footer .right {
-  top: -19px;
-  width: 30px;
-  height: 30px;
+  top: -14px;
+  width: 25px;
+  left: 5px;
+  height: 25px;
   border-radius: 600px;
-  line-height: 30px;
+  line-height: 25px;
   font-size: 1.2vh;
 }
 #wrapper-admin-body footer #grow {
-  top: -24px;
-  width: 40px;
-  height: 40px;
+  top: -19px;
+  width: 35px;
+  height: 35px;
   border-radius: 800px;
-  line-height: 40px;
+  line-height: 35px;
   font-size: 2vh;
   -webkit-transition: ease .6s;
   -o-transition: ease .6s;
@@ -7091,6 +7093,7 @@ body {
 }
 #wrapper-admin-body footer .right {
   float: right;
+  right: -5px;
 }
 .wrapper-nav {
   width: 100%;

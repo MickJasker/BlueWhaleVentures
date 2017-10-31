@@ -4,7 +4,7 @@ window.onload = function() {
     var width = 1;
     var id = setInterval(frame, 30);
     function frame() {
-        if (width >= 100) {
+        if (width >= 66) {
             clearInterval(id);
         } else {
             width++;
