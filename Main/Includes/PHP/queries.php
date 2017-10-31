@@ -604,7 +604,6 @@ function getExperiment($id)
 			}
 		}
 	}
-	
 	$sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
 	if($data = query($sql))
 	{
@@ -867,7 +866,7 @@ function getExperimentBlockInfo($CompanyID)
             ?>
 
             <li id="Block" class="col-lg-4">
-                <a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/experiment.php?id=<?php echo $CompanyID ?>">
+                <a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/experiment.php?id=<?php echo $row['ID']; ?>">
                     <div class="BlockLogo">
                         <img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
                     </div>
@@ -902,7 +901,7 @@ function getMentorAssignedBlockInfo($UserID)
             ?>
 
             <li id="Block" class="col-lg-4">
-                <a href="../../../Client_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
+                <a href="client_profile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <img src="../../<?php echo $Logo ?>" alt="Mentor Profile">
                     </div>
