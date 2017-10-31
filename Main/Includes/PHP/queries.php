@@ -113,15 +113,12 @@ function insertRoleInfo($userID)
 {
 	$role = selectRole($userID);
 
-	if($data = query($sql))
-	{
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		if ($row["Name"] == "Company")
+		if ($role == "Company")
 		{
 			return insertCompany($userID);
 		}
 
-		if ($row["Name"] == "Mentor")
+		if ($role == "Mentor")
 		{
 			return insertMentor($userID);
 		}
