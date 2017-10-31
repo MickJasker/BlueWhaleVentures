@@ -166,7 +166,7 @@ function creatementor(){
 //assign mentor form
 function assignMentor(){
 
-    var modal = document.getElementById('mentorform');
+    var modal = document.getElementById('mentormodal');
     var span = document.getElementsByClassName("close")[0];
 
     //als je op de knop add mentor drukt verschijnt de form
