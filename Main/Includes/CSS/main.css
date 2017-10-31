@@ -7032,6 +7032,69 @@ body {
   margin: 0;
   font-size: 3vh;
 }
+#wrapper-admin-body footer {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 60px;
+  width: 100%;
+  background: white;
+  z-index: 1;
+}
+#wrapper-admin-body footer #progressbar {
+  position: relative;
+  margin: 1.5% auto 0 auto;
+  width: 1000px;
+  background-color: #f2f2f2;
+}
+#wrapper-admin-body footer #bar {
+  border-radius: 25px;
+  height: 5px;
+  background-color: #0099ff;
+  position: relative;
+}
+#wrapper-admin-body footer .milestone {
+  background-color: #0099ff;
+  float: left;
+  left: -5px;
+  z-index: 1;
+  position: relative;
+  color: #ffffff;
+  font-family: "Open Sans";
+  text-align: center;
+}
+#wrapper-admin-body footer .left1,
+#wrapper-admin-body footer .left2,
+#wrapper-admin-body footer .right {
+  top: -14px;
+  width: 25px;
+  left: 5px;
+  height: 25px;
+  border-radius: 600px;
+  line-height: 25px;
+  font-size: 1.2vh;
+}
+#wrapper-admin-body footer #grow {
+  top: -19px;
+  width: 35px;
+  height: 35px;
+  border-radius: 800px;
+  line-height: 35px;
+  font-size: 2vh;
+  -webkit-transition: ease .6s;
+  -o-transition: ease .6s;
+  transition: ease .6s;
+}
+#wrapper-admin-body footer .left1 {
+  margin-left: 195px;
+}
+#wrapper-admin-body footer .left2 {
+  margin-left: 220px;
+}
+#wrapper-admin-body footer .right {
+  float: right;
+  right: -5px;
+}
 .wrapper-nav {
   width: 100%;
   height: 80px;
@@ -7559,6 +7622,9 @@ body {
 #wrapper-experimentExecuteable main h1 {
   font-size: 24px;
 }
+#wrapper-experimentExecuteable main h2 {
+  color: #ffffff;
+}
 #wrapper-experimentExecuteable main a {
   margin: 25px;
   color: white;
@@ -7606,7 +7672,6 @@ body {
 }
 #wrapper-experimentExecuteable main .feedback .feedbackUser div #block h3 {
   text-align: left;
-  color: #0099ff;
 }
 #wrapper-experimentExecuteable main .feedback .feedbackUser div #block p {
   text-align: left;

@@ -22,6 +22,18 @@ CheckSession("Client");
     </ul>
 </Main>
 
+<footer>
+    <div id="progressbar">
+        <div id="bar"></div>
+        <div id="grow" class="milestone">0</div>
+        <div class="milestone left1">25</div>
+        <div class="milestone left2">50</div>
+        <div class="milestone left2">75</div>
+        <div class="milestone right">100</div>
+
+    </div>
+</footer>
+
 <script src="../../Main/Includes/Javascript/main.js"></script>
 
 </body>

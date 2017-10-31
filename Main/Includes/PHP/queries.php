@@ -791,7 +791,7 @@ function getFeedback($ID)
 						while($row3 = $data3->fetch_assoc())
 						{
 							echo '<div class="feedbackUser row"><img class="col-sm-4" alt="profile picture" src="'.$row2["ProfilePicture"].'">';
-							echo '<div id="block" class="col-sm-8"><h3>'. $row3["Name"] . ': ' . $row2["Name"] . '</h3><br>';
+							echo '<div id="block" class="col-sm-8"><h3> ' . $row2["Name"] . '</h3><br>';
 							echo '<p>' . $row["Text"] . '</p></div></div><br>';
 						}
 					}
@@ -1949,7 +1949,7 @@ function selectBachelorBlockInfo() {
             ?>
 
             <li id="Block" class="col-lg-4">
-                <a href="#">
+                <a href="bachelorGroup.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <h1><?php echo $Name; ?></h1>
                     </div>
@@ -1964,5 +1964,45 @@ function selectBachelorBlockInfo() {
     }
 
 }
+
+function selectBachelorGroupBlockInfo($BachelorGroupID)
+{
+
+    $sql = "SELECT BachelorID, CompanyID FROM Bachelor_Company WHERE BachelorID = '$BachelorGroupID'";
+
+    if ($data = Query($sql)) {
+        while ($row = $data->fetch_assoc()) {
+            $BachelorID = $row["BachelorID"];
+            $CompanyID = $row["CompanyID"];
+
+            $sql2 = "SELECT Name, Logo FROM Company WHERE ID = '$CompanyID'";
+
+            if ($data2 = Query($sql2)) {
+                while ($row2 = $data2->fetch_assoc()) {
+                    $Name = $row2["Name"];
+                    $Logo = $row2["Logo"];
+
+
+                    ?>
+
+                    <li id="Block" class="col-lg-4">
+                        <a href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $CompanyID ?>">
+                            <div class="BlockLogo">
+                                <img src="../../<?php echo $Logo ?>">
+                            </div>
+                            <div class="BlockTitle">
+                                <h1> <?php echo $Name; ?> </h1>
+                            </div>
+                        </a>
+                    </li>
+
+                    <?php
+                }
+            }
+
+        }
+    }
+}
+
 
 ?>
