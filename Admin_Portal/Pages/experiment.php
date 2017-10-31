@@ -14,7 +14,7 @@ require '../../Main/Includes/PHP/functions.php';
 	        <?php require "../nav_nosearchadmin.php";?>
 	    </header>
 	    <main>
-	        <?php getExperiment($_GET["id"]); ?>
+	        <?php getExperimentView($_GET["id"]); ?>
 	    </main>
 	</body>
 </html>

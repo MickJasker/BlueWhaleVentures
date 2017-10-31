@@ -537,7 +537,6 @@ function getExperimentsPreview($CompanyID)
 function getExperiment($id)
 {	
 	$header = "designSheet.php";
-	$header = "designSheet.php";
 	$name = "";
 	
 	$sql = "SELECT Preparation, Conclusion FROM Pitch WHERE ExperimentID = '$id'";
@@ -625,6 +624,91 @@ function getExperiment($id)
 			echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
 			echo '<a href="resultSheet.php?experimentid='.$_GET["id"].'"><button> Results sheet </button> </a>';
 		}
+	}
+	else
+	{
+		return false;
+	}
+}
+
+//Get experiment info
+function getExperimentView($id)
+{	
+	$header = "designSheet.php";
+	$name = "";
+	$buttonstate = "disabled class='is_disabled'";
+	
+	//if the execution is a Pitch
+	$sql = "SELECT Preparation, Conclusion FROM Pitch WHERE ExperimentID = '$id'";
+	if ($data = query($sql))
+	{
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+
+		if ($row["Preparation"] == "")
+		{
+			$name = "No pitch started yet";
+		}
+		else
+		{
+			$name = "Pitch";
+			$buttonstate = "";
+		}
+
+		$header = "pitch.php";
+	}
+	
+	//if the execution is an Interview
+	$questionaire = "0";
+
+	$sql = "SELECT ID FROM Questionaire WHERE ExperimentID = '$id'";
+	if ($data = query($sql))
+	{
+		$questionaireID = "";
+		$name = "No interview added yet";
+		$header = "Interview.php";
+
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+		$questionaireID = $row["ID"];
+
+		$sql = "SELECT `Question` FROM `Question` WHERE `QuestionaireID` = '$questionaireID'";
+		if ($data2 = query($sql))
+		{
+			$name = "Interview";
+			$buttonstate = "";		
+		}
+	}
+
+	//if the execution is a Prototype
+	$sql = "SELECT Explanation1, Explanation2 FROM Prototype WHERE ExperimentID = '$id'";
+	if ($data = query($sql))
+	{
+		$header = "prototype.php";		
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+
+		if ($row["Explanation1"] == "")
+		{
+			$name = "No prototype added yet";
+		}
+		else
+		{
+			$name = "Result";
+			$buttonstate = "";
+		}
+	}
+	
+	//Put information on screen
+	$sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
+	if($data = query($sql))
+	{
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+		$header = $header . "?experimentID=" . $id;
+		echo '<h1>' . $row["Title"] . '</h1>';
+		echo '<p>' . $row["Description"] .  '</p>';
+		echo '<p> Progress: ' . $row["Progress"] . '</p>';
+		echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
+		echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
+		echo '<a href="'.$header.'"><button '.$buttonstate.'> '.$name.' </button></a>';
+		echo '<a href="resultSheet.php?experimentid='.$_GET["id"].'"><button> Results sheet </button> </a>';
 	}
 	else
 	{
