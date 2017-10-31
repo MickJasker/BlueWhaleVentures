@@ -1917,4 +1917,34 @@ function unassignMentor($CompanyID, $MentorID) {
     }
 }
 
+function selectBachelorBlockInfo() {
+
+    $sql = "SELECT ID, Name FROM BachelorGroup";
+
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+            $ID = $row["ID"];
+            $Name = $row["Name"];
+
+            ?>
+
+            <li id="Block" class="col-lg-4">
+                <a href="#">
+                    <div class="BlockLogo">
+                        <h1><?php echo $Name; ?></h1>
+                    </div>
+                    <div class="BlockTitle">
+                        <h1> <?php echo $Name; ?> </h1>
+                    </div>
+                </a>
+            </li>
+
+            <?php
+        }
+    }
+
+}
+
 ?>
