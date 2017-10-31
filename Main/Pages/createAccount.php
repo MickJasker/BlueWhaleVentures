@@ -77,7 +77,7 @@ require '../Includes/PHP/functions.php';
 								//Implement check key, get user data from db function
 								if($role = checkKey($key))
 								{
-									if (createAccount($role, $user_name, $company_mail, $password)) 
+									if (createAccount($role, $firstname, $company_mail, $password)) 
 									{
 										header('Location: ../../index.php');
 									}

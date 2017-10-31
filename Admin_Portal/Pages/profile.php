@@ -22,14 +22,14 @@ CheckSession("Admin");
 		<form id="form" action="#" method="POST" enctype="multipart/form-data">
 			<?php if ($data[2] != "")
 					{
-						echo '<img src="../../'.$data[2].'" alt="Profile picture" height="100px">';
+						echo '<img src="'.$data[2].'" alt="Profile picture" height="100px">';
 					}
 			?>
 			Upload profile picture: <input type="file" name="file1" id="file1"> 
 			<input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"> <br>
 			<input type="text" name="email" placeholder="E-mail" value="<?php echo $data[3]; ?>"> <br>
 			<select name="language">
-			  <?php selectLanguage(); ?>
+			  <?php selectLanguage($ID); ?>
 			</select> <br>
 			<input type="submit" name="submit" value="Save">
 		</form> 
@@ -41,7 +41,6 @@ CheckSession("Admin");
 			<input type="submit" name="changePassword" value="Change Password">
 		</form>
 		<?php
-		
 		
 				if (isset($_POST['submit']))
 				{
@@ -70,14 +69,14 @@ CheckSession("Admin");
 						if (!empty($_FILES['file1']['name'])) 
 						{
 							$type = "img";
-							$path = "../../Client_Portal/Uploads/profilePicture/";
+							$path = "../../Admin_Portal/Uploads/profilePicture/";
 							$file1_name = $_FILES['file1']['name'];
 							$file1_tmp_name = $_FILES['file1']['tmp_name'];
 							$file1_size = $_FILES['file1']['size'];
 								
 							if ($data[2] != "")
 							{
-								if (!unlink($data[2])) 
+								if (!unlink("".$data[2])) 
 								{
 									echo "error deleting old image";
 									$upload = false;

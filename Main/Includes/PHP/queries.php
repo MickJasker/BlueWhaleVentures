@@ -1053,11 +1053,6 @@ function SelectQuestion($ExecutionID)
     return $i;
 }
 
-function updateAdminProfile($ID, $name, $email, $language, $PFPath))
-{
-	
-}
-
 function selectAdminProfile($ID)
 {
 	$sql = "SELECT Name, ProfilePicture, Language From User
@@ -1386,14 +1381,43 @@ function updateClientProfile($ID, $name, $email, $language, $companyName, $compa
 	return false;
 }
 
-function selectLanguage()
+function updateAdminProfile($ID, $name, $email, $language, $PFPath)
 {
-	$sql = "SELECT DISTINCT Language FROM User";
-    if($data = Query($sql))
+	$sql = "UPDATE `User` SET `Language`='$language', `Name`='$name', `ProfilePicture`='$PFPath' WHERE ID = '$ID'";
+	if(Query($sql))
     {
+		$sql = "UPDATE `Login` SET `Email`='$email' WHERE UserID = '$ID'";
+		if(Query($sql))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+function selectLanguage($ID)
+{
+	$sql = "SELECT Language FROM User WHERE ID = '$ID'";
+	if($data = Query($sql))
+    {	
         while ($row = $data->fetch_assoc())
         {
-			echo '<option value="'.$row["Language"].'">'.$row["Language"].'</option>';
+			$language = $row["Language"];
+			$sql = "SELECT DISTINCT Language FROM User";
+			if($data2 = Query($sql))
+			{
+				while ($row2 = $data2->fetch_assoc())
+				{
+					if (!($language == $row2["Language"]))
+					{
+						echo '<option value="'.$row2["Language"].'">'.$row2["Language"].'</option>';
+					}
+					else 
+					{
+						echo '<option selected value="'.$row2["Language"].'">'.$row2["Language"].'</option>';
+					}
+				}
+			}
 		}
 	}
 }
