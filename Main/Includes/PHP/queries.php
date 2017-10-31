@@ -969,20 +969,9 @@ function SelectQuestion($ExecutionID)
     return $i;
 }
 
-function updateAdminProfile($ID, $AdminName, $AdminPic, $AdminLang)
+function updateAdminProfile($ID, $name, $email, $language, $PFPath))
 {
-	if(is_null($AdminPic))
-	{
-		$sql = "UPDATE User
-		SET Name = '$AdminName', Language = '$AdminLang'
-		WHERE ID = '$ID'";
-	}
-	else
-	{
-		$sql = "UPDATE User 
-		SET Name = '$AdminName', ProfilePicture = '$AdminPic', Language = '$AdminLang'
-		WHERE ID = '$ID'";
-	}
+	
 }
 
 function selectAdminProfile($ID)
@@ -1219,6 +1208,38 @@ function selectPitch($ExperimentID)
         }
     }
     return $Media;
+}
+
+function getAdminProfile($ID)
+{
+	$results = array();	
+	$succes = 0;
+	
+	$sql = "SELECT Language, Name, ProfilePicture FROM User WHERE ID = '$ID'";
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+			array_push($results, $row["Language"], $row["Name"], $row["ProfilePicture"]);
+			$succes = $succes + 1;
+		}
+	}
+	
+	$sql = "SELECT Email, Password FROM Login WHERE UserID = '$ID'";
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+			array_push($results, $row["Email"], $row["Password"]);
+			$succes = $succes + 1;
+		}
+	}
+	
+	if ($succes == 2)
+	{
+		return $results;
+	}
+	return false;
 }
 
 function getClientProfile($ID)
