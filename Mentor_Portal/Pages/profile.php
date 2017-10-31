@@ -49,6 +49,8 @@ CheckSession("Mentor");
 					$name = secure($_POST['name']);
 					$email = secure($_POST['email']);
 					$language = secure($_POST['language']);	
+					$companyName = secure($_POST['companyName']);
+					$phone = secure($_POST['phone']);	
 					
 					$upload = true;
 					$check = true;
@@ -62,6 +64,16 @@ CheckSession("Mentor");
 					{
 						$check = false;
 						echo "The E-mail adress is not correct";
+					}		
+					else if (!(strlen($phone) >= 6 && strlen($phone) <= 20 && is_numeric($phone)))
+					{
+						$check = false;
+						echo "The phone number is empty or not correct";
+					}
+					else if (!(strlen($companyName) >= 2 && strlen($companyName) <= 50))
+					{
+						$check = false;
+						echo "The companyName is empty or not between 2 and 50 characters";
 					}					
 					
 					if ($check)
@@ -71,7 +83,7 @@ CheckSession("Mentor");
 						if (!empty($_FILES['file1']['name'])) 
 						{
 							$type = "img";
-							$path = "../../Admin_Portal/Uploads/profilePicture/";
+							$path = "../../Mentor_Portal/Uploads/profilePictures/";
 							$file1_name = $_FILES['file1']['name'];
 							$file1_tmp_name = $_FILES['file1']['tmp_name'];
 							$file1_size = $_FILES['file1']['size'];
@@ -108,7 +120,7 @@ CheckSession("Mentor");
 						if ($upload)
 						{
 							//Update to db
-							if (updateAdminProfile($ID, $name, $email, $language, $PFPath))
+							if (updateMentorProfile($ID, $name, $email, $language, $PFPath, $companyName, $phone))
 							{
 								?> <script> sendHeader('profile.php'); </script> <?php
 							}

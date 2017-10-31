@@ -1367,12 +1367,12 @@ function getAdminProfile($ID)
 		}
 	}
 	
-	$sql = "SELECT Email, Password FROM Login WHERE UserID = '$ID'";
+	$sql = "SELECT Email FROM Login WHERE UserID = '$ID'";
     if($data = Query($sql))
     {
         while ($row = $data->fetch_assoc())
         {
-			array_push($results, $row["Email"], $row["Password"]);
+			array_push($results, $row["Email"]);
 			$succes = $succes + 1;
 		}
 	}
@@ -1399,12 +1399,12 @@ function getMentorProfile($ID)
 		}
 	}
 	
-	$sql = "SELECT Email, Password FROM Login WHERE UserID = '$ID'";
+	$sql = "SELECT Email FROM Login WHERE UserID = '$ID'";
     if($data = Query($sql))
     {
         while ($row = $data->fetch_assoc())
         {
-			array_push($results, $row["Email"], $row["Password"]);
+			array_push($results, $row["Email"]);
 			$succes = $succes + 1;
 		}
 	}
@@ -1441,12 +1441,12 @@ function getClientProfile($ID)
 		}
 	}
 	
-	$sql = "SELECT Email, Password FROM Login WHERE UserID = '$ID'";
+	$sql = "SELECT Email FROM Login WHERE UserID = '$ID'";
     if($data = Query($sql))
     {
         while ($row = $data->fetch_assoc())
         {
-			array_push($results, $row["Email"], $row["Password"]);
+			array_push($results, $row["Email"]);
 			$succes = $succes + 1;
 		}
 	}
@@ -1495,6 +1495,24 @@ function updateAdminProfile($ID, $name, $email, $language, $PFPath)
 		if(Query($sql))
 		{
 			return true;
+		}
+	}
+	return false;
+}
+
+function updateMentorProfile($ID, $name, $email, $language, $PFPath, $companyName, $phone)
+{
+	$sql = "UPDATE `User` SET `Language`='$language', `Name`='$name', `ProfilePicture`='$PFPath' WHERE ID = '$ID'";
+	if(Query($sql))
+    {
+		$sql = "UPDATE `Login` SET `Email`='$email' WHERE UserID = '$ID'";
+		if(Query($sql))
+		{
+			$sql = "UPDATE `Mentor` SET `CompanyName`='$companyName',`Phone`='$phone' WHERE UserID = '$ID'";
+			if(Query($sql))
+			{
+				return true;
+			}
 		}
 	}
 	return false;
