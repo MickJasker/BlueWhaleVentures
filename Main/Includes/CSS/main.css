@@ -7588,11 +7588,13 @@ body {
   background-color: #0099ff;
   display: inline-block;
   padding: 10px;
+  border-radius: 10px;
 }
 #wrapper-experimentExecuteable main .feedback .feedbackUser {
   min-width: 800px;
   padding: 10px;
   background-color: #f2f2f2;
+  border-radius: 10px;
 }
 #wrapper-experimentExecuteable main .feedback .feedbackUser div {
   display: inline-block;
