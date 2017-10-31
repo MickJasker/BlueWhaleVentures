@@ -885,7 +885,7 @@ body {
       margin: 25px;
       color: white;
       button {
-        width: 200px;
+        min-width: 200px;
         font-size: 18px;
         height: 35px;
         padding: 5px;
@@ -898,6 +898,43 @@ body {
           transition: 0.3s ease;
         }
       }
+    }
+    .is-disabled {
+      background-color: @gray ;
+      
+    }
+    .feedback {
+      margin: 50px;
+      background-color: @blue;
+      display: inline-block;
+      padding: 10px;
+      border-radius: 10px;
+      .feedbackUser {
+        min-width: 800px;
+        padding: 10px;
+        background-color: @offwhite;
+        border-radius: 10px;
+        div {
+          display: inline-block;
+          margin: 0;
+          text-align: left;
+          img {
+          }
+          #block {
+            margin: 10px;
+            h3 {
+              text-align: left;
+              color: @blue;
+            }
+            p {
+              text-align: left;
+              color: @blue;
+            }
+          }
+
+        }
+      }
+
     }
   }
 }

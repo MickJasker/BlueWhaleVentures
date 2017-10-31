@@ -1,6 +1,29 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
     CheckSession("Admin");
+
+
+    if (isset($_POST['save'])) {
+
+        assignMentor(secure($_GET['id']), $_POST['mentor']);
+
+}
+
+    if (isset($_GET['action'])) {
+
+        if (secure($_GET['action']) == "delete") {
+
+            unassignMentor(secure($_GET['companyID']), secure($_GET['id']));
+        }
+        else {
+
+        }
+    }
+    else {
+
+    }
+
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -29,9 +52,16 @@ require '../../Main/Includes/PHP/functions.php';
                     </div>
                     <div class="mentormodal-body">
                         <form method="POST" action="#">
-                            <input id="field" type="text" name="user_name" placeholder="Name"> <br>
-                            <input id="field" type="text" name="company_mail" placeholder="E-mail"> <br>
-                            <input id="submitbtn" name="generate_mentorkey" type="submit" value="Add mentor">
+
+
+
+                            <?php
+
+                                selectMentorDropdown(secure($_GET['id']));
+
+                            ?>
+
+                            <input id="submitbtn" name="save" type="submit" value="Assign mentor">
                         </form>
                     </div>
                 </div>

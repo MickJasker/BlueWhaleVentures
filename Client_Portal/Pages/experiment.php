@@ -1,6 +1,6 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
-$ID = secure($_GET["id"])
+$ID = secure($_GET["id"]);
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,11 +14,15 @@ $ID = secure($_GET["id"])
         <?php require "../nav_nosearch.php";?>
     </header>
     <main>
-        <?php getExperiment($ID); ?>
+        <?php getExperiment($ID); ?><br>
+        <div class="feedback container-fluid">
+            <h2> Feedback </h2>
+            <div>
+                <?php getFeedback($ID); ?>
+            </div>
+        </div>
+
     </main>
-	<h2> Feedback </h2>
-	<div>
-		<?php getFeedback($ID); ?>
-	</div>
+
 	</body>
 </html>
