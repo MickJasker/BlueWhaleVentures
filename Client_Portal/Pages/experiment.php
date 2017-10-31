@@ -14,11 +14,15 @@ $ID = secure($_GET["id"]);
         <?php require "../nav_nosearch.php";?>
     </header>
     <main>
-        <?php getExperiment($ID); ?>
+        <?php getExperiment($ID); ?><br>
+        <div class="feedback">
+            <h2> Feedback </h2>
+            <div>
+                <?php getFeedback($ID); ?>
+            </div>
+        </div>
+
     </main>
-	<h2> Feedback </h2>
-	<div>
-		<?php getFeedback($ID); ?>
-	</div>
+
 	</body>
 </html>
