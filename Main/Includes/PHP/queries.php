@@ -1788,7 +1788,7 @@ function unassignMentor($CompanyID, $MentorID) {
         header('Location: clientProfile.php?id=' . $CompanyID);
     }
     else {
-        echo "Unanble to unassign mentor.";
+        echo "Unanble to unable mentor.";
     }
 }
 
