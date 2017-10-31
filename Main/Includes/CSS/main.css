@@ -7479,6 +7479,35 @@ body {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
 }
+#wrapper-experimentExecuteable main .feedback {
+  margin: 50px;
+  background-color: #0099ff;
+  display: inline-block;
+  padding: 10px;
+}
+#wrapper-experimentExecuteable main .feedback .feedbackUser {
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+#wrapper-experimentExecuteable main .feedback .feedbackUser div {
+  display: inline-block;
+  margin: 20px;
+}
+#wrapper-experimentExecuteable main .feedback .feedbackUser div img {
+  float: left;
+}
+#wrapper-experimentExecuteable main .feedback .feedbackUser div #block {
+  float: right;
+  margin: 10px;
+}
+#wrapper-experimentExecuteable main .feedback .feedbackUser div #block h3 {
+  text-align: left;
+  color: #0099ff;
+}
+#wrapper-experimentExecuteable main .feedback .feedbackUser div #block p {
+  text-align: left;
+  color: #0099ff;
+}
 #wrapper-designSheet {
   background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
   background-size: cover;
