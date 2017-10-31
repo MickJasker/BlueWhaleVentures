@@ -7622,6 +7622,9 @@ body {
 #wrapper-experimentExecuteable main h1 {
   font-size: 24px;
 }
+#wrapper-experimentExecuteable main h2 {
+  color: #ffffff;
+}
 #wrapper-experimentExecuteable main a {
   margin: 25px;
   color: white;
@@ -7669,7 +7672,6 @@ body {
 }
 #wrapper-experimentExecuteable main .feedback .feedbackUser div #block h3 {
   text-align: left;
-  color: #0099ff;
 }
 #wrapper-experimentExecuteable main .feedback .feedbackUser div #block p {
   text-align: left;

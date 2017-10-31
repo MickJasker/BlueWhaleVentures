@@ -791,7 +791,7 @@ function getFeedback($ID)
 						while($row3 = $data3->fetch_assoc())
 						{
 							echo '<div class="feedbackUser row"><img class="col-sm-4" alt="profile picture" src="'.$row2["ProfilePicture"].'">';
-							echo '<div id="block" class="col-sm-8"><h3>'. $row3["Name"] . ': ' . $row2["Name"] . '</h3><br>';
+							echo '<div id="block" class="col-sm-8"><h3> ' . $row2["Name"] . '</h3><br>';
 							echo '<p>' . $row["Text"] . '</p></div></div><br>';
 						}
 					}
