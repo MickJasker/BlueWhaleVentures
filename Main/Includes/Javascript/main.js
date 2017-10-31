@@ -162,3 +162,25 @@ function creatementor(){
         }
     }
 }
+
+//assign mentor form
+function assignMentor(){
+
+    var modal = document.getElementById('mentorform');
+    var span = document.getElementsByClassName("close")[0];
+
+    //als je op de knop add mentor drukt verschijnt de form
+    modal.style.display = "block";
+
+    //als je op het kruisje drukt sluit het element
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // als je buiten het element klikt sluit het
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}

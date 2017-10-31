@@ -1,6 +1,11 @@
 <?php
 require "queries.php";
-session_start();
+
+if(session_status() == PHP_SESSION_NONE)
+{
+    //session has not started
+    session_start();
+}
 
 
 //This functions generates an random key and sends an email to the user

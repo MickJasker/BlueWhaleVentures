@@ -11,17 +11,20 @@ require '../../Main/Includes/PHP/functions.php';
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,800" rel="stylesheet">
 		<script src="../../Main/Includes/Javascript/jquery-3.2.1.min.js"></script>
 		<script src="../../Main/Includes/Javascript/load.js"></script>
-	</head>
+        <script src="../../Main/Includes/Javascript/main.js"></script>
+    </head>
 
 	<body id="wrapper-ClientProfile">
 		<header class="row wrapper-nav">
 			<?php require "../nav_nosearchadmin.php"; ?>
 		</header>
 		<main>
+
 			<?php
                 selectCompanyInfo($_GET["id"]);
              ?>
 		</main>
 		<script src="../../Main/Includes/Javascript/navbar.js"></script>
-	</body>
+        <script src="../../Main/Includes/Javascript/main.js"></script>
+    </body>
 </html>
