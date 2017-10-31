@@ -16,7 +16,7 @@ $UserID = $_SESSION["UserID"];
 	        <?php require "../nav_nosearchadmin.php";?>
 	    </header>
 	    <main>
-	        <?php getExperiment($ID); ?>
+	        <?php getExperimentView($ID); ?>
 			<h2> Feedback </h2>
 			<div>
 				<form id="form" action="#" method="POST">
