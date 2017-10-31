@@ -25,7 +25,7 @@ checkSession("Mentor");
 
 			        <?php
 
-			        getMentorAssignedBlockInfo(10);
+			        getMentorAssignedBlockInfo($_SESSION["UserID"]);
 
 			        ?>
 

@@ -24,15 +24,15 @@ CheckSession("Client");
 		<form id="form" action="#" method="POST" enctype="multipart/form-data">
 			<?php if ($data[2] != "")
 					{
-						echo '<img src="../../'.$data[2].'" alt="Profile picture" height="100px">';
+						echo '<img src="'.$data[2].'" alt="Profile picture" height="100px">';
 					}
 			?>
 			Upload profile picture: <input type="file" name="file1" id="file1"> 
 			<input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"> <br>
 			<input type="text" name="email" placeholder="E-mail" value="<?php echo $data[3]; ?>"> <br>
 			<select name="language">
-			  <?php selectLanguage(); ?>
-			</select> <br>
+			  <?php selectLanguage($ID); ?>
+			</select> <br> 
 			<?php if ($data[7] != "")
 					{
 						echo '<img src="../../'.$data[7].'" alt="Profile picture" height="100px">';
