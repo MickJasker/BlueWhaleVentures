@@ -7076,6 +7076,7 @@ body {
   color: #0099ff;
 }
 .wrapper-nav #nav #clientswitch {
+  margin-left: 5%;
   position: relative;
 }
 .wrapper-nav #nav #client {

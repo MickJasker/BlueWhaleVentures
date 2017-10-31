@@ -1,6 +1,6 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
-//CheckSession("Admin");
+    CheckSession("Admin");
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -21,8 +21,6 @@ require '../../Main/Includes/PHP/functions.php';
 			<?php
                 selectCompanyInfo($_GET["id"]);
              ?>
-            
-
 		</main>
 		<script src="../../Main/Includes/Javascript/navbar.js"></script>
 	</body>
