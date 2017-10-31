@@ -879,10 +879,13 @@ function selectCompanyMentors($CompanyID)
     	{
     		?>
 			<div class="mentor-preview col-md-3">
-				<a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID'] ?>">
+				<a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID']; ?>">
 					<img src="../../<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
 					<h4> <?php echo $row['Name'] ?> </h4>
 				</a>
+                <a href="../../Admin_Portal/Pages/mentorProfile.php?action=delete&id=<?php echo $row['ID']; ?>">
+                    <img src="../../<?php echo $row['ProfilePicture']; ?>" alt="Delete mentor">
+                </a>
 			</div>
 			<?php
     	}
