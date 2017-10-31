@@ -33,7 +33,7 @@ checkSession('Company');
 
                             //Image check
                             $type = "img";
-                            $path = "../Uploads/ExperimentThumbnail/";
+                            $path = "../../Client_Portal/Uploads/ExperimentThumbnail/";
                             $file1_name = $_FILES['file1']['name'];
                             $file1_tmp_name = $_FILES['file1']['tmp_name'];
                             $file1_size = $_FILES['file1']['size'];
