@@ -9,6 +9,20 @@ require '../../Main/Includes/PHP/functions.php';
 
 }
 
+    if (isset($_GET['action'])) {
+
+        if (secure($_GET['action']) == "delete") {
+
+            unassignMentor(secure($_GET['companyID']), secure($_GET['id']));
+        }
+        else {
+
+        }
+    }
+    else {
+
+    }
+
 
 ?>
 <!DOCTYPE HTML>

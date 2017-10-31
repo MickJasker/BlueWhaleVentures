@@ -7564,7 +7564,7 @@ body {
   color: white;
 }
 #wrapper-experimentExecuteable main a button {
-  width: 200px;
+  min-width: 200px;
   font-size: 18px;
   height: 35px;
   padding: 5px;
@@ -7580,6 +7580,9 @@ body {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
 }
+#wrapper-experimentExecuteable main .is-disabled {
+  background-color: #555555;
+}
 #wrapper-experimentExecuteable main .feedback {
   margin: 50px;
   background-color: #0099ff;
@@ -7593,7 +7596,8 @@ body {
 }
 #wrapper-experimentExecuteable main .feedback .feedbackUser div {
   display: inline-block;
-  margin: 20px;
+  margin: 0;
+  text-align: left;
 }
 #wrapper-experimentExecuteable main .feedback .feedbackUser div #block {
   margin: 10px;
