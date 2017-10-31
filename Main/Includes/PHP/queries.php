@@ -936,7 +936,7 @@ function selectCompanyMentors($CompanyID)
 					<img src="../../<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
 					<h4> <?php echo $row['Name'] ?> </h4>
 				</a>
-                <a onclick="return confirm('Are you sure you want to delete the item?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
+                <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
                     <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
                 </a>
 			</div>
@@ -1841,7 +1841,7 @@ function unassignMentor($CompanyID, $MentorID) {
         header('Location: clientProfile.php?id=' . $CompanyID);
     }
     else {
-        echo "Unanble to unable mentor.";
+        echo "Unable to unable mentor.";
     }
 }
 

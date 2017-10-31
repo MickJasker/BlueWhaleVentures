@@ -14,7 +14,6 @@ require '../../Main/Includes/PHP/functions.php';
         if (secure($_GET['action']) == "delete") {
 
             unassignMentor(secure($_GET['companyID']), secure($_GET['id']));
-            echo "nice";
         }
         else {
 
