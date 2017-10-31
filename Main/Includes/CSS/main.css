@@ -7587,6 +7587,7 @@ body {
   padding: 10px;
 }
 #wrapper-experimentExecuteable main .feedback .feedbackUser {
+  min-width: 800px;
   padding: 10px;
   background-color: #f2f2f2;
 }
@@ -7594,11 +7595,7 @@ body {
   display: inline-block;
   margin: 20px;
 }
-#wrapper-experimentExecuteable main .feedback .feedbackUser div img {
-  float: left;
-}
 #wrapper-experimentExecuteable main .feedback .feedbackUser div #block {
-  float: right;
   margin: 10px;
 }
 #wrapper-experimentExecuteable main .feedback .feedbackUser div #block h3 {
