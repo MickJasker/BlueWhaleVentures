@@ -7076,6 +7076,7 @@ body {
   color: #0099ff;
 }
 .wrapper-nav #nav #clientswitch {
+  margin-left: 5%;
   position: relative;
 }
 .wrapper-nav #nav #client {
@@ -7231,6 +7232,107 @@ body {
 }
 #wrapper-ClientProfile main {
   margin-top: 80px;
+  /* Modal Content */
+  /* Add Animation */
+  /* The Close Button */
+}
+#wrapper-ClientProfile main #mentormodal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: #000000;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+#wrapper-ClientProfile main .mentormodal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  margin-top: 3%;
+  border: 1px solid #888;
+  width: 28%;
+  height: 50vh;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+#wrapper-ClientProfile main .close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+#wrapper-ClientProfile main .close:hover,
+#wrapper-ClientProfile main .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+#wrapper-ClientProfile main .mentormodal-header {
+  padding: 2px 16px;
+  background-color: #0099ff;
+  color: white;
+}
+#wrapper-ClientProfile main .mentormodal-body {
+  padding: 2px 16px;
+}
+#wrapper-ClientProfile main .mentormodal-body form {
+  width: 145%;
+  padding: 10% 55% 0 5%;
+}
+#wrapper-ClientProfile main .mentormodal-body form #field {
+  outline: none;
+  border: none;
+  font-size: 15px;
+  line-height: 30px;
+  padding-left: 8px;
+  margin-bottom: 5%;
+  width: 100%;
+  background-color: #f2f2f2;
+}
+#wrapper-ClientProfile main .mentormodal-body form #submitbtn {
+  width: 100%;
+  background-color: #0099ff;
+  color: white;
+  text-align: left;
+  height: 30px;
 }
 #wrapper-ClientProfile main .wrapper-profile {
   margin-left: 10px;
@@ -7477,6 +7579,35 @@ body {
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
+}
+#wrapper-experimentExecuteable main .feedback {
+  margin: 50px;
+  background-color: #0099ff;
+  display: inline-block;
+  padding: 10px;
+}
+#wrapper-experimentExecuteable main .feedback .feedbackUser {
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+#wrapper-experimentExecuteable main .feedback .feedbackUser div {
+  display: inline-block;
+  margin: 20px;
+}
+#wrapper-experimentExecuteable main .feedback .feedbackUser div img {
+  float: left;
+}
+#wrapper-experimentExecuteable main .feedback .feedbackUser div #block {
+  float: right;
+  margin: 10px;
+}
+#wrapper-experimentExecuteable main .feedback .feedbackUser div #block h3 {
+  text-align: left;
+  color: #0099ff;
+}
+#wrapper-experimentExecuteable main .feedback .feedbackUser div #block p {
+  text-align: left;
+  color: #0099ff;
 }
 #wrapper-designSheet {
   background-image: url("../../Files/Images/stockImages/adminbackground.jpg");

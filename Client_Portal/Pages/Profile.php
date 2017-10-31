@@ -24,7 +24,7 @@ CheckSession("Client");
 		<form id="form" action="#" method="POST" enctype="multipart/form-data">
 			<?php if ($data[2] != "")
 					{
-						echo '<img src="'.$data[2].'" alt="Profile picture" height="100px">';
+						echo '<img src="../../'.$data[2].'" alt="Profile picture" height="100px">';
 					}
 			?>
 			Upload profile picture: <input type="file" name="file1" id="file1"> 
@@ -136,7 +136,7 @@ CheckSession("Client");
 						if (!empty($_FILES['file1']['name'])) 
 						{
 							$type = "img";
-							$path = "../Uploads/profilePicture/";
+							$path = "../../Client_Portal/Uploads/profilePicture/";
 							$file1_name = $_FILES['file1']['name'];
 							$file1_tmp_name = $_FILES['file1']['tmp_name'];
 							$file1_size = $_FILES['file1']['size'];
