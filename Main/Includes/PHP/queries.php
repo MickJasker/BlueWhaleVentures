@@ -634,7 +634,7 @@ function getExperiment($id)
 //Get experiment info
 function getExperimentView($id)
 {	
-	$header = "designSheet.php";
+	$header = "";
 	$name = "";
 	$buttonstate = "disabled class='is_disabled'";
 	
@@ -708,8 +708,14 @@ function getExperimentView($id)
 		echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
 
 		designSheetButton($id, "Experiment");
-
-		echo '<a href="'.$header.'"><button '.$buttonstate.'> '.$name.' </button></a>';
+		if ($header == "?experimentID=". $id)
+		{
+			echo '<a><button '.$buttonstate.'> No execution chosen </button></a>';
+		}
+		else
+		{
+			echo '<a href="'.$header.'"><button '.$buttonstate.'> '.$name.' </button></a>';			
+		}
 
 		designSheetButton($id, "Result");
 	}
