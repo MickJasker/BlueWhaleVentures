@@ -209,32 +209,40 @@ function selectLoginInfo($email, $password)
             if (password_verify($password, $dbpassword) != 0)
             {
                 $UserID = $row["UserID"];
-                $sql = "SELECT RoleID FROM User WHERE ID = '$UserID'";
+                $sql = "SELECT RoleID, Locked FROM User WHERE ID = '$UserID'";
                 if($data = query($sql))
                 {
                     $db_data = array("true");
                     while($row = $data->fetch_assoc())
                     {
-                        $RoleID = $row["RoleID"];
-                        $Role = "";
+                    	if ($row["Locked"] != 1)
+                    	{
+	                        $RoleID = $row["RoleID"];
+	                        $Role = "";
 
-                        //Change roleID to role
-                        if ($RoleID == "6")
-                        {
-                            $Role = "Admin";
-                        }
-                        else if ($RoleID == "7")
-                        {
-                            $Role = "Mentor";
-                        }
-                        else if ($RoleID == "8")
-                        {
-                            $Role = "Company";
-                        }
+	                        //Change roleID to role
+	                        if ($RoleID == "6")
+	                        {
+	                            $Role = "Admin";
+	                        }
+	                        else if ($RoleID == "7")
+	                        {
+	                            $Role = "Mentor";
+	                        }
+	                        else if ($RoleID == "8")
+	                        {
+	                            $Role = "Company";
+	                        }
 
-                        array_push($db_data, $Role, $UserID);
+	                        array_push($db_data, $Role, $UserID);
+	                        return $db_data;
+                    	}
+                    	else
+                    	{
+                    		echo "This account has been temporarily banned, please contact an administrator for more information";
+                    		return false;
+                    	}
                     }
-                    return $db_data;
                 }
             }
             else
@@ -2178,7 +2186,8 @@ function selectCompanyDropdown()
 
 }
 
-function deleteBachelorGroup($BachelorGroupID) {
+function deleteBachelorGroup($BachelorGroupID) 
+{
 
     $sql = "DELETE FROM `Bachelor_Company` WHERE BachelorID = '$BachelorGroupID'";
 
@@ -2199,7 +2208,8 @@ function deleteBachelorGroup($BachelorGroupID) {
     }
 }
 
-function deleteBachelorGroupMember($CompanyID, $BachelorGroupID) {
+function deleteBachelorGroupMember($CompanyID, $BachelorGroupID) 
+{
 
     $sql = "DELETE FROM `Bachelor_Company` WHERE CompanyID = '$CompanyID'";
 

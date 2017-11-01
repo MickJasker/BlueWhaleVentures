@@ -73,12 +73,13 @@ function checkSession($AllowedRole)
 	{
 		if ($_SESSION["Role"] != $AllowedRole)
 		{
-			header('Location: ../../'.$_SESSION["Role"].'_portal/index.php');
+			header('Location: ../../'.$_SESSION["Role"].'_portal/Pages/index.php');
 		}
 
 		if (selectUserLock($_SESSION["UserID"]) == 1)
 		{
-			header('Location: ../../../index.php');
+			destroySession();
+			//header('Location: ../../index.php');
 		}	
 	}
 	else 
