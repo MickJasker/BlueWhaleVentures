@@ -79,7 +79,7 @@ function checkSession($AllowedRole)
 		if (selectUserLock($_SESSION["UserID"]) == 1)
 		{
 			destroySession();
-			//header('Location: ../../index.php');
+			header('Location: ../../index.php');
 		}	
 	}
 	else 
