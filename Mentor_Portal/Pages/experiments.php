@@ -1,10 +1,12 @@
-<!DOCTYPE html>
 <?php 
 require '../../Main/Includes/PHP/functions.php';
+checkSession('Mentor');
+$ID = checkExperimentIDMentor(secure($_GET["id"]), $_SESSION["UserID"]);
 ?>
+<!DOCTYPE html>
 <html>
 	<head>
-	    <title> Admin Portal </title>
+	    <title> Mentor Portal </title>
 	    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,800" rel="stylesheet">
 	    <script src="../../Main/Includes/Javascript/jquery-3.2.1.min.js"></script>
 	    <script src="../../Main/Includes/Javascript/load.js"></script>

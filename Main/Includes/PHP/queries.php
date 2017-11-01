@@ -617,7 +617,7 @@ function getExperiment($id)
 			echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
 			echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
 			echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
-			echo '<a href="resultSheet.php?experimentid='.$_GET["id"].'"><button> Results sheet </button> </a>';
+			echo '<a href="resultSheet.php?experimentid='.$id.'"><button> Results sheet </button> </a>';
 		}
 	}
 	else
@@ -900,6 +900,47 @@ function checkExperimentID($ID, $CompanyID)
 	return false;
 }
 
+function checkExperimentIDMentor($ID, $UserID)
+{
+	$sql = "SELECT `ID` FROM `Mentor` WHERE UserID = '$UserID'";
+	if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+			$MentorID = $row["ID"];
+			$sql = "SELECT `CompanyID` FROM `Mentor_Company` WHERE MentorID = '$MentorID'";
+			if($data2 = Query($sql))
+			{
+				while ($row2 = $data2->fetch_assoc())
+				{
+					$CompanyID = $row2["CompanyID"];
+					$sql = "SELECT `ID` FROM `Experiment` WHERE ID = '$ID' AND CompanyID = '$CompanyID'";
+					if($data3 = Query($sql))
+					{
+						while ($row3 = $data3->fetch_assoc())
+						{
+							return $row3["ID"];
+						}
+					}
+					else
+					{
+						header('Location: index.php');
+					}
+				}
+			}
+			else
+			{
+				header('Location: index.php');
+			}
+		}
+	}
+	else
+	{
+		header('Location: index.php');
+	}
+	return false;
+}
+
 //Client Portal Expirement blokken
 function getMentorAssignedBlockInfo($UserID)
 {
@@ -1052,7 +1093,7 @@ function selectCompanyInfo($CompanyID)
                                     <h4> Assign Mentor </h4>
                                 </a>
                             </div>
-                            <?php selectCompanyMentors($_GET["id"]); ?>
+                            <?php selectCompanyMentors(secure($_GET["id"])); ?>
                         </div>
                     </div>
                 </section>
@@ -1062,7 +1103,7 @@ function selectCompanyInfo($CompanyID)
 	                </div>
                     <div class="content">
 	                    <div class="container-fluid">
-		                    <?php getExperimentsPreview($_GET["id"]); ?>
+		                    <?php getExperimentsPreview(secure($_GET["id"])); ?>
 	                    </div>
                     </div>
                 </section>
