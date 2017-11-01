@@ -970,7 +970,9 @@ body {
             }
           }
           .experiment-preview {
+			hr {
 
+			}
           }
         }
         .mentor {
@@ -1058,6 +1060,9 @@ body {
         }
       }
     }
+	.lock {
+	  height: 7vh;
+	}
   }
 	main {
 		margin-top: 80px;
@@ -1168,8 +1173,11 @@ body {
 			margin-top: 2vh;
 
 			.mentor-row {
-				margin-top: 20px;
-				.mentor {
+			  	margin-top: 10vh;
+			  	position: relative;
+			  	overflow: hidden;
+
+			  	.mentor {
 					overflow: hidden;
 					.title-mentor {
 						background-color: @blue;
@@ -1186,6 +1194,15 @@ body {
 							color: @white;
 							margin: 0;
 						}
+					}
+				  	.mentor-preview {
+					  overflow: hidden;
+					  max-height: 33vh;
+					  #profile-pic {
+						height: 33vh;
+						background-color: red;
+						width: auto;
+					  }
 					}
 				}
 			}

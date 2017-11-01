@@ -1004,13 +1004,15 @@ function selectCompanyMentors($CompanyID)
             {
                 ?>
                 <div class="mentor-preview col-md-3">
-                    <a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID']; ?>">
-                        <img src="<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
-                        <h4> <?php echo $row['Name'] ?> </h4>
-                    </a>
-                    <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
-                        <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
-                    </a>
+                    <div class="container-fluid">
+	                    <a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID']; ?>">
+		                    <img class="" src="<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
+		                    <h4> <?php echo $row ['Name'] ?> </h4>
+	                    </a>
+	                    <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
+		                    <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
+	                    </a>
+                    </div>
                 </div>
                 <?php
             }
@@ -2094,7 +2096,7 @@ function selectLockButton($companyID)
             ?>
             <a onclick="return confirm('Are you sure you want to unlock this account?')"
                href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $_GET['id']; ?>&action=unlock">
-                <img src="../../Main/Files/Images/close.png" alt="Unlock account">
+                <img class="lock" src="../../Main/Files/Images/lock-closed.png" alt="Unlock account">
             </a>
             <?php
         }
@@ -2103,7 +2105,7 @@ function selectLockButton($companyID)
             ?>
             <a onclick="return confirm('Are you sure you want to lock this account?')"
                href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $_GET['id']; ?>&action=lock">
-                <img src="../../Main/Files/Images/close.png" alt="lock account">
+                <img class="lock" src="../../Main/Files/Images/lock-open.png" alt="lock account">
             </a>
             <?php
         }
