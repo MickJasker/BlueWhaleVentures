@@ -1,6 +1,7 @@
 <?php
 include_once '../../Main/Includes/PHP/functions.php';
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +25,7 @@ include_once '../../Main/Includes/PHP/functions.php';
 </header>
 
 <Main id="wrapper-admin">
+
 <?php		
 				if (isset($_POST['generate_mentorkey']))
 				{

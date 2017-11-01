@@ -114,6 +114,29 @@ body {
     padding-top: 80px;
     height: 100%;
 
+    #toggle_bachelor{
+      position: fixed;
+      display: block;
+      width: 100%;
+
+      #text{
+        padding-left: 4.16%;
+
+        h1{
+          display: inline-block;
+          margin-right: 3%;
+          &:hover{
+            cursor: pointer;
+          }
+        }
+
+        .border-bottom{
+          border-bottom: solid 5px;
+          border-color: @blue;
+        }
+      }
+    }
+
     .clientmodal, .mentormodal {
       display: none; /* Hidden by default */
       position: fixed; /* Stay in place */
@@ -205,7 +228,7 @@ body {
     }
 
     .list {
-      margin: 3% 0 5% 0;
+      margin: 90px 0 5% 0;
       position: absolute;
       width: 100%;
       height: auto;
@@ -300,7 +323,7 @@ body {
 
     }
     .milestone{
-      background-color: @blue;
+      background-color: @offwhite;
       float: left;
       left: -5px;
       z-index: 1;
@@ -308,6 +331,7 @@ body {
       color: @white;
       font-family: "Open Sans";
       text-align: center;
+      color: black;
     }
     .left1, .left2, .right{
       top: -14px;
@@ -326,6 +350,8 @@ body {
       line-height: 35px;
       font-size: 2vh;
       transition: ease .6s;
+      background-color: @blue;
+      color: white;
     }
     .left1{
       margin-left: 195px;
@@ -660,6 +686,29 @@ body {
 
       .mentor-row {
         margin-top: 20px;
+        .block-experiments {
+          position: relative;
+          float: left;
+          width: 32%;
+          margin-left: 15px;
+          max-height: 30%;
+          .title-experiments {
+            background-color: @blue;
+            width: 100%;
+            h1 {
+              color: white
+            }
+            h2 {
+              color: white;
+            }
+            h3 {
+              color: white;
+            }
+          }
+          .experiment-preview {
+            background-color: red;
+          }
+        }
         .mentor {
           overflow: hidden;
           .title-mentor {
@@ -703,30 +752,6 @@ body {
           }
           h3 {
             color: white;
-          }
-        }
-
-        .block-experiments {
-          position: relative;
-          float: left;
-          width: 32%;
-          margin-left: 15px;
-          max-height: 30%;
-          .title-experiments {
-            background-color: @blue;
-            width: 100%;
-            h1 {
-              color: white
-            }
-            h2 {
-              color: white;
-            }
-            h3 {
-              color: white;
-            }
-          }
-          .experiment-preview {
-            background-color: red;
           }
         }
 

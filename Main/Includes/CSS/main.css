@@ -6867,6 +6867,25 @@ body {
   /* Add Animation */
   /* The Close Button */
 }
+#wrapper-admin-body #wrapper-admin #toggle_bachelor {
+  position: fixed;
+  display: block;
+  width: 100%;
+}
+#wrapper-admin-body #wrapper-admin #toggle_bachelor #text {
+  padding-left: 4.16%;
+}
+#wrapper-admin-body #wrapper-admin #toggle_bachelor #text h1 {
+  display: inline-block;
+  margin-right: 3%;
+}
+#wrapper-admin-body #wrapper-admin #toggle_bachelor #text h1:hover {
+  cursor: pointer;
+}
+#wrapper-admin-body #wrapper-admin #toggle_bachelor #text .border-bottom {
+  border-bottom: solid 5px;
+  border-color: #0099ff;
+}
 #wrapper-admin-body #wrapper-admin .clientmodal,
 #wrapper-admin-body #wrapper-admin .mentormodal {
   display: none;
@@ -6973,7 +6992,7 @@ body {
   height: 30px;
 }
 #wrapper-admin-body #wrapper-admin .list {
-  margin: 3% 0 5% 0;
+  margin: 90px 0 5% 0;
   position: absolute;
   width: 100%;
   height: auto;
@@ -7054,7 +7073,7 @@ body {
   position: relative;
 }
 #wrapper-admin-body footer .milestone {
-  background-color: #0099ff;
+  background-color: #f2f2f2;
   float: left;
   left: -5px;
   z-index: 1;
@@ -7062,6 +7081,7 @@ body {
   color: #ffffff;
   font-family: "Open Sans";
   text-align: center;
+  color: black;
 }
 #wrapper-admin-body footer .left1,
 #wrapper-admin-body footer .left2,
@@ -7084,6 +7104,8 @@ body {
   -webkit-transition: ease .6s;
   -o-transition: ease .6s;
   transition: ease .6s;
+  background-color: #0099ff;
+  color: white;
 }
 #wrapper-admin-body footer .left1 {
   margin-left: 195px;
@@ -7404,6 +7426,29 @@ body {
 #wrapper-ClientProfile main .wrapper-profile .mentor-row {
   margin-top: 20px;
 }
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments {
+  position: relative;
+  float: left;
+  width: 32%;
+  margin-left: 15px;
+  max-height: 30%;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .title-experiments {
+  background-color: #0099ff;
+  width: 100%;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .title-experiments h1 {
+  color: white;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .title-experiments h2 {
+  color: white;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .title-experiments h3 {
+  color: white;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .experiment-preview {
+  background-color: red;
+}
 #wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor {
   overflow: hidden;
 }
@@ -7444,29 +7489,6 @@ body {
 }
 #wrapper-ClientProfile main .wrapper-profile .block .title h3 {
   color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .block-experiments {
-  position: relative;
-  float: left;
-  width: 32%;
-  margin-left: 15px;
-  max-height: 30%;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .block-experiments .title-experiments {
-  background-color: #0099ff;
-  width: 100%;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .block-experiments .title-experiments h1 {
-  color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .block-experiments .title-experiments h2 {
-  color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .block-experiments .title-experiments h3 {
-  color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .block-experiments .experiment-preview {
-  background-color: red;
 }
 #wrapper-ClientProfile main .wrapper-profile .block .content {
   width: 100%;
