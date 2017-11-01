@@ -94,6 +94,50 @@ function selectclientormentor(){
     }
 }
 
+function selectclient(){
+
+    var client = document.getElementById("clients");
+    var bachelor = document.getElementById("bachelor");
+    var bar = client.borderBottom;
+
+    //Als client geselecteerd is laad client.php in de body
+    if(client.className === 'border-bottom'){
+
+        //Als bachelor geselecteerd is laad bachelor.php in de body
+    }else{
+        bachelor.classList.toggle("border-bottom");
+        client.classList.toggle("border-bottom");
+        $.get("client.php", function( data ){
+            $('.list').fadeOut(500, function(){
+                $('#wrapper-admin' ).html( data );
+                $('.list').fadeIn(500);
+            });
+        });
+    }
+}
+
+function selectbachelor() {
+
+    var client = document.getElementById("clients");
+    var bachelor = document.getElementById("bachelor");
+    var bar = client.borderBottom;
+
+    //Als client geselecteerd is laad client.php in de body
+    if (bachelor.className === 'border-bottom') {
+
+        //Als bachelor geselecteerd is laad bachelor.php in de body
+    } else {
+        bachelor.classList.toggle("border-bottom");
+        client.classList.toggle("border-bottom");
+        $.get("bachelors.php", function (data) {
+            $('.list').fadeOut(500, function () {
+                $('#wrapper-admin').html(data);
+                $('.list').fadeIn(500);
+            });
+        });
+    }
+}
+
 //filterfunctie
 function filterfunction() {
     var input, filter, ul, li, a, i;

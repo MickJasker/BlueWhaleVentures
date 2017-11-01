@@ -21,6 +21,7 @@ if (isset($_GET['action'])) {
     }
 
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,6 +45,7 @@ if (isset($_GET['action'])) {
 </header>
 
 <Main id="wrapper-admin">
+
 <?php		
 				if (isset($_POST['generate_mentorkey']))
 				{
