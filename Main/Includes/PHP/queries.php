@@ -877,8 +877,27 @@ function getExperimentBlockInfo($CompanyID)
             </li>
 
             <?php
+			
+			
         }
     }
+}
+
+function checkExperimentID($ID, $CompanyID)
+{
+	$sql = "SELECT `ID` FROM `Experiment` WHERE ID = '$ID' AND CompanyID = '$CompanyID'";
+	if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+			return $row["ID"];
+		}
+	}
+	else
+	{
+		header('Location: index.php');
+	}
+	return false;
 }
 
 //Client Portal Expirement blokken
@@ -932,7 +951,7 @@ function selectCompanyMentors($CompanyID)
 	<section id="BottomCol">
 	<?php
 
-	if($data = Query($sql)) 
+	if($data = Query($sql))
     {
     	while ($row = $data->fetch_assoc())
     	{
@@ -1825,74 +1844,63 @@ function insertAnswer($POSTData, $ExperimentID)
 
 }
 
-function selectMentorDropdown($CompanyID) {
+function selectMentorDropdown($CompanyID) 
+{
 
     $sql = "SELECT u.Name FROM User u
             INNER JOIN Role r ON r.ID = u.RoleID
             WHERE u.RoleID = '7'";
 
-    if ($data = Query($sql)) {
+    if ($data = Query($sql)) 
+    {
+        ?><select name="mentor"><?php
 
-        ?>
+        while ($row = $data->fetch_assoc())
+        {
+            $Name = $row['Name'];
 
-            <select name="mentor">
+            $sql = "SELECT m.ID FROM Mentor m
+            INNER JOIN User u ON u.ID = m.UserID
+            WHERE u.Name = '$Name'";
 
-        <?php
-        while ($row = $data->fetch_assoc()) {
+            if ($data2 = Query($sql))
+            {
 
-                $Name = $row['Name'];
+                while ($row2 = $data2->fetch_assoc())
+                {
+                    $MentorID = $row2['ID'];
 
-                $sql = "SELECT m.ID FROM Mentor m
-                INNER JOIN User u ON u.ID = m.UserID
-                WHERE u.Name = '$Name'";
-
-                if ($data2 = Query($sql)) {
-
-                    while ($row2 = $data2->fetch_assoc()) {
-
-                        $MentorID = $row2['ID'];
-
-
-                        $sql = "SELECT * FROM Mentor_Company
+                    $sql = "SELECT * FROM Mentor_Company
                             WHERE MentorID = '$MentorID' AND CompanyID = '$CompanyID'";
 
-                    if (Query($sql)) {
-
-                        ?>
-                        <option disabled value="<?php echo $Name;?>"><?php echo $Name;?></option>
-
-                        <?php
-
-                    }
-
-                    else {
-
-                        ?>
-                        <option value="<?php echo $Name;?>"><?php echo $Name;?></option>
-
-                        <?php
-
-                    }
+                if (Query($sql))
+                {
+                    ?>
+                    <option disabled value="<?php echo $Name;?>"><?php echo $Name;?></option>
+                    <?php
                 }
 
-                    }
-                    else {
-                        echo " - Error - ";
-                    }
+                else
+                {
+                    ?>
+                    <option value="<?php echo $Name;?>"><?php echo $Name;?></option>
+                    <?php
                 }
-
-
-
+            }
+        }
+        else 
+		{
+            echo " - Error - ";
+		}
+    }
         ?>
-
-            </select>
-
+        </select>
         <?php
     }
-    else {
+    else 
+    {
         echo " - Error - ";
     }
-
 }
 
 function assignMentor($CompanyID, $Mentor)
@@ -1961,7 +1969,6 @@ function selectBachelorBlockInfo() {
             <?php
         }
     }
-
 }
 
 function selectBachelorGroupBlockInfo($BachelorGroupID)
@@ -2003,5 +2010,120 @@ function selectBachelorGroupBlockInfo($BachelorGroupID)
     }
 }
 
+function updateCompanyLock($CompanyID, $Locked)
+{
+	$sql = "UPDATE User u
+	INNER JOIN Company c on c.UserID = u.ID
+	SET u.Locked = '$Locked'
+	WHERE c.ID = '$CompanyID'";
 
+	if ($data = Query($sql))
+	{
+		return true;
+	}
+
+	return false;
+}
+
+function selectLockButton($companyID)
+{
+	$sql = "SELECT u.locked FROM User u
+	INNER JOIN Company c ON c.UserID = u.ID
+	WHERE c.ID = '$companyID'";
+
+	if ($data = Query($sql))
+	{
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+		if ($row["locked"] == 1)
+		{
+			?>
+			    <a onclick="return confirm('Are you sure you want to unlock this account?')" 
+	            href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $_GET['id']; ?>&action=unlock">
+	                <img src="../../Main/Files/Images/close.png" alt="Unlock account">
+	            </a>
+	        <?php
+		}
+		else
+		{
+			?>
+			    <a onclick="return confirm('Are you sure you want to lock this account?')" 
+	            href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $_GET['id']; ?>&action=lock">
+	                <img src="../../Main/Files/Images/close.png" alt="lock account">
+	            </a>
+	        <?php
+		}
+	}
+}
+
+function insertBachelorGroup($BachelorName)
+{
+
+    $sql = "INSERT INTO `BachelorGroup`(`Name`) VALUES ('$BachelorName')";
+    if (query($sql)) 
+    {
+        global $conn;
+
+        $BachelorID = mysqli_insert_id($conn);
+        header('Location: bachelorGroup.php?id=' . $BachelorID );
+    }
+}
+
+function insertToBachelorGroup($BachelorGroupID, $CompanyGroupID)
+{
+
+    $sql = "INSERT INTO `Bachelor_Company`(`BachelorID` , `CompanyID`) VALUES ('$BachelorGroupID', '$CompanyGroupID')";
+    if (query($sql)) 
+    {
+        header('Location: bachelorGroup.php?id=' . $BachelorGroupID );
+    }
+}
+
+function selectCompanyDropdown()
+{
+    $sql = "SELECT c.ID, c.Name FROM Company c";
+
+    if ($data = Query($sql)) {
+
+        ?>
+
+        <select name="company">
+
+            <?php
+            while ($row = $data->fetch_assoc()) {
+
+                $CompanyID = $row['ID'];
+                $CompanyName = $row['Name'];
+
+
+                $sql2 = "SELECT bc.CompanyID FROM Bachelor_Company bc WHERE CompanyID = '$CompanyID'";
+
+
+                if ($data2 = Query($sql2)) {
+
+                    ?>
+                    <option disabled value="<?php echo $CompanyID; ?>"><?php echo $CompanyName; ?></option>
+
+                    <?php
+
+                } else {
+
+                    ?>
+                    <option value="<?php echo $CompanyID; ?>"><?php echo $CompanyName; ?></option>
+
+                    <?php
+
+                }
+            }
+
+            ?>
+
+        </select>
+
+        <?php
+    }
+    else {
+        echo " - Error - ";
+    }
+
+}
 ?>

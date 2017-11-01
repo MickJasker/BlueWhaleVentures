@@ -1,6 +1,7 @@
 <?php
-
 require '../../Main/Includes/PHP/functions.php';
+checkSession('Company');
+$experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
     if (isset($_POST['save']))
     {
         //Image check
@@ -32,7 +33,7 @@ require '../../Main/Includes/PHP/functions.php';
             if ($upload)
             {
                 //upload data to the database
-                if (insertPrototype($imagepath ,$_POST['explanationText'], $_GET["experimentID"]))
+                if (insertPrototype($imagepath ,$_POST['explanationText'], $experimentID))
                 {
                     //header("Location: ");
                 }
@@ -54,18 +55,29 @@ require '../../Main/Includes/PHP/functions.php';
 <head>
     <title> New Prototype </title>
     <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,800" rel="stylesheet">
 </head>
-<body id="wrapper-admin">
-<Main>
-    <h1> New Prototype </h1>
-    <div id="pitchForm">
-        <form id="form" action="#" method="POST" enctype="multipart/form-data">
+<body id="wrapper-newPrototype">
+<header class="wrapper-nav">
+    <?php require "../nav_nosearch.php";?>
+</header>
+<Main class="row">
+    <section class="col-lg-6">
+        <div>
+            <h1> New Prototype </h1>
+            <div id="pitchForm">
+                <form id="form" action="#" method="POST" enctype="multipart/form-data">
 
-            <textarea name="explanationText" placeholder="Explain your prototype"></textarea>
-            <input type="file" name="file1" id="fileToUpload">
-            <input type="submit" name="save" value="Save">
+                    <textarea name="explanationText" placeholder="Explain your prototype"></textarea>
+                    <label for="fileToUpload">Upload an image of your prototype</label>
+                    <input type="file" name="file1" id="fileToUpload">
+                    <input type="submit" name="save" value="Save">
 
-        </form>
+                </form>
+        </div>
+
+    </section>
+
     </div>
 </Main>
 </body>

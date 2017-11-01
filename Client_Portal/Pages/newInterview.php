@@ -1,5 +1,6 @@
 <?php
     require '../../Main/Includes/PHP/functions.php';
+	checkSession('Company');
 
     if(isset($_POST['submit'])) {
 
