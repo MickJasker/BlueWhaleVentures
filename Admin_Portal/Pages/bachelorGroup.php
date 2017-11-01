@@ -6,7 +6,9 @@
 
     if (isset($_POST['saveBachelorMember']))
     {
-        insertToBachelorGroup(secure($_GET['id']) ,secure($_POST['company']));
+        if (secure($_POST['company']) != "") {
+            insertToBachelorGroup(secure($_GET['id']) ,secure($_POST['company']));
+        }
     }
 
     if (isset($_GET['action'])) {
@@ -34,7 +36,7 @@
 <body id="wrapper-admin-body">
 <header class="row wrapper-nav">
     <?php
-    require "../nav.php"
+    require "../nav_nosearchadmin.php"
     ?>
 </header>
 <Main id="wrapper-admin">
@@ -58,6 +60,13 @@
     </div>
     <ul class="list">
         <div class="content">
+
+            <?php
+
+                selectBachelorName(secure($_GET['id']));
+
+            ?>
+
 
             <div onclick="createcompany()" id="Block" class="col-lg-4">
                 <a class="clientbutton" href="#">
