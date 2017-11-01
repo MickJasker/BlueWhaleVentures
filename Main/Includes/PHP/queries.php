@@ -1057,13 +1057,13 @@ function selectCompanyInfo($CompanyID)
                     </div>
                 </section>
                 <section class="block-experiments col-md-4">
-                    <div class="title-experiments">
-                        <h3>Experiments</h3>
-                    </div>
                     <div class="content">
-                        <div class="container-fluid">
-                            <?php getExperimentsPreview($_GET["id"]); ?>
-                        </div>
+	                    <div class="container-fluid title-experiments">
+		                    <h3>Experiments</h3>
+	                    </div>
+	                    <div class="container-fluid">
+		                    <?php getExperimentsPreview($_GET["id"]); ?>
+	                    </div>
                     </div>
                 </section>
             </div>
