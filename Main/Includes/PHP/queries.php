@@ -877,8 +877,27 @@ function getExperimentBlockInfo($CompanyID)
             </li>
 
             <?php
+			
+			
         }
     }
+}
+
+function checkExperimentID($ID, $CompanyID)
+{
+	$sql = "SELECT `ID` FROM `Experiment` WHERE ID = '$ID' AND CompanyID = '$CompanyID'";
+	if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+			return $row["ID"];
+		}
+	}
+	else
+	{
+		header('Location: index.php');
+	}
+	return false;
 }
 
 //Client Portal Expirement blokken
@@ -1950,7 +1969,6 @@ function selectBachelorBlockInfo() {
             <?php
         }
     }
-
 }
 
 function selectBachelorGroupBlockInfo($BachelorGroupID)
@@ -2035,5 +2053,77 @@ function selectLockButton($companyID)
 	        <?php
 		}
 	}
+}
+
+function insertBachelorGroup($BachelorName)
+{
+
+    $sql = "INSERT INTO `BachelorGroup`(`Name`) VALUES ('$BachelorName')";
+    if (query($sql)) 
+    {
+        global $conn;
+
+        $BachelorID = mysqli_insert_id($conn);
+        header('Location: bachelorGroup.php?id=' . $BachelorID );
+    }
+}
+
+function insertToBachelorGroup($BachelorGroupID, $CompanyGroupID)
+{
+
+    $sql = "INSERT INTO `Bachelor_Company`(`BachelorID` , `CompanyID`) VALUES ('$BachelorGroupID', '$CompanyGroupID')";
+    if (query($sql)) 
+    {
+        header('Location: bachelorGroup.php?id=' . $BachelorGroupID );
+    }
+}
+
+function selectCompanyDropdown()
+{
+    $sql = "SELECT c.ID, c.Name FROM Company c";
+
+    if ($data = Query($sql)) {
+
+        ?>
+
+        <select name="company">
+
+            <?php
+            while ($row = $data->fetch_assoc()) {
+
+                $CompanyID = $row['ID'];
+                $CompanyName = $row['Name'];
+
+
+                $sql2 = "SELECT bc.CompanyID FROM Bachelor_Company bc WHERE CompanyID = '$CompanyID'";
+
+
+                if ($data2 = Query($sql2)) {
+
+                    ?>
+                    <option disabled value="<?php echo $CompanyID; ?>"><?php echo $CompanyName; ?></option>
+
+                    <?php
+
+                } else {
+
+                    ?>
+                    <option value="<?php echo $CompanyID; ?>"><?php echo $CompanyName; ?></option>
+
+                    <?php
+
+                }
+            }
+
+            ?>
+
+        </select>
+
+        <?php
+    }
+    else {
+        echo " - Error - ";
+    }
+
 }
 ?>
