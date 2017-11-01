@@ -73,10 +73,13 @@ function checkSession($AllowedRole)
 	{
 		if ($_SESSION["Role"] != $AllowedRole)
 		{
-			//header('Location: ../../'.$_SESSION["Role"].'_portal/index.php');
+			header('Location: ../../'.$_SESSION["Role"].'_portal/index.php');
 		}
-		
-		
+
+		if (selectUserLock($_SESSION["UserID"]) == 1)
+		{
+			header('Location: ../../../index.php');
+		}	
 	}
 	else 
 	{
@@ -182,5 +185,4 @@ function uploadExecute($file_name, $file_tmp_name, $target_dir)
 	//return if file is uploaded or not and filepath in array
 	return array($uploadok, $target_file);
 }
-
 ?>

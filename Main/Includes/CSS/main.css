@@ -6876,6 +6876,274 @@ body {
   /* Add Animation */
   /* The Close Button */
 }
+#wrapper-admin-body #wrapper-admin #toggle_bachelor {
+  position: fixed;
+  display: block;
+  width: 100%;
+}
+#wrapper-admin-body #wrapper-admin #toggle_bachelor #text {
+  padding-left: 4.16%;
+}
+#wrapper-admin-body #wrapper-admin #toggle_bachelor #text h1 {
+  display: inline-block;
+  margin-right: 3%;
+}
+#wrapper-admin-body #wrapper-admin #toggle_bachelor #text h1:hover {
+  cursor: pointer;
+}
+#wrapper-admin-body #wrapper-admin #toggle_bachelor #text .border-bottom {
+  border-bottom: solid 5px;
+  border-color: #0099ff;
+}
+#wrapper-admin-body #wrapper-admin .clientmodal,
+#wrapper-admin-body #wrapper-admin .mentormodal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: #000000;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+#wrapper-admin-body #wrapper-admin .clientmodal-content,
+#wrapper-admin-body #wrapper-admin .mentormodal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  margin-top: 3%;
+  border: 1px solid #888;
+  width: 28%;
+  height: 50vh;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+#wrapper-admin-body #wrapper-admin .close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+#wrapper-admin-body #wrapper-admin .close:hover,
+#wrapper-admin-body #wrapper-admin .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+#wrapper-admin-body #wrapper-admin .clientmodal-header,
+#wrapper-admin-body #wrapper-admin .mentormodal-header {
+  padding: 2px 16px;
+  background-color: #0099ff;
+  color: white;
+}
+#wrapper-admin-body #wrapper-admin .clientmodal-body,
+#wrapper-admin-body #wrapper-admin .mentormodal-body {
+  padding: 2px 16px;
+}
+#wrapper-admin-body #wrapper-admin .clientmodal-body form,
+#wrapper-admin-body #wrapper-admin .mentormodal-body form {
+  width: 145%;
+  padding: 10% 55% 0 5%;
+}
+#wrapper-admin-body #wrapper-admin .clientmodal-body form #field,
+#wrapper-admin-body #wrapper-admin .mentormodal-body form #field {
+  outline: none;
+  border: none;
+  font-size: 15px;
+  line-height: 30px;
+  padding-left: 8px;
+  margin-bottom: 5%;
+  width: 100%;
+  background-color: #f2f2f2;
+}
+#wrapper-admin-body #wrapper-admin .clientmodal-body form #submitbtn,
+#wrapper-admin-body #wrapper-admin .mentormodal-body form #submitbtn {
+  width: 100%;
+  background-color: #0099ff;
+  color: white;
+  text-align: left;
+  height: 30px;
+}
+#wrapper-admin-body #wrapper-admin .list {
+  margin: 90px 0 5% 0;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+#wrapper-admin-body #wrapper-admin a {
+  text-decoration: none;
+}
+#wrapper-admin-body #wrapper-admin .content {
+  margin: 0 3% 0 3%;
+  position: relative;
+}
+#wrapper-admin-body #wrapper-admin #Block {
+  padding: 0;
+  height: 33vh;
+  width: 31%;
+  position: relative;
+  list-style-type: none;
+  margin: 0 1.16% 4% 1.16%;
+}
+#wrapper-admin-body #wrapper-admin #Block .BlockLogo {
+  background-color: #f2f2f2;
+  width: auto;
+  height: 80%;
+  position: relative;
+  border: solid;
+  border-color: #a0a0a0;
+  border-bottom: none;
+  border-width: 1px;
+}
+#wrapper-admin-body #wrapper-admin #Block .BlockLogo img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  margin: auto;
+  display: block;
+  padding: 0 10px 0 10px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+}
+#wrapper-admin-body #wrapper-admin #Block .BlockTitle {
+  width: 100%;
+  height: 20%;
+  padding: 0;
+  position: relative;
+  background-color: #0099ff;
+}
+#wrapper-admin-body #wrapper-admin #Block .BlockTitle h1 {
+  padding: 2%;
+  color: #ffffff;
+  font-family: "Open Sans";
+  margin: 0;
+  font-size: 3vh;
+  display: inline-block;
+}
+#wrapper-admin-body #wrapper-admin #Block .BlockTitle img {
+  float: right;
+}
+footer {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 60px;
+  width: 100%;
+  background: white;
+  z-index: 1;
+}
+footer #progressbar {
+  position: relative;
+  margin: 1.5% auto 0 auto;
+  width: 1000px;
+  background-color: #f2f2f2;
+}
+footer #bar {
+  border-radius: 25px;
+  height: 5px;
+  background-color: #0099ff;
+  position: relative;
+}
+footer .milestone {
+  background-color: #f2f2f2;
+  float: left;
+  left: -5px;
+  z-index: 1;
+  position: relative;
+  color: #ffffff;
+  font-family: "Open Sans";
+  text-align: center;
+  color: black;
+}
+footer .left1,
+footer .left2,
+footer .right {
+  top: -14px;
+  width: 25px;
+  left: 5px;
+  height: 25px;
+  border-radius: 600px;
+  line-height: 25px;
+  font-size: 1.2vh;
+}
+footer #grow {
+  top: -19px;
+  width: 35px;
+  height: 35px;
+  border-radius: 800px;
+  line-height: 35px;
+  font-size: 2vh;
+  -webkit-transition: ease .6s;
+  -o-transition: ease .6s;
+  transition: ease .6s;
+  background-color: #0099ff;
+  color: white;
+}
+footer .left1 {
+  margin-left: 195px;
+}
+footer .left2 {
+  margin-left: 220px;
+}
+footer .right {
+  float: right;
+  right: -5px;
+}
+#wrapper-admin-body {
+  background-image: url('../../Files/Images/stockImages/adminbackground.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+#wrapper-admin-body #wrapper-admin {
+  margin: 0;
+  padding-top: 80px;
+  height: 100%;
+  /* Modal Content */
+  /* Add Animation */
+  /* The Close Button */
+}
 #wrapper-admin-body #wrapper-admin .clientmodal,
 #wrapper-admin-body #wrapper-admin .mentormodal {
   display: none;
@@ -7301,6 +7569,208 @@ body {
 }
 .wrapper-nav #nav .filter .show {
   display: block;
+}
+#wrapper-ClientProfile main {
+  margin-top: 80px;
+  /* Modal Content */
+  /* Add Animation */
+  /* The Close Button */
+}
+#wrapper-ClientProfile main #mentormodal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: #000000;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+#wrapper-ClientProfile main .mentormodal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  margin-top: 3%;
+  border: 1px solid #888;
+  width: 28%;
+  height: 50vh;
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+#wrapper-ClientProfile main .close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+#wrapper-ClientProfile main .close:hover,
+#wrapper-ClientProfile main .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+#wrapper-ClientProfile main .mentormodal-header {
+  padding: 2px 16px;
+  background-color: #0099ff;
+  color: white;
+}
+#wrapper-ClientProfile main .mentormodal-body {
+  padding: 2px 16px;
+}
+#wrapper-ClientProfile main .mentormodal-body form {
+  width: 145%;
+  padding: 10% 55% 0 5%;
+}
+#wrapper-ClientProfile main .mentormodal-body form #field {
+  outline: none;
+  border: none;
+  font-size: 15px;
+  line-height: 30px;
+  padding-left: 8px;
+  margin-bottom: 5%;
+  width: 100%;
+  background-color: #f2f2f2;
+}
+#wrapper-ClientProfile main .mentormodal-body form #submitbtn {
+  width: 100%;
+  background-color: #0099ff;
+  color: white;
+  text-align: left;
+  height: 30px;
+}
+#wrapper-ClientProfile main .wrapper-profile {
+  margin-left: 10px;
+  margin-top: 2vh;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row {
+  margin-top: 20px;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments {
+  position: relative;
+  float: left;
+  padding: 0;
+  max-height: 30%;
+  background-color: #f2f2f2;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .title-experiments {
+  background-color: #0099ff;
+  width: 100%;
+  margin: 0;
+  height: 36px;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .title-experiments h1 {
+  color: white;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .title-experiments h2 {
+  color: white;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .title-experiments h3 {
+  color: white;
+  margin: 0;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor {
+  overflow: hidden;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor {
+  background-color: #0099ff;
+  width: 100%;
+  padding: 5px 9px;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor h1 {
+  color: #ffffff;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor h2 {
+  color: #ffffff;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor h3 {
+  color: #ffffff;
+  margin: 0;
+}
+#wrapper-ClientProfile main .wrapper-profile .block {
+  position: relative;
+  float: left;
+  width: 32%;
+  margin-left: 15px;
+  max-height: 30%;
+}
+#wrapper-ClientProfile main .wrapper-profile .block h2 {
+  color: #ffffff;
+}
+#wrapper-ClientProfile main .wrapper-profile .block .title {
+  background-color: #0099ff;
+  width: 100%;
+}
+#wrapper-ClientProfile main .wrapper-profile .block .title h1 {
+  color: white;
+}
+#wrapper-ClientProfile main .wrapper-profile .block .title h2 {
+  color: white;
+}
+#wrapper-ClientProfile main .wrapper-profile .block .title h3 {
+  color: white;
+}
+#wrapper-ClientProfile main .wrapper-profile .block .content {
+  width: 100%;
+  background-color: #f2f2f2;
+}
+#wrapper-ClientProfile main .wrapper-profile .block .content h3 {
+  color: #ffffff;
+}
+#wrapper-ClientProfile main .wrapper-profile .block .content p {
+  color: #ffffff;
+}
+#wrapper-ClientProfile main .wrapper-profile .block .logo img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  margin: auto;
+  display: block;
+  padding: 10px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: relative;
+}
+#wrapper-ClientProfile main .wrapper-profile .block .discription {
+  background-color: #0099ff;
 }
 #wrapper-ClientProfile main {
   margin-top: 80px;

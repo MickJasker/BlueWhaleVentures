@@ -24,6 +24,17 @@ CheckSession("Admin");
 						echo '</p>';
 					}
 ?>
+<div id="toggle_bachelor">
+    <div id="text">
+        <h1 id="clients" onclick="selectclient()" class="border-bottom">
+            Clients
+        </h1>
+        <h1 id="bachelor" onclick="selectbachelor()">
+            Bachelor Groups
+        </h1>
+    </div>
+</div>
+
  <div id="clientform" class="clientmodal">
      <!-- Modal content -->
      <div class="clientmodal-content">
@@ -61,22 +72,5 @@ CheckSession("Admin");
 
          ?>
 
-         <div onclick="createBachelorGroup()" id="Block" class="col-lg-4">
-             <a class="clientbutton" href="#">
-                 <div class="BlockLogo">
-                     <img src="../../Main/Files/Images/add.svg" alt="Add Bachelor Group">
-                 </div>
-                 <div class="BlockTitle">
-                     <h1> Add Bachelor Group </h1>
-                 </div>
-             </a>
-         </div>
-
-         <?php
-
-         selectBachelorBlockInfo();
-
-
-         ?>
      </div>
  </ul>

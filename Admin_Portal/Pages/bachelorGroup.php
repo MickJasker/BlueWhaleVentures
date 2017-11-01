@@ -1,6 +1,29 @@
 <?php
-require '../../Main/Includes/PHP/functions.php';
-CheckSession("Admin");
+
+    include_once '../../Main/Includes/PHP/functions.php';
+
+    //CheckSession("Admin");
+
+    if (isset($_POST['saveBachelorMember']))
+    {
+        insertToBachelorGroup(secure($_GET['id']) ,secure($_POST['company']));
+    }
+
+    if (isset($_GET['action'])) {
+
+        if (secure($_GET['action']) == "delete") {
+
+            deleteBachelorGroupMember(secure($_GET['companyID']) ,secure($_GET['bachelorID']));
+
+        }
+        else {
+
+        }
+    }
+    else {
+
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,10 +38,28 @@ CheckSession("Admin");
     ?>
 </header>
 <Main id="wrapper-admin">
+    <div id="clientform" class="clientmodal">
+        <!-- Modal content -->
+        <div class="clientmodal-content">
+            <div class="clientmodal-header">
+                <span class="close">&times;</span>
+                <h2>Add Bachelor Group</h2>
+            </div>
+            <div class="clientmodal-body">
+                <form method="POST" action="#">
+
+                    <?php selectCompanyDropdown(); ?>
+
+                    <input id="submitbtn" name="saveBachelorMember" type="submit" value="Add bachelor group">
+                </form>
+            </div>
+        </div>
+
+    </div>
     <ul class="list">
         <div class="content">
 
-            <div onclick="addToBachelorGroup()" id="Block" class="col-lg-4">
+            <div onclick="createcompany()" id="Block" class="col-lg-4">
                 <a class="clientbutton" href="#">
                     <div class="BlockLogo">
                         <img src="../../Main/Files/Images/add.svg" alt="Add To Bachelor Group">

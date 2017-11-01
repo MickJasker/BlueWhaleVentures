@@ -19,7 +19,7 @@
     <script type="text/javascript" src="../../Main/Includes/Javascript/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="../../Main/Includes/Javascript/functions.js"></script>
 </head>
-    <body id="wrapper-admin">
+    <body id="wrapper-">
         <Main>
             <h1> New Interview </h1>
             <div id="questionForm">
