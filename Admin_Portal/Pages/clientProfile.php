@@ -3,26 +3,34 @@ require '../../Main/Includes/PHP/functions.php';
     //CheckSession("Admin");
 
 
-    if (isset($_POST['save'])) {
-
+    if (isset($_POST['save'])) 
+    {
         assignMentor(secure($_GET['id']), $_POST['mentor']);
-
 	}
 
-    if (isset($_GET['action'])) {
-
-        if (secure($_GET['action']) == "delete") {
-
+    if (isset($_GET['action']))
+    {
+        if (secure($_GET['action']) == "delete")
+        {
             unassignMentor(secure($_GET['companyID']), secure($_GET['id']));
         }
-        else {
 
+        if (secure($_GET['action']) == "lock")
+        {
+            if (updateCompanyLock($_GET['id'], 1) == true)
+            {
+                echo "The account was locked";
+            }
+        }
+
+        if (secure($_GET['action']) == "unlock")
+        {
+            if (updateCompanyLock($_GET['id'], 0) == true)
+            {
+                echo "The account was unlocked";
+            }
         }
     }
-    else {
-
-    }
-
 
 ?>
 <!DOCTYPE HTML>
@@ -52,24 +60,16 @@ require '../../Main/Includes/PHP/functions.php';
                     </div>
                     <div class="mentormodal-body">
                         <form method="POST" action="#">
-
-
-
-                            <?php
-
-                                selectMentorDropdown(secure($_GET['id']));
-
-                            ?>
-
+                            <?php selectMentorDropdown(secure($_GET['id'])); ?>
                             <input id="submitbtn" name="save" type="submit" value="Assign mentor">
                         </form>
                     </div>
                 </div>
             </div>
-			<?php
+			<?php 
                 selectCompanyInfo($_GET["id"]);
-             ?>
-
+                selectLockButton($_GET["id"]);
+            ?>
 		</main>
 		<script src="../../Main/Includes/Javascript/navbar.js"></script>
         <script src="../../Main/Includes/Javascript/main.js"></script>
