@@ -34,7 +34,7 @@ CheckSession("Admin");
 <ul class="list">
     <div class="content">
 
-        <div onclick="createBachelorGroup()" id="Block" class="col-lg-4">
+        <div onclick="createcompany()" id="Block" class="col-lg-4">
             <a class="clientbutton" href="#">
                 <div class="BlockLogo">
                     <img src="../../Main/Files/Images/add.svg" alt="Add Bachelor Group">

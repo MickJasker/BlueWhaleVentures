@@ -34,10 +34,27 @@
     ?>
 </header>
 <Main id="wrapper-admin">
+    <div id="clientform" class="clientmodal">
+        <!-- Modal content -->
+        <div class="clientmodal-content">
+            <div class="clientmodal-header">
+                <span class="close">&times;</span>
+                <h2>Add Bachelor Group</h2>
+            </div>
+            <div class="clientmodal-body">
+                <form method="POST" action="#">
+                    <input id="field" type="text" name="user_name" placeholder="Name"> <br>
+                    <input id="field" type="text" name="company_mail" placeholder="E-mail"> <br>
+                    <input id="submitbtn" name="generate_companykey" type="submit" value="Add bachelor group">
+                </form>
+            </div>
+        </div>
+
+    </div>
     <ul class="list">
         <div class="content">
 
-            <div onclick="addToBachelorGroup()" id="Block" class="col-lg-4">
+            <div onclick="createcompany()" id="Block" class="col-lg-4">
                 <a class="clientbutton" href="#">
                     <div class="BlockLogo">
                         <img src="../../Main/Files/Images/add.svg" alt="Add To Bachelor Group">
