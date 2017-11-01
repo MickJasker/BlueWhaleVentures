@@ -481,6 +481,34 @@ function selectUserLanguage($ID)
     }
 }
 
+function selectLocked($ID)
+{
+	$sql = "SELECT Locked FROM User WHERE ID = '$ID'";
+
+	if ($data = query($sql))
+	{
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        return $row['Locked'];
+	}
+}
+
+function selectSessionInfo($Email)
+{
+	$sql = "SELECT u.ID, r.Name, u.Language, u.Locked FROM User u
+	INNER JOIN Login l ON l.UserID = u.ID
+	INNER JOIN Role r ON u.RoleID = r.ID
+	WHERE Email = '$Email'";
+
+	if ($data = query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+
+        $_SESSION["UserID"] = $row["ID"];	
+		$_SESSION["Role"] = $row["Name"];
+		$_SESSION["Language"] =  $row["Language"];
+		$_SESSION["Locked"] = $row["Locked"];
+    }
+}
 
 //Admin portal blokken
 function getCompanyBlockInfo()

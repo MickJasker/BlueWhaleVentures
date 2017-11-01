@@ -54,11 +54,13 @@ function generate_key($email, $name, $role)
 function createSession($Email)
 {
 	$_SESSION["LoggedIn"] = true;
-	$_SESSION["UserID"] = selectUserID($Email);	
-	$_SESSION["Role"] = selectRole($_SESSION["UserID"]);
-	$_SESSION["Language"] =  selectUserLanguage($_SESSION["UserID"]);
-	$_SESSION["CompanyID"] = selectCompanyID($_SESSION["UserID"]);
-	
+	selectSessionInfo($Email);
+
+	if ($_SESSION["Role"] == "Client")
+	{
+		$_SESSION["CompanyID"] = selectCompanyID($_SESSION["UserID"]);
+	}
+
 	/*
 	echo "Logged in: " . $_SESSION["LoggedIn"] . "<br>";	
 	echo "Role: " . $_SESSION["Role"] . "<br>";
