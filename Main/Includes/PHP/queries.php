@@ -521,7 +521,7 @@ function getExperimentsPreview($CompanyID)
 
     	while ($row = $data->fetch_assoc()) 
         {
-        	 echo "<li><a href=../../Admin_Portal/Pages/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br>";
+        	 echo "<li class='experiment-preview'><a href=../../Admin_Portal/Pages/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br><hr>";
         }
 
         echo "<li><a href=../../Admin_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
@@ -1040,25 +1040,24 @@ function selectCompanyInfo($CompanyID)
                     </div>
                     <div class="content">
                         <div class="row">
-
-
                             <div onclick="assignMentor()" class="mentor-preview col-md-3">
                                 <a class="clientbutton" href="#">
                                     <img src="../../Main/Files/Images/add.svg" alt="Assign Mentor">
                                     <h4> Assign Mentor </h4>
                                 </a>
                             </div>
-
                             <?php selectCompanyMentors($_GET["id"]); ?>
                         </div>
                     </div>
                 </section>
-                <section class="block">
+                <section class="block-experiments col-md-4">
+	                <div class="title-experiments">
+		                <h3>Experiments</h3>
+	                </div>
                     <div class="content">
-                        <div class="container-fluid discription">
-                            <h3>Experiments</h3>
-                            <?php getExperimentsPreview($_GET["id"]); ?>
-                        </div>
+	                    <div class="container-fluid">
+		                    <?php getExperimentsPreview($_GET["id"]); ?>
+	                    </div>
                     </div>
                 </section>
             </div>

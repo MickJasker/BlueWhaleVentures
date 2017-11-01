@@ -6973,7 +6973,7 @@ body {
   height: 30px;
 }
 #wrapper-admin-body #wrapper-admin .list {
-  margin: 5% 0 5% 0;
+  margin: 3% 0 5% 0;
   position: absolute;
   width: 100%;
   height: auto;
@@ -7420,6 +7420,7 @@ body {
 }
 #wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor h3 {
   color: #ffffff;
+  margin: 0;
 }
 #wrapper-ClientProfile main .wrapper-profile .block {
   position: relative;
@@ -7443,6 +7444,29 @@ body {
 }
 #wrapper-ClientProfile main .wrapper-profile .block .title h3 {
   color: white;
+}
+#wrapper-ClientProfile main .wrapper-profile .block .block-experiments {
+  position: relative;
+  float: left;
+  width: 32%;
+  margin-left: 15px;
+  max-height: 30%;
+}
+#wrapper-ClientProfile main .wrapper-profile .block .block-experiments .title-experiments {
+  background-color: #0099ff;
+  width: 100%;
+}
+#wrapper-ClientProfile main .wrapper-profile .block .block-experiments .title-experiments h1 {
+  color: white;
+}
+#wrapper-ClientProfile main .wrapper-profile .block .block-experiments .title-experiments h2 {
+  color: white;
+}
+#wrapper-ClientProfile main .wrapper-profile .block .block-experiments .title-experiments h3 {
+  color: white;
+}
+#wrapper-ClientProfile main .wrapper-profile .block .block-experiments .experiment-preview {
+  background-color: red;
 }
 #wrapper-ClientProfile main .wrapper-profile .block .content {
   width: 100%;
