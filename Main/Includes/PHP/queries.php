@@ -2224,4 +2224,32 @@ function selectUserLock($userID)
 	}
 }
 
+function selectBachelorName($BachelorGroupID) {
+
+    $sql = "SELECT `Name` FROM `BachelorGroup` WHERE ID = '$BachelorGroupID'";
+
+    if ($data = query($sql)) {
+
+        while ($row = $data->fetch_assoc()) {
+
+            $BachelorName = $row['Name'];
+
+            ?>
+
+            <h1> <?php echo $BachelorName ?> </h1>
+
+            <?php
+        }
+    }
+    else {
+        echo "Unable to select name.";
+    }
+
+
+
+}
+
+
+
+
 ?>
