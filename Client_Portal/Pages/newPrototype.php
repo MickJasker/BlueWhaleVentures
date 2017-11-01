@@ -63,15 +63,19 @@ $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["Comp
 </header>
 <Main class="row">
     <section class="col-lg-6">
-        <h1> New Prototype </h1>
-        <div id="pitchForm">
-            <form id="form" action="#" method="POST" enctype="multipart/form-data">
+        <div>
+            <h1> New Prototype </h1>
+            <div id="pitchForm">
+                <form id="form" action="#" method="POST" enctype="multipart/form-data">
 
-                <textarea name="explanationText" placeholder="Explain your prototype"></textarea>
-                <input type="file" name="file1" id="fileToUpload">
-                <input type="submit" name="save" value="Save">
+                    <textarea name="explanationText" placeholder="Explain your prototype"></textarea>
+                    <label for="fileToUpload">Upload an image of your prototype</label>
+                    <input type="file" name="file1" id="fileToUpload">
+                    <input type="submit" name="save" value="Save">
 
-            </form>
+                </form>
+        </div>
+
     </section>
 
     </div>
