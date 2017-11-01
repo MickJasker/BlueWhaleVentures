@@ -2003,7 +2003,7 @@ function selectBachelorGroupBlockInfo($BachelorGroupID)
                             </div>
                             <div class="BlockTitle">
                                 <h1> <?php echo $Name; ?> </h1>
-                                <a onclick="return confirm('Are you sure you want to delete the bachelor group member?')" href="../../Admin_Portal/Pages/index.php?companyID=<?php echo $CompanyID; ?>&action=delete">
+                                <a onclick="return confirm('Are you sure you want to delete the bachelor group member?')" href="../../Admin_Portal/Pages/bachelorGroup.php?companyID=<?php echo $CompanyID; ?>&bachelorID=<?php echo $BachelorID; ?>&action=delete">
                                     <img src="../../Main/Files/Images/close.png" alt="Delete bachelor group member.">
                                 </a>
                             </div>
@@ -2156,13 +2156,13 @@ function deleteBachelorGroup($BachelorGroupID) {
     }
 }
 
-function deleteBachelorGroupMember($CompanyID) {
+function deleteBachelorGroupMember($CompanyID, $BachelorGroupID) {
 
     $sql = "DELETE FROM `Bachelor_Company` WHERE CompanyID = '$CompanyID'";
 
     if (query($sql)) {
 
-        header('Location: index.php');
+        header('Location: bachelorGroup.php?id=' . $BachelorGroupID);
     }
     else {
         echo "Unable to delete bachelor group members.";

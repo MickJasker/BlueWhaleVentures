@@ -9,7 +9,7 @@
 
         if (secure($_GET['action']) == "delete") {
 
-            deleteBachelorGroup(secure($_GET['bachelorID']));
+            deleteBachelorGroupMember(secure($_GET['companyID']) ,secure($_GET['bachelorID']));
 
         }
         else {
