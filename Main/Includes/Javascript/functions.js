@@ -110,10 +110,3 @@ function addAnswer(questionID) {
     console.log(answerArray);
 
 }
-
-function experimentIDSession(ID, Role)
-{
-	//document.write('echo " =' + ID + '"');
-	var path = '../../' + Role + '_Portal/Pages/experiment.php';
-	location.replace(path);
-}

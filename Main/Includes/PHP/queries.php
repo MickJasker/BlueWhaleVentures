@@ -865,29 +865,18 @@ function getExperimentBlockInfo($CompanyID)
 
             ?>
 
-			<form action="#" method="POST">
-				<label for="experimentBlock"> 
-					<li id="Block" class="col-lg-4">				
-				   <!-- <a href="../../<?php// echo $_SESSION['Role'];?>_Portal/Pages/experiment.php?id=<?php //echo $row['ID']; ?>"> -->
-					<?php echo '<a onclick="experimentIDSession('."'".$_SESSION["ExperimentID"] = $row['ID']."', '".$_SESSION['Role']."'".')">'; ?>
-						<div class="BlockLogo">
-							<img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
-						</div>
-						<div class="BlockTitle">
-							<h1> <?php echo $Title ?> </h1>
-						</div>
-					</a>
-				</li>
-				</label>
-				<input hidden id="experimentBlock" name="redirectExperiment" type="submit"/>
-			</form>
+            <li id="Block" class="col-lg-4">
+                <a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/experiment.php?id=<?php echo $row['ID']; ?>">
+                    <div class="BlockLogo">
+                        <img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
+                    </div>
+                    <div class="BlockTitle">
+                        <h1> <?php echo $Title ?> </h1>
+                    </div>
+                </a>
+            </li>
 
             <?php
-			if (isset($_POST['redirectExperiment']))
-			{
-				$_SESSION["ExperimentID"] = $row['ID'];
-				header('Location: ../../' . $_SESSION['Role'] . '_Portal/Pages/experiment.php');
-			}
 			
 			
         }
@@ -2014,6 +2003,82 @@ function selectBachelorGroupBlockInfo($BachelorGroupID)
 
         }
     }
+}
+
+function insertBachelorGroup($BachelorName) {
+
+    $sql = "INSERT INTO `BachelorGroup`(`Name`) VALUES ('$BachelorName')";
+    if (query($sql)) {
+
+        global $conn;
+
+        $BachelorID = mysqli_insert_id($conn);
+        header('Location: bachelorGroup.php?id=' . $BachelorID );
+
+
+
+    }
+
+}
+
+function insertToBachelorGroup($BachelorGroupID, $CompanyGroupID) {
+
+    $sql = "INSERT INTO `Bachelor_Company`(`BachelorID` , `CompanyID`) VALUES ('$BachelorGroupID', '$CompanyGroupID')";
+    if (query($sql)) {
+
+        header('Location: bachelorGroup.php?id=' . $BachelorGroupID );
+
+    }
+
+}
+
+function selectCompanyDropdown() {
+
+    $sql = "SELECT c.ID, c.Name FROM Company c";
+
+    if ($data = Query($sql)) {
+
+        ?>
+
+        <select name="company">
+
+            <?php
+            while ($row = $data->fetch_assoc()) {
+
+                $CompanyID = $row['ID'];
+                $CompanyName = $row['Name'];
+
+
+                $sql2 = "SELECT bc.CompanyID FROM Bachelor_Company bc WHERE CompanyID = '$CompanyID'";
+
+
+                if ($data2 = Query($sql2)) {
+
+                    ?>
+                    <option disabled value="<?php echo $CompanyID; ?>"><?php echo $CompanyName; ?></option>
+
+                    <?php
+
+                } else {
+
+                    ?>
+                    <option value="<?php echo $CompanyID; ?>"><?php echo $CompanyName; ?></option>
+
+                    <?php
+
+                }
+            }
+
+            ?>
+
+        </select>
+
+        <?php
+    }
+    else {
+        echo " - Error - ";
+    }
+
 }
 
 
