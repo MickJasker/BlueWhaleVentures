@@ -4,7 +4,8 @@ window.onload = function() {
     var width = 1;
     var id = setInterval(frame, 30);
     function frame() {
-        if (width >= 66) {
+		var currentDay = document.getElementById("currentday").innerHTML;
+        if (width >= currentDay) {
             clearInterval(id);
         } else {
             width++;

@@ -209,32 +209,40 @@ function selectLoginInfo($email, $password)
             if (password_verify($password, $dbpassword) != 0)
             {
                 $UserID = $row["UserID"];
-                $sql = "SELECT RoleID FROM User WHERE ID = '$UserID'";
+                $sql = "SELECT RoleID, Locked FROM User WHERE ID = '$UserID'";
                 if($data = query($sql))
                 {
                     $db_data = array("true");
                     while($row = $data->fetch_assoc())
                     {
-                        $RoleID = $row["RoleID"];
-                        $Role = "";
+                    	if ($row["Locked"] != 1)
+                    	{
+	                        $RoleID = $row["RoleID"];
+	                        $Role = "";
 
-                        //Change roleID to role
-                        if ($RoleID == "6")
-                        {
-                            $Role = "Admin";
-                        }
-                        else if ($RoleID == "7")
-                        {
-                            $Role = "Mentor";
-                        }
-                        else if ($RoleID == "8")
-                        {
-                            $Role = "Company";
-                        }
+	                        //Change roleID to role
+	                        if ($RoleID == "6")
+	                        {
+	                            $Role = "Admin";
+	                        }
+	                        else if ($RoleID == "7")
+	                        {
+	                            $Role = "Mentor";
+	                        }
+	                        else if ($RoleID == "8")
+	                        {
+	                            $Role = "Company";
+	                        }
 
-                        array_push($db_data, $Role, $UserID);
+	                        array_push($db_data, $Role, $UserID);
+	                        return $db_data;
+                    	}
+                    	else
+                    	{
+                    		echo "This account has been temporarily banned, please contact an administrator for more information";
+                    		return false;
+                    	}
                     }
-                    return $db_data;
                 }
             }
             else
@@ -473,6 +481,34 @@ function selectUserLanguage($ID)
     }
 }
 
+function selectLocked($ID)
+{
+	$sql = "SELECT Locked FROM User WHERE ID = '$ID'";
+
+	if ($data = query($sql))
+	{
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        return $row['Locked'];
+	}
+}
+
+function selectSessionInfo($Email)
+{
+	$sql = "SELECT u.ID, r.Name, u.Language, u.Locked FROM User u
+	INNER JOIN Login l ON l.UserID = u.ID
+	INNER JOIN Role r ON u.RoleID = r.ID
+	WHERE Email = '$Email'";
+
+	if ($data = query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+
+        $_SESSION["UserID"] = $row["ID"];	
+		$_SESSION["Role"] = $row["Name"];
+		$_SESSION["Language"] =  $row["Language"];
+		$_SESSION["Locked"] = $row["Locked"];
+    }
+}
 
 //Admin portal blokken
 function getCompanyBlockInfo()
@@ -558,7 +594,6 @@ function getExperiment($id)
         }
     }
 
-
     $questionaire = "0";
 
     $sql = "SELECT ID FROM Questionaire WHERE ExperimentID = '$id'";
@@ -579,8 +614,6 @@ function getExperiment($id)
             $header = "Interview.php";
         }
     }
-
-
 
     $sql = "SELECT Explanation1, Explanation2 FROM Prototype WHERE ExperimentID = '$id'";
     if ($data = query($sql))
@@ -604,26 +637,51 @@ function getExperiment($id)
             }
         }
     }
-    $sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
-    if($data = query($sql))
-    {
-        while($row = $data->fetch_assoc())
-        {
-            $header = $header . "?experimentID=" . $id;
-            //echo $row["Title"];
-            echo '<h1>' . $row["Title"] . '</h1>';
-            echo '<p>' . $row["Description"] .  '</p>';
-            echo '<p> Progress: ' . $row["Progress"] . '</p>';
-            echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
-            echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
-            echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
-            echo '<a href="resultSheet.php?experimentid='.$_GET["id"].'"><button> Results sheet </button> </a>';
-        }
-    }
-    else
-    {
-        return false;
-    }
+	
+	$sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
+	if($data = query($sql))
+	{
+		while($row = $data->fetch_assoc())
+		{
+			$header = $header . "?experimentID=" . $id;
+			//echo $row["Title"];
+			echo '<h1>' . $row["Title"] . '</h1>';
+			echo '<p>' . $row["Description"] .  '</p>';
+			echo '<p> Progress: ' . $row["Progress"] . '</p>';
+			echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
+			echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
+			echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
+			echo '<a href="resultSheet.php?experimentid='.$id.'"><button> Results sheet </button> </a>';
+		}
+	}
+	else
+	{
+		return false;
+	}
+}
+
+function selectTimeline($companyID)
+{
+	$sql = "SELECT `beginDate`, `endDate` FROM `Timeline` WHERE CompanyID = '$companyID'";
+	if($data = query($sql))
+	{
+		while($row = $data->fetch_assoc())
+		{			
+			$beginDate = new DateTime($row["beginDate"]);
+			$endDate = new DateTime($row["endDate"]);
+			$currentDate = new DateTime();
+			
+			$currentTime = $currentDate->diff($beginDate, true);
+			//echo $currentTime->format('%a') . ' days';
+			
+			$totalTime = $beginDate->diff($endDate, true);
+			//echo $totalTime->format('%a') . ' days';
+			
+			$total = $totalTime->format('%a') / $totalTime->format('%a') * 100;
+			$now = $currentTime->format('%a') / $totalTime->format('%a') * 100;
+			return $now;
+		}
+	}
 }
 
 //Get experiment info
@@ -900,6 +958,47 @@ function checkExperimentID($ID, $CompanyID)
     return false;
 }
 
+function checkExperimentIDMentor($ID, $UserID)
+{
+	$sql = "SELECT `ID` FROM `Mentor` WHERE UserID = '$UserID'";
+	if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+			$MentorID = $row["ID"];
+			$sql = "SELECT `CompanyID` FROM `Mentor_Company` WHERE MentorID = '$MentorID'";
+			if($data2 = Query($sql))
+			{
+				while ($row2 = $data2->fetch_assoc())
+				{
+					$CompanyID = $row2["CompanyID"];
+					$sql = "SELECT `ID` FROM `Experiment` WHERE ID = '$ID' AND CompanyID = '$CompanyID'";
+					if($data3 = Query($sql))
+					{
+						while ($row3 = $data3->fetch_assoc())
+						{
+							return $row3["ID"];
+						}
+					}
+					else
+					{
+						header('Location: index.php');
+					}
+				}
+			}
+			else
+			{
+				header('Location: index.php');
+			}
+		}
+	}
+	else
+	{
+		header('Location: index.php');
+	}
+	return false;
+}
+
 //Client Portal Expirement blokken
 function getMentorAssignedBlockInfo($UserID)
 {
@@ -957,13 +1056,15 @@ function selectCompanyMentors($CompanyID)
             {
                 ?>
                 <div class="mentor-preview col-md-3">
-                    <a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID']; ?>">
-                        <img src="<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
-                        <h4> <?php echo $row['Name'] ?> </h4>
-                    </a>
-                    <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
-                        <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
-                    </a>
+                    <div class="container-fluid">
+	                    <a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID']; ?>">
+		                    <img class="" src="<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
+		                    <h4> <?php echo $row ['Name'] ?> </h4>
+	                    </a>
+	                    <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
+		                    <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
+	                    </a>
+                    </div>
                 </div>
                 <?php
             }
@@ -1052,7 +1153,7 @@ function selectCompanyInfo($CompanyID)
                                     <h4> Assign Mentor </h4>
                                 </a>
                             </div>
-                            <?php selectCompanyMentors($_GET["id"]); ?>
+                            <?php selectCompanyMentors(secure($_GET["id"])); ?>
                         </div>
                     </div>
                 </section>
@@ -1062,7 +1163,7 @@ function selectCompanyInfo($CompanyID)
 		                    <h3>Experiments</h3>
 	                    </div>
 	                    <div class="container-fluid">
-		                    <?php getExperimentsPreview($_GET["id"]); ?>
+		                    <?php getExperimentsPreview(secure($_GET["id"])); ?>
 	                    </div>
                     </div>
                 </section>
@@ -2003,7 +2104,7 @@ function selectBachelorGroupBlockInfo($BachelorGroupID)
                             </div>
                             <div class="BlockTitle">
                                 <h1> <?php echo $Name; ?> </h1>
-                                <a onclick="return confirm('Are you sure you want to delete the bachelor group member?')" href="../../Admin_Portal/Pages/index.php?companyID=<?php echo $CompanyID; ?>&action=delete">
+                                <a onclick="return confirm('Are you sure you want to delete the bachelor group member?')" href="../../Admin_Portal/Pages/bachelorGroup.php?companyID=<?php echo $CompanyID; ?>&bachelorID=<?php echo $BachelorID; ?>&action=delete">
                                     <img src="../../Main/Files/Images/close.png" alt="Delete bachelor group member.">
                                 </a>
                             </div>
@@ -2047,7 +2148,7 @@ function selectLockButton($companyID)
             ?>
             <a onclick="return confirm('Are you sure you want to unlock this account?')"
                href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $_GET['id']; ?>&action=unlock">
-                <img src="../../Main/Files/Images/close.png" alt="Unlock account">
+                <img class="lock" src="../../Main/Files/Images/lock-closed.png" alt="Unlock account">
             </a>
             <?php
         }
@@ -2056,7 +2157,7 @@ function selectLockButton($companyID)
             ?>
             <a onclick="return confirm('Are you sure you want to lock this account?')"
                href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $_GET['id']; ?>&action=lock">
-                <img src="../../Main/Files/Images/close.png" alt="lock account">
+                <img class="lock" src="../../Main/Files/Images/lock-open.png" alt="lock account">
             </a>
             <?php
         }
@@ -2073,6 +2174,10 @@ function insertBachelorGroup($BachelorName)
 
         $BachelorID = mysqli_insert_id($conn);
         header('Location: bachelorGroup.php?id=' . $BachelorID );
+    }
+    else {
+        header('Location: google.com' );
+
     }
 }
 
@@ -2135,7 +2240,8 @@ function selectCompanyDropdown()
 
 }
 
-function deleteBachelorGroup($BachelorGroupID) {
+function deleteBachelorGroup($BachelorGroupID) 
+{
 
     $sql = "DELETE FROM `Bachelor_Company` WHERE BachelorID = '$BachelorGroupID'";
 
@@ -2156,17 +2262,58 @@ function deleteBachelorGroup($BachelorGroupID) {
     }
 }
 
-function deleteBachelorGroupMember($CompanyID) {
+function deleteBachelorGroupMember($CompanyID, $BachelorGroupID) 
+{
 
     $sql = "DELETE FROM `Bachelor_Company` WHERE CompanyID = '$CompanyID'";
 
     if (query($sql)) {
 
-        header('Location: index.php');
+        header('Location: bachelorGroup.php?id=' . $BachelorGroupID);
     }
     else {
         echo "Unable to delete bachelor group members.";
     }
 }
+
+function selectUserLock($userID)
+{
+	$sql = "SELECT Locked FROM User WHERE ID = '$userID'";
+
+	if ($data = query($sql))
+	{
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+
+		return $row["Locked"];
+	}
+}
+
+function selectBachelorName($BachelorGroupID) {
+
+    $sql = "SELECT `Name` FROM `BachelorGroup` WHERE ID = '$BachelorGroupID'";
+
+    if ($data = query($sql)) {
+
+        while ($row = $data->fetch_assoc()) {
+
+            $BachelorName = $row['Name'];
+
+            ?>
+
+            <h1> <?php echo $BachelorName ?> </h1>
+
+            <?php
+        }
+    }
+    else {
+        echo "Unable to select name.";
+    }
+
+
+
+}
+
+
+
 
 ?>

@@ -1,6 +1,6 @@
 <?php
     require '../../Main/Includes/PHP/functions.php';
-	checkSession('Company');
+	checkSession('Client');
 
     if(isset($_POST['submit'])) {
 
@@ -19,22 +19,28 @@
     <script type="text/javascript" src="../../Main/Includes/Javascript/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="../../Main/Includes/Javascript/functions.js"></script>
 </head>
-    <body id="wrapper-admin">
+    <body id="wrapper-newPrototype">
+    <header class="wrapper-nav">
+        <?php require "../nav_nosearch.php"; ?></header>
         <Main>
-            <h1> New Interview </h1>
-            <div id="questionForm">
-                <form id="form" action="#" method="POST">
-                    <?php
+            <section class="col-lg-6">
+                <div id="questionForm">
+                    <h1> New Interview </h1>
+                    <form id="form" action="#" method="POST">
+                        <p hidden id="hiddenP"><?php echo $i?></p>
+                        <?php
 
-                    $i = SelectQuestion($_SESSION['insertedID']);
+                        $i = SelectQuestion($_SESSION['insertedID']);
 
-                    ?>
+                        ?>
 
-                    <button type="button" onclick="addQuestion()">Add Question</button>
-                    <input type="submit" name="submit" value="Save">
-                    <p hidden id="hiddenP"><?php echo $i?></p>
-                </form>
-            </div>
+                        <button type="button" onclick="addQuestion()">Add Question</button>
+                        <input type="submit" name="submit" value="Save"><br>
+
+                    </form>
+                </div>
+            </section>
+
         </Main>
     </body>
 </html>

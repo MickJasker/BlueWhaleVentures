@@ -1,7 +1,6 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
-checkSession('Mentor');
-$ID = checkExperimentIDMentor(secure($_GET["id"]), $_SESSION["UserID"]);
+$ID = secure($_GET["id"]);
 $UserID = $_SESSION["UserID"];
 ?>
 <!DOCTYPE html>
@@ -14,7 +13,7 @@ $UserID = $_SESSION["UserID"];
 
 	<body id="wrapper-experimentExecuteable">
 	    <header class="wrapper-nav">
-	        <?php require "../nav_nosearchmentor.php";?>
+	        <?php require "../nav_nosearchadmin.php";?>
 	    </header>
 	    <main>
 	        <?php getExperimentView($ID); ?>

@@ -37,7 +37,7 @@
 
                             createSession($user_name);
 
-                            $header = "login";
+                            
                             if ($_SESSION["Role"] == "Admin") {
                                 $header = "Admin_Portal/Pages/index.php";
                             } else if ($_SESSION["Role"] == "Mentor") {
@@ -45,6 +45,7 @@
                             } else if ($_SESSION["Role"] == "Client") {
                                 $header = "Client_Portal/Pages/index.php";
                             } else {
+                                $header = "";
                                 //User has no role
                             }
 

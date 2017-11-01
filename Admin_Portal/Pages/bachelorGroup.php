@@ -4,12 +4,21 @@
 
     //CheckSession("Admin");
 
+    if (isset($_POST['saveBachelorMember']))
+    {
+        if (isset($_POST['company'])) {
+            
+            if (secure($_POST['company']) != "") {
+                insertToBachelorGroup(secure($_GET['id']), secure($_POST['company']));
+            }
+        }
+    }
 
     if (isset($_GET['action'])) {
 
         if (secure($_GET['action']) == "delete") {
 
-            deleteBachelorGroup(secure($_GET['bachelorID']));
+            deleteBachelorGroupMember(secure($_GET['companyID']) ,secure($_GET['bachelorID']));
 
         }
         else {
@@ -30,7 +39,7 @@
 <body id="wrapper-admin-body">
 <header class="row wrapper-nav">
     <?php
-    require "../nav.php"
+    require "../nav_nosearchadmin.php"
     ?>
 </header>
 <Main id="wrapper-admin">
@@ -43,9 +52,10 @@
             </div>
             <div class="clientmodal-body">
                 <form method="POST" action="#">
-                    <input id="field" type="text" name="user_name" placeholder="Name"> <br>
-                    <input id="field" type="text" name="company_mail" placeholder="E-mail"> <br>
-                    <input id="submitbtn" name="generate_companykey" type="submit" value="Add bachelor group">
+
+                    <?php selectCompanyDropdown(); ?>
+
+                    <input id="submitbtn" name="saveBachelorMember" type="submit" value="Add bachelor group">
                 </form>
             </div>
         </div>
@@ -53,6 +63,13 @@
     </div>
     <ul class="list">
         <div class="content">
+
+            <?php
+
+                selectBachelorName(secure($_GET['id']));
+
+            ?>
+
 
             <div onclick="createcompany()" id="Block" class="col-lg-4">
                 <a class="clientbutton" href="#">

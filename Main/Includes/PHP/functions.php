@@ -54,11 +54,13 @@ function generate_key($email, $name, $role)
 function createSession($Email)
 {
 	$_SESSION["LoggedIn"] = true;
-	$_SESSION["UserID"] = selectUserID($Email);	
-	$_SESSION["Role"] = selectRole($_SESSION["UserID"]);
-	$_SESSION["Language"] =  selectUserLanguage($_SESSION["UserID"]);
-	$_SESSION["CompanyID"] = selectCompanyID($_SESSION["UserID"]);
-	
+	selectSessionInfo($Email);
+
+	if ($_SESSION["Role"] == "Client")
+	{
+		$_SESSION["CompanyID"] = selectCompanyID($_SESSION["UserID"]);
+	}
+
 	/*
 	echo "Logged in: " . $_SESSION["LoggedIn"] . "<br>";	
 	echo "Role: " . $_SESSION["Role"] . "<br>";
@@ -73,10 +75,14 @@ function checkSession($AllowedRole)
 	{
 		if ($_SESSION["Role"] != $AllowedRole)
 		{
-			//header('Location: ../../'.$_SESSION["Role"].'_portal/index.php');
+			header('Location: ../../'.$_SESSION["Role"].'_portal/Pages/index.php');
 		}
-		
-		
+
+		if (selectUserLock($_SESSION["UserID"]) == 1)
+		{
+			destroySession();
+			header('Location: ../../index.php');
+		}	
 	}
 	else 
 	{

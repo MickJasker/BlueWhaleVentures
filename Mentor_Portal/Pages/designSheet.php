@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <?php
 require '../../Main/Includes/PHP/functions.php';
+checkSession('Mentor');
+$experimentID = checkExperimentIDMentor(secure($_GET["experimentID"]), $_SESSION["UserID"]);
 ?>
 
 <html>
@@ -11,7 +13,7 @@ require '../../Main/Includes/PHP/functions.php';
     <body id="wrapper-admin">
 		<h1>Design sheet : Experiment 2</h1>
 		<?php
-			getDesignSheetData($_GET["experimentID"], "Experiment", $_SESSION["Language"]);
+			getDesignSheetData($experimentID, "Experiment", $_SESSION["Language"]);
 		?>
 	</body>
 </html>

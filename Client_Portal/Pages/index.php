@@ -1,6 +1,6 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
-checkSession('Company');
+checkSession('Client');
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,12 +19,27 @@ checkSession('Company');
 <Main id="wrapper-admin">
     <ul class="list">
         <div class="content">
+
+            <div id="Block" class="col-lg-4">
+                <a class="mentorbutton" href="createExperiment.php">
+                    <div class="BlockLogo">
+                        <img src="../../Main/Files/Images/add.svg" alt="Add Experiment">
+                    </div>
+                    <div class="BlockTitle">
+                        <h1> Add Experiment </h1>
+                    </div>
+                </a>
+            </div>
+
             <?php getExperimentBlockInfo($_SESSION["CompanyID"]); ?>
         </div>
     </ul>
 </Main>
 
 <footer>
+<?php $currentDay = selectTimeline($_SESSION["CompanyID"]); 
+	echo '<p hidden id="currentday">'. $currentDay . '</p>';
+?>
     <div id="progressbar">
         <div id="bar"></div>
         <div id="grow" class="milestone">0</div>
