@@ -1,6 +1,7 @@
 <?php
-
 require '../../Main/Includes/PHP/functions.php';
+checkSession('Company');
+$experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
     if (isset($_POST['save']))
     {
         //Image check
@@ -32,7 +33,7 @@ require '../../Main/Includes/PHP/functions.php';
             if ($upload)
             {
                 //upload data to the database
-                if (insertPrototype($imagepath ,$_POST['explanationText'], $_GET["experimentID"]))
+                if (insertPrototype($imagepath ,$_POST['explanationText'], $experimentID))
                 {
                     //header("Location: ");
                 }

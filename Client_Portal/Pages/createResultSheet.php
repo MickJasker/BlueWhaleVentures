@@ -1,6 +1,7 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
 checkSession('Company');
+$experimentId = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
 ?>
 <!DOCTYPE html>
 <html>
@@ -10,9 +11,7 @@ checkSession('Company');
 </head>
 	<body id="wrapper-designSheet">
     <header class="wrapper-nav">
-        <?php
-        require "../../Main/Includes/nav.php"
-        ?>
+        <?php require "../nav_nosearch.php";?>
     </header>
 		<Main>
             <div id="switch">
@@ -23,7 +22,6 @@ checkSession('Company');
 				getDesignSheetForm("Result", $_SESSION['Language']);
 				if (isset($_POST['submitDesignsheet']))
 				{
-					$experimentId = $_GET['experimentID'];
 					$language = $_SESSION["Language"];
 					insertDesignSheet($_POST, "Result", $language, $experimentId);
 
