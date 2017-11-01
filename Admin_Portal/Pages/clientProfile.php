@@ -1,13 +1,13 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
-    CheckSession("Admin");
+    //CheckSession("Admin");
 
 
     if (isset($_POST['save'])) {
 
         assignMentor(secure($_GET['id']), $_POST['mentor']);
 
-}
+	}
 
     if (isset($_GET['action'])) {
 
