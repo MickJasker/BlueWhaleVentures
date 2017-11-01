@@ -1,6 +1,6 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
-checkSession('Company');
+checkSession('Client');
 $ID = checkExperimentID(secure($_GET["id"]), $_SESSION["CompanyID"]);
 ?>
 <!DOCTYPE html>

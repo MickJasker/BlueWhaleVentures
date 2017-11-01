@@ -558,7 +558,6 @@ function getExperiment($id)
         }
     }
 
-
     $questionaire = "0";
 
     $sql = "SELECT ID FROM Questionaire WHERE ExperimentID = '$id'";
@@ -579,8 +578,6 @@ function getExperiment($id)
             $header = "Interview.php";
         }
     }
-
-
 
     $sql = "SELECT Explanation1, Explanation2 FROM Prototype WHERE ExperimentID = '$id'";
     if ($data = query($sql))
@@ -604,26 +601,27 @@ function getExperiment($id)
             }
         }
     }
-    $sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
-    if($data = query($sql))
-    {
-        while($row = $data->fetch_assoc())
-        {
-            $header = $header . "?experimentID=" . $id;
-            //echo $row["Title"];
-            echo '<h1>' . $row["Title"] . '</h1>';
-            echo '<p>' . $row["Description"] .  '</p>';
-            echo '<p> Progress: ' . $row["Progress"] . '</p>';
-            echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
-            echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
-            echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
-            echo '<a href="resultSheet.php?experimentid='.$_GET["id"].'"><button> Results sheet </button> </a>';
-        }
-    }
-    else
-    {
-        return false;
-    }
+	
+	$sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
+	if($data = query($sql))
+	{
+		while($row = $data->fetch_assoc())
+		{
+			$header = $header . "?experimentID=" . $id;
+			//echo $row["Title"];
+			echo '<h1>' . $row["Title"] . '</h1>';
+			echo '<p>' . $row["Description"] .  '</p>';
+			echo '<p> Progress: ' . $row["Progress"] . '</p>';
+			echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
+			echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
+			echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
+			echo '<a href="resultSheet.php?experimentid='.$id.'"><button> Results sheet </button> </a>';
+		}
+	}
+	else
+	{
+		return false;
+	}
 }
 
 //Get experiment info
@@ -900,6 +898,47 @@ function checkExperimentID($ID, $CompanyID)
     return false;
 }
 
+function checkExperimentIDMentor($ID, $UserID)
+{
+	$sql = "SELECT `ID` FROM `Mentor` WHERE UserID = '$UserID'";
+	if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+			$MentorID = $row["ID"];
+			$sql = "SELECT `CompanyID` FROM `Mentor_Company` WHERE MentorID = '$MentorID'";
+			if($data2 = Query($sql))
+			{
+				while ($row2 = $data2->fetch_assoc())
+				{
+					$CompanyID = $row2["CompanyID"];
+					$sql = "SELECT `ID` FROM `Experiment` WHERE ID = '$ID' AND CompanyID = '$CompanyID'";
+					if($data3 = Query($sql))
+					{
+						while ($row3 = $data3->fetch_assoc())
+						{
+							return $row3["ID"];
+						}
+					}
+					else
+					{
+						header('Location: index.php');
+					}
+				}
+			}
+			else
+			{
+				header('Location: index.php');
+			}
+		}
+	}
+	else
+	{
+		header('Location: index.php');
+	}
+	return false;
+}
+
 //Client Portal Expirement blokken
 function getMentorAssignedBlockInfo($UserID)
 {
@@ -1052,7 +1091,7 @@ function selectCompanyInfo($CompanyID)
                                     <h4> Assign Mentor </h4>
                                 </a>
                             </div>
-                            <?php selectCompanyMentors($_GET["id"]); ?>
+                            <?php selectCompanyMentors(secure($_GET["id"])); ?>
                         </div>
                     </div>
                 </section>
@@ -1062,7 +1101,7 @@ function selectCompanyInfo($CompanyID)
 		                    <h3>Experiments</h3>
 	                    </div>
 	                    <div class="container-fluid">
-		                    <?php getExperimentsPreview($_GET["id"]); ?>
+		                    <?php getExperimentsPreview(secure($_GET["id"])); ?>
 	                    </div>
                     </div>
                 </section>
@@ -2003,7 +2042,7 @@ function selectBachelorGroupBlockInfo($BachelorGroupID)
                             </div>
                             <div class="BlockTitle">
                                 <h1> <?php echo $Name; ?> </h1>
-                                <a onclick="return confirm('Are you sure you want to delete the bachelor group member?')" href="../../Admin_Portal/Pages/index.php?companyID=<?php echo $CompanyID; ?>&action=delete">
+                                <a onclick="return confirm('Are you sure you want to delete the bachelor group member?')" href="../../Admin_Portal/Pages/bachelorGroup.php?companyID=<?php echo $CompanyID; ?>&bachelorID=<?php echo $BachelorID; ?>&action=delete">
                                     <img src="../../Main/Files/Images/close.png" alt="Delete bachelor group member.">
                                 </a>
                             </div>
@@ -2073,6 +2112,10 @@ function insertBachelorGroup($BachelorName)
 
         $BachelorID = mysqli_insert_id($conn);
         header('Location: bachelorGroup.php?id=' . $BachelorID );
+    }
+    else {
+        header('Location: google.com' );
+
     }
 }
 
@@ -2156,17 +2199,57 @@ function deleteBachelorGroup($BachelorGroupID) {
     }
 }
 
-function deleteBachelorGroupMember($CompanyID) {
+function deleteBachelorGroupMember($CompanyID, $BachelorGroupID) {
 
     $sql = "DELETE FROM `Bachelor_Company` WHERE CompanyID = '$CompanyID'";
 
     if (query($sql)) {
 
-        header('Location: index.php');
+        header('Location: bachelorGroup.php?id=' . $BachelorGroupID);
     }
     else {
         echo "Unable to delete bachelor group members.";
     }
 }
+
+function selectUserLock($userID)
+{
+	$sql = "SELECT Locked FROM User WHERE ID = '$userID'";
+
+	if ($data = query($sql))
+	{
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+
+		return $row["Locked"];
+	}
+}
+
+function selectBachelorName($BachelorGroupID) {
+
+    $sql = "SELECT `Name` FROM `BachelorGroup` WHERE ID = '$BachelorGroupID'";
+
+    if ($data = query($sql)) {
+
+        while ($row = $data->fetch_assoc()) {
+
+            $BachelorName = $row['Name'];
+
+            ?>
+
+            <h1> <?php echo $BachelorName ?> </h1>
+
+            <?php
+        }
+    }
+    else {
+        echo "Unable to select name.";
+    }
+
+
+
+}
+
+
+
 
 ?>
