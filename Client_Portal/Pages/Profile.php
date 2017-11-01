@@ -24,27 +24,27 @@ CheckSession("Client");
 		<form id="form" action="#" method="POST" enctype="multipart/form-data">
 			<?php if ($data[2] != "")
 					{
-						echo '<img src="../../'.$data[2].'" alt="Profile picture" height="100px">';
+						echo '<img src="'.$data[2].'" alt="Profile picture" height="100px">';
 					}
 			?>
 			Upload profile picture: <input type="file" name="file1" id="file1"> 
 			<input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"> <br>
 			<input type="text" name="email" placeholder="E-mail" value="<?php echo $data[3]; ?>"> <br>
 			<select name="language">
-			  <?php selectLanguage(); ?>
-			</select> <br>
+			  <?php selectLanguage($ID); ?>
+			</select> <br> 
 			<?php if ($data[7] != "")
 					{
-						echo '<img src="../../'.$data[7].'" alt="Profile picture" height="100px">';
+						echo '<img src="../../'.$data[6].'" alt="Profile picture" height="100px">';
 					}
 			?>
 			Upload company logo: <input type="file" name="file2" id="file2"> 
-			<input type="text" name="companyName" placeholder="Company name" value="<?php echo $data[5]; ?>"> <br>
-			<textarea name="companyDescription" placeholder="Company description"> <?php echo $data[6]; ?>	</textarea><br>
-			<input type="text" name="phone" placeholder="Company phone number" value="<?php echo $data[8]; ?>"> <br>
-			<input type="text" name="address" placeholder="Company address" value="<?php echo $data[9]; ?>"> <br>
+			<input type="text" name="companyName" placeholder="Company name" value="<?php echo $data[4]; ?>"> <br>
+			<textarea name="companyDescription" placeholder="Company description"> <?php echo $data[5]; ?>	</textarea><br>
+			<input type="text" name="phone" placeholder="Company phone number" value="<?php echo $data[7]; ?>"> <br>
+			<input type="text" name="address" placeholder="Company address" value="<?php echo $data[8]; ?>"> <br>
 			<select name="branch">
-				<option value="<?php echo $data[10]; ?>"><?php echo $data[10]; ?></option>
+				<option value="<?php echo $data[9]; ?>"><?php echo $data[9]; ?></option>
 				<option value="Agriculture, forestry and fisheries">Agriculture, forestry and fisheries</option>
 				<option value="Mining of minerals">Mining of minerals</option>
 				<option value="Industry">Industry</option>

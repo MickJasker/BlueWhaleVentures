@@ -276,6 +276,68 @@ body {
       }
     }
   }
+  footer{
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:60px;
+    width:100%;
+    background: white;
+    z-index: 1;
+
+    #progressbar {
+      position: relative;
+      margin: 1.5% auto 0 auto;
+      width: 1000px;
+      background-color: @offwhite;
+    }
+
+    #bar {
+      border-radius: 25px;
+      height: 5px;
+      background-color: @blue;
+      position: relative;
+
+    }
+    .milestone{
+      background-color: @blue;
+      float: left;
+      left: -5px;
+      z-index: 1;
+      position: relative;
+      color: @white;
+      font-family: "Open Sans";
+      text-align: center;
+    }
+    .left1, .left2, .right{
+      top: -14px;
+      width: 25px;
+      left: 5px;
+      height: 25px;
+      border-radius: 600px;
+      line-height: 25px;
+      font-size: 1.2vh;
+    }
+    #grow{
+      top: -19px;
+      width: 35px;
+      height: 35px;
+      border-radius: 800px;
+      line-height: 35px;
+      font-size: 2vh;
+      transition: ease .6s;
+    }
+    .left1{
+      margin-left: 195px;
+    }
+    .left2{
+      margin-left: 220px;
+    }
+    .right{
+      float: right;
+      right: -5px;
+    }
+  }
 }
 
 .wrapper-nav {
@@ -848,11 +910,14 @@ body {
     h1 {
       font-size: 24px;
     }
+    h2{
+      color: @white;
+    }
     a {
       margin: 25px;
       color: white;
       button {
-        width: 200px;
+        min-width: 200px;
         font-size: 18px;
         height: 35px;
         padding: 5px;
@@ -875,20 +940,22 @@ body {
       background-color: @blue;
       display: inline-block;
       padding: 10px;
+      border-radius: 10px;
       .feedbackUser {
         min-width: 800px;
         padding: 10px;
         background-color: @offwhite;
+        border-radius: 10px;
         div {
           display: inline-block;
-          margin: 20px;
+          margin: 0;
+          text-align: left;
           img {
           }
           #block {
             margin: 10px;
             h3 {
               text-align: left;
-              color: @blue;
             }
             p {
               text-align: left;

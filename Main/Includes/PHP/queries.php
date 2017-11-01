@@ -113,21 +113,17 @@ function insertRoleInfo($userID)
 {
 	$role = selectRole($userID);
 
-	if($data = query($sql))
-	{
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		if ($row["Name"] == "Company")
+		if ($role == "Company")
 		{
 			return insertCompany($userID);
 		}
 
-		if ($row["Name"] == "Mentor")
+		if ($role == "Mentor")
 		{
 			return insertMentor($userID);
 		}
 
 		//If admin, do nothing, admin currently has no extra information
-	}
 }
 
 function insertCompany($userID)
@@ -608,7 +604,6 @@ function getExperiment($id)
 			}
 		}
 	}
-	
 	$sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
 	if($data = query($sql))
 	{
@@ -634,7 +629,7 @@ function getExperiment($id)
 //Get experiment info
 function getExperimentView($id)
 {	
-	$header = "designSheet.php";
+	$header = "";
 	$name = "";
 	$buttonstate = "disabled class='is_disabled'";
 	
@@ -650,11 +645,10 @@ function getExperimentView($id)
 		}
 		else
 		{
-			$name = "Pitch";
+			$name = "Pitch";	
+			$header = "pitch.php";
 			$buttonstate = "";
 		}
-
-		$header = "pitch.php";
 	}
 	
 	//if the execution is an Interview
@@ -687,12 +681,12 @@ function getExperimentView($id)
 
 		if ($row["Explanation1"] == "")
 		{
-			$name = "No prototype added yet";
+			$name = "Prototype";
+			$buttonstate = "";
 		}
 		else
 		{
-			$name = "Result";
-			$buttonstate = "";
+			$name = "No prototype added yet";
 		}
 	}
 	
@@ -706,14 +700,75 @@ function getExperimentView($id)
 		echo '<p>' . $row["Description"] .  '</p>';
 		echo '<p> Progress: ' . $row["Progress"] . '</p>';
 		echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
-		echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
-		echo '<a href="'.$header.'"><button '.$buttonstate.'> '.$name.' </button></a>';
-		echo '<a href="resultSheet.php?experimentid='.$_GET["id"].'"><button> Results sheet </button> </a>';
+
+		designSheetButton($id, "Experiment");
+		if ($buttonstate == "")
+		{
+			//if the button is enabled
+			echo '<a href="'.$header.'"><button '.$buttonstate.'> '.$name.' </button></a>';	
+		}
+		else
+		{
+			//if the button is disabled
+			echo '<a><button '.$buttonstate.'> No execution chosen </button></a>';	
+		}
+
+		designSheetButton($id, "Result");
 	}
 	else
 	{
 		return false;
 	}
+}
+
+function designSheetButton($ID, $type)
+{
+	$sql = "SELECT a.ID FROM Answer a
+	INNER JOIN Segment s ON a.SegmentID = s.ID
+	INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
+	WHERE a.ExperimentID  = '$ID' AND d.Type = '$type'";
+
+	echo '<a href="';
+
+	if ($type == 'Experiment')
+	{
+		echo "designSheet.php";
+	}
+	else if ($type == 'Result')
+	{
+		echo "resultSheet.php";
+	}
+
+	echo '?experimentID='.$ID.'"><button';
+
+	if($data = query($sql))
+	{
+		echo '>';	
+
+		if ($type == 'Experiment')
+		{
+			echo "Design sheet";
+		}
+		else if ($type == 'Result')
+		{
+			echo "Result sheet";
+		}	
+	}
+	else
+	{		
+		echo ' disabled class="is_disabled">';
+
+		if ($type == 'Experiment')
+		{
+			echo "No design sheet started";
+		}
+		else if ($type == 'Result')
+		{
+			echo "No result sheet started";
+		}	
+	}
+
+	echo '</button></a>';
 }
 
 function getFeedback($ID)
@@ -735,8 +790,8 @@ function getFeedback($ID)
 					{
 						while($row3 = $data3->fetch_assoc())
 						{
-							echo '<div class="feedbackUser row"><img class="col-sm-4" alt="profile picture" src="../../'.$row2["ProfilePicture"].'">';
-							echo '<div id="block" class="col-sm-8"><h3>'. $row3["Name"] . ': ' . $row2["Name"] . '</h3><br>';
+							echo '<div class="feedbackUser row"><img class="col-sm-4" alt="profile picture" src="'.$row2["ProfilePicture"].'">';
+							echo '<div id="block" class="col-sm-8"><h3> ' . $row2["Name"] . '</h3><br>';
 							echo '<p>' . $row["Text"] . '</p></div></div><br>';
 						}
 					}
@@ -811,7 +866,7 @@ function getExperimentBlockInfo($CompanyID)
             ?>
 
             <li id="Block" class="col-lg-4">
-                <a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
+                <a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/experiment.php?id=<?php echo $row['ID']; ?>">
                     <div class="BlockLogo">
                         <img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
                     </div>
@@ -846,7 +901,7 @@ function getMentorAssignedBlockInfo($UserID)
             ?>
 
             <li id="Block" class="col-lg-4">
-                <a href="../../../Client_Portal/Pages/experiment.php?id=<?php echo $ID ?>">
+                <a href="client_profile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <img src="../../<?php echo $Logo ?>" alt="Mentor Profile">
                     </div>
@@ -859,6 +914,10 @@ function getMentorAssignedBlockInfo($UserID)
             <?php
         }
     }
+	else
+	{
+		echo "You currently have no assigned clients.";
+	}
 }
 
 function selectCompanyMentors($CompanyID)
@@ -880,10 +939,10 @@ function selectCompanyMentors($CompanyID)
     		?>
 			<div class="mentor-preview col-md-3">
 				<a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID']; ?>">
-					<img src="../../<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
+					<img src="<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
 					<h4> <?php echo $row['Name'] ?> </h4>
 				</a>
-                <a onclick="return confirm('Are you sure you want to delete the item?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
+                <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
                     <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
                 </a>
 			</div>
@@ -1053,11 +1112,6 @@ function SelectQuestion($ExecutionID)
     }
     $i++;
     return $i;
-}
-
-function updateAdminProfile($ID, $name, $email, $language, $PFPath)
-{
-	
 }
 
 function selectAdminProfile($ID)
@@ -1311,17 +1365,59 @@ function getAdminProfile($ID)
 		}
 	}
 	
-	$sql = "SELECT Email, Password FROM Login WHERE UserID = '$ID'";
+	$sql = "SELECT Email FROM Login WHERE UserID = '$ID'";
     if($data = Query($sql))
     {
         while ($row = $data->fetch_assoc())
         {
-			array_push($results, $row["Email"], $row["Password"]);
+			array_push($results, $row["Email"]);
 			$succes = $succes + 1;
 		}
 	}
 	
 	if ($succes == 2)
+	{
+		return $results;
+	}
+	return false;
+}
+
+function getMentorProfile($ID)
+{
+	$results = array();	
+	$succes = 0;
+	
+	$sql = "SELECT Language, Name, ProfilePicture FROM User WHERE ID = '$ID'";
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+			array_push($results, $row["Language"], $row["Name"], $row["ProfilePicture"]);
+			$succes = $succes + 1;
+		}
+	}
+	
+	$sql = "SELECT Email FROM Login WHERE UserID = '$ID'";
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+			array_push($results, $row["Email"]);
+			$succes = $succes + 1;
+		}
+	}
+	
+	$sql = "SELECT `CompanyName`, `Phone` FROM `Mentor` WHERE UserID = '$ID'";
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+			array_push($results, $row["CompanyName"], $row["Phone"]);
+			$succes = $succes + 1;
+		}
+	}
+	
+	if ($succes == 3)
 	{
 		return $results;
 	}
@@ -1343,12 +1439,12 @@ function getClientProfile($ID)
 		}
 	}
 	
-	$sql = "SELECT Email, Password FROM Login WHERE UserID = '$ID'";
+	$sql = "SELECT Email FROM Login WHERE UserID = '$ID'";
     if($data = Query($sql))
     {
         while ($row = $data->fetch_assoc())
         {
-			array_push($results, $row["Email"], $row["Password"]);
+			array_push($results, $row["Email"]);
 			$succes = $succes + 1;
 		}
 	}
@@ -1388,14 +1484,61 @@ function updateClientProfile($ID, $name, $email, $language, $companyName, $compa
 	return false;
 }
 
-function selectLanguage()
+function updateAdminProfile($ID, $name, $email, $language, $PFPath)
 {
-	$sql = "SELECT DISTINCT Language FROM User";
-    if($data = Query($sql))
+	$sql = "UPDATE `User` SET `Language`='$language', `Name`='$name', `ProfilePicture`='$PFPath' WHERE ID = '$ID'";
+	if(Query($sql))
     {
+		$sql = "UPDATE `Login` SET `Email`='$email' WHERE UserID = '$ID'";
+		if(Query($sql))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+function updateMentorProfile($ID, $name, $email, $language, $PFPath, $companyName, $phone)
+{
+	$sql = "UPDATE `User` SET `Language`='$language', `Name`='$name', `ProfilePicture`='$PFPath' WHERE ID = '$ID'";
+	if(Query($sql))
+    {
+		$sql = "UPDATE `Login` SET `Email`='$email' WHERE UserID = '$ID'";
+		if(Query($sql))
+		{
+			$sql = "UPDATE `Mentor` SET `CompanyName`='$companyName',`Phone`='$phone' WHERE UserID = '$ID'";
+			if(Query($sql))
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+function selectLanguage($ID)
+{
+	$sql = "SELECT Language FROM User WHERE ID = '$ID'";
+	if($data = Query($sql))
+    {	
         while ($row = $data->fetch_assoc())
         {
-			echo '<option value="'.$row["Language"].'">'.$row["Language"].'</option>';
+			$language = $row["Language"];
+			$sql = "SELECT DISTINCT Language FROM User";
+			if($data2 = Query($sql))
+			{
+				while ($row2 = $data2->fetch_assoc())
+				{
+					if (!($language == $row2["Language"]))
+					{
+						echo '<option value="'.$row2["Language"].'">'.$row2["Language"].'</option>';
+					}
+					else 
+					{
+						echo '<option selected value="'.$row2["Language"].'">'.$row2["Language"].'</option>';
+					}
+				}
+			}
 		}
 	}
 }
@@ -1734,7 +1877,7 @@ function selectMentorDropdown($CompanyID) {
 
                     }
                     else {
-                        echo "Shits fucked yo 2";
+                        echo " - Error - ";
                     }
                 }
 
@@ -1747,7 +1890,7 @@ function selectMentorDropdown($CompanyID) {
         <?php
     }
     else {
-        echo "Shits fucked yo 1";
+        echo " - Error - ";
     }
 
 }
@@ -1787,8 +1930,78 @@ function unassignMentor($CompanyID, $MentorID) {
         header('Location: clientProfile.php?id=' . $CompanyID);
     }
     else {
-        echo "Unanble to unable mentor.";
+        echo "Unable to unable mentor.";
     }
 }
+
+function selectBachelorBlockInfo() {
+
+    $sql = "SELECT ID, Name FROM BachelorGroup";
+
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+            $ID = $row["ID"];
+            $Name = $row["Name"];
+
+            ?>
+
+            <li id="Block" class="col-lg-4">
+                <a href="bachelorGroup.php?id=<?php echo $ID ?>">
+                    <div class="BlockLogo">
+                        <h1><?php echo $Name; ?></h1>
+                    </div>
+                    <div class="BlockTitle">
+                        <h1> <?php echo $Name; ?> </h1>
+                    </div>
+                </a>
+            </li>
+
+            <?php
+        }
+    }
+
+}
+
+function selectBachelorGroupBlockInfo($BachelorGroupID)
+{
+
+    $sql = "SELECT BachelorID, CompanyID FROM Bachelor_Company WHERE BachelorID = '$BachelorGroupID'";
+
+    if ($data = Query($sql)) {
+        while ($row = $data->fetch_assoc()) {
+            $BachelorID = $row["BachelorID"];
+            $CompanyID = $row["CompanyID"];
+
+            $sql2 = "SELECT Name, Logo FROM Company WHERE ID = '$CompanyID'";
+
+            if ($data2 = Query($sql2)) {
+                while ($row2 = $data2->fetch_assoc()) {
+                    $Name = $row2["Name"];
+                    $Logo = $row2["Logo"];
+
+
+                    ?>
+
+                    <li id="Block" class="col-lg-4">
+                        <a href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $CompanyID ?>">
+                            <div class="BlockLogo">
+                                <img src="../../<?php echo $Logo ?>">
+                            </div>
+                            <div class="BlockTitle">
+                                <h1> <?php echo $Name; ?> </h1>
+                            </div>
+                        </a>
+                    </li>
+
+                    <?php
+                }
+            }
+
+        }
+    }
+}
+
 
 ?>

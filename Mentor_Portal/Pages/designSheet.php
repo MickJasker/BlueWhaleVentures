@@ -11,7 +11,7 @@ require '../../Main/Includes/PHP/functions.php';
     <body id="wrapper-admin">
 		<h1>Design sheet : Experiment 2</h1>
 		<?php
-			getDesignSheetData($_GET["experimentID"], "Result", $_SESSION["Language"]);
+			getDesignSheetData($_GET["experimentID"], "Experiment", $_SESSION["Language"]);
 		?>
 	</body>
 </html>

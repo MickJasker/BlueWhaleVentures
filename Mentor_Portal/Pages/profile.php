@@ -1,22 +1,22 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
-CheckSession("Admin");
+CheckSession("Mentor");
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title> Admin Portal </title>
+    <title> Mentor Portal </title>
     <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 	<script src="../../Main/Includes/Javascript/functions.js"></script>
 </head>
 	<body id="wrapper-admin-body">
 		<header class="row wrapper-nav">
-			<?php require "../nav_nosearchadmin.php"; ?>
+			<?php require "../nav_nosearchmentor.php"; ?>
 		</header>
 		<Main id="wrapper-admin">
 		<?php
 			$ID = $_SESSION["UserID"];
-			$data = getAdminProfile($ID);
+			$data = getMentorProfile($ID);
 		?>
 		
 		<form id="form" action="#" method="POST" enctype="multipart/form-data">
@@ -31,6 +31,8 @@ CheckSession("Admin");
 			<select name="language">
 			  <?php selectLanguage($ID); ?>
 			</select> <br>
+			<input type="text" name="companyName" placeholder="Company	name" value="<?php echo $data[4]; ?>"> <br>
+			<input type="text" name="phone" placeholder="Phone" value="<?php echo $data[5]; ?>"> <br>
 			<input type="submit" name="submit" value="Save">
 		</form> 
 		<hr>
@@ -47,6 +49,8 @@ CheckSession("Admin");
 					$name = secure($_POST['name']);
 					$email = secure($_POST['email']);
 					$language = secure($_POST['language']);	
+					$companyName = secure($_POST['companyName']);
+					$phone = secure($_POST['phone']);	
 					
 					$upload = true;
 					$check = true;
@@ -60,6 +64,16 @@ CheckSession("Admin");
 					{
 						$check = false;
 						echo "The E-mail adress is not correct";
+					}		
+					else if (!(strlen($phone) >= 6 && strlen($phone) <= 20 && is_numeric($phone)))
+					{
+						$check = false;
+						echo "The phone number is empty or not correct";
+					}
+					else if (!(strlen($companyName) >= 2 && strlen($companyName) <= 50))
+					{
+						$check = false;
+						echo "The companyName is empty or not between 2 and 50 characters";
 					}					
 					
 					if ($check)
@@ -69,7 +83,7 @@ CheckSession("Admin");
 						if (!empty($_FILES['file1']['name'])) 
 						{
 							$type = "img";
-							$path = "../../Admin_Portal/Uploads/profilePicture/";
+							$path = "../../Mentor_Portal/Uploads/profilePictures/";
 							$file1_name = $_FILES['file1']['name'];
 							$file1_tmp_name = $_FILES['file1']['tmp_name'];
 							$file1_size = $_FILES['file1']['size'];
@@ -106,7 +120,7 @@ CheckSession("Admin");
 						if ($upload)
 						{
 							//Update to db
-							if (updateAdminProfile($ID, $name, $email, $language, $PFPath))
+							if (updateMentorProfile($ID, $name, $email, $language, $PFPath, $companyName, $phone))
 							{
 								?> <script> sendHeader('profile.php'); </script> <?php
 							}
