@@ -2156,21 +2156,13 @@ function deleteBachelorGroup($BachelorGroupID) {
     }
 }
 
-function deleteBachelorGroupMember($BachelorGroupID) {
+function deleteBachelorGroupMember($CompanyID) {
 
-    $sql = "DELETE FROM `Bachelor_Company` WHERE BachelorID = '$BachelorGroupID'";
+    $sql = "DELETE FROM `Bachelor_Company` WHERE CompanyID = '$CompanyID'";
 
     if (query($sql)) {
 
-        $sql1 = "DELETE FROM `BachelorGroup` WHERE ID = '$BachelorGroupID'";
-
-        if (query($sql1)) {
-
-            header('Location: index.php');
-        }
-        else {
-            echo "Unable to delete bachelor group.";
-        }
+        header('Location: index.php');
     }
     else {
         echo "Unable to delete bachelor group members.";
