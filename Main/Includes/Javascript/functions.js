@@ -51,7 +51,7 @@ function addQuestion() {
         }
     );
 
-    document.getElementById('form').innerHTML += '<textarea name="question' + i +'" placeholder="Question"></textarea>';
+    document.getElementById('form').innerHTML += '<textarea name="question' + i +'" placeholder="Question"></textarea><br>';
 
     i++;
 
