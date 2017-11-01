@@ -2074,6 +2074,10 @@ function insertBachelorGroup($BachelorName)
         $BachelorID = mysqli_insert_id($conn);
         header('Location: bachelorGroup.php?id=' . $BachelorID );
     }
+    else {
+        header('Location: google.com' );
+
+    }
 }
 
 function insertToBachelorGroup($BachelorGroupID, $CompanyGroupID)

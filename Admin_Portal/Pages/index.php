@@ -4,6 +4,10 @@
 
     //CheckSession("Admin");
 
+if (isset($_POST['saveBachelorGroup']))
+{
+    insertBachelorGroup(secure($_POST['name']));
+}
 
 if (isset($_GET['action'])) {
 
