@@ -1,9 +1,10 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
-
+checkSession('Company');
+$experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
     if(isset($_POST['submit'])) {
 
-    insertAnswer($_POST, secure($_GET['experimentID']));
+    insertAnswer($_POST, secure($experimentID));
 
 }
 
@@ -25,7 +26,7 @@ require '../../Main/Includes/PHP/functions.php';
 
             <?php
 
-                $i = selectQuestions($_GET['experimentID']);
+                $i = selectQuestions($experimentID);
 
             ?>
             <p hidden id="hiddenP"><?php echo $i?></p>

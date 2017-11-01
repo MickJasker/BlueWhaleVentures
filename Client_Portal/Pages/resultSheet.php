@@ -1,5 +1,7 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
+checkSession('Company');
+$experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,7 +13,7 @@ require '../../Main/Includes/PHP/functions.php';
     <body id="wrapper-admin">
 		<h1>Design sheet : Experiment 2</h1>
 		<?php
-			getDesignSheetData($_GET["experimentid"], "Result", $_SESSION["Language"]);
+			getDesignSheetData($experimentID, "Result", $_SESSION["Language"]);
 		?>
 		<button id="edit1" onclick="editPage(7)"> Edit </button>
 	</body>
