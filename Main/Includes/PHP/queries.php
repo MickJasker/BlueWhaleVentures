@@ -1953,9 +1953,13 @@ function selectBachelorBlockInfo() {
                 <a href="bachelorGroup.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <h1><?php echo $Name; ?></h1>
+
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Name; ?> </h1>
+                        <a onclick="return confirm('Are you sure you want to delete the bachelor group?')" href="../../Admin_Portal/Pages/index.php?bachelorID=<?php echo $ID; ?>&action=delete">
+                            <img src="../../Main/Files/Images/close.png" alt="Delete bachelor group">
+                        </a>
                     </div>
                 </a>
             </li>
@@ -1990,9 +1994,13 @@ function selectBachelorGroupBlockInfo($BachelorGroupID)
                         <a href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $CompanyID ?>">
                             <div class="BlockLogo">
                                 <img src="../../<?php echo $Logo ?>">
+
                             </div>
                             <div class="BlockTitle">
                                 <h1> <?php echo $Name; ?> </h1>
+                                <a onclick="return confirm('Are you sure you want to delete the bachelor group member?')" href="../../Admin_Portal/Pages/index.php?companyID=<?php echo $CompanyID; ?>&action=delete">
+                                    <img src="../../Main/Files/Images/close.png" alt="Delete bachelor group member.">
+                                </a>
                             </div>
                         </a>
                     </li>
@@ -2081,5 +2089,46 @@ function selectCompanyDropdown() {
 
 }
 
+function deleteBachelorGroup($BachelorGroupID) {
+
+    $sql = "DELETE FROM `Bachelor_Company` WHERE BachelorID = '$BachelorGroupID'";
+
+    if (query($sql)) {
+
+        $sql1 = "DELETE FROM `BachelorGroup` WHERE ID = '$BachelorGroupID'";
+
+        if (query($sql1)) {
+
+            header('Location: index.php');
+        }
+        else {
+            echo "Unable to delete bachelor group.";
+        }
+    }
+    else {
+        echo "Unable to delete bachelor group members.";
+    }
+}
+
+function deleteBachelorGroupMember($BachelorGroupID) {
+
+    $sql = "DELETE FROM `Bachelor_Company` WHERE BachelorID = '$BachelorGroupID'";
+
+    if (query($sql)) {
+
+        $sql1 = "DELETE FROM `BachelorGroup` WHERE ID = '$BachelorGroupID'";
+
+        if (query($sql1)) {
+
+            header('Location: index.php');
+        }
+        else {
+            echo "Unable to delete bachelor group.";
+        }
+    }
+    else {
+        echo "Unable to delete bachelor group members.";
+    }
+}
 
 ?>

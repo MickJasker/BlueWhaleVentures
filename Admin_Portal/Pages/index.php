@@ -1,5 +1,25 @@
 <?php
-include_once '../../Main/Includes/PHP/functions.php';
+
+    include_once '../../Main/Includes/PHP/functions.php';
+
+    //CheckSession("Admin");
+
+
+if (isset($_GET['action'])) {
+
+        if (secure($_GET['action']) == "delete") {
+
+            deleteBachelorGroup(secure($_GET['bachelorID']));
+
+        }
+        else {
+
+        }
+    }
+    else {
+
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
