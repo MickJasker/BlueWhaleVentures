@@ -1,6 +1,8 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
-$ID = secure($_GET["id"]);
+//$ID = secure($_GET["id"]);
+$ID = $_SESSION['ExperimentID'];
+echo $ID;
 ?>
 <!DOCTYPE html>
 <html>

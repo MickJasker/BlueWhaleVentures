@@ -865,18 +865,31 @@ function getExperimentBlockInfo($CompanyID)
 
             ?>
 
-            <li id="Block" class="col-lg-4">
-                <a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/experiment.php?id=<?php echo $row['ID']; ?>">
-                    <div class="BlockLogo">
-                        <img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
-                    </div>
-                    <div class="BlockTitle">
-                        <h1> <?php echo $Title ?> </h1>
-                    </div>
-                </a>
-            </li>
+			<form action="#" method="POST">
+				<label for="experimentBlock"> 
+					<li id="Block" class="col-lg-4">				
+				   <!-- <a href="../../<?php// echo $_SESSION['Role'];?>_Portal/Pages/experiment.php?id=<?php //echo $row['ID']; ?>"> -->
+					<?php echo '<a onclick="experimentIDSession('."'".$_SESSION["ExperimentID"] = $row['ID']."', '".$_SESSION['Role']."'".')">'; ?>
+						<div class="BlockLogo">
+							<img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
+						</div>
+						<div class="BlockTitle">
+							<h1> <?php echo $Title ?> </h1>
+						</div>
+					</a>
+				</li>
+				</label>
+				<input hidden id="experimentBlock" name="redirectExperiment" type="submit"/>
+			</form>
 
             <?php
+			if (isset($_POST['redirectExperiment']))
+			{
+				$_SESSION["ExperimentID"] = $row['ID'];
+				header('Location: ../../' . $_SESSION['Role'] . '_Portal/Pages/experiment.php');
+			}
+			
+			
         }
     }
 }
