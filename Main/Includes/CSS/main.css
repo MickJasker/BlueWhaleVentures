@@ -6978,7 +6978,7 @@ body {
   height: 30px;
 }
 #wrapper-admin-body #wrapper-admin .list {
-  margin: 5% 0 5% 0;
+  margin: 3% 0 5% 0;
   position: absolute;
   width: 100%;
   height: auto;
@@ -7808,6 +7808,7 @@ body {
   color: #555555;
   text-decoration: none;
 }
+<<<<<<< HEAD
 #wrapper-newPrototype {
   padding-top: 80px;
   background-image: url("../../Files/Images/stockImages/stock (20).jpg");
@@ -7817,3 +7818,5 @@ body {
   background-color: #0099ff;
   min-height: 100vh;
 }
+=======
+>>>>>>> master
