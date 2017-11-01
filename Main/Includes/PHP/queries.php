@@ -624,6 +624,30 @@ function getExperiment($id)
 	}
 }
 
+function selectTimeline($companyID)
+{
+	$sql = "SELECT `beginDate`, `endDate` FROM `Timeline` WHERE CompanyID = '$companyID'";
+	if($data = query($sql))
+	{
+		while($row = $data->fetch_assoc())
+		{			
+			$beginDate = new DateTime($row["beginDate"]);
+			$endDate = new DateTime($row["endDate"]);
+			$currentDate = new DateTime();
+			
+			$currentTime = $currentDate->diff($beginDate, true);
+			//echo $currentTime->format('%a') . ' days';
+			
+			$totalTime = $beginDate->diff($endDate, true);
+			//echo $totalTime->format('%a') . ' days';
+			
+			$total = $totalTime->format('%a') / $totalTime->format('%a') * 100;
+			$now = $currentTime->format('%a') / $totalTime->format('%a') * 100;
+			return $now;
+		}
+	}
+}
+
 //Get experiment info
 function getExperimentView($id)
 {

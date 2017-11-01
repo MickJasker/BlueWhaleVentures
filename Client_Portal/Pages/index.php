@@ -25,6 +25,9 @@ checkSession('Client');
 </Main>
 
 <footer>
+<?php $currentDay = selectTimeline($_SESSION["CompanyID"]); 
+	echo '<p hidden id="currentday">'. $currentDay . '</p>';
+?>
     <div id="progressbar">
         <div id="bar"></div>
         <div id="grow" class="milestone">0</div>
