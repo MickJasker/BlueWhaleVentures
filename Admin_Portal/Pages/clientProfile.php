@@ -5,7 +5,10 @@ require '../../Main/Includes/PHP/functions.php';
 
     if (isset($_POST['save'])) 
     {
-        assignMentor(secure($_GET['id']), $_POST['mentor']);
+        if (secure($_POST['mentor']) != "") {
+
+            assignMentor(secure($_GET['id']), $_POST['mentor']);
+        }
 	}
 
     if (isset($_GET['action']))
