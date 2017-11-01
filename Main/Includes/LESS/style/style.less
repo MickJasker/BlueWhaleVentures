@@ -297,7 +297,6 @@ body {
         background-color: @blue;
 
         h1 {
-
           padding: 2%;
           color: @white;
           font-family: "Open Sans";
@@ -307,76 +306,13 @@ body {
         }
 		  img{
 			  float: right;
+			  padding: 3% 2%;
 		  }
 	  }
       }
     }
   }
-  footer{
-    position:fixed;
-    left:0px;
-    bottom:0px;
-    height:60px;
-    width:100%;
-    background: white;
-    z-index: 1;
 
-    #progressbar {
-      position: relative;
-      margin: 1.5% auto 0 auto;
-      width: 1000px;
-      background-color: @offwhite;
-    }
-
-    #bar {
-      border-radius: 25px;
-      height: 5px;
-      background-color: @blue;
-      position: relative;
-
-    }
-    .milestone{
-      background-color: @offwhite;
-      float: left;
-      left: -5px;
-      z-index: 1;
-      position: relative;
-      color: @white;
-      font-family: "Open Sans";
-      text-align: center;
-      color: black;
-    }
-    .left1, .left2, .right{
-      top: -14px;
-      width: 25px;
-      left: 5px;
-      height: 25px;
-      border-radius: 600px;
-      line-height: 25px;
-      font-size: 1.2vh;
-    }
-    #grow{
-      top: -19px;
-      width: 35px;
-      height: 35px;
-      border-radius: 800px;
-      line-height: 35px;
-      font-size: 2vh;
-      transition: ease .6s;
-      background-color: @blue;
-      color: white;
-    }
-    .left1{
-      margin-left: 195px;
-    }
-    .left2{
-      margin-left: 220px;
-    }
-    .right{
-      float: right;
-      right: -5px;
-    }
-  }
 #wrapper-admin-body {
 	background-image: url('../../Files/Images/stockImages/adminbackground.jpg');
 	background-size: cover;
@@ -587,12 +523,12 @@ body {
 
 		}
 		.milestone {
-			background-color: @blue;
+			background-color: @offwhite;
 			float: left;
 			left: -5px;
 			z-index: 1;
 			position: relative;
-			color: @white;
+			color: black;
 			font-family: "Open Sans";
 			text-align: center;
 		}
@@ -613,6 +549,8 @@ body {
 			line-height: 35px;
 			font-size: 2vh;
 			transition: ease .6s;
+			background-color: @blue;
+			color: @white;
 		}
 		.left1 {
 			margin-left: 195px;
@@ -1623,6 +1561,103 @@ body {
 							display: none;
 						}
 					}
+				}
+			}
+		}
+	}
+}
+
+#wrapper-profile {
+
+	.content {
+			top: 80px;
+			margin: 3% 3% 5% 3%;
+			position: absolute;
+			width: 94%;
+			height: auto;
+			padding: 0;
+
+			.profile {
+				width: 20%;
+				height: 43vh;
+				float: left;
+				position: relative;
+
+				.picture {
+					background-color: @offwhite;
+					width: 38vh;
+					height: 38vh;
+					position: relative;
+					display:inline-block;
+					overflow: hidden;
+					border-radius: 50%;
+					border: solid 1px;
+					border-color: @grey;
+					margin-top: 2.5vh;
+
+					img {
+						position:relative;
+						width: auto;
+						height: auto;
+						min-width: 100%;
+						min-height: 100%;
+						top: 50%;
+						transform: translate(-50%, -50%);
+						left: 50%;
+					}
+				}
+
+				.name {
+					width: 100%;
+					height: 5vh;
+
+					h1 {
+						padding: 2%;
+						color: @blue;
+						font-family: "Open Sans";
+						margin: 0;
+						font-size: 3vh;
+						font-weight: bold;
+						text-align: center;
+					}
+				}
+			}
+		.info{
+			width: 75%;
+			height: 55vh;
+			display:inline-block;
+			float: right;
+			position: relative;
+
+			.title{
+				width: 100%;
+				height: 5vh;
+				background-color: @blue;
+
+				h1 {
+					padding: 1vh;
+					color: @white;
+					font-family: "Open Sans";
+					margin: 0;
+					font-size: 3vh;
+					display: inline-block;
+				}
+			}
+			.text{
+				width: 100%;
+				height: 50vh;
+				background-color: @offwhite;
+				border: solid 1px;
+				border-top: none;
+				border-color: @grey;
+
+				h1 {
+					padding: 1vh;
+					color: black;
+					font-family: "Open Sans";
+					margin: 0;
+					font-size: 2vh;
+					display: inline-block;
 				}
 			}
 		}

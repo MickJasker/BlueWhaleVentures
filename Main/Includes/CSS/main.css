@@ -7063,72 +7063,7 @@ body {
 }
 #wrapper-admin-body #wrapper-admin #Block .BlockTitle img {
   float: right;
-}
-footer {
-  position: fixed;
-  left: 0px;
-  bottom: 0px;
-  height: 60px;
-  width: 100%;
-  background: white;
-  z-index: 1;
-}
-footer #progressbar {
-  position: relative;
-  margin: 1.5% auto 0 auto;
-  width: 1000px;
-  background-color: #f2f2f2;
-}
-footer #bar {
-  border-radius: 25px;
-  height: 5px;
-  background-color: #0099ff;
-  position: relative;
-}
-footer .milestone {
-  background-color: #f2f2f2;
-  float: left;
-  left: -5px;
-  z-index: 1;
-  position: relative;
-  color: #ffffff;
-  font-family: "Open Sans";
-  text-align: center;
-  color: black;
-}
-footer .left1,
-footer .left2,
-footer .right {
-  top: -14px;
-  width: 25px;
-  left: 5px;
-  height: 25px;
-  border-radius: 600px;
-  line-height: 25px;
-  font-size: 1.2vh;
-}
-footer #grow {
-  top: -19px;
-  width: 35px;
-  height: 35px;
-  border-radius: 800px;
-  line-height: 35px;
-  font-size: 2vh;
-  -webkit-transition: ease .6s;
-  -o-transition: ease .6s;
-  transition: ease .6s;
-  background-color: #0099ff;
-  color: white;
-}
-footer .left1 {
-  margin-left: 195px;
-}
-footer .left2 {
-  margin-left: 220px;
-}
-footer .right {
-  float: right;
-  right: -5px;
+  padding: 3% 2%;
 }
 #wrapper-admin-body {
   background-image: url('../../Files/Images/stockImages/adminbackground.jpg');
@@ -7331,12 +7266,12 @@ footer .right {
   position: relative;
 }
 #wrapper-admin-body footer .milestone {
-  background-color: #0099ff;
+  background-color: #f2f2f2;
   float: left;
   left: -5px;
   z-index: 1;
   position: relative;
-  color: #ffffff;
+  color: black;
   font-family: "Open Sans";
   text-align: center;
 }
@@ -7361,6 +7296,8 @@ footer .right {
   -webkit-transition: ease .6s;
   -o-transition: ease .6s;
   transition: ease .6s;
+  background-color: #0099ff;
+  color: #ffffff;
 }
 #wrapper-admin-body footer .left1 {
   margin-left: 195px;
@@ -8342,4 +8279,91 @@ footer .right {
 }
 #wrapper-newPrototype main section div #pitchForm form #fileToUpload {
   display: none;
+}
+#wrapper-profile .content {
+  top: 80px;
+  margin: 3% 3% 5% 3%;
+  position: absolute;
+  width: 94%;
+  height: auto;
+  padding: 0;
+}
+#wrapper-profile .content .profile {
+  width: 20%;
+  height: 43vh;
+  float: left;
+  position: relative;
+}
+#wrapper-profile .content .profile .picture {
+  background-color: #f2f2f2;
+  width: 38vh;
+  height: 38vh;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 50%;
+  border: solid 1px;
+  border-color: #a0a0a0;
+  margin-top: 2.5vh;
+}
+#wrapper-profile .content .profile .picture img {
+  position: relative;
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  min-height: 100%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  left: 50%;
+}
+#wrapper-profile .content .profile .name {
+  width: 100%;
+  height: 5vh;
+}
+#wrapper-profile .content .profile .name h1 {
+  padding: 2%;
+  color: #0099ff;
+  font-family: "Open Sans";
+  margin: 0;
+  font-size: 3vh;
+  font-weight: bold;
+  text-align: center;
+}
+#wrapper-profile .content .info {
+  width: 75%;
+  height: 55vh;
+  display: inline-block;
+  float: right;
+  position: relative;
+}
+#wrapper-profile .content .info .title {
+  width: 100%;
+  height: 5vh;
+  background-color: #0099ff;
+}
+#wrapper-profile .content .info .title h1 {
+  padding: 1vh;
+  color: #ffffff;
+  font-family: "Open Sans";
+  margin: 0;
+  font-size: 3vh;
+  display: inline-block;
+}
+#wrapper-profile .content .info .text {
+  width: 100%;
+  height: 50vh;
+  background-color: #f2f2f2;
+  border: solid 1px;
+  border-top: none;
+  border-color: #a0a0a0;
+}
+#wrapper-profile .content .info .text h1 {
+  padding: 1vh;
+  color: black;
+  font-family: "Open Sans";
+  margin: 0;
+  font-size: 2vh;
+  display: inline-block;
 }
