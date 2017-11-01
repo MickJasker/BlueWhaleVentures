@@ -2,9 +2,20 @@
     require '../../Main/Includes/PHP/functions.php';
 	checkSession('Client');
 
+	$i = 0;
+
     if(isset($_POST['submit'])) {
 
+        if(isset($_SESSION['insertedID'])) {
+
             insertQuestion($_POST, $_SESSION['insertedID']);
+
+        }
+        else {
+
+            insertQuestionWithExperimentID($_POST, secure($_GET['experimentID']));
+
+        }
 
     }
 
@@ -30,7 +41,19 @@
                         <p hidden id="hiddenP"><?php echo $i?></p>
                         <?php
 
-                        $i = SelectQuestion($_SESSION['insertedID']);
+
+                        if(isset($_SESSION['insertedID'])) {
+
+                            $i = SelectQuestion($_SESSION['insertedID']);
+
+                        }
+                        else {
+
+
+                            $i = SelectQuestionWithExperimentID(secure($_GET['experimentID']));
+
+
+                        }
 
                         ?>
 

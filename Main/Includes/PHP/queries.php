@@ -1208,11 +1208,77 @@ function insertQuestion($QuestionPost, $ExecutionID)
     }
 }
 
+function insertQuestionWithExperimentID($QuestionPost, $ExperimentID)
+{
+    echo "kms";
+    foreach ($QuestionPost AS $ID => $Question) {
+        $sql = "SELECT Question FROM Question WHERE ID = '$ID'";
+
+        if (Query($sql)) {
+            if ($Question != "Save") {
+                $sql = "UPDATE Question SET Question = '$Question' WHERE ID = '$ID'";
+                Query($sql);
+            }
+        } else {
+            if ($Question != "Save") {
+
+                $sql = "SELECT qu.QuestionaireID FROM Question qu
+                        INNER JOIN Questionaire q ON q.ID = qu.QuestionaireID
+                        INNER JOIN Experiment e ON e.ID = q.ExperimentID
+                        WHERE e.ID = '$ExperimentID'";
+
+                if ($data = Query($sql)) {
+                    while ($row = $data->fetch_assoc()) {
+                        $QuestionaireID = $row["QuestionaireID"];
+
+                        $sql2 = "INSERT INTO Question(QuestionaireID, Question) VALUES ('$QuestionaireID','$Question')";
+                        if (Query($sql2)) {
+                            echo "Questions inserted";
+                        }
+                        else {
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
 
 function SelectQuestion($ExecutionID)
 {
     $sql = "SELECT ID, Question FROM Question
             WHERE QuestionaireID = $ExecutionID";
+
+    $i = 0;
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+            $i++;
+            $QuestionID = $row["ID"];
+            $Question = $row["Question"];
+
+            ?>
+
+            <textarea id="question<?php echo $i?>" name="<?php echo $QuestionID?>"><?php echo $Question?></textarea>
+
+            <?php
+        }
+    }
+    $i++;
+    return $i;
+}
+
+function SelectQuestionWithExperimentID($ExperimentID)
+{
+
+    $sql = "SELECT qu.ID, qu.Question FROM Question qu
+            INNER JOIN Questionaire q ON qu.QuestionaireID = q.ID
+            WHERE q.ExperimentID = '$ExperimentID'";
 
     $i = 0;
     if($data = Query($sql))
