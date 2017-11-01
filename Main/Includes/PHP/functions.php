@@ -182,5 +182,4 @@ function uploadExecute($file_name, $file_tmp_name, $target_dir)
 	//return if file is uploaded or not and filepath in array
 	return array($uploadok, $target_file);
 }
-
 ?>

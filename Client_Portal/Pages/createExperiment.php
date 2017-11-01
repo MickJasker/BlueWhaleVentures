@@ -10,9 +10,7 @@ checkSession('Company');
 </head>
 	<body id="wrapper-experiment">
     <header class="row wrapper-nav">
-        <?php
-        require "../../Main/Includes/nav.php"
-        ?>
+        <?php require "../nav_nosearch.php";?>
     </header>
 		<Main id="wrapper-createExperiment">
             <div class="row">
