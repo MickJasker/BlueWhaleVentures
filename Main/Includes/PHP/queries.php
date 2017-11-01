@@ -209,32 +209,40 @@ function selectLoginInfo($email, $password)
             if (password_verify($password, $dbpassword) != 0)
             {
                 $UserID = $row["UserID"];
-                $sql = "SELECT RoleID FROM User WHERE ID = '$UserID'";
+                $sql = "SELECT RoleID, Locked FROM User WHERE ID = '$UserID'";
                 if($data = query($sql))
                 {
                     $db_data = array("true");
                     while($row = $data->fetch_assoc())
                     {
-                        $RoleID = $row["RoleID"];
-                        $Role = "";
+                    	if ($row["Locked"] != 1)
+                    	{
+	                        $RoleID = $row["RoleID"];
+	                        $Role = "";
 
-                        //Change roleID to role
-                        if ($RoleID == "6")
-                        {
-                            $Role = "Admin";
-                        }
-                        else if ($RoleID == "7")
-                        {
-                            $Role = "Mentor";
-                        }
-                        else if ($RoleID == "8")
-                        {
-                            $Role = "Company";
-                        }
+	                        //Change roleID to role
+	                        if ($RoleID == "6")
+	                        {
+	                            $Role = "Admin";
+	                        }
+	                        else if ($RoleID == "7")
+	                        {
+	                            $Role = "Mentor";
+	                        }
+	                        else if ($RoleID == "8")
+	                        {
+	                            $Role = "Company";
+	                        }
 
-                        array_push($db_data, $Role, $UserID);
+	                        array_push($db_data, $Role, $UserID);
+	                        return $db_data;
+                    	}
+                    	else
+                    	{
+                    		echo "This account has been temporarily banned, please contact an administrator for more information";
+                    		return false;
+                    	}
                     }
-                    return $db_data;
                 }
             }
             else
@@ -1020,13 +1028,15 @@ function selectCompanyMentors($CompanyID)
             {
                 ?>
                 <div class="mentor-preview col-md-3">
-                    <a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID']; ?>">
-                        <img src="<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
-                        <h4> <?php echo $row['Name'] ?> </h4>
-                    </a>
-                    <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
-                        <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
-                    </a>
+                    <div class="container-fluid">
+	                    <a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID']; ?>">
+		                    <img class="" src="<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
+		                    <h4> <?php echo $row ['Name'] ?> </h4>
+	                    </a>
+	                    <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
+		                    <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
+	                    </a>
+                    </div>
                 </div>
                 <?php
             }
@@ -2110,7 +2120,7 @@ function selectLockButton($companyID)
             ?>
             <a onclick="return confirm('Are you sure you want to unlock this account?')"
                href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $_GET['id']; ?>&action=unlock">
-                <img src="../../Main/Files/Images/close.png" alt="Unlock account">
+                <img class="lock" src="../../Main/Files/Images/lock-closed.png" alt="Unlock account">
             </a>
             <?php
         }
@@ -2119,7 +2129,7 @@ function selectLockButton($companyID)
             ?>
             <a onclick="return confirm('Are you sure you want to lock this account?')"
                href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $_GET['id']; ?>&action=lock">
-                <img src="../../Main/Files/Images/close.png" alt="lock account">
+                <img class="lock" src="../../Main/Files/Images/lock-open.png" alt="lock account">
             </a>
             <?php
         }
@@ -2202,7 +2212,8 @@ function selectCompanyDropdown()
 
 }
 
-function deleteBachelorGroup($BachelorGroupID) {
+function deleteBachelorGroup($BachelorGroupID) 
+{
 
     $sql = "DELETE FROM `Bachelor_Company` WHERE BachelorID = '$BachelorGroupID'";
 
@@ -2223,7 +2234,8 @@ function deleteBachelorGroup($BachelorGroupID) {
     }
 }
 
-function deleteBachelorGroupMember($CompanyID, $BachelorGroupID) {
+function deleteBachelorGroupMember($CompanyID, $BachelorGroupID) 
+{
 
     $sql = "DELETE FROM `Bachelor_Company` WHERE CompanyID = '$CompanyID'";
 
