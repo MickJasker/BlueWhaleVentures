@@ -4,6 +4,10 @@ html {
 	font-weight: 400;
 	label {
 		display: block;
+		cursor: pointer;
+	}
+	textarea {
+		resize: none;
 	}
 }
 
@@ -1098,9 +1102,52 @@ body {
 	main {
 
 		section {
-			background-color: @blue;
-			min-height: 100vh;
-
+			background-color: rgba(0, 153, 255, 0.9);
+			min-height: calc(~"100vh - 80px");
+			div {
+				text-align: center;
+				background-color: white;
+				margin: 150px;
+				padding: 30px;
+				margin-bottom: 0;
+				#pitchForm {
+					margin: 0;
+					form {
+						textarea {
+							border: none;
+							background-color: @offwhite;
+							width: 100%;
+							resize: none;
+							height: 200px;
+							outline: thin solid rgba(0, 0, 0, 0);
+							transition: 0.3s ease;
+							padding: 5px;
+							&:focus {
+								background-color: @white;
+								outline: thin solid @blue;
+								transition: 0.3s ease;
+							}
+						}
+						label, input {
+							background-color: @blue;
+							width: 100%;
+							padding: 5px;
+							color: @white;
+							border: none;
+							font-size: 18px;
+							font-weight: 400;
+							transition: 0.3s ease;
+							&:hover {
+								background-color: @gray;
+								transition: 0.3s ease;
+							}
+						}
+						#fileToUpload {
+							display: none;
+						}
+					}
+				}
+			}
 		}
 	}
 }
