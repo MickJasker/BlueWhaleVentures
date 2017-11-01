@@ -2173,7 +2173,7 @@ function selectUserLock($userID)
 {
 	$sql = "SELECT Locked FROM User WHERE ID = '$userID'";
 
-	if (query($sql))
+	if ($data = query($sql))
 	{
 		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
 
