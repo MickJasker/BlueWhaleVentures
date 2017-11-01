@@ -1,6 +1,6 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
-checkSession('Company');
+checkSession('Client');
 ?>
 <!DOCTYPE html>
 <html>

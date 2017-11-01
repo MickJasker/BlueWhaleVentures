@@ -1,6 +1,6 @@
 <?php
     require '../../Main/Includes/PHP/functions.php';
-	checkSession('Company');
+	checkSession('Client');
     if(isset($_POST['save'])) {
         insertPitch($_POST['preparationText'], $_SESSION['insertedID']);
     }
