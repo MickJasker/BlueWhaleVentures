@@ -7,6 +7,7 @@ CheckSession("Client");
 <head>
     <title> Client Portal </title>
     <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,800" rel="stylesheet">
 </head>
 <body id="wrapper-admin-body">
 <header class="row wrapper-nav">
