@@ -2,147 +2,147 @@
 //This file contains all the functions preparing the database queries. 
 //Each function will prepare an sql-string, and an optional array of variables, 
 //which will be sent to db_functions.
- 
+
 require "connect.php";
 require "dbFunctions.php";
 
 //Gets the email from Login and RegisterKey, if it doesn't exist, return true
 function checkEmailAvailability($email)
 {
-	$sql = "SELECT Email FROM Login WHERE Email = '$email'";
+    $sql = "SELECT Email FROM Login WHERE Email = '$email'";
 
-	if (query($sql))
-	{
-		return false;
-	}
-	else
-	{
-		$sql = "SELECT Email FROM RegisterKey WHERE Email = '$email'";
+    if (query($sql))
+    {
+        return false;
+    }
+    else
+    {
+        $sql = "SELECT Email FROM RegisterKey WHERE Email = '$email'";
 
-		if (query($sql))
-		{
-			return false;
-		}
-	}
+        if (query($sql))
+        {
+            return false;
+        }
+    }
 
-	return true;
+    return true;
 }
 
 //Get email and name from key, and check if it exists
 function getKey($key)
 {
-	$sql = "SELECT Email, Name FROM RegisterKey WHERE `KeyCode` = '$key'";
-	if($data = query($sql))
-	{
-		$db_data = array("true");
-		while($row = $data->fetch_assoc())
-		{
-			$mail = $row["Email"];
-			$name = $row["Name"];
-			array_push($db_data, $mail, $name);
-		}
-		return $db_data;
-	}
-	else
-	{
-		echo "The key doesn't exist";
-		return false;
-	}
+    $sql = "SELECT Email, Name FROM RegisterKey WHERE `KeyCode` = '$key'";
+    if($data = query($sql))
+    {
+        $db_data = array("true");
+        while($row = $data->fetch_assoc())
+        {
+            $mail = $row["Email"];
+            $name = $row["Name"];
+            array_push($db_data, $mail, $name);
+        }
+        return $db_data;
+    }
+    else
+    {
+        echo "The key doesn't exist";
+        return false;
+    }
 }
 
 //Check if the key exists and delete the key from the database
 function checkKey($key)
 {
-	$sql = "SELECT ID, RoleID FROM RegisterKey WHERE `KeyCode` = '$key'";
-	if($data = query($sql))
-	{
-		while($row = $data->fetch_assoc())
-		{
-			$id = $row["ID"];
-			$role = $row["RoleID"];
-		}
-		
-		$sql = "DELETE FROM `RegisterKey` WHERE ID = '$id'";
-		if($data = query($sql))
-		{
-			return $role;
-		}
-	}
-	else
-	{
-		echo "The key doesn't exist";
-		return false;
-	}
+    $sql = "SELECT ID, RoleID FROM RegisterKey WHERE `KeyCode` = '$key'";
+    if($data = query($sql))
+    {
+        while($row = $data->fetch_assoc())
+        {
+            $id = $row["ID"];
+            $role = $row["RoleID"];
+        }
+
+        $sql = "DELETE FROM `RegisterKey` WHERE ID = '$id'";
+        if($data = query($sql))
+        {
+            return $role;
+        }
+    }
+    else
+    {
+        echo "The key doesn't exist";
+        return false;
+    }
 }
 
 //Creates an account
 function createAccount($role, $user_name, $company_mail, $password)
 {
-	//Insert new user account
-	$password = password_hash($password, PASSWORD_DEFAULT);
-	$sql = "INSERT INTO `User`(`RoleID`,`Language`, `Name`, `Locked`) VALUES ('$role','English','$user_name', '0')";
-	
-	if (query($sql))
-	{
-		//Select ID from new user
-		$sql = "SELECT ID FROM User WHERE Name = '$user_name'";
+    //Insert new user account
+    $password = password_hash($password, PASSWORD_DEFAULT);
+    $sql = "INSERT INTO `User`(`RoleID`,`Language`, `Name`, `Locked`) VALUES ('$role','English','$user_name', '0')";
 
-		if($data = query($sql))
-		{	
-			while($row = $data->fetch_assoc())
-			{
-				$id = $row["ID"];
-			}
-			
-			if ($id != "")
-			{
-				//create new login record
-				$sql = "INSERT INTO `Login`(`UserID`, `Email`, `Password`) VALUES ('$id', '$company_mail', '$password')";
-				if (query($sql))
-				{
-					return insertRoleInfo($id);
-				}
-			}
-		}
-	}
+    if (query($sql))
+    {
+        //Select ID from new user
+        $sql = "SELECT ID FROM User WHERE Name = '$user_name'";
 
-	return false;
+        if($data = query($sql))
+        {
+            while($row = $data->fetch_assoc())
+            {
+                $id = $row["ID"];
+            }
+
+            if ($id != "")
+            {
+                //create new login record
+                $sql = "INSERT INTO `Login`(`UserID`, `Email`, `Password`) VALUES ('$id', '$company_mail', '$password')";
+                if (query($sql))
+                {
+                    return insertRoleInfo($id);
+                }
+            }
+        }
+    }
+
+    return false;
 }
 
 function insertRoleInfo($userID)
 {
-	$role = selectRole($userID);
+    $role = selectRole($userID);
 
-		if ($role == "Company")
-		{
-			return insertCompany($userID);
-		}
+    if ($role == "Company")
+    {
+        return insertCompany($userID);
+    }
 
-		if ($role == "Mentor")
-		{
-			return insertMentor($userID);
-		}
+    if ($role == "Mentor")
+    {
+        return insertMentor($userID);
+    }
 
-		//If admin, do nothing, admin currently has no extra information
+    //If admin, do nothing, admin currently has no extra information
 }
 
 function insertCompany($userID)
 {
-	$sql = "INSERT INTO Company (UserID) VALUES ('$userID')";
+    $sql = "INSERT INTO Company (UserID) VALUES ('$userID')";
 
-	return query($sql);
+    return query($sql);
 }
 
 function insertMentor($userID)
 {
-	$sql = "INSERT INTO Mentor (UserID) VALUES ('$userID')";
+    $sql = "INSERT INTO Mentor (UserID) VALUES ('$userID')";
 
-	return query($sql);
+    return query($sql);
 }
 
 function updateCompany($UserID, $Name, $Description, $Logo, $Email, $Phone, $Address, $Branch)
 {
-	$sql = "UPDATE Company SET 
+    $sql = "UPDATE Company SET 
 	Name = '$Name', 
 	Description = '$Description', 
 	Logo = '$Logo', 
@@ -152,325 +152,325 @@ function updateCompany($UserID, $Name, $Description, $Logo, $Email, $Phone, $Add
 	Branch = '$Branch' 
 	WHERE UserID = '$UserID'";
 
-	return query($sql);
+    return query($sql);
 }
 
 function updateMentor($UserID, $CompanyName, $Phone)
 {
-	$sql = "UPDATE Mentor SET 
+    $sql = "UPDATE Mentor SET 
 	CompanyName = '$CompanyName',
 	Phone = '$Phone'
 	WHERE UserID = '$UserID'";
 
-	return query($sql);
+    return query($sql);
 }
 
 //Insert generated code in the database
 function createCode($email, $name, $generatedkey, $activetime, $role)
 {
-	//Change role to roleID
-	$RoleID = "";
-	if ($role == "Admin")
-	{
-		$RoleID = "6";
-	}
-	else if ($role == "Mentor")
-	{
-		$RoleID = "7";
-	}
-	else if ($role == "Company")
-	{
-		$RoleID = "8";
-	}
-	
-	//Insert in db
-	$sql = "INSERT INTO `RegisterKey`(`RoleID`, `KeyCode`, `Email`, `Name`, `ActiveTime`) VALUES ('$RoleID','$generatedkey','$email','$name','$activetime')";
-	if (query($sql))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+    //Change role to roleID
+    $RoleID = "";
+    if ($role == "Admin")
+    {
+        $RoleID = "6";
+    }
+    else if ($role == "Mentor")
+    {
+        $RoleID = "7";
+    }
+    else if ($role == "Company")
+    {
+        $RoleID = "8";
+    }
+
+    //Insert in db
+    $sql = "INSERT INTO `RegisterKey`(`RoleID`, `KeyCode`, `Email`, `Name`, `ActiveTime`) VALUES ('$RoleID','$generatedkey','$email','$name','$activetime')";
+    if (query($sql))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 //Selects logininfo from DB
 function selectLoginInfo($email, $password)
 {
-	$sql = "SELECT UserID, Password FROM Login WHERE Email = '$email'";
-		if($data = query($sql))
-		{	
-			while($row = $data->fetch_assoc())
-			{
-				$dbpassword = $row["Password"];
-				
-				//Check if the password is correct
-				if (password_verify($password, $dbpassword) != 0)
-				{
-					$UserID = $row["UserID"];
-					$sql = "SELECT RoleID FROM User WHERE ID = '$UserID'";
-						if($data = query($sql))
-						{	
-							$db_data = array("true");
-							while($row = $data->fetch_assoc())
-							{
-								$RoleID = $row["RoleID"];
-								$Role = "";
-								
-								//Change roleID to role
-								if ($RoleID == "6")
-								{
-									$Role = "Admin";
-								}
-								else if ($RoleID == "7")
-								{
-									$Role = "Mentor";
-								}
-								else if ($RoleID == "8")
-								{
-									$Role = "Company";
-								}
-			
-								array_push($db_data, $Role, $UserID);
-							}
-							return $db_data;
-						}
-				}
-				else 
-				{
-					// Password is not correct
-					echo "The username and/or password 	are/is not correct";
-					return false;
-				}
-			}
-		}
-		else
-		{
-			echo "The username and/or password 	are/is not correct";
-			return false;
-		}
+    $sql = "SELECT UserID, Password FROM Login WHERE Email = '$email'";
+    if($data = query($sql))
+    {
+        while($row = $data->fetch_assoc())
+        {
+            $dbpassword = $row["Password"];
+
+            //Check if the password is correct
+            if (password_verify($password, $dbpassword) != 0)
+            {
+                $UserID = $row["UserID"];
+                $sql = "SELECT RoleID FROM User WHERE ID = '$UserID'";
+                if($data = query($sql))
+                {
+                    $db_data = array("true");
+                    while($row = $data->fetch_assoc())
+                    {
+                        $RoleID = $row["RoleID"];
+                        $Role = "";
+
+                        //Change roleID to role
+                        if ($RoleID == "6")
+                        {
+                            $Role = "Admin";
+                        }
+                        else if ($RoleID == "7")
+                        {
+                            $Role = "Mentor";
+                        }
+                        else if ($RoleID == "8")
+                        {
+                            $Role = "Company";
+                        }
+
+                        array_push($db_data, $Role, $UserID);
+                    }
+                    return $db_data;
+                }
+            }
+            else
+            {
+                // Password is not correct
+                echo "The username and/or password 	are/is not correct";
+                return false;
+            }
+        }
+    }
+    else
+    {
+        echo "The username and/or password 	are/is not correct";
+        return false;
+    }
 }
 
 //Selects all experiment textareas etc
 function getDesignSheetForm($sheetType, $language)
 {
-	$sql = "SELECT s.title, s.description FROM Segment s INNER JOIN DesignSheet d ON  d.ID = s.DesignSheetID WHERE d.Type = '$sheetType' AND d.Language = '$language'";
+    $sql = "SELECT s.title, s.description FROM Segment s INNER JOIN DesignSheet d ON  d.ID = s.DesignSheetID WHERE d.Type = '$sheetType' AND d.Language = '$language'";
 
-		if($data = query($sql))
-		{	
-			echo '<form id="designSheetForm" method="POST" action="#">';
-			
-			$i = 0;
-			while($row = $data->fetch_assoc())
-			{
-				echo '<h3>'.$row["title"].'</h3>';
-				echo '<textarea name="input'.$i.'"  type="text" placeholder="'.$row["description"].'"></textarea><br>';
-				$i++;
-			}
-			echo '<input name="submitDesignsheet" type="submit" value="Enter" >';
-			echo '</form>';
-		}
-		else
-		{
-			echo "Error retrieving experimentdata";
-			return false;
-		}
+    if($data = query($sql))
+    {
+        echo '<form id="designSheetForm" method="POST" action="#">';
+
+        $i = 0;
+        while($row = $data->fetch_assoc())
+        {
+            echo '<h3>'.$row["title"].'</h3>';
+            echo '<textarea name="input'.$i.'"  type="text" placeholder="'.$row["description"].'"></textarea><br>';
+            $i++;
+        }
+        echo '<input name="submitDesignsheet" type="submit" value="Enter" >';
+        echo '</form>';
+    }
+    else
+    {
+        echo "Error retrieving experimentdata";
+        return false;
+    }
 }
 
 //Selects all experiment textareas etc
 function getDesignSheetData($ExperimentID, $sheetType, $Language)
 {
-	$sql = "SELECT SegmentID, Text  FROM `Answer` WHERE ExperimentID = '$ExperimentID' ORDER BY SegmentID";
-	if($data1 = query($sql))
-	{	
-		echo '<form method="POST" action="#">';
-		$i = 0;
-		while($row1 = $data1->fetch_assoc())
-		{
-			$id = $row1["SegmentID"];
+    $sql = "SELECT SegmentID, Text  FROM `Answer` WHERE ExperimentID = '$ExperimentID' ORDER BY SegmentID";
+    if($data1 = query($sql))
+    {
+        echo '<form method="POST" action="#">';
+        $i = 0;
+        while($row1 = $data1->fetch_assoc())
+        {
+            $id = $row1["SegmentID"];
 
-			$sql = "SELECT s.title, s.description FROM Segment s
+            $sql = "SELECT s.title, s.description FROM Segment s
 			INNER JOIN DesignSheet d ON d.ID = s.DesignSheetID 
 			WHERE d.Type = '$sheetType' AND s.id = '$id'";
 
-			if($data2 = query($sql))
-			{
-				$row2 = mysqli_fetch_array($data2,MYSQLI_ASSOC);
-				echo '<h3>'.$row2["title"].'</h3>';
-				echo '<textarea disabled class="textarea1" name="input'.$i.'"  type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
-				$i++;
-			}
-			else
-			{
-				echo "Error retrieving experimentdata";
-				return false;
-			}
-		}
-		echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1">';
-		echo '</form>';
-	}
-	else
-	{
-		echo "Error retrieving experimentdata";
-		return false;
-	}
+            if($data2 = query($sql))
+            {
+                $row2 = mysqli_fetch_array($data2,MYSQLI_ASSOC);
+                echo '<h3>'.$row2["title"].'</h3>';
+                echo '<textarea disabled class="textarea1" name="input'.$i.'"  type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
+                $i++;
+            }
+            else
+            {
+                echo "Error retrieving experimentdata";
+                return false;
+            }
+        }
+        echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1">';
+        echo '</form>';
+    }
+    else
+    {
+        echo "Error retrieving experimentdata";
+        return false;
+    }
 }
 
 function createExperiment($title, $description, $imagepath, $companyid)
 {
-	$sql = "INSERT INTO `Experiment`(`CompanyID`, `Title`, `Thumbnail`, `Description`, `Progress`, `Completed`, `Reviewed`, `ReviewScore`) VALUES ('$companyid','$title','$imagepath','$description',0,0,0,0)";
-	if (query($sql))
-	{
-		$sql = "SELECT ID FROM Experiment WHERE CompanyID = '$companyid' AND title = '$title' AND description = '$description' ORDER BY ID ASC";
-		if($data = query($sql))
-		{	
-			
-			while($row = $data->fetch_assoc())
-			{
-				$experimentId = $row["ID"];
-			}
-			return $experimentId;
-		}
-		else 
-		{
-			return false;
-		}
-		
-	}
-	else
-	{
-		return false;
-	}
+    $sql = "INSERT INTO `Experiment`(`CompanyID`, `Title`, `Thumbnail`, `Description`, `Progress`, `Completed`, `Reviewed`, `ReviewScore`) VALUES ('$companyid','$title','$imagepath','$description',0,0,0,0)";
+    if (query($sql))
+    {
+        $sql = "SELECT ID FROM Experiment WHERE CompanyID = '$companyid' AND title = '$title' AND description = '$description' ORDER BY ID ASC";
+        if($data = query($sql))
+        {
+
+            while($row = $data->fetch_assoc())
+            {
+                $experimentId = $row["ID"];
+            }
+            return $experimentId;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+    else
+    {
+        return false;
+    }
 }
 
 //Keep log on inlog
 function loginlog($UserID, $state)
 {
-	//Current date displayed like: monday-01-01-17
-	$date = date("l-d-m-y");
-	
-	//Current time displayed like: 03-15-45-pm 
-	$time = date("h-i-s-a");
-	
-	//ip adress from the user
-	$ip = $_SERVER['REMOTE_ADDR'];
-	
-	//Host name ip
-	$host_name = Detect::ipHostname(); 
-	
-	//provider
-	$organisation = Detect::ipOrg(); 
-	
-	//device type : computer or mobile etc
-	$device_type = Detect::deviceType();
-	
-	//operating system device
-	$operating_system = Detect::os(); 
-	
-	//browser
-	$browser = Detect::browser(); 
-	
-	//brand of mobile device
-	$brand = Detect::brand(); 
-	
-	//country
-	$location = Detect::ipCountry(); 
-	
-	$sql = "INSERT INTO `Log`(`UserID`, `Date`, `Time`, `State`, `IP`, `HostName`, `Organisation`, `DeviceType`, `OperatingSystem`, `Browser`, `Brand`, `Location`) 
+    //Current date displayed like: monday-01-01-17
+    $date = date("l-d-m-y");
+
+    //Current time displayed like: 03-15-45-pm
+    $time = date("h-i-s-a");
+
+    //ip adress from the user
+    $ip = $_SERVER['REMOTE_ADDR'];
+
+    //Host name ip
+    $host_name = Detect::ipHostname();
+
+    //provider
+    $organisation = Detect::ipOrg();
+
+    //device type : computer or mobile etc
+    $device_type = Detect::deviceType();
+
+    //operating system device
+    $operating_system = Detect::os();
+
+    //browser
+    $browser = Detect::browser();
+
+    //brand of mobile device
+    $brand = Detect::brand();
+
+    //country
+    $location = Detect::ipCountry();
+
+    $sql = "INSERT INTO `Log`(`UserID`, `Date`, `Time`, `State`, `IP`, `HostName`, `Organisation`, `DeviceType`, `OperatingSystem`, `Browser`, `Brand`, `Location`) 
 	VALUES ('$UserID', '$date', '$time', '$state', '$ip', '$host_name', '$organisation', '$device_type', '$operating_system', '$browser', '$brand', '$location')";
-	query($sql);
+    query($sql);
 }
 
 function selectUser($Email)
 {
-	$sql = "SELECT ID FROM Login
+    $sql = "SELECT ID FROM Login
 	WHERE Email = '$Email'";
 
-	if ($data = query($sql))
-	{
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		return $row['ID'];
-	}
+    if ($data = query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        return $row['ID'];
+    }
 }
 
 function selectRole($ID)
 {
-	$sql = "SELECT r.Name FROM Role r
+    $sql = "SELECT r.Name FROM Role r
 	INNER JOIN User u ON u.roleID = r.ID
 	WHERE u.ID = '$ID'";
 
-	if ($data = query($sql))
-	{
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		return $row['Name'];
-	}
+    if ($data = query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        return $row['Name'];
+    }
 }
 
 function selectUserName($Email)
 {
-	$ID = selectUser($Email);
+    $ID = selectUser($Email);
 
-	$sql = "SELECT u.ID, u.Name FROM Role r 
+    $sql = "SELECT u.ID, u.Name FROM Role r 
 	INNER JOIN User u ON  u.RoleID = r.ID
 	INNER JOIN Company c ON c.UserID = 
 	WHERE u.ID = '$ID'";
 
-	if ($data = query($sql))
-	{
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		return $row['Name'];
-	}
+    if ($data = query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        return $row['Name'];
+    }
 }
 
 function selectCompanyName($UserID)
 {
-	$sql = "SELECT c.Name FROM Company c
+    $sql = "SELECT c.Name FROM Company c
 	INNER JOIN User u ON u.ID = c.UserID
 	WHERE u.ID = '$UserID'";
 
-	if ($data = query($sql))
-	{
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		return $row['Name'];
-	}
+    if ($data = query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        return $row['Name'];
+    }
 }
 
 function selectCompanyID($UserID)
 {
-	$sql = "SELECT c.ID FROM Company c
+    $sql = "SELECT c.ID FROM Company c
 	INNER JOIN User u ON u.ID = c.UserID
 	WHERE u.ID = '$UserID'";
 
-	if ($data = query($sql))
-	{
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		return $row['ID'];
-	}
+    if ($data = query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        return $row['ID'];
+    }
 }
 
 function selectUserID($Email)
 {
-	$sql = "SELECT u.ID FROM User u
+    $sql = "SELECT u.ID FROM User u
 	INNER JOIN Login l ON l.UserID = u.ID
 	WHERE l.Email = '$Email'";
 
-	if ($data = query($sql))
-	{
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		return $row['ID'];
-	}
+    if ($data = query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        return $row['ID'];
+    }
 }
 
 function selectUserLanguage($ID)
 {
-	$sql = "SELECT Language FROM User WHERE ID = '$ID'";
-	
-	if ($data = query($sql))
-	{
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		return $row['Language'];
-	}
+    $sql = "SELECT Language FROM User WHERE ID = '$ID'";
+
+    if ($data = query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        return $row['Language'];
+    }
 }
 
 
@@ -479,9 +479,9 @@ function getCompanyBlockInfo()
 {
     $sql = "SELECT ID, Name, Logo, Branch FROM Company";
 
-    if($data = Query($sql)) 
+    if($data = Query($sql))
     {
-        while ($row = $data->fetch_assoc()) 
+        while ($row = $data->fetch_assoc())
         {
             $ID = $row["ID"];
             $Logo = $row["Logo"];
@@ -493,7 +493,7 @@ function getCompanyBlockInfo()
             <li id="Block" class="<?php echo $Branch;?> col-lg-4">
                 <a href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
-                            <img src="../../<?php echo $Logo ?>" alt="Company Logo">
+                        <img src="../../<?php echo $Logo ?>" alt="Company Logo">
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Name ?> </h1>
@@ -506,10 +506,10 @@ function getCompanyBlockInfo()
     }
 }
 
-//gets the 3 latest 
+//gets the 3 latest
 function getExperimentsPreview($CompanyID)
 {
-	$sql = "SELECT e.ID, e.Title
+    $sql = "SELECT e.ID, e.Title
 			FROM Experiment e 
             INNER JOIN Company c ON c.ID = e.CompanyID
             WHERE c.ID = '$CompanyID'
@@ -517,299 +517,299 @@ function getExperimentsPreview($CompanyID)
 
     if ($data = query($sql))
     {
-    	echo "<ul style=list-style-type:none>";
+        echo "<ul style=list-style-type:none>";
 
-    	while ($row = $data->fetch_assoc()) 
+        while ($row = $data->fetch_assoc())
         {
-        	 echo "<li class='experiment-preview'><a href=../../Admin_Portal/Pages/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br><hr>";
+            echo "<li class='experiment-preview'><a href=../../Admin_Portal/Pages/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br><hr>";
         }
 
         echo "<li><a href=../../Admin_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
-       	echo "</ul>";
+        echo "</ul>";
     }
 }
 
 //Get experiment info
 function getExperiment($id)
-{	
-	$header = "designSheet.php";
-	$name = "";
-	
-	$sql = "SELECT Preparation, Conclusion FROM Pitch WHERE ExperimentID = '$id'";
-	if ($data = query($sql))
-	{
-		while($row = $data->fetch_assoc())
-		{
-			if ($row["Preparation"] == "")
-			{
-				$name = "Add a pitch";
-				$header = "newPitch.php";
-			}
-			else if ($row["Conclusion"] == "")
-			{
-				$name = "Add the conclusion";
-				$header = "pitch.php";
-			}
-			else
-			{
-				$name = "View the results";
-				$header = "pitch.php";
-			}
-		}
-	}
-	
-	
-	$questionaire = "0";
+{
+    $header = "designSheet.php";
+    $name = "";
 
-	$sql = "SELECT ID FROM Questionaire WHERE ExperimentID = '$id'";
-	if ($data = query($sql))
-	{
-		$questionaireID = "";
-		$name = "Add an interview";
-		$header = "newInterview.php";
-		while($row = $data->fetch_assoc())
-		{
-				$questionaireID = $row["ID"];
-		}
-		
-		$sql = "SELECT `Question` FROM `Question` WHERE `QuestionaireID` = '$questionaireID'";
-		if ($data2 = query($sql))
-		{
-			$name = "Interview";
-			$header = "Interview.php";
-		}
-	}
-	
-	
-	
-	$sql = "SELECT Explanation1, Explanation2 FROM Prototype WHERE ExperimentID = '$id'";
-	if ($data = query($sql))
-	{
-		while($row = $data->fetch_assoc())
-		{
-			if ($row["Explanation1"] == "")
-			{
-				$name = "Add a prototype";
-				$header = "newPrototype.php";
-			}
-			else if ($row["Explanation2"] == "")
-			{
-				$name = "Add the prototype result";
-				$header = "prototype.php";
-			}
-			else
-			{
-				$name = "View the results";
-				$header = "prototype.php";
-			}
-		}
-	}
-	$sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
-	if($data = query($sql))
-	{
-		while($row = $data->fetch_assoc())
-		{
-			$header = $header . "?experimentID=" . $id;
-			//echo $row["Title"];
-			echo '<h1>' . $row["Title"] . '</h1>';
-			echo '<p>' . $row["Description"] .  '</p>';
-			echo '<p> Progress: ' . $row["Progress"] . '</p>';
-			echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
-			echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
-			echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
-			echo '<a href="resultSheet.php?experimentid='.$_GET["id"].'"><button> Results sheet </button> </a>';
-		}
-	}
-	else
-	{
-		return false;
-	}
+    $sql = "SELECT Preparation, Conclusion FROM Pitch WHERE ExperimentID = '$id'";
+    if ($data = query($sql))
+    {
+        while($row = $data->fetch_assoc())
+        {
+            if ($row["Preparation"] == "")
+            {
+                $name = "Add a pitch";
+                $header = "newPitch.php";
+            }
+            else if ($row["Conclusion"] == "")
+            {
+                $name = "Add the conclusion";
+                $header = "pitch.php";
+            }
+            else
+            {
+                $name = "View the results";
+                $header = "pitch.php";
+            }
+        }
+    }
+
+
+    $questionaire = "0";
+
+    $sql = "SELECT ID FROM Questionaire WHERE ExperimentID = '$id'";
+    if ($data = query($sql))
+    {
+        $questionaireID = "";
+        $name = "Add an interview";
+        $header = "newInterview.php";
+        while($row = $data->fetch_assoc())
+        {
+            $questionaireID = $row["ID"];
+        }
+
+        $sql = "SELECT `Question` FROM `Question` WHERE `QuestionaireID` = '$questionaireID'";
+        if ($data2 = query($sql))
+        {
+            $name = "Interview";
+            $header = "Interview.php";
+        }
+    }
+
+
+
+    $sql = "SELECT Explanation1, Explanation2 FROM Prototype WHERE ExperimentID = '$id'";
+    if ($data = query($sql))
+    {
+        while($row = $data->fetch_assoc())
+        {
+            if ($row["Explanation1"] == "")
+            {
+                $name = "Add a prototype";
+                $header = "newPrototype.php";
+            }
+            else if ($row["Explanation2"] == "")
+            {
+                $name = "Add the prototype result";
+                $header = "prototype.php";
+            }
+            else
+            {
+                $name = "View the results";
+                $header = "prototype.php";
+            }
+        }
+    }
+    $sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
+    if($data = query($sql))
+    {
+        while($row = $data->fetch_assoc())
+        {
+            $header = $header . "?experimentID=" . $id;
+            //echo $row["Title"];
+            echo '<h1>' . $row["Title"] . '</h1>';
+            echo '<p>' . $row["Description"] .  '</p>';
+            echo '<p> Progress: ' . $row["Progress"] . '</p>';
+            echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
+            echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
+            echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
+            echo '<a href="resultSheet.php?experimentid='.$_GET["id"].'"><button> Results sheet </button> </a>';
+        }
+    }
+    else
+    {
+        return false;
+    }
 }
 
 //Get experiment info
 function getExperimentView($id)
-{	
-	$header = "";
-	$name = "";
-	$buttonstate = "disabled class='is_disabled'";
-	
-	//if the execution is a Pitch
-	$sql = "SELECT Preparation, Conclusion FROM Pitch WHERE ExperimentID = '$id'";
-	if ($data = query($sql))
-	{
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+{
+    $header = "";
+    $name = "";
+    $buttonstate = "disabled class='is_disabled'";
 
-		if ($row["Preparation"] == "")
-		{
-			$name = "No pitch started yet";
-		}
-		else
-		{
-			$name = "Pitch";	
-			$header = "pitch.php";
-			$buttonstate = "";
-		}
-	}
-	
-	//if the execution is an Interview
-	$questionaire = "0";
+    //if the execution is a Pitch
+    $sql = "SELECT Preparation, Conclusion FROM Pitch WHERE ExperimentID = '$id'";
+    if ($data = query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
 
-	$sql = "SELECT ID FROM Questionaire WHERE ExperimentID = '$id'";
-	if ($data = query($sql))
-	{
-		$questionaireID = "";
-		$name = "No interview added yet";
-		$header = "Interview.php";
+        if ($row["Preparation"] == "")
+        {
+            $name = "No pitch started yet";
+        }
+        else
+        {
+            $name = "Pitch";
+            $header = "pitch.php";
+            $buttonstate = "";
+        }
+    }
 
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		$questionaireID = $row["ID"];
+    //if the execution is an Interview
+    $questionaire = "0";
 
-		$sql = "SELECT `Question` FROM `Question` WHERE `QuestionaireID` = '$questionaireID'";
-		if ($data2 = query($sql))
-		{
-			$name = "Interview";
-			$buttonstate = "";		
-		}
-	}
+    $sql = "SELECT ID FROM Questionaire WHERE ExperimentID = '$id'";
+    if ($data = query($sql))
+    {
+        $questionaireID = "";
+        $name = "No interview added yet";
+        $header = "Interview.php";
 
-	//if the execution is a Prototype
-	$sql = "SELECT Explanation1, Explanation2 FROM Prototype WHERE ExperimentID = '$id'";
-	if ($data = query($sql))
-	{
-		$header = "prototype.php";		
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        $questionaireID = $row["ID"];
 
-		if ($row["Explanation1"] == "")
-		{
-			$name = "Prototype";
-			$buttonstate = "";
-		}
-		else
-		{
-			$name = "No prototype added yet";
-		}
-	}
-	
-	//Put information on screen
-	$sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
-	if($data = query($sql))
-	{
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		$header = $header . "?experimentID=" . $id;
-		echo '<h1>' . $row["Title"] . '</h1>';
-		echo '<p>' . $row["Description"] .  '</p>';
-		echo '<p> Progress: ' . $row["Progress"] . '</p>';
-		echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
+        $sql = "SELECT `Question` FROM `Question` WHERE `QuestionaireID` = '$questionaireID'";
+        if ($data2 = query($sql))
+        {
+            $name = "Interview";
+            $buttonstate = "";
+        }
+    }
 
-		designSheetButton($id, "Experiment");
-		if ($buttonstate == "")
-		{
-			//if the button is enabled
-			echo '<a href="'.$header.'"><button '.$buttonstate.'> '.$name.' </button></a>';	
-		}
-		else
-		{
-			//if the button is disabled
-			echo '<a><button '.$buttonstate.'> No execution chosen </button></a>';	
-		}
+    //if the execution is a Prototype
+    $sql = "SELECT Explanation1, Explanation2 FROM Prototype WHERE ExperimentID = '$id'";
+    if ($data = query($sql))
+    {
+        $header = "prototype.php";
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
 
-		designSheetButton($id, "Result");
-	}
-	else
-	{
-		return false;
-	}
+        if ($row["Explanation1"] == "")
+        {
+            $name = "Prototype";
+            $buttonstate = "";
+        }
+        else
+        {
+            $name = "No prototype added yet";
+        }
+    }
+
+    //Put information on screen
+    $sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
+    if($data = query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        $header = $header . "?experimentID=" . $id;
+        echo '<h1>' . $row["Title"] . '</h1>';
+        echo '<p>' . $row["Description"] .  '</p>';
+        echo '<p> Progress: ' . $row["Progress"] . '</p>';
+        echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
+
+        designSheetButton($id, "Experiment");
+        if ($buttonstate == "")
+        {
+            //if the button is enabled
+            echo '<a href="'.$header.'"><button '.$buttonstate.'> '.$name.' </button></a>';
+        }
+        else
+        {
+            //if the button is disabled
+            echo '<a><button '.$buttonstate.'> No execution chosen </button></a>';
+        }
+
+        designSheetButton($id, "Result");
+    }
+    else
+    {
+        return false;
+    }
 }
 
 function designSheetButton($ID, $type)
 {
-	$sql = "SELECT a.ID FROM Answer a
+    $sql = "SELECT a.ID FROM Answer a
 	INNER JOIN Segment s ON a.SegmentID = s.ID
 	INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
 	WHERE a.ExperimentID  = '$ID' AND d.Type = '$type'";
 
-	echo '<a href="';
+    echo '<a href="';
 
-	if ($type == 'Experiment')
-	{
-		echo "designSheet.php";
-	}
-	else if ($type == 'Result')
-	{
-		echo "resultSheet.php";
-	}
+    if ($type == 'Experiment')
+    {
+        echo "designSheet.php";
+    }
+    else if ($type == 'Result')
+    {
+        echo "resultSheet.php";
+    }
 
-	echo '?experimentID='.$ID.'"><button';
+    echo '?experimentID='.$ID.'"><button';
 
-	if($data = query($sql))
-	{
-		echo '>';	
+    if($data = query($sql))
+    {
+        echo '>';
 
-		if ($type == 'Experiment')
-		{
-			echo "Design sheet";
-		}
-		else if ($type == 'Result')
-		{
-			echo "Result sheet";
-		}	
-	}
-	else
-	{		
-		echo ' disabled class="is_disabled">';
+        if ($type == 'Experiment')
+        {
+            echo "Design sheet";
+        }
+        else if ($type == 'Result')
+        {
+            echo "Result sheet";
+        }
+    }
+    else
+    {
+        echo ' disabled class="is_disabled">';
 
-		if ($type == 'Experiment')
-		{
-			echo "No design sheet started";
-		}
-		else if ($type == 'Result')
-		{
-			echo "No result sheet started";
-		}	
-	}
+        if ($type == 'Experiment')
+        {
+            echo "No design sheet started";
+        }
+        else if ($type == 'Result')
+        {
+            echo "No result sheet started";
+        }
+    }
 
-	echo '</button></a>';
+    echo '</button></a>';
 }
 
 function getFeedback($ID)
 {
-	$sql = "SELECT Text, UserID FROM `Comment` WHERE ExperimentID = '$ID'";
-	if ($data = query($sql))
-	{
-		while($row = $data->fetch_assoc())
-		{
-			$UserID = $row["UserID"];
-			$sql = "SELECT Name, RoleID, ProfilePicture FROM User WHERE ID = '$UserID'";
-			if ($data2 = query($sql))
-			{
-				while($row2 = $data2->fetch_assoc())
-				{
-					$RoleID = $row2["RoleID"];
-					$sql = "SELECT Name FROM Role WHERE ID = '$RoleID'";
-					if ($data3 = query($sql))
-					{
-						while($row3 = $data3->fetch_assoc())
-						{
-							echo '<div class="feedbackUser row"><img class="col-sm-4" alt="profile picture" src="'.$row2["ProfilePicture"].'">';
-							echo '<div id="block" class="col-sm-8"><h3> ' . $row2["Name"] . '</h3><br>';
-							echo '<p>' . $row["Text"] . '</p></div></div><br>';
-						}
-					}
-				}
-			}
-		}
-	}
-	
+    $sql = "SELECT Text, UserID FROM `Comment` WHERE ExperimentID = '$ID'";
+    if ($data = query($sql))
+    {
+        while($row = $data->fetch_assoc())
+        {
+            $UserID = $row["UserID"];
+            $sql = "SELECT Name, RoleID, ProfilePicture FROM User WHERE ID = '$UserID'";
+            if ($data2 = query($sql))
+            {
+                while($row2 = $data2->fetch_assoc())
+                {
+                    $RoleID = $row2["RoleID"];
+                    $sql = "SELECT Name FROM Role WHERE ID = '$RoleID'";
+                    if ($data3 = query($sql))
+                    {
+                        while($row3 = $data3->fetch_assoc())
+                        {
+                            echo '<div class="feedbackUser row"><img class="col-sm-4" alt="profile picture" src="'.$row2["ProfilePicture"].'">';
+                            echo '<div id="block" class="col-sm-8"><h3> ' . $row2["Name"] . '</h3><br>';
+                            echo '<p>' . $row["Text"] . '</p></div></div><br>';
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 function insertFeedback($experimentID, $UserID, $feedback)
 {
-	$sql = "INSERT INTO `Comment`(`UserID`, `ExperimentID`, `Text`) VALUES ('$UserID', '$experimentID','$feedback')";
-	if (query($sql))
-	{
-		return true;
-	}
-	return false;
+    $sql = "INSERT INTO `Comment`(`UserID`, `ExperimentID`, `Text`) VALUES ('$UserID', '$experimentID','$feedback')";
+    if (query($sql))
+    {
+        return true;
+    }
+    return false;
 }
 
 //Admin portal blokken
@@ -819,9 +819,9 @@ function getMentorBlockInfo()
     INNER JOIN Role r ON r.ID = u.RoleID
     WHERE r.Name = 'Mentor'";
 
-    if($data = Query($sql)) 
+    if($data = Query($sql))
     {
-        while ($row = $data->fetch_assoc()) 
+        while ($row = $data->fetch_assoc())
         {
             $ID = $row["ID"];
             $ProfilePicture = $row["ProfilePicture"];
@@ -832,7 +832,7 @@ function getMentorBlockInfo()
             <li id="Block" class="col-lg-4">
                 <a href="../../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
-                            <img src="../../<?php echo $ProfilePicture; ?>" alt="Mentor Profile">
+                        <img src="../../<?php echo $ProfilePicture; ?>" alt="Mentor Profile">
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Name ?> </h1>
@@ -877,27 +877,27 @@ function getExperimentBlockInfo($CompanyID)
             </li>
 
             <?php
-			
-			
+
+
         }
     }
 }
 
 function checkExperimentID($ID, $CompanyID)
 {
-	$sql = "SELECT `ID` FROM `Experiment` WHERE ID = '$ID' AND CompanyID = '$CompanyID'";
-	if($data = Query($sql))
+    $sql = "SELECT `ID` FROM `Experiment` WHERE ID = '$ID' AND CompanyID = '$CompanyID'";
+    if($data = Query($sql))
     {
         while ($row = $data->fetch_assoc())
         {
-			return $row["ID"];
-		}
-	}
-	else
-	{
-		header('Location: index.php');
-	}
-	return false;
+            return $row["ID"];
+        }
+    }
+    else
+    {
+        header('Location: index.php');
+    }
+    return false;
 }
 
 //Client Portal Expirement blokken
@@ -933,57 +933,57 @@ function getMentorAssignedBlockInfo($UserID)
             <?php
         }
     }
-	else
-	{
-		echo "You currently have no assigned clients.";
-	}
+    else
+    {
+        echo "You currently have no assigned clients.";
+    }
 }
 
 function selectCompanyMentors($CompanyID)
 {
-	$sql = "SELECT m.ID, u.Name, u.ProfilePicture FROM Mentor m
+    $sql = "SELECT m.ID, u.Name, u.ProfilePicture FROM Mentor m
 	INNER JOIN User u ON u.ID = m.UserID
 	INNER JOIN Mentor_Company mc ON mc.MentorID = m.ID
 	INNER JOIN Company c ON c.ID = mc.CompanyID
 	Where c.ID = '$CompanyID'";
 
-	?>
-	<section id="BottomCol">
-	<?php
+    ?>
+    <section id="BottomCol">
+        <?php
 
-	if($data = Query($sql))
-    {
-    	while ($row = $data->fetch_assoc())
-    	{
-    		?>
-			<div class="mentor-preview col-md-3">
-				<a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID']; ?>">
-					<img src="<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
-					<h4> <?php echo $row['Name'] ?> </h4>
-				</a>
-                <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
-                    <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
-                </a>
-			</div>
-			<?php
-    	}
-    }
-    else
-    {
-    	echo "<br> No mentors assigned";
-    }
+        if($data = Query($sql))
+        {
+            while ($row = $data->fetch_assoc())
+            {
+                ?>
+                <div class="mentor-preview col-md-3">
+                    <a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID']; ?>">
+                        <img src="<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
+                        <h4> <?php echo $row['Name'] ?> </h4>
+                    </a>
+                    <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
+                        <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
+                    </a>
+                </div>
+                <?php
+            }
+        }
+        else
+        {
+            echo "<br> No mentors assigned";
+        }
 
-	?>
-	</section>
-	<?php    
+        ?>
+    </section>
+    <?php
 }
 
 function selectCompanyInfo($CompanyID)
 {
-	$sql = "SELECT c.Name, c.Logo, c.Description, c.Email, c.Phone, c.Address FROM Company c
+    $sql = "SELECT c.Name, c.Logo, c.Description, c.Email, c.Phone, c.Address FROM Company c
 	WHERE c.ID = '$CompanyID'";
 
-	if($data = Query($sql)) 
+    if($data = Query($sql))
     {
         while ($row = $data->fetch_assoc()) {
             $Name = $row["Name"];
@@ -995,7 +995,7 @@ function selectCompanyInfo($CompanyID)
         }
 
 
-            ?>
+        ?>
 
         <div class="wrapper-profile">
             <div class="row">
@@ -1057,10 +1057,10 @@ function selectCompanyInfo($CompanyID)
                     </div>
                 </section>
                 <section class="block-experiments col-md-4">
-	                <div class="title-experiments">
-		                <h3>Experiments</h3>
-	                </div>
                     <div class="content">
+	                    <div class="container-fluid title-experiments">
+		                    <h3>Experiments</h3>
+	                    </div>
 	                    <div class="container-fluid">
 		                    <?php getExperimentsPreview($_GET["id"]); ?>
 	                    </div>
@@ -1075,40 +1075,40 @@ function selectCompanyInfo($CompanyID)
 
 function insertExperiment($CompanyID, $Title, $Thumbnail, $Description)
 {
-	$sql = "INSERT INTO Experiment(CompanyID, Title, Thumbnail, Description, Completed) VALUES ('$CompanyID', '$Title', '$Thumbnail', '$Description', 0)";
+    $sql = "INSERT INTO Experiment(CompanyID, Title, Thumbnail, Description, Completed) VALUES ('$CompanyID', '$Title', '$Thumbnail', '$Description', 0)";
 
-	$data = Query($sql);
-	return $data;
+    $data = Query($sql);
+    return $data;
 }
 
 
 function insertQuestion($QuestionPost, $ExecutionID)
 {
-    foreach ($QuestionPost AS $ID => $Question) 
+    foreach ($QuestionPost AS $ID => $Question)
     {
-		$sql = "SELECT Question FROM Question WHERE ID = '$ID'";
+        $sql = "SELECT Question FROM Question WHERE ID = '$ID'";
 
-		if(Query($sql))
-		{
-			if($Question != "Save")
-			{
+        if(Query($sql))
+        {
+            if($Question != "Save")
+            {
                 $sql = "UPDATE Question SET Question = '$Question' WHERE ID = '$ID'";
                 Query($sql);
-			}
-		}
-		else
-		{
-			if($Question != "Save")
-			{
+            }
+        }
+        else
+        {
+            if($Question != "Save")
+            {
                 $sql = "INSERT INTO Question(QuestionaireID, Question) VALUES ($ExecutionID,'$Question')";
                 Query($sql);
-			}
-		}
+            }
+        }
     }
 }
 
 
-function SelectQuestion($ExecutionID) 
+function SelectQuestion($ExecutionID)
 {
     $sql = "SELECT ID, Question FROM Question
             WHERE QuestionaireID = $ExecutionID";
@@ -1135,15 +1135,15 @@ function SelectQuestion($ExecutionID)
 
 function selectAdminProfile($ID)
 {
-	$sql = "SELECT Name, ProfilePicture, Language From User
+    $sql = "SELECT Name, ProfilePicture, Language From User
 	WHERE ID = '$ID'";
 
-	if($data = Query($sql)) 
-	{
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		?>
-		<form method="POST" action="#">
-			<p>Name:</p>
+    if($data = Query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        ?>
+        <form method="POST" action="#">
+            <p>Name:</p>
             <input type="text" placeholder="Name" name="adminName" value="<?php echo $row['Name'];?>"><br>
 
             <p>Profile Picture:</p>
@@ -1152,103 +1152,103 @@ function selectAdminProfile($ID)
 
             <p>Language:</p>
             <select>
-            	<option 
-            	<?php if($row['Language'] == "English") 
-            		{
-            			echo 'selected';
-            		} ?> 
-            	value="English">English</option>
-            	<option 
-            	<?php if($row['Language'] == "Nederlands") 
-            		{
-            			echo 'selected';
-            		} ?> 
-            	value="Nederlands">Nederlands</option>
+                <option
+                    <?php if($row['Language'] == "English")
+                    {
+                        echo 'selected';
+                    } ?>
+                        value="English">English</option>
+                <option
+                    <?php if($row['Language'] == "Nederlands")
+                    {
+                        echo 'selected';
+                    } ?>
+                        value="Nederlands">Nederlands</option>
             </select>
 
-        	<input type="submit" placeholder="Save changes" name="submit">
-		</form>
-		<?php
-	}
+            <input type="submit" placeholder="Save changes" name="submit">
+        </form>
+        <?php
+    }
 }
 
 function insertDesignSheet($answerPost, $sheetType, $Language, $experimentID)
 {
-	global $conn;
+    global $conn;
 
-	//Select input field data, and put it in answerArray
-	$answerArray = array();
-	foreach ($answerPost AS $postID => $answer)
-	{
-		if ($postID != "submitDesignsheet")
-		{
-			$value = htmlentities(mysqli_real_escape_string($conn, $answer));
-			array_push($answerArray, $value);
-		}
-	}
+    //Select input field data, and put it in answerArray
+    $answerArray = array();
+    foreach ($answerPost AS $postID => $answer)
+    {
+        if ($postID != "submitDesignsheet")
+        {
+            $value = htmlentities(mysqli_real_escape_string($conn, $answer));
+            array_push($answerArray, $value);
+        }
+    }
 
-	//Select the design
-	$sql = "SELECT s.ID FROM Segment s
+    //Select the design
+    $sql = "SELECT s.ID FROM Segment s
 	INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
 	WHERE d.Type = '$sheetType' AND d.Language = '$Language'";
 
-	if($data = Query($sql))
-	{
-		$counter = 0;
-		//Foreach segment, add a value from answerArray
-		while ($row = $data->fetch_assoc())
-		{
-			$segment = $row["ID"];
-			$answer = $answerArray[$counter];
+    if($data = Query($sql))
+    {
+        $counter = 0;
+        //Foreach segment, add a value from answerArray
+        while ($row = $data->fetch_assoc())
+        {
+            $segment = $row["ID"];
+            $answer = $answerArray[$counter];
 
-			$sql = "INSERT INTO Answer (SegmentID, ExperimentID, `Text`) Values ('$segment', '$experimentID', '$answer')";
-			Query($sql);
+            $sql = "INSERT INTO Answer (SegmentID, ExperimentID, `Text`) Values ('$segment', '$experimentID', '$answer')";
+            Query($sql);
 
-			$counter++;
-		}
-	}
+            $counter++;
+        }
+    }
 }
 
 function updateDesignSheet($answerPost, $sheetType, $Language, $experimentID)
 {
-	global $conn;
+    global $conn;
 
-	//Select input field data, and put it in answerArray
-	$answerArray = array();
-	foreach ($answerPost AS $postID => $answer)
-	{
-		if ($postID != "submitDesignsheet")
-		{
-			$value = htmlentities(mysqli_real_escape_string($conn, $answer));
-			array_push($answerArray, $value);
-		}
-	}
+    //Select input field data, and put it in answerArray
+    $answerArray = array();
+    foreach ($answerPost AS $postID => $answer)
+    {
+        if ($postID != "submitDesignsheet")
+        {
+            $value = htmlentities(mysqli_real_escape_string($conn, $answer));
+            array_push($answerArray, $value);
+        }
+    }
 
-	//Select the design
-	$sql = "SELECT s.ID FROM Segment s
+    //Select the design
+    $sql = "SELECT s.ID FROM Segment s
 	INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
 	WHERE d.Type = '$sheetType' AND d.Language = '$Language'";
 
-	if($data = Query($sql))
-	{
-		$counter = 0;
-		//Foreach segment, add a value from answerArray
-		while ($row = $data->fetch_assoc())
-		{
-			$segment = $row["ID"];
-			$answer = $answerArray[$counter];
+    if($data = Query($sql))
+    {
+        $counter = 0;
+        //Foreach segment, add a value from answerArray
+        while ($row = $data->fetch_assoc())
+        {
+            $segment = $row["ID"];
+            $answer = $answerArray[$counter];
 
-			$sql = "UPDATE Answer SET `Text` = '$answer' WHERE SegmentID = '$segment' AND experimentID = '$experimentID'";
-			Query($sql);
+            $sql = "UPDATE Answer SET `Text` = '$answer' WHERE SegmentID = '$segment' AND experimentID = '$experimentID'";
+            Query($sql);
 
-			$counter++;
-		}
-	}
+            $counter++;
+        }
+    }
 }
 
 function sendExecution($ExecutionPost, $ExperimentID)
 {
-	global $conn;
+    global $conn;
 
     foreach ($ExecutionPost AS $ID => $Execution) {
         if ($ID == "interview") {
@@ -1371,223 +1371,223 @@ function selectPitch($ExperimentID)
 
 function getAdminProfile($ID)
 {
-	$results = array();	
-	$succes = 0;
-	
-	$sql = "SELECT Language, Name, ProfilePicture FROM User WHERE ID = '$ID'";
+    $results = array();
+    $succes = 0;
+
+    $sql = "SELECT Language, Name, ProfilePicture FROM User WHERE ID = '$ID'";
     if($data = Query($sql))
     {
         while ($row = $data->fetch_assoc())
         {
-			array_push($results, $row["Language"], $row["Name"], $row["ProfilePicture"]);
-			$succes = $succes + 1;
-		}
-	}
-	
-	$sql = "SELECT Email FROM Login WHERE UserID = '$ID'";
+            array_push($results, $row["Language"], $row["Name"], $row["ProfilePicture"]);
+            $succes = $succes + 1;
+        }
+    }
+
+    $sql = "SELECT Email FROM Login WHERE UserID = '$ID'";
     if($data = Query($sql))
     {
         while ($row = $data->fetch_assoc())
         {
-			array_push($results, $row["Email"]);
-			$succes = $succes + 1;
-		}
-	}
-	
-	if ($succes == 2)
-	{
-		return $results;
-	}
-	return false;
+            array_push($results, $row["Email"]);
+            $succes = $succes + 1;
+        }
+    }
+
+    if ($succes == 2)
+    {
+        return $results;
+    }
+    return false;
 }
 
 function getMentorProfile($ID)
 {
-	$results = array();	
-	$succes = 0;
-	
-	$sql = "SELECT Language, Name, ProfilePicture FROM User WHERE ID = '$ID'";
+    $results = array();
+    $succes = 0;
+
+    $sql = "SELECT Language, Name, ProfilePicture FROM User WHERE ID = '$ID'";
     if($data = Query($sql))
     {
         while ($row = $data->fetch_assoc())
         {
-			array_push($results, $row["Language"], $row["Name"], $row["ProfilePicture"]);
-			$succes = $succes + 1;
-		}
-	}
-	
-	$sql = "SELECT Email FROM Login WHERE UserID = '$ID'";
+            array_push($results, $row["Language"], $row["Name"], $row["ProfilePicture"]);
+            $succes = $succes + 1;
+        }
+    }
+
+    $sql = "SELECT Email FROM Login WHERE UserID = '$ID'";
     if($data = Query($sql))
     {
         while ($row = $data->fetch_assoc())
         {
-			array_push($results, $row["Email"]);
-			$succes = $succes + 1;
-		}
-	}
-	
-	$sql = "SELECT `CompanyName`, `Phone` FROM `Mentor` WHERE UserID = '$ID'";
+            array_push($results, $row["Email"]);
+            $succes = $succes + 1;
+        }
+    }
+
+    $sql = "SELECT `CompanyName`, `Phone` FROM `Mentor` WHERE UserID = '$ID'";
     if($data = Query($sql))
     {
         while ($row = $data->fetch_assoc())
         {
-			array_push($results, $row["CompanyName"], $row["Phone"]);
-			$succes = $succes + 1;
-		}
-	}
-	
-	if ($succes == 3)
-	{
-		return $results;
-	}
-	return false;
+            array_push($results, $row["CompanyName"], $row["Phone"]);
+            $succes = $succes + 1;
+        }
+    }
+
+    if ($succes == 3)
+    {
+        return $results;
+    }
+    return false;
 }
 
 function getClientProfile($ID)
 {
-	$results = array();	
-	$succes = 0;
-	
-	$sql = "SELECT Language, Name, ProfilePicture FROM User WHERE ID = '$ID'";
+    $results = array();
+    $succes = 0;
+
+    $sql = "SELECT Language, Name, ProfilePicture FROM User WHERE ID = '$ID'";
     if($data = Query($sql))
     {
         while ($row = $data->fetch_assoc())
         {
-			array_push($results, $row["Language"], $row["Name"], $row["ProfilePicture"]);
-			$succes = $succes + 1;
-		}
-	}
-	
-	$sql = "SELECT Email FROM Login WHERE UserID = '$ID'";
+            array_push($results, $row["Language"], $row["Name"], $row["ProfilePicture"]);
+            $succes = $succes + 1;
+        }
+    }
+
+    $sql = "SELECT Email FROM Login WHERE UserID = '$ID'";
     if($data = Query($sql))
     {
         while ($row = $data->fetch_assoc())
         {
-			array_push($results, $row["Email"]);
-			$succes = $succes + 1;
-		}
-	}
-	
-	$sql = "SELECT Name, Description, Logo, Phone, Address, Branch FROM Company WHERE UserID = '$ID'";
+            array_push($results, $row["Email"]);
+            $succes = $succes + 1;
+        }
+    }
+
+    $sql = "SELECT Name, Description, Logo, Phone, Address, Branch FROM Company WHERE UserID = '$ID'";
     if($data = Query($sql))
     {
         while ($row = $data->fetch_assoc())
         {
-			array_push($results, $row["Name"], $row["Description"], $row["Logo"], $row["Phone"], $row["Address"], $row["Branch"]);
-			$succes = $succes + 1;
-		}
-	}
-	
-	if ($succes == 3)
-	{
-		return $results;
-	}
-	return false;
+            array_push($results, $row["Name"], $row["Description"], $row["Logo"], $row["Phone"], $row["Address"], $row["Branch"]);
+            $succes = $succes + 1;
+        }
+    }
+
+    if ($succes == 3)
+    {
+        return $results;
+    }
+    return false;
 }
 
 function updateClientProfile($ID, $name, $email, $language, $companyName, $companyDescription, $phone, $address, $branch, $PFPath, $LPath)
 {
-	$sql = "UPDATE `User` SET `Language`='$language', `Name`='$name', `ProfilePicture`='$PFPath' WHERE ID = '$ID'";
-	if(Query($sql))
+    $sql = "UPDATE `User` SET `Language`='$language', `Name`='$name', `ProfilePicture`='$PFPath' WHERE ID = '$ID'";
+    if(Query($sql))
     {
-		$sql = "UPDATE `Login` SET `Email`='$email' WHERE UserID = '$ID'";
-		if(Query($sql))
-		{
-			$sql = "UPDATE `Company` SET `Name`='$companyName',`Description`='$companyDescription',`Logo`='$LPath',`Phone`='$phone',`Address`='$address',`Branch`='$branch' WHERE UserID = '$ID'";
-			if(Query($sql))
-			{
-				return true;
-			}
-		}
-	}
-	return false;
+        $sql = "UPDATE `Login` SET `Email`='$email' WHERE UserID = '$ID'";
+        if(Query($sql))
+        {
+            $sql = "UPDATE `Company` SET `Name`='$companyName',`Description`='$companyDescription',`Logo`='$LPath',`Phone`='$phone',`Address`='$address',`Branch`='$branch' WHERE UserID = '$ID'";
+            if(Query($sql))
+            {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 function updateAdminProfile($ID, $name, $email, $language, $PFPath)
 {
-	$sql = "UPDATE `User` SET `Language`='$language', `Name`='$name', `ProfilePicture`='$PFPath' WHERE ID = '$ID'";
-	if(Query($sql))
+    $sql = "UPDATE `User` SET `Language`='$language', `Name`='$name', `ProfilePicture`='$PFPath' WHERE ID = '$ID'";
+    if(Query($sql))
     {
-		$sql = "UPDATE `Login` SET `Email`='$email' WHERE UserID = '$ID'";
-		if(Query($sql))
-		{
-			return true;
-		}
-	}
-	return false;
+        $sql = "UPDATE `Login` SET `Email`='$email' WHERE UserID = '$ID'";
+        if(Query($sql))
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 function updateMentorProfile($ID, $name, $email, $language, $PFPath, $companyName, $phone)
 {
-	$sql = "UPDATE `User` SET `Language`='$language', `Name`='$name', `ProfilePicture`='$PFPath' WHERE ID = '$ID'";
-	if(Query($sql))
+    $sql = "UPDATE `User` SET `Language`='$language', `Name`='$name', `ProfilePicture`='$PFPath' WHERE ID = '$ID'";
+    if(Query($sql))
     {
-		$sql = "UPDATE `Login` SET `Email`='$email' WHERE UserID = '$ID'";
-		if(Query($sql))
-		{
-			$sql = "UPDATE `Mentor` SET `CompanyName`='$companyName',`Phone`='$phone' WHERE UserID = '$ID'";
-			if(Query($sql))
-			{
-				return true;
-			}
-		}
-	}
-	return false;
+        $sql = "UPDATE `Login` SET `Email`='$email' WHERE UserID = '$ID'";
+        if(Query($sql))
+        {
+            $sql = "UPDATE `Mentor` SET `CompanyName`='$companyName',`Phone`='$phone' WHERE UserID = '$ID'";
+            if(Query($sql))
+            {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 
 function selectLanguage($ID)
 {
-	$sql = "SELECT Language FROM User WHERE ID = '$ID'";
-	if($data = Query($sql))
-    {	
+    $sql = "SELECT Language FROM User WHERE ID = '$ID'";
+    if($data = Query($sql))
+    {
         while ($row = $data->fetch_assoc())
         {
-			$language = $row["Language"];
-			$sql = "SELECT DISTINCT Language FROM User";
-			if($data2 = Query($sql))
-			{
-				while ($row2 = $data2->fetch_assoc())
-				{
-					if (!($language == $row2["Language"]))
-					{
-						echo '<option value="'.$row2["Language"].'">'.$row2["Language"].'</option>';
-					}
-					else 
-					{
-						echo '<option selected value="'.$row2["Language"].'">'.$row2["Language"].'</option>';
-					}
-				}
-			}
-		}
-	}
+            $language = $row["Language"];
+            $sql = "SELECT DISTINCT Language FROM User";
+            if($data2 = Query($sql))
+            {
+                while ($row2 = $data2->fetch_assoc())
+                {
+                    if (!($language == $row2["Language"]))
+                    {
+                        echo '<option value="'.$row2["Language"].'">'.$row2["Language"].'</option>';
+                    }
+                    else
+                    {
+                        echo '<option selected value="'.$row2["Language"].'">'.$row2["Language"].'</option>';
+                    }
+                }
+            }
+        }
+    }
 }
 
 function updatePassword($ID, $passwordold, $password)
 {
-	$sql = "SELECT Password FROM Login WHERE `UserID` = '$ID'";
-		if($data = query($sql))
-		{	
-			while($row = $data->fetch_assoc())
-			{
-				$dbpassword = $row["Password"];
-				
-				//Check if the password is correct
-				if (password_verify($passwordold, $dbpassword) != 0)
-				{
-					$password = password_hash($password, PASSWORD_DEFAULT);
-					$sql = "UPDATE `Login` SET `Password`='$password' WHERE `UserID` = '$ID'";
-					if(Query($sql))
-					{
-						return true;
-					}
-				}
-				else
-				{
-					echo "The old password entered is not correct";
-				}
-			}
-		}
-	return false;
+    $sql = "SELECT Password FROM Login WHERE `UserID` = '$ID'";
+    if($data = query($sql))
+    {
+        while($row = $data->fetch_assoc())
+        {
+            $dbpassword = $row["Password"];
+
+            //Check if the password is correct
+            if (password_verify($passwordold, $dbpassword) != 0)
+            {
+                $password = password_hash($password, PASSWORD_DEFAULT);
+                $sql = "UPDATE `Login` SET `Password`='$password' WHERE `UserID` = '$ID'";
+                if(Query($sql))
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                echo "The old password entered is not correct";
+            }
+        }
+    }
+    return false;
 }
 
 function selectPrototype($ExperimentID) {
@@ -1648,7 +1648,7 @@ function selectPrototype($ExperimentID) {
             <textarea disabled class="textarea1" name="explanation2" placeholder="Explain your prototype."><?php echo $Explanation2?></textarea> <br/>
             <input id="submit1" type="hidden" name="save" value="Save">
 
-        <?php
+            <?php
         }
     }
     return $OldArray;
@@ -1688,7 +1688,7 @@ function selectQuestions($ExperimentID) {
                     <textarea id="question" name="question<?php echo $ID?>"><?php echo $Question?></textarea>
                     <div id="answers">
                         <?php
-                            $i  = selectAnswers($ID, $i);
+                        $i  = selectAnswers($ID, $i);
                         ?>
                     </div>
                 </div>
@@ -1721,7 +1721,7 @@ function selectAnswers($questionID, $i){
     }
     ?>
 
-        <button type="button" onclick="addAnswer(<?php echo $questionID?>)">Add Answer</button>
+    <button type="button" onclick="addAnswer(<?php echo $questionID?>)">Add Answer</button>
 
     <?php
     return $i;
@@ -1750,7 +1750,7 @@ function selectQuestionsView($ExperimentID)
                     <textarea disabled id="question" name="question<?php echo $ID?>"><?php echo $Question?></textarea>
                     <div id="answers">
                         <?php
-                            $i  = selectanswersView($ID, $i);
+                        $i  = selectanswersView($ID, $i);
                         ?>
                     </div>
                 </div>
@@ -1766,9 +1766,9 @@ function selectanswersView($questionID, $i)
 {
     $sql = "SELECT ID, Answer FROM Response WHERE QuestionID = '$questionID'";
 
-    if ($data = Query($sql)) 
+    if ($data = Query($sql))
     {
-        while ($row = $data->fetch_assoc()) 
+        while ($row = $data->fetch_assoc())
         {
             $ID = $row["ID"];
             $Answer = $row["Answer"];
@@ -1844,14 +1844,14 @@ function insertAnswer($POSTData, $ExperimentID)
 
 }
 
-function selectMentorDropdown($CompanyID) 
+function selectMentorDropdown($CompanyID)
 {
 
     $sql = "SELECT u.Name FROM User u
             INNER JOIN Role r ON r.ID = u.RoleID
             WHERE u.RoleID = '7'";
 
-    if ($data = Query($sql)) 
+    if ($data = Query($sql))
     {
         ?><select name="mentor"><?php
 
@@ -1873,31 +1873,31 @@ function selectMentorDropdown($CompanyID)
                     $sql = "SELECT * FROM Mentor_Company
                             WHERE MentorID = '$MentorID' AND CompanyID = '$CompanyID'";
 
-                if (Query($sql))
-                {
-                    ?>
-                    <option disabled value="<?php echo $Name;?>"><?php echo $Name;?></option>
-                    <?php
-                }
+                    if (Query($sql))
+                    {
+                        ?>
+                        <option disabled value="<?php echo $Name;?>"><?php echo $Name;?></option>
+                        <?php
+                    }
 
-                else
-                {
-                    ?>
-                    <option value="<?php echo $Name;?>"><?php echo $Name;?></option>
-                    <?php
+                    else
+                    {
+                        ?>
+                        <option value="<?php echo $Name;?>"><?php echo $Name;?></option>
+                        <?php
+                    }
                 }
             }
+            else
+            {
+                echo " - Error - ";
+            }
         }
-        else 
-		{
-            echo " - Error - ";
-		}
-    }
         ?>
         </select>
         <?php
     }
-    else 
+    else
     {
         echo " - Error - ";
     }
@@ -1959,9 +1959,13 @@ function selectBachelorBlockInfo() {
                 <a href="bachelorGroup.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <h1><?php echo $Name; ?></h1>
+
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Name; ?> </h1>
+                        <a onclick="return confirm('Are you sure you want to delete the bachelor group?')" href="../../Admin_Portal/Pages/index.php?bachelorID=<?php echo $ID; ?>&action=delete">
+                            <img src="../../Main/Files/Images/close.png" alt="Delete bachelor group">
+                        </a>
                     </div>
                 </a>
             </li>
@@ -1995,9 +1999,13 @@ function selectBachelorGroupBlockInfo($BachelorGroupID)
                         <a href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $CompanyID ?>">
                             <div class="BlockLogo">
                                 <img src="../../<?php echo $Logo ?>">
+
                             </div>
                             <div class="BlockTitle">
                                 <h1> <?php echo $Name; ?> </h1>
+                                <a onclick="return confirm('Are you sure you want to delete the bachelor group member?')" href="../../Admin_Portal/Pages/index.php?companyID=<?php echo $CompanyID; ?>&action=delete">
+                                    <img src="../../Main/Files/Images/close.png" alt="Delete bachelor group member.">
+                                </a>
                             </div>
                         </a>
                     </li>
@@ -2012,54 +2020,54 @@ function selectBachelorGroupBlockInfo($BachelorGroupID)
 
 function updateCompanyLock($CompanyID, $Locked)
 {
-	$sql = "UPDATE User u
+    $sql = "UPDATE User u
 	INNER JOIN Company c on c.UserID = u.ID
 	SET u.Locked = '$Locked'
 	WHERE c.ID = '$CompanyID'";
 
-	if ($data = Query($sql))
-	{
-		return true;
-	}
+    if ($data = Query($sql))
+    {
+        return true;
+    }
 
-	return false;
+    return false;
 }
 
 function selectLockButton($companyID)
 {
-	$sql = "SELECT u.locked FROM User u
+    $sql = "SELECT u.locked FROM User u
 	INNER JOIN Company c ON c.UserID = u.ID
 	WHERE c.ID = '$companyID'";
 
-	if ($data = Query($sql))
-	{
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		if ($row["locked"] == 1)
-		{
-			?>
-			    <a onclick="return confirm('Are you sure you want to unlock this account?')" 
-	            href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $_GET['id']; ?>&action=unlock">
-	                <img src="../../Main/Files/Images/close.png" alt="Unlock account">
-	            </a>
-	        <?php
-		}
-		else
-		{
-			?>
-			    <a onclick="return confirm('Are you sure you want to lock this account?')" 
-	            href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $_GET['id']; ?>&action=lock">
-	                <img src="../../Main/Files/Images/close.png" alt="lock account">
-	            </a>
-	        <?php
-		}
-	}
+    if ($data = Query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        if ($row["locked"] == 1)
+        {
+            ?>
+            <a onclick="return confirm('Are you sure you want to unlock this account?')"
+               href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $_GET['id']; ?>&action=unlock">
+                <img src="../../Main/Files/Images/close.png" alt="Unlock account">
+            </a>
+            <?php
+        }
+        else
+        {
+            ?>
+            <a onclick="return confirm('Are you sure you want to lock this account?')"
+               href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $_GET['id']; ?>&action=lock">
+                <img src="../../Main/Files/Images/close.png" alt="lock account">
+            </a>
+            <?php
+        }
+    }
 }
 
 function insertBachelorGroup($BachelorName)
 {
 
     $sql = "INSERT INTO `BachelorGroup`(`Name`) VALUES ('$BachelorName')";
-    if (query($sql)) 
+    if (query($sql))
     {
         global $conn;
 
@@ -2072,7 +2080,7 @@ function insertToBachelorGroup($BachelorGroupID, $CompanyGroupID)
 {
 
     $sql = "INSERT INTO `Bachelor_Company`(`BachelorID` , `CompanyID`) VALUES ('$BachelorGroupID', '$CompanyGroupID')";
-    if (query($sql)) 
+    if (query($sql))
     {
         header('Location: bachelorGroup.php?id=' . $BachelorGroupID );
     }
@@ -2126,4 +2134,47 @@ function selectCompanyDropdown()
     }
 
 }
+
+function deleteBachelorGroup($BachelorGroupID) {
+
+    $sql = "DELETE FROM `Bachelor_Company` WHERE BachelorID = '$BachelorGroupID'";
+
+    if (query($sql)) {
+
+        $sql1 = "DELETE FROM `BachelorGroup` WHERE ID = '$BachelorGroupID'";
+
+        if (query($sql1)) {
+
+            header('Location: index.php');
+        }
+        else {
+            echo "Unable to delete bachelor group.";
+        }
+    }
+    else {
+        echo "Unable to delete bachelor group members.";
+    }
+}
+
+function deleteBachelorGroupMember($BachelorGroupID) {
+
+    $sql = "DELETE FROM `Bachelor_Company` WHERE BachelorID = '$BachelorGroupID'";
+
+    if (query($sql)) {
+
+        $sql1 = "DELETE FROM `BachelorGroup` WHERE ID = '$BachelorGroupID'";
+
+        if (query($sql1)) {
+
+            header('Location: index.php');
+        }
+        else {
+            echo "Unable to delete bachelor group.";
+        }
+    }
+    else {
+        echo "Unable to delete bachelor group members.";
+    }
+}
+
 ?>
