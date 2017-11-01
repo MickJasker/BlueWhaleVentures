@@ -617,7 +617,7 @@ function getExperiment($id)
 			echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
 			echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
 			echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
-			echo '<a href="resultSheet.php?experimentid='.$_SESSION["ExperimentID"].'"><button> Results sheet </button> </a>';
+			echo '<a href="resultSheet.php?experimentid='.$_GET["id"].'"><button> Results sheet </button> </a>';
 		}
 	}
 	else
@@ -865,26 +865,20 @@ function getExperimentBlockInfo($CompanyID)
 
             ?>
 
-			<form action="#" method="POST">
-				<label for="experimentBlock"> 
-					<li id="Block" class="col-lg-4">
-						<div class="BlockLogo">
-							<img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
-						</div>
-						<div class="BlockTitle">
-							<h1> <?php echo $Title ?> </h1>
-						</div>
-					</li>
-				</label>
-				<input hidden id="experimentBlock" name="redirectExperiment" type="submit"/>
-			</form>
+            <li id="Block" class="col-lg-4">
+                <a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/experiment.php?id=<?php echo $row['ID']; ?>">
+                    <div class="BlockLogo">
+                        <img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
+                    </div>
+                    <div class="BlockTitle">
+                        <h1> <?php echo $Title ?> </h1>
+                    </div>
+                </a>
+            </li>
 
             <?php
-			if (isset($_POST['redirectExperiment']))
-			{
-				$_SESSION["ExperimentID"] = $row['ID'];
-				header('Location: ../../' . $_SESSION['Role'] . '_Portal/Pages/experiment.php');
-			}
+			
+			
         }
     }
 }
