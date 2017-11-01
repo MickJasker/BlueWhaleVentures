@@ -6,8 +6,11 @@
 
     if (isset($_POST['saveBachelorMember']))
     {
-        if (secure($_POST['company']) != "") {
-            insertToBachelorGroup(secure($_GET['id']) ,secure($_POST['company']));
+        if (isset($_POST['company'])) {
+            
+            if (secure($_POST['company']) != "") {
+                insertToBachelorGroup(secure($_GET['id']), secure($_POST['company']));
+            }
         }
     }
 
