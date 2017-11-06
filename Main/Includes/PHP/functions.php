@@ -66,7 +66,7 @@ function createSession($Email)
 	echo "Role: " . $_SESSION["Role"] . "<br>";
 	echo "UserID: " . $_SESSION["UserID"] . "<br>";	
 	echo "CompanyID: " . $_SESSION["CompanyID"];	
-	*/	
+	*/
 }
 
 function checkSession($AllowedRole)
@@ -75,7 +75,8 @@ function checkSession($AllowedRole)
 	{
 		if ($_SESSION["Role"] != $AllowedRole)
 		{
-			header('Location: ../../'.$_SESSION["Role"].'_portal/Pages/index.php');
+			echo "WRONG SESSION!";
+			//header('Location: ../../'.$_SESSION["Role"].'_portal/Pages/index.php');
 		}
 
 		if (selectUserLock($_SESSION["UserID"]) == 1)
