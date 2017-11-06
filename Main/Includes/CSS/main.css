@@ -7173,14 +7173,17 @@ body {
 .wrapper-nav #nav #right a:hover {
   color: #0099ff;
 }
-.wrapper-nav #nav #clientswitch {
+.wrapper-nav #nav #clientswitch,
+.wrapper-nav #nav #experimentswitch {
   margin-left: 5%;
   position: relative;
 }
-.wrapper-nav #nav #client {
+.wrapper-nav #nav #client,
+.wrapper-nav #nav #experiments {
   float: left;
 }
-.wrapper-nav #nav #mentor {
+.wrapper-nav #nav #mentor,
+.wrapper-nav #nav #bachelors {
   float: left;
 }
 .wrapper-nav #nav .blue {
@@ -8095,29 +8098,6 @@ body {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
 }
-<<<<<<< HEAD
-=======
-#wrapper-newPrototype main section div form textarea {
-  border: none;
-  background-color: #f2f2f2;
-  width: 100%;
-  resize: none;
-  height: 200px;
-  outline: thin solid rgba(0, 0, 0, 0);
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-  margin: 5px;
-  padding: 5px;
-}
-#wrapper-newPrototype main section div form textarea:focus {
-  background-color: #ffffff;
-  outline: thin solid #0099ff;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-}
->>>>>>> master
 #wrapper-newPrototype main section div form label,
 #wrapper-newPrototype main section div form input,
 #wrapper-newPrototype main section div form button {

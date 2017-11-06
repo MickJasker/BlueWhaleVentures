@@ -1,5 +1,5 @@
 <?php
-require '../../Main/Includes/PHP/functions.php';
+include_once '../../Main/Includes/PHP/functions.php';
 checkSession('Client');
 ?>
 <!DOCTYPE html>
@@ -9,6 +9,7 @@ checkSession('Client');
     <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,800" rel="stylesheet">
 	<script src="../../Main/Includes/Javascript/functions.js"></script>
+    <script src="../../Main/Includes/Javascript/jquery-3.2.1.min.js"></script>
 </head>
 <body id="wrapper-admin-body">
 <header class="row wrapper-nav">
@@ -17,23 +18,11 @@ checkSession('Client');
     ?>
 </header>
 <Main id="wrapper-admin">
-    <ul class="list">
-        <div class="content">
+    <?php
 
-            <div id="Block" class="col-lg-4">
-                <a class="mentorbutton" href="createExperiment.php">
-                    <div class="BlockLogo">
-                        <img src="../../Main/Files/Images/add.svg" alt="Add Experiment">
-                    </div>
-                    <div class="BlockTitle">
-                        <h1> Add Experiment </h1>
-                    </div>
-                </a>
-            </div>
+    include 'experiments.php';
 
-            <?php getExperimentBlockInfo($_SESSION["CompanyID"]); ?>
-        </div>
-    </ul>
+    ?>
 </Main>
 
 <footer>
@@ -52,6 +41,7 @@ checkSession('Client');
 </footer>
 
 <script src="../../Main/Includes/Javascript/main.js"></script>
+<script src="../../Main/Includes/Javascript/progressbar.js"></script>
 
 </body>
 </html>
