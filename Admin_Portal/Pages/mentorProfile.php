@@ -20,7 +20,7 @@ CheckSession("Admin");
                 <div class="profile">
                     <div class="picture">
                         <?php
-                        $ID = $_SESSION["UserID"];
+                        $ID = secure($_GET["id"]);
                         $data = getMentorProfile($ID);
                         ?>
 
