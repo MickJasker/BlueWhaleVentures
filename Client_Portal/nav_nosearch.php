@@ -4,7 +4,7 @@
 
 
 	<h4 id="left">
-		Welcome, <span class="user">Client</span>
+		Welcome, <span class="user"><?php getUserNames($_SESSION["UserID"]); ?></span>
 	</h4>
 
 	<h4 id="right">
