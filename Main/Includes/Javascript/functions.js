@@ -19,6 +19,8 @@ function editPage(textareas, type)
 	{
 		document.getElementById("file2").type = 'file';
 		document.getElementById("file3").type = 'file';
+		document.getElementById("label2").style.display = 'inline-block';
+		document.getElementById("label3").style.display = 'inline-block';
 	}
 	 
 	document.getElementById("edit1").style.display = 'none';
