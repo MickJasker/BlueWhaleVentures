@@ -15,6 +15,8 @@ $experimentID = checkExperimentID(secure($_GET["experimentid"]), $_SESSION["Comp
 		<?php
 			getDesignSheetData($experimentID, "Result", $_SESSION["Language"]);
 		?>
-		<button id="edit1" onclick="editPage(7)"> Edit </button>
+		<?php if ($_SESSION["traject"] == true) { ?>
+			<button id="edit1" onclick="editPage(7)"> Edit </button>
+		<?php } ?>
 	</body>
 </html>
