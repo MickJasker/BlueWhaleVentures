@@ -606,7 +606,7 @@ function getExperiment($id)
         {
             if ($row["Preparation"] == "")
             {
-                $name = "Add a ew pitch";
+                $name = "Add a new pitch";
                 $header = "newPitch.php";
             }
             else if ($row["Conclusion"] == "")
@@ -969,18 +969,17 @@ function getExperimentBlockInfo($CompanyID)
 
 function checkExperimentID($ID, $CompanyID)
 {
-    $sql = "SELECT `ID` FROM `Experiment` WHERE ID = '$ID' AND CompanyID = '$CompanyID'";
+    $sql = "SELECT ID FROM Experiment WHERE ID = '$ID' AND CompanyID = '$CompanyID'";
     if($data = Query($sql))
     {
-        while ($row = $data->fetch_assoc())
-        {
-            return $row["ID"];
-        }
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        return $row["ID"];
     }
     else
     {
         header('Location: index.php');
     }
+
     return false;
 }
 
