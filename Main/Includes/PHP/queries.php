@@ -1220,7 +1220,6 @@ function insertQuestion($QuestionPost, $ExecutionID)
 
 function insertQuestionWithExperimentID($QuestionPost, $ExperimentID)
 {
-    echo "kms";
     foreach ($QuestionPost AS $ID => $Question) {
         $sql = "SELECT Question FROM Question WHERE ID = '$ID'";
 
@@ -1243,7 +1242,6 @@ function insertQuestionWithExperimentID($QuestionPost, $ExperimentID)
 
                         $sql2 = "INSERT INTO Question(QuestionaireID, Question) VALUES ('$QuestionaireID','$Question')";
                         if (Query($sql2)) {
-                            echo "Questions inserted";
                         }
                         else {
 
@@ -1254,9 +1252,6 @@ function insertQuestionWithExperimentID($QuestionPost, $ExperimentID)
         }
     }
 }
-
-
-
 
 function SelectQuestion($ExecutionID)
 {
@@ -1432,7 +1427,7 @@ function sendExecution($ExecutionPost, $ExperimentID)
             $sql = "INSERT INTO Questionaire(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
-            $_SESSION['insertedID'] = mysqli_insert_id($conn);
+            $_SESSION['insertedIDInterview'] = mysqli_insert_id($conn);
             header('Location: ../../Client_Portal/Pages/newInterview.php');
 
         }
@@ -1441,7 +1436,7 @@ function sendExecution($ExecutionPost, $ExperimentID)
             $sql = "INSERT INTO Pitch(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
-            $_SESSION['insertedID'] = mysqli_insert_id($conn);
+            $_SESSION['insertedIDPitch'] = mysqli_insert_id($conn);
             header('Location: ../../Client_Portal/Pages/newPitch.php');
 
 
@@ -1451,7 +1446,7 @@ function sendExecution($ExecutionPost, $ExperimentID)
             $sql = "INSERT INTO Prototype(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
-            $_SESSION['insertedID'] = mysqli_insert_id($conn);
+            $_SESSION['insertedIDPrototype'] = mysqli_insert_id($conn);
             header('Location: ../../Client_Portal/Pages/newPrototype.php?experimentID=' . $ExperimentID);
 
 
@@ -1462,7 +1457,39 @@ function sendExecution($ExecutionPost, $ExperimentID)
 function insertPitch($Text, $PitchID) {
 
     $sql = "UPDATE Pitch SET Preparation = '$Text' WHERE ID = '$PitchID'";
-    Query($sql);
+    echo $_SESSION['insertedIDPitch'];
+    if (Query($sql)){
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+}
+
+function insertPitchWithExperimentID($Text, $ExperimentID) {
+
+    $sql = "SELECT ID FROM Pitch WHERE ExperimentID = '$ExperimentID'";
+    echo "hmmm";
+    if ($data = Query($sql)) {
+
+        while ($row = $data->fetch_assoc()) {
+
+            $PitchID = $row["ID"];
+
+            $sql = "UPDATE Pitch SET Preparation = '$Text' WHERE ID = '$PitchID'";
+            if (Query($sql)) {
+                echo "testttt";
+                //header('Location: experiment.php?id=' . $ExperimentID);
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
 
 }
 
