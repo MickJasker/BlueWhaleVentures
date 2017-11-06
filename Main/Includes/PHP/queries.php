@@ -323,7 +323,14 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
         }
 		if ($_SESSION["traject"] == true) { 
 			echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1"><br>';
-			echo '</form> <button id="edit1" onclick=\'editPage(7, "designSheet")\'> Edit </button>';
+			if ($sheetType == "Experiment")
+			{
+				echo '</form> <button id="edit1" onclick=\'editPage(7, "designSheet")\'> Edit </button>';
+			}
+			else if ($sheetType == "Result")
+			{
+				echo '</form> <button id="edit1" onclick=\'editPage(4, "designSheet")\'> Edit </button>';
+			}
 		}
     }
 }
