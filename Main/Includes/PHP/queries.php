@@ -900,7 +900,7 @@ function getMentorBlockInfo()
             <li id="Block" class="col-lg-4">
                 <a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
-                        <img src="../../<?php echo $ProfilePicture; ?>" alt="Mentor Profile">
+                        <img src="<?php echo $ProfilePicture; ?>" alt="Mentor Profile">
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Name ?> </h1>
