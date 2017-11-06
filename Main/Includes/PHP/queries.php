@@ -295,11 +295,6 @@ function getDesignSheetForm($sheetType, $language)
         echo '<input name="submitDesignsheet" type="submit" value="Enter" >';
         echo '</form>';
     }
-    else
-    {
-        echo "Error retrieving experimentdata";
-        return false;
-    }
 }
 
 //Selects all experiment textareas etc
@@ -327,17 +322,14 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
             }
             else
             {
+                
                 echo "Error retrieving experimentdata";
                 return false;
             }
         }
+
         echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1">';
         echo '</form>';
-    }
-    else
-    {
-        echo "Error retrieving experimentdata";
-        return false;
     }
 }
 
@@ -669,21 +661,54 @@ function getExperiment($id)
 	$sql = "SELECT `CompanyID`, `Title`, `Description`FROM `Experiment` WHERE id = '$id'";
 	if($data = query($sql))
 	{
-		while($row = $data->fetch_assoc())
-		{
-			$header = $header . "?experimentID=" . $id;
-			//echo $row["Title"];
-			echo '<h1>' . $row["Title"] . '</h1>';
-			echo '<p>' . $row["Description"] .  '</p>';
-			echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
-			echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
-			echo '<a href="resultSheet.php?experimentid='.$id.'"><button> Results sheet </button> </a>';
-		}
+		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+		
+		$header = $header . "?experimentID=" . $id;
+
+		echo '<h1>' . $row["Title"] . '</h1>';
+		echo '<p>' . $row["Description"] .  '</p>';
+
+		designSheetAvailable($id, "Experiment");
+		echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
+		designSheetAvailable($id, "Result");
 	}
 	else
 	{
 		return false;
 	}
+}
+
+function designSheetAvailable($experimentID, $sheetType)
+{
+    $sql = "SELECT * FROM Answer a 
+    INNER JOIN Segment s ON a.SegmentID = s.ID
+    INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
+    WHERE a.experimentID = '$experimentID' AND d.Type = '$sheetType'";
+
+    if($data = query($sql))
+    {
+        //if a sheet already exists
+        if ($sheetType == "Experiment") 
+        {
+            echo '<a href="designSheet.php?experimentID='.$experimentID.'"><button> Design sheet </button></a>';
+        }
+        if ($sheetType == "Result") 
+        {
+            echo '<a href="resultSheet.php?experimentid='.$experimentID.'"><button> Result sheet </button> </a>';
+        }   
+    }
+    else
+    {
+        //if a sheet does not exist
+        if ($sheetType == "Experiment") 
+        {
+            echo '<a href="createDesignSheet.php?experimentID='.$experimentID.'"><button> Fill in Design sheet </button></a>';
+        }
+        if ($sheetType == "Result") 
+        {
+            echo '<a href="createResultSheet.php?experimentid='.$experimentID.'"><button> Fill in Result sheet </button> </a>';
+        }
+    }
 }
 
 function selectTimeline($companyID)
