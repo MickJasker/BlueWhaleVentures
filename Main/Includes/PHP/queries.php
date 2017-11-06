@@ -1536,6 +1536,7 @@ function selectPitch($ExperimentID)
 
             Preparation: <br/>
             <textarea disabled class="textarea1" name="preparationText" typeplaceholder="Prepare for your pitch"><?php echo $Preparation?></textarea>
+            <br>
 
             <input id="file1" type="hidden" name="file1" id="fileToUpload">
 
