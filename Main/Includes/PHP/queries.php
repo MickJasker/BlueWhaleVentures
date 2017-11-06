@@ -1170,9 +1170,9 @@ function selectCompanyInfo($CompanyID)
                     <div class="content">
                         <div class="container-fluid logo">
                             <p>
-                                Email: <?php echo $Email ?> <br/>
-                                Phone: <?php echo $Phone ?> <br/>
-                                Address: <?php echo $Address ?> <br/>
+                                <span>Email:</span> <?php echo $Email ?> <br/>
+                                <span>Phone:</span> <?php echo $Phone ?> <br/>
+                                <span>Address:</span> <?php echo $Address ?> <br/>
                             </p>
                         </div>
                     </div>
