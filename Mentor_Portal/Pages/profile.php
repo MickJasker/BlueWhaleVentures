@@ -52,7 +52,6 @@ CheckSession("Mentor");
                         <h1>General information</h1><br>
                         <p>Name</p>
                         <input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"><br>
-                        <input type="text" name="name" placeholder="Last name" value=""><br><br>
 
                         <h1>Contact</h1><br>
                         <input type="text" name="email" placeholder="E-mail" value="<?php echo $data[3]; ?>"> <br>
@@ -68,19 +67,8 @@ CheckSession("Mentor");
 
                         <input class="submit" type="submit" name="submit" value="Save">
                     </form>
-                </div>
-
-                <div class="info2">
-                    <form action="#" method="POST">
-                        <h1>Change password</h1><br>
-                        <input type="password" name="oldPassword" placeholder="Old password"> <br><br>
-                        <input type="password" name="password" placeholder="New password"> <br>
-                        <input type="password" name="password2" placeholder="Repeat password"> <br><br>
-                        <input class="submit" type="submit" name="changePassword" value="Change Password">
-                    </form>
-                    <?php
-
-                    if (isset($_POST['submit']))
+					<?php
+				if (isset($_POST['submit']))
                     {
                         $name = secure($_POST['name']);
                         $email = secure($_POST['email']);
@@ -176,37 +164,49 @@ CheckSession("Mentor");
                             echo " - Error - ";
                         }
                     }
-
-                    if (isset($_POST['changePassword']))
-                    {
-                        $passwordold = htmlentities(mysqli_real_escape_string($conn, $_POST['oldPassword']));
-                        $password = htmlentities(mysqli_real_escape_string($conn, $_POST['password']));
-                        $password2 = htmlentities(mysqli_real_escape_string($conn, $_POST['password2']));
-                        if ($passwordold == "")
-                        {
-                            echo "The old password hasn't been entered";
-                        }
-                        else if ($password2 == "")
-                        {
-                            echo "The new password needs to be confirmed";
-                        }
-                        else if ($password != $password2)
-                        {
-                            echo "The passwords do not match";
-                        }
-                        else if (!(preg_match("#[A-Z]+#", $password) && preg_match("#[a-z]+#", $password) && preg_match("#[0-9]+#", $password)))
-                        {
-                            echo "The password should atleast contain one lowercase letter, one uppercase letter and one number";
-                        }
-                        else if (!(strlen($password) >= 8 && strlen($password) <= 60))
-                        {
-                            echo "The password should be between 8 and 60 characters";
-                        }
-                        else
-                        {
-                            updatePassword($ID, $passwordold, $password);
-                        }
-                    }
+				?>
+				<br>
+                </div>
+				
+                <div class="info2">
+                    <form action="#" method="POST">
+                        <h1>Change password</h1><br>
+                        <input type="password" name="oldPassword" placeholder="Old password"> <br><br>
+                        <input type="password" name="password" placeholder="New password"> <br>
+                        <input type="password" name="password2" placeholder="Repeat password"> <br><br>
+                        <input class="submit" type="submit" name="changePassword" value="Change Password">
+                    </form>
+                    <?php
+						if (isset($_POST['changePassword']))
+						{
+							$passwordold = htmlentities(mysqli_real_escape_string($conn, $_POST['oldPassword']));
+							$password = htmlentities(mysqli_real_escape_string($conn, $_POST['password']));
+							$password2 = htmlentities(mysqli_real_escape_string($conn, $_POST['password2']));
+							if ($passwordold == "")
+							{
+								echo "The old password hasn't been entered";
+							}
+							else if ($password2 == "")
+							{
+								echo "The new password needs to be confirmed";
+							}
+							else if ($password != $password2)
+							{
+								echo "The passwords do not match";
+							}
+							else if (!(preg_match("#[A-Z]+#", $password) && preg_match("#[a-z]+#", $password) && preg_match("#[0-9]+#", $password)))
+							{
+								echo "The password should atleast contain one lowercase letter, one uppercase letter and one number";
+							}
+							else if (!(strlen($password) >= 8 && strlen($password) <= 60))
+							{
+								echo "The password should be between 8 and 60 characters";
+							}
+							else
+							{
+								updatePassword($ID, $passwordold, $password);
+							}
+						}
                     ?>
                 </div>
 

@@ -14,10 +14,10 @@ if(isset($_POST['interview']) || isset($_POST['pitch']) || isset($_POST['prototy
     <title> Client Portal </title>
     <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 </head>
-<body id="wrapper-admin">
+<body id="wrapper-executable">
 <Main>
-    <h1> Choose Execution </h1>
     <div id="chooseExecutionForm">
+        <h1> Choose Execution </h1>
         <form id="form" action="#" method="POST">
             <input type="submit" name="interview" value="Interview">
             <input type="submit" name="pitch" value="Pitch">

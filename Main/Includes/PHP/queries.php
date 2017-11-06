@@ -303,7 +303,7 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
     $sql = "SELECT SegmentID, Text  FROM `Answer` WHERE ExperimentID = '$ExperimentID' ORDER BY SegmentID";
     if($data1 = query($sql))
     {
-        echo '<form method="POST" action="#">';
+        echo '<form method="POST" action="#"><h1>Design sheet : Experiment 2</h1>';
         $i = 0;
         while($row1 = $data1->fetch_assoc())
         {
@@ -321,15 +321,14 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
                 $i++;
             }
             else
-            {
-                
+            {        
                 echo "Error retrieving experimentdata";
                 return false;
             }
         }
 
-        echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1">';
-        echo '</form>';
+        echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1"><br>';
+        echo '  <button id="edit1" onclick=\'editPage(7, "designSheet")\'> Edit </button></form>';
     }
 }
 
@@ -1111,9 +1110,11 @@ function selectCompanyMentors($CompanyID)
 		                    <img class="" src="<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
 		                    <h4> <?php echo $row ['Name'] ?> </h4>
 	                    </a>
-	                    <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
-		                    <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
-	                    </a>
+	                    <div id="unassign">
+		                    <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
+			                    <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
+		                    </a>
+	                    </div>
                     </div>
                 </div>
                 <?php
@@ -1162,8 +1163,8 @@ function selectCompanyInfo($CompanyID)
                         </div>
                     </div>
                 </section>
-                <section class="block">
-                    <div class="title-mentor col-md-4">
+                <section class="block company-info">
+                    <div class="title col-md-4">
                         <h3>Company Information</h3>
                     </div>
                     <div class="content">
@@ -1177,7 +1178,7 @@ function selectCompanyInfo($CompanyID)
                     </div>
                 </section>
                 <section class="block">
-                    <div class="title-mentor col-md-4">
+                    <div class="title col-md-4">
                         <h3>Analytics</h3>
                     </div>
                     <div class="content">
@@ -1916,7 +1917,7 @@ function selectPrototype($ExperimentID) {
             ?>
 
             <input id="file2" type="hidden" name="file1" id="fileToUpload">
-            <label for="file2" id="file2">Choose file</label><br>
+            <label for="file2" style="display:none;" id="label2">Choose file</label><br>
 
 
             <?php
@@ -1938,7 +1939,7 @@ function selectPrototype($ExperimentID) {
             <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br>
 
             <input id="file3" type="hidden" name="file2" id="fileToUpload2"><br>
-            <label for="file3" id="file2">Choose file</label>
+            <label for="file3" style="display:none;" id="label3">Choose file</label>
 
             <?php
 
@@ -2497,6 +2498,27 @@ function selectUserLock($userID)
 	}
 }
 
+function selectTrajectDate($CompanyID)
+{
+	$sql = "SELECT `endDate` FROM `Timeline` WHERE CompanyID = '$CompanyID'";
+
+	if ($data = query($sql)) {
+
+        while ($row = $data->fetch_assoc()) 
+		{
+			return $row["endDate"];
+		}
+		
+	}
+}
+
+function updateTrajectDate($CompanyID, $endDate)
+{
+	$sql = "UPDATE `Timeline` SET `endDate`='$endDate' WHERE CompanyID = '$CompanyID'";
+
+    return query($sql);
+}
+
 function selectBachelorName($BachelorGroupID) {
 
     $sql = "SELECT `Name` FROM `BachelorGroup` WHERE ID = '$BachelorGroupID'";
@@ -2522,7 +2544,26 @@ function selectBachelorName($BachelorGroupID) {
 
 }
 
+function selectFilterContent()
+{
 
+    $sql = "SELECT `Name` FROM `Branch`";
 
+    if ($data = query($sql)) {
+
+        while ($row = $data->fetch_assoc()) {
+
+            $Branch = $row['Name'];
+			
+			$Branch = str_replace("_"," ",$Branch);
+
+            ?>
+
+            <li><a href="#" onclick="filterclick()"><?php echo $Branch; ?></a></li>
+
+            <?php
+        }
+    }
+}
 
 ?>
