@@ -575,7 +575,7 @@ function getExperimentsPreview($CompanyID)
 
     if ($data = query($sql))
     {
-        echo "<ul style=list-style-type:none>";
+        echo "<ul id='experiments-list'>";
 
         while ($row = $data->fetch_assoc())
         {
@@ -1271,7 +1271,7 @@ function selectCompanyInfo($CompanyID)
 
                                 <form method="POST" action="#">
                                     Traject date:  <input type="date" name="trajectDate" value="<?php echo $endDate; ?>">
-                                    <input id="submitbtn" name="updateTrajectDate" type="submit" value="Change traject enddate">
+                                    <input id="submitbtn" name="updateTrajectDate" type="submit" value="Change traject end date">
                                 </form>
                             </div>
                             <?php selectLockButton($CompanyID); ?>
