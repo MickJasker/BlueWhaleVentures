@@ -168,10 +168,10 @@ function filterclick(){
 
         for (i = 0; i < li.length; i++) {
             a = li[i].classList[0].toUpperCase();
-            
             //zorgt ervoor dat alle _ vervangen worden door spaties
             var b = a.split("_").join(" ");
             console.log(b);
+            console.log(target);
 
             if (target === b) {
                 li[i].style.display = "";

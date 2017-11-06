@@ -7291,6 +7291,8 @@ body {
 .wrapper-nav #nav .filter #content {
   list-style-type: none;
   padding: 0;
+  width: 30%;
+  word-wrap: break-word;
 }
 .wrapper-nav #nav .filter .filterbtn {
   font-size: 15px;
@@ -7316,9 +7318,12 @@ body {
   border-bottom: none;
   border-top: none;
 }
+.wrapper-nav #nav .filter li {
+  width: 100%;
+}
 .wrapper-nav #nav .filter .filter-content a {
   color: black;
-  padding: 8%;
+  padding: 5%;
   text-decoration: none;
   display: block;
   border-bottom: solid;
