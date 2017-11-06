@@ -100,7 +100,7 @@ function createAccount($role, $user_name, $company_mail, $password)
                 $sql = "INSERT INTO `Login`(`UserID`, `Email`, `Password`) VALUES ('$id', '$company_mail', '$password')";
                 if (query($sql))
                 {
-                    return insertRoleInfo($id);
+						return insertRoleInfo($id);
                 }
             }
         }
@@ -112,10 +112,26 @@ function createAccount($role, $user_name, $company_mail, $password)
 function insertRoleInfo($userID)
 {
     $role = selectRole($userID);
-
-    if ($role == "Company")
+    if ($role == "Client")
     {
-        return insertCompany($userID);
+		if(insertCompany($userID))
+		{
+			$sql = "SELECT ID FROM Company WHERE UserID = '$userID'";
+			if($data = query($sql))
+			{
+				$companyID = "";
+				while($row = $data->fetch_assoc())
+				{
+					$companyID = $row["ID"];
+				}
+				
+				$beginDate = date('Y-m-d');
+				$endDate = date('Y-m-d', strtotime($beginDate. ' + 100 days'));
+				$sql = "INSERT INTO `Timeline`(`CompanyID`, `beginDate`, `endDate`) VALUES ('$companyID','$beginDate','$endDate')";
+				return query($sql);
+			}
+		}
+		return false;
     }
 
     if ($role == "Mentor")
