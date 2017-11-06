@@ -2497,7 +2497,24 @@ function selectBachelorName($BachelorGroupID) {
 
 }
 
+function selectFilterContent()
+{
 
+    $sql = "SELECT `Name` FROM `Branch`";
 
+    if ($data = query($sql)) {
+
+        while ($row = $data->fetch_assoc()) {
+
+            $Branch = $row['Name'];
+
+            ?>
+
+            <li><a href="#" onclick="filterclick()"><?php echo $Branch; ?></a></li>
+
+            <?php
+        }
+    }
+}
 
 ?>
