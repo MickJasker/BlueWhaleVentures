@@ -590,17 +590,17 @@ function getExperiment($id)
         {
             if ($row["Preparation"] == "")
             {
-                $name = "Add a pitch";
+                $name = "Add a ew pitch";
                 $header = "newPitch.php";
             }
             else if ($row["Conclusion"] == "")
             {
-                $name = "Add the conclusion";
+                $name = "Add the pitch conclusion";
                 $header = "pitch.php";
             }
             else
             {
-                $name = "View the results";
+                $name = "View the pitch results";
                 $header = "pitch.php";
             }
         }
@@ -622,7 +622,7 @@ function getExperiment($id)
         $sql = "SELECT `Question` FROM `Question` WHERE `QuestionaireID` = '$questionaireID'";
         if ($data2 = query($sql))
         {
-            $name = "Interview";
+            $name = "Add Interview answer";
             $header = "Interview.php";
         }
     }
@@ -634,7 +634,7 @@ function getExperiment($id)
         {
             if ($row["Explanation1"] == "")
             {
-                $name = "Add a prototype";
+                $name = "Add a new prototype";
                 $header = "newPrototype.php";
             }
             else if ($row["Explanation2"] == "")
@@ -644,7 +644,7 @@ function getExperiment($id)
             }
             else
             {
-                $name = "View the results";
+                $name = "View the prototype results";
                 $header = "prototype.php";
             }
         }
@@ -1029,7 +1029,7 @@ function getMentorAssignedBlockInfo($UserID)
             ?>
 
             <li id="Block" class="col-lg-4">
-                <a href="client_profile.php?id=<?php echo $ID ?>">
+                <a href="clientProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <img src="../../<?php echo $Logo ?>" alt="Mentor Profile">
                     </div>
@@ -1177,6 +1177,71 @@ function selectCompanyInfo($CompanyID)
 	                    </div>
                     </div>
                 </section>
+            </div>
+        </div>
+
+        <?php
+    }
+}
+
+function selectCompanyInfoGutted($CompanyID)
+{
+    $sql = "SELECT c.Name, c.Logo, c.Description, c.Email, c.Phone, c.Address FROM Company c
+	WHERE c.ID = '$CompanyID'";
+
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc()) {
+            $Name = $row["Name"];
+            $Logo = $row["Logo"];
+            $Description = $row["Description"];
+            $Email = $row["Email"];
+            $Phone = $row["Phone"];
+            $Address = $row["Address"];
+        }
+
+
+        ?>
+
+        <div class="wrapper-profile">
+            <div class="row">
+                <section class="block">
+                    <div class="content">
+                        <div class="container-fluid logo">
+                            <img src="../../<?php echo $Logo ?>">
+                        </div>
+                        <div class="container-fluid discription">
+                            <h3><?php echo $Name ?></h3>
+                            <p><?php echo $Description ?>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section class="block">
+                    <div class="title-mentor col-md-4">
+                        <h3>Company Information</h3>
+                    </div>
+                    <div class="content">
+                        <div class="container-fluid logo">
+                            <p>
+                                Email: <?php echo $Email ?> <br/>
+                                Phone: <?php echo $Phone ?> <br/>
+                                Address: <?php echo $Address ?> <br/>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                    <section class="block col-md-4">
+                        <div class="content">
+                            <div class="container-fluid title">
+                                <h3>Experiments</h3>
+                            </div>
+                            <div class="container-fluid">
+                                <?php getExperimentsPreview(secure($_GET["id"])); ?>
+                            </div>
+                        </div>
+                    </section>
             </div>
         </div>
 
