@@ -651,7 +651,7 @@ function getExperiment($id)
         $sql = "SELECT `Question` FROM `Question` WHERE `QuestionaireID` = '$questionaireID'";
         if ($data2 = query($sql))
         {
-            $name = "Add Interview answer";
+            $name = "View interview";
             $header = "Interview.php";
         }
     }
@@ -673,7 +673,7 @@ function getExperiment($id)
             }
             else
             {
-                $name = "View the prototype results";
+                $name = "View prototype";
                 $header = "prototype.php";
             }
         }
@@ -1616,34 +1616,33 @@ function sendExecution($ExecutionPost, $ExperimentID)
 {
     global $conn;
 
-    foreach ($ExecutionPost AS $ID => $Execution) {
-        if ($ID == "interview") {
+    foreach ($ExecutionPost AS $ID => $Execution)
+    {
+        if ($ID == "interview")
+        {
             $sql = "INSERT INTO Questionaire(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
             $_SESSION['insertedIDInterview'] = mysqli_insert_id($conn);
-            header('Location: ../../Client_Portal/Pages/newInterview.php');
-
+            header('Location: ../../Client_Portal/Pages/newInterview.php?experimentID='.$ExperimentID);
         }
 
-        if ($ID == "pitch") {
+        if ($ID == "pitch")
+        {
             $sql = "INSERT INTO Pitch(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
             $_SESSION['insertedIDPitch'] = mysqli_insert_id($conn);
-            header('Location: ../../Client_Portal/Pages/newPitch.php');
-
-
+            header('Location: ../../Client_Portal/Pages/newPitch.php?experimentID='.$ExperimentID);
         }
 
-        if ($ID == "prototype") {
+        if ($ID == "prototype")
+        {
             $sql = "INSERT INTO Prototype(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
             $_SESSION['insertedIDPrototype'] = mysqli_insert_id($conn);
             header('Location: ../../Client_Portal/Pages/newPrototype.php?experimentID=' . $ExperimentID);
-
-
         }
     }
 }
