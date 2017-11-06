@@ -10,11 +10,12 @@ CheckSession("Admin");
 		<link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 	</head>
 
-	<body id="wrapper-ClientProfile">
+	<body id="wrapper-admin-body">
 		<header class="row wrapper-nav">
 			<?php require "../nav_nosearchadmin.php"; ?>
 		</header>
 		<main id="wrapper-profile">
+
             <div class="content">
 
                 <div class="profile">
@@ -30,15 +31,31 @@ CheckSession("Admin");
                         }
                         ?>
                     </div>
-
                     <div class="name">
                         <h1><?php echo $data[1]; ?></h1>
                     </div>
-			
-			<p>Name: <?php echo $data[1]; ?></p> <br>
-			<p>Mail adres: <?php echo $data[3]; ?></p> <br>
-			<p>Company: <?php echo $data[4]; ?> </p> <br>
-			<p>Number: <?php echo $data[5]; ?></p> <br>
+                </div>
+
+                <div class="info">
+
+                    <div class="title">
+                        <h1>Information</h1>
+                    </div>
+
+                    <div class="text">
+
+                        <div class="info1">
+                            <h1>E-mail:</h1> <p><?php echo $data[3]; ?></p> <br>
+                            <h1>Company:</h1> <p><?php echo $data[4]; ?></p> <br>
+                            <h1>Number:</h1> <p><?php echo $data[5]; ?></p> <br>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
 		</main>
 	</body>
 </html>
