@@ -542,6 +542,18 @@ function getCompanyBlockInfo()
     }
 }
 
+function getUserNames($UserID)
+{
+	$sql = "SELECT Name FROM User WHERE ID = '$UserID'";
+	if ($data = query($sql))
+    {
+        while($row = $data->fetch_assoc())
+        {
+			echo $row["Name"];
+		}
+	}
+}
+
 //gets the 3 latest
 function getExperimentsPreview($CompanyID)
 {
@@ -638,7 +650,7 @@ function getExperiment($id)
         }
     }
 	
-	$sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
+	$sql = "SELECT `CompanyID`, `Title`, `Description`FROM `Experiment` WHERE id = '$id'";
 	if($data = query($sql))
 	{
 		while($row = $data->fetch_assoc())
@@ -647,8 +659,6 @@ function getExperiment($id)
 			//echo $row["Title"];
 			echo '<h1>' . $row["Title"] . '</h1>';
 			echo '<p>' . $row["Description"] .  '</p>';
-			echo '<p> Progress: ' . $row["Progress"] . '</p>';
-			echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
 			echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
 			echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
 			echo '<a href="resultSheet.php?experimentid='.$id.'"><button> Results sheet </button> </a>';
