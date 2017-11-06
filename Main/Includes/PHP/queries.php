@@ -2472,6 +2472,27 @@ function selectUserLock($userID)
 	}
 }
 
+function selectTrajectDate($CompanyID)
+{
+	$sql = "SELECT `endDate` FROM `Timeline` WHERE CompanyID = '$CompanyID'";
+
+	if ($data = query($sql)) {
+
+        while ($row = $data->fetch_assoc()) 
+		{
+			return $row["endDate"];
+		}
+		
+	}
+}
+
+function updateTrajectDate($CompanyID, $endDate)
+{
+	$sql = "UPDATE `Timeline` SET `endDate`='$endDate' WHERE CompanyID = '$CompanyID'";
+
+    return query($sql);
+}
+
 function selectBachelorName($BachelorGroupID) {
 
     $sql = "SELECT `Name` FROM `BachelorGroup` WHERE ID = '$BachelorGroupID'";
