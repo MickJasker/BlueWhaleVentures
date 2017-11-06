@@ -1,6 +1,7 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
 checkSession('Client');
+checkRange();
 $experimentId = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
 if(isset($_POST['interview']) || isset($_POST['pitch']) || isset($_POST['prototype'])) {
     sendExecution($_POST, $experimentId);

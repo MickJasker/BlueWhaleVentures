@@ -321,9 +321,10 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
                 $i++;
             }
         }
-
-        echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1"><br>';
-        echo '</form>  <button id="edit1" onclick=\'editPage(7, "designSheet")\'> Edit </button>';
+		if ($_SESSION["traject"] == true) { 
+			echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1"><br>';
+			echo '</form> <button id="edit1" onclick=\'editPage(7, "designSheet")\'> Edit </button>';
+		}
     }
 }
 
@@ -1765,8 +1766,9 @@ function selectPitch($ExperimentID)
 
             <?php
         }
+		return $Media;
     }
-    return $Media;
+	return false;    
 }
 
 function getAdminProfile($ID)
@@ -2122,11 +2124,13 @@ function selectAnswers($questionID, $i){
 
         }
     }
+	if ($_SESSION["traject"] == true) { 
     ?>
 
     <button type="button" onclick="addAnswer(<?php echo $questionID?>)">Add Answer</button>
 
     <?php
+	}
     return $i;
 }
 
@@ -2509,6 +2513,30 @@ function selectLockButton($companyID)
             <?php
         }
     }
+}
+
+function checkRangeDate()
+{
+	$CompanyID = $_SESSION['CompanyID'];
+    $sql = "SELECT `endDate` FROM `Timeline` WHERE CompanyID = '$CompanyID'";
+
+    if ($data = Query($sql))
+    {
+		 while ($row = $data->fetch_assoc()) 
+		 {
+            $endDate = new DateTime($row["endDate"]);
+			$currentDate = new DateTime();
+			if($endDate < $currentDate) {
+				$_SESSION["traject"] = false;
+			}
+			else
+			{
+				$_SESSION["traject"] = true;
+			}
+			return true;
+		 }
+	}
+	return false;
 }
 
 function insertBachelorGroup($BachelorName)

@@ -1,6 +1,7 @@
 <?php
     require '../../Main/Includes/PHP/functions.php';
 	checkSession('Client');
+	checkRange();
 
 	$i = 0;
     if(isset($_POST['submit']))

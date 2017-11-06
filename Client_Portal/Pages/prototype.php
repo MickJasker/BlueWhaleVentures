@@ -128,7 +128,9 @@ $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["Comp
             ?>
 
         </form>
-		<button id="edit1" onclick='editPage(2, "prototype")'> Edit </button>
+		<?php if ($_SESSION["traject"] == true) { ?>
+			<button id="edit1" onclick='editPage(2, "prototype")'> Edit </button>
+		<?php } ?>
     </div>
 </Main>
 </body>

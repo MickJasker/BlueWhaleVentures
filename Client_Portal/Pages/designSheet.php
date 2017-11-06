@@ -2,9 +2,11 @@
 require '../../Main/Includes/PHP/functions.php';
 checkSession('Client');
 $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
-if (isset($_POST["submitDesignsheet"])) 
-{
-	updateDesignSheet($_POST, "Experiment", $_SESSION["Language"], $experimentID);
+if ($_SESSION["traject"] == true) { 
+	if (isset($_POST["submitDesignsheet"])) 
+	{
+		updateDesignSheet($_POST, "Experiment", $_SESSION["Language"], $experimentID);
+	}
 }
 
 ?>

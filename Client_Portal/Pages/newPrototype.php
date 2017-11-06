@@ -1,6 +1,7 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
 checkSession('Client');
+checkRange();
 $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
     if (isset($_POST['save']))
     {
