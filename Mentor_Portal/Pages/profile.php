@@ -54,8 +54,10 @@ CheckSession("Mentor");
                         <input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"><br>
                         <input type="text" name="name" placeholder="Last name" value=""><br><br>
 
-                        <h1>E-mail</h1><br>
+                        <h1>Contact</h1><br>
                         <input type="text" name="email" placeholder="E-mail" value="<?php echo $data[3]; ?>"> <br>
+                        <input type="text" name="companyName" placeholder="Company name" value="<?php echo $data[4]; ?>"> <br>
+                        <input type="text" name="phone" placeholder="Phone" value="<?php echo $data[5]; ?>"> <br>
 
                         <br>
                         <h1>Language</h1>
@@ -64,8 +66,6 @@ CheckSession("Mentor");
                             <?php selectLanguage($ID); ?>
                         </select> <br><br>
 
-                        <input type="text" name="companyName" placeholder="Company	name" value="<?php echo $data[4]; ?>"> <br>
-                        <input type="text" name="phone" placeholder="Phone" value="<?php echo $data[5]; ?>"> <br>
                         <input class="submit" type="submit" name="submit" value="Save">
                     </form>
                 </div>
