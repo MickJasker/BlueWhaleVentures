@@ -1139,8 +1139,8 @@ function selectCompanyInfo($CompanyID)
                         </div>
                     </div>
                 </section>
-                <section class="block">
-                    <div class="title-mentor col-md-4">
+                <section class="block company-info">
+                    <div class="title col-md-4">
                         <h3>Company Information</h3>
                     </div>
                     <div class="content">
@@ -1154,7 +1154,7 @@ function selectCompanyInfo($CompanyID)
                     </div>
                 </section>
                 <section class="block">
-                    <div class="title-mentor col-md-4">
+                    <div class="title col-md-4">
                         <h3>Analytics</h3>
                     </div>
                     <div class="content">

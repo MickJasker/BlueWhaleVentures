@@ -110,207 +110,219 @@ body {
 
 // Admin page styling
 
-#wrapper-admin-body{
-  background-image: url('../../Files/Images/stockImages/adminbackground.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+#wrapper-admin-body {
+	background-image: url('../../Files/Images/stockImages/adminbackground.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 
-  #wrapper-admin {
+	#wrapper-admin {
 
-    margin: 0;
-    padding-top: 80px;
-    height: 100%;
+		margin: 0;
+		padding-top: 80px;
+		height: 100%;
 
-    #toggle_bachelor{
-      position: fixed;
-      display: block;
-      width: 100%;
+		#toggle_bachelor {
+			position: fixed;
+			display: block;
+			width: 100%;
 
-      #text{
-        padding-left: 4.16%;
+			#text {
+				padding-left: 4.16%;
 
-        h1{
-          display: inline-block;
-          margin-right: 3%;
-          &:hover{
-            cursor: pointer;
-          }
-        }
+				h1 {
+					display: inline-block;
+					margin-right: 3%;
+					&:hover {
+						cursor: pointer;
+					}
+				}
 
-        .border-bottom{
-          border-bottom: solid 5px;
-          border-color: @blue;
-        }
-      }
-    }
+				.border-bottom {
+					border-bottom: solid 5px;
+					border-color: @blue;
+				}
+			}
+		}
 
-    .clientmodal, .mentormodal {
-      display: none; /* Hidden by default */
-      position: fixed; /* Stay in place */
-      z-index: 1; /* Sit on top */
-      padding-top: 100px; /* Location of the box */
-      left: 0;
-      top: 0;
-      width: 100%; /* Full width */
-      height: 100%; /* Full height */
-      overflow: auto; /* Enable scroll if needed */
-      background-color: rgb(0,0,0); /* Fallback color */
-      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    }
+		.clientmodal, .mentormodal {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 1; /* Sit on top */
+			padding-top: 100px; /* Location of the box */
+			left: 0;
+			top: 0;
+			width: 100%; /* Full width */
+			height: 100%; /* Full height */
+			overflow: auto; /* Enable scroll if needed */
+			background-color: rgb(0, 0, 0); /* Fallback color */
+			background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+		}
 
-    /* Modal Content */
-    .clientmodal-content, .mentormodal-content {
-      position: relative;
-      background-color: #fefefe;
-      margin: auto;
-      padding: 0;
-      margin-top: 3%;
-      border: 1px solid #888;
-      width: 28%;
-      height: 50vh;
-      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-      -webkit-animation-name: animatetop;
-      -webkit-animation-duration: 0.4s;
-      animation-name: animatetop;
-      animation-duration: 0.4s
-    }
+		/* Modal Content */
+		.clientmodal-content, .mentormodal-content {
+			position: relative;
+			background-color: #fefefe;
+			margin: auto;
+			padding: 0;
+			margin-top: 3%;
+			border: 1px solid #888;
+			width: 28%;
+			height: 50vh;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-animation-name: animatetop;
+			-webkit-animation-duration: 0.4s;
+			animation-name: animatetop;
+			animation-duration: 0.4s
+		}
 
-    /* Add Animation */
-    @-webkit-keyframes animatetop {
-      from {top:-300px; opacity:0}
-      to {top:0; opacity:1}
-    }
+		/* Add Animation */
+		@-webkit-keyframes animatetop {
+			from {
+				top: -300px;
+				opacity: 0
+			}
+			to {
+				top: 0;
+				opacity: 1
+			}
+		}
 
-    @keyframes animatetop {
-      from {top:-300px; opacity:0}
-      to {top:0; opacity:1}
-    }
+		@keyframes animatetop {
+			from {
+				top: -300px;
+				opacity: 0
+			}
+			to {
+				top: 0;
+				opacity: 1
+			}
+		}
 
-    /* The Close Button */
-    .close {
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
+		/* The Close Button */
+		.close {
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
 
-    .close:hover,
-    .close:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-    }
+		.close:hover,
+		.close:focus {
+			color: #000;
+			text-decoration: none;
+			cursor: pointer;
+		}
 
-    .clientmodal-header, .mentormodal-header {
-      padding: 2px 16px;
-      background-color: @blue;
-      color: white;
-    }
+		.clientmodal-header, .mentormodal-header {
+			padding: 2px 16px;
+			background-color: @blue;
+			color: white;
+		}
 
-    .clientmodal-body, .mentormodal-body {
-      padding: 2px 16px;
+		.clientmodal-body, .mentormodal-body {
+			padding: 2px 16px;
 
-      form{
-        width: 145%;
-        padding: 10% 55% 0 5%;
+			form {
+				width: 145%;
+				padding: 10% 55% 0 5%;
 
-        #field{
-          outline: none;
-          border: none;
-          font-size: 15px;
-          line-height: 30px;
-          padding-left: 8px;
-          margin-bottom: 5%;
-          width: 100%;
-          background-color: @offwhite;
-        }
+				#field {
+					outline: none;
+					border: none;
+					font-size: 15px;
+					line-height: 30px;
+					padding-left: 8px;
+					margin-bottom: 5%;
+					width: 100%;
+					background-color: @offwhite;
+				}
 
-        #submitbtn{
-          width: 100%;
-          background-color: @blue;
-          color: white;
-          text-align: left;
-          height: 30px;
-        }
-      }
-    }
+				#submitbtn {
+					width: 100%;
+					background-color: @blue;
+					color: white;
+					text-align: left;
+					height: 30px;
+				}
+			}
+		}
 
-    .list {
-      margin: 105px 0 5% 0;
-      position: absolute;
-      width: 100%;
-      height: auto;
-      padding: 0;
-    }
+		.list {
+			margin: 105px 0 5% 0;
+			position: absolute;
+			width: 100%;
+			height: auto;
+			padding: 0;
+		}
 
-    a {
-      text-decoration: none;
-    }
+		a {
+			text-decoration: none;
+		}
 
-    .content {
-      margin: 0 3% 0 3%;
-      position: relative
-    }
+		.content {
+			margin: 0 3% 0 3%;
+			position: relative
+		}
 
-    #Block {
+		#Block {
 
-      padding: 0;
-      height: 33vh;
-      width: 31%;
-      position: relative;
-      list-style-type: none;
-      margin: 0 1.16% 4% 1.16%;
+			padding: 0;
+			height: 33vh;
+			width: 31%;
+			position: relative;
+			list-style-type: none;
+			margin: 0 1.16% 4% 1.16%;
 
-      .BlockLogo {
-        background-color: @offwhite;
-        width: auto;
-        height: 80%;
-        position: relative;
-        border: solid;
-        border-color: @grey;
-        border-bottom: none;
-        border-width: 1px;
+			.BlockLogo {
+				background-color: @offwhite;
+				width: auto;
+				height: 80%;
+				position: relative;
+				border: solid;
+				border-color: @grey;
+				border-bottom: none;
+				border-width: 1px;
 
-        img {
-          max-width: 100%;
-          max-height: 100%;
-          width: auto;
-          height: auto;
-          margin: auto;
+				img {
+					max-width: 100%;
+					max-height: 100%;
+					width: auto;
+					height: auto;
+					margin: auto;
 
-          display: block;
-          padding: 0 10px 0 10px;
-          top: 0;
-          bottom: 0;
-          right: 0;
-          left: 0;
-          position: absolute;
-        }
-      }
+					display: block;
+					padding: 0 10px 0 10px;
+					top: 0;
+					bottom: 0;
+					right: 0;
+					left: 0;
+					position: absolute;
+				}
+			}
 
-      .BlockTitle {
+			.BlockTitle {
 
-        width: 100%;
-        height: 20%;
-        padding: 0;
-        position: relative;
-        background-color: @blue;
+				width: 100%;
+				height: 20%;
+				padding: 0;
+				position: relative;
+				background-color: @blue;
 
-        h1 {
-          padding: 2%;
-          color: @white;
-          font-family: "Open Sans";
-          margin: 0;
-          font-size: 3vh;
-			display: inline-block;
-        }
-		  img{
-			  float: right;
-			  padding: 3% 2%;
-		  }
-      }
-    }
-  }
+				h1 {
+					padding: 2%;
+					color: @white;
+					font-family: "Open Sans";
+					margin: 0;
+					font-size: 3vh;
+					display: inline-block;
+				}
+				img {
+					float: right;
+					padding: 3% 2%;
+				}
+			}
+		}
+	}
 	footer {
 		position: fixed;
 		left: 0px;
@@ -605,221 +617,6 @@ body {
 }
 
 #wrapper-ClientProfile {
-  main {
-    margin-top: 80px;
-
-    #mentormodal {
-      display: none; /* Hidden by default */
-      position: fixed; /* Stay in place */
-      z-index: 1; /* Sit on top */
-      padding-top: 100px; /* Location of the box */
-      left: 0;
-      top: 0;
-      width: 100%; /* Full width */
-      height: 100%; /* Full height */
-      overflow: auto; /* Enable scroll if needed */
-      background-color: rgb(0,0,0); /* Fallback color */
-      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    }
-
-    /* Modal Content */
-    .mentormodal-content {
-      position: relative;
-      background-color: #fefefe;
-      margin: auto;
-      padding: 0;
-      margin-top: 3%;
-      border: 1px solid #888;
-      width: 28%;
-      height: 50vh;
-      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-      -webkit-animation-name: animatetop;
-      -webkit-animation-duration: 0.4s;
-      animation-name: animatetop;
-      animation-duration: 0.4s
-    }
-
-    /* Add Animation */
-    @-webkit-keyframes animatetop {
-      from {top:-300px; opacity:0}
-      to {top:0; opacity:1}
-    }
-
-    @keyframes animatetop {
-      from {top:-300px; opacity:0}
-      to {top:0; opacity:1}
-    }
-
-    /* The Close Button */
-    .close {
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: #000;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .mentormodal-header {
-      padding: 2px 16px;
-      background-color: @blue;
-      color: white;
-    }
-
-    .mentormodal-body {
-      padding: 2px 16px;
-
-      form{
-        width: 145%;
-        padding: 10% 55% 0 5%;
-
-        #field{
-          outline: none;
-          border: none;
-          font-size: 15px;
-          line-height: 30px;
-          padding-left: 8px;
-          margin-bottom: 5%;
-          width: 100%;
-          background-color: @offwhite;
-        }
-
-        #submitbtn{
-          width: 100%;
-          background-color: @blue;
-          color: white;
-          text-align: left;
-          height: 30px;
-        }
-      }
-    }
-    .wrapper-profile {
-      margin-left: 10px;
-      margin-top: 2vh;
-
-      .mentor-row {
-        margin-top: 20px;
-        .block-experiments {
-          position: relative;
-          float: left;
-          padding: 0;
-          max-height: 30%;
-          background-color: @offwhite;
-          .title-experiments {
-            background-color: @blue;
-            width: 100%;
-            margin: 0;
-            height: 36px;
-            h1 {
-              color: white
-            }
-            h2 {
-              color: white;
-            }
-            h3 {
-              color: white;
-              margin: 0;
-            }
-          }
-          .experiment-preview {
-			hr {
-
-			}
-          }
-        }
-        .mentor {
-          overflow: hidden;
-          .title-mentor {
-            background-color: @blue;
-            width: 100%;
-            padding: 5px 9px;
-            h1 {
-              color: @white
-            }
-
-            h2 {
-              color: @white;
-            }
-            h3 {
-              color: @white;
-              margin: 0;
-            }
-          }
-        }
-      }
-      .block {
-
-        position: relative;
-        float: left;
-        width: 32%;
-        margin-left: 15px;
-        max-height: 30%;
-
-        h2 {
-          color: @white;
-        }
-
-        .title {
-          background-color: @blue;
-          width: 100%;
-          h1 {
-            color: white
-          }
-          h2 {
-            color: white;
-          }
-          h3 {
-            color: white;
-          }
-
-        }
-
-        .content {
-          width: 100%;
-          background-color: @offwhite;
-
-          h3 {
-            color: @white;
-          }
-
-          p {
-            color: @white;
-          }
-
-        }
-
-        .logo {
-
-          img {
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            margin: auto;
-
-            display: block;
-            padding: 10px;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            position: relative;
-          }
-        }
-
-        .discription {
-          background-color: @blue;
-        }
-      }
-    }
-	.lock {
-	  height: 7vh;
-	}
-  }
 	main {
 		margin-top: 80px;
 
@@ -929,11 +726,36 @@ body {
 			margin-top: 2vh;
 
 			.mentor-row {
-			  	margin-top: 10vh;
-			  	position: relative;
-			  	overflow: hidden;
+				margin-top: 20px;
+				.block-experiments {
+					position: relative;
+					float: left;
+					padding: 0;
+					max-height: 30%;
+					background-color: @offwhite;
+					.title-experiments {
+						background-color: @blue;
+						width: 100%;
+						margin: 0;
+						height: 36px;
+						h1 {
+							color: white
+						}
+						h2 {
+							color: white;
+						}
+						h3 {
+							color: white;
+							margin: 0;
+						}
+					}
+					.experiment-preview {
+						hr {
 
-			  	.mentor {
+						}
+					}
+				}
+				.mentor {
 					overflow: hidden;
 					.title-mentor {
 						background-color: @blue;
@@ -950,15 +772,6 @@ body {
 							color: @white;
 							margin: 0;
 						}
-					}
-				  	.mentor-preview {
-					  overflow: hidden;
-					  max-height: 33vh;
-					  #profile-pic {
-						max-height: 100%;
-						max-width: 100%;
-						vertical-align: middle;
-					  }
 					}
 				}
 			}
@@ -986,30 +799,7 @@ body {
 					h3 {
 						color: white;
 					}
-				}
 
-				.block-experiments {
-					position: relative;
-					float: left;
-					width: 32%;
-					margin-left: 15px;
-					max-height: 30%;
-					.title-experiments {
-						background-color: @blue;
-						width: 100%;
-						h1 {
-							color: white
-						}
-						h2 {
-							color: white;
-						}
-						h3 {
-							color: white;
-						}
-					}
-					.experiment-preview {
-						background-color: red;
-					}
 				}
 
 				.content {
@@ -1047,6 +837,251 @@ body {
 
 				.discription {
 					background-color: @blue;
+				}
+			}
+		}
+		.lock {
+			height: 7vh;
+		}
+	}
+	main {
+		margin-top: 80px;
+
+		#mentormodal {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 1; /* Sit on top */
+			padding-top: 100px; /* Location of the box */
+			left: 0;
+			top: 0;
+			width: 100%; /* Full width */
+			height: 100%; /* Full height */
+			overflow: auto; /* Enable scroll if needed */
+			background-color: rgb(0, 0, 0); /* Fallback color */
+			background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+		}
+
+		/* Modal Content */
+		.mentormodal-content {
+			position: relative;
+			background-color: #fefefe;
+			margin: auto;
+			padding: 0;
+			margin-top: 3%;
+			border: 1px solid #888;
+			width: 28%;
+			height: 50vh;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-animation-name: animatetop;
+			-webkit-animation-duration: 0.4s;
+			animation-name: animatetop;
+			animation-duration: 0.4s
+		}
+
+		/* Add Animation */
+		@-webkit-keyframes animatetop {
+			from {
+				top: -300px;
+				opacity: 0
+			}
+			to {
+				top: 0;
+				opacity: 1
+			}
+		}
+
+		@keyframes animatetop {
+			from {
+				top: -300px;
+				opacity: 0
+			}
+			to {
+				top: 0;
+				opacity: 1
+			}
+		}
+
+		/* The Close Button */
+		.close {
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: #000;
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+		.mentormodal-header {
+			padding: 2px 16px;
+			background-color: @blue;
+			color: white;
+		}
+
+		.mentormodal-body {
+			padding: 2px 16px;
+
+			form {
+				width: 145%;
+				padding: 10% 55% 0 5%;
+
+				#field {
+					outline: none;
+					border: none;
+					font-size: 15px;
+					line-height: 30px;
+					padding-left: 8px;
+					margin-bottom: 5%;
+					width: 100%;
+					background-color: @offwhite;
+				}
+
+				#submitbtn {
+					width: 100%;
+					background-color: @blue;
+					color: white;
+					text-align: left;
+					height: 30px;
+				}
+			}
+		}
+		.wrapper-profile {
+			margin-left: 10px;
+			margin-top: 2vh;
+
+			.mentor-row {
+				margin-top: 5vh;
+				position: relative;
+				overflow: hidden;
+
+				.mentor {
+					overflow: hidden;
+					.title-mentor {
+						background-color: @blue;
+						width: 100%;
+						padding: 5px 9px;
+						h1 {
+							color: @white
+						}
+
+						h2 {
+							color: @white;
+						}
+						h3 {
+							color: @white;
+							margin: 0;
+						}
+					}
+					.mentor-preview {
+						overflow: hidden;
+						max-height: 33vh;
+						min-height: 33vh;
+						background-color: @offwhite;
+						#profile-pic {
+							max-height: 100%;
+							max-width: 100%;
+							vertical-align: middle;
+						}
+					}
+				}
+			}
+			.block {
+
+				position: relative;
+				float: left;
+				width: 32%;
+				margin-left: 15px;
+				max-height: 35vh;
+				min-height: 35vh;
+				background-color: @offwhite;
+
+				h2 {
+					color: @white;
+				}
+
+				.title {
+					background-color: @blue;
+					width: 100%;
+					h1 {
+						color: white
+					}
+					h2 {
+						color: white;
+					}
+					h3 {
+						color: white;
+					}
+				}
+
+				.block-experiments {
+					position: relative;
+					float: left;
+					width: 32%;
+					margin-left: 15px;
+					max-height: 33vh;
+					min-height: 33vh;
+					.title-experiments {
+						background-color: @blue;
+						width: 100%;
+						h1 {
+							color: white
+						}
+						h2 {
+							color: white;
+						}
+						h3 {
+							color: white;
+						}
+					}
+					.experiment-preview {
+						background-color: red;
+					}
+				}
+
+				.content {
+					background-color: @offwhite;
+					max-height: 33vh;
+					min-height: 33vh;
+					margin: 0;
+
+					h3 {
+						color: @white;
+					}
+
+					p {
+						color: @white;
+					}
+				}
+
+				.logo {
+
+					img {
+						max-width: 90%;
+						max-height: 90%;
+						width: auto;
+						height: auto;
+
+						display: block;
+						padding: 10px;
+						top: 0;
+						bottom: 0;
+						right: 0;
+						left: 0;
+						position: relative;
+					}
+				}
+
+				.discription {
+					background-color: @blue;
+					height: 8.3vh;
+				}
+			}
+			.lower-bar {
+				#lock {
+					background-color: red;
 				}
 			}
 		}
@@ -1514,67 +1549,67 @@ body {
 #wrapper-profile {
 
 	.content {
-			top: 80px;
-			margin: 3% 3% 5% 3%;
-			position: absolute;
-			width: 94%;
-			height: auto;
-			padding: 0;
+		top: 80px;
+		margin: 3% 3% 5% 3%;
+		position: absolute;
+		width: 94%;
+		height: auto;
+		padding: 0;
 
-			.profile {
-				width: 20%;
-				height: 43vh;
-				float: left;
-				position: fixed;
+		.profile {
+			width: 20%;
+			height: 43vh;
+			float: left;
+			position: fixed;
 
-				.picture {
-					background-color: @offwhite;
-					width: 38vh;
-					height: 38vh;
+			.picture {
+				background-color: @offwhite;
+				width: 38vh;
+				height: 38vh;
+				position: relative;
+				display: inline-block;
+				overflow: hidden;
+				border-radius: 50%;
+				border: solid 1px;
+				border-color: @grey;
+
+				img {
 					position: relative;
-					display:inline-block;
-					overflow: hidden;
-					border-radius: 50%;
-					border: solid 1px;
-					border-color: @grey;
-
-					img {
-						position:relative;
-						width: auto;
-						max-height: 100%;
-						min-width: 100%;
-						min-height: 100%;
-						top: 50%;
-						transform: translate(-50%, -50%);
-						left: 50%;
-					}
-				}
-
-				.name {
-					width: 38vh;
-					height: 5vh;
-
-					h1 {
-						padding: 2%;
-						color: @blue;
-						font-family: "Open Sans";
-						margin: 0;
-						font-size: 3vh;
-						font-weight: bold;
-						text-align: center;
-					}
+					width: auto;
+					max-height: 100%;
+					min-width: 100%;
+					min-height: 100%;
+					top: 50%;
+					transform: translate(-50%, -50%);
+					left: 50%;
 				}
 			}
-		.info{
+
+			.name {
+				width: 38vh;
+				height: 5vh;
+
+				h1 {
+					padding: 2%;
+					color: @blue;
+					font-family: "Open Sans";
+					margin: 0;
+					font-size: 3vh;
+					font-weight: bold;
+					text-align: center;
+				}
+			}
+		}
+		.info {
 			width: 65%;
 			height: auto;
 			min-height: 65vh;
-			display:inline-block;
+			display: inline-block;
 			float: right;
 			position: relative;
 			font-family: "Open Sans";
 
-			.title{
+			.title {
 				width: 100%;
 				height: 5vh;
 				background-color: @blue;
@@ -1587,7 +1622,7 @@ body {
 					display: inline-block;
 				}
 			}
-			.text{
+			.text {
 				width: 100%;
 				height: auto;
 				background-color: @offwhite;
@@ -1607,29 +1642,29 @@ body {
 					font-weight: bold;
 				}
 
-				p{
+				p {
 					font-size: 1.8vh;
 				}
 
-				.info1, .info2{
+				.info1, .info2 {
 					float: left;
 					width: 50%;
 					height: auto;
 					position: relative;
 					padding-bottom: 3%;
 				}
-				.info2{
+				.info2 {
 					padding-left: 2vh;
 				}
 
-				input{
+				input {
 					outline: none;
 					padding: 1%;
 					min-width: 40%;
 					border: none;
 					margin-bottom: 1%;
 				}
-				.submit{
+				.submit {
 					background-color: @blue;
 					border-radius: 0;
 					color: @white;
@@ -1640,7 +1675,7 @@ body {
 					font-weight: normal;
 					transition: ease .2s;
 
-					&:hover{
+					&:hover {
 						background-color: @white;
 						color: @blue;
 					}
