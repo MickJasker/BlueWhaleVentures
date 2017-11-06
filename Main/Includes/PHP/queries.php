@@ -1457,7 +1457,6 @@ function sendExecution($ExecutionPost, $ExperimentID)
 function insertPitch($Text, $PitchID) {
 
     $sql = "UPDATE Pitch SET Preparation = '$Text' WHERE ID = '$PitchID'";
-    echo $_SESSION['insertedIDPitch'];
     if (Query($sql)){
         return true;
     }
@@ -1471,7 +1470,6 @@ function insertPitch($Text, $PitchID) {
 function insertPitchWithExperimentID($Text, $ExperimentID) {
 
     $sql = "SELECT ID FROM Pitch WHERE ExperimentID = '$ExperimentID'";
-    echo "hmmm";
     if ($data = Query($sql)) {
 
         while ($row = $data->fetch_assoc()) {
@@ -1480,8 +1478,7 @@ function insertPitchWithExperimentID($Text, $ExperimentID) {
 
             $sql = "UPDATE Pitch SET Preparation = '$Text' WHERE ID = '$PitchID'";
             if (Query($sql)) {
-                echo "testttt";
-                //header('Location: experiment.php?id=' . $ExperimentID);
+                header('Location: experiment.php?id=' . $ExperimentID);
             }
             else
             {

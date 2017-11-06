@@ -1,6 +1,7 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
 checkSession('Client');
+$experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +21,7 @@ checkSession('Client');
 
             <?php
 
-            $OldArray = selectPrototype(23);
+            $OldArray = selectPrototype($experimentID);
             $OldMedia1 = "";
             $OldMedia2 = "";
 
@@ -115,7 +116,7 @@ checkSession('Client');
                         }
                         if ($upload) {
                             //upload data to the database
-                            if (updatePrototype(23, $imagepath, $_POST['explanation1'], $imagepath1, $_POST['explanation2'])) {
+                            if (updatePrototype($experimentID, $imagepath, $_POST['explanation1'], $imagepath1, $_POST['explanation2'])) {
                                 header("Location: prototype.php");
                             } else {
                                 echo "Something has gone wrong with uploading the data";
