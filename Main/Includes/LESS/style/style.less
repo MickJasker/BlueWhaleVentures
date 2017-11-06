@@ -427,17 +427,17 @@ body {
 			}
 		}
 
-		#clientswitch {
+		#clientswitch, #experimentswitch {
 			margin-left: 5%;
 			position: relative;
 
 		}
 
-		#client {
+		#client, #experiments {
 			float: left;
 		}
 
-		#mentor {
+		#mentor, #bachelors {
 			float: left;
 		}
 
@@ -549,6 +549,8 @@ body {
 			#content {
 				list-style-type: none;
 				padding: 0;
+				width: 30%;
+				word-wrap: break-word
 			}
 
 			.filterbtn {
@@ -577,9 +579,13 @@ body {
 				border-top: none;
 			}
 
+			li{
+				width: 100%;
+			}
+
 			.filter-content a {
 				color: black;
-				padding: 8%;
+				padding: 5%;
 				text-decoration: none;
 				display: block;
 				border-bottom: solid;
@@ -1217,7 +1223,7 @@ body {
 			display: inline-block;
 			padding: 10px;
 			border-radius: 5px;
-			overflow: scroll;
+			overflow: auto;
 			max-height: 600px;
 			.feedbackUser {
 				min-width: 800px;
@@ -1444,12 +1450,20 @@ body {
 	background-attachment: fixed;
 	main {
 		display: inline-block;
-		background-color: rgba(255, 255, 255, 0.9);
+		background-color: rgba(0, 153, 255, 0.9);
 		width: 100vw;
+		min-height: 100vh;
 		padding-top: 80px;
 		#prototypeForm {
+			form {
+				input {
+					display: none;
+				}
+			}
+		}
+		#prototypeForm , #interviewForm, #pitchForm, #chooseExecutionForm {
 			padding: 15px;
-			background-color: @blue;
+			background-color: @white;
 			width: 90vw;
 			max-width: 1200px;
 			display: inline-block;
@@ -1457,6 +1471,40 @@ body {
 			form {
 				img {
 					max-width: 90%;
+				}
+
+				input {
+					margin: 5px;
+				}
+
+				#submit1 {
+					display: inline-block;
+				}
+				textarea {
+					width: 500px;
+					height: 100px;
+					margin: 10px;
+				}
+
+			}
+			button, label, input{
+				background-color: @blue;
+				color: white;
+				transition: 0.3s ease;
+				border: none;
+				font-size: 18px;
+				padding: 5px;
+				width: 150px;
+				display: inline-block;
+				&:hover {
+					transition: 0.3s ease;
+					background-color: @grey;
+				}
+				&:focus {
+					transition: 0.3s ease;
+					background-color: @offwhite;
+					outline: none;
+					color: @blue;
 				}
 			}
 		}
@@ -1601,3 +1649,4 @@ body {
 		}
 	}
 }
+

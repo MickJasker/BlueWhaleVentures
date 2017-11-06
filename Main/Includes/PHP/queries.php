@@ -100,7 +100,7 @@ function createAccount($role, $user_name, $company_mail, $password)
                 $sql = "INSERT INTO `Login`(`UserID`, `Email`, `Password`) VALUES ('$id', '$company_mail', '$password')";
                 if (query($sql))
                 {
-                    return insertRoleInfo($id);
+						return insertRoleInfo($id);
                 }
             }
         }
@@ -112,10 +112,26 @@ function createAccount($role, $user_name, $company_mail, $password)
 function insertRoleInfo($userID)
 {
     $role = selectRole($userID);
-
-    if ($role == "Company")
+    if ($role == "Client")
     {
-        return insertCompany($userID);
+		if(insertCompany($userID))
+		{
+			$sql = "SELECT ID FROM Company WHERE UserID = '$userID'";
+			if($data = query($sql))
+			{
+				$companyID = "";
+				while($row = $data->fetch_assoc())
+				{
+					$companyID = $row["ID"];
+				}
+				
+				$beginDate = date('Y-m-d');
+				$endDate = date('Y-m-d', strtotime($beginDate. ' + 100 days'));
+				$sql = "INSERT INTO `Timeline`(`CompanyID`, `beginDate`, `endDate`) VALUES ('$companyID','$beginDate','$endDate')";
+				return query($sql);
+			}
+		}
+		return false;
     }
 
     if ($role == "Mentor")
@@ -590,17 +606,17 @@ function getExperiment($id)
         {
             if ($row["Preparation"] == "")
             {
-                $name = "Add a pitch";
+                $name = "Add a new pitch";
                 $header = "newPitch.php";
             }
             else if ($row["Conclusion"] == "")
             {
-                $name = "Add the conclusion";
+                $name = "Add the pitch conclusion";
                 $header = "pitch.php";
             }
             else
             {
-                $name = "View the results";
+                $name = "View the pitch results";
                 $header = "pitch.php";
             }
         }
@@ -622,7 +638,7 @@ function getExperiment($id)
         $sql = "SELECT `Question` FROM `Question` WHERE `QuestionaireID` = '$questionaireID'";
         if ($data2 = query($sql))
         {
-            $name = "Interview";
+            $name = "Add Interview answer";
             $header = "Interview.php";
         }
     }
@@ -634,7 +650,7 @@ function getExperiment($id)
         {
             if ($row["Explanation1"] == "")
             {
-                $name = "Add a prototype";
+                $name = "Add a new prototype";
                 $header = "newPrototype.php";
             }
             else if ($row["Explanation2"] == "")
@@ -644,7 +660,7 @@ function getExperiment($id)
             }
             else
             {
-                $name = "View the results";
+                $name = "View the prototype results";
                 $header = "prototype.php";
             }
         }
@@ -953,18 +969,17 @@ function getExperimentBlockInfo($CompanyID)
 
 function checkExperimentID($ID, $CompanyID)
 {
-    $sql = "SELECT `ID` FROM `Experiment` WHERE ID = '$ID' AND CompanyID = '$CompanyID'";
+    $sql = "SELECT ID FROM Experiment WHERE ID = '$ID' AND CompanyID = '$CompanyID'";
     if($data = Query($sql))
     {
-        while ($row = $data->fetch_assoc())
-        {
-            return $row["ID"];
-        }
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        return $row["ID"];
     }
     else
     {
         header('Location: index.php');
     }
+
     return false;
 }
 
@@ -1029,7 +1044,7 @@ function getMentorAssignedBlockInfo($UserID)
             ?>
 
             <li id="Block" class="col-lg-4">
-                <a href="client_profile.php?id=<?php echo $ID ?>">
+                <a href="clientProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <img src="../../<?php echo $Logo ?>" alt="Mentor Profile">
                     </div>
@@ -1179,6 +1194,71 @@ function selectCompanyInfo($CompanyID)
 	                    </div>
                     </div>
                 </section>
+            </div>
+        </div>
+
+        <?php
+    }
+}
+
+function selectCompanyInfoGutted($CompanyID)
+{
+    $sql = "SELECT c.Name, c.Logo, c.Description, c.Email, c.Phone, c.Address FROM Company c
+	WHERE c.ID = '$CompanyID'";
+
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc()) {
+            $Name = $row["Name"];
+            $Logo = $row["Logo"];
+            $Description = $row["Description"];
+            $Email = $row["Email"];
+            $Phone = $row["Phone"];
+            $Address = $row["Address"];
+        }
+
+
+        ?>
+
+        <div class="wrapper-profile">
+            <div class="row">
+                <section class="block">
+                    <div class="content">
+                        <div class="container-fluid logo">
+                            <img src="../../<?php echo $Logo ?>">
+                        </div>
+                        <div class="container-fluid discription">
+                            <h3><?php echo $Name ?></h3>
+                            <p><?php echo $Description ?>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section class="block">
+                    <div class="title-mentor col-md-4">
+                        <h3>Company Information</h3>
+                    </div>
+                    <div class="content">
+                        <div class="container-fluid logo">
+                            <p>
+                                Email: <?php echo $Email ?> <br/>
+                                Phone: <?php echo $Phone ?> <br/>
+                                Address: <?php echo $Address ?> <br/>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                    <section class="block col-md-4">
+                        <div class="content">
+                            <div class="container-fluid title">
+                                <h3>Experiments</h3>
+                            </div>
+                            <div class="container-fluid">
+                                <?php getExperimentsPreview(secure($_GET["id"])); ?>
+                            </div>
+                        </div>
+                    </section>
             </div>
         </div>
 
@@ -1538,6 +1618,7 @@ function selectPitch($ExperimentID)
 
             Preparation: <br/>
             <textarea disabled class="textarea1" name="preparationText" typeplaceholder="Prepare for your pitch"><?php echo $Preparation?></textarea>
+            <br>
 
             <input id="file1" type="hidden" name="file1" id="fileToUpload">
 
@@ -1812,6 +1893,8 @@ function selectPrototype($ExperimentID) {
             ?>
 
             <input id="file2" type="hidden" name="file1" id="fileToUpload">
+            <label for="file2" style="display:none;" id="label2">Choose file</label><br>
+
 
             <?php
 
@@ -1832,6 +1915,7 @@ function selectPrototype($ExperimentID) {
             <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br>
 
             <input id="file3" type="hidden" name="file2" id="fileToUpload2"><br>
+            <label for="file3" style="display:none;" id="label3">Choose file</label>
 
             <?php
 
@@ -2415,7 +2499,26 @@ function selectBachelorName($BachelorGroupID) {
 
 }
 
+function selectFilterContent()
+{
 
+    $sql = "SELECT `Name` FROM `Branch`";
 
+    if ($data = query($sql)) {
+
+        while ($row = $data->fetch_assoc()) {
+
+            $Branch = $row['Name'];
+			
+			$Branch = str_replace("_"," ",$Branch);
+
+            ?>
+
+            <li><a href="#" onclick="filterclick()"><?php echo $Branch; ?></a></li>
+
+            <?php
+        }
+    }
+}
 
 ?>

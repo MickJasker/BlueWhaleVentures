@@ -7,6 +7,23 @@
 		Welcome, <span class="user"><?php getUserNames($_SESSION["UserID"]); ?></span>
 	</h4>
 
+    <div id="experimentswitch" class="col-md-3">
+
+        <h4>
+            <span id="experiments" class="blue">Experiments</span>
+        </h4>
+
+        <label class="switch">
+            <input id="checkbox" onclick="selectexpbachelor()" type="checkbox">
+            <span class="slider round"></span>
+        </label>
+
+        <h4>
+            <span id="bachelors">Bachelor Groups</span>
+        </h4>
+
+    </div>
+
     <div class="input_fields">
 
         <div id="searchdiv">

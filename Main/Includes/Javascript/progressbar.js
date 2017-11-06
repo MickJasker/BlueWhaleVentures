@@ -1,7 +1,7 @@
 //timeline
 window.onload = function() {
     var elem = document.getElementById("bar");
-    var width = 1;
+    var width = -1;
     var id = setInterval(frame, 30);
     function frame() {
         var currentDay = document.getElementById("currentday").innerHTML;
