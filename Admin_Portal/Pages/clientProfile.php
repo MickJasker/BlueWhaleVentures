@@ -35,6 +35,17 @@ require '../../Main/Includes/PHP/functions.php';
         }
     }
 
+        if (isset($_POST['updateTrajectDate']))
+    {
+        if (updateTrajectDate(secure($_GET["id"]), secure($_POST["trajectDate"])))
+        {
+            echo "<script> sendHeader('clientProfile.php?id=".secure($_GET["id"])."'); </script>";
+        }
+        else
+        {
+            echo "Error updating traject date";
+        }
+    }
 ?>
 <!DOCTYPE HTML>
 <html>

@@ -1262,6 +1262,16 @@ function selectCompanyInfo($CompanyID)
                                 <span id="phone">Phone:</span> <?php echo $Phone ?> <br/>
                                 <span id="adress">Address:</span> <?php echo $Address ?> <br/>
                             </p>
+
+                            <div id="traject">
+                                <?php $endDate = selectTrajectDate(secure($CompanyID)); ?>
+
+                                <form method="POST" action="#">
+                                    Traject date:  <input type="date" name="trajectDate" value="<?php echo $endDate; ?>">
+                                    <input id="submitbtn" name="updateTrajectDate" type="submit" value="Change traject enddate">
+                                </form>
+                            </div>
+                            <?php selectLockButton($CompanyID); ?>
                         </div>
                     </div>
                 </section>
@@ -1357,28 +1367,6 @@ function selectCompanyInfoGutted($CompanyID)
                                 Phone: <?php echo $Phone ?> <br/>
                                 Address: <?php echo $Address ?> <br/>
                             </p>
-	                        <div id="traject">
-		                        <?php $endDate = selectTrajectDate(secure($_GET["id"])); ?>
-
-		                        <form method="POST" action="#">
-			                        Traject date:  <input type="date" name="trajectDate" value="<?php echo $endDate; ?>">
-			                        <input id="submitbtn" name="updateTrajectDate" type="submit" value="Change traject enddate">
-		                        </form>
-		                        <?php
-		                        if (isset($_POST['updateTrajectDate']))
-		                        {
-			                        if (updateTrajectDate(secure($_GET["id"]), secure($_POST["trajectDate"])))
-			                        {
-				                        echo "<script> sendHeader('clientProfile.php?id=".secure($_GET["id"])."'); </script>";
-			                        }
-			                        else
-			                        {
-				                        echo "Error updating traject date";
-			                        }
-		                        }
-		                        ?>
-	                        </div>
-	                        <?php  selectLockButton(secure($CompanyID)); ?>
                         </div>
                     </div>
                 </section>
