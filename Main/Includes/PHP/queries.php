@@ -1785,7 +1785,7 @@ function selectPrototype($ExperimentID) {
                 ?>
 
 
-                <img src="<?php echo $Media1 ?>" alt="Prototype 1">
+                <img src="<?php echo $Media1 ?>" alt="Prototype 1"><br>
 
                 <?php
 
@@ -1793,9 +1793,9 @@ function selectPrototype($ExperimentID) {
             ?>
 
 
-            <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br/>
+            <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br>
 
-            <input id="file3" type="hidden" name="file2" id="fileToUpload2">
+            <input id="file3" type="hidden" name="file2" id="fileToUpload2"><br>
 
             <?php
 
@@ -1805,7 +1805,7 @@ function selectPrototype($ExperimentID) {
                 ?>
 
 
-                <img src="<?php echo $Media2 ?>" alt="Prototype 2">
+                <img src="<?php echo $Media2 ?>" alt="Prototype 2"><br>
 
                 <?php
 

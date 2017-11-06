@@ -7709,6 +7709,9 @@ body {
 #wrapper-ClientProfile main .wrapper-profile .block .discription {
   background-color: #0099ff;
 }
+#wrapper-ClientProfile main .lock {
+  height: 7vh;
+}
 #wrapper-ClientProfile main {
   margin-top: 80px;
   /* Modal Content */
@@ -7818,7 +7821,9 @@ body {
   margin-top: 2vh;
 }
 #wrapper-ClientProfile main .wrapper-profile .mentor-row {
-  margin-top: 20px;
+  margin-top: 10vh;
+  position: relative;
+  overflow: hidden;
 }
 #wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor {
   overflow: hidden;
@@ -7837,6 +7842,15 @@ body {
 #wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor h3 {
   color: #ffffff;
   margin: 0;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .mentor-preview {
+  overflow: hidden;
+  max-height: 33vh;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .mentor-preview #profile-pic {
+  height: 33vh;
+  background-color: red;
+  width: auto;
 }
 #wrapper-ClientProfile main .wrapper-profile .block {
   position: relative;
@@ -8095,6 +8109,8 @@ body {
   display: inline-block;
   padding: 10px;
   border-radius: 5px;
+  overflow: scroll;
+  max-height: 600px;
 }
 #wrapper-experimentExecuteable main .feedback .feedbackUser {
   min-width: 800px;
@@ -8223,10 +8239,12 @@ body {
   padding-top: 80px;
   background-image: url("../../Files/Images/stockImages/stock (20).jpg");
   background-size: cover;
+  background-attachment: fixed;
 }
 #wrapper-newPrototype main section {
   background-color: rgba(0, 153, 255, 0.9);
   min-height: calc(100vh - 80px);
+  padding-top: 80px;
 }
 #wrapper-newPrototype main section div {
   text-align: center;
@@ -8234,11 +8252,60 @@ body {
   margin: 150px;
   padding: 30px;
   margin-bottom: 0;
+  margin-top: 0;
 }
-#wrapper-newPrototype main section div #pitchForm {
+#wrapper-newPrototype main section div form textarea {
+  border: none;
+  background-color: #f2f2f2;
+  width: 100%;
+  resize: none;
+  height: 200px;
+  outline: thin solid rgba(0, 0, 0, 0);
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  margin: 5px;
+  padding: 5px;
+}
+#wrapper-newPrototype main section div form textarea:focus {
+  background-color: #ffffff;
+  outline: thin solid #0099ff;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+#wrapper-newPrototype main section div form label,
+#wrapper-newPrototype main section div form input,
+#wrapper-newPrototype main section div form button {
+  background-color: #0099ff;
+  width: 100%;
+  padding: 5px;
+  color: #ffffff;
+  border: none;
+  margin: 5px;
+  font-size: 18px;
+  font-weight: 400;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+#wrapper-newPrototype main section div form label:hover,
+#wrapper-newPrototype main section div form input:hover,
+#wrapper-newPrototype main section div form button:hover {
+  background-color: #555555;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+#wrapper-newPrototype main section div form #fileToUpload {
+  display: none;
+}
+#wrapper-newPrototype main section div #pitchForm,
+#wrapper-newPrototype main section div #questionForm {
   margin: 0;
 }
-#wrapper-newPrototype main section div #pitchForm form textarea {
+#wrapper-newPrototype main section div #pitchForm form textarea,
+#wrapper-newPrototype main section div #questionForm form textarea {
   border: none;
   background-color: #f2f2f2;
   width: 100%;
@@ -8250,7 +8317,8 @@ body {
   transition: 0.3s ease;
   padding: 5px;
 }
-#wrapper-newPrototype main section div #pitchForm form textarea:focus {
+#wrapper-newPrototype main section div #pitchForm form textarea:focus,
+#wrapper-newPrototype main section div #questionForm form textarea:focus {
   background-color: #ffffff;
   outline: thin solid #0099ff;
   -webkit-transition: 0.3s ease;
@@ -8258,7 +8326,11 @@ body {
   transition: 0.3s ease;
 }
 #wrapper-newPrototype main section div #pitchForm form label,
-#wrapper-newPrototype main section div #pitchForm form input {
+#wrapper-newPrototype main section div #questionForm form label,
+#wrapper-newPrototype main section div #pitchForm form input,
+#wrapper-newPrototype main section div #questionForm form input,
+#wrapper-newPrototype main section div #pitchForm form button,
+#wrapper-newPrototype main section div #questionForm form button {
   background-color: #0099ff;
   width: 100%;
   padding: 5px;
@@ -8271,14 +8343,42 @@ body {
   transition: 0.3s ease;
 }
 #wrapper-newPrototype main section div #pitchForm form label:hover,
-#wrapper-newPrototype main section div #pitchForm form input:hover {
+#wrapper-newPrototype main section div #questionForm form label:hover,
+#wrapper-newPrototype main section div #pitchForm form input:hover,
+#wrapper-newPrototype main section div #questionForm form input:hover,
+#wrapper-newPrototype main section div #pitchForm form button:hover,
+#wrapper-newPrototype main section div #questionForm form button:hover {
   background-color: #555555;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
 }
-#wrapper-newPrototype main section div #pitchForm form #fileToUpload {
+#wrapper-newPrototype main section div #pitchForm form #fileToUpload,
+#wrapper-newPrototype main section div #questionForm form #fileToUpload {
   display: none;
+}
+#wrapper-executable {
+  text-align: center;
+  background-image: url("../../Files/Images/stockImages/stock (5).jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+#wrapper-executable main {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100vw;
+  padding-top: 80px;
+}
+#wrapper-executable main #prototypeForm {
+  padding: 15px;
+  background-color: #0099ff;
+  width: 90vw;
+  max-width: 1200px;
+  display: inline-block;
+  margin-top: 80px;
+}
+#wrapper-executable main #prototypeForm form img {
+  max-width: 90%;
 }
 #wrapper-profile .content {
   top: 80px;
