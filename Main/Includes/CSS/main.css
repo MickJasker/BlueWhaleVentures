@@ -8199,7 +8199,8 @@ body {
 }
 #wrapper-executable main #prototypeForm,
 #wrapper-executable main #interviewForm,
-#wrapper-executable main #pitchForm {
+#wrapper-executable main #pitchForm,
+#wrapper-executable main #chooseExecutionForm {
   padding: 15px;
   background-color: #ffffff;
   width: 90vw;
@@ -8209,22 +8210,26 @@ body {
 }
 #wrapper-executable main #prototypeForm form img,
 #wrapper-executable main #interviewForm form img,
-#wrapper-executable main #pitchForm form img {
+#wrapper-executable main #pitchForm form img,
+#wrapper-executable main #chooseExecutionForm form img {
   max-width: 90%;
 }
 #wrapper-executable main #prototypeForm form input,
 #wrapper-executable main #interviewForm form input,
-#wrapper-executable main #pitchForm form input {
+#wrapper-executable main #pitchForm form input,
+#wrapper-executable main #chooseExecutionForm form input {
   margin: 5px;
 }
 #wrapper-executable main #prototypeForm form #submit1,
 #wrapper-executable main #interviewForm form #submit1,
-#wrapper-executable main #pitchForm form #submit1 {
+#wrapper-executable main #pitchForm form #submit1,
+#wrapper-executable main #chooseExecutionForm form #submit1 {
   display: inline-block;
 }
 #wrapper-executable main #prototypeForm form textarea,
 #wrapper-executable main #interviewForm form textarea,
-#wrapper-executable main #pitchForm form textarea {
+#wrapper-executable main #pitchForm form textarea,
+#wrapper-executable main #chooseExecutionForm form textarea {
   width: 500px;
   height: 100px;
   margin: 10px;
@@ -8232,12 +8237,15 @@ body {
 #wrapper-executable main #prototypeForm button,
 #wrapper-executable main #interviewForm button,
 #wrapper-executable main #pitchForm button,
+#wrapper-executable main #chooseExecutionForm button,
 #wrapper-executable main #prototypeForm label,
 #wrapper-executable main #interviewForm label,
 #wrapper-executable main #pitchForm label,
+#wrapper-executable main #chooseExecutionForm label,
 #wrapper-executable main #prototypeForm input,
 #wrapper-executable main #interviewForm input,
-#wrapper-executable main #pitchForm input {
+#wrapper-executable main #pitchForm input,
+#wrapper-executable main #chooseExecutionForm input {
   background-color: #0099ff;
   color: white;
   -webkit-transition: 0.3s ease;
@@ -8252,12 +8260,15 @@ body {
 #wrapper-executable main #prototypeForm button:hover,
 #wrapper-executable main #interviewForm button:hover,
 #wrapper-executable main #pitchForm button:hover,
+#wrapper-executable main #chooseExecutionForm button:hover,
 #wrapper-executable main #prototypeForm label:hover,
 #wrapper-executable main #interviewForm label:hover,
 #wrapper-executable main #pitchForm label:hover,
+#wrapper-executable main #chooseExecutionForm label:hover,
 #wrapper-executable main #prototypeForm input:hover,
 #wrapper-executable main #interviewForm input:hover,
-#wrapper-executable main #pitchForm input:hover {
+#wrapper-executable main #pitchForm input:hover,
+#wrapper-executable main #chooseExecutionForm input:hover {
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
@@ -8266,12 +8277,15 @@ body {
 #wrapper-executable main #prototypeForm button:focus,
 #wrapper-executable main #interviewForm button:focus,
 #wrapper-executable main #pitchForm button:focus,
+#wrapper-executable main #chooseExecutionForm button:focus,
 #wrapper-executable main #prototypeForm label:focus,
 #wrapper-executable main #interviewForm label:focus,
 #wrapper-executable main #pitchForm label:focus,
+#wrapper-executable main #chooseExecutionForm label:focus,
 #wrapper-executable main #prototypeForm input:focus,
 #wrapper-executable main #interviewForm input:focus,
-#wrapper-executable main #pitchForm input:focus {
+#wrapper-executable main #pitchForm input:focus,
+#wrapper-executable main #chooseExecutionForm input:focus {
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
