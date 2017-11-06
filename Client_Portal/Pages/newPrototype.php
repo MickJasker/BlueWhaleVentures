@@ -77,8 +77,6 @@ $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["Comp
         </div>
 
     </section>
-
-    </div>
 </Main>
 </body>
 </html>
