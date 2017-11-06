@@ -11,7 +11,6 @@ $experimentID = checkExperimentID(secure($_GET["experimentid"]), $_SESSION["Comp
 	<script src="../../Main/Includes/Javascript/functions.js"></script>
 </head>
     <body id="wrapper-admin">
-		<h1>Design sheet : Experiment 2</h1>
 		<?php
 			getDesignSheetData($experimentID, "Result", $_SESSION["Language"]);
 		?>
