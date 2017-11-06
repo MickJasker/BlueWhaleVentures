@@ -9,20 +9,13 @@ if (isset($_POST['saveBachelorGroup']))
     insertBachelorGroup(secure($_POST['name']));
 }
 
-if (isset($_GET['action'])) {
-
-        if (secure($_GET['action']) == "delete") {
-
-            deleteBachelorGroup(secure($_GET['bachelorID']));
-
-        }
-        else {
-
-        }
+if (isset($_GET['action']))
+{
+	if (secure($_GET['action']) == "delete") 
+	{
+        deleteBachelorGroup(secure($_GET['bachelorID']));
     }
-    else {
-
-    }
+}
 
 ?>
 

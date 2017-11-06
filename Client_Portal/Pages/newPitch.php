@@ -1,9 +1,20 @@
 <?php
     require '../../Main/Includes/PHP/functions.php';
 	checkSession('Client');
-    if(isset($_POST['save'])) {
-        insertPitch($_POST['preparationText'], $_SESSION['insertedID']);
-    }
+
+        if(isset($_POST['submit'])) {
+
+            if (isset($_SESSION['insertedIDPitch'])) {
+
+                insertPitch($_POST['preparationText'], $_SESSION['insertedIDPitch']);
+
+            } else {
+
+                insertPitchWithExperimentID($_POST['preparationText'], secure($_GET['experimentID']));
+
+            }
+
+        }
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +34,7 @@
                 <form id="form" action="#" method="POST">
 
                     <textarea name="preparationText" placeholder="Prepare for your pitch"></textarea>
-                    <input type="submit" name="save" value="Save">
+                    <input type="submit" name="submit" value="Save">
 
                 </form>
             </div>

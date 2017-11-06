@@ -6,9 +6,9 @@
 
     if(isset($_POST['submit'])) {
 
-        if(isset($_SESSION['insertedID'])) {
+        if(isset($_SESSION['insertedIDInterview'])) {
 
-            insertQuestion($_POST, $_SESSION['insertedID']);
+            insertQuestion($_POST, $_SESSION['insertedIDInterview']);
 
         }
         else {
@@ -58,7 +58,7 @@
                         ?>
 
                         <button type="button" onclick="addQuestion()">Add Question</button>
-                        <input type="submit" name="submit" value="Save"><br>
+                        <input type="submit" onclick="return confirm('Are you sure you are done adding questions? You can not add new ones when you leave this page!')" name="submit" value="Save"><br>
 
                     </form>
                 </div>

@@ -43,21 +43,45 @@ CheckSession("Admin");
 
                         <div class="text">
 
-                            <form id="form" action="#" method="POST" enctype="multipart/form-data">
-                                <h1>Upload profile picture:</h1> <input type="file" name="file1" id="file1">
-                                <input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"> <br>
-                                <input type="text" name="email" placeholder="E-mail" value="<?php echo $data[3]; ?>"> <br>
-                                <select name="language">
-                                    <?php selectLanguage($ID); ?>
-                                </select> <br>
-                                <input type="submit" name="submit" value="Save">
-                            </form>
-                            <hr>
+                            <div class="info1">
+                                <form id="form" action="#" method="POST" enctype="multipart/form-data">
+                                    <h1>Profile picture</h1>
+                                    <input type="file" name="file1" id="file1">
+                                    <br>
+                                    <h1>General information</h1><br>
+                                    <p>Name</p>
+                                    <input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"><br>
+                                    <input type="text" name="name" placeholder="Last name" value=""><br><br>
+
+                                    <p>Date of Birth</p>
+                                    <input type="date" name="Birthday"><br><br>
+
+                                    <p>Gender</p>
+                                    <input type="radio" name="gender" value="male" checked> Male<br>
+                                    <input type="radio" name="gender" value="female"> Female<br>
+                                    <input type="radio" name="gender" value="other"> Other<br><br>
+
+                                    <h1>E-mail</h1><br>
+                                    <input type="text" name="email" placeholder="E-mail" value="<?php echo $data[3]; ?>"> <br>
+
+                                    <br>
+                                    <h1>Language</h1>
+                                    <br>
+                                    <select name="language">
+                                        <?php selectLanguage($ID); ?>
+                                    </select> <br><br>
+
+                                    <input class="submit" type="submit" name="submit" value="Save">
+                                </form>
+                            </div>
+
+                            <div class="info2">
                             <form action="#" method="POST">
-                                <input type="password" name="oldPassword" placeholder="Old password"> <br>
-                                <input type="password" name="password" placeholder="Password"> <br>
-                                <input type="password" name="password2" placeholder="Repeat password"> <br>
-                                <input type="submit" name="changePassword" value="Change Password">
+                                <h1>Change password</h1><br>
+                                <input type="password" name="oldPassword" placeholder="Old password"> <br><br>
+                                <input type="password" name="password" placeholder="New password"> <br>
+                                <input type="password" name="password2" placeholder="Repeat password"> <br><br>
+                                <input class="submit" type="submit" name="changePassword" value="Change Password">
                             </form>
                             <?php
 
@@ -178,6 +202,7 @@ CheckSession("Admin");
 
                             }
                             ?>
+                            </div>
 
                         </div>
 

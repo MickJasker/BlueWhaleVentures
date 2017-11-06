@@ -542,6 +542,18 @@ function getCompanyBlockInfo()
     }
 }
 
+function getUserNames($UserID)
+{
+	$sql = "SELECT Name FROM User WHERE ID = '$UserID'";
+	if ($data = query($sql))
+    {
+        while($row = $data->fetch_assoc())
+        {
+			echo $row["Name"];
+		}
+	}
+}
+
 //gets the 3 latest
 function getExperimentsPreview($CompanyID)
 {
@@ -638,7 +650,7 @@ function getExperiment($id)
         }
     }
 	
-	$sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
+	$sql = "SELECT `CompanyID`, `Title`, `Description`FROM `Experiment` WHERE id = '$id'";
 	if($data = query($sql))
 	{
 		while($row = $data->fetch_assoc())
@@ -647,8 +659,6 @@ function getExperiment($id)
 			//echo $row["Title"];
 			echo '<h1>' . $row["Title"] . '</h1>';
 			echo '<p>' . $row["Description"] .  '</p>';
-			echo '<p> Progress: ' . $row["Progress"] . '</p>';
-			echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
 			echo '<a href="designSheet.php?experimentID='.$id.'"><button> Design sheet </button></a>';
 			echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
 			echo '<a href="resultSheet.php?experimentid='.$id.'"><button> Results sheet </button> </a>';
@@ -888,9 +898,9 @@ function getMentorBlockInfo()
             ?>
 
             <li id="Block" class="col-lg-4">
-                <a href="../../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $ID ?>">
+                <a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
-                        <img src="../../<?php echo $ProfilePicture; ?>" alt="Mentor Profile">
+                        <img src="<?php echo $ProfilePicture; ?>" alt="Mentor Profile">
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Name ?> </h1>
@@ -1210,7 +1220,6 @@ function insertQuestion($QuestionPost, $ExecutionID)
 
 function insertQuestionWithExperimentID($QuestionPost, $ExperimentID)
 {
-    echo "kms";
     foreach ($QuestionPost AS $ID => $Question) {
         $sql = "SELECT Question FROM Question WHERE ID = '$ID'";
 
@@ -1233,7 +1242,6 @@ function insertQuestionWithExperimentID($QuestionPost, $ExperimentID)
 
                         $sql2 = "INSERT INTO Question(QuestionaireID, Question) VALUES ('$QuestionaireID','$Question')";
                         if (Query($sql2)) {
-                            echo "Questions inserted";
                         }
                         else {
 
@@ -1244,9 +1252,6 @@ function insertQuestionWithExperimentID($QuestionPost, $ExperimentID)
         }
     }
 }
-
-
-
 
 function SelectQuestion($ExecutionID)
 {
@@ -1422,7 +1427,7 @@ function sendExecution($ExecutionPost, $ExperimentID)
             $sql = "INSERT INTO Questionaire(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
-            $_SESSION['insertedID'] = mysqli_insert_id($conn);
+            $_SESSION['insertedIDInterview'] = mysqli_insert_id($conn);
             header('Location: ../../Client_Portal/Pages/newInterview.php');
 
         }
@@ -1431,7 +1436,7 @@ function sendExecution($ExecutionPost, $ExperimentID)
             $sql = "INSERT INTO Pitch(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
-            $_SESSION['insertedID'] = mysqli_insert_id($conn);
+            $_SESSION['insertedIDPitch'] = mysqli_insert_id($conn);
             header('Location: ../../Client_Portal/Pages/newPitch.php');
 
 
@@ -1441,7 +1446,7 @@ function sendExecution($ExecutionPost, $ExperimentID)
             $sql = "INSERT INTO Prototype(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
-            $_SESSION['insertedID'] = mysqli_insert_id($conn);
+            $_SESSION['insertedIDPrototype'] = mysqli_insert_id($conn);
             header('Location: ../../Client_Portal/Pages/newPrototype.php?experimentID=' . $ExperimentID);
 
 
@@ -1452,7 +1457,39 @@ function sendExecution($ExecutionPost, $ExperimentID)
 function insertPitch($Text, $PitchID) {
 
     $sql = "UPDATE Pitch SET Preparation = '$Text' WHERE ID = '$PitchID'";
-    Query($sql);
+    echo $_SESSION['insertedIDPitch'];
+    if (Query($sql)){
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+}
+
+function insertPitchWithExperimentID($Text, $ExperimentID) {
+
+    $sql = "SELECT ID FROM Pitch WHERE ExperimentID = '$ExperimentID'";
+    echo "hmmm";
+    if ($data = Query($sql)) {
+
+        while ($row = $data->fetch_assoc()) {
+
+            $PitchID = $row["ID"];
+
+            $sql = "UPDATE Pitch SET Preparation = '$Text' WHERE ID = '$PitchID'";
+            if (Query($sql)) {
+                echo "testttt";
+                //header('Location: experiment.php?id=' . $ExperimentID);
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
+
 
 }
 

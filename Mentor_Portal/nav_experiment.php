@@ -1,10 +1,10 @@
 <div id="nav">
 
-	<img id="logo" src="../../Main/Files/Images/logo.svg" class="col-md-1">
+	<a href="index.php"><img id="logo" src="../../Main/Files/Images/logo.svg" class="col-md-1"></a>
 
 
 	<h4 id="left">
-		Welcome, <span class="user">Mentor</span>
+		Welcome, <span class="user"><?php getUserNames($_SESSION["UserID"]); ?></span>
 	</h4>
 
     <div class="input_fields">

@@ -99,6 +99,7 @@ function destroySession()
 	unset($_SESSION["UserID"]);
 	unset($_SESSION["Language"]);
 	unset($_SESSION["CompanyID"]);
+	session_destroy(); 
 }
 
 function secure($x)
