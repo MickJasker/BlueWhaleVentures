@@ -427,17 +427,17 @@ body {
 			}
 		}
 
-		#clientswitch {
+		#clientswitch, #experimentswitch {
 			margin-left: 5%;
 			position: relative;
 
 		}
 
-		#client {
+		#client, #experiments {
 			float: left;
 		}
 
-		#mentor {
+		#mentor, #bachelors {
 			float: left;
 		}
 
@@ -1217,6 +1217,8 @@ body {
 			display: inline-block;
 			padding: 10px;
 			border-radius: 5px;
+			overflow: auto;
+			max-height: 600px;
 			.feedbackUser {
 				min-width: 800px;
 				padding: 10px;
@@ -1349,12 +1351,14 @@ body {
 		section {
 			background-color: rgba(0, 153, 255, 0.9);
 			min-height: calc(~"100vh - 80px");
+			padding-top: 80px;
 			div {
 				text-align: center;
 				background-color: white;
 				margin: 150px;
 				padding: 30px;
 				margin-bottom: 0;
+				margin-top: 0;
 				form {
 					textarea {
 						border: none;
@@ -1433,6 +1437,74 @@ body {
 	}
 }
 
+#wrapper-executable {
+	text-align: center;
+	background-image: url("../../Files/Images/stockImages/stock (5).jpg");
+	background-size: cover;
+	background-attachment: fixed;
+	main {
+		display: inline-block;
+		background-color: rgba(0, 153, 255, 0.9);
+		width: 100vw;
+		min-height: 100vh;
+		padding-top: 80px;
+		#prototypeForm {
+			form {
+				input {
+					display: none;
+				}
+			}
+		}
+		#prototypeForm , #interviewForm, #pitchForm {
+			padding: 15px;
+			background-color: @white;
+			width: 90vw;
+			max-width: 1200px;
+			display: inline-block;
+			margin-top: 80px;
+			form {
+				img {
+					max-width: 90%;
+				}
+
+				input {
+					margin: 5px;
+				}
+
+				#submit1 {
+					display: inline-block;
+				}
+				textarea {
+					width: 500px;
+					height: 100px;
+					margin: 10px;
+				}
+
+			}
+			button, label, input{
+				background-color: @blue;
+				color: white;
+				transition: 0.3s ease;
+				border: none;
+				font-size: 18px;
+				padding: 5px;
+				width: 150px;
+				display: inline-block;
+				&:hover {
+					transition: 0.3s ease;
+					background-color: @grey;
+				}
+				&:focus {
+					transition: 0.3s ease;
+					background-color: @offwhite;
+					outline: none;
+					color: @blue;
+				}
+			}
+		}
+	}
+}
+
 #wrapper-profile {
 
 	.content {
@@ -1459,7 +1531,6 @@ body {
 					border-radius: 50%;
 					border: solid 1px;
 					border-color: @grey;
-					margin-top: 2.5vh;
 
 					img {
 						position:relative;

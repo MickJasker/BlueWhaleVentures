@@ -18,10 +18,11 @@ $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["Comp
     <script type="text/javascript" src="../../Main/Includes/Javascript/jquery-3.2.1.min.js"></script>
     <script src="../../Main/Includes/Javascript/functions.js"></script>
 </head>
-<body id="wrapper-admin">
+<body id="wrapper-executable">
 <Main>
-    <h1> Interview </h1>
+
     <div id="interviewForm">
+        <h1> Interview </h1>
         <form id="form" action="#" method="POST">
 
             <?php

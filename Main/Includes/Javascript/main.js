@@ -1,63 +1,3 @@
-//timeline
-window.onload = function() {
-    var elem = document.getElementById("bar");
-    var width = 1;
-    var id = setInterval(frame, 30);
-    function frame() {
-		var currentDay = document.getElementById("currentday").innerHTML;
-        if (width >= currentDay) {
-            clearInterval(id);
-        } else {
-            width++;
-            elem.style.width = width + '%';
-
-            //animatie groter worden bolletjes
-            var milestone = document.getElementsByClassName("milestone");
-            if(width >= "100"){
-                if(milestone[4].className === "milestone right"){
-                    milestone[3].style.left = "-20px";
-                    milestone[2].style.left = "-15px";
-                    milestone[1].style.left = "-5px";
-
-                    milestone[4].id = "grow";
-                    milestone[3].id = "grow";
-                    milestone[2].id = "grow";
-                    milestone[1].id = "grow";
-                }
-            }
-            else if(width >= "75"){
-                if(milestone[3].className === "milestone left2"){
-                    milestone[3].style.left = "-25px";
-                    milestone[2].style.left = "-15px";
-                    milestone[1].style.left = "-5px";
-
-                    milestone[3].id = "grow";
-                    milestone[2].id = "grow";
-                    milestone[1].id = "grow";
-                }
-            }
-            else if(width >= "50"){
-                if(milestone[2].className === "milestone left2"){
-                    milestone[3].style.left = "-25px";
-                    milestone[2].style.left = "-15px";
-                    milestone[1].style.left = "-5px";
-
-                    milestone[2].id = "grow";
-                    milestone[1].id = "grow";
-                }
-            }
-            else if(width >= "25"){
-                if(milestone[1].className === "milestone left1"){
-                    milestone[3].style.left = "-25px";
-                    milestone[2].style.left = "-15px";
-                    milestone[1].style.left = "-5px";
-
-                    milestone[1].id = "grow";
-                }
-            }
-        }
-    }
-};
 
 //Navbar
 //client/mentorswitch
@@ -90,6 +30,41 @@ function selectclientormentor(){
                 $('#wrapper-admin' ).html( data );
                 $('#wrapper-admin').fadeIn(500);
                 searchbar.placeholder = "Search for Mentor";
+            });
+        });
+    }
+}
+
+//experiment/bachelorswitch
+function selectexpbachelor(){
+
+    var experiments = document.getElementById("experiments");
+    var bachelors = document.getElementById("bachelors");
+    var searchbar = document.getElementById("searchbar");
+
+    //verander de kleur vd letters als de knop ingedrukt wordt
+    bachelors.classList.toggle("blue");
+    experiments.classList.toggle("blue");
+
+    //Als client geselecteerd is laad client.php in de body
+    if(experiments.className === 'blue'){
+
+        $.get("experiments.php", function( data ){
+            $('#wrapper-admin').fadeOut(500, function(){
+                $('#wrapper-admin' ).html( data );
+                $('#wrapper-admin').fadeIn(500);
+                searchbar.placeholder = "Search for Experiment";
+            });
+        });
+
+        //Als mentor geselecteerd is laad mentor.php in de body
+    }else if(bachelors.className === 'blue'){
+
+        $.get("bachelors.php", function( data ) {
+            $('#wrapper-admin').fadeOut(500, function(){
+                $('#wrapper-admin' ).html( data );
+                $('#wrapper-admin').fadeIn(500);
+                searchbar.placeholder = "Search for Group";
             });
         });
     }

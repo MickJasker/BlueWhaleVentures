@@ -45,11 +45,7 @@
             </a>
         </div>
 
-        <?php
-
-        selectBachelorBlockInfo();
-
-        ?>
+        <?php selectBachelorBlockInfo(); ?>
 
     </div>
 </ul>

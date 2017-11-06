@@ -606,17 +606,17 @@ function getExperiment($id)
         {
             if ($row["Preparation"] == "")
             {
-                $name = "Add a pitch";
+                $name = "Add a ew pitch";
                 $header = "newPitch.php";
             }
             else if ($row["Conclusion"] == "")
             {
-                $name = "Add the conclusion";
+                $name = "Add the pitch conclusion";
                 $header = "pitch.php";
             }
             else
             {
-                $name = "View the results";
+                $name = "View the pitch results";
                 $header = "pitch.php";
             }
         }
@@ -638,7 +638,7 @@ function getExperiment($id)
         $sql = "SELECT `Question` FROM `Question` WHERE `QuestionaireID` = '$questionaireID'";
         if ($data2 = query($sql))
         {
-            $name = "Interview";
+            $name = "Add Interview answer";
             $header = "Interview.php";
         }
     }
@@ -650,7 +650,7 @@ function getExperiment($id)
         {
             if ($row["Explanation1"] == "")
             {
-                $name = "Add a prototype";
+                $name = "Add a new prototype";
                 $header = "newPrototype.php";
             }
             else if ($row["Explanation2"] == "")
@@ -660,7 +660,7 @@ function getExperiment($id)
             }
             else
             {
-                $name = "View the results";
+                $name = "View the prototype results";
                 $header = "prototype.php";
             }
         }
@@ -1045,7 +1045,7 @@ function getMentorAssignedBlockInfo($UserID)
             ?>
 
             <li id="Block" class="col-lg-4">
-                <a href="client_profile.php?id=<?php echo $ID ?>">
+                <a href="clientProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <img src="../../<?php echo $Logo ?>" alt="Mentor Profile">
                     </div>
@@ -1193,6 +1193,71 @@ function selectCompanyInfo($CompanyID)
 	                    </div>
                     </div>
                 </section>
+            </div>
+        </div>
+
+        <?php
+    }
+}
+
+function selectCompanyInfoGutted($CompanyID)
+{
+    $sql = "SELECT c.Name, c.Logo, c.Description, c.Email, c.Phone, c.Address FROM Company c
+	WHERE c.ID = '$CompanyID'";
+
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc()) {
+            $Name = $row["Name"];
+            $Logo = $row["Logo"];
+            $Description = $row["Description"];
+            $Email = $row["Email"];
+            $Phone = $row["Phone"];
+            $Address = $row["Address"];
+        }
+
+
+        ?>
+
+        <div class="wrapper-profile">
+            <div class="row">
+                <section class="block">
+                    <div class="content">
+                        <div class="container-fluid logo">
+                            <img src="../../<?php echo $Logo ?>">
+                        </div>
+                        <div class="container-fluid discription">
+                            <h3><?php echo $Name ?></h3>
+                            <p><?php echo $Description ?>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section class="block">
+                    <div class="title-mentor col-md-4">
+                        <h3>Company Information</h3>
+                    </div>
+                    <div class="content">
+                        <div class="container-fluid logo">
+                            <p>
+                                Email: <?php echo $Email ?> <br/>
+                                Phone: <?php echo $Phone ?> <br/>
+                                Address: <?php echo $Address ?> <br/>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                    <section class="block col-md-4">
+                        <div class="content">
+                            <div class="container-fluid title">
+                                <h3>Experiments</h3>
+                            </div>
+                            <div class="container-fluid">
+                                <?php getExperimentsPreview(secure($_GET["id"])); ?>
+                            </div>
+                        </div>
+                    </section>
             </div>
         </div>
 
@@ -1473,7 +1538,6 @@ function sendExecution($ExecutionPost, $ExperimentID)
 function insertPitch($Text, $PitchID) {
 
     $sql = "UPDATE Pitch SET Preparation = '$Text' WHERE ID = '$PitchID'";
-    echo $_SESSION['insertedIDPitch'];
     if (Query($sql)){
         return true;
     }
@@ -1487,7 +1551,6 @@ function insertPitch($Text, $PitchID) {
 function insertPitchWithExperimentID($Text, $ExperimentID) {
 
     $sql = "SELECT ID FROM Pitch WHERE ExperimentID = '$ExperimentID'";
-    echo "hmmm";
     if ($data = Query($sql)) {
 
         while ($row = $data->fetch_assoc()) {
@@ -1496,8 +1559,7 @@ function insertPitchWithExperimentID($Text, $ExperimentID) {
 
             $sql = "UPDATE Pitch SET Preparation = '$Text' WHERE ID = '$PitchID'";
             if (Query($sql)) {
-                echo "testttt";
-                //header('Location: experiment.php?id=' . $ExperimentID);
+                header('Location: experiment.php?id=' . $ExperimentID);
             }
             else
             {
@@ -1555,6 +1617,7 @@ function selectPitch($ExperimentID)
 
             Preparation: <br/>
             <textarea disabled class="textarea1" name="preparationText" typeplaceholder="Prepare for your pitch"><?php echo $Preparation?></textarea>
+            <br>
 
             <input id="file1" type="hidden" name="file1" id="fileToUpload">
 
@@ -1829,6 +1892,8 @@ function selectPrototype($ExperimentID) {
             ?>
 
             <input id="file2" type="hidden" name="file1" id="fileToUpload">
+            <label for="file2" id="file2">Choose file</label><br>
+
 
             <?php
 
@@ -1838,7 +1903,7 @@ function selectPrototype($ExperimentID) {
                 ?>
 
 
-                <img src="<?php echo $Media1 ?>" alt="Prototype 1">
+                <img src="<?php echo $Media1 ?>" alt="Prototype 1"><br>
 
                 <?php
 
@@ -1846,9 +1911,10 @@ function selectPrototype($ExperimentID) {
             ?>
 
 
-            <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br/>
+            <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br>
 
-            <input id="file3" type="hidden" name="file2" id="fileToUpload2">
+            <input id="file3" type="hidden" name="file2" id="fileToUpload2"><br>
+            <label for="file3" id="file2">Choose file</label>
 
             <?php
 
@@ -1858,7 +1924,7 @@ function selectPrototype($ExperimentID) {
                 ?>
 
 
-                <img src="<?php echo $Media2 ?>" alt="Prototype 2">
+                <img src="<?php echo $Media2 ?>" alt="Prototype 2"><br>
 
                 <?php
 
