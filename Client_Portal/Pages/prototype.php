@@ -1,6 +1,7 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
 checkSession('Client');
+$experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,15 +10,18 @@ checkSession('Client');
     <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 	<script src="../../Main/Includes/Javascript/functions.js"></script>
 </head>
-<body id="wrapper-admin">
+<body id="wrapper-executable">
+<header class="wrapper-nav">
+    <?php require "../nav_nosearch.php"; ?>
+</header>
 <Main>
-    <h1> Prototype </h1>
     <div id="prototypeForm">
+        <h1> Prototype </h1>
         <form id="form" action="#" method="POST" enctype="multipart/form-data">
 
             <?php
 
-            $OldArray = selectPrototype(23);
+            $OldArray = selectPrototype($experimentID);
             $OldMedia1 = "";
             $OldMedia2 = "";
 
@@ -112,7 +116,7 @@ checkSession('Client');
                         }
                         if ($upload) {
                             //upload data to the database
-                            if (updatePrototype(23, $imagepath, $_POST['explanation1'], $imagepath1, $_POST['explanation2'])) {
+                            if (updatePrototype($experimentID, $imagepath, $_POST['explanation1'], $imagepath1, $_POST['explanation2'])) {
                                 header("Location: prototype.php");
                             } else {
                                 echo "Something has gone wrong with uploading the data";

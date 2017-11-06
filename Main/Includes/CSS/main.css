@@ -7930,6 +7930,8 @@ body {
   display: inline-block;
   padding: 10px;
   border-radius: 5px;
+  overflow: scroll;
+  max-height: 600px;
 }
 #wrapper-experimentExecuteable main .feedback .feedbackUser {
   min-width: 800px;
@@ -8063,6 +8065,7 @@ body {
 #wrapper-newPrototype main section {
   background-color: rgba(0, 153, 255, 0.9);
   min-height: calc(100vh - 80px);
+  padding-top: 80px;
 }
 #wrapper-newPrototype main section div {
   text-align: center;
@@ -8070,6 +8073,7 @@ body {
   margin: 150px;
   padding: 30px;
   margin-bottom: 0;
+  margin-top: 0;
 }
 #wrapper-newPrototype main section div form textarea {
   border: none;
@@ -8091,6 +8095,29 @@ body {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
 }
+<<<<<<< HEAD
+=======
+#wrapper-newPrototype main section div form textarea {
+  border: none;
+  background-color: #f2f2f2;
+  width: 100%;
+  resize: none;
+  height: 200px;
+  outline: thin solid rgba(0, 0, 0, 0);
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  margin: 5px;
+  padding: 5px;
+}
+#wrapper-newPrototype main section div form textarea:focus {
+  background-color: #ffffff;
+  outline: thin solid #0099ff;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+>>>>>>> master
 #wrapper-newPrototype main section div form label,
 #wrapper-newPrototype main section div form input,
 #wrapper-newPrototype main section div form button {
@@ -8173,6 +8200,29 @@ body {
 #wrapper-newPrototype main section div #pitchForm form #fileToUpload,
 #wrapper-newPrototype main section div #questionForm form #fileToUpload {
   display: none;
+}
+#wrapper-executable {
+  text-align: center;
+  background-image: url("../../Files/Images/stockImages/stock (5).jpg");
+  background-size: cover;
+  background-attachment: fixed;
+}
+#wrapper-executable main {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100vw;
+  padding-top: 80px;
+}
+#wrapper-executable main #prototypeForm {
+  padding: 15px;
+  background-color: #0099ff;
+  width: 90vw;
+  max-width: 1200px;
+  display: inline-block;
+  margin-top: 80px;
+}
+#wrapper-executable main #prototypeForm form img {
+  max-width: 90%;
 }
 #wrapper-profile .content {
   top: 80px;

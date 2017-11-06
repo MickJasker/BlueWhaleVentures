@@ -1,6 +1,8 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
 checkSession('Client');
+$experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,7 +19,7 @@ checkSession('Client');
 
             <?php
 
-            $OldMedia = selectPitch(1);
+            $OldMedia = selectPitch($experimentID);
 
 
             if (isset($_POST['save']))
@@ -35,35 +37,36 @@ checkSession('Client');
                 else
                 {
                     $mainimageupload = true;
-                    if (!empty($_FILES['file1']['name']))
-                    {
-                        if (!unlink($OldMedia))
+                    if (!empty($_FILES['file1']['name'])) {
+                        if ($OldMedia != "")
                         {
-                            echo "error deleting old image";
-                            $mainimageupload = false;
-                        }
-                    }
-
-                    if ($mainimageupload) {
-                        //upload the image
-                        $videoResult = uploadExecute($file1_name, $file1_tmp_name, $path);
-                        $upload = true;
-                        $videopath = "";
-                        if ($videoResult[0] == 1) {
-                            $videopath = $videoResult[1];
-                        } else {
-                            $upload = false;
-                        }
-
-                        if ($upload) {
-                            //upload data to the database
-                            if (updatePitch($videopath, $_POST['preparationText'], $_POST['conclusionText'])) {
-                                header("Location: pitch.php");
-                            } else {
-                                echo "Something has gone wrong with uploading the data";
+                            if (!unlink($OldMedia)) {
+                                echo "error deleting old image";
+                                $mainimageupload = false;
                             }
-                        } else {
-                            echo "Error uploading the files";
+                        }
+
+                        if ($mainimageupload) {
+                            //upload the image
+                            $videoResult = uploadExecute($file1_name, $file1_tmp_name, $path);
+                            $upload = true;
+                            $videopath = "";
+                            if ($videoResult[0] == 1) {
+                                $videopath = $videoResult[1];
+                            } else {
+                                $upload = false;
+                            }
+
+                            if ($upload) {
+                                //upload data to the database
+                                if (updatePitch($videopath, $_POST['preparationText'], $_POST['conclusionText'])) {
+                                    header("Location: pitch.php");
+                                } else {
+                                    echo "Something has gone wrong with uploading the data";
+                                }
+                            } else {
+                                echo "Error uploading the files";
+                            }
                         }
                     }
                 }

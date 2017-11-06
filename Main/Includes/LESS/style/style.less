@@ -1217,6 +1217,8 @@ body {
 			display: inline-block;
 			padding: 10px;
 			border-radius: 5px;
+			overflow: scroll;
+			max-height: 600px;
 			.feedbackUser {
 				min-width: 800px;
 				padding: 10px;
@@ -1349,12 +1351,14 @@ body {
 		section {
 			background-color: rgba(0, 153, 255, 0.9);
 			min-height: calc(~"100vh - 80px");
+			padding-top: 80px;
 			div {
 				text-align: center;
 				background-color: white;
 				margin: 150px;
 				padding: 30px;
 				margin-bottom: 0;
+				margin-top: 0;
 				form {
 					textarea {
 						border: none;
@@ -1427,6 +1431,32 @@ body {
 							display: none;
 						}
 					}
+				}
+			}
+		}
+	}
+}
+
+#wrapper-executable {
+	text-align: center;
+	background-image: url("../../Files/Images/stockImages/stock (5).jpg");
+	background-size: cover;
+	background-attachment: fixed;
+	main {
+		display: inline-block;
+		background-color: rgba(255, 255, 255, 0.9);
+		width: 100vw;
+		padding-top: 80px;
+		#prototypeForm {
+			padding: 15px;
+			background-color: @blue;
+			width: 90vw;
+			max-width: 1200px;
+			display: inline-block;
+			margin-top: 80px;
+			form {
+				img {
+					max-width: 90%;
 				}
 			}
 		}

@@ -1457,7 +1457,6 @@ function sendExecution($ExecutionPost, $ExperimentID)
 function insertPitch($Text, $PitchID) {
 
     $sql = "UPDATE Pitch SET Preparation = '$Text' WHERE ID = '$PitchID'";
-    echo $_SESSION['insertedIDPitch'];
     if (Query($sql)){
         return true;
     }
@@ -1471,7 +1470,6 @@ function insertPitch($Text, $PitchID) {
 function insertPitchWithExperimentID($Text, $ExperimentID) {
 
     $sql = "SELECT ID FROM Pitch WHERE ExperimentID = '$ExperimentID'";
-    echo "hmmm";
     if ($data = Query($sql)) {
 
         while ($row = $data->fetch_assoc()) {
@@ -1480,8 +1478,7 @@ function insertPitchWithExperimentID($Text, $ExperimentID) {
 
             $sql = "UPDATE Pitch SET Preparation = '$Text' WHERE ID = '$PitchID'";
             if (Query($sql)) {
-                echo "testttt";
-                //header('Location: experiment.php?id=' . $ExperimentID);
+                header('Location: experiment.php?id=' . $ExperimentID);
             }
             else
             {
@@ -1822,7 +1819,7 @@ function selectPrototype($ExperimentID) {
                 ?>
 
 
-                <img src="<?php echo $Media1 ?>" alt="Prototype 1">
+                <img src="<?php echo $Media1 ?>" alt="Prototype 1"><br>
 
                 <?php
 
@@ -1830,9 +1827,9 @@ function selectPrototype($ExperimentID) {
             ?>
 
 
-            <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br/>
+            <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br>
 
-            <input id="file3" type="hidden" name="file2" id="fileToUpload2">
+            <input id="file3" type="hidden" name="file2" id="fileToUpload2"><br>
 
             <?php
 
@@ -1842,7 +1839,7 @@ function selectPrototype($ExperimentID) {
                 ?>
 
 
-                <img src="<?php echo $Media2 ?>" alt="Prototype 2">
+                <img src="<?php echo $Media2 ?>" alt="Prototype 2"><br>
 
                 <?php
 
