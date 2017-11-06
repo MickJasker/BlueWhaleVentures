@@ -24,7 +24,7 @@ if ($_SESSION["traject"] == true) {
     <main>
 
             <?php
-            getDesignSheetData($experimentID, "Experiment", $_SESSION["Language"]);
+				getDesignSheetData($experimentID, "Experiment", $_SESSION["Language"]);
             ?>
 
     </main>

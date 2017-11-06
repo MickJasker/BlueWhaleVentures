@@ -144,7 +144,7 @@ function insertRoleInfo($userID)
 
 function insertCompany($userID)
 {
-    $sql = "INSERT INTO Company (UserID) VALUES ('$userID')";
+    $sql = "INSERT INTO Company (UserID, Branch) VALUES ('$userID', 'Other_services')";
 
     return query($sql);
 }
