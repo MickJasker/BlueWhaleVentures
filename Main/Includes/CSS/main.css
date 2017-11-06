@@ -8095,29 +8095,6 @@ body {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
 }
-<<<<<<< HEAD
-=======
-#wrapper-newPrototype main section div form textarea {
-  border: none;
-  background-color: #f2f2f2;
-  width: 100%;
-  resize: none;
-  height: 200px;
-  outline: thin solid rgba(0, 0, 0, 0);
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-  margin: 5px;
-  padding: 5px;
-}
-#wrapper-newPrototype main section div form textarea:focus {
-  background-color: #ffffff;
-  outline: thin solid #0099ff;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-}
->>>>>>> master
 #wrapper-newPrototype main section div form label,
 #wrapper-newPrototype main section div form input,
 #wrapper-newPrototype main section div form button {
@@ -8209,13 +8186,13 @@ body {
 }
 #wrapper-executable main {
   display: inline-block;
-  background-color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(0, 153, 255, 0.9);
   width: 100vw;
   padding-top: 80px;
 }
 #wrapper-executable main #prototypeForm {
   padding: 15px;
-  background-color: #0099ff;
+  background-color: #ffffff;
   width: 90vw;
   max-width: 1200px;
   display: inline-block;
@@ -8223,6 +8200,49 @@ body {
 }
 #wrapper-executable main #prototypeForm form img {
   max-width: 90%;
+}
+#wrapper-executable main #prototypeForm form input {
+  display: none;
+}
+#wrapper-executable main #prototypeForm form #submit1 {
+  display: inline-block;
+}
+#wrapper-executable main #prototypeForm form textarea {
+  width: 500px;
+  height: 100px;
+  margin: 10px;
+}
+#wrapper-executable main #prototypeForm button,
+#wrapper-executable main #prototypeForm label,
+#wrapper-executable main #prototypeForm input {
+  background-color: #0099ff;
+  color: white;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  border: none;
+  font-size: 18px;
+  padding: 5px;
+  width: 150px;
+  display: inline-block;
+}
+#wrapper-executable main #prototypeForm button:hover,
+#wrapper-executable main #prototypeForm label:hover,
+#wrapper-executable main #prototypeForm input:hover {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  background-color: #a0a0a0;
+}
+#wrapper-executable main #prototypeForm button:focus,
+#wrapper-executable main #prototypeForm label:focus,
+#wrapper-executable main #prototypeForm input:focus {
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  background-color: #f2f2f2;
+  outline: none;
+  color: #0099ff;
 }
 #wrapper-profile .content {
   top: 80px;

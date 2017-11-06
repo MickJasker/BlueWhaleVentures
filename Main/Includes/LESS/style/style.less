@@ -1444,12 +1444,12 @@ body {
 	background-attachment: fixed;
 	main {
 		display: inline-block;
-		background-color: rgba(255, 255, 255, 0.9);
+		background-color: rgba(0, 153, 255, 0.9);
 		width: 100vw;
 		padding-top: 80px;
 		#prototypeForm {
 			padding: 15px;
-			background-color: @blue;
+			background-color: @white;
 			width: 90vw;
 			max-width: 1200px;
 			display: inline-block;
@@ -1457,6 +1457,38 @@ body {
 			form {
 				img {
 					max-width: 90%;
+				}
+				input {
+					display: none;
+				}
+				#submit1 {
+					display: inline-block;
+				}
+				textarea {
+					width: 500px;
+					height: 100px;
+					margin: 10px;
+				}
+
+			}
+			button, label, input{
+				background-color: @blue;
+				color: white;
+				transition: 0.3s ease;
+				border: none;
+				font-size: 18px;
+				padding: 5px;
+				width: 150px;
+				display: inline-block;
+				&:hover {
+					transition: 0.3s ease;
+					background-color: @grey;
+				}
+				&:focus {
+					transition: 0.3s ease;
+					background-color: @offwhite;
+					outline: none;
+					color: @blue;
 				}
 			}
 		}
