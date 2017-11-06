@@ -69,10 +69,14 @@ require '../../Main/Includes/PHP/functions.php';
                     </div>
                 </div>
             </div>
-			<?php 
-                selectCompanyInfo($_GET["id"]);
-                selectLockButton($_GET["id"]);
-            ?>
+			<div class="row lower-bar">
+				<div id="lock">
+					<?php
+						selectCompanyInfo($_GET["id"]);
+						selectLockButton($_GET["id"]);
+					?>
+				</div>
+			</div>
 		</main>
 		<script src="../../Main/Includes/Javascript/navbar.js"></script>
         <script src="../../Main/Includes/Javascript/main.js"></script>
