@@ -2507,6 +2507,8 @@ function selectFilterContent()
         while ($row = $data->fetch_assoc()) {
 
             $Branch = $row['Name'];
+			
+			$Branch = str_replace("_"," ",$Branch);
 
             ?>
 
