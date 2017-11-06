@@ -308,7 +308,7 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
     $sql = "SELECT SegmentID, Text  FROM `Answer` WHERE ExperimentID = '$ExperimentID' ORDER BY SegmentID";
     if($data1 = query($sql))
     {
-        echo '<form method="POST" action="#">';
+        echo '<form method="POST" action="#"><h1>Design sheet : Experiment 2</h1>';
         $i = 0;
         while($row1 = $data1->fetch_assoc())
         {
@@ -331,8 +331,8 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
                 return false;
             }
         }
-        echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1">';
-        echo '</form>';
+        echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1"><br>';
+        echo '  <button id="edit1" onclick=\'editPage(7, "designSheet")\'> Edit </button></form>';
     }
     else
     {
@@ -1086,9 +1086,11 @@ function selectCompanyMentors($CompanyID)
 		                    <img class="" src="<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
 		                    <h4> <?php echo $row ['Name'] ?> </h4>
 	                    </a>
-	                    <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
-		                    <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
-	                    </a>
+	                    <div id="unassign">
+		                    <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
+			                    <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
+		                    </a>
+	                    </div>
                     </div>
                 </div>
                 <?php
@@ -1137,8 +1139,8 @@ function selectCompanyInfo($CompanyID)
                         </div>
                     </div>
                 </section>
-                <section class="block">
-                    <div class="title-mentor col-md-4">
+                <section class="block company-info">
+                    <div class="title col-md-4">
                         <h3>Company Information</h3>
                     </div>
                     <div class="content">
@@ -1152,7 +1154,7 @@ function selectCompanyInfo($CompanyID)
                     </div>
                 </section>
                 <section class="block">
-                    <div class="title-mentor col-md-4">
+                    <div class="title col-md-4">
                         <h3>Analytics</h3>
                     </div>
                     <div class="content">

@@ -70,28 +70,34 @@ require '../../Main/Includes/PHP/functions.php';
                     </div>
                 </div>
             </div>
-			<?php 
-                selectCompanyInfo(secure($_GET["id"]));
-                selectLockButton(secure($_GET["id"]));
-				$endDate = selectTrajectDate(secure($_GET["id"]));
-            ?>
-			<form method="POST" action="#">
-              Traject date:  <input type="date" name="trajectDate" value="<?php echo $endDate; ?>">
-			  <input id="submitbtn" name="updateTrajectDate" type="submit" value="Change traject enddate">
-            </form>
-			<?php 
-				if (isset($_POST['updateTrajectDate']))
-                {
-					if (updateTrajectDate(secure($_GET["id"]), secure($_POST["trajectDate"])))
-					{
-						echo "<script> sendHeader('clientProfile.php?id=".secure($_GET["id"])."'); </script>";
-					}
-					else
-					{
-						echo "Error updating traject date";
-					}
-				}
-			?>
+			<?php selectCompanyInfo(secure($_GET["id"])); ?>
+			<div class="row lower-bar">
+				<div id="lock">
+					<?php  selectLockButton(secure($_GET["id"])); ?>
+				</div>
+				
+				<div id="traject">
+					<?php $endDate = selectTrajectDate(secure($_GET["id"])); ?>
+						
+					<form method="POST" action="#">
+					  Traject date:  <input type="date" name="trajectDate" value="<?php echo $endDate; ?>">
+					  <input id="submitbtn" name="updateTrajectDate" type="submit" value="Change traject enddate">
+					</form>
+					<?php 
+						if (isset($_POST['updateTrajectDate']))
+						{
+							if (updateTrajectDate(secure($_GET["id"]), secure($_POST["trajectDate"])))
+							{
+								echo "<script> sendHeader('clientProfile.php?id=".secure($_GET["id"])."'); </script>";
+							}
+							else
+							{
+								echo "Error updating traject date";
+							}
+						}
+					?>
+				</div>
+			</div>
 		</main>
 		<script src="../../Main/Includes/Javascript/navbar.js"></script>
         <script src="../../Main/Includes/Javascript/main.js"></script>
