@@ -576,10 +576,32 @@ function getExperimentsPreview($CompanyID)
 
         while ($row = $data->fetch_assoc())
         {
-            echo "<li class='experiment-preview'><a href=../../Admin_Portal/Pages/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br><hr>";
+            echo "<li class='experiment-preview'><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br><hr>";
         }
 
-        echo "<li><a href=../../Admin_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
+        echo "<li><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
+        echo "</ul>";
+    }
+}
+
+function getExperimentsPreviewBachelor($CompanyID)
+{
+    $sql = "SELECT e.ID, e.Title
+			FROM Experiment e 
+            INNER JOIN Company c ON c.ID = e.CompanyID
+            WHERE c.ID = '$CompanyID'
+            ORDER BY e.ID DESC LIMIT 3";
+
+    if ($data = query($sql))
+    {
+        echo "<ul style=list-style-type:none>";
+
+        while ($row = $data->fetch_assoc())
+        {
+            echo "<li class='experiment-preview'><a href=../../../" . $_SESSION['Role'] . "_Portal/Pages/bachelorGroup/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br><hr>";
+        }
+
+        echo "<li><a href=../../../" . $_SESSION['Role'] . "_Portal/Pages/bachelorGroup/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
         echo "</ul>";
     }
 }
@@ -910,6 +932,37 @@ function getFeedback($ID)
 
 }
 
+function getFeedbackBachelor($ID)
+{
+    $sql = "SELECT Text, UserID FROM `Comment` WHERE ExperimentID = '$ID'";
+    if ($data = query($sql))
+    {
+        while($row = $data->fetch_assoc())
+        {
+            $UserID = $row["UserID"];
+            $sql = "SELECT Name, RoleID, ProfilePicture FROM User WHERE ID = '$UserID'";
+            if ($data2 = query($sql))
+            {
+                while($row2 = $data2->fetch_assoc())
+                {
+                    $RoleID = $row2["RoleID"];
+                    $sql = "SELECT Name FROM Role WHERE ID = '$RoleID'";
+                    if ($data3 = query($sql))
+                    {
+                        while($row3 = $data3->fetch_assoc())
+                        {
+                            echo '<div class="feedbackUser row"><img class="col-sm-4" alt="profile picture" src="../'.$row2["ProfilePicture"].'">';
+                            echo '<div id="block" class="col-sm-8"><h3> ' . $row2["Name"] . '</h3><br>';
+                            echo '<p>' . $row["Text"] . '</p></div></div><br>';
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
 function insertFeedback($experimentID, $UserID, $feedback)
 {
     $sql = "INSERT INTO `Comment`(`UserID`, `ExperimentID`, `Text`) VALUES ('$UserID', '$experimentID','$feedback')";
@@ -977,6 +1030,41 @@ function getExperimentBlockInfo($CompanyID)
                 <a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/experiment.php?id=<?php echo $row['ID']; ?>">
                     <div class="BlockLogo">
                         <img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
+                    </div>
+                    <div class="BlockTitle">
+                        <h1> <?php echo $Title ?> </h1>
+                    </div>
+                </a>
+            </li>
+
+            <?php
+
+
+        }
+    }
+}
+
+function getExperimentBlockInfoBachelor($CompanyID)
+{
+    $sql = "SELECT e.ID, e.CompanyID, e.Title, e.Thumbnail, e.Completed FROM Experiment e 
+            INNER JOIN Company c ON c.ID = e.CompanyID
+            WHERE c.ID = '$CompanyID'";
+
+    if ($data = Query($sql)) {
+        while ($row = $data->fetch_assoc()) {
+            $ID = $row["ID"];
+            $Title = $row["Title"];
+            $Thumbnail = $row["Thumbnail"];
+
+            // Nodig voor frontend, als iets klaar is wordt het grijs
+            $Completed = $row["Completed"];
+
+            ?>
+
+            <li id="Block" class="col-lg-4">
+                <a href="../../../<?php echo $_SESSION['Role']; ?>_Portal/Pages/bachelorGroup/experiment.php?id=<?php echo $row['ID']; ?>">
+                    <div class="BlockLogo">
+                        <img src="../<?php echo $Thumbnail ?>" alt="Experiment Thumbnail">
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Title ?> </h1>
@@ -1249,7 +1337,7 @@ function selectCompanyInfoGutted($CompanyID)
                 <section class="block">
                     <div class="content">
                         <div class="container-fluid logo">
-                            <img src="../../<?php echo $Logo ?>">
+                            <img src="../../../<?php echo $Logo ?>">
                         </div>
                         <div class="container-fluid discription">
                             <h3><?php echo $Name ?></h3>
@@ -1279,7 +1367,7 @@ function selectCompanyInfoGutted($CompanyID)
                                 <h3>Experiments</h3>
                             </div>
                             <div class="container-fluid">
-                                <?php getExperimentsPreview(secure($_GET["id"])); ?>
+                                <?php getExperimentsPreviewBachelor(secure($_GET["id"])); ?>
                             </div>
                         </div>
                     </section>
@@ -2325,6 +2413,51 @@ function selectBachelorGroupBlockInfo($BachelorGroupID)
                 }
             }
 
+        }
+    }
+}
+
+function selectBachelorBlockGroupMemberInfo($CompanyID)
+{
+
+    $sql = "SELECT BachelorID FROM Bachelor_Company 
+            WHERE CompanyID = '$CompanyID'";
+
+    if ($data = Query($sql)) {
+        while ($row = $data->fetch_assoc()) {
+            $BachelorID = $row["BachelorID"];
+
+            $sql2 = "SELECT c.ID, c.Name, c.Logo FROM Company c
+                INNER JOIN Bachelor_Company bc ON c.ID = bc.CompanyID
+                WHERE BachelorID = '$BachelorID'";
+
+            if ($data2 = Query($sql2)) {
+                while ($row2 = $data2->fetch_assoc()) {
+                    $ID = $row2["ID"];
+                    $Name = $row2["Name"];
+                    $Logo = $row2["Logo"];
+
+                    if ($CompanyID != $ID) {
+
+                        ?>
+
+                        <li id="Block" class="col-lg-4">
+                            <a href="bachelorGroup/clientProfile.php?id=<?php echo $ID ?>">
+                                <div class="BlockLogo">
+                                    <img src="../../<?php echo $Logo ?>" alt="Mentor Profile">
+                                </div>
+                                <div class="BlockTitle">
+                                    <h1> <?php echo $Name ?> </h1>
+                                </div>
+                            </a>
+                        </li>
+
+                        <?php
+                    }
+                }
+            }else {
+                echo "You are currently not in a bachelor group.";
+            }
         }
     }
 }

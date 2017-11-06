@@ -1,19 +1,20 @@
 <?php
-require '../../Main/Includes/PHP/functions.php';
-$ID = secure($_GET["id"]);
+require '../../../Main/Includes/PHP/functions.php';
+checkSession('Client');
 $UserID = $_SESSION["UserID"];
+$ID = secure($_GET["id"]);
 ?>
 <!DOCTYPE html>
 <html>
 	<head>
 	    <title> Client Portal </title>
-	    <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
-		<script src="../../Main/Includes/Javascript/functions.js"></script>
+	    <link rel="stylesheet" href="../../../Main/Includes/CSS/main.css">
+		<script src="../../../Main/Includes/Javascript/functions.js"></script>
 	</head>
 
 	<body id="wrapper-experimentExecuteable">
 	    <header class="wrapper-nav">
-	        <?php require "../nav_nosearchadmin.php";?>
+	        <?php require "nav_nosearch.php";?>
 	    </header>
 	    <main>
 	        <?php getExperimentView($ID); ?>
@@ -40,7 +41,7 @@ $UserID = $_SESSION["UserID"];
 					}
 				?>
 				<hr>
-				<?php getFeedback($ID); ?>	
+				<?php getFeedbackBachelor($ID); ?>
 					
 			</div>
 	    </main>

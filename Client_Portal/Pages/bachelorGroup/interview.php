@@ -1,5 +1,7 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
+checkSession('Mentor');
+$experimentID = checkExperimentIDMentor(secure($_GET["experimentID"]), $_SESSION["UserID"]);
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,7 +19,7 @@ require '../../Main/Includes/PHP/functions.php';
 
             <?php
 
-                $i = selectQuestionsView($_GET['experimentID']);
+                $i = selectQuestionsView($experimentID);
 
             ?>
             <p hidden id="hiddenP"><?php echo $i?></p>
