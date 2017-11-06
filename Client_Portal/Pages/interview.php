@@ -2,13 +2,11 @@
 require '../../Main/Includes/PHP/functions.php';
 checkSession('Client');
 $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
-    if(isset($_POST['submit'])) {
-
-    insertAnswer($_POST, secure($experimentID));
-
-}
-
-
+    if(isset($_POST['submit']))
+    {
+        insertAnswer($_POST, secure($experimentID));
+        header('Location: experiment.php?id='.$_GET['experimentID']);
+    }
 ?>
 <!DOCTYPE html>
 <html>
