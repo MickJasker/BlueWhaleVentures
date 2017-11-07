@@ -8146,8 +8146,29 @@ footer .right {
 #wrapper-designSheet main #switch .switchActive {
   border-bottom: #0099ff solid medium;
 }
+#wrapper-designSheet main button#edit1 {
+  padding: 5px 15px;
+  background-color: #0099ff;
+  color: white;
+  font-weight: 300;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  border: none;
+  position: relative;
+  margin-left: 4.2vw;
+  margin-bottom: 4vh;
+}
+#wrapper-designSheet main button#edit1:hover {
+  background-color: #555555;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
 #wrapper-designSheet main form {
   margin: 80px;
+  margin-bottom: 0px;
 }
 #wrapper-designSheet main form textarea {
   width: 600px;
@@ -8190,24 +8211,6 @@ footer .right {
   background-color: #f2f2f2;
   outline: none;
   color: #0099ff;
-}
-#wrapper-designSheet main form #edit1 {
-  padding: 5px;
-  background-color: #0099ff;
-  color: white;
-  margin-top: 5px;
-  font-weight: 300;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-  border: none;
-}
-#wrapper-designSheet main form #edit1:hover {
-  background-color: #555555;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-  cursor: pointer;
 }
 #wrapper-error {
   font-family: "open-sans", sans-serif;

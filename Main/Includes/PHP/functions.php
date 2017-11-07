@@ -188,7 +188,7 @@ function uploadExecute($file_name, $file_tmp_name, $target_dir)
 	
 	if (move_uploaded_file($file_tmp_name, $target_file)) 
 	    {
-	        echo "The file ". basename($file_name). " has been uploaded.";
+	        //echo "The file ". basename($file_name). " has been uploaded.";
 	    } 
 	    else 
 	    {
