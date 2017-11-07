@@ -11,7 +11,7 @@ checkSession('Client');
 	<script src="../../Main/Includes/Javascript/functions.js"></script>
     <script src="../../Main/Includes/Javascript/jquery-3.2.1.min.js"></script>
 </head>
-<body id="wrapper-admin-body">
+<body id="wrapper-client-body">
 <header class="row wrapper-nav">
     <?php
     require "../nav_client.php"

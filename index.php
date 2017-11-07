@@ -10,7 +10,7 @@
 </head>
 
 <body id="wrapper-login">
-<main class="row">
+<main id="main" class="row">
     <div class="col-lg-6"></div>
     <div class="col-lg-6 login_col login row">
         <div class="login_block ">
@@ -68,6 +68,7 @@
             </form>
         </div>
     </div>
+    
 </main>
 </body>
 </html>

@@ -9,7 +9,7 @@ checkSession('Client');
     <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 	<script src="../../Main/Includes/Javascript/functions.js"></script>
 </head>
-	<body id="wrapper-admin-body">
+	<body id="wrapper-client-body">
 		<header class="row wrapper-nav">
 		<?php
         require "../nav_nosearch.php"

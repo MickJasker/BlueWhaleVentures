@@ -6777,7 +6777,8 @@ body {
   width: 100%;
   background-image: url("../../Files/Images/stockImages/stock (20).jpg");
   background-size: cover;
-  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 #wrapper-login main .login {
   background-color: rgba(0, 153, 255, 0.9);
@@ -6862,13 +6863,24 @@ body {
   margin: 6px;
   display: inherit;
 }
-#wrapper-admin-body {
-  background-image: url('../../Files/Images/stockImages/adminbackground.jpg');
+#wrapper-admin-body,
+#wrapper-client-body,
+#wrapper-mentor-body,
+#wrapper-experimentExecuteable {
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-#wrapper-admin-body #wrapper-admin {
+#wrapper-admin-body {
+  background-image: url('../../Files/Images/stockImages/adminbackground.jpg');
+}
+#wrapper-client-body {
+  background-image: url('../../Files/Images/stockImages/background2.jpg');
+}
+#wrapper-mentor-body {
+  background-image: url('../../Files/Images/stockImages/background3.jpg');
+}
+#wrapper-admin {
   margin: 0;
   padding-top: 80px;
   height: 100%;
@@ -6876,27 +6888,27 @@ body {
   /* Add Animation */
   /* The Close Button */
 }
-#wrapper-admin-body #wrapper-admin #toggle_bachelor {
+#wrapper-admin #toggle_bachelor {
   position: fixed;
   display: block;
   width: 100%;
 }
-#wrapper-admin-body #wrapper-admin #toggle_bachelor #text {
+#wrapper-admin #toggle_bachelor #text {
   padding-left: 4.16%;
 }
-#wrapper-admin-body #wrapper-admin #toggle_bachelor #text h1 {
+#wrapper-admin #toggle_bachelor #text h1 {
   display: inline-block;
   margin-right: 3%;
 }
-#wrapper-admin-body #wrapper-admin #toggle_bachelor #text h1:hover {
+#wrapper-admin #toggle_bachelor #text h1:hover {
   cursor: pointer;
 }
-#wrapper-admin-body #wrapper-admin #toggle_bachelor #text .border-bottom {
+#wrapper-admin #toggle_bachelor #text .border-bottom {
   border-bottom: solid 5px;
   border-color: #0099ff;
 }
-#wrapper-admin-body #wrapper-admin .clientmodal,
-#wrapper-admin-body #wrapper-admin .mentormodal {
+#wrapper-admin .clientmodal,
+#wrapper-admin .mentormodal {
   display: none;
   /* Hidden by default */
   position: fixed;
@@ -6918,8 +6930,8 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
   /* Black w/ opacity */
 }
-#wrapper-admin-body #wrapper-admin .clientmodal-content,
-#wrapper-admin-body #wrapper-admin .mentormodal-content {
+#wrapper-admin .clientmodal-content,
+#wrapper-admin .mentormodal-content {
   position: relative;
   background-color: #fefefe;
   margin: auto;
@@ -6955,34 +6967,34 @@ body {
     opacity: 1;
   }
 }
-#wrapper-admin-body #wrapper-admin .close {
+#wrapper-admin .close {
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
-#wrapper-admin-body #wrapper-admin .close:hover,
-#wrapper-admin-body #wrapper-admin .close:focus {
+#wrapper-admin .close:hover,
+#wrapper-admin .close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
 }
-#wrapper-admin-body #wrapper-admin .clientmodal-header,
-#wrapper-admin-body #wrapper-admin .mentormodal-header {
+#wrapper-admin .clientmodal-header,
+#wrapper-admin .mentormodal-header {
   padding: 2px 16px;
   background-color: #0099ff;
   color: white;
 }
-#wrapper-admin-body #wrapper-admin .clientmodal-body,
-#wrapper-admin-body #wrapper-admin .mentormodal-body {
+#wrapper-admin .clientmodal-body,
+#wrapper-admin .mentormodal-body {
   padding: 2px 16px;
 }
-#wrapper-admin-body #wrapper-admin .clientmodal-body form,
-#wrapper-admin-body #wrapper-admin .mentormodal-body form {
+#wrapper-admin .clientmodal-body form,
+#wrapper-admin .mentormodal-body form {
   width: 145%;
   padding: 10% 55% 0 5%;
 }
-#wrapper-admin-body #wrapper-admin .clientmodal-body form #field,
-#wrapper-admin-body #wrapper-admin .mentormodal-body form #field {
+#wrapper-admin .clientmodal-body form #field,
+#wrapper-admin .mentormodal-body form #field {
   outline: none;
   border: none;
   font-size: 15px;
@@ -6992,29 +7004,29 @@ body {
   width: 100%;
   background-color: #f2f2f2;
 }
-#wrapper-admin-body #wrapper-admin .clientmodal-body form #submitbtn,
-#wrapper-admin-body #wrapper-admin .mentormodal-body form #submitbtn {
+#wrapper-admin .clientmodal-body form #submitbtn,
+#wrapper-admin .mentormodal-body form #submitbtn {
   width: 100%;
   background-color: #0099ff;
   color: white;
   text-align: left;
   height: 30px;
 }
-#wrapper-admin-body #wrapper-admin .list {
+#wrapper-admin .list {
   margin: 105px 0 5% 0;
   position: absolute;
   width: 100%;
   height: auto;
   padding: 0;
 }
-#wrapper-admin-body #wrapper-admin a {
+#wrapper-admin a {
   text-decoration: none;
 }
-#wrapper-admin-body #wrapper-admin .content {
+#wrapper-admin .content {
   margin: 0 3% 0 3%;
   position: relative;
 }
-#wrapper-admin-body #wrapper-admin #Block {
+#wrapper-admin #Block {
   padding: 0;
   height: 33vh;
   width: 31%;
@@ -7022,7 +7034,7 @@ body {
   list-style-type: none;
   margin: 0 1.16% 4% 1.16%;
 }
-#wrapper-admin-body #wrapper-admin #Block .BlockLogo {
+#wrapper-admin #Block .BlockLogo {
   background-color: #f2f2f2;
   width: auto;
   height: 80%;
@@ -7032,7 +7044,7 @@ body {
   border-bottom: none;
   border-width: 1px;
 }
-#wrapper-admin-body #wrapper-admin #Block .BlockLogo img {
+#wrapper-admin #Block .BlockLogo img {
   max-width: 100%;
   max-height: 100%;
   width: auto;
@@ -7046,14 +7058,14 @@ body {
   left: 0;
   position: absolute;
 }
-#wrapper-admin-body #wrapper-admin #Block .BlockTitle {
+#wrapper-admin #Block .BlockTitle {
   width: 100%;
   height: 20%;
   padding: 0;
   position: relative;
   background-color: #0099ff;
 }
-#wrapper-admin-body #wrapper-admin #Block .BlockTitle h1 {
+#wrapper-admin #Block .BlockTitle h1 {
   padding: 2%;
   color: #ffffff;
   font-family: "Open Sans";
@@ -7061,11 +7073,11 @@ body {
   font-size: 3vh;
   display: inline-block;
 }
-#wrapper-admin-body #wrapper-admin #Block .BlockTitle img {
+#wrapper-admin #Block .BlockTitle img {
   float: right;
   padding: 3% 2%;
 }
-#wrapper-admin-body footer {
+footer {
   position: fixed;
   left: 0px;
   bottom: 0px;
@@ -7074,19 +7086,19 @@ body {
   background: white;
   z-index: 1;
 }
-#wrapper-admin-body footer #progressbar {
+footer #progressbar {
   position: relative;
   margin: 1.5% auto 0 auto;
   width: 1000px;
   background-color: #f2f2f2;
 }
-#wrapper-admin-body footer #bar {
+footer #bar {
   border-radius: 25px;
   height: 5px;
   background-color: #0099ff;
   position: relative;
 }
-#wrapper-admin-body footer .milestone {
+footer .milestone {
   background-color: #f2f2f2;
   float: left;
   left: -5px;
@@ -7096,9 +7108,9 @@ body {
   font-family: "Open Sans";
   text-align: center;
 }
-#wrapper-admin-body footer .left1,
-#wrapper-admin-body footer .left2,
-#wrapper-admin-body footer .right {
+footer .left1,
+footer .left2,
+footer .right {
   top: -14px;
   width: 25px;
   left: 5px;
@@ -7107,7 +7119,7 @@ body {
   line-height: 25px;
   font-size: 1.2vh;
 }
-#wrapper-admin-body footer #grow {
+footer #grow {
   top: -19px;
   width: 35px;
   height: 35px;
@@ -7120,13 +7132,13 @@ body {
   background-color: #0099ff;
   color: #ffffff;
 }
-#wrapper-admin-body footer .left1 {
+footer .left1 {
   margin-left: 195px;
 }
-#wrapper-admin-body footer .left2 {
+footer .left2 {
   margin-left: 220px;
 }
-#wrapper-admin-body footer .right {
+footer .right {
   float: right;
   right: -5px;
 }
@@ -7980,11 +7992,48 @@ body {
 #wrapper-experimentExecuteable main {
   padding-top: 80px;
 }
-#wrapper-experimentExecuteable main h1 {
+#wrapper-experimentExecuteable main #textdiv {
+  width: 60%;
+  position: relative;
+  margin: auto;
+}
+#wrapper-experimentExecuteable main #textdiv h1 {
   font-size: 24px;
 }
-#wrapper-experimentExecuteable main h2 {
+#wrapper-experimentExecuteable main #textdiv h2 {
+  color: #0099ff;
+  float: left;
+}
+#wrapper-experimentExecuteable main #textdiv #text {
+  outline: none;
+  width: 100%;
+  height: 20vh;
+  position: relative;
+}
+#wrapper-experimentExecuteable main #textdiv input {
+  background-color: #0099ff;
+  border-radius: 0;
   color: #ffffff;
+  min-width: 20%;
+  height: 5vh;
+  position: relative;
+  font-size: 1.5vh;
+  font-weight: normal;
+  -webkit-transition: ease .2s;
+  -o-transition: ease .2s;
+  transition: ease .2s;
+  outline: none;
+  border: none;
+}
+#wrapper-experimentExecuteable main #textdiv input:hover {
+  background-color: #ffffff;
+  color: #0099ff;
+}
+#wrapper-experimentExecuteable main #feedback {
+  position: relative;
+  width: 60%;
+  height: auto;
+  margin: auto;
 }
 #wrapper-experimentExecuteable main a {
   margin: 25px;
@@ -7997,15 +8046,14 @@ body {
   padding: 5px;
   border: none;
   background-color: #0099ff;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
+  -webkit-transition: .2s ease;
+  -o-transition: .2s ease;
+  transition: .2s ease;
 }
 #wrapper-experimentExecuteable main a button:hover {
-  background-color: #555555;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
+  background-color: #ffffff;
+  color: #0099ff;
+  cursor: pointer;
 }
 #wrapper-experimentExecuteable main .is-disabled {
   background-color: #555555;
@@ -8029,6 +8077,9 @@ body {
   display: inline-block;
   margin: 0;
   text-align: left;
+}
+#wrapper-experimentExecuteable main .feedback .feedbackUser div img {
+  padding: 0;
 }
 #wrapper-experimentExecuteable main .feedback .feedbackUser div #block {
   margin: 10px;
@@ -8404,7 +8455,6 @@ body {
   position: relative;
   width: auto;
   max-height: 100%;
-  min-width: 100%;
   min-height: 100%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);

@@ -50,16 +50,7 @@ CheckSession("Admin");
                                     <br>
                                     <h1>General information</h1><br>
                                     <p>Name</p>
-                                    <input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"><br>
-                                    <input type="text" name="name" placeholder="Last name" value=""><br><br>
-
-                                    <p>Date of Birth</p>
-                                    <input type="date" name="Birthday"><br><br>
-
-                                    <p>Gender</p>
-                                    <input type="radio" name="gender" value="male" checked> Male<br>
-                                    <input type="radio" name="gender" value="female"> Female<br>
-                                    <input type="radio" name="gender" value="other"> Other<br><br>
+                                    <input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"><br><br>
 
                                     <h1>E-mail</h1><br>
                                     <input type="text" name="email" placeholder="E-mail" value="<?php echo $data[3]; ?>"> <br>
