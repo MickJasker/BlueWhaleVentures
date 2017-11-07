@@ -12,7 +12,7 @@ checkSession('Client');
                     <img src="../../Main/Files/Images/add.svg" alt="Add Experiment">
                 </div>
                 <div class="BlockTitle">
-                    <h1> Add Experiment <?php print_r($_SESSION["traject"]); ?></h1>
+                    <h1> Add Experiment </h1>
                 </div>
             </a>
         </div>
