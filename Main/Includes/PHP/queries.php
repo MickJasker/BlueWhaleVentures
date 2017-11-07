@@ -609,6 +609,28 @@ function getExperimentsPreviewBachelor($CompanyID)
     }
 }
 
+function getExperimentsPreviewMentor($CompanyID)
+{
+    $sql = "SELECT e.ID, e.Title
+			FROM Experiment e 
+            INNER JOIN Company c ON c.ID = e.CompanyID
+            WHERE c.ID = '$CompanyID'
+            ORDER BY e.ID DESC LIMIT 3";
+
+    if ($data = query($sql))
+    {
+        echo "<ul style=list-style-type:none>";
+
+        while ($row = $data->fetch_assoc())
+        {
+            echo "<li class='experiment-preview'><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br><hr>";
+        }
+
+        echo "<li><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
+        echo "</ul>";
+    }
+}
+
 //Get experiment info
 function getExperiment($id)
 {
@@ -1391,6 +1413,71 @@ function selectCompanyInfoGutted($CompanyID)
     }
 }
 
+function selectCompanyInfoGuttedMentor($CompanyID)
+{
+    $sql = "SELECT c.Name, c.Logo, c.Description, c.Email, c.Phone, c.Address FROM Company c
+	WHERE c.ID = '$CompanyID'";
+
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc()) {
+            $Name = $row["Name"];
+            $Logo = $row["Logo"];
+            $Description = $row["Description"];
+            $Email = $row["Email"];
+            $Phone = $row["Phone"];
+            $Address = $row["Address"];
+        }
+
+
+        ?>
+
+        <div class="wrapper-profile">
+            <div class="row">
+                <section class="block">
+                    <div class="content">
+                        <div class="container-fluid logo">
+                            <img src="../../../<?php echo $Logo ?>">
+                        </div>
+                        <div class="container-fluid discription">
+                            <h3><?php echo $Name ?></h3>
+                            <p><?php echo $Description ?>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section class="block">
+                    <div class="title-mentor col-md-4">
+                        <h3>Company Information</h3>
+                    </div>
+                    <div class="content">
+                        <div class="container-fluid logo">
+                            <p>
+                                Email: <?php echo $Email ?> <br/>
+                                Phone: <?php echo $Phone ?> <br/>
+                                Address: <?php echo $Address ?> <br/>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="block col-md-4">
+                    <div class="content">
+                        <div class="container-fluid title">
+                            <h3>Experiments</h3>
+                        </div>
+                        <div class="container-fluid">
+                            <?php getExperimentsPreviewMentor(secure($_GET["id"])); ?>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <?php
+    }
+}
+
 function insertExperiment($CompanyID, $Title, $Thumbnail, $Description)
 {
     $sql = "INSERT INTO Experiment(CompanyID, Title, Thumbnail, Description, Completed) VALUES ('$CompanyID', '$Title', '$Thumbnail', '$Description', 0)";
@@ -2131,7 +2218,7 @@ function selectAnswers($questionID, $i){
 
         }
     }
-	if ($_SESSION["traject"] == true) { 
+	if ($_SESSION["traject"] == true) {
     ?>
 
     <button type="button" onclick="addAnswer(<?php echo $questionID?>)">Add Answer</button>
@@ -2213,7 +2300,7 @@ function insertAnswer($POSTData, $ExperimentID)
         }
 
     } else {
-        echo "Shits fucked yo";
+        echo "Can't insert answers";
     }
 
     foreach ($POSTData AS $Key => $Text) {
