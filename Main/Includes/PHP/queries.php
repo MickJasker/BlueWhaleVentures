@@ -329,7 +329,7 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
 			}
 			else if ($sheetType == "Result")
 			{
-				echo '</form> <button id="edit1" onclick=\'editPage(4, "designSheet")\'> Edit </button>';
+				echo ' <button id="edit1" onclick=\'editPage(4, "designSheet")\'> Edit </button></form>';
 			}
 		}
     }
