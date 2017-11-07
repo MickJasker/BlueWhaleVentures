@@ -6892,6 +6892,8 @@ body {
   position: fixed;
   display: block;
   width: 100%;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 #wrapper-admin #toggle_bachelor #text {
   padding-left: 4.16%;
@@ -8059,37 +8061,74 @@ footer .right {
   background-color: #555555;
 }
 #wrapper-experimentExecuteable main .feedback {
-  margin: 50px;
-  background-color: #0099ff;
+  margin: 50px 15% 50px 15% ;
+  background-color: #f2f2f2;
+  border: solid 1px;
+  border-color: #a0a0a0;
   display: inline-block;
   padding: 10px;
   border-radius: 5px;
-  overflow: auto;
-  max-height: 600px;
+  position: absolute;
+  left: 0;
+  width: 70%;
 }
 #wrapper-experimentExecuteable main .feedback .feedbackUser {
-  min-width: 800px;
+  width: 100%;
+  height: 28vh;
   padding: 10px;
-  background-color: #f2f2f2;
   border-radius: 5px;
+  position: relative;
+  color: white;
 }
-#wrapper-experimentExecuteable main .feedback .feedbackUser div {
+#wrapper-experimentExecuteable main .feedback .feedbackUser h2 {
+  margin: auto;
+}
+#wrapper-experimentExecuteable main .feedback .feedbackUser .picdiv {
+  position: relative;
+  float: left;
+  margin-top: .5vh;
+  margin-left: 12%;
+  width: 25vh;
+  height: 25vh;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 50%;
+  border: solid 1px;
+  border-color: #a0a0a0;
+}
+#wrapper-experimentExecuteable main .feedback .feedbackUser .picdiv img {
+  position: relative;
+  width: auto;
+  max-height: 100%;
+  min-height: 100%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  left: 50%;
+}
+#wrapper-experimentExecuteable main .feedback .feedbackUser #feedbacktext {
+  background-color: #0099ff;
+  float: right;
   display: inline-block;
   margin: 0;
   text-align: left;
+  border-radius: 10px;
+  width: 50%;
+  height: 80%;
+  margin: 2vh 10% 0 0;
+  word-wrap: break-word;
+  overflow: auto;
 }
-#wrapper-experimentExecuteable main .feedback .feedbackUser div img {
-  padding: 0;
-}
-#wrapper-experimentExecuteable main .feedback .feedbackUser div #block {
+#wrapper-experimentExecuteable main .feedback .feedbackUser #block {
   margin: 10px;
+  width: 90%;
 }
-#wrapper-experimentExecuteable main .feedback .feedbackUser div #block h3 {
+#wrapper-experimentExecuteable main .feedback .feedbackUser #block h3 {
   text-align: left;
 }
-#wrapper-experimentExecuteable main .feedback .feedbackUser div #block p {
+#wrapper-experimentExecuteable main .feedback .feedbackUser #block p {
   text-align: left;
-  color: #0099ff;
 }
 #wrapper-designSheet {
   background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
