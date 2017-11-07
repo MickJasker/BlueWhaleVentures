@@ -317,19 +317,21 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
             {
                 $row2 = mysqli_fetch_array($data2,MYSQLI_ASSOC);
                 echo '<h3>'.$row2["title"].'</h3>';
-                echo '<textarea disabled class="textarea1" name="input'.$i.'"  type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
+                echo '<textarea disabled class="textarea1" name="input'.$i.'" type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
                 $i++;
             }
         }
-		if ($_SESSION["traject"] == true) { 
+
+		if ($_SESSION["traject"] == true) 
+        { 
 			echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1"><br>';
 			if ($sheetType == "Experiment")
 			{
-				echo '</form> <button id="edit1" onclick=\'editPage(7, "designSheet")\'> Edit </button>';
+				echo '</form><button id="edit1" onclick=\'editPage(7, "designSheet")\'> Edit </button>';
 			}
 			else if ($sheetType == "Result")
 			{
-				echo ' <button id="edit1" onclick=\'editPage(4, "designSheet")\'> Edit </button></form>';
+				echo '<button id="edit1" onclick=\'editPage(4, "designSheet")\'> Edit </button></form>';
 			}
 		}
     }
@@ -350,16 +352,9 @@ function createExperiment($title, $description, $imagepath, $companyid)
             }
             return $experimentId;
         }
-        else
-        {
-            return false;
-        }
+    }
 
-    }
-    else
-    {
-        return false;
-    }
+    return false;
 }
 
 //Keep log on inlog
@@ -606,6 +601,10 @@ function getExperimentsPreviewBachelor($CompanyID)
 
         echo "<li><a href=../../../" . $_SESSION['Role'] . "_Portal/Pages/bachelorGroup/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
         echo "</ul>";
+    }
+    else
+    {
+        echo "No experiments started yet.";
     }
 }
 
