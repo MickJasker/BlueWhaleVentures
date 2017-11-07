@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 require '../../Main/Includes/PHP/functions.php';
 checkSession('Client');
@@ -11,7 +12,6 @@ if ($_SESSION["traject"] == true)
 }
 
 ?>
-<!DOCTYPE html>
 <html>
 <head>
     <title> Client Portal </title>
@@ -20,7 +20,7 @@ if ($_SESSION["traject"] == true)
 </head>
     <body id="wrapper-designSheet">
         <header class="wrapper-nav">
-            <?php require "../nav_nosearch.php";?>
+            <?php require "../nav_nosearch.php"; ?>
         </header>
         <main>
             <?php getDesignSheetData($experimentID, "Experiment", $_SESSION["Language"]); ?>
