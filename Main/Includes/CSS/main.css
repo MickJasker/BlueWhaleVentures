@@ -8174,12 +8174,14 @@ footer .right {
   padding: 5px;
   width: 150px;
   text-align: left;
+  border-radius: 0;
 }
 #wrapper-designSheet main form input:hover {
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
-  background-color: #a0a0a0;
+  background-color: #ffffff;
+  color: #0099ff;
 }
 #wrapper-designSheet main form input:focus {
   -webkit-transition: 0.3s ease;
