@@ -1778,37 +1778,22 @@ function sendExecution($ExecutionPost, $ExperimentID)
 function insertPitch($Text, $PitchID) {
 
     $sql = "UPDATE Pitch SET Preparation = '$Text' WHERE ID = '$PitchID'";
-    if (Query($sql)){
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-
+    return Query($sql);
 }
 
 function insertPitchWithExperimentID($Text, $ExperimentID) {
 
     $sql = "SELECT ID FROM Pitch WHERE ExperimentID = '$ExperimentID'";
-    if ($data = Query($sql)) {
-
-        while ($row = $data->fetch_assoc()) {
-
+    if ($data = Query($sql)) 
+    {
+        while ($row = $data->fetch_assoc())
+        {
             $PitchID = $row["ID"];
 
             $sql = "UPDATE Pitch SET Preparation = '$Text' WHERE ID = '$PitchID'";
-            if (Query($sql)) {
-                header('Location: experiment.php?id=' . $ExperimentID);
-            }
-            else
-            {
-                return false;
-            }
+            return Query($sql);
         }
     }
-
-
 }
 
 function insertPrototype($ImagePath, $Explain, $ExperimentID) {
@@ -2851,6 +2836,21 @@ function selectFilterContent()
             <?php
         }
     }
+}
+
+function checkSheetCreated($Sheet, $ID)
+{
+    $sql = "SELECT * FROM Answer a 
+    INNER JOIN Segment s ON a.SegmentID = s.ID
+    INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
+    WHERE t.ExperimentID = '$ID' AND d.Type = '$Sheet'";
+
+    if (query($sql))
+    {
+        return true;
+    }
+
+    return false;
 }
 
 ?>

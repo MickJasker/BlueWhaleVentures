@@ -2,7 +2,18 @@
 require '../../Main/Includes/PHP/functions.php';
 checkSession('Client');
 checkRange();
-$experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
+
+    $experimentID = checkExperimentID(secure($_GET['experimentID']), secure($_SESSION["CompanyID"]));
+
+    if (isset($_SESSION["insertedIDPrototype"]) == false)
+    {
+        header('Location: prototype.php?experimentID=' . $experimentID);
+    }
+    else
+    {
+        unset($_SESSION["insertedIDPrototype"]);
+    }
+
     if (isset($_POST['save']))
     {
         //Image check
@@ -12,7 +23,8 @@ $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["Comp
         $file1_tmp_name = $_FILES['file1']['tmp_name'];
         $file1_size = $_FILES['file1']['size'];
 
-        if (uploadCheck($file1_name, $file1_tmp_name, $file1_size, $type, $path) == false) {
+        if (uploadCheck($file1_name, $file1_tmp_name, $file1_size, $type, $path) == false)
+        {
             echo " - Error uploading image - ";
         }
         else
@@ -48,8 +60,7 @@ $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["Comp
                 echo "Error uploading the files";
             }
         }
-}
-
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -76,7 +87,6 @@ $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["Comp
 
                 </form>
         </div>
-
     </section>
 </Main>
 </body>

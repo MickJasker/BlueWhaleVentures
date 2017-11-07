@@ -3,8 +3,18 @@
 	checkSession('Client');
 	checkRange();
 
-	$i = 0;
-    if(isset($_POST['submit']))
+    $id = secure($_GET['experimentID']);
+
+    if (isset($_SESSION["insertedIDInterview"]) == false)
+    {
+        header('Location: interview.php?experimentID=' . $experimentID);
+    }
+    else
+    {
+        unset($_SESSION["insertedIDInterview"]);
+    }
+
+    if (isset($_POST['submit']))
     {
         if(isset($_SESSION['insertedIDInterview']))
         {
@@ -12,11 +22,13 @@
         }
         else
         {
-            insertQuestionWithExperimentID($_POST, secure($_GET['experimentID']));
+            insertQuestionWithExperimentID($_POST, $id);
         }
 
-        header('Location: experiment.php?id='.$_GET['experimentID']);
+        header('Location: experiment.php?id='.$id);
     }
+    
+    $i = 0;    
 ?>
 <!DOCTYPE html>
 <html>

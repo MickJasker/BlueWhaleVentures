@@ -48,7 +48,6 @@ if (isset($_POST['generate_companykey']))
              </form> 
          </div>
      </div>
-
  </div>
 
  <ul class="list">
@@ -64,11 +63,7 @@ if (isset($_POST['generate_companykey']))
              </a>
          </div>
 
-         <?php
-
-         getCompanyBlockInfo();
-
-         ?>
+         <?php getCompanyBlockInfo(); ?>
 
      </div>
  </ul>
