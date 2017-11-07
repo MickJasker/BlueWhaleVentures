@@ -322,7 +322,7 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
             }
         }
 
-        if ($_SESSION["traject"] == true) 
+        if (isset($_SESSION["traject"]) && $_SESSION["traject"] == true) 
         { 
             echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1"><br>';
             if ($sheetType == "Experiment")
