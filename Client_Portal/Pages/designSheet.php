@@ -2,7 +2,8 @@
 require '../../Main/Includes/PHP/functions.php';
 checkSession('Client');
 $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
-if ($_SESSION["traject"] == true) { 
+if ($_SESSION["traject"] == true)
+{ 
 	if (isset($_POST["submitDesignsheet"])) 
 	{
 		updateDesignSheet($_POST, "Experiment", $_SESSION["Language"], $experimentID);
@@ -18,16 +19,11 @@ if ($_SESSION["traject"] == true) {
 	<script src="../../Main/Includes/Javascript/functions.js"></script>
 </head>
     <body id="wrapper-designSheet">
-    <header class="wrapper-nav">
-        <?php require "../nav_nosearch.php";?>
-    </header>
-    <main>
-
-            <?php
-				getDesignSheetData($experimentID, "Experiment", $_SESSION["Language"]);
-            ?>
-
-    </main>
-
+        <header class="wrapper-nav">
+            <?php require "../nav_nosearch.php";?>
+        </header>
+        <main>
+            <?php getDesignSheetData($experimentID, "Experiment", $_SESSION["Language"]); ?>
+        </main>
 	</body>
 </html>
