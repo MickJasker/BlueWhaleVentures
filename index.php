@@ -43,7 +43,14 @@
                             } else if ($_SESSION["Role"] == "Mentor") {
                                 $header = "Mentor_Portal/Pages/index.php";
                             } else if ($_SESSION["Role"] == "Client") {
-                                $header = "Client_Portal/Pages/index.php";
+								if (checkRangeDate())
+								{
+									$header = "Client_Portal/Pages/index.php";
+								}
+								else
+								{
+									$header = "";
+								}
                             } else {
                                 $header = "";
                                 //User has no role

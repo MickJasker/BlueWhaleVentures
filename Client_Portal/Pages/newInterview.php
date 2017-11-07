@@ -1,26 +1,22 @@
 <?php
     require '../../Main/Includes/PHP/functions.php';
 	checkSession('Client');
+	checkRange();
 
 	$i = 0;
-
-    if(isset($_POST['submit'])) {
-
-        if(isset($_SESSION['insertedIDInterview'])) {
-
+    if(isset($_POST['submit']))
+    {
+        if(isset($_SESSION['insertedIDInterview']))
+        {
             insertQuestion($_POST, $_SESSION['insertedIDInterview']);
-
         }
-        else {
-
+        else
+        {
             insertQuestionWithExperimentID($_POST, secure($_GET['experimentID']));
-
         }
 
+        header('Location: experiment.php?id='.$_GET['experimentID']);
     }
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -40,30 +36,21 @@
                     <form id="form" action="#" method="POST">
                         <p hidden id="hiddenP"><?php echo $i?></p>
                         <?php
-
-
-                        if(isset($_SESSION['insertedID'])) {
-
-                            $i = SelectQuestion($_SESSION['insertedID']);
-
-                        }
-                        else {
-
-
-                            $i = SelectQuestionWithExperimentID(secure($_GET['experimentID']));
-
-
-                        }
-
+                            if(isset($_SESSION['insertedID']))
+                            {
+                                $i = SelectQuestion($_SESSION['insertedID']);
+                            }
+                            else
+                            {
+                                $i = SelectQuestionWithExperimentID(secure($_GET['experimentID']));
+                            }
                         ?>
 
                         <button type="button" onclick="addQuestion()">Add Question</button>
                         <input type="submit" onclick="return confirm('Are you sure you are done adding questions? You can not add new ones when you leave this page!')" name="submit" value="Save"><br>
-
                     </form>
                 </div>
             </section>
-
         </Main>
     </body>
 </html>

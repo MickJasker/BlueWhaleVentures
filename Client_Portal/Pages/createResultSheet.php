@@ -1,7 +1,8 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
 checkSession('Client');
-$experimentId = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
+checkRange();
+$experimentId = checkExperimentID(secure($_GET["experimentid"]), $_SESSION["CompanyID"]);
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,10 +15,6 @@ $experimentId = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["Comp
         <?php require "../nav_nosearch.php";?>
     </header>
 		<Main>
-            <div id="switch">
-                <button id="switchActive">Result sheet</button>
-                <button>Executable</button>
-            </div>
 			<?php
 				getDesignSheetForm("Result", $_SESSION['Language']);
 				if (isset($_POST['submitDesignsheet']))

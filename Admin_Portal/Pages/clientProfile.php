@@ -35,6 +35,17 @@ require '../../Main/Includes/PHP/functions.php';
         }
     }
 
+        if (isset($_POST['updateTrajectDate']))
+    {
+        if (updateTrajectDate(secure($_GET["id"]), secure($_POST["trajectDate"])))
+        {
+            echo "<script> sendHeader('clientProfile.php?id=".secure($_GET["id"])."'); </script>";
+        }
+        else
+        {
+            echo "Error updating traject date";
+        }
+    }
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -46,6 +57,7 @@ require '../../Main/Includes/PHP/functions.php';
 		<script src="../../Main/Includes/Javascript/jquery-3.2.1.min.js"></script>
 		<script src="../../Main/Includes/Javascript/load.js"></script>
         <script src="../../Main/Includes/Javascript/main.js"></script>
+		<script src="../../Main/Includes/Javascript/functions.js"></script>
     </head>
 
 	<body id="wrapper-ClientProfile">
@@ -69,14 +81,8 @@ require '../../Main/Includes/PHP/functions.php';
                     </div>
                 </div>
             </div>
-			<div class="row lower-bar">
-				<div id="lock">
-					<?php
-						selectCompanyInfo($_GET["id"]);
-						selectLockButton($_GET["id"]);
-					?>
-				</div>
-			</div>
+			<?php selectCompanyInfo(secure($_GET["id"])); ?>
+
 		</main>
 		<script src="../../Main/Includes/Javascript/navbar.js"></script>
         <script src="../../Main/Includes/Javascript/main.js"></script>

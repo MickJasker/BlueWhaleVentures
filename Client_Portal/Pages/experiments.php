@@ -5,7 +5,7 @@ checkSession('Client');
 
 <ul class="list">
     <div class="content">
-
+		<?php if ($_SESSION["traject"] == true) { ?>
         <div id="Block" class="col-lg-4">
             <a class="mentorbutton" href="createExperiment.php">
                 <div class="BlockLogo">
@@ -16,6 +16,7 @@ checkSession('Client');
                 </div>
             </a>
         </div>
+		<?php } ?>
 
         <?php getExperimentBlockInfo($_SESSION["CompanyID"]); ?>
 

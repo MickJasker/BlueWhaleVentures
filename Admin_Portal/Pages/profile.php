@@ -50,8 +50,7 @@ CheckSession("Admin");
                                     <br>
                                     <h1>General information</h1><br>
                                     <p>Name</p>
-                                    <input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"><br>
-                                    <input type="text" name="name" placeholder="Last name" value=""><br><br>
+                                    <input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"><br><br>
 
                                     <p>Date of Birth</p>
                                     <input type="date" name="Birthday"><br><br>

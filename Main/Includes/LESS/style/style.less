@@ -741,17 +741,64 @@ body {
 
 			.mentor-row {
 				margin-top: 20px;
+				background-color: @offwhite;
+				.title-mentor {
+					background-color: @blue;
+					width: 100%;
+					padding: 5px 9px;
+					h1 {
+						color: @white
+					}
+
+					h2 {
+						color: @white;
+					}
+					h3 {
+						color: @white;
+						margin: 0;
+					}
+				}
+				.title {
+					background-color: @blue;
+					width: 100%;
+					h1 {
+						color: white
+					}
+					h2 {
+						color: white;
+					}
+					h3 {
+						color: white;
+					}
+				}
 				.block-experiments {
 					position: relative;
 					float: left;
 					padding: 0;
-					max-height: 30%;
-					background-color: @offwhite;
+					min-height: 36%;
+
+					#experiments-list {
+						list-style-type: none;
+						padding-left: 0;
+						margin-top: 2%;
+						hr {
+							margin-top: 5px;
+							margin-bottom: 5px;
+						}
+						li {
+							text-decoration: none;
+							a {
+								color: @blue;
+								font-size: 20px;
+							}
+						}
+					}
 					.title-experiments {
 						background-color: @blue;
 						width: 100%;
 						margin: 0;
 						height: 36px;
+						padding: 5px 9px;
 						h1 {
 							color: white
 						}
@@ -771,6 +818,7 @@ body {
 				}
 				.mentor {
 					overflow: hidden;
+
 					.title-mentor {
 						background-color: @blue;
 						width: 100%;
@@ -817,9 +865,19 @@ body {
 				}
 
 				.content {
+
 					width: 100%;
 					background-color: @offwhite;
 
+					#traject {
+						margin-top: 6%;
+					}
+
+					.lock {
+						margin-top: 7%;
+						margin-right: 0%;
+						height: 10vh;
+					}
 					h3 {
 						color: @white;
 					}
@@ -853,9 +911,6 @@ body {
 					background-color: @blue;
 				}
 			}
-		}
-		.lock {
-			height: 7vh;
 		}
 	}
 	main {
@@ -1092,6 +1147,31 @@ body {
 					background-color: @blue;
 					height: 8.3vh;
 				}
+			}
+			.company-info {
+				.content {
+					.logo {
+						p {
+							color: black;
+							font-size: 20px;
+						}
+						#email {
+							color: @blue;
+							font-size: 20px;
+						}
+
+						#phone {
+							color: @blue;
+							font-size: 20px;
+						}
+
+						#adress {
+							color: @blue;
+							font-size: 20px;
+						}
+					}
+				}
+
 			}
 			.lower-bar {
 				#lock {
@@ -1365,19 +1445,7 @@ body {
 				border-bottom: @blue solid medium;
 			}
 			button {
-				padding: 10px;
-				border: none;
-				background: none;
-				font-size: 20px;
-				transition: 0.3s ease;
-				border-bottom: rgba(0, 0, 0, 0) solid medium;
-				&:hover {
-					border-bottom: @gray medium solid;
-					transition: 0.3s ease;
-				}
-				&:focus {
-					outline: none;
-				}
+
 
 			}
 		}
@@ -1412,6 +1480,20 @@ body {
 					background-color: @offwhite;
 					outline: none;
 					color: @blue;
+				}
+			}
+			#edit1 {
+				padding: 5px;
+				background-color: @blue;
+				color: white;
+				margin-top: 5px;
+				font-weight: 300;
+				transition: 0.3s ease;
+				border: none;
+				&:hover {
+					background-color: @gray;
+					transition: 0.3s ease;
+					cursor: pointer;
 				}
 			}
 		}
@@ -1639,7 +1721,6 @@ body {
 					position: relative;
 					width: auto;
 					max-height: 100%;
-					min-width: 100%;
 					min-height: 100%;
 					top: 50%;
 					transform: translate(-50%, -50%);

@@ -2,9 +2,11 @@
 require '../../Main/Includes/PHP/functions.php';
 checkSession('Client');
 $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
-if (isset($_POST["submitDesignsheet"])) 
-{
-	updateDesignSheet($_POST, "Experiment", $_SESSION["Language"], $experimentID);
+if ($_SESSION["traject"] == true) { 
+	if (isset($_POST["submitDesignsheet"])) 
+	{
+		updateDesignSheet($_POST, "Experiment", $_SESSION["Language"], $experimentID);
+	}
 }
 
 ?>
@@ -20,13 +22,10 @@ if (isset($_POST["submitDesignsheet"]))
         <?php require "../nav_nosearch.php";?>
     </header>
     <main>
-        <section>
-            <h1>Design sheet : Experiment 2</h1>
+
             <?php
-            getDesignSheetData($experimentID, "Experiment", $_SESSION["Language"]);
+				getDesignSheetData($experimentID, "Experiment", $_SESSION["Language"]);
             ?>
-            <button id="edit1" onclick='editPage(7, "designSheet")'> Edit </button>
-        </section>
 
     </main>
 

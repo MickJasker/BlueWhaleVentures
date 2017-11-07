@@ -1,39 +1,5 @@
 <?php
 require '../../Main/Includes/PHP/functions.php';
-    //CheckSession("Admin");
-
-
-    if (isset($_POST['save'])) 
-    {
-        if (secure($_POST['mentor']) != "") {
-
-            assignMentor(secure($_GET['id']), $_POST['mentor']);
-        }
-	}
-
-    if (isset($_GET['action']))
-    {
-        if (secure($_GET['action']) == "delete")
-        {
-            unassignMentor(secure($_GET['companyID']), secure($_GET['id']));
-        }
-
-        if (secure($_GET['action']) == "lock")
-        {
-            if (updateCompanyLock($_GET['id'], 1) == true)
-            {
-                echo "The account was locked";
-            }
-        }
-
-        if (secure($_GET['action']) == "unlock")
-        {
-            if (updateCompanyLock($_GET['id'], 0) == true)
-            {
-                echo "The account was unlocked";
-            }
-        }
-    }
 
 ?>
 <!DOCTYPE HTML>
@@ -50,7 +16,7 @@ require '../../Main/Includes/PHP/functions.php';
 
 	<body id="wrapper-ClientProfile">
 		<header class="row wrapper-nav">
-			<?php require "../nav_nosearchadmin.php"; ?>
+			<?php require "../nav_nosearch.php"; ?>
 		</header>
 		<main>
             <div id="mentormodal">
@@ -69,9 +35,8 @@ require '../../Main/Includes/PHP/functions.php';
                     </div>
                 </div>
             </div>
-			<?php 
-                selectCompanyInfo($_GET["id"]);
-                selectLockButton($_GET["id"]);
+			<?php
+            selectCompanyInfoGutted(secure($_GET["id"]));
             ?>
 		</main>
 		<script src="../../Main/Includes/Javascript/navbar.js"></script>

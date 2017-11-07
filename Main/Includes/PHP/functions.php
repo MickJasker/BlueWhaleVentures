@@ -75,8 +75,7 @@ function checkSession($AllowedRole)
 	{
 		if ($_SESSION["Role"] != $AllowedRole)
 		{
-			echo "WRONG SESSION!";
-			//header('Location: ../../'.$_SESSION["Role"].'_portal/Pages/index.php');
+			header('Location: ../../'.$_SESSION["Role"].'_portal/Pages/index.php');
 		}
 
 		if (selectUserLock($_SESSION["UserID"]) == 1)
@@ -93,6 +92,14 @@ function checkSession($AllowedRole)
 	return true;
 }
 
+function checkRange()
+{
+	if ($_SESSION["traject"] == false)
+	{
+		header('Location: index.php');
+	}
+}
+
 function destroySession()
 {
 	unset($_SESSION["LoggedIn"]);
@@ -100,6 +107,7 @@ function destroySession()
 	unset($_SESSION["UserID"]);
 	unset($_SESSION["Language"]);
 	unset($_SESSION["CompanyID"]);
+	unset($_SESSION["traject"]);
 	session_destroy(); 
 }
 

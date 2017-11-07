@@ -2,13 +2,11 @@
 require '../../Main/Includes/PHP/functions.php';
 checkSession('Client');
 $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
-    if(isset($_POST['submit'])) {
-
-    insertAnswer($_POST, secure($experimentID));
-
-}
-
-
+    if(isset($_POST['submit']))
+    {
+        insertAnswer($_POST, secure($experimentID));
+        header('Location: experiment.php?id='.$_GET['experimentID']);
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,7 +29,7 @@ $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["Comp
 
             ?>
             <p hidden id="hiddenP"><?php echo $i?></p>
-            <input type="submit" name="submit" value="Save">
+            <?php if ($_SESSION["traject"] == true) { echo '<input type="submit" name="submit" value="Save">'; } ?>
         </form>
     </div>
 </Main>
