@@ -51,7 +51,7 @@ CheckSession("Mentor");
                         <br>
                         <h1>General information</h1><br>
                         <p>Name</p>
-                        <input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"><br>
+                        <input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"><br><br>
 
                         <h1>Contact</h1><br>
                         <input type="text" name="email" placeholder="E-mail" value="<?php echo $data[3]; ?>"> <br>

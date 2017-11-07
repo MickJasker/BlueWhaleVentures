@@ -7460,19 +7460,64 @@ footer .right {
 }
 #wrapper-ClientProfile main .wrapper-profile .mentor-row {
   margin-top: 20px;
+  background-color: #f2f2f2;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .title-mentor {
+  background-color: #0099ff;
+  width: 100%;
+  padding: 5px 9px;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .title-mentor h1 {
+  color: #ffffff;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .title-mentor h2 {
+  color: #ffffff;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .title-mentor h3 {
+  color: #ffffff;
+  margin: 0;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .title {
+  background-color: #0099ff;
+  width: 100%;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .title h1 {
+  color: white;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .title h2 {
+  color: white;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .title h3 {
+  color: white;
 }
 #wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments {
   position: relative;
   float: left;
   padding: 0;
-  max-height: 30%;
-  background-color: #f2f2f2;
+  min-height: 36%;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments #experiments-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 2%;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments #experiments-list hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments #experiments-list li {
+  text-decoration: none;
+}
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments #experiments-list li a {
+  color: #0099ff;
+  font-size: 20px;
 }
 #wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .title-experiments {
   background-color: #0099ff;
   width: 100%;
   margin: 0;
   height: 36px;
+  padding: 5px 9px;
 }
 #wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .title-experiments h1 {
   color: white;
@@ -7529,6 +7574,14 @@ footer .right {
   width: 100%;
   background-color: #f2f2f2;
 }
+#wrapper-ClientProfile main .wrapper-profile .block .content #traject {
+  margin-top: 6%;
+}
+#wrapper-ClientProfile main .wrapper-profile .block .content .lock {
+  margin-top: 7%;
+  margin-right: 0%;
+  height: 10vh;
+}
 #wrapper-ClientProfile main .wrapper-profile .block .content h3 {
   color: #ffffff;
 }
@@ -7551,9 +7604,6 @@ footer .right {
 }
 #wrapper-ClientProfile main .wrapper-profile .block .discription {
   background-color: #0099ff;
-}
-#wrapper-ClientProfile main .lock {
-  height: 7vh;
 }
 #wrapper-ClientProfile main {
   margin-top: 80px;
@@ -7774,6 +7824,22 @@ footer .right {
 #wrapper-ClientProfile main .wrapper-profile .block .discription {
   background-color: #0099ff;
   height: 8.3vh;
+}
+#wrapper-ClientProfile main .wrapper-profile .company-info .content .logo p {
+  color: black;
+  font-size: 20px;
+}
+#wrapper-ClientProfile main .wrapper-profile .company-info .content .logo #email {
+  color: #0099ff;
+  font-size: 20px;
+}
+#wrapper-ClientProfile main .wrapper-profile .company-info .content .logo #phone {
+  color: #0099ff;
+  font-size: 20px;
+}
+#wrapper-ClientProfile main .wrapper-profile .company-info .content .logo #adress {
+  color: #0099ff;
+  font-size: 20px;
 }
 #wrapper-ClientProfile main .wrapper-profile .lower-bar #lock {
   background-color: red;
@@ -8041,25 +8107,6 @@ footer .right {
 #wrapper-designSheet main #switch .switchActive {
   border-bottom: #0099ff solid medium;
 }
-#wrapper-designSheet main #switch button {
-  padding: 10px;
-  border: none;
-  background: none;
-  font-size: 20px;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-  border-bottom: rgba(0, 0, 0, 0) solid medium;
-}
-#wrapper-designSheet main #switch button:hover {
-  border-bottom: #555555 medium solid;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-}
-#wrapper-designSheet main #switch button:focus {
-  outline: none;
-}
 #wrapper-designSheet main form {
   margin: 80px;
 }
@@ -8102,6 +8149,24 @@ footer .right {
   background-color: #f2f2f2;
   outline: none;
   color: #0099ff;
+}
+#wrapper-designSheet main form #edit1 {
+  padding: 5px;
+  background-color: #0099ff;
+  color: white;
+  margin-top: 5px;
+  font-weight: 300;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  border: none;
+}
+#wrapper-designSheet main form #edit1:hover {
+  background-color: #555555;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  cursor: pointer;
 }
 #wrapper-error {
   font-family: "open-sans", sans-serif;
@@ -8390,7 +8455,6 @@ footer .right {
   position: relative;
   width: auto;
   max-height: 100%;
-  min-width: 100%;
   min-height: 100%;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
