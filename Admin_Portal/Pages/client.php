@@ -1,28 +1,26 @@
 <?php
 include_once '../../Main/Includes/PHP/functions.php';
-CheckSession("Admin");
-?>
-<?php	
-					if (isset($_POST['generate_companykey']))
-					{
-						echo '<p>';
-						$user_name = htmlentities(mysqli_real_escape_string($conn, $_POST['user_name']));
-						$company_mail = htmlentities(mysqli_real_escape_string($conn, $_POST['company_mail']));
-						
-						if (!(strlen($user_name) >= 1 && strlen($user_name) <= 32))
-						{
-							echo "The name should be between 1 and 32 characters";
-						}
-						else if (!filter_var($company_mail, FILTER_VALIDATE_EMAIL))
-						{
-							echo "The E-mail adress is not correct";
-						}
-						else
-						{
-							generate_key($company_mail, $user_name, "Company");
-						}
-						echo '</p>';
-					}
+
+if (isset($_POST['generate_companykey']))
+{
+	echo '<p>';
+	$user_name = htmlentities(mysqli_real_escape_string($conn, $_POST['user_name']));
+	$company_mail = htmlentities(mysqli_real_escape_string($conn, $_POST['company_mail']));
+	
+	if (!(strlen($user_name) >= 1 && strlen($user_name) <= 32))
+	{
+		echo "The name should be between 1 and 32 characters";
+	}
+	else if (!filter_var($company_mail, FILTER_VALIDATE_EMAIL))
+	{
+		echo "The E-mail adress is not correct";
+	}
+	else
+	{
+		generate_key($company_mail, $user_name, "Company");
+	}
+	echo '</p>';
+}
 ?>
 <div id="toggle_bachelor">
     <div id="text">

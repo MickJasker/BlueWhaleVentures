@@ -2,7 +2,6 @@
 require '../../Main/Includes/PHP/functions.php';
     //CheckSession("Admin");
 
-
     if (isset($_POST['save'])) 
     {
         if (secure($_POST['mentor']) != "") {
@@ -35,7 +34,7 @@ require '../../Main/Includes/PHP/functions.php';
         }
     }
 
-        if (isset($_POST['updateTrajectDate']))
+    if (isset($_POST['updateTrajectDate']))
     {
         if (updateTrajectDate(secure($_GET["id"]), secure($_POST["trajectDate"])))
         {

@@ -1278,7 +1278,8 @@ function selectCompanyInfo($CompanyID)
 
     if($data = Query($sql))
     {
-        while ($row = $data->fetch_assoc()) {
+        while ($row = $data->fetch_assoc())
+        {
             $Name = $row["Name"];
             $Logo = $row["Logo"];
             $Description = $row["Description"];
@@ -1286,7 +1287,6 @@ function selectCompanyInfo($CompanyID)
             $Phone = $row["Phone"];
             $Address = $row["Address"];
         }
-
 
         ?>
 
