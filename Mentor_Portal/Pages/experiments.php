@@ -1,7 +1,7 @@
 <?php 
 require '../../Main/Includes/PHP/functions.php';
 checkSession('Mentor');
-$ID = checkExperimentIDMentor(secure($_GET["id"]), $_SESSION["UserID"]);
+$ID = checkAllExperimentsMentor(secure($_GET["id"]), $_SESSION["UserID"]);
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,7 +24,7 @@ $ID = checkExperimentIDMentor(secure($_GET["id"]), $_SESSION["UserID"]);
 		<Main id="wrapper-admin">
 			<ul class="list">
      			<div class="content">
-		    		<?php getExperimentBlockInfo($_GET["id"]); ?>
+		    		<?php getExperimentBlockInfo($ID); ?>
 				</div>
 			</ul>
 		</Main>

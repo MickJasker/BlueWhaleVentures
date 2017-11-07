@@ -1,10 +1,17 @@
+<!DOCTYPE html>
 <?php
 require '../../Main/Includes/PHP/functions.php';
 checkSession('Client');
 checkRange();
 $experimentId = checkExperimentID(secure($_GET["experimentid"]), $_SESSION["CompanyID"]);
+
+if (isset($_POST['submitDesignsheet']))
+{
+	insertDesignSheet($_POST, "Result", $_SESSION["Language"], $experimentId);
+
+	header('Location: index.php');
+}
 ?>
-<!DOCTYPE html>
 <html>
 <head>
     <title> Create a new result sheet </title>
@@ -15,16 +22,7 @@ $experimentId = checkExperimentID(secure($_GET["experimentid"]), $_SESSION["Comp
         <?php require "../nav_nosearch.php";?>
     </header>
 		<Main>
-			<?php
-				getDesignSheetForm("Result", $_SESSION['Language']);
-				if (isset($_POST['submitDesignsheet']))
-				{
-					$language = $_SESSION["Language"];
-					insertDesignSheet($_POST, "Result", $language, $experimentId);
-
-					header('Location: index.php');
-				}
-			?>
+			<?php getDesignSheetForm("Result", $_SESSION['Language']); ?>
 		</Main>
 	</body>
 </html>

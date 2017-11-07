@@ -36,7 +36,7 @@ require '../../Main/Includes/PHP/functions.php';
                 </div>
             </div>
 			<?php
-            selectCompanyInfoGutted(secure($_GET["id"]));
+            selectCompanyInfoGuttedMentor(secure($_GET["id"]));
             ?>
 		</main>
 		<script src="../../Main/Includes/Javascript/navbar.js"></script>

@@ -100,7 +100,7 @@ function createAccount($role, $user_name, $company_mail, $password)
                 $sql = "INSERT INTO `Login`(`UserID`, `Email`, `Password`) VALUES ('$id', '$company_mail', '$password')";
                 if (query($sql))
                 {
-						return insertRoleInfo($id);
+                        return insertRoleInfo($id);
                 }
             }
         }
@@ -114,24 +114,24 @@ function insertRoleInfo($userID)
     $role = selectRole($userID);
     if ($role == "Client")
     {
-		if(insertCompany($userID))
-		{
-			$sql = "SELECT ID FROM Company WHERE UserID = '$userID'";
-			if($data = query($sql))
-			{
-				$companyID = "";
-				while($row = $data->fetch_assoc())
-				{
-					$companyID = $row["ID"];
-				}
-				
-				$beginDate = date('Y-m-d');
-				$endDate = date('Y-m-d', strtotime($beginDate. ' + 100 days'));
-				$sql = "INSERT INTO `Timeline`(`CompanyID`, `beginDate`, `endDate`) VALUES ('$companyID','$beginDate','$endDate')";
-				return query($sql);
-			}
-		}
-		return false;
+        if(insertCompany($userID))
+        {
+            $sql = "SELECT ID FROM Company WHERE UserID = '$userID'";
+            if($data = query($sql))
+            {
+                $companyID = "";
+                while($row = $data->fetch_assoc())
+                {
+                    $companyID = $row["ID"];
+                }
+                
+                $beginDate = date('Y-m-d');
+                $endDate = date('Y-m-d', strtotime($beginDate. ' + 100 days'));
+                $sql = "INSERT INTO `Timeline`(`CompanyID`, `beginDate`, `endDate`) VALUES ('$companyID','$beginDate','$endDate')";
+                return query($sql);
+            }
+        }
+        return false;
     }
 
     if ($role == "Mentor")
@@ -159,14 +159,14 @@ function insertMentor($userID)
 function updateCompany($UserID, $Name, $Description, $Logo, $Email, $Phone, $Address, $Branch)
 {
     $sql = "UPDATE Company SET 
-	Name = '$Name', 
-	Description = '$Description', 
-	Logo = '$Logo', 
-	Email = '$Email',
-	Phone = '$Phone', 
-	Address = '$Address',
-	Branch = '$Branch' 
-	WHERE UserID = '$UserID'";
+    Name = '$Name', 
+    Description = '$Description', 
+    Logo = '$Logo', 
+    Email = '$Email',
+    Phone = '$Phone', 
+    Address = '$Address',
+    Branch = '$Branch' 
+    WHERE UserID = '$UserID'";
 
     return query($sql);
 }
@@ -174,9 +174,9 @@ function updateCompany($UserID, $Name, $Description, $Logo, $Email, $Phone, $Add
 function updateMentor($UserID, $CompanyName, $Phone)
 {
     $sql = "UPDATE Mentor SET 
-	CompanyName = '$CompanyName',
-	Phone = '$Phone'
-	WHERE UserID = '$UserID'";
+    CompanyName = '$CompanyName',
+    Phone = '$Phone'
+    WHERE UserID = '$UserID'";
 
     return query($sql);
 }
@@ -231,47 +231,47 @@ function selectLoginInfo($email, $password)
                     $db_data = array("true");
                     while($row = $data->fetch_assoc())
                     {
-                    	if ($row["Locked"] != 1)
-                    	{
-	                        $RoleID = $row["RoleID"];
-	                        $Role = "";
+                        if ($row["Locked"] != 1)
+                        {
+                            $RoleID = $row["RoleID"];
+                            $Role = "";
 
-	                        //Change roleID to role
-	                        if ($RoleID == "6")
-	                        {
-	                            $Role = "Admin";
-	                        }
-	                        else if ($RoleID == "7")
-	                        {
-	                            $Role = "Mentor";
-	                        }
-	                        else if ($RoleID == "8")
-	                        {
-	                            $Role = "Company";
-	                        }
+                            //Change roleID to role
+                            if ($RoleID == "6")
+                            {
+                                $Role = "Admin";
+                            }
+                            else if ($RoleID == "7")
+                            {
+                                $Role = "Mentor";
+                            }
+                            else if ($RoleID == "8")
+                            {
+                                $Role = "Company";
+                            }
 
-	                        array_push($db_data, $Role, $UserID);
-	                        return $db_data;
-                    	}
-                    	else
-                    	{
-                    		echo "This account has been temporarily banned, please contact an administrator for more information";
-                    		return false;
-                    	}
+                            array_push($db_data, $Role, $UserID);
+                            return $db_data;
+                        }
+                        else
+                        {
+                            echo "This account has been temporarily banned, please contact an administrator for more information";
+                            return false;
+                        }
                     }
                 }
             }
             else
             {
                 // Password is not correct
-                echo "The username and/or password 	are/is not correct";
+                echo "The username and/or password  are/is not correct";
                 return false;
             }
         }
     }
     else
     {
-        echo "The username and/or password 	are/is not correct";
+        echo "The username and/or password  are/is not correct";
         return false;
     }
 }
@@ -310,28 +310,30 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
             $id = $row1["SegmentID"];
 
             $sql = "SELECT s.title, s.description FROM Segment s
-			INNER JOIN DesignSheet d ON d.ID = s.DesignSheetID 
-			WHERE d.Type = '$sheetType' AND s.id = '$id'";
+            INNER JOIN DesignSheet d ON d.ID = s.DesignSheetID 
+            WHERE d.Type = '$sheetType' AND s.id = '$id'";
 
             if($data2 = query($sql))
             {
                 $row2 = mysqli_fetch_array($data2,MYSQLI_ASSOC);
                 echo '<h3>'.$row2["title"].'</h3>';
-                echo '<textarea disabled class="textarea1" name="input'.$i.'"  type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
+                echo '<textarea disabled class="textarea1" name="input'.$i.'" type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
                 $i++;
             }
         }
-		if ($_SESSION["traject"] == true) { 
-			echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1"><br>';
-			if ($sheetType == "Experiment")
-			{
-				echo ' <button id="edit1" onclick=\'editPage(7, "designSheet")\'> Edit </button></form>';
-			}
-			else if ($sheetType == "Result")
-			{
-				echo ' <button id="edit1" onclick=\'editPage(4, "designSheet")\'> Edit </button></form>';
-			}
-		}
+
+        if ($_SESSION["traject"] == true) 
+        { 
+            echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1"><br>';
+            if ($sheetType == "Experiment")
+            {
+                echo '</form><button id="edit1" onclick=\'editPage(7, "designSheet")\'> Edit </button>';
+            }
+            else if ($sheetType == "Result")
+            {
+                echo '<button id="edit1" onclick=\'editPage(4, "designSheet")\'> Edit </button></form>';
+            }
+        }
     }
 }
 
@@ -350,16 +352,9 @@ function createExperiment($title, $description, $imagepath, $companyid)
             }
             return $experimentId;
         }
-        else
-        {
-            return false;
-        }
+    }
 
-    }
-    else
-    {
-        return false;
-    }
+    return false;
 }
 
 //Keep log on inlog
@@ -396,14 +391,14 @@ function loginlog($UserID, $state)
     $location = Detect::ipCountry();
 
     $sql = "INSERT INTO `Log`(`UserID`, `Date`, `Time`, `State`, `IP`, `HostName`, `Organisation`, `DeviceType`, `OperatingSystem`, `Browser`, `Brand`, `Location`) 
-	VALUES ('$UserID', '$date', '$time', '$state', '$ip', '$host_name', '$organisation', '$device_type', '$operating_system', '$browser', '$brand', '$location')";
+    VALUES ('$UserID', '$date', '$time', '$state', '$ip', '$host_name', '$organisation', '$device_type', '$operating_system', '$browser', '$brand', '$location')";
     query($sql);
 }
 
 function selectUser($Email)
 {
     $sql = "SELECT ID FROM Login
-	WHERE Email = '$Email'";
+    WHERE Email = '$Email'";
 
     if ($data = query($sql))
     {
@@ -415,8 +410,8 @@ function selectUser($Email)
 function selectRole($ID)
 {
     $sql = "SELECT r.Name FROM Role r
-	INNER JOIN User u ON u.roleID = r.ID
-	WHERE u.ID = '$ID'";
+    INNER JOIN User u ON u.roleID = r.ID
+    WHERE u.ID = '$ID'";
 
     if ($data = query($sql))
     {
@@ -430,9 +425,9 @@ function selectUserName($Email)
     $ID = selectUser($Email);
 
     $sql = "SELECT u.ID, u.Name FROM Role r 
-	INNER JOIN User u ON  u.RoleID = r.ID
-	INNER JOIN Company c ON c.UserID = 
-	WHERE u.ID = '$ID'";
+    INNER JOIN User u ON  u.RoleID = r.ID
+    INNER JOIN Company c ON c.UserID = 
+    WHERE u.ID = '$ID'";
 
     if ($data = query($sql))
     {
@@ -444,8 +439,8 @@ function selectUserName($Email)
 function selectCompanyName($UserID)
 {
     $sql = "SELECT c.Name FROM Company c
-	INNER JOIN User u ON u.ID = c.UserID
-	WHERE u.ID = '$UserID'";
+    INNER JOIN User u ON u.ID = c.UserID
+    WHERE u.ID = '$UserID'";
 
     if ($data = query($sql))
     {
@@ -457,8 +452,8 @@ function selectCompanyName($UserID)
 function selectCompanyID($UserID)
 {
     $sql = "SELECT c.ID FROM Company c
-	INNER JOIN User u ON u.ID = c.UserID
-	WHERE u.ID = '$UserID'";
+    INNER JOIN User u ON u.ID = c.UserID
+    WHERE u.ID = '$UserID'";
 
     if ($data = query($sql))
     {
@@ -470,8 +465,8 @@ function selectCompanyID($UserID)
 function selectUserID($Email)
 {
     $sql = "SELECT u.ID FROM User u
-	INNER JOIN Login l ON l.UserID = u.ID
-	WHERE l.Email = '$Email'";
+    INNER JOIN Login l ON l.UserID = u.ID
+    WHERE l.Email = '$Email'";
 
     if ($data = query($sql))
     {
@@ -493,30 +488,30 @@ function selectUserLanguage($ID)
 
 function selectLocked($ID)
 {
-	$sql = "SELECT Locked FROM User WHERE ID = '$ID'";
+    $sql = "SELECT Locked FROM User WHERE ID = '$ID'";
 
-	if ($data = query($sql))
-	{
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+    if ($data = query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
         return $row['Locked'];
-	}
+    }
 }
 
 function selectSessionInfo($Email)
 {
-	$sql = "SELECT u.ID, r.Name, u.Language, u.Locked FROM User u
-	INNER JOIN Login l ON l.UserID = u.ID
-	INNER JOIN Role r ON u.RoleID = r.ID
-	WHERE Email = '$Email'";
+    $sql = "SELECT u.ID, r.Name, u.Language, u.Locked FROM User u
+    INNER JOIN Login l ON l.UserID = u.ID
+    INNER JOIN Role r ON u.RoleID = r.ID
+    WHERE Email = '$Email'";
 
-	if ($data = query($sql))
+    if ($data = query($sql))
     {
         $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
 
-        $_SESSION["UserID"] = $row["ID"];	
-		$_SESSION["Role"] = $row["Name"];
-		$_SESSION["Language"] =  $row["Language"];
-		$_SESSION["Locked"] = $row["Locked"];
+        $_SESSION["UserID"] = $row["ID"];   
+        $_SESSION["Role"] = $row["Name"];
+        $_SESSION["Language"] =  $row["Language"];
+        $_SESSION["Locked"] = $row["Locked"];
     }
 }
 
@@ -554,21 +549,21 @@ function getCompanyBlockInfo()
 
 function getUserNames($UserID)
 {
-	$sql = "SELECT Name FROM User WHERE ID = '$UserID'";
-	if ($data = query($sql))
+    $sql = "SELECT Name FROM User WHERE ID = '$UserID'";
+    if ($data = query($sql))
     {
         while($row = $data->fetch_assoc())
         {
-			echo $row["Name"];
-		}
-	}
+            echo $row["Name"];
+        }
+    }
 }
 
 //gets the 3 latest
 function getExperimentsPreview($CompanyID)
 {
     $sql = "SELECT e.ID, e.Title
-			FROM Experiment e 
+            FROM Experiment e 
             INNER JOIN Company c ON c.ID = e.CompanyID
             WHERE c.ID = '$CompanyID'
             ORDER BY e.ID DESC LIMIT 3";
@@ -590,7 +585,7 @@ function getExperimentsPreview($CompanyID)
 function getExperimentsPreviewBachelor($CompanyID)
 {
     $sql = "SELECT e.ID, e.Title
-			FROM Experiment e 
+            FROM Experiment e 
             INNER JOIN Company c ON c.ID = e.CompanyID
             WHERE c.ID = '$CompanyID'
             ORDER BY e.ID DESC LIMIT 3";
@@ -605,6 +600,32 @@ function getExperimentsPreviewBachelor($CompanyID)
         }
 
         echo "<li><a href=../../../" . $_SESSION['Role'] . "_Portal/Pages/bachelorGroup/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
+        echo "</ul>";
+    }
+    else
+    {
+        echo "No experiments started yet.";
+    }
+}
+
+function getExperimentsPreviewMentor($CompanyID)
+{
+    $sql = "SELECT e.ID, e.Title
+            FROM Experiment e 
+            INNER JOIN Company c ON c.ID = e.CompanyID
+            WHERE c.ID = '$CompanyID'
+            ORDER BY e.ID DESC LIMIT 3";
+
+    if ($data = query($sql))
+    {
+        echo "<ul style=list-style-type:none>";
+
+        while ($row = $data->fetch_assoc())
+        {
+            echo "<li class='experiment-preview'><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br><hr>";
+        }
+
+        echo "<li><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
         echo "</ul>";
     }
 }
@@ -681,25 +702,25 @@ function getExperiment($id)
             }
         }
     }
-	
-	$sql = "SELECT `CompanyID`, `Title`, `Description`FROM `Experiment` WHERE id = '$id'";
-	if($data = query($sql))
-	{
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-		
-		$header = $header . "?experimentID=" . $id;
+    
+    $sql = "SELECT `CompanyID`, `Title`, `Description`FROM `Experiment` WHERE id = '$id'";
+    if($data = query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        
+        $header = $header . "?experimentID=" . $id;
 
-		echo '<h1>' . $row["Title"] . '</h1>';
-		echo '<p>' . $row["Description"] .  '</p>';
+        echo '<h1>' . $row["Title"] . '</h1>';
+        echo '<p>' . $row["Description"] .  '</p>';
 
-		designSheetAvailable($id, "Experiment");
-		echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
-		designSheetAvailable($id, "Result");
-	}
-	else
-	{
-		return false;
-	}
+        designSheetAvailable($id, "Experiment");
+        echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
+        designSheetAvailable($id, "Result");
+    }
+    else
+    {
+        return false;
+    }
 }
 
 function designSheetAvailable($experimentID, $sheetType)
@@ -737,26 +758,26 @@ function designSheetAvailable($experimentID, $sheetType)
 
 function selectTimeline($companyID)
 {
-	$sql = "SELECT `beginDate`, `endDate` FROM `Timeline` WHERE CompanyID = '$companyID'";
-	if($data = query($sql))
-	{
-		while($row = $data->fetch_assoc())
-		{			
-			$beginDate = new DateTime($row["beginDate"]);
-			$endDate = new DateTime($row["endDate"]);
-			$currentDate = new DateTime();
-			
-			$currentTime = $currentDate->diff($beginDate, true);
-			//echo $currentTime->format('%a') . ' days';
-			
-			$totalTime = $beginDate->diff($endDate, true);
-			//echo $totalTime->format('%a') . ' days';
-			
-			$total = $totalTime->format('%a') / $totalTime->format('%a') * 100;
-			$now = $currentTime->format('%a') / $totalTime->format('%a') * 100;
-			return $now;
-		}
-	}
+    $sql = "SELECT `beginDate`, `endDate` FROM `Timeline` WHERE CompanyID = '$companyID'";
+    if($data = query($sql))
+    {
+        while($row = $data->fetch_assoc())
+        {           
+            $beginDate = new DateTime($row["beginDate"]);
+            $endDate = new DateTime($row["endDate"]);
+            $currentDate = new DateTime();
+            
+            $currentTime = $currentDate->diff($beginDate, true);
+            //echo $currentTime->format('%a') . ' days';
+            
+            $totalTime = $beginDate->diff($endDate, true);
+            //echo $totalTime->format('%a') . ' days';
+            
+            $total = $totalTime->format('%a') / $totalTime->format('%a') * 100;
+            $now = $currentTime->format('%a') / $totalTime->format('%a') * 100;
+            return $now;
+        }
+    }
 }
 
 //Get experiment info
@@ -857,9 +878,9 @@ function getExperimentView($id)
 function designSheetButton($ID, $type)
 {
     $sql = "SELECT a.ID FROM Answer a
-	INNER JOIN Segment s ON a.SegmentID = s.ID
-	INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
-	WHERE a.ExperimentID  = '$ID' AND d.Type = '$type'";
+    INNER JOIN Segment s ON a.SegmentID = s.ID
+    INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
+    WHERE a.ExperimentID  = '$ID' AND d.Type = '$type'";
 
     echo '<a href="';
 
@@ -1100,30 +1121,59 @@ function checkExperimentID($ID, $CompanyID)
 
 function checkExperimentIDMentor($ID, $UserID)
 {
+    $sql = "SELECT `ID` FROM `Mentor` WHERE UserID = '$UserID'";
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+            $MentorID = $row["ID"];
+            $sql = "SELECT `CompanyID` FROM `Mentor_Company` WHERE MentorID = '$MentorID'";
+            if($data2 = Query($sql))
+            {
+                while ($row2 = $data2->fetch_assoc())
+                {
+                    $CompanyID = $row2["CompanyID"];
+                    $sql = "SELECT `ID` FROM `Experiment` WHERE ID = '$ID' AND CompanyID = '$CompanyID'";
+                    if($data3 = Query($sql))
+                    {
+                        while ($row3 = $data3->fetch_assoc())
+                        {
+                            return $row3["ID"];
+                        }
+                    }
+                    else
+                    {
+                        header('Location: index.php');
+                    }
+                }
+            }
+            else
+            {
+                header('Location: index.php');
+            }
+        }
+    }
+    else
+    {
+        header('Location: index.php');
+    }
+    return false;
+}
+
+function checkAllExperimentsMentor($CompanyID, $UserID)
+{
 	$sql = "SELECT `ID` FROM `Mentor` WHERE UserID = '$UserID'";
 	if($data = Query($sql))
     {
         while ($row = $data->fetch_assoc())
         {
 			$MentorID = $row["ID"];
-			$sql = "SELECT `CompanyID` FROM `Mentor_Company` WHERE MentorID = '$MentorID'";
+			$sql = "SELECT `CompanyID` FROM `Mentor_Company` WHERE MentorID = '$MentorID' AND CompanyID = '$CompanyID'";
 			if($data2 = Query($sql))
 			{
 				while ($row2 = $data2->fetch_assoc())
 				{
-					$CompanyID = $row2["CompanyID"];
-					$sql = "SELECT `ID` FROM `Experiment` WHERE ID = '$ID' AND CompanyID = '$CompanyID'";
-					if($data3 = Query($sql))
-					{
-						while ($row3 = $data3->fetch_assoc())
-						{
-							return $row3["ID"];
-						}
-					}
-					else
-					{
-						header('Location: index.php');
-					}
+					return $row2["CompanyID"];
 				}
 			}
 			else
@@ -1181,10 +1231,10 @@ function getMentorAssignedBlockInfo($UserID)
 function selectCompanyMentors($CompanyID)
 {
     $sql = "SELECT m.ID, u.Name, u.ProfilePicture FROM Mentor m
-	INNER JOIN User u ON u.ID = m.UserID
-	INNER JOIN Mentor_Company mc ON mc.MentorID = m.ID
-	INNER JOIN Company c ON c.ID = mc.CompanyID
-	Where c.ID = '$CompanyID'";
+    INNER JOIN User u ON u.ID = m.UserID
+    INNER JOIN Mentor_Company mc ON mc.MentorID = m.ID
+    INNER JOIN Company c ON c.ID = mc.CompanyID
+    Where c.ID = '$CompanyID'";
 
     ?>
     <section id="BottomCol">
@@ -1197,15 +1247,15 @@ function selectCompanyMentors($CompanyID)
                 ?>
                 <div class="mentor-preview col-md-3">
                     <div class="container-fluid">
-	                    <a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID']; ?>">
-		                    <img class="" src="<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
-		                    <h4> <?php echo $row ['Name'] ?> </h4>
-	                    </a>
-	                    <div id="unassign">
-		                    <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
-			                    <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
-		                    </a>
-	                    </div>
+                        <a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID']; ?>">
+                            <img class="" src="<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
+                            <h4> <?php echo $row ['Name'] ?> </h4>
+                        </a>
+                        <div id="unassign">
+                            <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
+                                <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <?php
@@ -1224,7 +1274,7 @@ function selectCompanyMentors($CompanyID)
 function selectCompanyInfo($CompanyID)
 {
     $sql = "SELECT c.Name, c.Logo, c.Description, c.Email, c.Phone, c.Address FROM Company c
-	WHERE c.ID = '$CompanyID'";
+    WHERE c.ID = '$CompanyID'";
 
     if($data = Query($sql))
     {
@@ -1311,12 +1361,12 @@ function selectCompanyInfo($CompanyID)
                 </section>
                 <section class="block-experiments col-md-4">
                     <div class="content">
-	                    <div class="container-fluid title-experiments">
-		                    <h3>Experiments</h3>
-	                    </div>
-	                    <div class="container-fluid">
-		                    <?php getExperimentsPreview(secure($_GET["id"])); ?>
-	                    </div>
+                        <div class="container-fluid title-experiments">
+                            <h3>Experiments</h3>
+                        </div>
+                        <div class="container-fluid">
+                            <?php getExperimentsPreview(secure($_GET["id"])); ?>
+                        </div>
                     </div>
                 </section>
             </div>
@@ -1329,7 +1379,7 @@ function selectCompanyInfo($CompanyID)
 function selectCompanyInfoGutted($CompanyID)
 {
     $sql = "SELECT c.Name, c.Logo, c.Description, c.Email, c.Phone, c.Address FROM Company c
-	WHERE c.ID = '$CompanyID'";
+    WHERE c.ID = '$CompanyID'";
 
     if($data = Query($sql))
     {
@@ -1384,6 +1434,71 @@ function selectCompanyInfoGutted($CompanyID)
                             </div>
                         </div>
                     </section>
+            </div>
+        </div>
+
+        <?php
+    }
+}
+
+function selectCompanyInfoGuttedMentor($CompanyID)
+{
+    $sql = "SELECT c.Name, c.Logo, c.Description, c.Email, c.Phone, c.Address FROM Company c
+    WHERE c.ID = '$CompanyID'";
+
+    if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc()) {
+            $Name = $row["Name"];
+            $Logo = $row["Logo"];
+            $Description = $row["Description"];
+            $Email = $row["Email"];
+            $Phone = $row["Phone"];
+            $Address = $row["Address"];
+        }
+
+
+        ?>
+
+        <div class="wrapper-profile">
+            <div class="row">
+                <section class="block">
+                    <div class="content">
+                        <div class="container-fluid logo">
+                            <img src="../../<?php echo $Logo ?>">
+                        </div>
+                        <div class="container-fluid discription">
+                            <h3><?php echo $Name ?></h3>
+                            <p><?php echo $Description ?>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                <section class="block">
+                    <div class="title-mentor col-md-4">
+                        <h3>Company Information</h3>
+                    </div>
+                    <div class="content">
+                        <div class="container-fluid logo">
+                            <p>
+                                Email: <?php echo $Email ?> <br/>
+                                Phone: <?php echo $Phone ?> <br/>
+                                Address: <?php echo $Address ?> <br/>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="block col-md-4">
+                    <div class="content">
+                        <div class="container-fluid title">
+                            <h3>Experiments</h3>
+                        </div>
+                        <div class="container-fluid">
+                            <?php getExperimentsPreviewMentor(secure($_GET["id"])); ?>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
 
@@ -1515,7 +1630,7 @@ function SelectQuestionWithExperimentID($ExperimentID)
 function selectAdminProfile($ID)
 {
     $sql = "SELECT Name, ProfilePicture, Language From User
-	WHERE ID = '$ID'";
+    WHERE ID = '$ID'";
 
     if($data = Query($sql))
     {
@@ -1568,8 +1683,8 @@ function insertDesignSheet($answerPost, $sheetType, $Language, $experimentID)
 
     //Select the design
     $sql = "SELECT s.ID FROM Segment s
-	INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
-	WHERE d.Type = '$sheetType' AND d.Language = '$Language'";
+    INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
+    WHERE d.Type = '$sheetType' AND d.Language = '$Language'";
 
     if($data = Query($sql))
     {
@@ -1605,8 +1720,8 @@ function updateDesignSheet($answerPost, $sheetType, $Language, $experimentID)
 
     //Select the design
     $sql = "SELECT s.ID FROM Segment s
-	INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
-	WHERE d.Type = '$sheetType' AND d.Language = '$Language'";
+    INNER JOIN DesignSheet d ON s.DesignSheetID = d.ID
+    WHERE d.Type = '$sheetType' AND d.Language = '$Language'";
 
     if($data = Query($sql))
     {
@@ -1773,9 +1888,9 @@ function selectPitch($ExperimentID)
 
             <?php
         }
-		return $Media;
+        return $Media;
     }
-	return false;    
+    return false;    
 }
 
 function getAdminProfile($ID)
@@ -2131,13 +2246,13 @@ function selectAnswers($questionID, $i){
 
         }
     }
-	if ($_SESSION["traject"] == true) { 
+    if ($_SESSION["traject"] == true) {
     ?>
 
     <button type="button" onclick="addAnswer(<?php echo $questionID?>)">Add Answer</button>
 
     <?php
-	}
+    }
     return $i;
 }
 
@@ -2213,7 +2328,7 @@ function insertAnswer($POSTData, $ExperimentID)
         }
 
     } else {
-        echo "Shits fucked yo";
+        echo "Can't insert answers";
     }
 
     foreach ($POSTData AS $Key => $Text) {
@@ -2480,9 +2595,9 @@ function selectBachelorBlockGroupMemberInfo($CompanyID)
 function updateCompanyLock($CompanyID, $Locked)
 {
     $sql = "UPDATE User u
-	INNER JOIN Company c on c.UserID = u.ID
-	SET u.Locked = '$Locked'
-	WHERE c.ID = '$CompanyID'";
+    INNER JOIN Company c on c.UserID = u.ID
+    SET u.Locked = '$Locked'
+    WHERE c.ID = '$CompanyID'";
 
     if ($data = Query($sql))
     {
@@ -2495,8 +2610,8 @@ function updateCompanyLock($CompanyID, $Locked)
 function selectLockButton($companyID)
 {
     $sql = "SELECT u.locked FROM User u
-	INNER JOIN Company c ON c.UserID = u.ID
-	WHERE c.ID = '$companyID'";
+    INNER JOIN Company c ON c.UserID = u.ID
+    WHERE c.ID = '$companyID'";
 
     if ($data = Query($sql))
     {
@@ -2524,26 +2639,26 @@ function selectLockButton($companyID)
 
 function checkRangeDate()
 {
-	$CompanyID = $_SESSION['CompanyID'];
+    $CompanyID = $_SESSION['CompanyID'];
     $sql = "SELECT `endDate` FROM `Timeline` WHERE CompanyID = '$CompanyID'";
 
     if ($data = Query($sql))
     {
-		 while ($row = $data->fetch_assoc()) 
-		 {
+         while ($row = $data->fetch_assoc()) 
+         {
             $endDate = new DateTime($row["endDate"]);
-			$currentDate = new DateTime();
-			if($endDate < $currentDate) {
-				$_SESSION["traject"] = false;
-			}
-			else
-			{
-				$_SESSION["traject"] = true;
-			}
-			return true;
-		 }
-	}
-	return false;
+            $currentDate = new DateTime();
+            if($endDate < $currentDate) {
+                $_SESSION["traject"] = false;
+            }
+            else
+            {
+                $_SESSION["traject"] = true;
+            }
+            return true;
+         }
+    }
+    return false;
 }
 
 function insertBachelorGroup($BachelorName)
@@ -2660,33 +2775,33 @@ function deleteBachelorGroupMember($CompanyID, $BachelorGroupID)
 
 function selectUserLock($userID)
 {
-	$sql = "SELECT Locked FROM User WHERE ID = '$userID'";
+    $sql = "SELECT Locked FROM User WHERE ID = '$userID'";
 
-	if ($data = query($sql))
-	{
-		$row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+    if ($data = query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
 
-		return $row["Locked"];
-	}
+        return $row["Locked"];
+    }
 }
 
 function selectTrajectDate($CompanyID)
 {
-	$sql = "SELECT `endDate` FROM `Timeline` WHERE CompanyID = '$CompanyID'";
+    $sql = "SELECT `endDate` FROM `Timeline` WHERE CompanyID = '$CompanyID'";
 
-	if ($data = query($sql)) {
+    if ($data = query($sql)) {
 
         while ($row = $data->fetch_assoc()) 
-		{
-			return $row["endDate"];
-		}
-		
-	}
+        {
+            return $row["endDate"];
+        }
+        
+    }
 }
 
 function updateTrajectDate($CompanyID, $endDate)
 {
-	$sql = "UPDATE `Timeline` SET `endDate`='$endDate' WHERE CompanyID = '$CompanyID'";
+    $sql = "UPDATE `Timeline` SET `endDate`='$endDate' WHERE CompanyID = '$CompanyID'";
 
     return query($sql);
 }
@@ -2726,8 +2841,8 @@ function selectFilterContent()
         while ($row = $data->fetch_assoc()) {
 
             $Branch = $row['Name'];
-			
-			$Branch = str_replace("_"," ",$Branch);
+            
+            $Branch = str_replace("_"," ",$Branch);
 
             ?>
 
