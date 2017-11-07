@@ -16,13 +16,22 @@ $UserID = $_SESSION["UserID"];
 	        <?php require "../nav_nosearchadmin.php";?>
 	    </header>
 	    <main>
+            <div id="experimentinfo">
+
 	        <?php getExperimentView($ID); ?>
-			<h2> Feedback </h2>
-			<div>
+
+            </div>
+
+			<div id="textdiv">
+                <h2> Feedback </h2>
+
 				<form id="form" action="#" method="POST">
-					<textarea name="feedbackContent"> </textarea> <br>
+					<textarea id="text" name="feedbackContent"> </textarea> <br>
 					<input type="submit" name="addFeedback" value="Add feedback">
 				</form>
+
+            </div>
+            <div class="feedback">
 				
 				<?php 
 				if (isset($_POST['addFeedback']))
@@ -39,7 +48,6 @@ $UserID = $_SESSION["UserID"];
 							
 					}
 				?>
-				<hr>
 				<?php getFeedback($ID); ?>	
 					
 			</div>

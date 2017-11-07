@@ -12,7 +12,7 @@ checkSession("Mentor");
 		<script src="../../Main/Includes/Javascript/load.js"></script>
 		<link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 	</head>
-	<body id="wrapper-admin-body">
+	<body id="wrapper-mentor-body">
 		<header class="wrapper-nav">
 			<?php
             require "../nav_mentor.php"
