@@ -137,6 +137,8 @@ body {
 			position: fixed;
 			display: block;
 			width: 100%;
+			z-index: 1;
+			background-color: rgba(255,255,255, .8);
 
 			#text {
 				padding-left: 4.16%;
@@ -1390,42 +1392,80 @@ body {
 
 		}
 		.feedback {
-			margin: 50px;
-			background-color: @blue;
+			margin: 50px 15% 50px 15% ;
+			background-color: @offwhite;
+			border: solid 1px;
+			border-color: @grey;
 			display: inline-block;
 			padding: 10px;
 			border-radius: 5px;
-			overflow: auto;
-			max-height: 600px;
+			position: absolute;
+			left: 0;
+			width: 70%;
+
 			.feedbackUser {
-				min-width: 800px;
+				width: 100%;
+				height: 28vh;
 				padding: 10px;
-				background-color: @offwhite;
 				border-radius: 5px;
+				position: relative;
+				color: white;
 
-				img{
-
+				h2{
+					margin: auto;
 				}
-				div {
+
+				.picdiv{
+					position: relative;
+					float: left;
+					margin-top: .5vh;
+					margin-left: 12%;
+
+					width: 25vh;
+					height: 25vh;
 					display: inline-block;
-					margin: 0;
-					text-align: left;
-					img {
-						padding: 0;
+					overflow: hidden;
+					border-radius: 50%;
+					border: solid 1px;
+					border-color: @grey;
+
+					img{
+
+						position: relative;
+						width: auto;
+						max-height: 100%;
+						min-height: 100%;
+						top: 50%;
+						transform: translate(-50%, -50%);
+						left: 50%;
+					}
+				}
+					#feedbacktext{
+						background-color: @blue;
+						float: right;
+						display: inline-block;
+						margin: 0;
+						text-align: left;
+						border-radius: 10px;
+						width: 50%;
+						height: 80%;
+						margin: 2vh 10% 0 0;
+						word-wrap: break-word;
+						overflow: auto;
 					}
 					#block {
 						margin: 10px;
+						width: 90%;
+
 						h3 {
 							text-align: left;
 						}
 						p {
 							text-align: left;
-							color: @blue;
 						}
 					}
 
 				}
-			}
 
 		}
 	}
@@ -1450,8 +1490,27 @@ body {
 			}
 		}
 
+		button#edit1 {
+			padding: 5px 15px;
+			background-color: @blue;
+			color: white;
+			font-weight: 300;
+			transition: 0.3s ease;
+			border: none;
+			position: relative;
+			margin-left: 4.2vw;
+			margin-bottom: 4vh;
+			&:hover {
+				background-color: @gray;
+				transition: 0.3s ease;
+				cursor: pointer;
+			}
+		}
+
 		form {
 			margin: 80px;
+			margin-bottom: 0px;
+
 			textarea {
 				width: 600px;
 				height: 150px;
@@ -1462,6 +1521,7 @@ body {
 					transition: 0.3s ease;
 				}
 			}
+
 			input {
 				background-color: @blue;
 				color: white;
@@ -1471,6 +1531,8 @@ body {
 				padding: 5px;
 				width: 150px;
 				text-align: left;
+
+
 				&:hover {
 					transition: 0.3s ease;
 					background-color: @grey;
@@ -1480,20 +1542,6 @@ body {
 					background-color: @offwhite;
 					outline: none;
 					color: @blue;
-				}
-			}
-			#edit1 {
-				padding: 5px;
-				background-color: @blue;
-				color: white;
-				margin-top: 5px;
-				font-weight: 300;
-				transition: 0.3s ease;
-				border: none;
-				&:hover {
-					background-color: @gray;
-					transition: 0.3s ease;
-					cursor: pointer;
 				}
 			}
 		}
