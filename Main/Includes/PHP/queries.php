@@ -534,7 +534,7 @@ function getCompanyBlockInfo()
             <li id="Block" class="<?php echo $Branch;?> col-lg-4">
                 <a href="../../Admin_Portal/Pages/clientProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
-                        <img src="../../<?php echo $Logo ?>" alt="Company Logo">
+                        <img src="<?php echo $Logo ?>" alt="Company Logo">
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Name ?> </h1>

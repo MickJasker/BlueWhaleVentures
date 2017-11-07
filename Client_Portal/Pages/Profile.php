@@ -35,7 +35,7 @@ checkSession('Client');
 			</select> <br> 
 			<?php if ($data[7] != "")
 					{
-						echo '<img src="../../'.$data[6].'" alt="Profile picture" height="100px">';
+						echo '<img src="'.$data[6].'" alt="Profile picture" height="100px">';
 					}
 			?>
 			Upload company logo: <input type="file" name="file2" id="file2"> 
@@ -127,6 +127,30 @@ checkSession('Client');
 						$check = false;
 						echo "No branch has been choosen";
 					}
+					else if (!empty($_FILES['file1']['name']))
+					{
+						$type = "img";
+						$path = "../../Client_Portal/Uploads/profilePicture/";
+						$file1_name = $_FILES['file1']['name'];
+						$file1_tmp_name = $_FILES['file1']['tmp_name'];
+						$file1_size = $_FILES['file1']['size'];
+
+						if (uploadCheck($file1_name, $file1_tmp_name, $file1_size, $type, $path) == false) {
+							$check = false;
+						}
+					}
+					else if (!empty($_FILES['file2']['name']))
+					{
+						$type = "img";
+						$path2 = "../../Client_Portal/Uploads/Logo/";
+						$file2_name = $_FILES['file2']['name'];
+						$file2_tmp_name = $_FILES['file2']['tmp_name'];
+						$file2_size = $_FILES['file2']['size'];
+
+						if (uploadCheck($file2_name, $file2_tmp_name, $file2_size, $type, $path2) == false) {
+							$check = false;
+						}
+					}
 					
 					
 					if ($check)
@@ -175,14 +199,14 @@ checkSession('Client');
 						if (!empty($_FILES['file2']['name'])) 
 						{
 							$type = "img";
-							$path2 = "Client_Portal/Uploads/profilePicture/";
+							$path2 = "../../Client_Portal/Uploads/Logo/";
 							$file2_name = $_FILES['file2']['name'];
 							$file2_tmp_name = $_FILES['file2']['tmp_name'];
 							$file2_size = $_FILES['file2']['size'];
 								
-							if ($data[7] != "")
+							if ($data[6] != "")
 							{
-								if (!unlink("../../".$data[7])) 
+								if (!unlink("../../".$data[6])) 
 								{
 									echo "error deleting old image";
 									$upload = false;
@@ -196,6 +220,7 @@ checkSession('Client');
 								if ($imageResult[0] == 1) {
 									$LPath = $imageResult[1];
 								} else {
+									echo "11";
 									$upload = false;
 								}
 							}
@@ -223,13 +248,13 @@ checkSession('Client');
 						}
 						else
 						{
-							echo " - Error - ";
+							echo " - Error2 - ";
 						}
 						
 					}//End $check
 					else
 					{
-						echo " - Error - ";
+						echo " - Error1 - ";
 					}
 				}
 					
