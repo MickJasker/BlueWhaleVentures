@@ -16,3 +16,5 @@ Main/Includes/CSS/main.css
 
 *.config
 Admin_Portal/Pages/bachelors.php
+
+\.DS_Store
