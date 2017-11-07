@@ -1161,6 +1161,35 @@ function checkExperimentIDMentor($ID, $UserID)
 	return false;
 }
 
+function checkAllExperimentsMentor($CompanyID, $UserID)
+{
+	$sql = "SELECT `ID` FROM `Mentor` WHERE UserID = '$UserID'";
+	if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
+			$MentorID = $row["ID"];
+			$sql = "SELECT `CompanyID` FROM `Mentor_Company` WHERE MentorID = '$MentorID' AND CompanyID = '$CompanyID'";
+			if($data2 = Query($sql))
+			{
+				while ($row2 = $data2->fetch_assoc())
+				{
+					return $row2["CompanyID"];
+				}
+			}
+			else
+			{
+				header('Location: index.php');
+			}
+		}
+	}
+	else
+	{
+		header('Location: index.php');
+	}
+	return false;
+}
+
 //Client Portal Expirement blokken
 function getMentorAssignedBlockInfo($UserID)
 {
