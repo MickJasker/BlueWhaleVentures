@@ -283,7 +283,7 @@ function getDesignSheetForm($sheetType, $language)
 
     if($data = query($sql))
     {
-        echo '<form id="designSheetForm" method="POST" action="#">';
+        echo '<form id="designSheetForm" method="POST" action="#"> <h1>'.$sheetType.' Sheet</h1>';
 
         $i = 0;
         while($row = $data->fetch_assoc())
@@ -303,7 +303,7 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
     $sql = "SELECT SegmentID, Text  FROM `Answer` WHERE ExperimentID = '$ExperimentID' ORDER BY SegmentID";
     if($data1 = query($sql))
     {
-        echo '<form method="POST" action="#"><h1>Design sheet</h1>';
+        echo '<form method="POST" action="#"><h1>'.$sheetType.' Sheet</h1>';
         $i = 0;
         while($row1 = $data1->fetch_assoc())
         {
@@ -327,7 +327,7 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
             echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1"><br>';
             if ($sheetType == "Experiment")
             {
-                echo '</form><button id="edit1" onclick=\'editPage(7, "designSheet")\'> Edit </button>';
+                echo '</form><button id="edit1" onclick=\'editPage(6, "designSheet")\'> Edit </button>';
             }
             else if ($sheetType == "Result")
             {

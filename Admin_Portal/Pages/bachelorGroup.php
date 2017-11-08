@@ -61,15 +61,23 @@
         </div>
 
     </div>
-    <ul class="list">
-        <div class="content">
 
-            <?php
+    <div id="toggle_bachelor">
+        <div id="text">
+            <form action="index.php">
+                <input type="submit" value="Back" />
+            </form>
+
+                <?php
 
                 selectBachelorName(secure($_GET['id']));
 
-            ?>
+                ?>
+        </div>
+    </div>
 
+    <ul class="list">
+        <div class="content">
 
             <div onclick="createcompany()" id="Block" class="col-lg-4">
                 <a class="clientbutton" href="#">
