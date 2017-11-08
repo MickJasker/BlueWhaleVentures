@@ -386,10 +386,7 @@ function createExperiment($title, $description, $imagepath, $companyid)
 function loginlog($UserID, $state)
 {
     //Current date displayed like: monday-01-01-17
-    $date = date("l-d-m-y");
-
-    //Current time displayed like: 03-15-45-pm
-    $time = date("h-i-s-a");
+    $date = date('Y-m-d H:i:s');
 
     //ip adress from the user
     $ip = $_SERVER['REMOTE_ADDR'];
@@ -415,8 +412,8 @@ function loginlog($UserID, $state)
     //country
     $location = Detect::ipCountry();
 
-    $sql = "INSERT INTO `Log`(`UserID`, `Date`, `Time`, `State`, `IP`, `HostName`, `Organisation`, `DeviceType`, `OperatingSystem`, `Browser`, `Brand`, `Location`) 
-    VALUES ('$UserID', '$date', '$time', '$state', '$ip', '$host_name', '$organisation', '$device_type', '$operating_system', '$browser', '$brand', '$location')";
+    $sql = "INSERT INTO `Log`(`UserID`, `Date`, `State`, `IP`, `HostName`, `Organisation`, `DeviceType`, `OperatingSystem`, `Browser`, `Brand`, `Location`) 
+    VALUES ('$UserID', '$date', '$state', '$ip', '$host_name', '$organisation', '$device_type', '$operating_system', '$browser', '$brand', '$location')";
     query($sql);
 }
 
@@ -1377,7 +1374,7 @@ function selectCompanyInfo($CompanyID)
 
                         </div>
                         <div class="container-fluid">
-                            <p>Analytics</p>
+							<span> Number of experiments: <?php selectExperiments($CompanyID); ?> </span>
                         </div>
                     </div>
                 </section>
@@ -1414,6 +1411,19 @@ function selectCompanyInfo($CompanyID)
 
         <?php
     }
+}
+
+function selectExperiments($CompanyID)
+{
+	$sql = "SELECT COUNT(`ID`) FROM `Experiment` WHERE CompanyID = '$CompanyID'";
+	if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc()) 
+		{
+            echo $row["COUNT(`ID`)"];
+		}
+		
+	}
 }
 
 function selectCompanyInfoGutted($CompanyID)
