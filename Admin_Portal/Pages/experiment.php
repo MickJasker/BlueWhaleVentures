@@ -23,7 +23,7 @@ $UserID = $_SESSION["UserID"];
             </div>
 
 			<div id="textdiv">
-                <h2> Feedback </h2>
+                <h2>Add Feedback </h2>
 
 				<form id="form" action="#" method="POST">
 					<textarea id="text" name="feedbackContent"> </textarea> <br>
@@ -52,7 +52,7 @@ $UserID = $_SESSION["UserID"];
 				?>
 				<?php getFeedback($ID); ?>	
 					
-			</>
+			</div>
 	    </main>
 	</body>
 </html>

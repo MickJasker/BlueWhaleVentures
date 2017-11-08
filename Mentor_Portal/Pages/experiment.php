@@ -17,13 +17,25 @@ $UserID = $_SESSION["UserID"];
 	        <?php require "../nav_nosearchmentor.php";?>
 	    </header>
 	    <main>
-	        <?php getExperimentView($ID); ?>
-			<h2> Feedback </h2>
-			<div>
-				<form id="form" action="#" method="POST">
-					<textarea name="feedbackContent"> </textarea> <br>
-					<input type="submit" name="addFeedback" value="Add feedback">
-				</form>
+            <div id="experimentinfo">
+
+                <?php getExperimentView($ID); ?>
+
+            </div>
+
+            <div id="textdiv">
+
+            <h2>Add Feedback </h2>
+                <form id="form" action="#" method="POST">
+                    <textarea id="text" name="feedbackContent"> </textarea> <br>
+                    <input type="submit" name="addFeedback" value="Add feedback">
+                </form>
+
+            </div>
+
+                <div class="feedback">
+
+                    <h2> Feedback </h2>
 				
 				<?php 
 				if (isset($_POST['addFeedback']))
@@ -40,9 +52,10 @@ $UserID = $_SESSION["UserID"];
 							
 					}
 				?>
-				<hr>
-				<?php getFeedback($ID); ?>	
-					
+
+				<?php getFeedback($ID); ?>
+
+
 			</div>
 	    </main>
 	</body>
