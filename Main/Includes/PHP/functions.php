@@ -133,13 +133,6 @@ function uploadCheck($file_name, $file_tmp_name, $file_size, $type, $target_dir)
 		    $uploadok = 0;
 		} 
 	}
-	    
-	// Check if file already exists
-	if (file_exists($target_file)) 
-	{
-	    echo "Sorry, file already exists.";
-	    $uploadok = 0;
-	}
 	
 	// Check file size
 	if ($file_size > 30000000) 
@@ -183,13 +176,23 @@ function uploadCheck($file_name, $file_tmp_name, $file_size, $type, $target_dir)
 // Uploads a file (Only upload)
 function uploadExecute($file_name, $file_tmp_name, $target_dir)
 {
+	$file_name = randomImgName();
 	$target_file = $target_dir . basename($file_name);
 	$uploadok = 1;
+	
+	
+	// Check if file already exists
+	while (file_exists($target_file)) 
+	{
+	    $file_name = randomImgName();
+	}
+	
+	$target_file = $target_dir . basename($file_name);
 	
 	if (move_uploaded_file($file_tmp_name, $target_file)) 
 	    {
 	        //echo "The file ". basename($file_name). " has been uploaded.";
-	    } 
+	    }
 	    else 
 	    {
 	        echo "Sorry, there was an error uploading your file.";
@@ -197,5 +200,25 @@ function uploadExecute($file_name, $file_tmp_name, $target_dir)
 	    }
 	//return if file is uploaded or not and filepath in array
 	return array($uploadok, $target_file);
+}
+
+function randomImgName()
+{
+		//array with alphabet + numbers
+		$numbers = range(chr(48),chr(57));
+		$letters = range(chr(65),chr(90));
+		$characters = array_merge($numbers, $letters);
+		
+		$i = 0;
+		$generatedkey = "";
+		
+		//Generate an random character 6 times and merge that to one variable code
+		while ($i < 10)
+		{
+			$generatedkey = $generatedkey . $characters[mt_rand(0, 35)];
+			$i++;
+		}
+		
+		return $generatedkey;
 }
 ?>
