@@ -32,6 +32,8 @@ $UserID = $_SESSION["UserID"];
 
             </div>
             <div class="feedback">
+
+                    <h2> Feedback </h2>
 				
 				<?php 
 				if (isset($_POST['addFeedback']))
@@ -50,7 +52,7 @@ $UserID = $_SESSION["UserID"];
 				?>
 				<?php getFeedback($ID); ?>	
 					
-			</div>
+			</>
 	    </main>
 	</body>
 </html>

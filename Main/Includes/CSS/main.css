@@ -6757,6 +6757,7 @@ html {
 html label {
   display: block;
   cursor: pointer;
+  text-align: center;
 }
 html textarea {
   resize: none;
@@ -6766,6 +6767,9 @@ html input {
   border-radius: 0;
   outline-width: 2px;
   color: black;
+}
+html select {
+  outline: none;
 }
 html button,
 html input[type="button"],
@@ -6899,18 +6903,27 @@ body {
   position: fixed;
   display: block;
   width: 100%;
+  height: 80px;
   z-index: 1;
   background-color: rgba(255, 255, 255, 0.8);
 }
 #wrapper-admin #toggle_bachelor #text {
   padding-left: 4.16%;
 }
+#wrapper-admin #toggle_bachelor #text #client:hover,
+#wrapper-admin #toggle_bachelor #text #bachelor:hover {
+  cursor: pointer;
+}
 #wrapper-admin #toggle_bachelor #text h1 {
   display: inline-block;
+  float: left;
   margin-right: 3%;
 }
-#wrapper-admin #toggle_bachelor #text h1:hover {
-  cursor: pointer;
+#wrapper-admin #toggle_bachelor #text input {
+  margin: 25px 2% 0 -2%;
+  width: 60px;
+  float: left;
+  height: 30px;
 }
 #wrapper-admin #toggle_bachelor #text .border-bottom {
   border-bottom: solid 5px;
@@ -7470,7 +7483,6 @@ footer .right {
 }
 #wrapper-ClientProfile main .wrapper-profile .mentor-row {
   margin-top: 20px;
-  background-color: #f2f2f2;
 }
 #wrapper-ClientProfile main .wrapper-profile .mentor-row .title-mentor {
   background-color: #0099ff;
@@ -7502,9 +7514,10 @@ footer .right {
 }
 #wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments {
   position: relative;
+  background-color: #f2f2f2;
   float: left;
   padding: 0;
-  min-height: 36%;
+  min-height: 100%;
 }
 #wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments #experiments-list {
   list-style-type: none;
@@ -8011,10 +8024,10 @@ footer .right {
   float: left;
 }
 #wrapper-experimentExecuteable main #textdiv #text {
-  outline: none;
   width: 100%;
   height: 20vh;
   position: relative;
+  padding: 10px;
 }
 #wrapper-experimentExecuteable main #textdiv input {
   min-width: 20%;
