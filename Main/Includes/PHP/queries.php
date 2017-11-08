@@ -633,8 +633,9 @@ function getExperimentsPreviewMentor($CompanyID)
 //Get experiment info
 function getExperiment($id)
 {
-    $header = "designSheet.php";
+    $header = "";
     $name = "";
+    $send = '';
 
     $sql = "SELECT Preparation, Conclusion FROM Pitch WHERE ExperimentID = '$id'";
     if ($data = query($sql))
@@ -645,6 +646,7 @@ function getExperiment($id)
             {
                 $name = "Add a new pitch";
                 $header = "newPitch.php";
+                $send = 'onClick="addToSession(newPitch.php, inserted)"';
             }
             else if ($row["Conclusion"] == "")
             {
@@ -667,6 +669,8 @@ function getExperiment($id)
         $questionaireID = "";
         $name = "Add an interview";
         $header = "newInterview.php";
+        $send = 'onClick="addToSession(newInterview.php, inserted)"';
+
         while($row = $data->fetch_assoc())
         {
             $questionaireID = $row["ID"];
@@ -677,6 +681,7 @@ function getExperiment($id)
         {
             $name = "View interview";
             $header = "Interview.php";
+            $send = '';
         }
     }
 
@@ -689,6 +694,7 @@ function getExperiment($id)
             {
                 $name = "Add a new prototype";
                 $header = "newPrototype.php";
+                $send = 'onClick="addToSession(newPrototype.php, inserted)"';
             }
             else if ($row["Explanation2"] == "")
             {
@@ -714,7 +720,7 @@ function getExperiment($id)
         echo '<p>' . $row["Description"] .  '</p>';
 
         designSheetAvailable($id, "Experiment");
-        echo '<a href="'.$header.'"><button> '.$name.' </button></a>';
+        echo '<a href="'.$header.'"><button '.$send.'> '.$name.' </button></a>';
         designSheetAvailable($id, "Result");
     }
     else
@@ -1551,32 +1557,34 @@ function insertQuestion($QuestionPost, $ExecutionID)
 
 function insertQuestionWithExperimentID($QuestionPost, $ExperimentID)
 {
-    foreach ($QuestionPost AS $ID => $Question) {
+    foreach ($QuestionPost AS $ID => $Question)
+    {
         $sql = "SELECT Question FROM Question WHERE ID = '$ID'";
 
-        if (Query($sql)) {
-            if ($Question != "Save") {
+        if (Query($sql))
+        {
+            if ($Question != "Save")
+            {
                 $sql = "UPDATE Question SET Question = '$Question' WHERE ID = '$ID'";
                 Query($sql);
             }
-        } else {
-            if ($Question != "Save") {
-
-                $sql = "SELECT qu.QuestionaireID FROM Question qu
-                        INNER JOIN Questionaire q ON q.ID = qu.QuestionaireID
+        }
+        else
+        {
+            if ($Question != "Save")
+            {
+                $sql = "SELECT q.ID FROM Questionaire q
                         INNER JOIN Experiment e ON e.ID = q.ExperimentID
                         WHERE e.ID = '$ExperimentID'";
 
-                if ($data = Query($sql)) {
-                    while ($row = $data->fetch_assoc()) {
-                        $QuestionaireID = $row["QuestionaireID"];
+                if ($data = Query($sql))
+                {
+                    while ($row = $data->fetch_assoc())
+                    {
+                        $QuestionaireID = $row["ID"];
 
                         $sql2 = "INSERT INTO Question(QuestionaireID, Question) VALUES ('$QuestionaireID','$Question')";
-                        if (Query($sql2)) {
-                        }
-                        else {
-
-                        }
+                        Query($sql2);
                     }
                 }
             }
@@ -1760,7 +1768,7 @@ function sendExecution($ExecutionPost, $ExperimentID)
             $sql = "INSERT INTO Questionaire(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
-            $_SESSION['insertedIDInterview'] = mysqli_insert_id($conn);
+            $_SESSION['insertedID'] = mysqli_insert_id($conn);
             header('Location: ../../Client_Portal/Pages/newInterview.php?experimentID='.$ExperimentID);
         }
 
@@ -1769,7 +1777,7 @@ function sendExecution($ExecutionPost, $ExperimentID)
             $sql = "INSERT INTO Pitch(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
-            $_SESSION['insertedIDPitch'] = mysqli_insert_id($conn);
+            $_SESSION['insertedID'] = mysqli_insert_id($conn);
             header('Location: ../../Client_Portal/Pages/newPitch.php?experimentID='.$ExperimentID);
         }
 
@@ -1778,7 +1786,7 @@ function sendExecution($ExecutionPost, $ExperimentID)
             $sql = "INSERT INTO Prototype(ID, ExperimentID) VALUES (DEFAULT, '$ExperimentID')";
             Query($sql);
 
-            $_SESSION['insertedIDPrototype'] = mysqli_insert_id($conn);
+            $_SESSION['insertedID'] = mysqli_insert_id($conn);
             header('Location: ../../Client_Portal/Pages/newPrototype.php?experimentID=' . $ExperimentID);
         }
     }

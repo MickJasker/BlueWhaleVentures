@@ -4,14 +4,9 @@
     checkRange();
 
     $id = checkExperimentID(secure($_GET['experimentID']), secure($_SESSION["CompanyID"]));
-
-    if (isset($_SESSION["insertedIDPrototype"]) == false)
+    if (isset($_POST["insertedID"]))
     {
-        header('Location: prototype.php?experimentID=' . $id);
-    }
-    else
-    {
-        unset($_SESSION["insertedIDPrototype"]);
+        $_SESSION["insertedID"] = $_POST["insertedID"];
     }
 
     if (isset($_POST['save']))
@@ -61,6 +56,16 @@
             }
         }
     }
+
+    if (isset($_SESSION["insertedID"]) == false)
+    {
+        header('Location: prototype.php?experimentID=' . $id);
+    }
+    else
+    {
+        unset($_SESSION["insertedID"]);
+    }
+
 ?>
 <!DOCTYPE html>
 <html>
