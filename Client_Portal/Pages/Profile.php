@@ -66,26 +66,7 @@ checkSession('Client');
 								<h1>choose branche</h1>
 								<select name="branch">
 									<option value="<?php echo $data[9]; ?>"><?php echo $data[9]; ?></option>
-									<option value="Agriculture, forestry and fisheries">Agriculture, forestry and fisheries</option>
-									<option value="Mining of minerals">Mining of minerals</option>
-									<option value="Industry">Industry</option>
-									<option value="Production and distribution of and trade in electricity, natural gas, steam and chilled air">Production and distribution of and trade in electricity, natural gas, steam and chilled air</option>
-									<option value="Winning and distribution of water, waste and wastewater management and remediation">Winning and distribution of water, waste and wastewater management and remediation</option>
-									<option value="Construction industry">Construction industry</option>
-									<option value="Wholesale and retail, repair of cars">Wholesale and retail, repair of cars</option>
-									<option value="Transport and storage">Transport and storage</option>
-									<option value="Accommodation, meal and beverage delivery">Accommodation, meal and beverage delivery</option>
-									<option value="Information and communication">Information and communication</option>
-									<option value="Financial Institutions">Financial Institutions</option>
-									<option value="Rental of and trading in real estate">Rental of and trading in real estate</option>
-									<option value="Consultancy, research and other specialist business services">Consultancy, research and other specialist business services</option>
-									<option value="Rental of movable property and other business services">Rental of movable property and other business services</option>
-									<option value="Public administration, public services and compulsory social insurance">Public administration, public services and compulsory social insurance</option>
-									<option value="Education">Education</option>
-									<option value="Health and welfare">Health and welfare</option>
-									<option value="Culture, sports and recreation">Culture, sports and recreation</option>
-									<option value="Other services">Other services</option>
-									<option value="Extraterritorial organizations and bodies">Extraterritorial organizations and bodies</option>
+									<?php selectBranches(); ?>
 								</select></br></br>
 								<input type="submit" name="submit" value="Save">
 							</form>
@@ -157,6 +138,14 @@ checkSession('Client');
 							{
 								$check = false;
 								echo "No branch has been choosen";
+							}
+							else if (!empty($_FILES['file1']['name']))
+							{
+								echo "Please upload a profile picture";
+							}
+							else if (!empty($_FILES['file2']['name']))
+							{
+								echo "Please upload a logo picture";
 							}
 							else if (!empty($_FILES['file1']['name']))
 							{

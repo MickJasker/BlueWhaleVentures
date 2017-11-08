@@ -45,6 +45,10 @@
                             } else if ($_SESSION["Role"] == "Client") {
 								if (checkRangeDate())
 								{
+									if (checkFirstLogin())
+									{
+										$header = "Client_Portal/Pages/welcome.php";
+									}
 									$header = "Client_Portal/Pages/index.php";
 								}
 								else
