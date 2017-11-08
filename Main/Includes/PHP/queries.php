@@ -1232,7 +1232,7 @@ function checkAllExperimentsMentor($CompanyID, $UserID)
 //Client Portal Expirement blokken
 function getMentorAssignedBlockInfo($UserID)
 {
-    $sql = "SELECT c.ID, c.Name, c.Logo FROM Company c 
+    $sql = "SELECT c.ID, c.Name, c.Logo, c.Branch FROM Company c 
             INNER JOIN Mentor_Company mc ON c.ID = mc.CompanyID
             INNER JOIN Mentor m ON m.ID = mc.MentorID
             INNER JOIN User u on u.ID = m.UserID
@@ -1245,10 +1245,12 @@ function getMentorAssignedBlockInfo($UserID)
             $ID = $row["ID"];
             $Name = $row["Name"];
             $Logo = $row["Logo"];
+            $Branch = $row["Branch"];
+
 
             ?>
 
-            <li id="Block" class="col-lg-4">
+            <li id="Block" class="<?php echo $Branch;?> col-lg-4">
                 <a href="clientProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <img src="<?php echo $Logo ?>" alt="Mentor Profile">
