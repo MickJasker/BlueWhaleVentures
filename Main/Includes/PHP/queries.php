@@ -337,6 +337,31 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
     }
 }
 
+//Selects all experiment textareas etc
+function getDesignSheetDataGutted($ExperimentID, $sheetType, $Language)
+{
+    $sql = "SELECT SegmentID, Text  FROM `Answer` WHERE ExperimentID = '$ExperimentID' ORDER BY SegmentID";
+    if ($data1 = query($sql)) {
+        echo '<form method="POST" action="#"><h1>Design sheet</h1>';
+        $i = 0;
+        while ($row1 = $data1->fetch_assoc()) {
+            $id = $row1["SegmentID"];
+
+            $sql = "SELECT s.title, s.description FROM Segment s
+            INNER JOIN DesignSheet d ON d.ID = s.DesignSheetID 
+            WHERE d.Type = '$sheetType' AND s.id = '$id'";
+
+            if ($data2 = query($sql)) {
+                $row2 = mysqli_fetch_array($data2, MYSQLI_ASSOC);
+                echo '<h3>' . $row2["title"] . '</h3>';
+                echo '<textarea disabled class="textarea1" name="input' . $i . '" type="text" placeholder="' . $row2["description"] . '">' . $row1["Text"] . '</textarea>';
+                $i++;
+            }
+        }
+    }
+}
+
+
 function createExperiment($title, $description, $imagepath, $companyid)
 {
     $sql = "INSERT INTO `Experiment`(`CompanyID`, `Title`, `Thumbnail`, `Description`, `Progress`, `Completed`, `Reviewed`, `ReviewScore`) VALUES ('$companyid','$title','$imagepath','$description',0,0,0,0)";
