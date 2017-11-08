@@ -8,6 +8,16 @@ html {
 	}
 	textarea {
 		resize: none;
+		outline-width: 2px;
+	}
+	input, button{
+		color: white;
+		background-color: @blue;
+		border-radius: 0;
+		outline-width: 2px;
+	}
+	button{
+		outline: none;
 	}
 }
 
@@ -1260,8 +1270,7 @@ body {
 							transition: 0.3s ease;
 							&:focus {
 								background-color: @white;
-								outline: @blue solid;
-								transition: 0.3s ease;
+								transition: 0.2s ease;
 							}
 						}
 						textarea {
@@ -1270,12 +1279,11 @@ body {
 							background-color: @offwhite;
 							color: @gray;
 							margin-top: 5px;
-							width: 50%;
+							width: 70%;
 							height: 150px;
 							transition: 0.3s ease;
 							&:focus {
 								background-color: @white;
-								outline: @blue solid;
 								transition: 0.3s ease;
 							}
 						}
@@ -1284,8 +1292,10 @@ body {
 							background-color: @blue;
 							color: white;
 							margin-top: 5px;
-							font-weight: 300;
+							max-width: 40%;
 							transition: 0.3s ease;
+							word-wrap: break-word;
+							font-weight: normal;
 							&:hover {
 								background-color: @gray;
 								transition: 0.3s ease;
@@ -1298,7 +1308,6 @@ body {
 							color: white;
 							margin-top: 5px;
 							transition: 0.3s ease;
-							font-weight: 300;
 							&:hover {
 								background-color: @gray;
 								transition: 0.3s ease;
@@ -1678,8 +1687,8 @@ body {
 	background-attachment: fixed;
 	main {
 		display: inline-block;
-		background-color: rgba(0, 153, 255, 0.9);
-		width: 100vw;
+		background-color: rgba(255, 255, 255, 0.9);
+		width: 100%;
 		min-height: 100vh;
 		padding-top: 80px;
 		#prototypeForm {
