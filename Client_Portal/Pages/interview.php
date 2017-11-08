@@ -27,7 +27,7 @@ $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["Comp
                 <form id="form" action="#" method="POST">
                     <?php $i = selectQuestions($experimentID); ?>
                     <p hidden id="hiddenP"><?php echo $i?></p>
-                    <?php if ($_SESSION["traject"] == true) { echo '<input type="submit" name="submit" value="Save">'; } ?>
+                    <?php if($_SESSION["traject"] == true) { echo '<input type="submit" name="submit" value="Save">'; } ?>
                 </form>
             </div>
         </Main>

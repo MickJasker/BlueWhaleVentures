@@ -40,18 +40,8 @@
                     <h1> New Interview </h1>
                     <form id="form" action="#" method="POST">
                         <p hidden id="hiddenP"><?php echo $i?></p>
-                        <?php
-                            if(isset($_SESSION['insertedID']))
-                            {
-                                $i = SelectQuestion($_SESSION['insertedID']);
-                            }
-                            else
-                            {
-                                $i = SelectQuestionWithExperimentID(secure($_GET['experimentID']));
-                            }
-                        ?>
-
-                        <button type="button" onclick="addQuestion()">Add Question</button>
+                        <?php $i = SelectQuestionWithExperimentID(secure($id)); ?>
+                        <button type="button" onclick="addQuestion()"> Add Question </button>
                         <input type="submit" name="submit" value="Save"><br>
                     </form>
                 </div>

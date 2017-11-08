@@ -1619,7 +1619,6 @@ function SelectQuestion($ExecutionID)
 
 function SelectQuestionWithExperimentID($ExperimentID)
 {
-
     $sql = "SELECT qu.ID, qu.Question FROM Question qu
             INNER JOIN Questionaire q ON qu.QuestionaireID = q.ID
             WHERE q.ExperimentID = '$ExperimentID'";
@@ -1634,9 +1633,8 @@ function SelectQuestionWithExperimentID($ExperimentID)
             $Question = $row["Question"];
 
             ?>
-
+            <p>Question <?php echo $i; ?></p>
             <textarea id="question<?php echo $i?>" name="<?php echo $QuestionID?>"><?php echo $Question?></textarea>
-
             <?php
         }
     }
@@ -2205,16 +2203,18 @@ function selectQuestions($ExperimentID) {
             WHERE e.ID = '$ExperimentID'";
 
     $i = 1;
+    $counter = 0;
 
     if($data = Query($sql)) {
         while ($row = $data->fetch_assoc()) {
             $ID = $row["ID"];
             $Question = $row["Question"];
+            $counter++;
 
             ?>
-
             <div id="questionDiv">
                 <div id="question<?php echo $ID?>">
+                    <p>Question <?php echo $counter; ?></p>
                     <textarea id="question" name="question<?php echo $ID?>"><?php echo $Question?></textarea>
                     <div id="answers">
                         <?php
@@ -2223,11 +2223,10 @@ function selectQuestions($ExperimentID) {
                     </div>
                 </div>
             </div>
-
-
             <?php
         }
     }
+
     return $i;
 }
 
