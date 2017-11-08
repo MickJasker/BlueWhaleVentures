@@ -74,8 +74,8 @@ $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["Comp
 					
 				if ($upload) {
 					//upload data to the database
-					if (updatePitch($videopath, $_POST['preparationText'], $_POST['conclusionText'])) {
-						header("Location: pitch.php");
+					if (updatePitch($videopath, $_POST['preparationText'], $_POST['conclusionText'], $experimentID)) {
+						header("Location: pitch.php?experimentID=".$experimentID);
 					} else {
 						echo "Something has gone wrong with uploading the data";
 					}
