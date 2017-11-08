@@ -7,7 +7,7 @@
 		Welcome, <span class="user"><?php getUserNames($_SESSION["UserID"]); ?></span>
 	</h4>
 
-    <div id="experimentswitch" class="col-md-3">
+    <div id="experimentswitch" class="col-md-4">
 
         <h4>
             <span id="experiments" class="blue">Experiments</span>
