@@ -13,6 +13,7 @@ function editPage(textareas, type)
 	if (type == "pitch")
 	{
 		document.getElementById("file1").type = 'file';
+		document.getElementById("label2").style.display = 'inline-block';
 	}
 	 
 	if (type == "prototype")

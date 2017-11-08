@@ -1822,9 +1822,9 @@ function insertPrototype($ImagePath, $Explain, $ExperimentID) {
 
 }
 
-function updatePitch($VideoPath, $Preparation, $Conclusion) {
+function updatePitch($VideoPath, $Preparation, $Conclusion, $experimentID) {
 
-    $sql = "UPDATE Pitch SET Preparation = '$Preparation', Media = '$VideoPath', Conclusion = '$Conclusion' WHERE ExperimentID = 1";
+    $sql = "UPDATE Pitch SET Preparation = '$Preparation', Media = '$VideoPath', Conclusion = '$Conclusion' WHERE ExperimentID = '$experimentID'";
     if (Query($sql))
     {
         return true;
@@ -1853,8 +1853,9 @@ function selectPitch($ExperimentID)
             Preparation: <br/>
             <textarea disabled class="textarea1" name="preparationText" typeplaceholder="Prepare for your pitch"><?php echo $Preparation?></textarea>
             <br>
-
-            <input id="file1" type="hidden" name="file1" id="fileToUpload">
+			<input id="file1" type="hidden" name="file1" style="display:none;">
+			<label id="label2" for="file1" style="display:none;">Upload an video of your pitch</label>
+            
 
 
             <?php
@@ -2150,7 +2151,7 @@ function selectPrototype($ExperimentID) {
             <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br>
 
             <input id="file3" type="hidden" name="file2" id="fileToUpload2"><br>
-            <label for="file3" style="display:none;" id="label3">Choose file</label>
+            <label for="file3" style="display:none;" id="label3">Choose file</label><br>
 
             <?php
 
@@ -2168,7 +2169,7 @@ function selectPrototype($ExperimentID) {
             ?>
 
             <textarea disabled class="textarea1" name="explanation2" placeholder="Explain your prototype."><?php echo $Explanation2?></textarea> <br/>
-            <input id="submit1" type="hidden" name="save" value="Save">
+            <input id="submit1" type="hidden" name="save" value="Save"><br>
 
             <?php
         }
