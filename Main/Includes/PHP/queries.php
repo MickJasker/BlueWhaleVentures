@@ -2207,6 +2207,20 @@ function selectPrototype($ExperimentID) {
     return $OldArray;
 }
 
+function selectBranches()
+{
+	$sql = "SELECT `Name` FROM `Branch`";
+	if($data = Query($sql)) 
+	{
+        while ($row = $data->fetch_assoc()) 
+		{
+			 $name = $row["Name"];
+			 ?> <option value="<?php echo $name; ?>"><?php echo $name; ?></option> <?php
+		}
+		
+	}
+}
+
 function updatePrototype($ExperimentID, $Media1, $Explanation1, $Media2, $Explanation2) {
 
     $sql = "UPDATE Prototype SET Media1 = '$Media1', Explanation1 = '$Explanation1', Media2 = '$Media2', Explanation2 = '$Explanation2' WHERE ExperimentID = '$ExperimentID'";
@@ -2713,6 +2727,24 @@ function insertToBachelorGroup($BachelorGroupID, $CompanyGroupID)
     {
         header('Location: bachelorGroup.php?id=' . $BachelorGroupID );
     }
+}
+
+function checkFirstLogin()
+{
+	$userID = $_SESSION["UserID"];
+	$sql = "SELECT `ProfilePicture` FROM `User` WHERE ID = '$userID'";
+	if ($data = query($sql)) 
+	{
+
+        while ($row = $data->fetch_assoc()) 
+        {
+            if ($row["ProfilePicture"] == "")
+			{
+				return true;
+			}
+        }
+	}
+	return false;
 }
 
 function selectCompanyDropdown()

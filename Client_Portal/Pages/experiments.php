@@ -5,6 +5,7 @@ checkSession('Client');
 
 <ul class="list">
     <div class="content">
+		
 		<?php if ($_SESSION["traject"] == true) { ?>
         <div id="Block" class="col-lg-4">
             <a class="mentorbutton" href="createExperiment.php">
