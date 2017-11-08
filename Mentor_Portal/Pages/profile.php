@@ -99,6 +99,18 @@ CheckSession("Mentor");
                             $check = false;
                             echo "The companyName is empty or not between 2 and 50 characters";
                         }
+						else if (!empty($_FILES['file1']['name']))
+						{
+							$type = "img";
+							$path = "../../Client_Portal/Uploads/profilePicture/";
+							$file1_name = $_FILES['file1']['name'];
+							$file1_tmp_name = $_FILES['file1']['tmp_name'];
+							$file1_size = $_FILES['file1']['size'];
+
+							if (uploadCheck($file1_name, $file1_tmp_name, $file1_size, $type, $path) == false) {
+								$check = false;
+							}
+						}
 
                         if ($check)
                         {
