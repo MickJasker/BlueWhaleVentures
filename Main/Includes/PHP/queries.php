@@ -1822,9 +1822,9 @@ function insertPrototype($ImagePath, $Explain, $ExperimentID) {
 
 }
 
-function updatePitch($VideoPath, $Preparation, $Conclusion) {
+function updatePitch($VideoPath, $Preparation, $Conclusion, $experimentID) {
 
-    $sql = "UPDATE Pitch SET Preparation = '$Preparation', Media = '$VideoPath', Conclusion = '$Conclusion' WHERE ExperimentID = 1";
+    $sql = "UPDATE Pitch SET Preparation = '$Preparation', Media = '$VideoPath', Conclusion = '$Conclusion' WHERE ExperimentID = '$experimentID'";
     if (Query($sql))
     {
         return true;
