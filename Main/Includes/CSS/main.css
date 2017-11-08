@@ -6768,14 +6768,20 @@ html input {
   color: black;
 }
 html button,
-html input[type="button"] {
+html input[type="button"],
+html input[type="submit"] {
   outline: none;
+  -webkit-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  transition: 0.2s ease;
   background-color: #0099ff;
   color: #ffffff;
   border-radius: 0;
+  border: none;
 }
 html button:hover,
-html input[type="button"]:hover {
+html input[type="button"]:hover,
+html input[type="submit"]:hover {
   background-color: #a0a0a0;
 }
 body {
@@ -6825,9 +6831,6 @@ body {
   border: none;
   font-size: 18px;
   width: 100%;
-  -webkit-transition: 0.2s ease;
-  -o-transition: 0.2s ease;
-  transition: 0.2s ease;
 }
 #wrapper-login main .login_col .login_block form input:focus {
   -webkit-transition: 0.2s ease;
@@ -7936,9 +7939,6 @@ footer .right {
   background-color: #f2f2f2;
   color: #a0a0a0;
   margin-top: 5px;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
 }
 #wrapper-experiment #wrapper-createExperiment .row section div form input:focus {
   background-color: #ffffff;
@@ -8034,9 +8034,6 @@ footer .right {
   position: relative;
   font-size: 1.5vh;
   font-weight: normal;
-  -webkit-transition: ease .2s;
-  -o-transition: ease .2s;
-  transition: ease .2s;
   outline: none;
   border: none;
 }
@@ -8250,25 +8247,11 @@ footer .right {
 #wrapper-newPrototype main section div form label,
 #wrapper-newPrototype main section div form input,
 #wrapper-newPrototype main section div form button {
-  background-color: #0099ff;
   width: 100%;
   padding: 5px;
-  color: #ffffff;
-  border: none;
   margin: 5px;
   font-size: 18px;
-  font-weight: 400;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-}
-#wrapper-newPrototype main section div form label:hover,
-#wrapper-newPrototype main section div form input:hover,
-#wrapper-newPrototype main section div form button:hover {
-  background-color: #a0a0a0;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
+  font-weight: normal;
 }
 #wrapper-newPrototype main section div form #fileToUpload {
   display: none;
@@ -8304,27 +8287,11 @@ footer .right {
 #wrapper-newPrototype main section div #questionForm form input,
 #wrapper-newPrototype main section div #pitchForm form button,
 #wrapper-newPrototype main section div #questionForm form button {
-  background-color: #0099ff;
   width: 100%;
   padding: 5px;
-  color: #ffffff;
   border: none;
   font-size: 18px;
-  font-weight: 400;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-}
-#wrapper-newPrototype main section div #pitchForm form label:hover,
-#wrapper-newPrototype main section div #questionForm form label:hover,
-#wrapper-newPrototype main section div #pitchForm form input:hover,
-#wrapper-newPrototype main section div #questionForm form input:hover,
-#wrapper-newPrototype main section div #pitchForm form button:hover,
-#wrapper-newPrototype main section div #questionForm form button:hover {
-  background-color: #a0a0a0;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
+  font-weight: normal;
 }
 #wrapper-newPrototype main section div #pitchForm form #fileToUpload,
 #wrapper-newPrototype main section div #questionForm form #fileToUpload {
@@ -8546,26 +8513,38 @@ footer .right {
   padding-left: 2vh;
 }
 #wrapper-profile .content .info .text input {
-  outline: none;
   padding: 1%;
   min-width: 40%;
   border: none;
   margin-bottom: 1%;
 }
-#wrapper-profile .content .info .text .submit {
+#wrapper-profile .content .info .text #file1 {
+  display: none;
+}
+#wrapper-profile .content .info .text label {
+  padding: 5px;
   background-color: #0099ff;
-  border-radius: 0;
-  color: #ffffff;
+  color: white;
+  margin-top: 5px;
+  max-width: 30%;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  word-wrap: break-word;
+  font-weight: normal;
+  text-align: center;
+}
+#wrapper-profile .content .info .text label:hover {
+  background-color: #a0a0a0;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+#wrapper-profile .content .info .text .submit {
   bottom: 0;
   min-width: 30%;
   position: absolute;
   font-size: 1.5vh;
   font-weight: normal;
-  -webkit-transition: ease .2s;
-  -o-transition: ease .2s;
-  transition: ease .2s;
-}
-#wrapper-profile .content .info .text .submit:hover {
-  background-color: #ffffff;
-  color: #0099ff;
 }
