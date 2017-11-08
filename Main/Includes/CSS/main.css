@@ -6751,7 +6751,7 @@ button.close {
 }
 html {
   height: auto;
-  font-family: "open-sans", Helvetica, sans-serif;
+  font-family: "open-sans", "Open Sans", Helvetica, sans-serif;
   font-weight: 400;
 }
 html label {
