@@ -19,7 +19,7 @@
         </label>
 
         <h4>
-            <span id="bachelors">Bachelor Groups</span>
+            <span id="bachelors">Bachelor Group</span>
         </h4>
 
     </div>
