@@ -1,19 +1,19 @@
 <?php
     require '../../Main/Includes/PHP/functions.php';
 	checkSession('Client');
-	checkRange();
+    checkRange();
 
     $id = secure($_GET['experimentID']);
 
     if (isset($_SESSION["insertedIDInterview"]) == false)
     {
-        header('Location: interview.php?experimentID=' . $experimentID);
+        header('Location: interview.php?experimentID=' . $id);
     }
     else
     {
         unset($_SESSION["insertedIDInterview"]);
-    }
-
+    }  
+  
     if (isset($_POST['submit']))
     {
         if(isset($_SESSION['insertedIDInterview']))
