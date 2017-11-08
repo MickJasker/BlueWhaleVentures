@@ -10,14 +10,19 @@ html {
 		resize: none;
 		outline-width: 2px;
 	}
-	input, button{
-		color: white;
-		background-color: @blue;
+	input{
 		border-radius: 0;
 		outline-width: 2px;
+		color: black;
 	}
-	button{
+	button, input[type="button"]{
 		outline: none;
+		background-color: @blue;
+		color: @white;
+		border-radius: 0;
+		&:hover{
+			background-color: @grey;
+		}
 	}
 }
 
@@ -74,7 +79,6 @@ body {
 						width: 100%;
 						transition: 0.2s ease;
 						&:focus {
-							outline: @blue solid;
 							transition: 0.2s ease;
 							background-color: white;
 						}
@@ -1265,7 +1269,7 @@ body {
 							padding: 5px;
 							border: none;
 							background-color: @offwhite;
-							color: @gray;
+							color: @grey;
 							margin-top: 5px;
 							transition: 0.3s ease;
 							&:focus {
@@ -1277,7 +1281,7 @@ body {
 							padding: 5px;
 							border: none;
 							background-color: @offwhite;
-							color: @gray;
+							color: @grey;
 							margin-top: 5px;
 							width: 70%;
 							height: 150px;
@@ -1297,7 +1301,7 @@ body {
 							word-wrap: break-word;
 							font-weight: normal;
 							&:hover {
-								background-color: @gray;
+								background-color: @grey;
 								transition: 0.3s ease;
 								cursor: pointer;
 							}
@@ -1309,7 +1313,7 @@ body {
 							margin-top: 5px;
 							transition: 0.3s ease;
 							&:hover {
-								background-color: @gray;
+								background-color: @grey;
 								transition: 0.3s ease;
 							}
 						}
@@ -1353,9 +1357,6 @@ body {
 			}
 
 			input {
-				background-color: @blue;
-				border-radius: 0;
-				color: @white;
 				min-width: 20%;
 				height: 5vh;
 				position: relative;
@@ -1364,11 +1365,6 @@ body {
 				transition: ease .2s;
 				outline: none;
 				border: none;
-
-				&:hover {
-					background-color: @white;
-					color: @blue;
-				}
 			}
 		}
 
@@ -1387,18 +1383,15 @@ body {
 				height: 35px;
 				padding: 5px;
 				border: none;
-				background-color: @blue;
 				transition: .2s ease;
 
 				&:hover {
-					background-color: @white;
-					color: @blue;
 					cursor: pointer;
 				}
 			}
 		}
 		.is-disabled {
-			background-color: @gray;
+			background-color: @grey;
 
 		}
 		.feedback {
@@ -1494,25 +1487,17 @@ body {
 			.switchActive {
 				border-bottom: @blue solid medium;
 			}
-			button {
-
-
-			}
 		}
 
-		button#edit1 {
+		#edit1 {
 			padding: 5px 15px;
-			background-color: @blue;
-			color: white;
-			font-weight: 300;
-			transition: 0.3s ease;
+			font-weight: normal;
+			transition: 0.2s ease;
 			border: none;
 			position: relative;
 			margin-left: 4.2vw;
 			margin-bottom: 4vh;
 			&:hover {
-				background-color: @gray;
-				transition: 0.3s ease;
 				cursor: pointer;
 			}
 		}
@@ -1531,29 +1516,6 @@ body {
 					transition: 0.3s ease;
 				}
 			}
-
-			input {
-				background-color: @blue;
-				color: white;
-				transition: 0.3s ease;
-				border: none;
-				font-size: 18px;
-				padding: 5px;
-				width: 150px;
-				text-align: left;
-
-				&:hover {
-					transition: 0.3s ease;
-					background-color: @white;
-					color: @blue;
-				}
-				&:focus {
-					transition: 0.3s ease;
-					background-color: @offwhite;
-					outline: none;
-					color: @blue;
-				}
-			}
 		}
 	}
 }
@@ -1562,7 +1524,7 @@ body {
 	font-family: "open-sans", sans-serif;
 	background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
 	background-size: cover;
-	color: @gray;
+	color: @grey;
 	main {
 		margin-top: 10px;
 		text-align: center;
@@ -1576,7 +1538,7 @@ body {
 		a {
 			color: @blue;
 			&:hover {
-				color: @gray;
+				color: @grey;
 				text-decoration: none;
 			}
 		}
@@ -1630,7 +1592,7 @@ body {
 						font-weight: 400;
 						transition: 0.3s ease;
 						&:hover {
-							background-color: @gray;
+							background-color: @grey;
 							transition: 0.3s ease;
 						}
 					}
@@ -1666,7 +1628,7 @@ body {
 							font-weight: 400;
 							transition: 0.3s ease;
 							&:hover {
-								background-color: @gray;
+								background-color: @grey;
 								transition: 0.3s ease;
 							}
 						}
