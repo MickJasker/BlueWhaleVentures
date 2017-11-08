@@ -852,8 +852,6 @@ function getExperimentView($id)
         $header = $header . "?experimentID=" . $id;
         echo '<h1>' . $row["Title"] . '</h1>';
         echo '<p>' . $row["Description"] .  '</p>';
-        echo '<p> Progress: ' . $row["Progress"] . '</p>';
-        echo '<p> Reviewscore: ' . $row["ReviewScore"] . '</p>';
 
         designSheetButton($id, "Experiment");
         if ($buttonstate == "")
@@ -1045,7 +1043,8 @@ function getExperimentBlockInfo($CompanyID)
 {
     $sql = "SELECT e.ID, e.CompanyID, e.Title, e.Thumbnail, e.Completed FROM Experiment e 
             INNER JOIN Company c ON c.ID = e.CompanyID
-            WHERE c.ID = '$CompanyID'";
+            WHERE c.ID = '$CompanyID'
+			ORDER BY ID DESC";
 
     if($data = Query($sql))
     {
