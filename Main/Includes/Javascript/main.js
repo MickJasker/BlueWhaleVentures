@@ -267,3 +267,9 @@ function assignMentor(){
         }
     }
 }
+
+function addToSession(page, val){
+    $.session(page,{
+        insertedID:val
+    });
+}

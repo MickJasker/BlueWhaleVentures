@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <?php
 require '../../Main/Includes/PHP/functions.php';
-checkSession('Mentor');
-$experimentID = checkExperimentIDMentor(secure($_GET["experimentID"]), $_SESSION["UserID"]);
 ?>
 
 <html>
 	<head>
 	    <title> Client Portal </title>
 	    <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
-	</head>
-    <body id="wrapper-admin">
-		<h1>Design sheet : Experiment 2</h1>
-		<?php
-			getDesignSheetData($experimentID, "Experiment", $_SESSION["Language"]);
-		?>
+        <script src="../../Main/Includes/Javascript/functions.js"></script>
+    </head>
+	<body id="wrapper-designSheet">
+        <header class="wrapper-nav">
+            <?php require "../nav_nosearchmentor.php"; ?>
+        </header>
+        <main>
+			<?php
+            getDesignSheetDataGutted($_GET["experimentID"], "Experiment", $_SESSION["Language"]);
+			?>
 	</body>
 </html>

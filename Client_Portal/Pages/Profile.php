@@ -41,21 +41,29 @@ checkSession('Client');
 					<div class="text">
 						<div class="info1">
 							<form id="form" action="#" method="POST" enctype="multipart/form-data">
-								Upload profile picture: <input type="file" name="file1" id="file1">
-								<input type="text" name="email" placeholder="E-mail" value="<?php echo $data[3]; ?>"> <br>
+								<h1>Upload profile picture:</h1> <input type="file" name="file1" id="file1"><label for="file1">Choose image</label></br>
+								<p>Name</p>
+								<input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"><br><br>
+								<h1>Select language</h1></br>
 								<select name="language">
 									<?php selectLanguage($ID); ?>
-								</select> <br>
+								</select> </br></br>
+								<h1>Upload company logo:</h1></br>
 								<?php if ($data[7] != "")
 								{
 									echo '<img src="'.$data[6].'" alt="Profile picture" height="100px">';
 								}
 								?>
-								Upload company logo: <input type="file" name="file2" id="file2">
+
+								<input type="file" name="file2" id="file2"></br>
+								<h1>Company information</h1></br>
 								<input type="text" name="companyName" placeholder="Company name" value="<?php echo $data[4]; ?>"> <br>
 								<textarea name="companyDescription" placeholder="Company description"> <?php echo $data[5]; ?>	</textarea><br>
+								<h1>Contact Information</h1></br>
 								<input type="text" name="phone" placeholder="Company phone number" value="<?php echo $data[7]; ?>"> <br>
 								<input type="text" name="address" placeholder="Company address" value="<?php echo $data[8]; ?>"> <br>
+								<input type="text" name="email" placeholder="E-mail" value="<?php echo $data[3]; ?>"> <br>
+								<h1>choose branche</h1>
 								<select name="branch">
 									<option value="<?php echo $data[9]; ?>"><?php echo $data[9]; ?></option>
 									<option value="Agriculture, forestry and fisheries">Agriculture, forestry and fisheries</option>
@@ -78,11 +86,12 @@ checkSession('Client');
 									<option value="Culture, sports and recreation">Culture, sports and recreation</option>
 									<option value="Other services">Other services</option>
 									<option value="Extraterritorial organizations and bodies">Extraterritorial organizations and bodies</option>
-								</select>
+								</select></br></br>
 								<input type="submit" name="submit" value="Save">
 							</form>
 						</div>
 						<div class="info2">
+							<h1>Change password</h1>
 							<form action="#" method="POST">
 								<input type="password" name="oldPassword" placeholder="Old password"> <br>
 								<input type="password" name="password" placeholder="Password"> <br>
