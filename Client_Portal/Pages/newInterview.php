@@ -8,7 +8,6 @@
     if (isset($_POST['submit']))
     {
         insertQuestionWithExperimentID($_POST, $id);
-
         header('Location: experiment.php?id='.$id);
     }
 
@@ -19,7 +18,7 @@
     else
     {
         unset($_SESSION["insertedID"]);
-    }  
+    }
 
     $i = 0;    
 ?>
