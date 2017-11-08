@@ -127,7 +127,7 @@ function uploadCheck($file_name, $file_tmp_name, $file_size, $type, $target_dir)
 	if ($type == "img")
 	{
 		// Check if image file is a actual image or fake image
-		if(getimagesize($file_tmp_name) === false) 
+		if(getimagesize($file_tmp_name) === false)
 		{
 		    echo "File is not an image.";
 		    $uploadok = 0;
@@ -135,7 +135,7 @@ function uploadCheck($file_name, $file_tmp_name, $file_size, $type, $target_dir)
 	}
 	
 	// Check file size
-	if ($file_size > 30000000) 
+	if ($file_size > 30000000)
 	{
 	    echo "Sorry, your file is too large.";
 	    $uploadok = 0;

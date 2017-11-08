@@ -1619,7 +1619,6 @@ function insertQuestionWithExperimentID($QuestionPost, $ExperimentID)
                     while ($row = $data->fetch_assoc())
                     {
                         $QuestionaireID = $row["ID"];
-
                         $sql2 = "INSERT INTO Question(QuestionaireID, Question) VALUES ('$QuestionaireID','$Question')";
                         Query($sql2);
                     }
