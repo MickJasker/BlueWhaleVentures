@@ -185,9 +185,8 @@ function uploadExecute($file_name, $file_tmp_name, $target_dir)
 	while (file_exists($target_file)) 
 	{
 	    $file_name = randomImgName();
+		$target_file = $target_dir . basename($file_name);
 	}
-	
-	$target_file = $target_dir . basename($file_name);
 	
 	if (move_uploaded_file($file_tmp_name, $target_file)) 
 	    {

@@ -19,28 +19,34 @@ $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["Comp
 
             <?php
 
-            $OldMedia = selectPitch($experimentID);
+            $videopath = selectPitch($experimentID);
 
 
             if (isset($_POST['save']))
             {
-                //Image check
-                $type = "mp4";
-                $path = "../Uploads/pitchVideo/";
-                $file1_name = $_FILES['file1']['name'];
-                $file1_tmp_name = $_FILES['file1']['tmp_name'];
-                $file1_size = $_FILES['file1']['size'];
+				$check = true;
+				if (!empty($_FILES['file1']['name']))
+				{
+					$type = "video";
+					$path = "../Uploads/pitchVideo/";
+					$file1_name = $_FILES['file1']['name'];
+					$file1_tmp_name = $_FILES['file1']['tmp_name'];
+					$file1_size = $_FILES['file1']['size'];
 
-                if (uploadCheck($file1_name, $file1_tmp_name, $file1_size, $type, $path) == false) {
-                    echo " - Error uploading image - ";
-                }
-                else
+					if (uploadCheck($file1_name, $file1_tmp_name, $file1_size, $type, $path) == false) {
+						$check = false;
+					}
+				}
+                //Image check
+                
+				$upload = true;
+                if ($check)
                 {
                     $mainimageupload = true;
                     if (!empty($_FILES['file1']['name'])) {
-                        if ($OldMedia != "")
+                        if ($videopath != "")
                         {
-                            if (!unlink($OldMedia)) {
+                            if (!unlink($videopath)) {
                                 echo "error deleting old image";
                                 $mainimageupload = false;
                             }
@@ -48,28 +54,32 @@ $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["Comp
 
                         if ($mainimageupload) {
                             //upload the image
+							$path = "../Uploads/pitchVideo/";
+							$file1_name = $_FILES['file1']['name'];
+							$file1_tmp_name = $_FILES['file1']['tmp_name'];
+							
                             $videoResult = uploadExecute($file1_name, $file1_tmp_name, $path);
-                            $upload = true;
-                            $videopath = "";
                             if ($videoResult[0] == 1) {
                                 $videopath = $videoResult[1];
                             } else {
                                 $upload = false;
                             }
-
-                            if ($upload) {
-                                //upload data to the database
-                                if (updatePitch($videopath, $_POST['preparationText'], $_POST['conclusionText'])) {
-                                    header("Location: pitch.php");
-                                } else {
-                                    echo "Something has gone wrong with uploading the data";
-                                }
-                            } else {
-                                echo "Error uploading the files";
-                            }
                         }
                     }
+					
+				if ($upload) {
+					//upload data to the database
+					if (updatePitch($videopath, $_POST['preparationText'], $_POST['conclusionText'])) {
+						header("Location: pitch.php");
+					} else {
+						echo "Something has gone wrong with uploading the data";
+					}
+				} else {
+					echo " - Error uploading the files - ";
+				}
                 }
+				
+				
             }
             ?>
 
