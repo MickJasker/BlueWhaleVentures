@@ -327,7 +327,7 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
             echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1"><br>';
             if ($sheetType == "Experiment")
             {
-                echo '</form><button id="edit1" onclick=\'editPage(7, "designSheet")\'> Edit </button>';
+                echo '</form><button id="edit1" onclick=\'editPage(6, "designSheet")\'> Edit </button>';
             }
             else if ($sheetType == "Result")
             {
