@@ -322,8 +322,8 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
             }
         }
 
-        if (isset($_SESSION["traject"]) && $_SESSION["traject"] == true) 
-        { 
+        if (isset($_SESSION["traject"]) && $_SESSION["traject"] == true)
+        {
             echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1"><br>';
             if ($sheetType == "Experiment")
             {
@@ -2151,7 +2151,7 @@ function selectPrototype($ExperimentID) {
             <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br>
 
             <input id="file3" type="hidden" name="file2" id="fileToUpload2"><br>
-            <label for="file3" style="display:none;" id="label3">Choose file</label>
+            <label for="file3" style="display:none;" id="label3">Choose file</label><br>
 
             <?php
 
@@ -2169,7 +2169,7 @@ function selectPrototype($ExperimentID) {
             ?>
 
             <textarea disabled class="textarea1" name="explanation2" placeholder="Explain your prototype."><?php echo $Explanation2?></textarea> <br/>
-            <input id="submit1" type="hidden" name="save" value="Save">
+            <input id="submit1" type="hidden" name="save" value="Save"><br>
 
             <?php
         }
