@@ -20,6 +20,14 @@ checkSession("Mentor");
 		</header>
 		<Main id="wrapper-admin">
 
+            <div id="toggle_bachelor">
+                <div id="text">
+                    <h1 id="clients">
+                        Assigned clients
+                    </h1>
+                </div>
+            </div>
+
             <ul class="list">
                 <div class="content">
 
