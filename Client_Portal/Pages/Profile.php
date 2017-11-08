@@ -42,6 +42,8 @@ checkSession('Client');
 						<div class="info1">
 							<form id="form" action="#" method="POST" enctype="multipart/form-data">
 								<h1>Upload profile picture:</h1> <input type="file" name="file1" id="file1"><label for="file1">Choose image</label></br>
+								<p>Name</p>
+								<input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"><br><br>
 								<h1>Select language</h1></br>
 								<select name="language">
 									<?php selectLanguage($ID); ?>
