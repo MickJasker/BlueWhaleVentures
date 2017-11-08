@@ -1,6 +1,6 @@
 <div id="nav">
 
-	<a href="index.php"><img id="logo" src="../../../Main/Files/Images/logo.svg" class="col-md-1"></a>
+	<a href="../index.php"><img id="logo" src="../../../Main/Files/Images/logo.svg" class="col-md-1"></a>
 
 
 	<h4 id="left">

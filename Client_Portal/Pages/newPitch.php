@@ -5,20 +5,16 @@
 
     $id = secure($_GET["experimentID"]);
 
-    if (isset($_SESSION["insertedIDPitch"]) == false)
+    if (isset($_POST["insertedID"]))
     {
-        header('Location: pitch.php?experimentID=' . $id);
-    }
-    else
-    {
-        unset($_SESSION["insertedIDPitch"]);
+        $_SESSION["insertedID"] = $_POST["insertedID"];
     }
 
     if(isset($_POST['submit']))
     {
-        if (isset($_SESSION['insertedIDPitch']))
+        if (isset($_SESSION['insertedID']))
         {
-            if (insertPitch(secure($_POST['preparationText']), secure($_SESSION['insertedIDPitch'])))
+            if (insertPitch(secure($_POST['preparationText']), secure($_SESSION['insertedID'])))
             {
                 header('Location: experiment.php?id=' . $id);
             }
@@ -30,6 +26,15 @@
                 header('Location: experiment.php?id=' . $id);
             }
         }
+    }
+
+    if (isset($_SESSION["insertedID"]) == false)
+    {
+        header('Location: pitch.php?experimentID=' . $id);
+    }
+    else
+    {
+        unset($_SESSION["insertedID"]);
     }
 ?>
 <!DOCTYPE html>
