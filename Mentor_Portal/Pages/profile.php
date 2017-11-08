@@ -47,7 +47,7 @@ CheckSession("Mentor");
                 <div class="info1">
                     <form id="form" action="#" method="POST" enctype="multipart/form-data">
                         <h1>Profile picture</h1>
-                        <input type="file" name="file1" id="file1">
+                        <input type="file" name="file1" id="file1"><label for="file1">Choose image</label>
                         <br>
                         <h1>General information</h1><br>
                         <p>Name</p>
