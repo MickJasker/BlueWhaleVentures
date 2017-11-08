@@ -8159,16 +8159,14 @@ footer .right {
 #wrapper-designSheet main form textarea {
   width: 600px;
   height: 150px;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-  outline: rgba(0, 0, 0, 0) solid;
 }
-#wrapper-designSheet main form textarea:focus {
-  outline: #0099ff solid;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
+#wrapper-designSheet main input[name="submitDesignsheet"] {
+  display: block;
+  padding: 5px 15px;
+  font-weight: normal;
+  border: none;
+  position: relative;
+  margin: 10px 0 4vh 0;
 }
 #wrapper-error {
   font-family: "open-sans", sans-serif;
