@@ -21,6 +21,7 @@ html {
 		background-color: @blue;
 		color: @white;
 		border-radius: 0;
+		text-align: center;
 		border: none;
 		&:hover{
 			background-color: @grey;
@@ -100,16 +101,9 @@ body {
 					.button {
 						background-color: @blue;
 						color: white;
-						transition: 0.3s ease;
+						text-align: center;
 						&:hover {
-							transition: 0.3s ease;
 							background-color: @grey;
-						}
-						&:focus {
-							transition: 0.3s ease;
-							background-color: @offwhite;
-							outline: none;
-							color: @blue;
 						}
 					}
 					#error {
@@ -1491,14 +1485,18 @@ body {
 		#edit1 {
 			padding: 5px 15px;
 			font-weight: normal;
-			transition: 0.2s ease;
 			border: none;
 			position: relative;
-			margin-left: 4.2vw;
-			margin-bottom: 4vh;
-			&:hover {
-				cursor: pointer;
-			}
+			margin: 10px 0 4vh 80px;
+		}
+
+		#submit1{
+			display: block;
+			padding: 5px 15px;
+			font-weight: normal;
+			border: none;
+			position: relative;
+			margin: 10px 0 4vh 0;
 		}
 
 		form {
@@ -1814,7 +1812,7 @@ body {
 				#file1 {
 					display: none;
 				}
-				
+
 				label {
 					padding: 5px;
 					background-color: @blue;
@@ -1824,7 +1822,6 @@ body {
 					transition: 0.3s ease;
 					word-wrap: break-word;
 					font-weight: normal;
-					text-align: center;
 					&:hover {
 						background-color: @grey;
 						transition: 0.3s ease;
