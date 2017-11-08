@@ -1,13 +1,13 @@
 <?php
-require '../../Main/Includes/PHP/functions.php';
-checkSession('Client');
-checkRange();
+    require '../../Main/Includes/PHP/functions.php';
+    checkSession('Client');
+    checkRange();
 
-    $experimentID = checkExperimentID(secure($_GET['experimentID']), secure($_SESSION["CompanyID"]));
+    $id = checkExperimentID(secure($_GET['experimentID']), secure($_SESSION["CompanyID"]));
 
     if (isset($_SESSION["insertedIDPrototype"]) == false)
     {
-        header('Location: prototype.php?experimentID=' . $experimentID);
+        header('Location: prototype.php?experimentID=' . $id);
     }
     else
     {

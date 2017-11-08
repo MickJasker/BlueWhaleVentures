@@ -6760,6 +6760,29 @@ html label {
 }
 html textarea {
   resize: none;
+  outline-width: 2px;
+}
+html input {
+  border-radius: 0;
+  outline-width: 2px;
+  color: black;
+}
+html button,
+html input[type="button"],
+html input[type="submit"] {
+  outline: none;
+  -webkit-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  transition: 0.2s ease;
+  background-color: #0099ff;
+  color: #ffffff;
+  border-radius: 0;
+  border: none;
+}
+html button:hover,
+html input[type="button"]:hover,
+html input[type="submit"]:hover {
+  background-color: #a0a0a0;
 }
 body {
   overflow-y: scroll;
@@ -6808,12 +6831,8 @@ body {
   border: none;
   font-size: 18px;
   width: 100%;
-  -webkit-transition: 0.2s ease;
-  -o-transition: 0.2s ease;
-  transition: 0.2s ease;
 }
 #wrapper-login main .login_col .login_block form input:focus {
-  outline: #0099ff solid;
   -webkit-transition: 0.2s ease;
   -o-transition: 0.2s ease;
   transition: 0.2s ease;
@@ -7918,26 +7937,22 @@ footer .right {
   padding: 5px;
   border: none;
   background-color: #f2f2f2;
-  color: #555555;
+  color: #a0a0a0;
   margin-top: 5px;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
 }
 #wrapper-experiment #wrapper-createExperiment .row section div form input:focus {
   background-color: #ffffff;
-  outline: #0099ff solid;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
+  -webkit-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  transition: 0.2s ease;
 }
 #wrapper-experiment #wrapper-createExperiment .row section div form textarea {
   padding: 5px;
   border: none;
   background-color: #f2f2f2;
-  color: #555555;
+  color: #a0a0a0;
   margin-top: 5px;
-  width: 50%;
+  width: 70%;
   height: 150px;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
@@ -7945,7 +7960,6 @@ footer .right {
 }
 #wrapper-experiment #wrapper-createExperiment .row section div form textarea:focus {
   background-color: #ffffff;
-  outline: #0099ff solid;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
@@ -7955,13 +7969,15 @@ footer .right {
   background-color: #0099ff;
   color: white;
   margin-top: 5px;
-  font-weight: 300;
+  max-width: 40%;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
+  word-wrap: break-word;
+  font-weight: normal;
 }
 #wrapper-experiment #wrapper-createExperiment .row section div form label:hover {
-  background-color: #555555;
+  background-color: #a0a0a0;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
@@ -7975,10 +7991,9 @@ footer .right {
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
-  font-weight: 300;
 }
 #wrapper-experiment #wrapper-createExperiment .row section div form #button:hover {
-  background-color: #555555;
+  background-color: #a0a0a0;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
@@ -8014,23 +8029,13 @@ footer .right {
   position: relative;
 }
 #wrapper-experimentExecuteable main #textdiv input {
-  background-color: #0099ff;
-  border-radius: 0;
-  color: #ffffff;
   min-width: 20%;
   height: 5vh;
   position: relative;
   font-size: 1.5vh;
   font-weight: normal;
-  -webkit-transition: ease .2s;
-  -o-transition: ease .2s;
-  transition: ease .2s;
   outline: none;
   border: none;
-}
-#wrapper-experimentExecuteable main #textdiv input:hover {
-  background-color: #ffffff;
-  color: #0099ff;
 }
 #wrapper-experimentExecuteable main #feedback {
   position: relative;
@@ -8048,18 +8053,15 @@ footer .right {
   height: 35px;
   padding: 5px;
   border: none;
-  background-color: #0099ff;
   -webkit-transition: .2s ease;
   -o-transition: .2s ease;
   transition: .2s ease;
 }
 #wrapper-experimentExecuteable main a button:hover {
-  background-color: #ffffff;
-  color: #0099ff;
   cursor: pointer;
 }
 #wrapper-experimentExecuteable main .is-disabled {
-  background-color: #555555;
+  background-color: #a0a0a0;
 }
 #wrapper-experimentExecuteable main .feedback {
   margin: 50px 15% 50px 15% ;
@@ -8147,24 +8149,18 @@ footer .right {
 #wrapper-designSheet main #switch .switchActive {
   border-bottom: #0099ff solid medium;
 }
-#wrapper-designSheet main button#edit1 {
+#wrapper-designSheet main #edit1 {
   padding: 5px 15px;
-  background-color: #0099ff;
-  color: white;
-  font-weight: 300;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
+  font-weight: normal;
+  -webkit-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  transition: 0.2s ease;
   border: none;
   position: relative;
   margin-left: 4.2vw;
   margin-bottom: 4vh;
 }
-#wrapper-designSheet main button#edit1:hover {
-  background-color: #555555;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
+#wrapper-designSheet main #edit1:hover {
   cursor: pointer;
 }
 #wrapper-designSheet main form {
@@ -8185,38 +8181,11 @@ footer .right {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
 }
-#wrapper-designSheet main form input {
-  background-color: #0099ff;
-  color: white;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-  border: none;
-  font-size: 18px;
-  padding: 5px;
-  width: 150px;
-  text-align: left;
-}
-#wrapper-designSheet main form input:hover {
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-  background-color: #ffffff;
-  color: #0099ff;
-}
-#wrapper-designSheet main form input:focus {
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-  background-color: #f2f2f2;
-  outline: none;
-  color: #0099ff;
-}
 #wrapper-error {
   font-family: "open-sans", sans-serif;
   background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
   background-size: cover;
-  color: #555555;
+  color: #a0a0a0;
 }
 #wrapper-error main {
   margin-top: 10px;
@@ -8233,7 +8202,7 @@ footer .right {
   color: #0099ff;
 }
 #wrapper-error main a:hover {
-  color: #555555;
+  color: #a0a0a0;
   text-decoration: none;
 }
 #wrapper-newPrototype {
@@ -8278,25 +8247,11 @@ footer .right {
 #wrapper-newPrototype main section div form label,
 #wrapper-newPrototype main section div form input,
 #wrapper-newPrototype main section div form button {
-  background-color: #0099ff;
   width: 100%;
   padding: 5px;
-  color: #ffffff;
-  border: none;
   margin: 5px;
   font-size: 18px;
-  font-weight: 400;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-}
-#wrapper-newPrototype main section div form label:hover,
-#wrapper-newPrototype main section div form input:hover,
-#wrapper-newPrototype main section div form button:hover {
-  background-color: #555555;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
+  font-weight: normal;
 }
 #wrapper-newPrototype main section div form #fileToUpload {
   display: none;
@@ -8332,27 +8287,11 @@ footer .right {
 #wrapper-newPrototype main section div #questionForm form input,
 #wrapper-newPrototype main section div #pitchForm form button,
 #wrapper-newPrototype main section div #questionForm form button {
-  background-color: #0099ff;
   width: 100%;
   padding: 5px;
-  color: #ffffff;
   border: none;
   font-size: 18px;
-  font-weight: 400;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-}
-#wrapper-newPrototype main section div #pitchForm form label:hover,
-#wrapper-newPrototype main section div #questionForm form label:hover,
-#wrapper-newPrototype main section div #pitchForm form input:hover,
-#wrapper-newPrototype main section div #questionForm form input:hover,
-#wrapper-newPrototype main section div #pitchForm form button:hover,
-#wrapper-newPrototype main section div #questionForm form button:hover {
-  background-color: #555555;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
+  font-weight: normal;
 }
 #wrapper-newPrototype main section div #pitchForm form #fileToUpload,
 #wrapper-newPrototype main section div #questionForm form #fileToUpload {
@@ -8366,8 +8305,8 @@ footer .right {
 }
 #wrapper-executable main {
   display: inline-block;
-  background-color: rgba(0, 153, 255, 0.9);
-  width: 100vw;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 100%;
   min-height: 100vh;
   padding-top: 80px;
 }
@@ -8574,26 +8513,38 @@ footer .right {
   padding-left: 2vh;
 }
 #wrapper-profile .content .info .text input {
-  outline: none;
   padding: 1%;
   min-width: 40%;
   border: none;
   margin-bottom: 1%;
 }
-#wrapper-profile .content .info .text .submit {
+#wrapper-profile .content .info .text #file1 {
+  display: none;
+}
+#wrapper-profile .content .info .text label {
+  padding: 5px;
   background-color: #0099ff;
-  border-radius: 0;
-  color: #ffffff;
+  color: white;
+  margin-top: 5px;
+  max-width: 30%;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  word-wrap: break-word;
+  font-weight: normal;
+  text-align: center;
+}
+#wrapper-profile .content .info .text label:hover {
+  background-color: #a0a0a0;
+  -webkit-transition: 0.3s ease;
+  -o-transition: 0.3s ease;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+#wrapper-profile .content .info .text .submit {
   bottom: 0;
   min-width: 30%;
   position: absolute;
   font-size: 1.5vh;
   font-weight: normal;
-  -webkit-transition: ease .2s;
-  -o-transition: ease .2s;
-  transition: ease .2s;
-}
-#wrapper-profile .content .info .text .submit:hover {
-  background-color: #ffffff;
-  color: #0099ff;
 }

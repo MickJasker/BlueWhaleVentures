@@ -930,6 +930,11 @@ function getFeedback($ID)
     $sql = "SELECT Text, UserID FROM `Comment` WHERE ExperimentID = '$ID'";
     if ($data = query($sql))
     {
+        ?>
+            <div class="feedback container-fluid">
+                <h2> Feedback </h2>
+                <div>
+        <?php
         while($row = $data->fetch_assoc())
         {
             $UserID = $row["UserID"];
@@ -952,6 +957,11 @@ function getFeedback($ID)
                 }
             }
         }
+
+        ?>
+                </div>
+            </div>
+        <?php
     }
 
 }

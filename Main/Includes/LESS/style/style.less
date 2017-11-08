@@ -8,6 +8,23 @@ html {
 	}
 	textarea {
 		resize: none;
+		outline-width: 2px;
+	}
+	input{
+		border-radius: 0;
+		outline-width: 2px;
+		color: black;
+	}
+	button, input[type="button"], input[type="submit"]{
+		outline: none;
+		transition: 0.2s ease;
+		background-color: @blue;
+		color: @white;
+		border-radius: 0;
+		border: none;
+		&:hover{
+			background-color: @grey;
+		}
 	}
 }
 
@@ -62,9 +79,7 @@ body {
 						border: none;
 						font-size: 18px;
 						width: 100%;
-						transition: 0.2s ease;
 						&:focus {
-							outline: @blue solid;
 							transition: 0.2s ease;
 							background-color: white;
 						}
@@ -1255,27 +1270,24 @@ body {
 							padding: 5px;
 							border: none;
 							background-color: @offwhite;
-							color: @gray;
+							color: @grey;
 							margin-top: 5px;
-							transition: 0.3s ease;
 							&:focus {
 								background-color: @white;
-								outline: @blue solid;
-								transition: 0.3s ease;
+								transition: 0.2s ease;
 							}
 						}
 						textarea {
 							padding: 5px;
 							border: none;
 							background-color: @offwhite;
-							color: @gray;
+							color: @grey;
 							margin-top: 5px;
-							width: 50%;
+							width: 70%;
 							height: 150px;
 							transition: 0.3s ease;
 							&:focus {
 								background-color: @white;
-								outline: @blue solid;
 								transition: 0.3s ease;
 							}
 						}
@@ -1284,10 +1296,12 @@ body {
 							background-color: @blue;
 							color: white;
 							margin-top: 5px;
-							font-weight: 300;
+							max-width: 40%;
 							transition: 0.3s ease;
+							word-wrap: break-word;
+							font-weight: normal;
 							&:hover {
-								background-color: @gray;
+								background-color: @grey;
 								transition: 0.3s ease;
 								cursor: pointer;
 							}
@@ -1298,9 +1312,8 @@ body {
 							color: white;
 							margin-top: 5px;
 							transition: 0.3s ease;
-							font-weight: 300;
 							&:hover {
-								background-color: @gray;
+								background-color: @grey;
 								transition: 0.3s ease;
 							}
 						}
@@ -1344,22 +1357,13 @@ body {
 			}
 
 			input {
-				background-color: @blue;
-				border-radius: 0;
-				color: @white;
 				min-width: 20%;
 				height: 5vh;
 				position: relative;
 				font-size: 1.5vh;
 				font-weight: normal;
-				transition: ease .2s;
 				outline: none;
 				border: none;
-
-				&:hover {
-					background-color: @white;
-					color: @blue;
-				}
 			}
 		}
 
@@ -1378,18 +1382,15 @@ body {
 				height: 35px;
 				padding: 5px;
 				border: none;
-				background-color: @blue;
 				transition: .2s ease;
 
 				&:hover {
-					background-color: @white;
-					color: @blue;
 					cursor: pointer;
 				}
 			}
 		}
 		.is-disabled {
-			background-color: @gray;
+			background-color: @grey;
 
 		}
 		.feedback {
@@ -1485,25 +1486,17 @@ body {
 			.switchActive {
 				border-bottom: @blue solid medium;
 			}
-			button {
-
-
-			}
 		}
 
-		button#edit1 {
+		#edit1 {
 			padding: 5px 15px;
-			background-color: @blue;
-			color: white;
-			font-weight: 300;
-			transition: 0.3s ease;
+			font-weight: normal;
+			transition: 0.2s ease;
 			border: none;
 			position: relative;
 			margin-left: 4.2vw;
 			margin-bottom: 4vh;
 			&:hover {
-				background-color: @gray;
-				transition: 0.3s ease;
 				cursor: pointer;
 			}
 		}
@@ -1522,29 +1515,6 @@ body {
 					transition: 0.3s ease;
 				}
 			}
-
-			input {
-				background-color: @blue;
-				color: white;
-				transition: 0.3s ease;
-				border: none;
-				font-size: 18px;
-				padding: 5px;
-				width: 150px;
-				text-align: left;
-
-				&:hover {
-					transition: 0.3s ease;
-					background-color: @white;
-					color: @blue;
-				}
-				&:focus {
-					transition: 0.3s ease;
-					background-color: @offwhite;
-					outline: none;
-					color: @blue;
-				}
-			}
 		}
 	}
 }
@@ -1553,7 +1523,7 @@ body {
 	font-family: "open-sans", sans-serif;
 	background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
 	background-size: cover;
-	color: @gray;
+	color: @grey;
 	main {
 		margin-top: 10px;
 		text-align: center;
@@ -1567,7 +1537,7 @@ body {
 		a {
 			color: @blue;
 			&:hover {
-				color: @gray;
+				color: @grey;
 				text-decoration: none;
 			}
 		}
@@ -1611,19 +1581,11 @@ body {
 						}
 					}
 					label, input, button {
-						background-color: @blue;
 						width: 100%;
 						padding: 5px;
-						color: @white;
-						border: none;
 						margin: 5px;
 						font-size: 18px;
-						font-weight: 400;
-						transition: 0.3s ease;
-						&:hover {
-							background-color: @gray;
-							transition: 0.3s ease;
-						}
+						font-weight: normal;
 					}
 					#fileToUpload {
 						display: none;
@@ -1648,18 +1610,11 @@ body {
 							}
 						}
 						label, input, button {
-							background-color: @blue;
 							width: 100%;
 							padding: 5px;
-							color: @white;
 							border: none;
 							font-size: 18px;
-							font-weight: 400;
-							transition: 0.3s ease;
-							&:hover {
-								background-color: @gray;
-								transition: 0.3s ease;
-							}
+							font-weight: normal;
 						}
 						#fileToUpload {
 							display: none;
@@ -1678,8 +1633,8 @@ body {
 	background-attachment: fixed;
 	main {
 		display: inline-block;
-		background-color: rgba(0, 153, 255, 0.9);
-		width: 100vw;
+		background-color: rgba(255, 255, 255, 0.9);
+		width: 100%;
 		min-height: 100vh;
 		padding-top: 80px;
 		#prototypeForm {
@@ -1850,27 +1805,38 @@ body {
 				}
 
 				input {
-					outline: none;
 					padding: 1%;
 					min-width: 40%;
 					border: none;
 					margin-bottom: 1%;
 				}
-				.submit {
+
+				#file1 {
+					display: none;
+				}
+				
+				label {
+					padding: 5px;
 					background-color: @blue;
-					border-radius: 0;
-					color: @white;
+					color: white;
+					margin-top: 5px;
+					max-width: 30%;
+					transition: 0.3s ease;
+					word-wrap: break-word;
+					font-weight: normal;
+					text-align: center;
+					&:hover {
+						background-color: @grey;
+						transition: 0.3s ease;
+						cursor: pointer;
+					}
+				}
+				.submit {
 					bottom: 0;
 					min-width: 30%;
 					position: absolute;
 					font-size: 1.5vh;
 					font-weight: normal;
-					transition: ease .2s;
-
-					&:hover {
-						background-color: @white;
-						color: @blue;
-					}
 				}
 			}
 		}

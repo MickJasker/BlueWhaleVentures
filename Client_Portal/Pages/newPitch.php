@@ -1,13 +1,13 @@
 <?php
     require '../../Main/Includes/PHP/functions.php';
 	checkSession('Client');
-	checkRange();
+    checkRange();    
 
     $id = secure($_GET["experimentID"]);
 
     if (isset($_SESSION["insertedIDPitch"]) == false)
     {
-        header('Location: pitch.php?experimentID=' . $experimentID);
+        header('Location: pitch.php?experimentID=' . $id);
     }
     else
     {

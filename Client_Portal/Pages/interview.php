@@ -17,6 +17,11 @@ $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["Comp
     <script src="../../Main/Includes/Javascript/functions.js"></script>
 </head>
 <body id="wrapper-executable">
+<header class="row wrapper-nav">
+    <?php
+    require "../nav_nosearch.php"
+    ?>
+</header>
 <Main>
 
     <div id="interviewForm">
