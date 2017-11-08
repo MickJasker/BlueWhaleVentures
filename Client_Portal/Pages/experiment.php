@@ -11,19 +11,13 @@ $ID = checkExperimentID(secure($_GET["id"]), $_SESSION["CompanyID"]);
 	<script src="../../Main/Includes/Javascript/functions.js"></script>
 </head>
     <body id="wrapper-experimentExecuteable">
-    <header class="wrapper-nav">
-        <?php require "../nav_nosearch.php";?>
-    </header>
-    <main>
-        <?php getExperiment($ID); ?><br>
-        <div class="feedback container-fluid">
-            <h2> Feedback </h2>
-            <div>
-                <?php getFeedback($ID); ?>
-            </div>
-        </div>
-
-    </main>
-
+        <header class="wrapper-nav">
+            <?php require "../nav_nosearch.php";?>
+        </header>
+        <main>
+            <?php getExperiment($ID); ?>
+            <br>
+            <?php getFeedback($ID); ?>
+        </main>
 	</body>
 </html>
