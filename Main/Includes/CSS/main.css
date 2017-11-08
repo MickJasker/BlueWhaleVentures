@@ -8011,6 +8011,9 @@ footer .right {
 #wrapper-experimentExecuteable main {
   padding-top: 80px;
 }
+#wrapper-experimentExecuteable main #experimentinfo {
+  margin-bottom: 2%;
+}
 #wrapper-experimentExecuteable main #textdiv {
   width: 60%;
   position: relative;
@@ -8037,6 +8040,8 @@ footer .right {
   font-weight: normal;
   outline: none;
   border: none;
+  float: left;
+  margin: 1.5% 0 2% 0;
 }
 #wrapper-experimentExecuteable main #feedback {
   position: relative;
@@ -8072,7 +8077,7 @@ footer .right {
   display: inline-block;
   padding: 10px;
   border-radius: 5px;
-  position: absolute;
+  position: relative;
   left: 0;
   width: 70%;
 }
