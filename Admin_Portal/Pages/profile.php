@@ -108,7 +108,7 @@ CheckSession("Admin");
 								else if (!empty($_FILES['file1']['name']))
 								{
 									$type = "img";
-									$path = "../../Client_Portal/Uploads/profilePicture/";
+									$path = "../../Admin_Portal/Uploads/profilePicture/";
 									$file1_name = $_FILES['file1']['name'];
 									$file1_tmp_name = $_FILES['file1']['tmp_name'];
 									$file1_size = $_FILES['file1']['size'];
@@ -124,11 +124,9 @@ CheckSession("Admin");
                                     $PFPath = "";
                                     if (!empty($_FILES['file1']['name']))
                                     {
-                                        $type = "img";
                                         $path = "../../Admin_Portal/Uploads/profilePicture/";
                                         $file1_name = $_FILES['file1']['name'];
                                         $file1_tmp_name = $_FILES['file1']['tmp_name'];
-                                        $file1_size = $_FILES['file1']['size'];
 
 								if ($upload) {
 									//upload the image
