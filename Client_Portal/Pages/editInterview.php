@@ -9,7 +9,7 @@
     {
         insertQuestionWithExperimentID($_POST, $id);
 
-        //header('Location: experiment.php?id='.$id);
+        header('Location: experiment.php?id='.$id);
     }
 
     $i = 0;    
