@@ -304,6 +304,7 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
     if($data1 = query($sql))
     {
         echo '<form method="POST" action="#"><h1>'.$sheetType.' Sheet</h1>';
+        echo '<div class="row">';
         $i = 0;
         while($row1 = $data1->fetch_assoc())
         {
@@ -316,12 +317,14 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
             if($data2 = query($sql))
             {
                 $row2 = mysqli_fetch_array($data2,MYSQLI_ASSOC);
-                echo '<h3>'.$row2["title"].'</h3>';
-                echo '<textarea disabled class="textarea1" name="input'.$i.'" type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
-                $i++;
+                echo '<div class="col-md-6">';
+	                echo '<h3>'.$row2["title"].'</h3>';
+	                echo '<textarea disabled class="textarea1" name="input'.$i.'" type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
+	            echo '</div>';
+	            $i++;
             }
         }
-
+		echo '</div>';
         if (isset($_SESSION["traject"]) && $_SESSION["traject"] == true)
         {
             echo '<input type="hidden" name="submitDesignsheet" value="Enter" id="submit1"><br>';
@@ -1619,7 +1622,6 @@ function insertQuestionWithExperimentID($QuestionPost, $ExperimentID)
                     while ($row = $data->fetch_assoc())
                     {
                         $QuestionaireID = $row["ID"];
-
                         $sql2 = "INSERT INTO Question(QuestionaireID, Question) VALUES ('$QuestionaireID','$Question')";
                         Query($sql2);
                     }
