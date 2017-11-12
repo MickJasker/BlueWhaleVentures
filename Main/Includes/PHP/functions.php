@@ -33,22 +33,19 @@ function generate_key($email, $name, $role)
 		$link = $url . "?key=" . $generatedkey;
 		
 		//Time + 31 days YYYY-MM-DD HH:MI:SS
-		$activetime = date("Y-m-d H:i:s",strtotime(date("Y-m-d H:i:s")." +31 days"));
+		$activetime = date("Y-m-d",strtotime(date("Y-m-d")." +31 days"));
 		
 		//Insert the code in the db
 		if (createCode($email, $name, $generatedkey, $activetime, $role))
 		{	
 			return true;
-		}	
-		else
-		{
-			return false;
 		}
 	}
 	else
 	{
 		echo "Email is not available!";
 	}
+	return false;
 }
 
 function createSession($Email)

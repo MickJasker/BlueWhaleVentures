@@ -4,8 +4,8 @@ include_once '../../Main/Includes/PHP/functions.php';
 if (isset($_POST['generate_companykey']))
 {
 	echo '<p>';
-	$user_name = htmlentities(mysqli_real_escape_string($conn, $_POST['user_name']));
-	$company_mail = htmlentities(mysqli_real_escape_string($conn, $_POST['company_mail']));
+	$user_name = secure($_POST['user_name']);
+	$company_mail = secure(['company_mail']);
 	
 	if (!(strlen($user_name) >= 1 && strlen($user_name) <= 32))
 	{
