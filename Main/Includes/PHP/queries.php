@@ -671,8 +671,8 @@ function getExperimentsPreviewMentor($CompanyID)
 //Get experiment info
 function getExperiment($id)
 {
-    $header = "";
-    $name = "";
+    $header = "chooseExecution.php";
+    $name = "Choose execution";
     $send = '';
 
     $sql = "SELECT Preparation, Conclusion FROM Pitch WHERE ExperimentID = '$id'";
