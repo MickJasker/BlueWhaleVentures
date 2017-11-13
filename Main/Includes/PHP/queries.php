@@ -2609,7 +2609,7 @@ function selectBachelorBlockInfo() {
             ?>
 
             <li id="Block" class="col-lg-4">
-                <a href="bachelorGroup.php?id=<?php echo $ID ?>">
+                <a href="bachelorGroup.php?bachelorID=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <img src="../../Main/Files/Images/Bachelor-Standard.png" alt="<?php echo $Name; ?>">
                     </div>
@@ -2793,7 +2793,7 @@ function insertBachelorGroup($BachelorName)
         global $conn;
 
         $BachelorID = mysqli_insert_id($conn);
-        header('Location: bachelorGroup.php?id=' . $BachelorID );
+        header('Location: bachelorGroup.php?bachelorID=' . $BachelorID );
     }
     else {
         header('Location: index.php' );
@@ -2806,7 +2806,7 @@ function insertToBachelorGroup($BachelorGroupID, $CompanyGroupID)
     $sql = "INSERT INTO `Bachelor_Company`(`BachelorID` , `CompanyID`) VALUES ('$BachelorGroupID', '$CompanyGroupID')";
     if (query($sql))
     {
-        header('Location: bachelorGroup.php?id=' . $BachelorGroupID );
+        header('Location: bachelorGroup.php?bachelorID=' . $BachelorGroupID );
     }
 	else {
 		return false;
@@ -2908,7 +2908,7 @@ function deleteBachelorGroupMember($CompanyID, $BachelorGroupID)
 
     if (query($sql)) {
 
-        header('Location: bachelorGroup.php?id=' . $BachelorGroupID);
+        header('Location: bachelorGroup.php?bachelorID=' . $BachelorGroupID);
     }
     else {
         return false;
