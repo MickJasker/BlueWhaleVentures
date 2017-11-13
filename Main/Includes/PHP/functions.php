@@ -131,15 +131,17 @@ function uploadCheck($file_name, $file_tmp_name, $file_size, $type, $target_dir)
 		} 
 	}
 	
-	// Check file size
-	if ($file_size > 30000000)
-	{
-	    echo "Sorry, your file is too large.";
-	    $uploadok = 0;
-	}
+	
 	
 	if ($type == "img")
 	{
+		// Check file size
+		if ($file_size > 15000000)
+		{
+			echo "Sorry, your file is too large.";
+			$uploadok = 0;
+		}
+		
 		// Allow certain file formats
 		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "JPG" && $imageFileType != "PNG" && $imageFileType != "JPEG")
 		{
@@ -149,6 +151,13 @@ function uploadCheck($file_name, $file_tmp_name, $file_size, $type, $target_dir)
 	}
     else if ($type == "video")
     {
+		// Check file size
+		if ($file_size > 1000000000)
+		{
+			echo "Sorry, your file is too large.";
+			$uploadok = 0;
+		}
+		
         // Allow certain file formats
         if($imageFileType != "mp4")
         {

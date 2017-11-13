@@ -2823,7 +2823,6 @@ function checkFirstLogin()
 	$sql = "SELECT `ProfilePicture` FROM `User` WHERE ID = '$userID'";
 	if ($data = query($sql)) 
 	{
-
         while ($row = $data->fetch_assoc()) 
         {
             if ($row["ProfilePicture"] == "")
