@@ -33,7 +33,9 @@ if (isset($_POST['generate_companykey']))
     </div>
 </div>
 
-<div id="messageDiv"> <p id="message"> Has been succesfully edited! </p> </div>
+<div id="messageDiv">
+	<p id="message"> Has been succesfully edited! </p>
+</div>
 
  <div id="clientform" class="clientmodal">
      <!-- Modal content -->

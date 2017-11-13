@@ -49,7 +49,7 @@ if (isset($_GET['action']))
 					echo '<p>';
 					$user_name = htmlentities(mysqli_real_escape_string($conn, $_POST['user_name']));
 					$company_mail = htmlentities(mysqli_real_escape_string($conn, $_POST['company_mail']));
-					
+
 					if (!(strlen($user_name) >= 1 && strlen($user_name) <= 32))
 					{
 						echo "The name should be between 1 and 32 characters";
