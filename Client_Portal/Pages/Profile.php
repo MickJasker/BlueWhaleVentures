@@ -1,7 +1,8 @@
 <?php
-require '../../Main/Includes/PHP/functions.php';
-checkSession('Client');
+	require '../../Main/Includes/PHP/functions.php';
+	checkSession('Client');
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>

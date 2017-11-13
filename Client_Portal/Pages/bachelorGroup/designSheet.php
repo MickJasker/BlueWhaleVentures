@@ -1,8 +1,9 @@
-<!DOCTYPE html>
 <?php
-require '../../../Main/Includes/PHP/functions.php';
+	require '../../../Main/Includes/PHP/functions.php';
+    checkSession('Client');
 ?>
 
+<!DOCTYPE html>
 <html>
 	<head>
 	    <title> Client Portal </title>

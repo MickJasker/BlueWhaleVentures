@@ -1,10 +1,8 @@
 <?php
-
     include_once '../../Main/Includes/PHP/functions.php';
-
-    //CheckSession("Admin");
-
+    CheckSession("Admin");
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>

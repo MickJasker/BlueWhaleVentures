@@ -1,7 +1,8 @@
 <?php
-require '../../Main/Includes/PHP/functions.php';
-CheckSession("Admin");
+    require '../../Main/Includes/PHP/functions.php';
+    CheckSession("Admin");
 ?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>

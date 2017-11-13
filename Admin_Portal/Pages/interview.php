@@ -1,6 +1,8 @@
 <?php
-require '../../Main/Includes/PHP/functions.php';
+    require '../../Main/Includes/PHP/functions.php';
+    CheckSession("Admin");
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,12 +16,7 @@ require '../../Main/Includes/PHP/functions.php';
     <h1> Interview </h1>
     <div id="interviewForm">
         <form id="form" action="#" method="POST">
-
-            <?php
-
-                $i = selectQuestionsView($_GET['experimentID']);
-
-            ?>
+            <?php $i = selectQuestionsView($_GET['experimentID']); ?>
             <p hidden id="hiddenP"><?php echo $i?></p>
         </form>
     </div>

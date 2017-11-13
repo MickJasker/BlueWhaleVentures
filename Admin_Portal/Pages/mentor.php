@@ -1,6 +1,6 @@
 <?php
-include_once '../../Main/Includes/PHP/functions.php';
-checkSession("Admin");
+    include_once '../../Main/Includes/PHP/functions.php';
+    checkSession("Admin");
 ?>
 <div id="mentorform" class="mentormodal">
 

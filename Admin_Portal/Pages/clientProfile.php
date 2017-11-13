@@ -1,6 +1,6 @@
 <?php
-require '../../Main/Includes/PHP/functions.php';
-    //CheckSession("Admin");
+    require '../../Main/Includes/PHP/functions.php';
+    CheckSession("Admin");
 
     if (isset($_POST['save'])) 
     {
@@ -46,6 +46,7 @@ require '../../Main/Includes/PHP/functions.php';
         }
     }
 ?>
+
 <!DOCTYPE HTML>
 <html>
 	<head>
