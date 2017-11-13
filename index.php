@@ -18,8 +18,8 @@
             <form method="POST" action="#">
                 <input type="text" placeholder="E-mail" name="user_name"><br>
                 <input type="password" placeholder="Password" name="password"><br>
-                <a href="#">Forgot password?</a><br>
-                <input type="submit" name="login" class="button" value="Login">
+                <!--<a href="#">Forgot password?</a><br>-->
+                <br><input type="submit" name="login" class="button" value="Login">
                 <p id="error">
                     <?php
                     require 'Main/Includes/PHP/functions.php';

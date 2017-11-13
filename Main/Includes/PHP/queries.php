@@ -746,8 +746,41 @@ function getExperiment($id)
         
         $header = $header . "?experimentID=" . $id;
 
-        echo '<h1>' . $row["Title"] . '</h1>';
-        echo '<p>' . $row["Description"] .  '</p>';
+        echo '<h1 id="experimentTitel">' . $row["Title"] . '</h1>';
+        echo '<p id="experimentDescription">' . $row["Description"] .  '</p>';
+		
+		echo '<form style="display:none;" id="editExperimentForm" method="POST" action="#">';
+		echo '<input type="text" placeholder="Titel" name="experimentTitel" value="'.$row["Title"].'"> <br>';
+		echo '<textarea  name="experimentDescription" type="text" placeholder="Description">'.$row["Description"].'</textarea> <br>';
+		echo '<input type="submit" value="Edit experiment" name="editExperiment">&nbsp;&nbsp;';
+		echo '<button onclick="cancelExperiment()"> Cancel </button>';
+		echo '<br><br></form>';
+		
+		if (isset($_POST['editExperiment']))
+        {
+            $experimentTitel = secure($_POST['experimentTitel']);
+			$experimentDescription = secure($_POST['experimentDescription']);
+			
+			if ($experimentTitel == "")
+			{
+				echo "No title has been given";
+			}
+			else if ($experimentDescription == "")
+			{
+				echo "No description has been given";
+			}
+			else
+			{
+				if (editExperiment($experimentTitel, $experimentDescription, $id))
+				{
+					header('Location: experiment.php?id='.$id);
+				}
+				else
+				{
+					echo "Error updating experiment";
+				}
+			}
+		}
 
         designSheetAvailable($id, "Experiment");
         echo '<a href="'.$header.'"><button '.$send.'> '.$name.' </button></a>';
@@ -757,6 +790,16 @@ function getExperiment($id)
     {
         return false;
     }
+}
+
+function editExperiment($experimentTitel, $experimentDescription, $id)
+{
+	$sql = "UPDATE `Experiment` SET `Title`='$experimentTitel',`Description`='$experimentDescription' WHERE ID = '$id'";
+	if(query($sql))
+    {
+		return true;
+	}
+	return false;
 }
 
 function designSheetAvailable($experimentID, $sheetType)
