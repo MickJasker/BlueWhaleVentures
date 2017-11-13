@@ -1237,23 +1237,11 @@ function checkExperimentIDMentor($ID, $UserID)
                             return $row3["ID"];
                         }
                     }
-                    else
-                    {
-                        header('Location: index.php');
-                    }
                 }
-            }
-            else
-            {
-                header('Location: index.php');
             }
         }
     }
-    else
-    {
-        header('Location: index.php');
-    }
-    return false;
+    header('Location: index.php');
 }
 
 function checkAllExperimentsMentor($CompanyID, $UserID)
