@@ -554,6 +554,11 @@ function getCompanyBlockInfo()
             $Name = $row["Name"];
             $Branch = $row["Branch"];
 
+            if ($Logo == "")
+            {
+                $logo = "../../Files/Images/Company-Standard.png";
+            }
+
             ?>
 
             <li id="Block" class="<?php echo $Branch;?> col-lg-4">

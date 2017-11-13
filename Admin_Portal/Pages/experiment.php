@@ -30,11 +30,7 @@ $UserID = $_SESSION["UserID"];
 					<input type="submit" name="addFeedback" value="Add feedback">
 				</form>
 
-            </div>
-            <div class="feedback">
-
-                    <h2> Feedback </h2>
-				
+            </div>	
 				<?php 
 				if (isset($_POST['addFeedback']))
 					{
@@ -51,8 +47,6 @@ $UserID = $_SESSION["UserID"];
 					}
 				?>
 				<?php getFeedback($ID); ?>	
-					
-			</div>
 	    </main>
 	</body>
 </html>
