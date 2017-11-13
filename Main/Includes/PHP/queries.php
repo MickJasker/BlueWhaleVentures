@@ -1972,8 +1972,7 @@ function selectPitch($ExperimentID)
             Preparation: <br/>
             <textarea disabled class="textarea1" name="preparationText" typeplaceholder="Prepare for your pitch"><?php echo $Preparation?></textarea>
             <br>
-			<input id="file1" type="hidden" name="file1" style="display:none;">
-			<label id="label2" for="file1" style="display:none;">Upload an video of your pitch</label>
+
             
 
 
@@ -2000,7 +1999,8 @@ function selectPitch($ExperimentID)
             Conclusion: <br/>
             <textarea disabled class="textarea1" name="conclusionText" placeholder="Conclusion of your pitch"><?php echo $Conclusion?></textarea> <br/>
             <input id="submit1" type="hidden" name="save" value="Save">
-
+	        <input id="file1" type="hidden" name="file1" style="display:none;">
+	        <label id="label2" for="file1" style="display:none;">Upload an video of your pitch</label>
             <?php
         }
         return $Media;
@@ -2607,7 +2607,7 @@ function selectBachelorBlockInfo() {
             ?>
 
             <li id="Block" class="col-lg-4">
-                <a href="bachelorGroup.php?id=<?php echo $ID ?>">
+                <a href="bachelorGroup.php?bachelorID=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <img src="../../Main/Files/Images/Bachelor-Standard.png" alt="<?php echo $Name; ?>">
                     </div>
@@ -2791,7 +2791,7 @@ function insertBachelorGroup($BachelorName)
         global $conn;
 
         $BachelorID = mysqli_insert_id($conn);
-        header('Location: bachelorGroup.php?id=' . $BachelorID );
+        header('Location: bachelorGroup.php?bachelorID=' . $BachelorID );
     }
     else {
         header('Location: index.php' );
@@ -2804,7 +2804,7 @@ function insertToBachelorGroup($BachelorGroupID, $CompanyGroupID)
     $sql = "INSERT INTO `Bachelor_Company`(`BachelorID` , `CompanyID`) VALUES ('$BachelorGroupID', '$CompanyGroupID')";
     if (query($sql))
     {
-        header('Location: bachelorGroup.php?id=' . $BachelorGroupID );
+        header('Location: bachelorGroup.php?bachelorID=' . $BachelorGroupID );
     }
 	else {
 		return false;
@@ -2817,7 +2817,6 @@ function checkFirstLogin()
 	$sql = "SELECT `ProfilePicture` FROM `User` WHERE ID = '$userID'";
 	if ($data = query($sql)) 
 	{
-
         while ($row = $data->fetch_assoc()) 
         {
             if ($row["ProfilePicture"] == "")
@@ -2907,7 +2906,7 @@ function deleteBachelorGroupMember($CompanyID, $BachelorGroupID)
 
     if (query($sql)) {
 
-        header('Location: bachelorGroup.php?id=' . $BachelorGroupID);
+        header('Location: bachelorGroup.php?bachelorID=' . $BachelorGroupID);
     }
     else {
         return false;
