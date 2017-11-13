@@ -65,9 +65,7 @@
             </div>
 
             <?php
-
                selectBachelorGroupBlockInfo(secure($_GET['id']));
-
             ?>
         </div>
     </ul>
