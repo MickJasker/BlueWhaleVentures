@@ -1,17 +1,17 @@
-<!DOCTYPE html>
 <?php
-require '../../Main/Includes/PHP/functions.php';
-checkSession('Client');
-$experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
-if ($_SESSION["traject"] == true)
-{ 
-	if (isset($_POST["submitDesignsheet"])) 
-	{
-		updateDesignSheet($_POST, "Experiment", $_SESSION["Language"], $experimentID);
-	}
-}
-
+    require '../../Main/Includes/PHP/functions.php';
+    checkSession('Client');
+    $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
+    if ($_SESSION["traject"] == true)
+    { 
+    	if (isset($_POST["submitDesignsheet"])) 
+    	{
+    		updateDesignSheet($_POST, "Experiment", $_SESSION["Language"], $experimentID);
+    	}
+    }
 ?>
+
+<!DOCTYPE html>
 <html>
 <head>
     <title> Client Portal </title>

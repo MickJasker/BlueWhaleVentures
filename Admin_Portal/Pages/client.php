@@ -2,7 +2,8 @@
 	<p id="message"> Error </p>
 </div>
 <?php
-include_once '../../Main/Includes/PHP/functions.php';
+    include_once '../../Main/Includes/PHP/functions.php';
+    CheckSession("Admin");
 
 if (isset($_POST['generate_companykey']))
 {

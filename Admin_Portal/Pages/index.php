@@ -1,8 +1,6 @@
 <?php
-
     include_once '../../Main/Includes/PHP/functions.php';
-
-    //CheckSession("Admin");
+    CheckSession("Admin");
 
 if (isset($_POST['saveBachelorGroup']))
 {

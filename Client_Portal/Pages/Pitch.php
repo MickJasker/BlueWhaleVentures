@@ -1,9 +1,9 @@
 <?php
-require '../../Main/Includes/PHP/functions.php';
-checkSession('Client');
-$experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
-
+    require '../../Main/Includes/PHP/functions.php';
+    checkSession('Client');
+    $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>

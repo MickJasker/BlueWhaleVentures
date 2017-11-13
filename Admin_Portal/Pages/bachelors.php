@@ -1,8 +1,8 @@
 <?php
     include_once '../../Main/Includes/PHP/functions.php';
     CheckSession("Admin");
-
 ?>
+
 <div id="toggle_bachelor">
     <div id="text">
         <h1 id="clients" onclick="selectclient()">

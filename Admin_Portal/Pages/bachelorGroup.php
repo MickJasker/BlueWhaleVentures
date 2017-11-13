@@ -1,8 +1,6 @@
 <?php
-
     include_once '../../Main/Includes/PHP/functions.php';
-
-    //CheckSession("Admin");
+    CheckSession("Admin");
 
     if (isset($_POST['saveBachelorMember']))
     {
@@ -21,15 +19,9 @@
             deleteBachelorGroupMember(secure($_GET['companyID']) ,secure($_GET['bachelorID']));
 
         }
-        else {
-
-        }
     }
-    else {
-
-    }
-
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>

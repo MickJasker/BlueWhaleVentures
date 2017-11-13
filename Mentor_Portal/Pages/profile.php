@@ -1,6 +1,6 @@
 <?php
-require '../../Main/Includes/PHP/functions.php';
-CheckSession("Mentor");
+    require '../../Main/Includes/PHP/functions.php';
+    CheckSession("Mentor");
 ?>
 
 <!DOCTYPE html>
