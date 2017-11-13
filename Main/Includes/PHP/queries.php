@@ -2000,9 +2000,10 @@ function selectPitch($ExperimentID)
 
             Conclusion: <br/>
             <textarea disabled class="textarea1" name="conclusionText" placeholder="Conclusion of your pitch"><?php echo $Conclusion?></textarea> <br/>
-            <input id="submit1" type="hidden" name="save" value="Save">
-	        <input id="file1" type="hidden" name="file1" style="display:none;">
-	        <label id="label2" for="file1" style="display:none;">Upload an video of your pitch</label>
+            <input id="file1" type="hidden" name="file1" style="display:none;">
+	        <label id="label2" for="file1" style="display:none;">Upload a video of your pitch</label>
+			<input id="submit1" type="hidden" name="save" value="Save">
+	        
             <?php
         }
         return $Media;
@@ -2826,6 +2827,10 @@ function checkFirstLogin()
 				return true;
 			}
         }
+	}
+	else
+	{
+		return true;
 	}
 	return false;
 }

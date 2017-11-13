@@ -41,7 +41,7 @@
 
 					<div class="text">
 						<div class="info1">
-							<br id="form" action="#" method="POST" enctype="multipart/form-data">
+							<form id="form" action="#" method="POST" enctype="multipart/form-data">
 								<h1>Upload profile picture:</h1><br><br> <input type="file" name="file1" id="file1"><label for="file1">Choose image</label>
 								<p>Name</p>
 								<input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"><br><br>
@@ -50,9 +50,9 @@
 									<?php selectLanguage($ID); ?>
 								</select> </br></br>
 								<h1>Upload company logo:</h1></br>
-								<?php if ($data[7] != "")
+								<?php if ($data[6] != "")
 								{
-									echo '<img src="'.$data[6].'" alt="Profile picture" height="100px">';
+									echo '<img src="'.$data[6].'" alt="Logo picture" height="100px">';
 								}
 								?>
 
@@ -140,15 +140,16 @@
 								$check = false;
 								echo "No branch has been choosen";
 							}
-							else if (!empty($_FILES['file1']['name']))
+							else if (empty($_FILES['file1']['name']) || $data[3] == "")
 							{
 								echo "Please upload a profile picture";
 							}
-							else if (!empty($_FILES['file2']['name']))
+							else if (empty($_FILES['file2']['name']) || $data[7] == "")
 							{
 								echo "Please upload a logo picture";
 							}
-							else if (!empty($_FILES['file1']['name']))
+							
+							if (!empty($_FILES['file1']['name']))
 							{
 								$type = "img";
 								$path = "../../Client_Portal/Uploads/profilePicture/";
@@ -160,7 +161,8 @@
 									$check = false;
 								}
 							}
-							else if (!empty($_FILES['file2']['name']))
+							
+							if (!empty($_FILES['file2']['name']))
 							{
 								$type = "img";
 								$path2 = "../../Client_Portal/Uploads/Logo/";
@@ -241,7 +243,6 @@
 										if ($imageResult[0] == 1) {
 											$LPath = $imageResult[1];
 										} else {
-											echo "11";
 											$upload = false;
 										}
 									}
@@ -252,7 +253,7 @@
 								}
 								else
 								{
-									$LPath = $data[7];
+									$LPath = $data[6];
 								}
 
 								if ($upload)

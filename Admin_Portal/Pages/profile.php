@@ -84,18 +84,7 @@
 						$upload = true;
 						$check = true;
 
-						if (!(strlen($name) >= 1 && strlen($name) <= 32))
-						{
-							$check = false;
-							echo "The name should be between 1 and 32 characters";
-						}
-						else if (!filter_var($email, FILTER_VALIDATE_EMAIL))
-						{
-							$check = false;
-							echo "The E-mail adress is not correct";
-						}
-
-                                if (!(strlen($name) >= 1 && strlen($name) <= 32))
+						        if (!(strlen($name) >= 1 && strlen($name) <= 32))
                                 {
                                     $check = false;
                                     echo "The name should be between 1 and 32 characters";
@@ -105,6 +94,10 @@
                                     $check = false;
                                     echo "The E-mail adress is not correct";
                                 }
+								else if (empty($_FILES['file1']['name']) || $data[3] == "")
+								{
+									echo "Please upload a profile picture";
+								}
 								else if (!empty($_FILES['file1']['name']))
 								{
 									$type = "img";

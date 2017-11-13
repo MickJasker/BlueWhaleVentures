@@ -41,7 +41,14 @@
                             if ($_SESSION["Role"] == "Admin") {
                                 $header = "Admin_Portal/Pages/index.php";
                             } else if ($_SESSION["Role"] == "Mentor") {
-                                $header = "Mentor_Portal/Pages/index.php";
+									if (checkFirstLogin())
+									{
+										$header = "Mentor_Portal/Pages/welcome.php";
+									}
+									else
+									{	
+										$header = "Mentor_Portal/Pages/index.php";
+									} 
                             } else if ($_SESSION["Role"] == "Client") {
 								if (checkRangeDate())
 								{
@@ -49,7 +56,10 @@
 									{
 										$header = "Client_Portal/Pages/welcome.php";
 									}
-									$header = "Client_Portal/Pages/index.php";
+									else
+									{	
+										$header = "Client_Portal/Pages/index.php";
+									}
 								}
 								else
 								{
