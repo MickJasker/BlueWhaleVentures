@@ -2561,23 +2561,29 @@ function assignMentor($CompanyID, $Mentor)
             INNER JOIN User u ON u.ID = m.UserID
             WHERE u.Name = '$Mentor'";
 
-    if ($data = Query($sql)) {
-        while ($row = $data->fetch_assoc()) {
-
+    if ($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
             $MentorID = $row['ID'];
-
         }
 
-        $sql = "INSERT INTO `Mentor_Company`(`MentorID`, `CompanyID`) VALUES ('$MentorID','$CompanyID')";
-        if (query($sql)) {
+        $sql1 = "SELECT ID FROM Mentor_Company 
+                WHERE MentorID = '$MentorID' AND CompanyID = '$CompanyID'";
 
-        }
-        else {
-            echo "Shits fucked yo";
+        if (!Query($sql1))
+        {
+            $sql2 = "INSERT INTO `Mentor_Company`(`MentorID`, `CompanyID`) VALUES ('$MentorID','$CompanyID')";
+
+            if (Query($sql2))
+            {
+                echo "Succesfully assigned the mentor";
+            }
         }
     }
-    else {
-        echo "Shits fucked yo";
+    else
+    {
+        echo "Error adding mentors";
     }
 }
 
