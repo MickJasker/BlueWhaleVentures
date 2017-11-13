@@ -36,7 +36,7 @@
 <Main>
     <div id="prototypeForm">
         <form id="form" action="#" method="POST" enctype="multipart/form-data">
-            <?php $OldArray = selectPrototype($_GET["experimentID"]); ?>
+            <?php selectPrototype($_GET["experimentID"]); ?>
         </form>
     </div>
 </Main>
