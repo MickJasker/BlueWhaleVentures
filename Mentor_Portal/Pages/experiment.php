@@ -34,9 +34,7 @@
 
             </div>
 
-                <div class="feedback">
 
-                    <h2> Feedback </h2>
 				
 				<?php 
 				if (isset($_POST['addFeedback']))
@@ -57,7 +55,6 @@
 				<?php getFeedback($ID); ?>
 
 
-			</div>
 	    </main>
 	</body>
 </html>
