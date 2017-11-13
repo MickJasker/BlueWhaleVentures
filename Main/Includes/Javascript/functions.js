@@ -33,6 +33,23 @@ function sendHeader(path)
 	location.replace(path);
 }
 
+function message(message, type)
+{
+	if (type == "bad") 
+	{
+		$("#messageDiv").css('background-color', 'red');
+	} 
+	else 
+	{
+		$("#messageDiv").css('background-color', 'green');
+	}
+	
+	$('#message').text(message)
+	
+	$("#messageDiv").slideDown().delay(1500);
+	$("#messageDiv").slideUp();	
+}
+
 function addQuestion() {
 
     var areaArray = [];

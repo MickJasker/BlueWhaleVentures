@@ -33,6 +33,8 @@ if (isset($_POST['generate_companykey']))
     </div>
 </div>
 
+<div id="messageDiv"> <p id="message"> Has been succesfully edited! </p> </div>
+
  <div id="clientform" class="clientmodal">
      <!-- Modal content -->
      <div class="clientmodal-content">
@@ -52,6 +54,15 @@ if (isset($_POST['generate_companykey']))
 
  <ul class="list">
      <div class="content">
+	 <form class="form1" method="POST" action="#">
+			<input name="submit" type="submit" value="Test">
+		</form>
+		<?php 
+		if (isset($_POST['submit']))
+		{
+			echo '<script>message("Succesvol ingedrukt!", "good");</script>';	
+		}
+		?>
          <div onclick="createcompany()" id="Block" class="col-lg-4">
              <a class="clientbutton" href="#">
                  <div class="BlockLogo">
