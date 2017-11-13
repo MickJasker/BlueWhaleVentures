@@ -1107,12 +1107,16 @@ function getMentorBlockInfo()
             $ProfilePicture = $row["ProfilePicture"];
             $Name = $row["Name"];
 
+            if ($ProfilePicture == "")
+            {
+                $ProfilePicture = "../../Main/Files/Images/User-Standard.png";
+            }
             ?>
 
             <li id="Block" class="col-lg-4">
                 <a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
-                        <img src="<?php echo $ProfilePicture; ?>" alt="Mentor Profile">
+                        <img src="<?php echo $ProfilePicture; ?>" alt="Mentor picture">
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Name ?> </h1>
@@ -1149,7 +1153,7 @@ function getExperimentBlockInfo($CompanyID)
             <li id="Block" class="col-lg-4">
                 <a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/experiment.php?id=<?php echo $row['ID']; ?>">
                     <div class="BlockLogo">
-                        <img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
+                        <img src="<?php echo $Thumbnail ?>" alt="Experiment picture">
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Title ?> </h1>
@@ -1180,21 +1184,17 @@ function getExperimentBlockInfoBachelor($CompanyID)
             $Completed = $row["Completed"];
 
             ?>
-
             <li id="Block" class="col-lg-4">
                 <a href="../../../<?php echo $_SESSION['Role']; ?>_Portal/Pages/bachelorGroup/experiment.php?id=<?php echo $row['ID']; ?>">
                     <div class="BlockLogo">
-                        <img src="../<?php echo $Thumbnail ?>" alt="Experiment Thumbnail">
+                        <img src="../<?php echo $Thumbnail ?>" alt="Experiment picture">
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Title ?> </h1>
                     </div>
                 </a>
             </li>
-
             <?php
-
-
         }
     }
 }

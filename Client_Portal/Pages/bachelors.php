@@ -5,12 +5,6 @@
 
 <ul class="list">
     <div class="content">
-
-        <?php
-
-        selectBachelorBlockGroupMemberInfo(secure($_SESSION['CompanyID']));
-
-        ?>
-
+        <?php selectBachelorBlockGroupMemberInfo(secure($_SESSION['CompanyID'])); ?>
     </div>
 </ul>
