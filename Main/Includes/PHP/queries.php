@@ -1323,7 +1323,6 @@ function selectCompanyMentors($CompanyID)
     Where c.ID = '$CompanyID'";
 
     ?>
-    <section id="BottomCol">
         <?php
 
         if($data = Query($sql))
@@ -1353,7 +1352,6 @@ function selectCompanyMentors($CompanyID)
         }
 
         ?>
-    </section>
     <?php
 }
 
@@ -1444,7 +1442,7 @@ function selectCompanyInfo($CompanyID)
                         <div class="row">
                             <div onclick="assignMentor()" class="mentor-preview col-md-3">
                                 <a class="clientbutton" href="#">
-                                    <img src="../../Main/Files/Images/add.svg" alt="Assign Mentor">
+                                    <img id="profile-pic" src="../../Main/Files/Images/add.svg" alt="Assign Mentor">
                                     <h4> Assign Mentor </h4>
                                 </a>
                             </div>

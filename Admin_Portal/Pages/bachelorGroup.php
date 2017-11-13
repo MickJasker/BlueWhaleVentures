@@ -30,7 +30,7 @@
 
                     <?php selectCompanyDropdown(); ?>
 
-                    <input id="submitbtn" name="saveBachelorMember" type="submit" value="Add bachelor group">
+                    <input id="submitbtn" name="saveBachelorMember" type="submit" value="Add to bachelor group">
                 </form>
             </div>
         </div>
