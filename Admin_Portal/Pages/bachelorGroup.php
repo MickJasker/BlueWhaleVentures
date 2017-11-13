@@ -30,7 +30,7 @@
 
                     <?php selectCompanyDropdown(); ?>
 
-                    <input id="submitbtn" name="saveBachelorMember" type="submit" value="Add bachelor group">
+                    <input id="submitbtn" name="saveBachelorMember" type="submit" value="Add to bachelor group">
                 </form>
             </div>
         </div>
@@ -45,7 +45,7 @@
 
                 <?php
 
-                selectBachelorName(secure($_GET['id']));
+                selectBachelorName(secure($_GET['bachelorID']));
 
                 ?>
         </div>
@@ -65,7 +65,7 @@
             </div>
 
             <?php
-               selectBachelorGroupBlockInfo(secure($_GET['id']));
+               selectBachelorGroupBlockInfo(secure($_GET['bachelorID']));
             ?>
         </div>
     </ul>
@@ -79,7 +79,7 @@
         if (isset($_POST['company'])) {
 
             if (secure($_POST['company']) != "") {
-                if(!(insertToBachelorGroup(secure($_GET['id']), secure($_POST['company']))))
+                if(!(insertToBachelorGroup(secure($_GET['bachelorID']), secure($_POST['company']))))
 				{
 					echo '<script>message("Error adding bachelor group", "bad");</script>';
 				}

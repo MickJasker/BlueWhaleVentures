@@ -7775,6 +7775,9 @@ footer .right {
   color: #ffffff;
   margin: 0;
 }
+#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .container-fluid {
+  padding: 0 !important;
+}
 #wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .mentor-preview {
   overflow: hidden;
   max-height: 33vh;
@@ -7782,8 +7785,9 @@ footer .right {
   background-color: #f2f2f2;
 }
 #wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .mentor-preview #profile-pic {
-  height: 220px;
-  vertical-align: middle;
+  position: relative;
+  height: 80%;
+  width: 100%;
 }
 #wrapper-ClientProfile main .wrapper-profile .block {
   position: relative;
@@ -7862,6 +7866,9 @@ footer .right {
 #wrapper-ClientProfile main .wrapper-profile .block .discription {
   background-color: #0099ff;
   height: 8.3vh;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 #wrapper-ClientProfile main .wrapper-profile .company-info .content .logo p {
   color: black;

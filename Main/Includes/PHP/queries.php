@@ -671,8 +671,8 @@ function getExperimentsPreviewMentor($CompanyID)
 //Get experiment info
 function getExperiment($id)
 {
-    $header = "";
-    $name = "";
+    $header = "chooseExecution.php";
+    $name = "Choose execution";
     $send = '';
 
     $sql = "SELECT Preparation, Conclusion FROM Pitch WHERE ExperimentID = '$id'";
@@ -1323,7 +1323,6 @@ function selectCompanyMentors($CompanyID)
     Where c.ID = '$CompanyID'";
 
     ?>
-    <section id="BottomCol">
         <?php
 
         if($data = Query($sql))
@@ -1353,7 +1352,6 @@ function selectCompanyMentors($CompanyID)
         }
 
         ?>
-    </section>
     <?php
 }
 
@@ -1444,7 +1442,7 @@ function selectCompanyInfo($CompanyID)
                         <div class="row">
                             <div onclick="assignMentor()" class="mentor-preview col-md-3">
                                 <a class="clientbutton" href="#">
-                                    <img src="../../Main/Files/Images/add.svg" alt="Assign Mentor">
+                                    <img id="profile-pic" src="../../Main/Files/Images/add.svg" alt="Assign Mentor">
                                     <h4> Assign Mentor </h4>
                                 </a>
                             </div>
@@ -2564,23 +2562,29 @@ function assignMentor($CompanyID, $Mentor)
             INNER JOIN User u ON u.ID = m.UserID
             WHERE u.Name = '$Mentor'";
 
-    if ($data = Query($sql)) {
-        while ($row = $data->fetch_assoc()) {
-
+    if ($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
             $MentorID = $row['ID'];
-
         }
 
-        $sql = "INSERT INTO `Mentor_Company`(`MentorID`, `CompanyID`) VALUES ('$MentorID','$CompanyID')";
-        if (query($sql)) {
+        $sql1 = "SELECT ID FROM Mentor_Company 
+                WHERE MentorID = '$MentorID' AND CompanyID = '$CompanyID'";
 
-        }
-        else {
-            echo "Shits fucked yo";
+        if (!Query($sql1))
+        {
+            $sql2 = "INSERT INTO `Mentor_Company`(`MentorID`, `CompanyID`) VALUES ('$MentorID','$CompanyID')";
+
+            if (Query($sql2))
+            {
+                echo "Succesfully assigned the mentor";
+            }
         }
     }
-    else {
-        echo "Shits fucked yo";
+    else
+    {
+        echo "Error adding mentors";
     }
 }
 
@@ -2610,7 +2614,7 @@ function selectBachelorBlockInfo() {
             ?>
 
             <li id="Block" class="col-lg-4">
-                <a href="bachelorGroup.php?id=<?php echo $ID ?>">
+                <a href="bachelorGroup.php?bachelorID=<?php echo $ID ?>">
                     <div class="BlockLogo">
                         <img src="../../Main/Files/Images/Bachelor-Standard.png" alt="<?php echo $Name; ?>">
                     </div>
@@ -2794,7 +2798,7 @@ function insertBachelorGroup($BachelorName)
         global $conn;
 
         $BachelorID = mysqli_insert_id($conn);
-        header('Location: bachelorGroup.php?id=' . $BachelorID );
+        header('Location: bachelorGroup.php?bachelorID=' . $BachelorID );
     }
     else {
         header('Location: index.php' );
@@ -2807,7 +2811,7 @@ function insertToBachelorGroup($BachelorGroupID, $CompanyGroupID)
     $sql = "INSERT INTO `Bachelor_Company`(`BachelorID` , `CompanyID`) VALUES ('$BachelorGroupID', '$CompanyGroupID')";
     if (query($sql))
     {
-        header('Location: bachelorGroup.php?id=' . $BachelorGroupID );
+        header('Location: bachelorGroup.php?bachelorID=' . $BachelorGroupID );
     }
 	else {
 		return false;
@@ -2913,7 +2917,7 @@ function deleteBachelorGroupMember($CompanyID, $BachelorGroupID)
 
     if (query($sql)) {
 
-        header('Location: bachelorGroup.php?id=' . $BachelorGroupID);
+        header('Location: bachelorGroup.php?bachelorID=' . $BachelorGroupID);
     }
     else {
         return false;

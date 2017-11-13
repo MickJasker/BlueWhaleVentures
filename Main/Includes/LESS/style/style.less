@@ -153,6 +153,21 @@ body {
 
 #wrapper-client-body{
 	background-image: url('../../Files/Images/stockImages/background2.jpg');
+	text-align: center;
+	height: 100%;
+	h3 {
+		color: @blue;
+		margin-top: 35vh;
+	}
+	a {
+		background-color: @blue;
+		padding: 7px;
+		color: @white;
+		text-decoration: none;
+	}
+	p {
+		font-size: 22px;
+	}
 }
 
 #wrapper-mentor-body{
@@ -1094,14 +1109,19 @@ body {
 							margin: 0;
 						}
 					}
+					.container-fluid{
+						padding: 0 !important;
+					}
+
 					.mentor-preview {
 						overflow: hidden;
 						max-height: 33vh;
 						min-height: 33vh;
 						background-color: @offwhite;
 						#profile-pic {
-							height: 220px;
-							vertical-align: middle;
+							position: relative;
+							height: 80%;
+							width: 100%;
 						}
 					}
 				}
@@ -1196,6 +1216,9 @@ body {
 				.discription {
 					background-color: @blue;
 					height: 8.3vh;
+					position: absolute;
+					bottom: 0;
+					width: 100%;
 				}
 			}
 			.company-info {

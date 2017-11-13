@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
 </head>
 <body id="wrapper-executable">
+<header class="row wrapper-nav">
+    <?php require "../nav_nosearch.php"; ?>
+</header>
 <Main>
     <div id="chooseExecutionForm">
         <h1> Choose Execution </h1>
