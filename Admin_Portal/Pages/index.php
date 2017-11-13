@@ -72,5 +72,7 @@ if (isset($_GET['action']))
 </Main>
 
 <script src="../../Main/Includes/Javascript/main.js"></script>
+<script src="../../Main/Includes/Javascript/adminindex.js"></script>
+
 </body>
 </html>
