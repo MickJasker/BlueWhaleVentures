@@ -1,9 +1,10 @@
 <?php
-require '../../Main/Includes/PHP/functions.php';
-checkSession('Mentor');
-$ID = checkExperimentIDMentor(secure($_GET["id"]), $_SESSION["UserID"]);
-$UserID = $_SESSION["UserID"];
+	require '../../Main/Includes/PHP/functions.php';
+	checkSession('Mentor');
+	$ID = checkExperimentIDMentor(secure($_GET["id"]), $_SESSION["UserID"]);
+	$UserID = $_SESSION["UserID"];
 ?>
+
 <!DOCTYPE html>
 <html>
 	<head>

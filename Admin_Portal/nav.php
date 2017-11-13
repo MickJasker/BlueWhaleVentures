@@ -1,3 +1,7 @@
+<div id="messageDiv">
+	<p id="message"> Error </p>
+</div>
+
 <div id="nav">
 
 	<a href="index.php"><img id="logo" src="../../Main/Files/Images/logo.svg" class="col-md-1"></a>

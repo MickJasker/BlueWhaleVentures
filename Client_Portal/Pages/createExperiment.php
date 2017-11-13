@@ -1,8 +1,9 @@
 <?php
-require '../../Main/Includes/PHP/functions.php';
-checkSession('Client');
-checkRange();
+    require '../../Main/Includes/PHP/functions.php';
+    checkSession('Client');
+    checkRange();
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>

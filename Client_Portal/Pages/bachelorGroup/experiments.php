@@ -1,8 +1,9 @@
 <?php 
-require '../../../Main/Includes/PHP/functions.php';
-checkSession('Client');
-$ID = secure($_GET["id"]);
+	require '../../../Main/Includes/PHP/functions.php';
+	checkSession('Client');
+	$ID = secure($_GET["id"]);
 ?>
+
 <!DOCTYPE html>
 <html>
 	<head>

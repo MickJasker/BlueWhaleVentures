@@ -130,3 +130,17 @@ function addAnswer(questionID) {
     console.log(answerArray);
 
 }
+
+function editExperiment()
+{
+	document.getElementById("editExperimentForm").style.display = 'block';
+	document.getElementById("experimentDescription").style.display = 'none';
+	document.getElementById("experimentTitel").style.display = 'none';
+}
+
+function viewExperiment()
+{
+	document.getElementById("editExperimentForm").style.display = 'none';
+	document.getElementById("experimentDescription").style.display = 'block';
+	document.getElementById("experimentTitel").style.display = 'block';
+}

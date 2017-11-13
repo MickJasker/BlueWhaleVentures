@@ -558,6 +558,11 @@ function getCompanyBlockInfo()
             $Name = $row["Name"];
             $Branch = $row["Branch"];
 
+            if ($Logo == "")
+            {
+                $Logo = "../../Main/Files/Images/Company-Standard.png";
+            }
+
             ?>
 
             <li id="Block" class="<?php echo $Branch;?> col-lg-4">
@@ -608,6 +613,10 @@ function getExperimentsPreview($CompanyID)
 
         echo "<li><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
         echo "</ul>";
+    }
+    else
+    {
+        echo "User has no experiments yet.";
     }
 }
 
@@ -745,8 +754,41 @@ function getExperiment($id)
         
         $header = $header . "?experimentID=" . $id;
 
-        echo '<h1>' . $row["Title"] . '</h1>';
-        echo '<p>' . $row["Description"] .  '</p>';
+        echo '<h1 id="experimentTitel">' . $row["Title"] . '</h1>';
+        echo '<p id="experimentDescription">' . $row["Description"] .  '</p>';
+		
+		echo '<form style="display:none;" id="editExperimentForm" method="POST" action="#">';
+		echo '<input type="text" placeholder="Titel" name="experimentTitel" value="'.$row["Title"].'"> <br>';
+		echo '<textarea  name="experimentDescription" type="text" placeholder="Description">'.$row["Description"].'</textarea> <br>';
+		echo '<input type="submit" value="Edit experiment" name="editExperiment">&nbsp;&nbsp;';
+		echo '<button onclick="cancelExperiment()"> Cancel </button>';
+		echo '<br><br></form>';
+		
+		if (isset($_POST['editExperiment']))
+        {
+            $experimentTitel = secure($_POST['experimentTitel']);
+			$experimentDescription = secure($_POST['experimentDescription']);
+			
+			if ($experimentTitel == "")
+			{
+				echo "No title has been given";
+			}
+			else if ($experimentDescription == "")
+			{
+				echo "No description has been given";
+			}
+			else
+			{
+				if (editExperiment($experimentTitel, $experimentDescription, $id))
+				{
+					header('Location: experiment.php?id='.$id);
+				}
+				else
+				{
+					echo "Error updating experiment";
+				}
+			}
+		}
 
         designSheetAvailable($id, "Experiment");
         echo '<a href="'.$header.'"><button '.$send.'> '.$name.' </button></a>';
@@ -756,6 +798,16 @@ function getExperiment($id)
     {
         return false;
     }
+}
+
+function editExperiment($experimentTitel, $experimentDescription, $id)
+{
+	$sql = "UPDATE `Experiment` SET `Title`='$experimentTitel',`Description`='$experimentDescription' WHERE ID = '$id'";
+	if(query($sql))
+    {
+		return true;
+	}
+	return false;
 }
 
 function designSheetAvailable($experimentID, $sheetType)
@@ -1332,6 +1384,11 @@ function selectCompanyInfo($CompanyID)
             $Email = $row["Email"];
             $Phone = $row["Phone"];
             $Address = $row["Address"];
+
+            if ($Logo == "")
+            {
+                $Logo = "../../Main/Files/Images/Company-Standard.png";
+            }
         }
 
         ?>
@@ -1383,7 +1440,9 @@ function selectCompanyInfo($CompanyID)
 
                         </div>
                         <div class="container-fluid">
-							<span> Number of experiments: <?php selectExperiments($CompanyID); ?> </span>
+							<br> <span> <strong> Number of experiments: </strong> <?php selectExperiments($CompanyID); ?> </span> <br> <br>
+							<span> <strong> Last times logged in: </strong> <br> <?php selectLoggedInUsers($CompanyID); ?> </span>
+							
                         </div>
                     </div>
                 </section>
@@ -1431,7 +1490,33 @@ function selectExperiments($CompanyID)
 		{
             echo $row["COUNT(`ID`)"];
 		}
-		
+	}
+}
+
+function selectLoggedInUsers($CompanyID)
+{
+	$sql = "SELECT `UserID` FROM `Company` WHERE `ID` = '$CompanyID'";
+	if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc()) 
+		{
+            $UserID = $row["UserID"];
+			
+			$sql = "SELECT `Date` FROM `Log` WHERE `UserID` = '$UserID' ORDER BY ID DESC LIMIT 5";
+			if($data2 = Query($sql))
+			{
+				while ($row2 = $data2->fetch_assoc()) 
+				{
+					$date = strtotime($row2["Date"]);  
+					$date = date('d F Y - h:i:s A', $date);
+					echo $date . "<br>";
+				}
+			}
+            else
+            {
+                echo "User has not logged in yet.<br>";
+            }	
+		}
 	}
 }
 
@@ -2158,8 +2243,8 @@ function updatePassword($ID, $passwordold, $password)
     return false;
 }
 
-function selectPrototype($ExperimentID) {
-
+function selectPrototype($ExperimentID)
+{
     $OldArray = array();
 
     $sql = "SELECT Media1, Explanation1, Media2, Explanation2 FROM Prototype WHERE ExperimentID = '$ExperimentID'";
@@ -2172,29 +2257,19 @@ function selectPrototype($ExperimentID) {
             $Explanation1 = $row["Explanation1"];
             $Media2 = $row["Media2"];
             $Explanation2 = $row["Explanation2"];
-
-
             ?>
 
             <input id="file2" type="hidden" name="file1" id="fileToUpload">
             <label for="file2" style="display:none;" id="label2">Choose file</label><br>
 
-
             <?php
 
-            if ($Media1 != "") {
+            if ($Media1 != "")
+            {
                 array_push($OldArray,$Media1);
-
-                ?>
-
-
-                <img src="<?php echo $Media1 ?>" alt="Prototype 1"><br>
-
-                <?php
-
+                echo "<img src=echo $Media1 alt='Prototype 1'><br>";
             }
             ?>
-
 
             <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br>
 
@@ -2341,9 +2416,7 @@ function selectQuestionsView($ExperimentID)
                 <div id="question<?php echo $ID?>">
                     <textarea disabled id="question" name="question<?php echo $ID?>"><?php echo $Question?></textarea>
                     <div id="answers">
-                        <?php
-                        $i  = selectanswersView($ID, $i);
-                        ?>
+                        <?php $i  = selectanswersView($ID, $i); ?>
                     </div>
                 </div>
             </div>
@@ -2550,8 +2623,7 @@ function selectBachelorBlockInfo() {
             <li id="Block" class="col-lg-4">
                 <a href="bachelorGroup.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
-                        <h1><?php echo $Name; ?></h1>
-
+                        <img src="../../Main/Files/Images/Bachelor-Standard.png" alt="<?php echo $Name; ?>">
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Name; ?> </h1>
@@ -2736,8 +2808,7 @@ function insertBachelorGroup($BachelorName)
         header('Location: bachelorGroup.php?id=' . $BachelorID );
     }
     else {
-        header('Location: google.com' );
-
+        header('Location: index.php' );
     }
 }
 
@@ -2749,6 +2820,9 @@ function insertToBachelorGroup($BachelorGroupID, $CompanyGroupID)
     {
         header('Location: bachelorGroup.php?id=' . $BachelorGroupID );
     }
+	else {
+		return false;
+	}
 }
 
 function checkFirstLogin()
@@ -2850,7 +2924,7 @@ function deleteBachelorGroupMember($CompanyID, $BachelorGroupID)
         header('Location: bachelorGroup.php?id=' . $BachelorGroupID);
     }
     else {
-        echo "Unable to delete bachelor group members.";
+        return false;
     }
 }
 

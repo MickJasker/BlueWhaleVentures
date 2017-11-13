@@ -1,8 +1,9 @@
 <?php
-require '../../Main/Includes/PHP/functions.php';
-checkSession('Client');
-$ID = checkExperimentID(secure($_GET["id"]), $_SESSION["CompanyID"]);
+    require '../../Main/Includes/PHP/functions.php';
+    checkSession('Client');
+    $ID = checkExperimentID(secure($_GET["id"]), $_SESSION["CompanyID"]);
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +16,8 @@ $ID = checkExperimentID(secure($_GET["id"]), $_SESSION["CompanyID"]);
             <?php require "../nav_nosearch.php";?>
         </header>
         <main>
+		<a href="index.php"> <button style="float:left; margin: 15px;"> Back </button> </a>
+		<button style="float:right; margin: 15px; padding: 5px; min-width: 200px; font-size: 18px; height: 35px;" onclick="editExperiment();" > Edit experiment </button>
             <?php getExperiment($ID); ?>
             <br>
             <?php getFeedback($ID); ?>

@@ -1,8 +1,9 @@
-<!DOCTYPE html>
 <?php
-require '../../Main/Includes/PHP/functions.php';
+	require '../../Main/Includes/PHP/functions.php';
+	CheckSession("Admin");
 ?>
 
+<!DOCTYPE html>
 <html>
 	<head>
 	    <title> Admin Portal </title>

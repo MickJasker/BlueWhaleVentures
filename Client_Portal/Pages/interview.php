@@ -1,7 +1,7 @@
 <?php
-require '../../Main/Includes/PHP/functions.php';
-checkSession('Client');
-$experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
+    require '../../Main/Includes/PHP/functions.php';
+    checkSession('Client');
+    $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["CompanyID"]);
     if(isset($_POST['submit']))
     {
         insertAnswer($_POST, secure($experimentID));

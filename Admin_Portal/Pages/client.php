@@ -1,25 +1,27 @@
 <?php
-include_once '../../Main/Includes/PHP/functions.php';
+    include_once '../../Main/Includes/PHP/functions.php';
+    CheckSession("Admin");
 
 if (isset($_POST['generate_companykey']))
 {
-	echo '<p>';
 	$user_name = secure($_POST['user_name']);
-	$company_mail = secure(['company_mail']);
+	$company_mail = secure($_POST['company_mail']);
 	
 	if (!(strlen($user_name) >= 1 && strlen($user_name) <= 32))
 	{
-		echo "The name should be between 1 and 32 characters";
+		echo '<script>message("The name should be between 1 and 32 characters", "bad");</script>';	
 	}
 	else if (!filter_var($company_mail, FILTER_VALIDATE_EMAIL))
 	{
-		echo "The E-mail adress is not correct";
+		echo '<script>message("The E-mail adress is not correct", "bad");</script>';	
 	}
 	else
 	{
-		generate_key($company_mail, $user_name, "Company");
+		if (generate_key($company_mail, $user_name, "Company"))
+		{
+			echo '<script>message("Key has been generated", "good");</script>';	
+		}
 	}
-	echo '</p>';
 }
 ?>
 <div id="toggle_bachelor">
@@ -32,8 +34,6 @@ if (isset($_POST['generate_companykey']))
         </h1>
     </div>
 </div>
-
-<div id="messageDiv"> <p id="message"> Has been succesfully edited! </p> </div>
 
  <div id="clientform" class="clientmodal">
      <!-- Modal content -->
@@ -54,15 +54,6 @@ if (isset($_POST['generate_companykey']))
 
  <ul class="list">
      <div class="content">
-	 <form class="form1" method="POST" action="#">
-			<input name="submit" type="submit" value="Test">
-		</form>
-		<?php 
-		if (isset($_POST['submit']))
-		{
-			echo '<script>message("Succesvol ingedrukt!", "good");</script>';	
-		}
-		?>
          <div onclick="createcompany()" id="Block" class="col-lg-4">
              <a class="clientbutton" href="#">
                  <div class="BlockLogo">

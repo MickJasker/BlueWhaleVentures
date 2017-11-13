@@ -1,45 +1,20 @@
 <?php
-
     include_once '../../Main/Includes/PHP/functions.php';
-
-    //CheckSession("Admin");
-
-    if (isset($_POST['saveBachelorMember']))
-    {
-        if (isset($_POST['company'])) {
-
-            if (secure($_POST['company']) != "") {
-                insertToBachelorGroup(secure($_GET['id']), secure($_POST['company']));
-            }
-        }
-    }
-
-    if (isset($_GET['action'])) {
-
-        if (secure($_GET['action']) == "delete") {
-
-            deleteBachelorGroupMember(secure($_GET['companyID']) ,secure($_GET['bachelorID']));
-
-        }
-        else {
-
-        }
-    }
-    else {
-
-    }
-
+    CheckSession("Admin");
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title> Bachelor Group </title>
     <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
+	<script src="../../Main/Includes/Javascript/functions.js"></script>
+	<script src="../../Main/Includes/Javascript/jquery-3.2.1.min.js"></script>
 </head>
 <body id="wrapper-admin-body">
 <header class="row wrapper-nav">
     <?php
-    require "../nav_nosearchadmin.php"
+    require "../nav_nosearchadmin.php";
     ?>
 </header>
 <Main id="wrapper-admin">
@@ -75,7 +50,6 @@
                 ?>
         </div>
     </div>
-
     <ul class="list">
         <div class="content">
 
@@ -100,6 +74,39 @@
 </Main>
 
 <script src="../../Main/Includes/Javascript/main.js"></script>
+
+<?php
+	if (isset($_POST['saveBachelorMember']))
+    {
+        if (isset($_POST['company'])) {
+
+            if (secure($_POST['company']) != "") {
+                if(!(insertToBachelorGroup(secure($_GET['id']), secure($_POST['company']))))
+				{
+					echo '<script>message("Error adding bachelor group", "bad");</script>';
+				}
+            }
+        }
+    }
+
+    if (isset($_GET['action'])) {
+
+        if (secure($_GET['action']) == "delete") {
+
+            if (!(deleteBachelorGroupMember(secure($_GET['companyID']) ,secure($_GET['bachelorID']))))
+			{
+				echo '<script>message("Error deleting a member", "bad");</script>';
+			}
+
+        }
+        else {
+
+        }
+    }
+    else {
+
+    }
+?>
 
 </body>
 </html>
