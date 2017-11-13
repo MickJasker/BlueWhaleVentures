@@ -7866,6 +7866,9 @@ footer .right {
 #wrapper-ClientProfile main .wrapper-profile .block .discription {
   background-color: #0099ff;
   height: 8.3vh;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 #wrapper-ClientProfile main .wrapper-profile .company-info .content .logo p {
   color: black;
