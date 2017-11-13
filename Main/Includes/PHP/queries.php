@@ -554,6 +554,11 @@ function getCompanyBlockInfo()
             $Name = $row["Name"];
             $Branch = $row["Branch"];
 
+            if ($Logo == "")
+            {
+                $logo = "../../Files/Images/Company-Standard.png";
+            }
+
             ?>
 
             <li id="Block" class="<?php echo $Branch;?> col-lg-4">
@@ -1379,7 +1384,9 @@ function selectCompanyInfo($CompanyID)
 
                         </div>
                         <div class="container-fluid">
-							<span> Number of experiments: <?php selectExperiments($CompanyID); ?> </span>
+							<br> <span> <strong> Number of experiments: </strong> <?php selectExperiments($CompanyID); ?> </span> <br> <br>
+							<span> <strong> Last times logged in: </strong> <br> <?php selectLoggedInUsers($CompanyID); ?> </span>
+							
                         </div>
                     </div>
                 </section>
@@ -1426,6 +1433,30 @@ function selectExperiments($CompanyID)
         while ($row = $data->fetch_assoc()) 
 		{
             echo $row["COUNT(`ID`)"];
+		}
+		
+	}
+}
+
+function selectLoggedInUsers($CompanyID){
+	$sql = "SELECT `UserID` FROM `Company` WHERE `ID` = '$CompanyID'";
+	if($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc()) 
+		{
+            $UserID = $row["UserID"];
+			
+			$sql = "SELECT `Date` FROM `Log` WHERE `UserID` = '$UserID' ORDER BY ID DESC LIMIT 5";
+			if($data = Query($sql))
+			{
+				while ($row = $data->fetch_assoc()) 
+				{
+					$date = strtotime($row["Date"]);  
+					$date = date('d F Y - h:i:s A', $date);
+					echo $date . "<br>";
+				}
+			}
+			
 		}
 		
 	}
