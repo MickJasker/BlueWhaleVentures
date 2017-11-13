@@ -556,7 +556,7 @@ function getCompanyBlockInfo()
 
             if ($Logo == "")
             {
-                $logo = "../../Files/Images/Company-Standard.png";
+                $Logo = "../../Main/Files/Images/Company-Standard.png";
             }
 
             ?>
@@ -609,6 +609,10 @@ function getExperimentsPreview($CompanyID)
 
         echo "<li><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
         echo "</ul>";
+    }
+    else
+    {
+        echo "User has no experiments yet.";
     }
 }
 
@@ -1333,6 +1337,11 @@ function selectCompanyInfo($CompanyID)
             $Email = $row["Email"];
             $Phone = $row["Phone"];
             $Address = $row["Address"];
+
+            if ($Logo == "")
+            {
+                $Logo = "../../Main/Files/Images/Company-Standard.png";
+            }
         }
 
         ?>
@@ -2563,8 +2572,7 @@ function selectBachelorBlockInfo() {
             <li id="Block" class="col-lg-4">
                 <a href="bachelorGroup.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
-                        <h1><?php echo $Name; ?></h1>
-
+                        <img src="../../Main/Files/Images/Bachelor-Standard.png" alt="<?php echo $Name; ?>">
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Name; ?> </h1>
