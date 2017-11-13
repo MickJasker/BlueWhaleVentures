@@ -1,5 +1,6 @@
 html {
-	#messageDiv{
+
+	#messageDiv {
 		display: none;
 		height: 50px;
 		position: absolute;
@@ -9,11 +10,10 @@ html {
 		margin-left: 40%;
 		margin-right: 40%;
 		z-index: 50;
-	}
-
-	#message{
-		text-align: center;
-		color: white;
+		#message{
+			text-align: center;
+			color: white;
+		}
 	}
 
 	height: auto;
@@ -55,6 +55,7 @@ body {
 	overflow-y: scroll;
 	width: 100%;
 }
+
 
 .row {
 	margin: 0;
@@ -196,6 +197,22 @@ body {
 				.border-bottom {
 					border-bottom: solid 5px;
 					border-color: @blue;
+				}
+			}
+			#messageDiv {
+				display: none;
+				height: 50px;
+				position: absolute;
+				width: 20%;
+				background-color: green;
+				margin-top: 0;
+				margin-left: 40%;
+				margin-right: 40%;
+				z-index: 50;
+				background-color: red;
+				#message{
+					text-align: center;
+					color: white;
 				}
 			}
 		}
