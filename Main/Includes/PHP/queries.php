@@ -2759,8 +2759,7 @@ function insertBachelorGroup($BachelorName)
         header('Location: bachelorGroup.php?id=' . $BachelorID );
     }
     else {
-        header('Location: google.com' );
-
+        header('Location: index.php' );
     }
 }
 
@@ -2772,6 +2771,9 @@ function insertToBachelorGroup($BachelorGroupID, $CompanyGroupID)
     {
         header('Location: bachelorGroup.php?id=' . $BachelorGroupID );
     }
+	else {
+		return false;
+	}
 }
 
 function checkFirstLogin()
@@ -2873,7 +2875,7 @@ function deleteBachelorGroupMember($CompanyID, $BachelorGroupID)
         header('Location: bachelorGroup.php?id=' . $BachelorGroupID);
     }
     else {
-        echo "Unable to delete bachelor group members.";
+        return false;
     }
 }
 

@@ -1,6 +1,3 @@
-<div id="messageDiv">
-	<p id="message"> Error </p>
-</div>
 <?php
 include_once '../../Main/Includes/PHP/functions.php';
 

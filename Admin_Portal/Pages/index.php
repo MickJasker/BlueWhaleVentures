@@ -52,15 +52,18 @@ if (isset($_GET['action']))
 
 					if (!(strlen($user_name) >= 1 && strlen($user_name) <= 32))
 					{
-						echo "The name should be between 1 and 32 characters";
+						echo '<script>message("The name should be between 1 and 32 characters", "bad");</script>';
 					}
 					else if (!filter_var($company_mail, FILTER_VALIDATE_EMAIL))
 					{
-						echo "The E-mail adress is not correct";
+						echo '<script>message("The E-mail adress is not correct", "bad");</script>';
 					}
 					else
 					{
-						generate_key($company_mail, $user_name, "Mentor");
+						if (generate_key($company_mail, $user_name, "Mentor"))
+						{
+							echo '<script>message("Key has been generated", "good");</script>';	
+						}
 					}
 					echo '</p>';
 				}
