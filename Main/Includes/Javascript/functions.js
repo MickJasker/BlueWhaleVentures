@@ -102,7 +102,7 @@ function addAnswer(questionID) {
     );
 
 
-    document.getElementById('question' + questionID + '').innerHTML += '<textarea name="answer' + i + '" id="answer" placeholder="Answer"></textarea>';
+    document.getElementById('answers' + questionID).innerHTML += '<textarea name="answer' + i + '" id="answer" placeholder="Answer"></textarea>';
 
     $("#question textarea[id='question']").each(
         function(){

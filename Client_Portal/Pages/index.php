@@ -43,6 +43,7 @@
 
 <script src="../../Main/Includes/Javascript/main.js"></script>
 <script src="../../Main/Includes/Javascript/progressbar.js"></script>
+<script src="../../Main/Includes/Javascript/clientindex.js"></script>
 
 </body>
 </html>

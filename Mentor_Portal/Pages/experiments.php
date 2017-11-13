@@ -25,6 +25,7 @@
 		<Main id="wrapper-admin">
 			<ul class="list">
      			<div class="content">
+                        <h1> Experiments </h1>
 		    		<?php getExperimentBlockInfo($ID); ?>
 				</div>
 			</ul>

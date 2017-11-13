@@ -41,8 +41,8 @@
 
 					<div class="text">
 						<div class="info1">
-							<form id="form" action="#" method="POST" enctype="multipart/form-data">
-								<h1>Upload profile picture:</h1> <input type="file" name="file1" id="file1"><label for="file1">Choose image</label></br>
+							<br id="form" action="#" method="POST" enctype="multipart/form-data">
+								<h1>Upload profile picture:</h1><br><br> <input type="file" name="file1" id="file1"><label for="file1">Choose image</label>
 								<p>Name</p>
 								<input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"><br><br>
 								<h1>Select language</h1></br>
@@ -57,14 +57,14 @@
 								?>
 
 								<input type="file" name="file2" id="file2"></br>
-								<h1>Company information</h1></br>
+                                <h1>Company information</h1></br>
 								<input type="text" name="companyName" placeholder="Company name" value="<?php echo $data[4]; ?>"> <br>
-								<textarea name="companyDescription" placeholder="Company description"> <?php echo $data[5]; ?>	</textarea><br>
+								<textarea name="companyDescription" placeholder="Company description"> <?php echo $data[5]; ?>	</textarea><br><br>
 								<h1>Contact Information</h1></br>
 								<input type="text" name="phone" placeholder="Company phone number" value="<?php echo $data[7]; ?>"> <br>
 								<input type="text" name="address" placeholder="Company address" value="<?php echo $data[8]; ?>"> <br>
-								<input type="text" name="email" placeholder="E-mail" value="<?php echo $data[3]; ?>"> <br>
-								<h1>choose branche</h1>
+								<input type="text" name="email" placeholder="E-mail" value="<?php echo $data[3]; ?>"> <br><br>
+								<h1>choose branche</h1><br>
 								<select name="branch">
 									<option value="<?php echo $data[9]; ?>"><?php echo $data[9]; ?></option>
 									<?php selectBranches(); ?>
@@ -73,11 +73,11 @@
 							</form>
 						</div>
 						<div class="info2">
-							<h1>Change password</h1>
+							<h1>Change password</h1><br>
 							<form action="#" method="POST">
 								<input type="password" name="oldPassword" placeholder="Old password"> <br>
 								<input type="password" name="password" placeholder="Password"> <br>
-								<input type="password" name="password2" placeholder="Repeat password"> <br>
+								<input type="password" name="password2" placeholder="Repeat password"> <br><br>
 								<input type="submit" name="changePassword" value="Change Password">
 							</form>
 						</div>
