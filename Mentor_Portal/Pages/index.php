@@ -22,7 +22,7 @@ checkSession("Mentor");
 
             <div id="toggle_bachelor">
                 <div id="text">
-                    <h1 id="clients">
+                    <h1>
                         Assigned clients
                     </h1>
                 </div>

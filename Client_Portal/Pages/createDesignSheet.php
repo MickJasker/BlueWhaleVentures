@@ -15,7 +15,7 @@ $experimentId = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["Comp
     <header class="wrapper-nav">
         <?php require "../nav_nosearch.php";?>
     </header>
-		<Main>
+		<main>
 			<?php
 				getDesignSheetForm("Experiment", $_SESSION['Language']);
 				if (isset($_POST['submitDesignsheet']))
@@ -27,7 +27,7 @@ $experimentId = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["Comp
 				}
 			?>
             <div id="executable"></div>
-		</Main>
+		</main>
     <script src="../../Main/Includes/Javascript/designSheet.js"></script>
 	</body>
 </html>

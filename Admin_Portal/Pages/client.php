@@ -25,10 +25,10 @@ if (isset($_POST['generate_companykey']))
 <div id="toggle_bachelor">
     <div id="text">
         <h1 id="clients" onclick="selectclient()" class="border-bottom">
-            Clients
+                Clients
         </h1>
         <h1 id="bachelor" onclick="selectbachelor()">
-            Bachelor Groups
+                Bachelor Groups
         </h1>
     </div>
 </div>

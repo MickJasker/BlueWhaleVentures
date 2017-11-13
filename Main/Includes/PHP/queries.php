@@ -283,15 +283,19 @@ function getDesignSheetForm($sheetType, $language)
 
     if($data = query($sql))
     {
-        echo '<form id="designSheetForm" method="POST" action="#"> <h1>'.$sheetType.' Sheet</h1>';
+        echo '<form method="POST" action="#"> <h1>'.$sheetType.' Sheet</h1>';
+        echo '<div class="row">';
 
         $i = 0;
         while($row = $data->fetch_assoc())
         {
+            echo '<div class="col-md-6 dsheet">';
             echo '<h3>'.$row["title"].'</h3>';
             echo '<textarea name="input'.$i.'"  type="text" placeholder="'.$row["description"].'"></textarea><br>';
+            echo '</div>';
             $i++;
         }
+        echo '</div>';
         echo '<input name="submitDesignsheet" type="submit" value="Enter" >';
         echo '</form>';
     }
@@ -317,7 +321,7 @@ function getDesignSheetData($ExperimentID, $sheetType, $Language)
             if($data2 = query($sql))
             {
                 $row2 = mysqli_fetch_array($data2,MYSQLI_ASSOC);
-                echo '<div class="col-md-6">';
+                echo '<div class="col-md-6 dsheet">';
 	                echo '<h3>'.$row2["title"].'</h3>';
 	                echo '<textarea disabled class="textarea1" name="input'.$i.'" type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
 	            echo '</div>';
@@ -2266,15 +2270,21 @@ function selectQuestions($ExperimentID) {
 
             ?>
             <div id="questionDiv">
-                <div id="question<?php echo $ID?>">
-                    <p>Question <?php echo $counter; ?></p>
+                <div id="question<?php echo $ID?>" class="content">
+                    <div class="text">
+                    <h3>Question <?php echo $counter; ?></h3><h3>Answer(s)</h3>
+                    </div>
+
+                    <div class="questions">
                     <textarea id="question" name="question<?php echo $ID?>"><?php echo $Question?></textarea>
-                    <div id="answers">
+                    </div>
+                    <div id="answers<?php echo $ID?>" class="answers">
                         <?php
                         $i  = selectAnswers($ID, $i);
                         ?>
                     </div>
                 </div>
+                <button type="button" onclick="addAnswer(<?php echo $ID?>)">Add Answer</button>
             </div>
             <?php
         }
@@ -2303,8 +2313,6 @@ function selectAnswers($questionID, $i){
     }
     if ($_SESSION["traject"] == true) {
     ?>
-
-    <button type="button" onclick="addAnswer(<?php echo $questionID?>)">Add Answer</button>
 
     <?php
     }

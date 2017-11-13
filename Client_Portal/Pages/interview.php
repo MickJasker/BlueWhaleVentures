@@ -23,11 +23,11 @@ $experimentID = checkExperimentID(secure($_GET["experimentID"]), $_SESSION["Comp
         <Main>
             <div id="interviewForm">
                 <h1> Interview </h1>
-                <a href="editInterview.php?experimentID=<?php echo $_GET['experimentID']; ?>"><button> Add more questions </button></a>
+                <a href="editInterview.php?experimentID=<?php echo $_GET['experimentID']; ?>"><button id="add"> Add more questions </button></a>
                 <form id="form" action="#" method="POST">
                     <?php $i = selectQuestions($experimentID); ?>
                     <p hidden id="hiddenP"><?php echo $i?></p>
-                    <?php if($_SESSION["traject"] == true) { echo '<input type="submit" name="submit" value="Save">'; } ?>
+                    <?php if($_SESSION["traject"] == true) { echo '<input class="save" type="submit" name="submit" value="Save">'; } ?>
                 </form>
             </div>
         </Main>

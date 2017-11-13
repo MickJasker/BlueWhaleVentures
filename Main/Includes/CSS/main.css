@@ -6754,6 +6754,21 @@ html {
   font-family: "open-sans", "Open Sans", Helvetica, sans-serif;
   font-weight: 400;
 }
+html #messageDiv {
+  display: none;
+  height: 50px;
+  position: absolute;
+  width: 20%;
+  background-color: green;
+  margin-top: 0;
+  margin-left: 40%;
+  margin-right: 40%;
+  z-index: 50;
+}
+html #message {
+  text-align: center;
+  color: white;
+}
 html label {
   display: block;
   cursor: pointer;
@@ -6910,7 +6925,7 @@ body {
 #wrapper-admin #toggle_bachelor #text {
   padding-left: 4.16%;
 }
-#wrapper-admin #toggle_bachelor #text #client:hover,
+#wrapper-admin #toggle_bachelor #text #clients:hover,
 #wrapper-admin #toggle_bachelor #text #bachelor:hover {
   cursor: pointer;
 }
@@ -6935,7 +6950,7 @@ body {
   /* Hidden by default */
   position: fixed;
   /* Stay in place */
-  z-index: 1;
+  z-index: 100;
   /* Sit on top */
   padding-top: 100px;
   /* Location of the box */
@@ -8147,6 +8162,9 @@ footer .right {
 #wrapper-designSheet main {
   padding-top: 80px;
 }
+#wrapper-designSheet main .dsheet {
+  padding: 0 !important;
+}
 #wrapper-designSheet main #switch {
   position: fixed;
   right: 80px;
@@ -8327,19 +8345,86 @@ footer .right {
   width: 90vw;
   max-width: 1200px;
   display: inline-block;
-  margin-top: 80px;
+  margin: 80px 0 5% 0;
+}
+#wrapper-executable main #prototypeForm #add,
+#wrapper-executable main #interviewForm #add,
+#wrapper-executable main #pitchForm #add,
+#wrapper-executable main #chooseExecutionForm #add {
+  margin-top: 20px;
+}
+#wrapper-executable main #prototypeForm form #questionDiv,
+#wrapper-executable main #interviewForm form #questionDiv,
+#wrapper-executable main #pitchForm form #questionDiv,
+#wrapper-executable main #chooseExecutionForm form #questionDiv {
+  overflow: auto;
+  margin-top: 20px;
+  float: right;
+  width: 100%;
+}
+#wrapper-executable main #prototypeForm form #questionDiv .text,
+#wrapper-executable main #interviewForm form #questionDiv .text,
+#wrapper-executable main #pitchForm form #questionDiv .text,
+#wrapper-executable main #chooseExecutionForm form #questionDiv .text {
+  width: 100%;
+  float: left;
+}
+#wrapper-executable main #prototypeForm form #questionDiv h3,
+#wrapper-executable main #interviewForm form #questionDiv h3,
+#wrapper-executable main #pitchForm form #questionDiv h3,
+#wrapper-executable main #chooseExecutionForm form #questionDiv h3 {
+  text-align: left;
+  padding-left: 20px;
+  float: left;
+  width: 50%;
+}
+#wrapper-executable main #prototypeForm form #questionDiv .content,
+#wrapper-executable main #interviewForm form #questionDiv .content,
+#wrapper-executable main #pitchForm form #questionDiv .content,
+#wrapper-executable main #chooseExecutionForm form #questionDiv .content {
+  float: left;
+  width: 100%;
+}
+#wrapper-executable main #prototypeForm form #questionDiv button,
+#wrapper-executable main #interviewForm form #questionDiv button,
+#wrapper-executable main #pitchForm form #questionDiv button,
+#wrapper-executable main #chooseExecutionForm form #questionDiv button {
+  display: block;
+  float: right;
+  bottom: 0;
+  margin-right: 20px;
+}
+#wrapper-executable main #prototypeForm form .questions,
+#wrapper-executable main #interviewForm form .questions,
+#wrapper-executable main #pitchForm form .questions,
+#wrapper-executable main #chooseExecutionForm form .questions {
+  float: left !important;
+  width: 50%;
+}
+#wrapper-executable main #prototypeForm form .questions textarea,
+#wrapper-executable main #interviewForm form .questions textarea,
+#wrapper-executable main #pitchForm form .questions textarea,
+#wrapper-executable main #chooseExecutionForm form .questions textarea {
+  float: left;
+}
+#wrapper-executable main #prototypeForm form .answers,
+#wrapper-executable main #interviewForm form .answers,
+#wrapper-executable main #pitchForm form .answers,
+#wrapper-executable main #chooseExecutionForm form .answers {
+  float: left !important;
+  width: 50%;
+}
+#wrapper-executable main #prototypeForm form .answers textarea,
+#wrapper-executable main #interviewForm form .answers textarea,
+#wrapper-executable main #pitchForm form .answers textarea,
+#wrapper-executable main #chooseExecutionForm form .answers textarea {
+  float: right;
 }
 #wrapper-executable main #prototypeForm form img,
 #wrapper-executable main #interviewForm form img,
 #wrapper-executable main #pitchForm form img,
 #wrapper-executable main #chooseExecutionForm form img {
   max-width: 90%;
-}
-#wrapper-executable main #prototypeForm form input,
-#wrapper-executable main #interviewForm form input,
-#wrapper-executable main #pitchForm form input,
-#wrapper-executable main #chooseExecutionForm form input {
-  margin: 5px;
 }
 #wrapper-executable main #prototypeForm form #submit1,
 #wrapper-executable main #interviewForm form #submit1,
@@ -8351,9 +8436,12 @@ footer .right {
 #wrapper-executable main #interviewForm form textarea,
 #wrapper-executable main #pitchForm form textarea,
 #wrapper-executable main #chooseExecutionForm form textarea {
-  width: 500px;
+  position: relative;
+  width: calc(100% - 40px);
   height: 100px;
-  margin: 10px;
+  margin: 20px;
+  padding: 10px;
+  background-color: #f2f2f2;
 }
 #wrapper-executable main #prototypeForm button,
 #wrapper-executable main #interviewForm button,
@@ -8369,13 +8457,15 @@ footer .right {
 #wrapper-executable main #chooseExecutionForm input {
   background-color: #0099ff;
   color: white;
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
+  -webkit-transition: 0.2s ease;
+  -o-transition: 0.2s ease;
+  transition: 0.2s ease;
   border: none;
   font-size: 18px;
+  margin-left: 20px;
   padding: 5px;
-  width: 150px;
+  width: 300px;
+  float: left;
   display: inline-block;
 }
 #wrapper-executable main #prototypeForm button:hover,
@@ -8390,29 +8480,14 @@ footer .right {
 #wrapper-executable main #interviewForm input:hover,
 #wrapper-executable main #pitchForm input:hover,
 #wrapper-executable main #chooseExecutionForm input:hover {
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
   background-color: #a0a0a0;
 }
-#wrapper-executable main #prototypeForm button:focus,
-#wrapper-executable main #interviewForm button:focus,
-#wrapper-executable main #pitchForm button:focus,
-#wrapper-executable main #chooseExecutionForm button:focus,
-#wrapper-executable main #prototypeForm label:focus,
-#wrapper-executable main #interviewForm label:focus,
-#wrapper-executable main #pitchForm label:focus,
-#wrapper-executable main #chooseExecutionForm label:focus,
-#wrapper-executable main #prototypeForm input:focus,
-#wrapper-executable main #interviewForm input:focus,
-#wrapper-executable main #pitchForm input:focus,
-#wrapper-executable main #chooseExecutionForm input:focus {
-  -webkit-transition: 0.3s ease;
-  -o-transition: 0.3s ease;
-  transition: 0.3s ease;
-  background-color: #f2f2f2;
-  outline: none;
-  color: #0099ff;
+#wrapper-executable main #prototypeForm .save,
+#wrapper-executable main #interviewForm .save,
+#wrapper-executable main #pitchForm .save,
+#wrapper-executable main #chooseExecutionForm .save {
+  margin-top: 3%;
+  margin-bottom: 5%;
 }
 #wrapper-profile .content {
   top: 80px;

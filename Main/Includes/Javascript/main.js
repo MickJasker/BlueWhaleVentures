@@ -64,7 +64,7 @@ function selectexpbachelor(){
             $('#wrapper-admin').fadeOut(500, function(){
                 $('#wrapper-admin' ).html( data );
                 $('#wrapper-admin').fadeIn(500);
-                searchbar.placeholder = "Search for Group";
+                searchbar.placeholder = "Search for Startup";
             });
         });
     }
