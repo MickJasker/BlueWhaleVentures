@@ -7799,6 +7799,10 @@ footer .right {
 #wrapper-experimentExecuteable main {
   padding-top: 80px;
 }
+#wrapper-experimentExecuteable main #back {
+  left: 0;
+  position: fixed;
+}
 #wrapper-experimentExecuteable main #experimentinfo {
   margin-bottom: 2%;
 }

@@ -1582,7 +1582,7 @@ function selectCompanyInfoGutted($CompanyID)
 
         <div class="wrapper-profile">
             <div class="row">
-                <section class="block">
+                <section class="block company-info">
                     <div class="content">
                         <div class="container-fluid logo">
                             <img src="../<?php echo $Logo ?>">
@@ -1595,21 +1595,21 @@ function selectCompanyInfoGutted($CompanyID)
                     </div>
                 </section>
                 <section class="block">
-                    <div class="title-mentor col-md-4">
-                        <h3>Company Information</h3>
-                    </div>
                     <div class="content">
-                        <div class="container-fluid logo">
+                        <div class="title col-md-4">
+                            <h3>Company Information</h3>
+                        </div>
+                        <div class="container-fluid info">
                             <p>
-                                Email: <?php echo $Email ?> <br/>
-                                Phone: <?php echo $Phone ?> <br/>
-                                Address: <?php echo $Address ?> <br/>
+                                <span>Email:</span> <?php echo $Email ?> <br/>
+                                <span>Phone:</span> <?php echo $Phone ?> <br/>
+                                <span>Address:</span> <?php echo $Address ?> <br/>
                             </p>
                         </div>
                     </div>
                 </section>
 
-                    <section class="block col-md-4">
+                    <section class="block">
                         <div class="content">
                             <div class="container-fluid title">
                                 <h3>Experiments</h3>
@@ -1660,26 +1660,26 @@ function selectCompanyInfoGuttedMentor($CompanyID)
                     </div>
                 </section>
                 <section class="block">
-                    <div class="title-mentor col-md-4">
-                        <h3>Company Information</h3>
-                    </div>
                     <div class="content">
-                        <div class="container-fluid logo">
+                        <div class="title col-md-4">
+                            <h3>Company Information</h3>
+                        </div>
+                        <div class="container-fluid info">
                             <p>
-                                Email: <?php echo $Email ?> <br/>
-                                Phone: <?php echo $Phone ?> <br/>
-                                Address: <?php echo $Address ?> <br/>
+                                <span>Email:</span> <?php echo $Email ?> <br/>
+                                <span>Phone:</span> <?php echo $Phone ?> <br/>
+                                <span>Address:</span> <?php echo $Address ?> <br/>
                             </p>
                         </div>
                     </div>
                 </section>
 
-                <section class="block col-md-4">
+                <section class="block">
                     <div class="content">
-                        <div class="container-fluid title">
+                        <div class="title container-fluid">
                             <h3>Experiments</h3>
                         </div>
-                        <div class="container-fluid">
+                        <div class="container-fluid info">
                             <?php getExperimentsPreviewMentor(secure($_GET["id"])); ?>
                         </div>
                     </div>
