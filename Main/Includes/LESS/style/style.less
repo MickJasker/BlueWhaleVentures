@@ -814,14 +814,13 @@ body {
 			}
 		}
 
-
 		.wrapper-profile {
 			margin-left: 10px;
 			margin-top: 7%;
 
 			//row
-			.row{
-				.block{
+			.row {
+				.block {
 					position: relative;
 					float: left;
 					width: 32%;
@@ -831,58 +830,67 @@ body {
 					min-height: 35vh;
 					background-color: @offwhite;
 
-					.content{
+					.content {
 
 						width: 100%;
 						background-color: @offwhite;
 						height: 35vh;
 						margin: 0;
 
-						.title{
+						.title {
 
 							background-color: @blue;
 							width: 100%;
 							height: 20%;
-							
+
 							h3 {
 								color: @white;
 							}
 						}
 
-						.info{
-							width: 100%;
-							height: 80%;
-						}
+						.info {
+							
+							#phone {
+								color: @blue;
+							}
 
-						.logo{
+							#email {
+								color: @blue;
+							}
+
+							#adress {
+								color: @blue;
+							}
+						}
+						.logo {
 							height: 80%;
 							width: 100%;
 							position: relative;
 
-							img{
+
+
+							img {
 								max-width: 100%;
 								max-height: 100%;
 								position: relative;
 								height: auto;
 							}
 
-							span{
+							span {
 
 							}
 
-
-
-							p{
+							p {
 								color: black;
 								font-size: 20px;
 							}
 
-							#traject{
+							#traject {
 								margin-top: 6%;
 							}
 
-							a{
-								.lock{
+							a {
+								.lock {
 
 									margin-bottom: 0;
 									margin-right: 0;
@@ -893,13 +901,13 @@ body {
 							}
 						}
 
-						.container-fluid{
-							span{
+						.container-fluid {
+							span {
 
 							}
 						}
 
-						.discription{
+						.discription {
 							background-color: @blue;
 							color: @white;
 							display: inline-block;
@@ -908,11 +916,11 @@ body {
 							width: 100%;
 							word-wrap: break-word;
 
-							h3{
+							h3 {
 								margin: 2% 0 0 0;
 							}
 
-							p{
+							p {
 								color: @white;
 							}
 						}
@@ -924,11 +932,11 @@ body {
 			.mentor-row {
 				margin-top: 20px;
 
-				.mentor{
+				.mentor {
 
 					overflow: hidden;
 
-					.content{
+					.content {
 						background-color: @offwhite;
 					}
 
@@ -949,10 +957,10 @@ body {
 						}
 					}
 
-					.content{
+					.content {
 
-						.row{
-							.mentor-preview{
+						.row {
+							.mentor-preview {
 
 							}
 						}
@@ -960,7 +968,7 @@ body {
 					}
 				}
 
-				.block-experiments{
+				.block-experiments {
 
 					position: relative;
 					background-color: @offwhite;
@@ -971,8 +979,8 @@ body {
 					margin-left: 15px;
 					max-height: 33vh;
 
-					.content{
-						.title-experiments{
+					.content {
+						.title-experiments {
 
 							background-color: @blue;
 							width: 100%;
@@ -985,9 +993,9 @@ body {
 							}
 						}
 
-						.container-fluid{
+						.container-fluid {
 
-							#experiments-list{
+							#experiments-list {
 
 								list-style-type: none;
 								padding-left: 0;
@@ -997,7 +1005,7 @@ body {
 									margin-bottom: 5px;
 								}
 
-								.experiment-preview{
+								.experiment-preview {
 									text-decoration: none;
 									background-color: red;
 									a {
@@ -1011,56 +1019,653 @@ body {
 						}
 					}
 				}
-
 			}
 		}
 
+		#wrapper-experiment {
+			background-image: url("../../Files/Images/stockImages/stock (15).jpg");
+			background-size: cover;
+			#wrapper-createExperiment {
+				padding-top: 80px;
+				.row {
+					section {
+						background-color: rgba(0, 153, 255, 0.9);
+						height: calc(~"100vh - 80px");
+						div {
+							background-color: @white;
+							margin: 100px;
+							padding: 30px;
+							form {
+								input {
+									padding: 5px;
+									border: none;
+									background-color: @offwhite;
+									color: @grey;
+									margin-top: 5px;
+									&:focus {
+										background-color: @white;
+										transition: 0.2s ease;
+									}
+								}
+								textarea {
+									padding: 5px;
+									border: none;
+									background-color: @offwhite;
+									color: @grey;
+									margin-top: 5px;
+									width: 70%;
+									height: 150px;
+									transition: 0.3s ease;
+									&:focus {
+										background-color: @white;
+										transition: 0.3s ease;
+									}
+								}
+								label {
+									padding: 5px;
+									background-color: @blue;
+									color: white;
+									margin-top: 5px;
+									max-width: 40%;
+									transition: 0.3s ease;
+									word-wrap: break-word;
+									font-weight: normal;
+									&:hover {
+										background-color: @grey;
+										transition: 0.3s ease;
+										cursor: pointer;
+									}
+								}
+								#button {
+									padding: 5px;
+									background-color: @blue;
+									color: white;
+									margin-top: 5px;
+									transition: 0.3s ease;
+									&:hover {
+										background-color: @grey;
+										transition: 0.3s ease;
+									}
+								}
+								#file1 {
+									display: none;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 
-#wrapper-experiment {
-	background-image: url("../../Files/Images/stockImages/stock (15).jpg");
-	background-size: cover;
-	#wrapper-createExperiment {
-		padding-top: 80px;
-		.row {
-			section {
-				background-color: rgba(0, 153, 255, 0.9);
-				height: calc(~"100vh - 80px");
-				div {
-					background-color: @white;
-					margin: 100px;
-					padding: 30px;
+		#wrapper-experimentExecuteable {
+			text-align: center;
+			display: inline-block;
+			background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
+			background-size: cover;
+			main {
+				padding-top: 80px;
+
+				#experimentinfo {
+					margin-bottom: 2%;
+				}
+
+				#textdiv {
+
+					width: 60%;
+					position: relative;
+					margin: auto;
+
+					h1 {
+						font-size: 24px;
+					}
+					h2 {
+						color: @blue;
+						float: left;
+					}
+
+					#text {
+						width: 100%;
+						height: 20vh;
+						position: relative;
+						padding: 10px;
+					}
+
+					input {
+						min-width: 20%;
+						height: 5vh;
+						position: relative;
+						font-size: 1.5vh;
+						font-weight: normal;
+						outline: none;
+						border: none;
+						float: left;
+						margin: 1.5% 0 2% 0;
+					}
+				}
+
+				#feedback {
+					position: relative;
+					width: 60%;
+					height: auto;
+					margin: auto;
+				}
+				a {
+					margin: 25px;
+					color: white;
+					button {
+						min-width: 200px;
+						font-size: 18px;
+						height: 35px;
+						padding: 5px;
+						border: none;
+						transition: .2s ease;
+
+						&:hover {
+							cursor: pointer;
+						}
+					}
+				}
+				.is-disabled {
+					background-color: @grey;
+
+				}
+				.feedback {
+					margin: 50px 15% 50px 15%;
+					background-color: @offwhite;
+					border: solid 1px;
+					border-color: @grey;
+					display: inline-block;
+					padding: 10px;
+					border-radius: 5px;
+					position: relative;
+					left: 0;
+					width: 70%;
+
+					.feedbackUser {
+						width: 100%;
+						height: 28vh;
+						padding: 10px;
+						border-radius: 5px;
+						position: relative;
+						color: white;
+
+						h2 {
+							margin: auto;
+						}
+
+						.picdiv {
+							position: relative;
+							float: left;
+							margin-top: .5vh;
+							margin-left: 12%;
+
+							width: 25vh;
+							height: 25vh;
+							display: inline-block;
+							overflow: hidden;
+							border-radius: 50%;
+							border: solid 1px;
+							border-color: @grey;
+
+							img {
+
+								position: relative;
+								width: auto;
+								max-height: 100%;
+								min-height: 100%;
+								top: 50%;
+								transform: translate(-50%, -50%);
+								left: 50%;
+							}
+						}
+						#feedbacktext {
+							background-color: @blue;
+							float: right;
+							display: inline-block;
+							margin: 0;
+							text-align: left;
+							border-radius: 10px;
+							width: 50%;
+							height: 80%;
+							margin: 2vh 10% 0 0;
+							word-wrap: break-word;
+							overflow: auto;
+						}
+						#block {
+							margin: 10px;
+							width: 90%;
+
+							h3 {
+								text-align: left;
+							}
+							p {
+								text-align: left;
+							}
+						}
+
+					}
+
+				}
+			}
+		}
+
+		#wrapper-designSheet {
+			background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
+			background-size: cover;
+			background-attachment: fixed;
+			main {
+				padding-top: 80px;
+
+				.dsheet {
+					padding: 0 !important;
+				}
+
+				#switch {
+					position: fixed;
+					right: 80px;
+					top: 100px;
+					.switchActive {
+						border-bottom: @blue solid medium;
+					}
+				}
+
+				#edit1 {
+					padding: 5px 15px;
+					font-weight: normal;
+					border: none;
+					position: relative;
+					margin: 10px 0 4vh 80px;
+				}
+
+				#submit1 {
+					display: block;
+					padding: 5px 15px;
+					font-weight: normal;
+					border: none;
+					position: relative;
+					margin: 10px 0 4vh 0;
+				}
+
+				form {
+					margin: 80px;
+					margin-bottom: 0px;
+
+					textarea {
+						width: 600px;
+						height: 150px;
+					}
+				}
+
+				input[name="submitDesignsheet"] {
+					display: block;
+					padding: 5px 15px;
+					font-weight: normal;
+					border: none;
+					position: relative;
+					margin: 10px 0 4vh 0;
+				}
+			}
+		}
+
+		#wrapper-error {
+			font-family: "open-sans", sans-serif;
+			background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
+			background-size: cover;
+			color: @grey;
+			main {
+				margin-top: 10px;
+				text-align: center;
+				h1 {
+					font-size: 200px;
+					font-weight: 800;
+				}
+				img {
+					border-bottom: solid medium @blue;
+				}
+				a {
+					color: @blue;
+					&:hover {
+						color: @grey;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+
+		#wrapper-newPrototype {
+			padding-top: 80px;
+			background-image: url("../../Files/Images/stockImages/stock (20).jpg");
+			background-size: cover;
+			background-attachment: fixed;
+
+			main {
+
+				section {
+					background-color: rgba(0, 153, 255, 0.9);
+					min-height: calc(~"100vh - 80px");
+					padding-top: 80px;
+					div {
+						text-align: center;
+						background-color: white;
+						margin: 150px;
+						padding: 30px;
+						margin-bottom: 0;
+						margin-top: 0;
+						form {
+							textarea {
+								border: none;
+								background-color: @offwhite;
+								width: 100%;
+								resize: none;
+								height: 200px;
+								outline: thin solid rgba(0, 0, 0, 0);
+								transition: 0.3s ease;
+								margin: 5px;
+								padding: 5px;
+								&:focus {
+									background-color: @white;
+									outline: thin solid @blue;
+									transition: 0.3s ease;
+								}
+							}
+							label, input, button {
+								width: 100%;
+								padding: 5px;
+								margin: 5px;
+								font-size: 18px;
+								font-weight: normal;
+							}
+							#fileToUpload {
+								display: none;
+							}
+						}
+						#pitchForm, #questionForm {
+							margin: 0;
+							form {
+								textarea {
+									border: none;
+									background-color: @offwhite;
+									width: 100%;
+									resize: none;
+									height: 200px;
+									outline: thin solid rgba(0, 0, 0, 0);
+									transition: 0.3s ease;
+									padding: 5px;
+									&:focus {
+										background-color: @white;
+										outline: thin solid @blue;
+										transition: 0.3s ease;
+									}
+								}
+								label, input, button {
+									width: 100%;
+									padding: 5px;
+									border: none;
+									font-size: 18px;
+									font-weight: normal;
+								}
+								#fileToUpload {
+									display: none;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		#wrapper-executable {
+			text-align: center;
+			background-image: url("../../Files/Images/stockImages/stock (5).jpg");
+			background-size: cover;
+			background-attachment: fixed;
+			main {
+				display: inline-block;
+				background-color: rgba(255, 255, 255, 0.9);
+				width: 100%;
+				min-height: 100vh;
+				padding-top: 80px;
+				#prototypeForm {
 					form {
 						input {
-							padding: 5px;
-							border: none;
-							background-color: @offwhite;
-							color: @grey;
-							margin-top: 5px;
-							&:focus {
-								background-color: @white;
-								transition: 0.2s ease;
+							display: none;
+						}
+					}
+				}
+				#prototypeForm, #interviewForm, #pitchForm, #chooseExecutionForm {
+					padding: 15px;
+					background-color: @white;
+					width: 90vw;
+					max-width: 1200px;
+					display: inline-block;
+					margin: 80px 0 5% 0;
+
+					#add {
+						margin-top: 20px;
+					}
+
+					form {
+						.execution-button {
+							margin-left: 6%;
+							margin-top: 4%;
+							margin-bottom: 5%;
+						}
+						#questionDiv {
+							overflow: auto;
+							margin-top: 20px;
+							float: right;
+							width: 100%;
+
+							.text {
+								width: 100%;
+								float: left;
 							}
+							h3 {
+								text-align: left;
+								padding-left: 20px;
+								float: left;
+								width: 50%;
+							}
+
+							.content {
+								float: left;
+								width: 100%;
+							}
+
+							button {
+								display: block;
+								float: right;
+								bottom: 0;
+								margin-right: 20px;
+							}
+						}
+
+						.questions {
+							float: left !important;
+							width: 50%;
+
+							textarea {
+								float: left;
+							}
+						}
+
+						.answers {
+							float: left !important;
+							width: 50%;
+
+							textarea {
+								float: right;
+							}
+						}
+
+						img {
+							max-width: 90%;
+						}
+
+						#submit1 {
+							display: inline-block;
 						}
 						textarea {
-							padding: 5px;
-							border: none;
+							position: relative;
+							width: calc(~"100% - 40px");
+							height: 100px;
+							margin: 20px;
+							padding: 10px;
 							background-color: @offwhite;
-							color: @grey;
-							margin-top: 5px;
-							width: 70%;
-							height: 150px;
-							transition: 0.3s ease;
-							&:focus {
-								background-color: @white;
-								transition: 0.3s ease;
-							}
 						}
+
+					}
+					button, label, input {
+						background-color: @blue;
+						color: white;
+						transition: 0.2s ease;
+						border: none;
+						font-size: 18px;
+						margin-left: 20px;
+						padding: 5px;
+						width: 300px;
+						float: left;
+						display: inline-block;
+						&:hover {
+							background-color: @grey;
+						}
+					}
+
+					.save {
+						margin-top: 3%;
+						margin-bottom: 5%;
+					}
+				}
+			}
+		}
+
+		#wrapper-profile {
+
+			.content {
+				top: 80px;
+				margin: 3% 3% 5% 3%;
+				position: absolute;
+				width: 94%;
+				height: auto;
+				padding: 0;
+
+				.profile {
+					width: 20%;
+					height: 43vh;
+					float: left;
+					position: fixed;
+
+					.picture {
+						background-color: @offwhite;
+						width: 38vh;
+						height: 38vh;
+						position: relative;
+						display: inline-block;
+						overflow: hidden;
+						border-radius: 50%;
+						border: solid 1px;
+						border-color: @grey;
+
+						img {
+							position: relative;
+							width: auto;
+							max-height: 100%;
+							min-height: 100%;
+							top: 50%;
+							transform: translate(-50%, -50%);
+							left: 50%;
+						}
+					}
+
+					.name {
+						width: 38vh;
+						height: 5vh;
+
+						h1 {
+							padding: 2%;
+							color: @blue;
+							font-family: "Open Sans";
+							margin: 0;
+							font-size: 3vh;
+							font-weight: bold;
+							text-align: center;
+						}
+					}
+				}
+				.info {
+					width: 65%;
+					height: auto;
+					min-height: 65vh;
+					display: inline-block;
+					float: right;
+					position: relative;
+					font-family: "Open Sans";
+
+					.title {
+						width: 100%;
+						height: 5vh;
+						background-color: @blue;
+
+						h1 {
+							padding: 1vh 1vh 1vh 2vh;
+							color: @white;
+							margin: 0;
+							font-size: 3vh;
+							display: inline-block;
+						}
+					}
+					.text {
+						width: 100%;
+						height: auto;
+						background-color: @offwhite;
+						border: solid 1px;
+						border-top: none;
+						border-color: @grey;
+						padding: 2.5vh 2.5vh 2.5vh 3.5vh;
+						position: absolute;
+						margin-bottom: 5vh;
+
+						h1 {
+							color: @blue;
+							margin: 0;
+							padding-bottom: 2%;
+							font-size: 2.5vh;
+							display: inline-block;
+							font-weight: bold;
+						}
+
+						p {
+							font-size: 1.8vh;
+						}
+
+						.info1, .info2 {
+							float: left;
+							width: 50%;
+							height: auto;
+							position: relative;
+							padding-bottom: 3%;
+						}
+						.info2 {
+							padding-left: 2vh;
+						}
+
+						input {
+							padding: 1%;
+							min-width: 40%;
+							border: none;
+							margin-bottom: 1%;
+						}
+
+						#file1 {
+							display: none;
+						}
+
 						label {
 							padding: 5px;
 							background-color: @blue;
 							color: white;
 							margin-top: 5px;
-							max-width: 40%;
+							max-width: 30%;
 							transition: 0.3s ease;
 							word-wrap: break-word;
 							font-weight: normal;
@@ -1070,612 +1675,16 @@ body {
 								cursor: pointer;
 							}
 						}
-						#button {
-							padding: 5px;
-							background-color: @blue;
-							color: white;
-							margin-top: 5px;
-							transition: 0.3s ease;
-							&:hover {
-								background-color: @grey;
-								transition: 0.3s ease;
-							}
-						}
-						#file1 {
-							display: none;
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-#wrapper-experimentExecuteable {
-	text-align: center;
-	display: inline-block;
-	background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
-	background-size: cover;
-	main {
-		padding-top: 80px;
-
-		#experimentinfo{
-			margin-bottom: 2%;
-		}
-
-		#textdiv {
-
-			width: 60%;
-			position: relative;
-			margin: auto;
-
-			h1 {
-				font-size: 24px;
-			}
-			h2 {
-				color: @blue;
-				float: left;
-			}
-
-			#text {
-				width: 100%;
-				height: 20vh;
-				position: relative;
-				padding: 10px;
-			}
-
-			input {
-				min-width: 20%;
-				height: 5vh;
-				position: relative;
-				font-size: 1.5vh;
-				font-weight: normal;
-				outline: none;
-				border: none;
-				float: left;
-				margin: 1.5% 0 2% 0;
-			}
-		}
-
-		#feedback{
-			position: relative;
-			width: 60%;
-			height: auto;
-			margin: auto;
-		}
-		a {
-			margin: 25px;
-			color: white;
-			button {
-				min-width: 200px;
-				font-size: 18px;
-				height: 35px;
-				padding: 5px;
-				border: none;
-				transition: .2s ease;
-
-				&:hover {
-					cursor: pointer;
-				}
-			}
-		}
-		.is-disabled {
-			background-color: @grey;
-
-		}
-		.feedback {
-			margin: 50px 15% 50px 15% ;
-			background-color: @offwhite;
-			border: solid 1px;
-			border-color: @grey;
-			display: inline-block;
-			padding: 10px;
-			border-radius: 5px;
-			position: relative;
-			left: 0;
-			width: 70%;
-
-			.feedbackUser {
-				width: 100%;
-				height: 28vh;
-				padding: 10px;
-				border-radius: 5px;
-				position: relative;
-				color: white;
-
-				h2{
-					margin: auto;
-				}
-
-				.picdiv{
-					position: relative;
-					float: left;
-					margin-top: .5vh;
-					margin-left: 12%;
-
-					width: 25vh;
-					height: 25vh;
-					display: inline-block;
-					overflow: hidden;
-					border-radius: 50%;
-					border: solid 1px;
-					border-color: @grey;
-
-					img{
-
-						position: relative;
-						width: auto;
-						max-height: 100%;
-						min-height: 100%;
-						top: 50%;
-						transform: translate(-50%, -50%);
-						left: 50%;
-					}
-				}
-					#feedbacktext{
-						background-color: @blue;
-						float: right;
-						display: inline-block;
-						margin: 0;
-						text-align: left;
-						border-radius: 10px;
-						width: 50%;
-						height: 80%;
-						margin: 2vh 10% 0 0;
-						word-wrap: break-word;
-						overflow: auto;
-					}
-					#block {
-						margin: 10px;
-						width: 90%;
-
-						h3 {
-							text-align: left;
-						}
-						p {
-							text-align: left;
-						}
-					}
-
-				}
-
-		}
-	}
-}
-
-#wrapper-designSheet {
-	background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
-	background-size: cover;
-	background-attachment: fixed;
-	main {
-		padding-top: 80px;
-
-		.dsheet{
-			padding: 0 !important;
-		}
-
-		#switch {
-			position: fixed;
-			right: 80px;
-			top: 100px;
-			.switchActive {
-				border-bottom: @blue solid medium;
-			}
-		}
-
-		#edit1 {
-			padding: 5px 15px;
-			font-weight: normal;
-			border: none;
-			position: relative;
-			margin: 10px 0 4vh 80px;
-		}
-
-		#submit1{
-			display: block;
-			padding: 5px 15px;
-			font-weight: normal;
-			border: none;
-			position: relative;
-			margin: 10px 0 4vh 0;
-		}
-
-		form {
-			margin: 80px;
-			margin-bottom: 0px;
-
-			textarea {
-				width: 600px;
-				height: 150px;
-			}
-		}
-
-		input[name="submitDesignsheet"]{
-			display: block;
-			padding: 5px 15px;
-			font-weight: normal;
-			border: none;
-			position: relative;
-			margin: 10px 0 4vh 0;
-		}
-	}
-}
-
-#wrapper-error {
-	font-family: "open-sans", sans-serif;
-	background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
-	background-size: cover;
-	color: @grey;
-	main {
-		margin-top: 10px;
-		text-align: center;
-		h1 {
-			font-size: 200px;
-			font-weight: 800;
-		}
-		img {
-			border-bottom: solid medium @blue;
-		}
-		a {
-			color: @blue;
-			&:hover {
-				color: @grey;
-				text-decoration: none;
-			}
-		}
-	}
-}
-
-#wrapper-newPrototype {
-	padding-top: 80px;
-	background-image: url("../../Files/Images/stockImages/stock (20).jpg");
-	background-size: cover;
-	background-attachment: fixed;
-
-	main {
-
-		section {
-			background-color: rgba(0, 153, 255, 0.9);
-			min-height: calc(~"100vh - 80px");
-			padding-top: 80px;
-			div {
-				text-align: center;
-				background-color: white;
-				margin: 150px;
-				padding: 30px;
-				margin-bottom: 0;
-				margin-top: 0;
-				form {
-					textarea {
-						border: none;
-						background-color: @offwhite;
-						width: 100%;
-						resize: none;
-						height: 200px;
-						outline: thin solid rgba(0, 0, 0, 0);
-						transition: 0.3s ease;
-						margin: 5px;
-						padding: 5px;
-						&:focus {
-							background-color: @white;
-							outline: thin solid @blue;
-							transition: 0.3s ease;
-						}
-					}
-					label, input, button {
-						width: 100%;
-						padding: 5px;
-						margin: 5px;
-						font-size: 18px;
-						font-weight: normal;
-					}
-					#fileToUpload {
-						display: none;
-					}
-				}
-				#pitchForm, #questionForm {
-					margin: 0;
-					form {
-						textarea {
-							border: none;
-							background-color: @offwhite;
-							width: 100%;
-							resize: none;
-							height: 200px;
-							outline: thin solid rgba(0, 0, 0, 0);
-							transition: 0.3s ease;
-							padding: 5px;
-							&:focus {
-								background-color: @white;
-								outline: thin solid @blue;
-								transition: 0.3s ease;
-							}
-						}
-						label, input, button {
-							width: 100%;
-							padding: 5px;
-							border: none;
-							font-size: 18px;
+						.submit {
+							bottom: 0;
+							min-width: 30%;
+							position: absolute;
+							font-size: 1.5vh;
 							font-weight: normal;
 						}
-						#fileToUpload {
-							display: none;
-						}
 					}
 				}
 			}
 		}
 	}
 }
-
-#wrapper-executable {
-	text-align: center;
-	background-image: url("../../Files/Images/stockImages/stock (5).jpg");
-	background-size: cover;
-	background-attachment: fixed;
-	main {
-		display: inline-block;
-		background-color: rgba(255, 255, 255, 0.9);
-		width: 100%;
-		min-height: 100vh;
-		padding-top: 80px;
-		#prototypeForm {
-			form {
-				input {
-					display: none;
-				}
-			}
-		}
-		#prototypeForm , #interviewForm, #pitchForm, #chooseExecutionForm {
-			padding: 15px;
-			background-color: @white;
-			width: 90vw;
-			max-width: 1200px;
-			display: inline-block;
-			margin: 80px 0 5% 0;
-
-			#add{
-				margin-top: 20px;
-			}
-
-			form {
-				.execution-button {
-					margin-left: 6%;
-					margin-top: 4%;
-					margin-bottom: 5%;
-				}
-				#questionDiv{
-					overflow: auto;
-					margin-top: 20px;
-					float: right;
-					width: 100%;
-
-					.text{
-						width: 100%;
-						float: left;
-					}
-					h3 {
-						text-align: left;
-						padding-left: 20px;
-						float: left;
-						width: 50%;
-					}
-
-					.content{
-						float: left;
-						width: 100%;
-					}
-
-					button{
-						display: block;
-						float: right;
-						bottom: 0;
-						margin-right: 20px;
-					}
-				}
-
-				.questions{
-					float: left !important;
-					width: 50%;
-
-					textarea{
-						float: left;
-					}
-				}
-
-				.answers{
-					float: left !important;
-					width: 50%;
-
-					textarea{
-						float: right;
-					}
-				}
-
-				img {
-					max-width: 90%;
-				}
-
-				#submit1 {
-					display: inline-block;
-				}
-				textarea {
-					position: relative;
-					width: calc(~"100% - 40px");
-					height: 100px;
-					margin: 20px;
-					padding: 10px;
-					background-color: @offwhite;
-				}
-
-			}
-			button, label, input{
-				background-color: @blue;
-				color: white;
-				transition: 0.2s ease;
-				border: none;
-				font-size: 18px;
-				margin-left: 20px;
-				padding: 5px;
-				width: 300px;
-				float: left;
-				display: inline-block;
-				&:hover {
-					background-color: @grey;
-				}
-			}
-
-			.save{
-				margin-top: 3%;
-				margin-bottom: 5%;
-			}
-		}
-	}
-}
-
-#wrapper-profile {
-
-	.content {
-		top: 80px;
-		margin: 3% 3% 5% 3%;
-		position: absolute;
-		width: 94%;
-		height: auto;
-		padding: 0;
-
-		.profile {
-			width: 20%;
-			height: 43vh;
-			float: left;
-			position: fixed;
-
-			.picture {
-				background-color: @offwhite;
-				width: 38vh;
-				height: 38vh;
-				position: relative;
-				display: inline-block;
-				overflow: hidden;
-				border-radius: 50%;
-				border: solid 1px;
-				border-color: @grey;
-
-				img {
-					position: relative;
-					width: auto;
-					max-height: 100%;
-					min-height: 100%;
-					top: 50%;
-					transform: translate(-50%, -50%);
-					left: 50%;
-				}
-			}
-
-			.name {
-				width: 38vh;
-				height: 5vh;
-
-				h1 {
-					padding: 2%;
-					color: @blue;
-					font-family: "Open Sans";
-					margin: 0;
-					font-size: 3vh;
-					font-weight: bold;
-					text-align: center;
-				}
-			}
-		}
-		.info {
-			width: 65%;
-			height: auto;
-			min-height: 65vh;
-			display: inline-block;
-			float: right;
-			position: relative;
-			font-family: "Open Sans";
-
-			.title {
-				width: 100%;
-				height: 5vh;
-				background-color: @blue;
-
-				h1 {
-					padding: 1vh 1vh 1vh 2vh;
-					color: @white;
-					margin: 0;
-					font-size: 3vh;
-					display: inline-block;
-				}
-			}
-			.text {
-				width: 100%;
-				height: auto;
-				background-color: @offwhite;
-				border: solid 1px;
-				border-top: none;
-				border-color: @grey;
-				padding: 2.5vh 2.5vh 2.5vh 3.5vh;
-				position: absolute;
-				margin-bottom: 5vh;
-
-				h1 {
-					color: @blue;
-					margin: 0;
-					padding-bottom: 2%;
-					font-size: 2.5vh;
-					display: inline-block;
-					font-weight: bold;
-				}
-
-				p {
-					font-size: 1.8vh;
-				}
-
-				.info1, .info2 {
-					float: left;
-					width: 50%;
-					height: auto;
-					position: relative;
-					padding-bottom: 3%;
-				}
-				.info2 {
-					padding-left: 2vh;
-				}
-
-				input {
-					padding: 1%;
-					min-width: 40%;
-					border: none;
-					margin-bottom: 1%;
-				}
-
-				#file1 {
-					display: none;
-				}
-
-				label {
-					padding: 5px;
-					background-color: @blue;
-					color: white;
-					margin-top: 5px;
-					max-width: 30%;
-					transition: 0.3s ease;
-					word-wrap: break-word;
-					font-weight: normal;
-					&:hover {
-						background-color: @grey;
-						transition: 0.3s ease;
-						cursor: pointer;
-					}
-				}
-				.submit {
-					bottom: 0;
-					min-width: 30%;
-					position: absolute;
-					font-size: 1.5vh;
-					font-weight: normal;
-				}
-			}
-		}
-	}}}}

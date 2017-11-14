@@ -1579,30 +1579,31 @@ function selectCompanyInfoGutted($CompanyID)
                     </div>
                 </section>
                 <section class="block">
-                    <div class="title-mentor col-md-4">
+                    <div class="col-md-4 title">
                         <h3>Company Information</h3>
                     </div>
                     <div class="content">
-                        <div class="container-fluid logo">
+                        <div class="logo container-fluid">
                             <p>
-                                Email: <?php echo $Email ?> <br/>
-                                Phone: <?php echo $Phone ?> <br/>
-                                Address: <?php echo $Address ?> <br/>
+	                            <span id="email">Email:</span> <?php echo $Email ?> <br/>
+	                            <span id="phone">Phone:</span> <?php echo $Phone ?> <br/>
+	                            <span id="adress">Address:</span> <?php echo $Address ?> <br/>
                             </p>
                         </div>
                     </div>
                 </section>
-
-                    <section class="block col-md-4">
-                        <div class="content">
-                            <div class="container-fluid title">
-                                <h3>Experiments</h3>
-                            </div>
-                            <div class="container-fluid">
-                                <?php getExperimentsPreviewBachelor(secure($_GET["id"])); ?>
-                            </div>
-                        </div>
-                    </section>
+	            <section class="block">
+		            <div class="title col-md-4">
+			            <h3>Experiment</h3>
+		            </div>
+		            <div class="content">
+			            <div class="container-fluid content">
+				            <p>
+					            <?php getExperimentsPreviewBachelor(secure($_GET["id"])); ?>
+				            </p>
+			            </div>
+		            </div>
+	            </section>
             </div>
         </div>
 
@@ -1648,11 +1649,11 @@ function selectCompanyInfoGuttedMentor($CompanyID)
                         <h3>Company Information</h3>
                     </div>
                     <div class="content">
-                        <div class="container-fluid logo">
+                        <div class="logo container-fluid">
                             <p>
-                                Email: <?php echo $Email ?> <br/>
-                                Phone: <?php echo $Phone ?> <br/>
-                                Address: <?php echo $Address ?> <br/>
+	                            <span id="email">Email:</span> <?php echo $Email ?> <br/>
+	                            <span id="phone">Phone:</span> <?php echo $Phone ?> <br/>
+	                            <span id="adress">Address:</span> <?php echo $Address ?> <br/>
                             </p>
                         </div>
                     </div>
