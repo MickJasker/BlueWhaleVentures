@@ -16,6 +16,7 @@ $UserID = $_SESSION["UserID"];
 	        <?php require "../nav_nosearchadmin.php";?>
 	    </header>
 	    <main>
+            <a href="index.php"> <button style="float:left; margin: 15px;"> Back </button> </a>
             <div id="experimentinfo">
 
 	        <?php getExperimentView($ID); ?>

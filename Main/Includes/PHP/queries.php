@@ -2429,6 +2429,7 @@ function selectQuestionsView($ExperimentID)
             WHERE e.ID = '$ExperimentID'";
 
     $i = 1;
+    $counter = 0;
 
     if($data = Query($sql))
     {
@@ -2436,16 +2437,28 @@ function selectQuestionsView($ExperimentID)
         {
             $ID = $row["ID"];
             $Question = $row["Question"];
+            $counter++;
+
 
             ?>
             <div id="questionDiv">
-                <div id="question<?php echo $ID?>">
-                    <textarea disabled id="question" name="question<?php echo $ID?>"><?php echo $Question?></textarea>
-                    <div id="answers">
+                <div id="question<?php echo $ID;?>" class="content">
+                    <div class="text">
+                        <h3>Question <?php echo $counter; ?></h3><h3>Answer(s)</h3>
+                    </div>
+
+
+                    <div class="questions">
+                      <textarea disabled id="question" name="question<?php echo $ID?>"><?php echo $Question?></textarea>
+                    </div>
+
+                    <div id="answers<?php echo $ID?>" class="answers">
                         <?php $i  = selectanswersView($ID, $i); ?>
                     </div>
+
                 </div>
             </div>
+
             <?php
         }
     }
