@@ -22,7 +22,8 @@
 
             <?php
 
-            $OldArray = selectPrototype($experimentID);
+            $path = "../";
+            $OldArray = selectPrototype($experimentID, $path);
 
             ?>
 

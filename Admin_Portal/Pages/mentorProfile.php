@@ -54,8 +54,9 @@
                     </div>
 
                 </div>
-
+				
             </div>
+			<a href="index.php"><button style="float: right; margin-top: 40%; z-index: 50; margin-right: 5%;"> Back </button></a>
 
 		</main>
 	</body>

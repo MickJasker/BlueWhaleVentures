@@ -646,14 +646,14 @@ function getExperimentsPreviewBachelor($CompanyID)
 
     if ($data = query($sql))
     {
-        echo "<ul style=list-style-type:none>";
+        echo "<ul id='experiments-list'>";
 
         while ($row = $data->fetch_assoc())
         {
             echo "<li class='experiment-preview'><a href=../../../" . $_SESSION['Role'] . "_Portal/Pages/bachelorGroup/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br><hr>";
         }
 
-        echo "<li><a href=../../../" . $_SESSION['Role'] . "_Portal/Pages/bachelorGroup/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
+        echo "<li class='experiment-preview'><a href=../../../" . $_SESSION['Role'] . "_Portal/Pages/bachelorGroup/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
         echo "</ul>";
     }
     else
@@ -672,14 +672,14 @@ function getExperimentsPreviewMentor($CompanyID)
 
     if ($data = query($sql))
     {
-        echo "<ul style=list-style-type:none>";
+        echo "<ul id='experiments-list'>";
 
         while ($row = $data->fetch_assoc())
         {
             echo "<li class='experiment-preview'><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br><hr>";
         }
 
-        echo "<li><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
+        echo "<li class='experiment-preview'><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
         echo "</ul>";
     }
 }
@@ -1366,7 +1366,7 @@ function getMentorAssignedBlockInfo($UserID)
 
 function selectCompanyMentors($CompanyID)
 {
-    $sql = "SELECT m.ID, u.Name, u.ProfilePicture FROM Mentor m
+    $sql = "SELECT u.ID, u.Name, u.ProfilePicture FROM Mentor m
     INNER JOIN User u ON u.ID = m.UserID
     INNER JOIN Mentor_Company mc ON mc.MentorID = m.ID
     INNER JOIN Company c ON c.ID = mc.CompanyID
@@ -1475,8 +1475,8 @@ function selectCompanyInfo($CompanyID)
                             <h3>Analytics</h3>
                         </div>
                         <div class="container-fluid info">
-							<br> <span> <strong> Number of experiments: </strong></span> <?php selectExperiments($CompanyID); ?> <br> <br>
-							<span> <strong> Last logged in: </strong></span> <br> <?php selectLoggedInUsers($CompanyID); ?>
+                            <br> <span> <strong> Number of experiments: </strong></span> <p><?php selectExperiments($CompanyID); ?></p> <br> <br>
+                            <span> <strong> Last logged in: </strong></span> <br> <p><?php selectLoggedInUsers($CompanyID); ?></p>
 							
                         </div>
                     </div>
@@ -1585,7 +1585,7 @@ function selectCompanyInfoGutted($CompanyID)
                 <section class="block">
                     <div class="content">
                         <div class="container-fluid logo">
-                            <img src="../<?php echo $Logo ?>">
+                            <img src="<?php echo $Logo ?>">
                         </div>
                         <div class="container-fluid discription">
                             <h3><?php echo $Name ?></h3>
@@ -1594,32 +1594,34 @@ function selectCompanyInfoGutted($CompanyID)
                         </div>
                     </div>
                 </section>
-                <section class="block">
-                    <div class="col-md-4 title">
-                        <h3>Company Information</h3>
-                    </div>
+                <section class="block company-info">
                     <div class="content">
-                        <div class="logo container-fluid">
+                        <div class="title col-md-4">
+                        <h3>Company Information</h3>
+                        </div>
+                        <div class="container-fluid info">
                             <p>
-	                            <span id="email">Email:</span> <?php echo $Email ?> <br/>
-	                            <span id="phone">Phone:</span> <?php echo $Phone ?> <br/>
-	                            <span id="adress">Address:</span> <?php echo $Address ?> <br/>
+                                <span id="email">Email:</span> <?php echo $Email ?> <br/>
+                                <span id="phone">Phone:</span> <?php echo $Phone ?> <br/>
+                                <span id="adress">Address:</span> <?php echo $Address ?> <br/>
                             </p>
                         </div>
                     </div>
                 </section>
-	            <section class="block">
-		            <div class="title col-md-4">
-			            <h3>Experiment</h3>
-		            </div>
-		            <div class="content">
-			            <div class="container-fluid content">
-				            <p>
-					            <?php getExperimentsPreviewBachelor(secure($_GET["id"])); ?>
-				            </p>
-			            </div>
-		            </div>
-	            </section>
+
+            <div class="row mentor-row">
+
+                <section class="block-experiments col-md-4">
+                    <div class="content">
+                        <div class="container-fluid title-experiments">
+                            <h3>Experiments</h3>
+                        </div>
+                        <div class="container-fluid">
+                            <?php getExperimentsPreviewBachelor(secure($_GET["id"])); ?>
+                        </div>
+                    </div>
+                </section>
+
             </div>
         </div>
 
@@ -1651,7 +1653,7 @@ function selectCompanyInfoGuttedMentor($CompanyID)
                 <section class="block">
                     <div class="content">
                         <div class="container-fluid logo">
-                            <img src="<?php echo $Logo ?>">
+                            <img src="../<?php echo $Logo ?>">
                         </div>
                         <div class="container-fluid discription">
                             <h3><?php echo $Name ?></h3>
@@ -1660,24 +1662,26 @@ function selectCompanyInfoGuttedMentor($CompanyID)
                         </div>
                     </div>
                 </section>
-                <section class="block">
-                    <div class="title-mentor col-md-4">
-                        <h3>Company Information</h3>
-                    </div>
+                <section class="block company-info">
                     <div class="content">
-                        <div class="logo container-fluid">
+                        <div class="title col-md-4">
+                        <h3>Company Information</h3>
+                        </div>
+                        <div class="container-fluid info">
                             <p>
-	                            <span id="email">Email:</span> <?php echo $Email ?> <br/>
-	                            <span id="phone">Phone:</span> <?php echo $Phone ?> <br/>
-	                            <span id="adress">Address:</span> <?php echo $Address ?> <br/>
+                                <span id="email">Email:</span> <?php echo $Email ?> <br/>
+                                <span id="phone">Phone:</span> <?php echo $Phone ?> <br/>
+                                <span id="adress">Address:</span> <?php echo $Address ?> <br/>
                             </p>
                         </div>
                     </div>
                 </section>
 
-                <section class="block col-md-4">
+            <div class="row mentor-row">
+
+                <section class="block-experiments col-md-4">
                     <div class="content">
-                        <div class="container-fluid title">
+                        <div class="container-fluid title-experiments">
                             <h3>Experiments</h3>
                         </div>
                         <div class="container-fluid">
@@ -1685,6 +1689,7 @@ function selectCompanyInfoGuttedMentor($CompanyID)
                         </div>
                     </div>
                 </section>
+
             </div>
         </div>
 
@@ -2286,7 +2291,7 @@ function updatePassword($ID, $passwordold, $password)
     return false;
 }
 
-function selectPrototype($ExperimentID)
+function selectPrototype($ExperimentID, $path)
 {
     $OldArray = array();
 
@@ -2301,23 +2306,25 @@ function selectPrototype($ExperimentID)
             $Media2 = $row["Media2"];
             $Explanation2 = $row["Explanation2"];
             ?>
-
-            <input id="file1" type="hidden" name="file1">
-            <label for="file1" style="display:none;" id="label1">Choose file</label><br>
+			<h2> Before: </h2>
 
             <?php
 			array_push($OldArray,$Media1);
             if ($Media1 != "")
             {
                 
-                ?> <img src="<?php echo $Media1 ?>" alt='Prototype 1'><br> <?php
+                ?>
+
+                <img src="<?php echo $path ?><?php echo $Media1 ?>" alt='Prototype 1'><br>
+                <input id="file1" type="hidden" name="file1"><br>
+                <label for="file1" style="display:none;" id="label1">Choose file</label><br>
+
+                <?php
             }
             ?>
 
             <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br>
-
-            <input id="file2" type="hidden" name="file2"><br>
-            <label for="file2" style="display:none;" id="label2">Choose file</label><br>
+			<h2> After: </h2>
 
             <?php
 			array_push($OldArray,$Media2);
@@ -2325,7 +2332,9 @@ function selectPrototype($ExperimentID)
                 ?>
 
 
-                <img src="<?php echo $Media2 ?>" alt="Prototype 2"><br>
+                <img src="<?php echo $path ?><?php echo $Media2 ?>" alt="Prototype 2"><br>
+                <input id="file2" type="hidden" name="file2"><br>
+                <label for="file2" style="display:none;" id="label2">Choose file</label><br>
 
                 <?php
 
