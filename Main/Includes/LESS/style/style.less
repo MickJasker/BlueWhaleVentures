@@ -52,7 +52,7 @@ html {
 }
 
 body {
-	overflow-y: scroll;
+	overflow-y: auto;
 	width: 100%;
 }
 
@@ -151,7 +151,7 @@ body {
 	background-image: url('../../Files/Images/stockImages/adminbackground.jpg');
 }
 
-#wrapper-client-body{
+#wrapper-client-welcome {
 	background-image: url('../../Files/Images/stockImages/background2.jpg');
 	text-align: center;
 	height: 100%;
@@ -175,6 +175,20 @@ body {
 }
 
 	#wrapper-admin {
+
+		a {
+			button {
+				min-width: 200px;
+				font-size: 18px;
+				height: 35px;
+				padding: 5px;
+				border: none;
+				-webkit-transition: .2s ease;
+				-o-transition: .2s ease;
+				transition: .2s ease;
+				position: fixed;
+			}
+		}
 
 		margin: 0;
 		padding-top: 80px;
@@ -799,513 +813,217 @@ body {
 				}
 			}
 		}
-		.wrapper-profile {
-			margin-left: 10px;
-			margin-top: 2vh;
-
-			.mentor-row {
-				margin-top: 20px;
-				.title-mentor {
-					background-color: @blue;
-					width: 100%;
-					padding: 5px 9px;
-					h1 {
-						color: @white
-					}
-
-					h2 {
-						color: @white;
-					}
-					h3 {
-						color: @white;
-						margin: 0;
-					}
-				}
-				.title {
-					background-color: @blue;
-					width: 100%;
-					h1 {
-						color: white
-					}
-					h2 {
-						color: white;
-					}
-					h3 {
-						color: white;
-					}
-				}
-				.block-experiments {
-					position: relative;
-					background-color: @offwhite;
-					float: left;
-					padding: 0;
-					min-height: 100%;
-
-					#experiments-list {
-						list-style-type: none;
-						padding-left: 0;
-						margin-top: 2%;
-						hr {
-							margin-top: 5px;
-							margin-bottom: 5px;
-						}
-						li {
-							text-decoration: none;
-							a {
-								color: @blue;
-								font-size: 20px;
-							}
-						}
-					}
-					.title-experiments {
-						background-color: @blue;
-						width: 100%;
-						margin: 0;
-						height: 36px;
-						padding: 5px 9px;
-						h1 {
-							color: white
-						}
-						h2 {
-							color: white;
-						}
-						h3 {
-							color: white;
-							margin: 0;
-						}
-					}
-					.experiment-preview {
-						hr {
-
-						}
-					}
-				}
-				.mentor {
-					overflow: hidden;
-
-					.title-mentor {
-						background-color: @blue;
-						width: 100%;
-						padding: 5px 9px;
-						h1 {
-							color: @white
-						}
-
-						h2 {
-							color: @white;
-						}
-						h3 {
-							color: @white;
-							margin: 0;
-						}
-					}
-				}
-			}
-			.block {
-
-				position: relative;
-				float: left;
-				width: 32%;
-				margin-left: 15px;
-				max-height: 30%;
-
-				h2 {
-					color: @white;
-				}
-
-				.title {
-					background-color: @blue;
-					width: 100%;
-					h1 {
-						color: white
-					}
-					h2 {
-						color: white;
-					}
-					h3 {
-						color: white;
-					}
-
-				}
-
-				.content {
-
-					width: 100%;
-					background-color: @offwhite;
-
-					#traject {
-						margin-top: 6%;
-					}
-
-					.lock {
-						margin-top: 7%;
-						margin-right: 0%;
-						height: 10vh;
-					}
-					h3 {
-						color: @white;
-					}
-
-					p {
-						color: @white;
-					}
-
-				}
-
-				.logo {
-
-					img {
-						max-width: 100%;
-						max-height: 100%;
-						width: auto;
-						height: auto;
-						margin: auto;
-
-						display: block;
-						padding: 10px;
-						top: 0;
-						bottom: 0;
-						right: 0;
-						left: 0;
-						position: relative;
-					}
-				}
-
-				.discription {
-					background-color: @blue;
-				}
-			}
-		}
 	}
-	main {
-		margin-top: 80px;
+}
 
-		#mentormodal {
-			display: none; /* Hidden by default */
-			position: fixed; /* Stay in place */
-			z-index: 1; /* Sit on top */
-			padding-top: 100px; /* Location of the box */
-			left: 0;
-			top: 0;
-			width: 100%; /* Full width */
-			height: 100%; /* Full height */
-			overflow: auto; /* Enable scroll if needed */
-			background-color: rgb(0, 0, 0); /* Fallback color */
-			background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-		}
-
-		/* Modal Content */
-		.mentormodal-content {
-			position: relative;
-			background-color: #fefefe;
-			margin: auto;
-			padding: 0;
-			margin-top: 3%;
-			border: 1px solid #888;
-			width: 28%;
-			height: 50vh;
-			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-			-webkit-animation-name: animatetop;
-			-webkit-animation-duration: 0.4s;
-			animation-name: animatetop;
-			animation-duration: 0.4s
-		}
-
-		/* Add Animation */
-		@-webkit-keyframes animatetop {
-			from {
-				top: -300px;
-				opacity: 0
-			}
-			to {
-				top: 0;
-				opacity: 1
-			}
-		}
-
-		@keyframes animatetop {
-			from {
-				top: -300px;
-				opacity: 0
-			}
-			to {
-				top: 0;
-				opacity: 1
-			}
-		}
-
-		/* The Close Button */
-		.close {
-			float: right;
-			font-size: 28px;
-			font-weight: bold;
-		}
-
-		.close:hover,
-		.close:focus {
-			color: #000;
-			text-decoration: none;
-			cursor: pointer;
-		}
-
-		.mentormodal-header {
-			padding: 2px 16px;
-			background-color: @blue;
-			color: white;
-		}
-
-		.mentormodal-body {
-			padding: 2px 16px;
-
-			form {
-				width: 145%;
-				padding: 10% 55% 0 5%;
-
-				#field {
-					outline: none;
-					border: none;
-					font-size: 15px;
-					line-height: 30px;
-					padding-left: 8px;
-					margin-bottom: 5%;
-					width: 100%;
-					background-color: @offwhite;
-				}
-
-				#submitbtn {
-					width: 100%;
-					background-color: @blue;
-					color: white;
-					text-align: left;
-					height: 30px;
-				}
-			}
-		}
-		.wrapper-profile {
+.wrapper-profile {
 			margin-left: 10px;
-			margin-top: 2vh;
+			margin-top: 7%;
 
-			.mentor-row {
-				margin-top: 5vh;
-				position: relative;
-				overflow: hidden;
-
-				.mentor {
-					overflow: hidden;
-
-					.title-mentor {
-						background-color: @blue;
-						width: 100%;
-						padding: 5px 9px;
-						h1 {
-							color: @white
-						}
-
-						h2 {
-							color: @white;
-						}
-						h3 {
-							color: @white;
-							margin: 0;
-						}
-					}
-					.container-fluid{
-						padding: 0 !important;
-					}
-
-					.mentor-preview {
-						overflow: hidden;
-						max-height: 33vh;
-						min-height: 33vh;
-						background-color: @offwhite;
-						#profile-pic {
-							position: relative;
-							height: 80%;
-							width: 100%;
-						}
-					}
-				}
-			}
-
-			.block {
-
-				position: relative;
-				float: left;
-				width: 32%;
-				margin-left: 15px;
-				max-height: 35vh;
-				min-height: 35vh;
-				background-color: @offwhite;
-
-				h2 {
-					color: @white;
-				}
-
-				.title {
-					background-color: @blue;
-					width: 100%;
-					h1 {
-						color: white
-					}
-					h2 {
-						color: white;
-					}
-					h3 {
-						color: white;
-					}
-				}
-
-				.block-experiments {
+			//row
+			.row{
+				.block{
 					position: relative;
 					float: left;
 					width: 32%;
 					margin-left: 15px;
-					max-height: 33vh;
-					min-height: 33vh;
-					.title-experiments {
+
+					max-height: 35vh;
+					min-height: 35vh;
+					background-color: @offwhite;
+
+					.content{
+
+						width: 100%;
+						background-color: @offwhite;
+						height: 35vh;
+						margin: 0;
+
+						.title{
+
+							background-color: @blue;
+							width: 100%;
+							height: 20%;
+							
+							h3 {
+								color: @white;
+							}
+						}
+
+						.info{
+							width: 100%;
+							height: 80%;
+							position: relative;
+
+							img{
+								max-width: 100%;
+								max-height: 100%;
+								position: relative;
+								height: auto;
+							}
+
+							span{
+
+							}
+
+
+
+							p{
+								color: black;
+								font-size: 20px;
+							}
+
+							#traject{
+								margin-top: 6%;
+							}
+
+							a{
+								.lock{
+
+									margin-bottom: 0;
+									margin-right: 0;
+									height: 25%;
+									position: absolute;
+
+								}
+							}
+						}
+
+						.logo{
+							height: 80%;
+							width: 100%;
+							position: relative;
+
+							img{
+								max-width: 100%;
+								max-height: 100%;
+								position: relative;
+								height: auto;
+							}
+						}
+
+						.container-fluid{
+							span{
+
+							}
+						}
+
+						.discription{
+							background-color: @blue;
+							color: @white;
+							display: inline-block;
+							height: 20%;
+							position: relative;
+							width: 100%;
+							word-wrap: break-word;
+
+							h3{
+								margin: 2% 0 0 0;
+							}
+
+							p{
+								color: @white;
+							}
+						}
+					}
+				}
+			}
+
+			//.mentor-row
+			.mentor-row {
+				margin-top: 20px;
+
+				.mentor{
+
+					overflow: hidden;
+
+					.content{
+						background-color: @offwhite;
+					}
+
+					.title-mentor {
 						background-color: @blue;
 						width: 100%;
+						padding: 5px 9px;
 						h1 {
-							color: white
+							color: @white
 						}
+
 						h2 {
-							color: white;
+							color: @white;
 						}
 						h3 {
-							color: white;
+							color: @white;
+							margin: 0;
 						}
 					}
-					.experiment-preview {
-						background-color: red;
+
+					.content{
+
+						.row{
+							.mentor-preview{
+
+							}
+						}
+
 					}
 				}
 
-				.content {
+				.block-experiments{
+
+					position: relative;
 					background-color: @offwhite;
-					max-height: 33vh;
+					float: left;
+					padding: 0;
 					min-height: 33vh;
-					margin: 0;
+					width: 32%;
+					margin-left: 15px;
+					max-height: 33vh;
 
-					h3 {
-						color: @white;
-					}
+					.content{
+						.title-experiments{
 
-					p {
-						color: @white;
-					}
-				}
-
-				.logo {
-
-					img {
-						max-width: 90%;
-						max-height: 90%;
-						width: auto;
-						height: auto;
-
-						display: block;
-						padding: 10px;
-						top: 0;
-						bottom: 0;
-						right: 0;
-						left: 0;
-						position: relative;
-					}
-				}
-
-				.discription {
-					background-color: @blue;
-					height: 8.3vh;
-					position: absolute;
-					bottom: 0;
-					width: 100%;
-				}
-			}
-			.company-info {
-				.content {
-					.logo {
-						p {
-							color: black;
-							font-size: 20px;
-						}
-						#email {
-							color: @blue;
-							font-size: 20px;
+							background-color: @blue;
+							width: 100%;
+							margin: 0;
+							height: 36px;
+							padding: 5px 9px;
+							h3 {
+								color: white;
+								margin: 0;
+							}
 						}
 
-						#phone {
-							color: @blue;
-							font-size: 20px;
-						}
+						.container-fluid{
 
-						#adress {
-							color: @blue;
-							font-size: 20px;
+							#experiments-list{
+
+								list-style-type: none;
+								padding-left: 0;
+								margin-top: 2%;
+								hr {
+									margin-top: 5px;
+									margin-bottom: 5px;
+								}
+
+								.experiment-preview{
+									text-decoration: none;
+									background-color: red;
+									a {
+										color: @blue;
+										font-size: 20px;
+									}
+								}
+
+							}
+
 						}
 					}
 				}
 
-			}
-			.lower-bar {
-				#lock {
-					background-color: red;
-				}
 			}
 		}
-	}
-}
 
-/*#wrapper-client {
-  background-image: url("../../Files/Images/stockImages/stock (1).jpg");
-  background-size: cover;
-  background-attachment: fixed;
-  main {
-    padding-top: 80px;
-    width: 100%;
-    #Block {
-      padding: 0;
-      height: 33vh;
-      width: 31%;
-      position: relative;
-      display: inline-block;
-      margin: 15px;
-
-      a {
-        .BlockLogo {
-          img {
-            background-color: @offwhite;
-            width: auto;
-            height: 30vh;
-            position: relative;
-            border: solid;
-            border-color: @grey;
-            border-bottom: none;
-            border-width: 1px;
-            width: 100%;
-          }
-
-        }
-        .BlockTitle {
-          width: 100%;
-          height: 20%;
-          padding: 0;
-          position: relative;
-          background-color: @blue;
-
-          h1 {
-
-            padding: 2%;
-            color: @white;
-            font-family: "Open Sans";
-            margin: 0;
-            font-size: 3vh;
-          }
-        }
-
-      }
-    }
-  }
-}*/
 
 #wrapper-experiment {
 	background-image: url("../../Files/Images/stockImages/stock (15).jpg");
@@ -1730,7 +1448,11 @@ body {
 			}
 
 			form {
-
+				.execution-button {
+					margin-left: 6%;
+					margin-top: 4%;
+					margin-bottom: 5%;
+				}
 				#questionDiv{
 					overflow: auto;
 					margin-top: 20px;

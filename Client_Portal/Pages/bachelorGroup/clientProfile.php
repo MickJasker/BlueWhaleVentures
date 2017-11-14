@@ -1,6 +1,7 @@
 <?php
 	require '../../../Main/Includes/PHP/functions.php';
     checkSession('Client');
+    $ID = checkBachelor(secure($_GET["id"]), $_SESSION["UserID"]);
 ?>
 
 <!DOCTYPE HTML>
@@ -20,9 +21,9 @@
 			<?php require "nav_nosearch.php"; ?>
 		</header>
 		<main>
-			<?php
-            selectCompanyInfoGutted(secure($_GET["id"]));
-            ?>
+			<?php 
+				selectCompanyInfoGutted($ID); 
+			?>
 		</main>
 		<script src="../../../Main/Includes/Javascript/navbar.js"></script>
         <script src="../../../Main/Includes/Javascript/main.js"></script>

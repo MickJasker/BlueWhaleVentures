@@ -6805,7 +6805,7 @@ html input[type="submit"]:hover {
   background-color: #a0a0a0;
 }
 body {
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 100%;
 }
 .row {
@@ -6900,8 +6900,23 @@ body {
 #wrapper-admin-body {
   background-image: url('../../Files/Images/stockImages/adminbackground.jpg');
 }
-#wrapper-client-body {
+#wrapper-client-welcome {
   background-image: url('../../Files/Images/stockImages/background2.jpg');
+  text-align: center;
+  height: 100%;
+}
+#wrapper-client-welcome h3 {
+  color: #0099ff;
+  margin-top: 35vh;
+}
+#wrapper-client-welcome a {
+  background-color: #0099ff;
+  padding: 7px;
+  color: #ffffff;
+  text-decoration: none;
+}
+#wrapper-client-welcome p {
+  font-size: 22px;
 }
 #wrapper-mentor-body {
   background-image: url('../../Files/Images/stockImages/background3.jpg');
@@ -6913,6 +6928,17 @@ body {
   /* Modal Content */
   /* Add Animation */
   /* The Close Button */
+}
+#wrapper-admin a button {
+  min-width: 200px;
+  font-size: 18px;
+  height: 35px;
+  padding: 5px;
+  border: none;
+  -webkit-transition: .2s ease;
+  -o-transition: .2s ease;
+  transition: .2s ease;
+  position: fixed;
 }
 #wrapper-admin #toggle_bachelor {
   position: fixed;
@@ -7493,303 +7519,11 @@ footer .right {
   text-align: left;
   height: 30px;
 }
-#wrapper-ClientProfile main .wrapper-profile {
+.wrapper-profile {
   margin-left: 10px;
-  margin-top: 2vh;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row {
-  margin-top: 20px;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .title-mentor {
-  background-color: #0099ff;
-  width: 100%;
-  padding: 5px 9px;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .title-mentor h1 {
-  color: #ffffff;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .title-mentor h2 {
-  color: #ffffff;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .title-mentor h3 {
-  color: #ffffff;
-  margin: 0;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .title {
-  background-color: #0099ff;
-  width: 100%;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .title h1 {
-  color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .title h2 {
-  color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .title h3 {
-  color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments {
-  position: relative;
-  background-color: #f2f2f2;
-  float: left;
-  padding: 0;
-  min-height: 100%;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments #experiments-list {
-  list-style-type: none;
-  padding-left: 0;
-  margin-top: 2%;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments #experiments-list hr {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments #experiments-list li {
-  text-decoration: none;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments #experiments-list li a {
-  color: #0099ff;
-  font-size: 20px;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .title-experiments {
-  background-color: #0099ff;
-  width: 100%;
-  margin: 0;
-  height: 36px;
-  padding: 5px 9px;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .title-experiments h1 {
-  color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .title-experiments h2 {
-  color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .title-experiments h3 {
-  color: white;
-  margin: 0;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor {
-  overflow: hidden;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor {
-  background-color: #0099ff;
-  width: 100%;
-  padding: 5px 9px;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor h1 {
-  color: #ffffff;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor h2 {
-  color: #ffffff;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor h3 {
-  color: #ffffff;
-  margin: 0;
-}
-#wrapper-ClientProfile main .wrapper-profile .block {
-  position: relative;
-  float: left;
-  width: 32%;
-  margin-left: 15px;
-  max-height: 30%;
-}
-#wrapper-ClientProfile main .wrapper-profile .block h2 {
-  color: #ffffff;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .title {
-  background-color: #0099ff;
-  width: 100%;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .title h1 {
-  color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .title h2 {
-  color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .title h3 {
-  color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .content {
-  width: 100%;
-  background-color: #f2f2f2;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .content #traject {
-  margin-top: 6%;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .content .lock {
   margin-top: 7%;
-  margin-right: 0%;
-  height: 10vh;
 }
-#wrapper-ClientProfile main .wrapper-profile .block .content h3 {
-  color: #ffffff;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .content p {
-  color: #ffffff;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .logo img {
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-  margin: auto;
-  display: block;
-  padding: 10px;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  position: relative;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .discription {
-  background-color: #0099ff;
-}
-#wrapper-ClientProfile main {
-  margin-top: 80px;
-  /* Modal Content */
-  /* Add Animation */
-  /* The Close Button */
-}
-#wrapper-ClientProfile main #mentormodal {
-  display: none;
-  /* Hidden by default */
-  position: fixed;
-  /* Stay in place */
-  z-index: 1;
-  /* Sit on top */
-  padding-top: 100px;
-  /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%;
-  /* Full width */
-  height: 100%;
-  /* Full height */
-  overflow: auto;
-  /* Enable scroll if needed */
-  background-color: #000000;
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* Black w/ opacity */
-}
-#wrapper-ClientProfile main .mentormodal-content {
-  position: relative;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 0;
-  margin-top: 3%;
-  border: 1px solid #888;
-  width: 28%;
-  height: 50vh;
-  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s;
-}
-@-webkit-keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
-}
-@keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
-}
-#wrapper-ClientProfile main .close {
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-#wrapper-ClientProfile main .close:hover,
-#wrapper-ClientProfile main .close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-#wrapper-ClientProfile main .mentormodal-header {
-  padding: 2px 16px;
-  background-color: #0099ff;
-  color: white;
-}
-#wrapper-ClientProfile main .mentormodal-body {
-  padding: 2px 16px;
-}
-#wrapper-ClientProfile main .mentormodal-body form {
-  width: 145%;
-  padding: 10% 55% 0 5%;
-}
-#wrapper-ClientProfile main .mentormodal-body form #field {
-  outline: none;
-  border: none;
-  font-size: 15px;
-  line-height: 30px;
-  padding-left: 8px;
-  margin-bottom: 5%;
-  width: 100%;
-  background-color: #f2f2f2;
-}
-#wrapper-ClientProfile main .mentormodal-body form #submitbtn {
-  width: 100%;
-  background-color: #0099ff;
-  color: white;
-  text-align: left;
-  height: 30px;
-}
-#wrapper-ClientProfile main .wrapper-profile {
-  margin-left: 10px;
-  margin-top: 2vh;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row {
-  margin-top: 5vh;
-  position: relative;
-  overflow: hidden;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor {
-  overflow: hidden;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor {
-  background-color: #0099ff;
-  width: 100%;
-  padding: 5px 9px;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor h1 {
-  color: #ffffff;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor h2 {
-  color: #ffffff;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor h3 {
-  color: #ffffff;
-  margin: 0;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .container-fluid {
-  padding: 0 !important;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .mentor-preview {
-  overflow: hidden;
-  max-height: 33vh;
-  min-height: 33vh;
-  background-color: #f2f2f2;
-}
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .mentor-preview #profile-pic {
-  position: relative;
-  height: 80%;
-  width: 100%;
-}
-#wrapper-ClientProfile main .wrapper-profile .block {
+.wrapper-profile .row .block {
   position: relative;
   float: left;
   width: 32%;
@@ -7798,148 +7532,132 @@ footer .right {
   min-height: 35vh;
   background-color: #f2f2f2;
 }
-#wrapper-ClientProfile main .wrapper-profile .block h2 {
-  color: #ffffff;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .title {
-  background-color: #0099ff;
+.wrapper-profile .row .block .content {
   width: 100%;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .title h1 {
-  color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .title h2 {
-  color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .title h3 {
-  color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .block-experiments {
-  position: relative;
-  float: left;
-  width: 32%;
-  margin-left: 15px;
-  max-height: 33vh;
-  min-height: 33vh;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .block-experiments .title-experiments {
-  background-color: #0099ff;
-  width: 100%;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .block-experiments .title-experiments h1 {
-  color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .block-experiments .title-experiments h2 {
-  color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .block-experiments .title-experiments h3 {
-  color: white;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .block-experiments .experiment-preview {
-  background-color: red;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .content {
   background-color: #f2f2f2;
-  max-height: 33vh;
-  min-height: 33vh;
+  height: 35vh;
   margin: 0;
 }
-#wrapper-ClientProfile main .wrapper-profile .block .content h3 {
+.wrapper-profile .row .block .content .title {
+  background-color: #0099ff;
+  width: 100%;
+  height: 20%;
+}
+.wrapper-profile .row .block .content .title h3 {
   color: #ffffff;
 }
-#wrapper-ClientProfile main .wrapper-profile .block .content p {
-  color: #ffffff;
-}
-#wrapper-ClientProfile main .wrapper-profile .block .logo img {
-  max-width: 90%;
-  max-height: 90%;
-  width: auto;
-  height: auto;
-  display: block;
-  padding: 10px;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
+.wrapper-profile .row .block .content .info {
+  width: 100%;
+  height: 80%;
   position: relative;
 }
-#wrapper-ClientProfile main .wrapper-profile .block .discription {
-  background-color: #0099ff;
-  height: 8.3vh;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+.wrapper-profile .row .block .content .info img {
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+  height: auto;
 }
-#wrapper-ClientProfile main .wrapper-profile .company-info .content .logo p {
+.wrapper-profile .row .block .content .info p {
   color: black;
   font-size: 20px;
 }
-#wrapper-ClientProfile main .wrapper-profile .company-info .content .logo #email {
-  color: #0099ff;
-  font-size: 20px;
+.wrapper-profile .row .block .content .info #traject {
+  margin-top: 6%;
 }
-#wrapper-ClientProfile main .wrapper-profile .company-info .content .logo #phone {
-  color: #0099ff;
-  font-size: 20px;
+.wrapper-profile .row .block .content .info a .lock {
+  margin-bottom: 0;
+  margin-right: 0;
+  height: 25%;
+  position: absolute;
 }
-#wrapper-ClientProfile main .wrapper-profile .company-info .content .logo #adress {
-  color: #0099ff;
-  font-size: 20px;
+.wrapper-profile .row .block .content .logo {
+  height: 80%;
+  width: 100%;
+  position: relative;
 }
-#wrapper-ClientProfile main .wrapper-profile .lower-bar #lock {
+.wrapper-profile .row .block .content .logo img {
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+  height: auto;
+}
+.wrapper-profile .row .block .content .discription {
+  background-color: #0099ff;
+  color: #ffffff;
+  display: inline-block;
+  height: 20%;
+  position: relative;
+  width: 100%;
+  word-wrap: break-word;
+}
+.wrapper-profile .row .block .content .discription h3 {
+  margin: 2% 0 0 0;
+}
+.wrapper-profile .row .block .content .discription p {
+  color: #ffffff;
+}
+.wrapper-profile .mentor-row {
+  margin-top: 20px;
+}
+.wrapper-profile .mentor-row .mentor {
+  overflow: hidden;
+}
+.wrapper-profile .mentor-row .mentor .content {
+  background-color: #f2f2f2;
+}
+.wrapper-profile .mentor-row .mentor .title-mentor {
+  background-color: #0099ff;
+  width: 100%;
+  padding: 5px 9px;
+}
+.wrapper-profile .mentor-row .mentor .title-mentor h1 {
+  color: #ffffff;
+}
+.wrapper-profile .mentor-row .mentor .title-mentor h2 {
+  color: #ffffff;
+}
+.wrapper-profile .mentor-row .mentor .title-mentor h3 {
+  color: #ffffff;
+  margin: 0;
+}
+.wrapper-profile .mentor-row .block-experiments {
+  position: relative;
+  background-color: #f2f2f2;
+  float: left;
+  padding: 0;
+  min-height: 33vh;
+  width: 32%;
+  margin-left: 15px;
+  max-height: 33vh;
+}
+.wrapper-profile .mentor-row .block-experiments .content .title-experiments {
+  background-color: #0099ff;
+  width: 100%;
+  margin: 0;
+  height: 36px;
+  padding: 5px 9px;
+}
+.wrapper-profile .mentor-row .block-experiments .content .title-experiments h3 {
+  color: white;
+  margin: 0;
+}
+.wrapper-profile .mentor-row .block-experiments .content .container-fluid #experiments-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 2%;
+}
+.wrapper-profile .mentor-row .block-experiments .content .container-fluid #experiments-list hr {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.wrapper-profile .mentor-row .block-experiments .content .container-fluid #experiments-list .experiment-preview {
+  text-decoration: none;
   background-color: red;
 }
-/*#wrapper-client {
-  background-image: url("../../Files/Images/stockImages/stock (1).jpg");
-  background-size: cover;
-  background-attachment: fixed;
-  main {
-    padding-top: 80px;
-    width: 100%;
-    #Block {
-      padding: 0;
-      height: 33vh;
-      width: 31%;
-      position: relative;
-      display: inline-block;
-      margin: 15px;
-
-      a {
-        .BlockLogo {
-          img {
-            background-color: @offwhite;
-            width: auto;
-            height: 30vh;
-            position: relative;
-            border: solid;
-            border-color: @grey;
-            border-bottom: none;
-            border-width: 1px;
-            width: 100%;
-          }
-
-        }
-        .BlockTitle {
-          width: 100%;
-          height: 20%;
-          padding: 0;
-          position: relative;
-          background-color: @blue;
-
-          h1 {
-
-            padding: 2%;
-            color: @white;
-            font-family: "Open Sans";
-            margin: 0;
-            font-size: 3vh;
-          }
-        }
-
-      }
-    }
-  }
-}*/
+.wrapper-profile .mentor-row .block-experiments .content .container-fluid #experiments-list .experiment-preview a {
+  color: #0099ff;
+  font-size: 20px;
+}
 #wrapper-experiment {
   background-image: url("../../Files/Images/stockImages/stock (15).jpg");
   background-size: cover;
@@ -8359,6 +8077,14 @@ footer .right {
 #wrapper-executable main #pitchForm #add,
 #wrapper-executable main #chooseExecutionForm #add {
   margin-top: 20px;
+}
+#wrapper-executable main #prototypeForm form .execution-button,
+#wrapper-executable main #interviewForm form .execution-button,
+#wrapper-executable main #pitchForm form .execution-button,
+#wrapper-executable main #chooseExecutionForm form .execution-button {
+  margin-left: 6%;
+  margin-top: 4%;
+  margin-bottom: 5%;
 }
 #wrapper-executable main #prototypeForm form #questionDiv,
 #wrapper-executable main #interviewForm form #questionDiv,

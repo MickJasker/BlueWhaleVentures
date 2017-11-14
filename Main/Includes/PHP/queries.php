@@ -362,7 +362,8 @@ function getDesignSheetDataGutted($ExperimentID, $sheetType, $Language)
 {
     $sql = "SELECT SegmentID, Text  FROM `Answer` WHERE ExperimentID = '$ExperimentID' ORDER BY SegmentID";
     if ($data1 = query($sql)) {
-        echo '<form method="POST" action="#"><h1>Design sheet</h1>';
+        echo '<form method="POST" action="#"><h1>'.$sheetType.' Sheet</h1>';
+        echo '<div class="row">';
         $i = 0;
         while ($row1 = $data1->fetch_assoc()) {
             $id = $row1["SegmentID"];
@@ -372,9 +373,11 @@ function getDesignSheetDataGutted($ExperimentID, $sheetType, $Language)
             WHERE d.Type = '$sheetType' AND s.id = '$id'";
 
             if ($data2 = query($sql)) {
-                $row2 = mysqli_fetch_array($data2, MYSQLI_ASSOC);
-                echo '<h3>' . $row2["title"] . '</h3>';
-                echo '<textarea disabled class="textarea1" name="input' . $i . '" type="text" placeholder="' . $row2["description"] . '">' . $row1["Text"] . '</textarea>';
+                $row2 = mysqli_fetch_array($data2,MYSQLI_ASSOC);
+                echo '<div class="col-md-6 dsheet">';
+                echo '<h3>'.$row2["title"].'</h3>';
+                echo '<textarea disabled class="textarea1" name="input'.$i.'" type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
+                echo '</div>';
                 $i++;
             }
         }
@@ -624,7 +627,7 @@ function getExperimentsPreview($CompanyID)
             echo "<li class='experiment-preview'><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br><hr>";
         }
 
-        echo "<li><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
+        echo "<li class='experiment-preview'><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
         echo "</ul>";
     }
     else
@@ -935,14 +938,15 @@ function getExperimentView($id)
 
         if ($row["Explanation1"] == "")
         {
-            $name = "Prototype";
-            $buttonstate = "";
+            $name = "No prototype added yet";
         }
         else
         {
-            $name = "No prototype added yet";
+            $name = "Prototype";
+            $buttonstate = ""; 
         }
     }
+
 
     //Put information on screen
     $sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
@@ -1228,6 +1232,42 @@ function checkExperimentID($ID, $CompanyID)
     return false;
 }
 
+function checkExperimentIDBachelor($ID, $CompanyID)
+{
+    $sql = "SELECT e.ID FROM Experiment e
+    INNER JOIN Company c ON e.CompanyID = c.ID
+    INNER JOIN Bachelor_Company bc ON bc.CompanyID = c.ID
+    WHERE e.ID = '$ID' AND bc.BachelorID = (
+        SELECT bc.BachelorID FROM Bachelor_Company bc
+        WHERE bc.CompanyID = '$CompanyID')";
+
+    if($data = Query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        return $row["ID"];
+    }
+
+    header('Location: ../index.php');
+    return false;
+}
+
+function checkBachelor($BachelorID, $CompanyID)
+{
+    $sql = "SELECT bc.CompanyID FROM Bachelor_Company bc
+    INNER JOIN BachelorGroup b ON bc.BachelorID = b.ID
+    INNER JOIN Bachelor_Company bc2 ON bc2.BachelorID = b.ID
+    WHERE bc.CompanyID = '$CompanyID' AND bc2.companyID = '$BachelorID'";
+
+    if($data = Query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        return $row["CompanyID"];
+    }
+
+    header('Location: ../index.php');
+    return false;
+}
+
 function checkExperimentIDMentor($ID, $UserID)
 {
     $sql = "SELECT `ID` FROM `Mentor` WHERE UserID = '$UserID'";
@@ -1347,12 +1387,14 @@ function selectCompanyMentors($CompanyID)
                     <div class="container-fluid">
                         <a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID']; ?>">
                             <img id="profile-pic" src="<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
-                            <h4> <?php echo $row ['Name'] ?> </h4>
                         </a>
-                        <div id="unassign">
-                            <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
-                                <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
-                            </a>
+                            <div id="unassign">
+                                <a class="text" href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID']; ?>">
+                                    <h4> <?php echo $row ['Name'] ?> </h4>
+                                </a>
+                                <a class="cross" onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
+                                    <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
+                                </a>
                         </div>
                     </div>
                 </div>
@@ -1407,11 +1449,11 @@ function selectCompanyInfo($CompanyID)
                     </div>
                 </section>
                 <section class="block company-info">
-                    <div class="title col-md-4">
-                        <h3>Company Information</h3>
-                    </div>
                     <div class="content">
-                        <div class="container-fluid logo">
+                        <div class="title col-md-4">
+                            <h3>Company Information</h3>
+                        </div>
+                        <div class="container-fluid info">
                             <p>
                                 <span id="email">Email:</span> <?php echo $Email ?> <br/>
                                 <span id="phone">Phone:</span> <?php echo $Phone ?> <br/>
@@ -1435,12 +1477,9 @@ function selectCompanyInfo($CompanyID)
                         <h3>Analytics</h3>
                     </div>
                     <div class="content">
-                        <div class="container-fluid title">
-
-                        </div>
                         <div class="container-fluid">
 							<br> <span> <strong> Number of experiments: </strong> <?php selectExperiments($CompanyID); ?> </span> <br> <br>
-							<span> <strong> Last times logged in: </strong> <br> <?php selectLoggedInUsers($CompanyID); ?> </span>
+							<span> <strong> Last logged in: </strong> <br> <?php selectLoggedInUsers($CompanyID); ?> </span>
 							
                         </div>
                     </div>
@@ -1454,10 +1493,16 @@ function selectCompanyInfo($CompanyID)
                     <div class="content">
                         <div class="row">
                             <div onclick="assignMentor()" class="mentor-preview col-md-3">
+                                <div class="container-fluid">
                                 <a class="clientbutton" href="#">
                                     <img id="profile-pic" src="../../Main/Files/Images/add.svg" alt="Assign Mentor">
-                                    <h4> Assign Mentor </h4>
                                 </a>
+                                    <div id="unassign">
+                                        <a class="clientbutton" href="#">
+                                            <h4> Assign Mentor </h4>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                             <?php selectCompanyMentors(secure($_GET["id"])); ?>
                         </div>
@@ -2403,6 +2448,7 @@ function selectQuestionsView($ExperimentID)
             WHERE e.ID = '$ExperimentID'";
 
     $i = 1;
+    $counter = 0;
 
     if($data = Query($sql))
     {
@@ -2410,16 +2456,28 @@ function selectQuestionsView($ExperimentID)
         {
             $ID = $row["ID"];
             $Question = $row["Question"];
+            $counter++;
+
 
             ?>
             <div id="questionDiv">
-                <div id="question<?php echo $ID?>">
-                    <textarea disabled id="question" name="question<?php echo $ID?>"><?php echo $Question?></textarea>
-                    <div id="answers">
+                <div id="question<?php echo $ID;?>" class="content">
+                    <div class="text">
+                        <h3>Question <?php echo $counter; ?></h3><h3>Answer(s)</h3>
+                    </div>
+
+
+                    <div class="questions">
+                      <textarea disabled id="question" name="question<?php echo $ID?>"><?php echo $Question?></textarea>
+                    </div>
+
+                    <div id="answers<?php echo $ID?>" class="answers">
                         <?php $i  = selectanswersView($ID, $i); ?>
                     </div>
+
                 </div>
             </div>
+
             <?php
         }
     }
