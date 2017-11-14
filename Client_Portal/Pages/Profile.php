@@ -34,6 +34,7 @@
 						<h1><?php echo $data[1]; ?></h1>
 					</div>
 				</div>
+				
 				<div class="info">
 					<div class="title">
 						<h1>Information</h1>
@@ -71,6 +72,7 @@
 								</select></br></br>
 								<input type="submit" name="submit" value="Save">
 							</form>
+							<a href="index.php"><button> Cancel </button></a>
 						</div>
 						<div class="info2">
 							<h1>Change password</h1><br>

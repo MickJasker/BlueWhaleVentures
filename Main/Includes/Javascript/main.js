@@ -243,6 +243,28 @@ function creatementor(){
     }
 }
 
+//add admin form
+function createadmin(){
+
+    var modal = document.getElementById('adminform');
+    var span = document.getElementsByClassName("close")[1];
+
+    //als je op de knop add client drukt verschijnt de form
+        modal.style.display = "block";
+
+    // als je op het kruisje drukt sluit het element
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    //als je buiten het element klikt sluit het element
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+
 //assign mentor form
 function assignMentor(){
 

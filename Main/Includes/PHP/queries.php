@@ -2300,7 +2300,7 @@ function selectPrototype($ExperimentID)
             $Media2 = $row["Media2"];
             $Explanation2 = $row["Explanation2"];
             ?>
-
+			<h2> Before: </h2>
             <input id="file1" type="hidden" name="file1">
             <label for="file1" style="display:none;" id="label1">Choose file</label><br>
 
@@ -2314,7 +2314,8 @@ function selectPrototype($ExperimentID)
             ?>
 
             <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br>
-
+			
+			<h2> After: </h2>
             <input id="file2" type="hidden" name="file2"><br>
             <label for="file2" style="display:none;" id="label2">Choose file</label><br>
 
