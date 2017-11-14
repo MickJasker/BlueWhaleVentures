@@ -57,7 +57,7 @@
 								}
 								?>
 
-								<input type="file" name="file2" id="file2"></br>
+								<input type="file" name="file2" id="file2"><label for="file2">Choose logo</label></br>
                                 <h1>Company information</h1></br>
 								<input type="text" name="companyName" placeholder="Company name" value="<?php echo $data[4]; ?>"> <br>
 								<textarea name="companyDescription" placeholder="Company description"> <?php echo $data[5]; ?>	</textarea><br><br>
