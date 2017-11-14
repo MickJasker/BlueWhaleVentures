@@ -2318,14 +2318,12 @@ function selectPrototype($ExperimentID, $path)
             {
                 
                 ?>
-
                 <img src="<?php echo $path ?><?php echo $Media1 ?>" alt='Prototype 1'><br>
-                <input id="file1" type="hidden" name="file1"><br>
-                <label for="file1" style="display:none;" id="label1">Choose file</label><br>
-
                 <?php
             }
             ?>
+			<input id="file1" type="hidden" name="file1"><br>
+            <label id="label1" for="file1" style="display:none;" >Choose file</label><br>
 
             <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br>
 			<h2> After: </h2>
@@ -2334,16 +2332,14 @@ function selectPrototype($ExperimentID, $path)
 			array_push($OldArray,$Media2);
             if ($Media2 != "") { 
                 ?>
-
-
                 <img src="<?php echo $path ?><?php echo $Media2 ?>" alt="Prototype 2"><br>
-                <input id="file2" type="hidden" name="file2"><br>
-                <label for="file2" style="display:none;" id="label2">Choose file</label><br>
-
                 <?php
 
             }
             ?>
+			
+			<input id="file2" type="hidden" name="file2"><br>
+            <label id="label2" for="file2" style="display:none;">Choose file</label><br>
 
             <textarea disabled class="textarea1" name="explanation2" placeholder="Explain your prototype."><?php echo $Explanation2?></textarea> <br/>
             <input id="submit1" type="hidden" name="save" value="Save"><br>

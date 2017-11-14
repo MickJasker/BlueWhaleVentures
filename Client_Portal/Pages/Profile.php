@@ -85,13 +85,7 @@
 					</div>
 				</div>
 
-
-
-
-
 				<?php
-
-
 						if (isset($_POST['submit']))
 						{
 							$name = secure($_POST['name']);
@@ -141,16 +135,6 @@
 								$check = false;
 								echo "No branch has been choosen";
 							}
-							else if (empty($_FILES['file1']['name']) || $data[2] == "")
-							{
-								$check = false;
-								echo "Please upload a profile picture";
-							}
-							else if (empty($_FILES['file2']['name']) || $data[6] == "")
-							{
-								$check = false;
-								echo "Please upload a logo picture";
-							}
 							
 							if (!empty($_FILES['file1']['name']))
 							{
@@ -164,6 +148,14 @@
 									$check = false;
 								}
 							}
+							else
+							{
+								if ($data[2] == "")
+								{
+									$check = false;
+									echo "Please upload a profile picture";
+								}								
+							}
 							
 							if (!empty($_FILES['file2']['name']))
 							{
@@ -176,6 +168,14 @@
 								if (uploadCheck($file2_name, $file2_tmp_name, $file2_size, $type, $path2) == false) {
 									$check = false;
 								}
+							}
+							else
+							{
+								if ($data[7] == "")
+								{
+									$check = false;
+									echo "Please upload a logo picture";
+								}								
 							}
 
 
