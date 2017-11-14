@@ -1248,7 +1248,6 @@ function checkExperimentIDBachelor($ID, $CompanyID)
     }
 
     header('Location: ../index.php');
-    return false;
 }
 
 function checkBachelor($BachelorID, $CompanyID)
@@ -1260,12 +1259,10 @@ function checkBachelor($BachelorID, $CompanyID)
 
     if($data = Query($sql))
     {
-        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-        return $row["CompanyID"];
+        return $BachelorID;
     }
 
     header('Location: ../index.php');
-    return false;
 }
 
 function checkExperimentIDMentor($ID, $UserID)
@@ -1473,13 +1470,13 @@ function selectCompanyInfo($CompanyID)
                     </div>
                 </section>
                 <section class="block">
-                    <div class="title col-md-4">
-                        <h3>Analytics</h3>
-                    </div>
                     <div class="content">
-                        <div class="container-fluid">
-							<br> <span> <strong> Number of experiments: </strong> <?php selectExperiments($CompanyID); ?> </span> <br> <br>
-							<span> <strong> Last logged in: </strong> <br> <?php selectLoggedInUsers($CompanyID); ?> </span>
+                        <div class="title col-md-4">
+                            <h3>Analytics</h3>
+                        </div>
+                        <div class="container-fluid info">
+							<br> <span> <strong> Number of experiments: </strong></span> <?php selectExperiments($CompanyID); ?> <br> <br>
+							<span> <strong> Last logged in: </strong></span> <br> <?php selectLoggedInUsers($CompanyID); ?>
 							
                         </div>
                     </div>

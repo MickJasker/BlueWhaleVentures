@@ -2,6 +2,15 @@
 	require '../../../Main/Includes/PHP/functions.php';
 	$ID = checkExperimentIDBachelor(secure($_GET["id"]), $_SESSION["UserID"]);
 	$UserID = $_SESSION["UserID"];
+
+    if (isset($_POST['addFeedback']))
+    {
+        $feedback = secure($_POST["feedbackContent"]);
+        if (!insertFeedback($ID, $UserID, $feedback))
+        {
+            echo "Error adding the feedback";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -30,23 +39,7 @@
             <textarea id="text" name="feedbackContent"> </textarea> <br>
             <input type="submit" name="addFeedback" value="Add feedback">
         </form>
-
     </div>
-    <?php
-    if (isset($_POST['addFeedback']))
-    {
-        $feedback = secure($_POST["feedbackContent"]);
-        if (insertFeedback($ID, $UserID, $feedback))
-        {
-            header("Location: experiment.php?id=" . $ID);
-        }
-        else
-        {
-            echo "Error adding the feedback";
-        }
-
-    }
-    ?>
     <?php getFeedback($ID); ?>
 </main>
 </body>
