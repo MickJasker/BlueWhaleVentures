@@ -7962,7 +7962,7 @@ footer .right {
   margin: 10px 0 4vh 0;
 }
 #wrapper-designSheet main form {
-  margin: 80px;
+  margin: 0 80px 80px 80px;
   margin-bottom: 0px;
 }
 #wrapper-designSheet main form textarea {
@@ -8380,7 +8380,8 @@ footer .right {
   border: none;
   margin-bottom: 1%;
 }
-#wrapper-profile .content .info .text #file1 {
+#wrapper-profile .content .info .text #file1,
+#wrapper-profile .content .info .text #file2 {
   display: none;
 }
 #wrapper-profile .content .info .text label {
