@@ -42,7 +42,7 @@
 
 					<div class="text">
 						<div class="info1">
-							<br id="form" action="#" method="POST" enctype="multipart/form-data">
+							<form id="form" action="#" method="POST" enctype="multipart/form-data">
 								<h1>Upload profile picture:</h1><br><br> <input type="file" name="file1" id="file1"><label for="file1">Choose image</label>
 								<p>Name</p>
 								<input type="text" name="name" placeholder="Name" value="<?php echo $data[1]; ?>"><br><br>
