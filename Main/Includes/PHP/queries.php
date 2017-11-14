@@ -1248,7 +1248,6 @@ function checkExperimentIDBachelor($ID, $CompanyID)
     }
 
     header('Location: ../index.php');
-    return false;
 }
 
 function checkBachelor($BachelorID, $CompanyID)
@@ -1260,12 +1259,10 @@ function checkBachelor($BachelorID, $CompanyID)
 
     if($data = Query($sql))
     {
-        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-        return $row["CompanyID"];
+        return $BachelorID;
     }
 
     header('Location: ../index.php');
-    return false;
 }
 
 function checkExperimentIDMentor($ID, $UserID)
