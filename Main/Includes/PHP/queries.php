@@ -650,14 +650,14 @@ function getExperimentsPreviewBachelor($CompanyID)
 
     if ($data = query($sql))
     {
-        echo "<ul style=list-style-type:none>";
+        echo "<ul id='experiments-list'>";
 
         while ($row = $data->fetch_assoc())
         {
             echo "<li class='experiment-preview'><a href=../../../" . $_SESSION['Role'] . "_Portal/Pages/bachelorGroup/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br><hr>";
         }
 
-        echo "<li><a href=../../../" . $_SESSION['Role'] . "_Portal/Pages/bachelorGroup/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
+        echo "<li class='experiment-preview'><a href=../../../" . $_SESSION['Role'] . "_Portal/Pages/bachelorGroup/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
         echo "</ul>";
     }
     else
@@ -676,14 +676,14 @@ function getExperimentsPreviewMentor($CompanyID)
 
     if ($data = query($sql))
     {
-        echo "<ul style=list-style-type:none>";
+        echo "<ul id='experiments-list'>";
 
         while ($row = $data->fetch_assoc())
         {
             echo "<li class='experiment-preview'><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br><hr>";
         }
 
-        echo "<li><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
+        echo "<li class='experiment-preview'><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
         echo "</ul>";
     }
 }
@@ -1589,7 +1589,7 @@ function selectCompanyInfoGutted($CompanyID)
                 <section class="block">
                     <div class="content">
                         <div class="container-fluid logo">
-                            <img src="../<?php echo $Logo ?>">
+                            <img src="<?php echo $Logo ?>">
                         </div>
                         <div class="container-fluid discription">
                             <h3><?php echo $Name ?></h3>
@@ -1598,31 +1598,34 @@ function selectCompanyInfoGutted($CompanyID)
                         </div>
                     </div>
                 </section>
-                <section class="block">
-                    <div class="title-mentor col-md-4">
-                        <h3>Company Information</h3>
-                    </div>
+                <section class="block company-info">
                     <div class="content">
-                        <div class="container-fluid logo">
+                        <div class="title col-md-4">
+                        <h3>Company Information</h3>
+                        </div>
+                        <div class="container-fluid info">
                             <p>
-                                Email: <?php echo $Email ?> <br/>
-                                Phone: <?php echo $Phone ?> <br/>
-                                Address: <?php echo $Address ?> <br/>
+                                <span id="email">Email:</span> <?php echo $Email ?> <br/>
+                                <span id="phone">Phone:</span> <?php echo $Phone ?> <br/>
+                                <span id="adress">Address:</span> <?php echo $Address ?> <br/>
                             </p>
                         </div>
                     </div>
                 </section>
 
-                    <section class="block col-md-4">
-                        <div class="content">
-                            <div class="container-fluid title">
-                                <h3>Experiments</h3>
-                            </div>
-                            <div class="container-fluid">
-                                <?php getExperimentsPreviewBachelor(secure($_GET["id"])); ?>
-                            </div>
+            <div class="row mentor-row">
+
+                <section class="block-experiments col-md-4">
+                    <div class="content">
+                        <div class="container-fluid title-experiments">
+                            <h3>Experiments</h3>
                         </div>
-                    </section>
+                        <div class="container-fluid">
+                            <?php getExperimentsPreviewBachelor(secure($_GET["id"])); ?>
+                        </div>
+                    </div>
+                </section>
+
             </div>
         </div>
 
@@ -1654,7 +1657,7 @@ function selectCompanyInfoGuttedMentor($CompanyID)
                 <section class="block">
                     <div class="content">
                         <div class="container-fluid logo">
-                            <img src="<?php echo $Logo ?>">
+                            <img src="../<?php echo $Logo ?>">
                         </div>
                         <div class="container-fluid discription">
                             <h3><?php echo $Name ?></h3>
@@ -1663,24 +1666,26 @@ function selectCompanyInfoGuttedMentor($CompanyID)
                         </div>
                     </div>
                 </section>
-                <section class="block">
-                    <div class="title-mentor col-md-4">
-                        <h3>Company Information</h3>
-                    </div>
+                <section class="block company-info">
                     <div class="content">
-                        <div class="container-fluid logo">
+                        <div class="title col-md-4">
+                        <h3>Company Information</h3>
+                        </div>
+                        <div class="container-fluid info">
                             <p>
-                                Email: <?php echo $Email ?> <br/>
-                                Phone: <?php echo $Phone ?> <br/>
-                                Address: <?php echo $Address ?> <br/>
+                                <span id="email">Email:</span> <?php echo $Email ?> <br/>
+                                <span id="phone">Phone:</span> <?php echo $Phone ?> <br/>
+                                <span id="adress">Address:</span> <?php echo $Address ?> <br/>
                             </p>
                         </div>
                     </div>
                 </section>
 
-                <section class="block col-md-4">
+            <div class="row mentor-row">
+
+                <section class="block-experiments col-md-4">
                     <div class="content">
-                        <div class="container-fluid title">
+                        <div class="container-fluid title-experiments">
                             <h3>Experiments</h3>
                         </div>
                         <div class="container-fluid">
@@ -1688,6 +1693,7 @@ function selectCompanyInfoGuttedMentor($CompanyID)
                         </div>
                     </div>
                 </section>
+
             </div>
         </div>
 

@@ -824,8 +824,8 @@ body {
 			margin: 7% 0 5% 10px;
 
 			//row
-			.row{
-				.block{
+			.row {
+				.block {
 					position: relative;
 					float: left;
 					width: 32%;
@@ -835,19 +835,19 @@ body {
 					min-height: 35vh;
 					background-color: @offwhite;
 
-					.content{
+					.content {
 
 						width: 100%;
 						background-color: @offwhite;
 						height: 35vh;
 						margin: 0;
 
-						.title{
+						.title {
 
 							background-color: @blue;
 							width: 100%;
 							height: 20%;
-							
+
 							h3 {
 								color: @white;
 							}
@@ -860,14 +860,15 @@ body {
 							overflow: auto;
 
 
-							img{
+
+							img {
 								max-width: 100%;
 								max-height: 100%;
 								position: relative;
 								height: auto;
 							}
 
-							span{
+							span {
 
 								color: @blue;
 								font-size: 20px;
@@ -880,7 +881,7 @@ body {
 								font-size: 20px;
 							}
 
-							#traject{
+							#traject {
 								margin-top: 6%;
 							}
 
@@ -913,7 +914,7 @@ body {
 							}
 						}
 
-						.discription{
+						.discription {
 							background-color: @blue;
 							color: @white;
 							display: inline-block;
@@ -922,11 +923,11 @@ body {
 							width: 100%;
 							word-wrap: break-word;
 
-							h3{
+							h3 {
 								margin: 2% 0 0 0;
 							}
 
-							p{
+							p {
 								color: @white;
 							}
 						}
@@ -1017,7 +1018,7 @@ body {
 					}
 				}
 
-				.block-experiments{
+				.block-experiments {
 
 					position: relative;
 					background-color: @offwhite;
@@ -1027,8 +1028,8 @@ body {
 					min-height: 35vh;
 					margin-left: 15px;
 
-					.content{
-						.title-experiments{
+					.content {
+						.title-experiments {
 
 							background-color: @blue;
 							width: 100%;
@@ -1041,9 +1042,9 @@ body {
 							}
 						}
 
-						.container-fluid{
+						.container-fluid {
 
-							#experiments-list{
+							#experiments-list {
 
 								list-style-type: none;
 								padding-left: 0;
@@ -1053,7 +1054,7 @@ body {
 									margin-bottom: 5px;
 								}
 
-								.experiment-preview{
+								.experiment-preview {
 									text-decoration: none;
 
 									a {
@@ -1067,637 +1068,635 @@ body {
 						}
 					}
 				}
-
 			}
 		}
 
-
-#wrapper-experiment {
-	background-image: url("../../Files/Images/stockImages/stock (15).jpg");
-	background-size: cover;
-	#wrapper-createExperiment {
-		padding-top: 80px;
-		.row {
-			section {
-				background-color: rgba(0, 153, 255, 0.9);
-				height: calc(~"100vh - 80px");
-				div {
-					background-color: @white;
-					margin: 100px;
-					padding: 30px;
-					form {
-						input {
-							padding: 5px;
-							border: none;
-							background-color: @offwhite;
-							color: @grey;
-							margin-top: 5px;
-							&:focus {
-								background-color: @white;
-								transition: 0.2s ease;
+		#wrapper-experiment {
+			background-image: url("../../Files/Images/stockImages/stock (15).jpg");
+			background-size: cover;
+			#wrapper-createExperiment {
+				padding-top: 80px;
+				.row {
+					section {
+						background-color: rgba(0, 153, 255, 0.9);
+						height: calc(~"100vh - 80px");
+						div {
+							background-color: @white;
+							margin: 100px;
+							padding: 30px;
+							form {
+								input {
+									padding: 5px;
+									border: none;
+									background-color: @offwhite;
+									color: @grey;
+									margin-top: 5px;
+									&:focus {
+										background-color: @white;
+										transition: 0.2s ease;
+									}
+								}
+								textarea {
+									padding: 5px;
+									border: none;
+									background-color: @offwhite;
+									color: @grey;
+									margin-top: 5px;
+									width: 70%;
+									height: 150px;
+									transition: 0.3s ease;
+									&:focus {
+										background-color: @white;
+										transition: 0.3s ease;
+									}
+								}
+								label {
+									padding: 5px;
+									background-color: @blue;
+									color: white;
+									margin-top: 5px;
+									max-width: 40%;
+									transition: 0.3s ease;
+									word-wrap: break-word;
+									font-weight: normal;
+									&:hover {
+										background-color: @grey;
+										transition: 0.3s ease;
+										cursor: pointer;
+									}
+								}
+								#button {
+									padding: 5px;
+									background-color: @blue;
+									color: white;
+									margin-top: 5px;
+									transition: 0.3s ease;
+									&:hover {
+										background-color: @grey;
+										transition: 0.3s ease;
+									}
+								}
+								#file1 {
+									display: none;
+								}
 							}
-						}
-						textarea {
-							padding: 5px;
-							border: none;
-							background-color: @offwhite;
-							color: @grey;
-							margin-top: 5px;
-							width: 70%;
-							height: 150px;
-							transition: 0.3s ease;
-							&:focus {
-								background-color: @white;
-								transition: 0.3s ease;
-							}
-						}
-						label {
-							padding: 5px;
-							background-color: @blue;
-							color: white;
-							margin-top: 5px;
-							max-width: 40%;
-							transition: 0.3s ease;
-							word-wrap: break-word;
-							font-weight: normal;
-							&:hover {
-								background-color: @grey;
-								transition: 0.3s ease;
-								cursor: pointer;
-							}
-						}
-						#button {
-							padding: 5px;
-							background-color: @blue;
-							color: white;
-							margin-top: 5px;
-							transition: 0.3s ease;
-							&:hover {
-								background-color: @grey;
-								transition: 0.3s ease;
-							}
-						}
-						#file1 {
-							display: none;
 						}
 					}
 				}
 			}
 		}
-	}
-}
 
-#wrapper-experimentExecuteable {
-	text-align: center;
-	display: inline-block;
-	background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
-	background-size: cover;
-	main {
-		padding-top: 80px;
-
-		#experimentinfo{
-			margin-bottom: 2%;
-		}
-
-		#textdiv {
-
-			width: 60%;
-			position: relative;
-			margin: auto;
-
-			h1 {
-				font-size: 24px;
-			}
-			h2 {
-				color: @blue;
-				float: left;
-			}
-
-			#text {
-				width: 100%;
-				height: 20vh;
-				position: relative;
-				padding: 10px;
-			}
-
-			input {
-				min-width: 20%;
-				height: 5vh;
-				position: relative;
-				font-size: 1.5vh;
-				font-weight: normal;
-				outline: none;
-				border: none;
-				float: left;
-				margin: 1.5% 0 2% 0;
-			}
-		}
-
-		#feedback{
-			position: relative;
-			width: 60%;
-			height: auto;
-			margin: auto;
-		}
-		a {
-			margin: 25px;
-			color: white;
-			button {
-				min-width: 200px;
-				font-size: 18px;
-				height: 35px;
-				padding: 5px;
-				border: none;
-				transition: .2s ease;
-
-				&:hover {
-					cursor: pointer;
-				}
-			}
-		}
-		.is-disabled {
-			background-color: @grey;
-
-		}
-		.feedback {
-			margin: 50px 15% 50px 15% ;
-			background-color: @offwhite;
-			border: solid 1px;
-			border-color: @grey;
+		#wrapper-experimentExecuteable {
+			text-align: center;
 			display: inline-block;
-			padding: 10px;
-			border-radius: 5px;
-			position: relative;
-			left: 0;
-			width: 70%;
+			background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
+			background-size: cover;
+			main {
+				padding-top: 80px;
 
-			.feedbackUser {
-				width: 100%;
-				height: 28vh;
-				padding: 10px;
-				border-radius: 5px;
-				position: relative;
-				color: white;
+				#experimentinfo {
+					margin-bottom: 2%;
+				}
 
-				h2{
+				#textdiv {
+
+					width: 60%;
+					position: relative;
+					margin: auto;
+
+					h1 {
+						font-size: 24px;
+					}
+					h2 {
+						color: @blue;
+						float: left;
+					}
+
+					#text {
+						width: 100%;
+						height: 20vh;
+						position: relative;
+						padding: 10px;
+					}
+
+					input {
+						min-width: 20%;
+						height: 5vh;
+						position: relative;
+						font-size: 1.5vh;
+						font-weight: normal;
+						outline: none;
+						border: none;
+						float: left;
+						margin: 1.5% 0 2% 0;
+					}
+				}
+
+				#feedback {
+					position: relative;
+					width: 60%;
+					height: auto;
 					margin: auto;
 				}
+				a {
+					margin: 25px;
+					color: white;
+					button {
+						min-width: 200px;
+						font-size: 18px;
+						height: 35px;
+						padding: 5px;
+						border: none;
+						transition: .2s ease;
 
-				.picdiv{
-					position: relative;
-					float: left;
-					margin-top: .5vh;
-					margin-left: 12%;
+						&:hover {
+							cursor: pointer;
+						}
+					}
+				}
+				.is-disabled {
+					background-color: @grey;
 
-					width: 25vh;
-					height: 25vh;
-					display: inline-block;
-					overflow: hidden;
-					border-radius: 50%;
+				}
+				.feedback {
+					margin: 50px 15% 50px 15%;
+					background-color: @offwhite;
 					border: solid 1px;
 					border-color: @grey;
+					display: inline-block;
+					padding: 10px;
+					border-radius: 5px;
+					position: relative;
+					left: 0;
+					width: 70%;
 
-					img{
-
+					.feedbackUser {
+						width: 100%;
+						height: 28vh;
+						padding: 10px;
+						border-radius: 5px;
 						position: relative;
-						width: auto;
-						max-height: 100%;
-						min-height: 100%;
-						top: 50%;
-						transform: translate(-50%, -50%);
-						left: 50%;
-					}
-				}
-					#feedbacktext{
-						background-color: @blue;
-						float: right;
-						display: inline-block;
-						margin: 0;
-						text-align: left;
-						border-radius: 10px;
-						width: 50%;
-						height: 80%;
-						margin: 2vh 10% 0 0;
-						word-wrap: break-word;
-						overflow: auto;
-					}
-					#block {
-						margin: 10px;
-						width: 90%;
+						color: white;
 
-						h3 {
-							text-align: left;
+						h2 {
+							margin: auto;
 						}
-						p {
-							text-align: left;
+
+						.picdiv {
+							position: relative;
+							float: left;
+							margin-top: .5vh;
+							margin-left: 12%;
+
+							width: 25vh;
+							height: 25vh;
+							display: inline-block;
+							overflow: hidden;
+							border-radius: 50%;
+							border: solid 1px;
+							border-color: @grey;
+
+							img {
+
+								position: relative;
+								width: auto;
+								max-height: 100%;
+								min-height: 100%;
+								top: 50%;
+								transform: translate(-50%, -50%);
+								left: 50%;
+							}
 						}
+						#feedbacktext {
+							background-color: @blue;
+							float: right;
+							display: inline-block;
+							margin: 0;
+							text-align: left;
+							border-radius: 10px;
+							width: 50%;
+							height: 80%;
+							margin: 2vh 10% 0 0;
+							word-wrap: break-word;
+							overflow: auto;
+						}
+						#block {
+							margin: 10px;
+							width: 90%;
+
+							h3 {
+								text-align: left;
+							}
+							p {
+								text-align: left;
+							}
+						}
+
 					}
 
 				}
-
-		}
-	}
-}
-
-#wrapper-designSheet {
-	background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
-	background-size: cover;
-	background-attachment: fixed;
-	main {
-		padding-top: 80px;
-
-		.dsheet{
-			padding: 0 !important;
-		}
-
-		#switch {
-			position: fixed;
-			right: 80px;
-			top: 100px;
-			.switchActive {
-				border-bottom: @blue solid medium;
 			}
 		}
 
-		#edit1 {
-			padding: 5px 15px;
-			font-weight: normal;
-			border: none;
-			position: relative;
-			margin: 10px 0 4vh 80px;
-		}
+		#wrapper-designSheet {
+			background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
+			background-size: cover;
+			background-attachment: fixed;
+			main {
+				padding-top: 80px;
 
-		#submit1{
-			display: block;
-			padding: 5px 15px;
-			font-weight: normal;
-			border: none;
-			position: relative;
-			margin: 10px 0 4vh 0;
-		}
+				.dsheet {
+					padding: 0 !important;
+				}
+
+				#switch {
+					position: fixed;
+					right: 80px;
+					top: 100px;
+					.switchActive {
+						border-bottom: @blue solid medium;
+					}
+				}
+
+				#edit1 {
+					padding: 5px 15px;
+					font-weight: normal;
+					border: none;
+					position: relative;
+					margin: 10px 0 4vh 80px;
+				}
+
+				#submit1 {
+					display: block;
+					padding: 5px 15px;
+					font-weight: normal;
+					border: none;
+					position: relative;
+					margin: 10px 0 4vh 0;
+				}
 
 		form {
 			margin: 0 80px 80px 80px;
 			margin-bottom: 0px;
 
-			textarea {
-				width: 600px;
-				height: 150px;
-			}
-		}
-
-		input[name="submitDesignsheet"]{
-			display: block;
-			padding: 5px 15px;
-			font-weight: normal;
-			border: none;
-			position: relative;
-			margin: 10px 0 4vh 0;
-		}
-	}
-}
-
-#wrapper-error {
-	font-family: "open-sans", sans-serif;
-	background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
-	background-size: cover;
-	color: @grey;
-	main {
-		margin-top: 10px;
-		text-align: center;
-		h1 {
-			font-size: 200px;
-			font-weight: 800;
-		}
-		img {
-			border-bottom: solid medium @blue;
-		}
-		a {
-			color: @blue;
-			&:hover {
-				color: @grey;
-				text-decoration: none;
-			}
-		}
-	}
-}
-
-#wrapper-newPrototype {
-	padding-top: 80px;
-	background-image: url("../../Files/Images/stockImages/stock (20).jpg");
-	background-size: cover;
-	background-attachment: fixed;
-
-	main {
-
-		section {
-			background-color: rgba(0, 153, 255, 0.9);
-			min-height: calc(~"100vh - 80px");
-			padding-top: 80px;
-			div {
-				text-align: center;
-				background-color: white;
-				margin: 150px;
-				padding: 30px;
-				margin-bottom: 0;
-				margin-top: 0;
-				form {
 					textarea {
-						border: none;
-						background-color: @offwhite;
-						width: 100%;
-						resize: none;
-						height: 200px;
-						outline: thin solid rgba(0, 0, 0, 0);
-						transition: 0.3s ease;
-						margin: 5px;
-						padding: 5px;
-						&:focus {
-							background-color: @white;
-							outline: thin solid @blue;
-							transition: 0.3s ease;
-						}
-					}
-					label, input, button {
-						width: 100%;
-						padding: 5px;
-						margin: 5px;
-						font-size: 18px;
-						font-weight: normal;
-					}
-					#fileToUpload {
-						display: none;
+						width: 600px;
+						height: 150px;
 					}
 				}
-				#pitchForm, #questionForm {
-					margin: 0;
-					form {
-						textarea {
-							border: none;
-							background-color: @offwhite;
-							width: 100%;
-							resize: none;
-							height: 200px;
-							outline: thin solid rgba(0, 0, 0, 0);
-							transition: 0.3s ease;
-							padding: 5px;
-							&:focus {
-								background-color: @white;
-								outline: thin solid @blue;
+
+				input[name="submitDesignsheet"] {
+					display: block;
+					padding: 5px 15px;
+					font-weight: normal;
+					border: none;
+					position: relative;
+					margin: 10px 0 4vh 0;
+				}
+			}
+		}
+
+		#wrapper-error {
+			font-family: "open-sans", sans-serif;
+			background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
+			background-size: cover;
+			color: @grey;
+			main {
+				margin-top: 10px;
+				text-align: center;
+				h1 {
+					font-size: 200px;
+					font-weight: 800;
+				}
+				img {
+					border-bottom: solid medium @blue;
+				}
+				a {
+					color: @blue;
+					&:hover {
+						color: @grey;
+						text-decoration: none;
+					}
+				}
+			}
+		}
+
+		#wrapper-newPrototype {
+			padding-top: 80px;
+			background-image: url("../../Files/Images/stockImages/stock (20).jpg");
+			background-size: cover;
+			background-attachment: fixed;
+
+			main {
+
+				section {
+					background-color: rgba(0, 153, 255, 0.9);
+					min-height: calc(~"100vh - 80px");
+					padding-top: 80px;
+					div {
+						text-align: center;
+						background-color: white;
+						margin: 150px;
+						padding: 30px;
+						margin-bottom: 0;
+						margin-top: 0;
+						form {
+							textarea {
+								border: none;
+								background-color: @offwhite;
+								width: 100%;
+								resize: none;
+								height: 200px;
+								outline: thin solid rgba(0, 0, 0, 0);
 								transition: 0.3s ease;
+								margin: 5px;
+								padding: 5px;
+								&:focus {
+									background-color: @white;
+									outline: thin solid @blue;
+									transition: 0.3s ease;
+								}
+							}
+							label, input, button {
+								width: 100%;
+								padding: 5px;
+								margin: 5px;
+								font-size: 18px;
+								font-weight: normal;
+							}
+							#fileToUpload {
+								display: none;
 							}
 						}
-						label, input, button {
-							width: 100%;
-							padding: 5px;
-							border: none;
-							font-size: 18px;
-							font-weight: normal;
+						#pitchForm, #questionForm {
+							margin: 0;
+							form {
+								textarea {
+									border: none;
+									background-color: @offwhite;
+									width: 100%;
+									resize: none;
+									height: 200px;
+									outline: thin solid rgba(0, 0, 0, 0);
+									transition: 0.3s ease;
+									padding: 5px;
+									&:focus {
+										background-color: @white;
+										outline: thin solid @blue;
+										transition: 0.3s ease;
+									}
+								}
+								label, input, button {
+									width: 100%;
+									padding: 5px;
+									border: none;
+									font-size: 18px;
+									font-weight: normal;
+								}
+								#fileToUpload {
+									display: none;
+								}
+							}
 						}
-						#fileToUpload {
+					}
+				}
+			}
+		}
+
+		#wrapper-executable {
+			text-align: center;
+			background-image: url("../../Files/Images/stockImages/stock (5).jpg");
+			background-size: cover;
+			background-attachment: fixed;
+			main {
+				display: inline-block;
+				background-color: rgba(255, 255, 255, 0.9);
+				width: 100%;
+				min-height: 100vh;
+				padding-top: 80px;
+				#prototypeForm {
+					form {
+						input {
 							display: none;
 						}
 					}
 				}
-			}
-		}
-	}
-}
-
-#wrapper-executable {
-	text-align: center;
-	background-image: url("../../Files/Images/stockImages/stock (5).jpg");
-	background-size: cover;
-	background-attachment: fixed;
-	main {
-		display: inline-block;
-		background-color: rgba(255, 255, 255, 0.9);
-		width: 100%;
-		min-height: 100vh;
-		padding-top: 80px;
-		#prototypeForm {
-			form {
-				input {
-					display: none;
-				}
-			}
-		}
-		#prototypeForm , #interviewForm, #pitchForm, #chooseExecutionForm {
-			padding: 15px;
-			background-color: @white;
-			width: 90vw;
-			max-width: 1200px;
-			display: inline-block;
-			margin: 80px 0 5% 0;
-
-			#add{
-				margin-top: 20px;
-			}
-
-			form {
-				.execution-button {
-					margin-left: 6%;
-					margin-top: 4%;
-					margin-bottom: 5%;
-				}
-				#questionDiv{
-					overflow: auto;
-					margin-top: 20px;
-					float: right;
-					width: 100%;
-
-					.text{
-						width: 100%;
-						float: left;
-					}
-					h3 {
-						text-align: left;
-						padding-left: 20px;
-						float: left;
-						width: 50%;
-					}
-
-					.content{
-						float: left;
-						width: 100%;
-					}
-
-					button{
-						display: block;
-						float: right;
-						bottom: 0;
-						margin-right: 20px;
-					}
-				}
-
-				.questions{
-					float: left !important;
-					width: 50%;
-
-					textarea{
-						float: left;
-					}
-				}
-
-				.answers{
-					float: left !important;
-					width: 50%;
-
-					textarea{
-						float: right;
-					}
-				}
-
-				img {
-					max-width: 90%;
-				}
-
-				#submit1 {
+				#prototypeForm, #interviewForm, #pitchForm, #chooseExecutionForm {
+					padding: 15px;
+					background-color: @white;
+					width: 90vw;
+					max-width: 1200px;
 					display: inline-block;
-				}
-				textarea {
-					position: relative;
-					width: calc(~"100% - 40px");
-					height: 100px;
-					margin: 20px;
-					padding: 10px;
-					background-color: @offwhite;
-				}
+					margin: 80px 0 5% 0;
 
-			}
-			button, label, input{
-				background-color: @blue;
-				color: white;
-				transition: 0.2s ease;
-				border: none;
-				font-size: 18px;
-				margin-left: 20px;
-				padding: 5px;
-				width: 300px;
-				float: left;
-				display: inline-block;
-				&:hover {
-					background-color: @grey;
-				}
-			}
+					#add {
+						margin-top: 20px;
+					}
 
-			.save{
-				margin-top: 3%;
-				margin-bottom: 5%;
+					form {
+						.execution-button {
+							margin-left: 6%;
+							margin-top: 4%;
+							margin-bottom: 5%;
+						}
+						#questionDiv {
+							overflow: auto;
+							margin-top: 20px;
+							float: right;
+							width: 100%;
+
+							.text {
+								width: 100%;
+								float: left;
+							}
+							h3 {
+								text-align: left;
+								padding-left: 20px;
+								float: left;
+								width: 50%;
+							}
+
+							.content {
+								float: left;
+								width: 100%;
+							}
+
+							button {
+								display: block;
+								float: right;
+								bottom: 0;
+								margin-right: 20px;
+							}
+						}
+
+						.questions {
+							float: left !important;
+							width: 50%;
+
+							textarea {
+								float: left;
+							}
+						}
+
+						.answers {
+							float: left !important;
+							width: 50%;
+
+							textarea {
+								float: right;
+							}
+						}
+
+						img {
+							max-width: 90%;
+						}
+
+						#submit1 {
+							display: inline-block;
+						}
+						textarea {
+							position: relative;
+							width: calc(~"100% - 40px");
+							height: 100px;
+							margin: 20px;
+							padding: 10px;
+							background-color: @offwhite;
+						}
+
+					}
+					button, label, input {
+						background-color: @blue;
+						color: white;
+						transition: 0.2s ease;
+						border: none;
+						font-size: 18px;
+						margin-left: 20px;
+						padding: 5px;
+						width: 300px;
+						float: left;
+						display: inline-block;
+						&:hover {
+							background-color: @grey;
+						}
+					}
+
+					.save {
+						margin-top: 3%;
+						margin-bottom: 5%;
+					}
+				}
 			}
 		}
-	}
-}
 
-#wrapper-profile {
+		#wrapper-profile {
 
-	.content {
-		top: 80px;
-		margin: 3% 3% 5% 3%;
-		position: absolute;
-		width: 94%;
-		height: auto;
-		padding: 0;
-
-		.profile {
-			width: 20%;
-			height: 43vh;
-			float: left;
-			position: fixed;
-
-			.picture {
-				background-color: @offwhite;
-				width: 38vh;
-				height: 38vh;
-				position: relative;
-				display: inline-block;
-				overflow: hidden;
-				border-radius: 50%;
-				border: solid 1px;
-				border-color: @grey;
-
-				img {
-					position: relative;
-					width: auto;
-					max-height: 100%;
-					min-height: 100%;
-					top: 50%;
-					transform: translate(-50%, -50%);
-					left: 50%;
-				}
-			}
-
-			.name {
-				width: 38vh;
-				height: 5vh;
-
-				h1 {
-					padding: 2%;
-					color: @blue;
-					font-family: "Open Sans";
-					margin: 0;
-					font-size: 3vh;
-					font-weight: bold;
-					text-align: center;
-				}
-			}
-		}
-		.info {
-			width: 65%;
-			height: auto;
-			min-height: 65vh;
-			display: inline-block;
-			float: right;
-			position: relative;
-			font-family: "Open Sans";
-
-			.title {
-				width: 100%;
-				height: 5vh;
-				background-color: @blue;
-
-				h1 {
-					padding: 1vh 1vh 1vh 2vh;
-					color: @white;
-					margin: 0;
-					font-size: 3vh;
-					display: inline-block;
-				}
-			}
-			.text {
-				width: 100%;
-				height: auto;
-				background-color: @offwhite;
-				border: solid 1px;
-				border-top: none;
-				border-color: @grey;
-				padding: 2.5vh 2.5vh 2.5vh 3.5vh;
+			.content {
+				top: 80px;
+				margin: 3% 3% 5% 3%;
 				position: absolute;
-				margin-bottom: 5vh;
+				width: 94%;
+				height: auto;
+				padding: 0;
 
-				h1 {
-					color: @blue;
-					margin: 0;
-					padding-bottom: 2%;
-					font-size: 2.5vh;
-					display: inline-block;
-					font-weight: bold;
-				}
-
-				p {
-					font-size: 1.8vh;
-				}
-
-				.info1, .info2 {
+				.profile {
+					width: 20%;
+					height: 43vh;
 					float: left;
-					width: 50%;
+					position: fixed;
+
+					.picture {
+						background-color: @offwhite;
+						width: 38vh;
+						height: 38vh;
+						position: relative;
+						display: inline-block;
+						overflow: hidden;
+						border-radius: 50%;
+						border: solid 1px;
+						border-color: @grey;
+
+						img {
+							position: relative;
+							width: auto;
+							max-height: 100%;
+							min-height: 100%;
+							top: 50%;
+							transform: translate(-50%, -50%);
+							left: 50%;
+						}
+					}
+
+					.name {
+						width: 38vh;
+						height: 5vh;
+
+						h1 {
+							padding: 2%;
+							color: @blue;
+							font-family: "Open Sans";
+							margin: 0;
+							font-size: 3vh;
+							font-weight: bold;
+							text-align: center;
+						}
+					}
+				}
+				.info {
+					width: 65%;
 					height: auto;
+					min-height: 65vh;
+					display: inline-block;
+					float: right;
 					position: relative;
-					padding-bottom: 3%;
-				}
-				.info2 {
-					padding-left: 2vh;
-				}
+					font-family: "Open Sans";
+
+					.title {
+						width: 100%;
+						height: 5vh;
+						background-color: @blue;
+
+						h1 {
+							padding: 1vh 1vh 1vh 2vh;
+							color: @white;
+							margin: 0;
+							font-size: 3vh;
+							display: inline-block;
+						}
+					}
+					.text {
+						width: 100%;
+						height: auto;
+						background-color: @offwhite;
+						border: solid 1px;
+						border-top: none;
+						border-color: @grey;
+						padding: 2.5vh 2.5vh 2.5vh 3.5vh;
+						position: absolute;
+						margin-bottom: 5vh;
+
+						h1 {
+							color: @blue;
+							margin: 0;
+							padding-bottom: 2%;
+							font-size: 2.5vh;
+							display: inline-block;
+							font-weight: bold;
+						}
+
+						p {
+							font-size: 1.8vh;
+						}
+
+						.info1, .info2 {
+							float: left;
+							width: 50%;
+							height: auto;
+							position: relative;
+							padding-bottom: 3%;
+						}
+						.info2 {
+							padding-left: 2vh;
+						}
 
 				input, button {
 					padding: 1%;
@@ -1710,27 +1709,29 @@ body {
 					display: none;
 				}
 
-				label {
-					padding: 5px;
-					background-color: @blue;
-					color: white;
-					margin-top: 5px;
-					max-width: 30%;
-					transition: 0.3s ease;
-					word-wrap: break-word;
-					font-weight: normal;
-					&:hover {
-						background-color: @grey;
-						transition: 0.3s ease;
-						cursor: pointer;
+						label {
+							padding: 5px;
+							background-color: @blue;
+							color: white;
+							margin-top: 5px;
+							max-width: 30%;
+							transition: 0.3s ease;
+							word-wrap: break-word;
+							font-weight: normal;
+							&:hover {
+								background-color: @grey;
+								transition: 0.3s ease;
+								cursor: pointer;
+							}
+						}
+						.submit {
+							bottom: 0;
+							min-width: 30%;
+							position: absolute;
+							font-size: 1.5vh;
+							font-weight: normal;
+						}
 					}
-				}
-				.submit {
-					bottom: 0;
-					min-width: 30%;
-					position: absolute;
-					font-size: 1.5vh;
-					font-weight: normal;
 				}
 			}
 		}
