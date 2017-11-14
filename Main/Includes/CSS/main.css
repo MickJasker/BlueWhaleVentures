@@ -6900,8 +6900,23 @@ body {
 #wrapper-admin-body {
   background-image: url('../../Files/Images/stockImages/adminbackground.jpg');
 }
-#wrapper-client-body {
+#wrapper-client-welcome {
   background-image: url('../../Files/Images/stockImages/background2.jpg');
+  text-align: center;
+  height: 100%;
+}
+#wrapper-client-welcome h3 {
+  color: #0099ff;
+  margin-top: 35vh;
+}
+#wrapper-client-welcome a {
+  background-color: #0099ff;
+  padding: 7px;
+  color: #ffffff;
+  text-decoration: none;
+}
+#wrapper-client-welcome p {
+  font-size: 22px;
 }
 #wrapper-mentor-body {
   background-image: url('../../Files/Images/stockImages/background3.jpg');
@@ -7515,9 +7530,14 @@ footer .right {
 #wrapper-ClientProfile main .wrapper-profile .row .block .content .title {
   background-color: #0099ff;
   width: 100%;
+  height: 20%;
 }
 #wrapper-ClientProfile main .wrapper-profile .row .block .content .title h3 {
   color: #ffffff;
+}
+#wrapper-ClientProfile main .wrapper-profile .row .block .content .info {
+  width: 100%;
+  height: 80%;
 }
 #wrapper-ClientProfile main .wrapper-profile .row .block .content .logo {
   height: 80%;
@@ -8039,6 +8059,14 @@ footer .right {
 #wrapper-ClientProfile main #wrapper-executable main #pitchForm #add,
 #wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm #add {
   margin-top: 20px;
+}
+#wrapper-ClientProfile main #wrapper-executable main #prototypeForm form .execution-button,
+#wrapper-ClientProfile main #wrapper-executable main #interviewForm form .execution-button,
+#wrapper-ClientProfile main #wrapper-executable main #pitchForm form .execution-button,
+#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm form .execution-button {
+  margin-left: 6%;
+  margin-top: 4%;
+  margin-bottom: 5%;
 }
 #wrapper-ClientProfile main #wrapper-executable main #prototypeForm form #questionDiv,
 #wrapper-ClientProfile main #wrapper-executable main #interviewForm form #questionDiv,

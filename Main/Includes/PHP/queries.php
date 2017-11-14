@@ -1434,7 +1434,7 @@ function selectCompanyInfo($CompanyID)
                         <div class="title col-md-4">
                             <h3>Company Information</h3>
                         </div>
-                        <div class="container-fluid logo">
+                        <div class="container-fluid info">
                             <p>
                                 <span id="email">Email:</span> <?php echo $Email ?> <br/>
                                 <span id="phone">Phone:</span> <?php echo $Phone ?> <br/>
