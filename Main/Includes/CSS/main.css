@@ -7521,8 +7521,7 @@ footer .right {
   height: 30px;
 }
 .wrapper-profile {
-  margin-left: 10px;
-  margin-top: 7%;
+  margin: 7% 0 5% 10px;
 }
 .wrapper-profile .row .block {
   position: relative;
@@ -7582,6 +7581,9 @@ footer .right {
   max-height: 100%;
   position: relative;
   height: auto;
+  -webkit-transform: translate(0, 30%);
+  -ms-transform: translate(0, 30%);
+  transform: translate(0, 30%);
 }
 .wrapper-profile .row .block .content .discription {
   background-color: #0099ff;
@@ -7625,26 +7627,40 @@ footer .right {
 }
 .wrapper-profile .mentor-row .mentor .content {
   height: 100%;
+  padding: 15px;
 }
 .wrapper-profile .mentor-row .mentor .content .row {
   height: 35vh;
 }
 .wrapper-profile .mentor-row .mentor .content .row .mentor-preview {
   height: 100%;
+  margin-bottom: 50px !important;
 }
 .wrapper-profile .mentor-row .mentor .content .row .mentor-preview .container-fluid {
   overflow: hidden;
   height: 100%;
   width: 100%;
+  padding: 0;
+  border: solid 1px;
+  border-color: #a0a0a0;
 }
 .wrapper-profile .mentor-row .mentor .content .row .mentor-preview .container-fluid #profile-pic {
   height: 80%;
   width: auto;
   max-height: 100%;
+  -webkit-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  transform: translate(-50%);
+  margin-left: 50%;
 }
 .wrapper-profile .mentor-row .mentor .content .row .mentor-preview .container-fluid #unassign {
   width: 100%;
   height: 20%;
+  background-color: #0099ff;
+  padding: 10px;
+}
+.wrapper-profile .mentor-row .mentor .content .row .mentor-preview .container-fluid #unassign a {
+  color: #ffffff;
 }
 .wrapper-profile .mentor-row .mentor .content .row .mentor-preview .container-fluid #unassign .text {
   float: left;

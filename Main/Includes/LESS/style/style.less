@@ -817,8 +817,7 @@ body {
 }
 
 .wrapper-profile {
-			margin-left: 10px;
-			margin-top: 7%;
+			margin: 7% 0 5% 10px;
 
 			//row
 			.row {
@@ -898,6 +897,8 @@ body {
 								max-height: 100%;
 								position: relative;
 								height: auto;
+
+								transform: translate(0, 30%);
 							}
 						}
 
@@ -958,6 +959,7 @@ body {
 
 					.content{
 						height: 100%;
+						padding: 15px;
 
 						.row{
 
@@ -966,23 +968,35 @@ body {
 							.mentor-preview{
 
 								height: 100%;
+								margin-bottom: 50px !important;
 
 								.container-fluid {
 
 									overflow: hidden;
 									height: 100%;
 									width: 100%;
+									padding: 0;
+									border: solid 1px;
+									border-color: @grey;
 
 									#profile-pic{
 										height: 80%;
 										width: auto;
-
 										max-height: 100%;
+										transform: translate(-50%);
+										margin-left: 50%;
 									}
 
 									#unassign {
 										width: 100%;
 										height: 20%;
+										background-color: @blue;
+										padding: 10px;
+
+										a{
+											color: @white;
+
+										}
 
 										.text {
 											float: left;
