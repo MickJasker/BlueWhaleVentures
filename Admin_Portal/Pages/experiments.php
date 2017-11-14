@@ -20,6 +20,7 @@ require '../../Main/Includes/PHP/functions.php';
 		</header>
 
 		<Main id="wrapper-admin">
+            <a href="index.php"> <button style="float:left; margin: 15px;"> Back </button> </a>
 			<ul class="list">
      			<div class="content">
 		    		<?php getExperimentBlockInfo($_GET["id"]); ?>
