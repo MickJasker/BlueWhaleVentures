@@ -349,7 +349,8 @@ function getDesignSheetDataGutted($ExperimentID, $sheetType, $Language)
 {
     $sql = "SELECT SegmentID, Text  FROM `Answer` WHERE ExperimentID = '$ExperimentID' ORDER BY SegmentID";
     if ($data1 = query($sql)) {
-        echo '<form method="POST" action="#"><h1>Design sheet</h1>';
+        echo '<form method="POST" action="#"><h1>'.$sheetType.' Sheet</h1>';
+        echo '<div class="row">';
         $i = 0;
         while ($row1 = $data1->fetch_assoc()) {
             $id = $row1["SegmentID"];
@@ -359,9 +360,11 @@ function getDesignSheetDataGutted($ExperimentID, $sheetType, $Language)
             WHERE d.Type = '$sheetType' AND s.id = '$id'";
 
             if ($data2 = query($sql)) {
-                $row2 = mysqli_fetch_array($data2, MYSQLI_ASSOC);
-                echo '<h3>' . $row2["title"] . '</h3>';
-                echo '<textarea disabled class="textarea1" name="input' . $i . '" type="text" placeholder="' . $row2["description"] . '">' . $row1["Text"] . '</textarea>';
+                $row2 = mysqli_fetch_array($data2,MYSQLI_ASSOC);
+                echo '<div class="col-md-6 dsheet">';
+                echo '<h3>'.$row2["title"].'</h3>';
+                echo '<textarea disabled class="textarea1" name="input'.$i.'" type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
+                echo '</div>';
                 $i++;
             }
         }
@@ -1212,6 +1215,25 @@ function checkExperimentID($ID, $CompanyID)
         header('Location: index.php');
     }
 
+    return false;
+}
+
+function checkExperimentIDBachelor($ID, $CompanyID)
+{
+    $sql = "SELECT e.ID FROM Experiment e
+    INNER JOIN Company c ON e.CompanyID = c.ID
+    INNER JOIN Bachelor_Company bc ON bc.CompanyID = c.ID
+    WHERE e.ID = '$ID' AND bc.BachelorID = (
+        SELECT bc.BachelorID FROM Bachelor_Company bc
+        WHERE bc.CompanyID = '$CompanyID')";
+
+    if($data = Query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        return $row["ID"];
+    }
+
+    header('Location: ../index.php');
     return false;
 }
 
