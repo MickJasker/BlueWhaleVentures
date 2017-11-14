@@ -18,9 +18,9 @@ function editPage(textareas, type)
 	 
 	if (type == "prototype")
 	{
-		document.getElementById("file1").type = 'file';
-		document.getElementById("file2").type = 'file';
-		document.getElementById("label1").style.display = 'inline-block';
+		//document.getElementById("file1").type = 'file';
+		//document.getElementById("file2").type = 'file';
+		//document.getElementById("label1").style.display = 'inline-block';
 		document.getElementById("label2").style.display = 'inline-block';
 	}
 	 

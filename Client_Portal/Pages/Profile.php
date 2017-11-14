@@ -146,7 +146,7 @@
 								$check = false;
 								echo "Please upload a profile picture";
 							}
-							else if (empty($_FILES['file2']['name']) || $data[7] == "")
+							else if (empty($_FILES['file2']['name']) || $data[6] == "")
 							{
 								$check = false;
 								echo "Please upload a logo picture";
