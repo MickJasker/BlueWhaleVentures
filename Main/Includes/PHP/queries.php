@@ -151,8 +151,12 @@ function insertRoleInfo($userID)
     {
         return insertMentor($userID);
     }
+	
+	if ($role == "Admin")
+	{
+		return true;
+	}
 
-    //If admin, do nothing, admin currently has no extra information
 }
 
 function insertCompany($userID)
