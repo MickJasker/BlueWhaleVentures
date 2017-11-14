@@ -28,6 +28,19 @@ function checkEmailAvailability($email)
     return true;
 }
 
+//Gets the email from Login, if it doesn't exist, return true
+function checkEmailAvailability2($email)
+{
+    $sql = "SELECT Email FROM Login WHERE Email = '$email'";
+
+    if (query($sql))
+    {
+        return false;
+    }
+
+    return true;
+}
+
 //Get email and name from key, and check if it exists
 function getKey($key)
 {
