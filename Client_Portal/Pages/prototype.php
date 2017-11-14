@@ -34,9 +34,11 @@
             }
 
 
-            if (isset($_POST['save'])) {
-                $upload = false;
-                if (!empty($_FILES['file1']['name'])) {
+            if (isset($_POST['save'])) 
+			{
+                $upload = true;
+                if (!empty($_FILES['file1']['name'])) 
+				{
                     //Image check
                     $type = "img";
                     $path = "../Uploads/prototypeImage/";
@@ -44,9 +46,12 @@
                     $file1_tmp_name = $_FILES['file1']['tmp_name'];
                     $file1_size = $_FILES['file1']['size'];
 
-                    if (uploadCheck($file1_name, $file1_tmp_name, $file1_size, $type, $path) == false) {
+                    if (uploadCheck($file1_name, $file1_tmp_name, $file1_size, $type, $path) == false) 
+					{
                         echo " - Error uploading image - ";
-                    } else {
+                    } 
+					else 
+					{
                         $mainimageupload = true;
 
                             if ($OldMedia1 == "") {
@@ -76,7 +81,8 @@
                     $imagepath = $OldMedia1;
                 }
 
-                if (!empty($_FILES['file2']['name'])) {
+                if (!empty($_FILES['file2']['name'])) 
+				{
                     //Image check
                     $type2 = "img";
                     $path2 = "../Uploads/prototypeImage/";
@@ -87,19 +93,19 @@
                     if (uploadCheck($file2_name, $file2_tmp_name, $file2_size, $type2, $path2) == false) {
                         echo " - Error uploading image - ";
                     } else {
-                        $mainimageupload = true;
+                        $mainimageupload2 = true;
 
                             if ($OldMedia2 == "") {
 
                             }
                             else if (!unlink($OldMedia2)) {
                                     echo "error deleting old image";
-                                    $mainimageupload = false;
+                                    $mainimageupload2 = false;
                                 }
                             }
 
 
-                        if ($mainimageupload) {
+                        if ($mainimageupload2) {
                             //upload the image
                             $imageResult1 = uploadExecute($file2_name, $file2_tmp_name, $path2);
                             $upload = true;
@@ -110,15 +116,16 @@
                                 $upload = false;
                             }
                             }
-                        }
-                        else
-                        {
-                            $imagepath1 = $OldMedia2;
-                        }
+				}
+				else
+				{
+					$imagepath1 = $OldMedia2;
+				}
+						
                         if ($upload) {
                             //upload data to the database
                             if (updatePrototype($experimentID, $imagepath, $_POST['explanation1'], $imagepath1, $_POST['explanation2'])) {
-                                header("Location: prototype.php?experimentID".$experimentID);
+                                header("Location: prototype.php?experimentID=".$experimentID);
                             } else {
                                 echo "Something has gone wrong with uploading the data";
                             }
