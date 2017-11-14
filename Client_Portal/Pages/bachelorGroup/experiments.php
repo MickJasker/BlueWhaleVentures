@@ -1,6 +1,7 @@
 <?php 
 	require '../../../Main/Includes/PHP/functions.php';
 	checkSession('Client');
+	$UserID = checkBachelor(secure($_GET["id"]), $_SESSION["UserID"]);
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +25,7 @@
 		<Main id="wrapper-admin">
 			<ul class="list">
      			<div class="content">
+		    		<?php getExperimentBlockInfoBachelor($UserID); ?>
 				</div>
 			</ul>
 		</Main>
