@@ -40,7 +40,7 @@
             <input type="submit" name="addFeedback" value="Add feedback">
         </form>
     </div>
-    <?php getFeedback($ID); ?>
+    <?php getFeedbackBachelor($ID); ?>
 </main>
 </body>
 </html>

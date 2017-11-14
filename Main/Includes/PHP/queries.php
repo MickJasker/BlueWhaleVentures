@@ -1039,7 +1039,7 @@ function getFeedback($ID)
         ?>
             <div class="feedback container-fluid">
                 <h2> Feedback </h2>
-                <div>
+            <div>
         <?php
         while($row = $data->fetch_assoc())
         {
@@ -1063,13 +1063,11 @@ function getFeedback($ID)
                 }
             }
         }
-
         ?>
                 </div>
             </div>
         <?php
     }
-
 }
 
 function getFeedbackBachelor($ID)
@@ -1077,6 +1075,11 @@ function getFeedbackBachelor($ID)
     $sql = "SELECT Text, UserID FROM `Comment` WHERE ExperimentID = '$ID'";
     if ($data = query($sql))
     {
+        ?>
+            <div class="feedback container-fluid">
+                <h2> Feedback </h2>
+            <div>
+        <?php
         while($row = $data->fetch_assoc())
         {
             $UserID = $row["UserID"];
@@ -1091,16 +1094,19 @@ function getFeedbackBachelor($ID)
                     {
                         while($row3 = $data3->fetch_assoc())
                         {
-                            echo '<div class="feedbackUser row"><img class="col-sm-4" alt="profile picture" src="../'.$row2["ProfilePicture"].'">';
-                            echo '<div id="block" class="col-sm-8"><h3> ' . $row2["Name"] . '</h3><br>';
-                            echo '<p>' . $row["Text"] . '</p></div></div><br>';
+                            echo '<div class="feedbackUser row"><div class="picdiv"><img class="col-sm-4" alt="profile picture" src="../'.$row2["ProfilePicture"].'"></div>';
+                            echo '<div id="feedbacktext"><div id="block" class="col-sm-8"><h3> ' . $row2["Name"] . '</h3><br>';
+                            echo '<p>' . $row["Text"] . '</p></div></div></div><br>';
                         }
                     }
                 }
             }
         }
+        ?>
+                </div>
+            </div>
+        <?php
     }
-
 }
 
 function insertFeedback($experimentID, $UserID, $feedback)
