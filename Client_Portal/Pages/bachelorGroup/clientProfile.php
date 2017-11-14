@@ -1,7 +1,7 @@
 <?php
 	require '../../../Main/Includes/PHP/functions.php';
     checkSession('Client');
-    $ID = checkBachelor(secure($_GET["id"]), $_SESSION["UserID"]);
+    $ID = checkBachelor(secure($_GET["id"]), $_SESSION["CompanyID"]);
 ?>
 
 <!DOCTYPE HTML>

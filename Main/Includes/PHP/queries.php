@@ -28,6 +28,19 @@ function checkEmailAvailability($email)
     return true;
 }
 
+//Gets the email from Login, if it doesn't exist, return true
+function checkEmailAvailability2($email)
+{
+    $sql = "SELECT Email FROM Login WHERE Email = '$email'";
+
+    if (query($sql))
+    {
+        return false;
+    }
+
+    return true;
+}
+
 //Get email and name from key, and check if it exists
 function getKey($key)
 {
@@ -1235,7 +1248,6 @@ function checkExperimentIDBachelor($ID, $CompanyID)
     }
 
     header('Location: ../index.php');
-    return false;
 }
 
 function checkBachelor($BachelorID, $CompanyID)
@@ -1247,12 +1259,10 @@ function checkBachelor($BachelorID, $CompanyID)
 
     if($data = Query($sql))
     {
-        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-        return $row["CompanyID"];
+        return $BachelorID;
     }
 
     header('Location: ../index.php');
-    return false;
 }
 
 function checkExperimentIDMentor($ID, $UserID)
@@ -1460,13 +1470,13 @@ function selectCompanyInfo($CompanyID)
                     </div>
                 </section>
                 <section class="block">
-                    <div class="title col-md-4">
-                        <h3>Analytics</h3>
-                    </div>
                     <div class="content">
-                        <div class="container-fluid">
-							<br> <span> <strong> Number of experiments: </strong> <?php selectExperiments($CompanyID); ?> </span> <br> <br>
-							<span> <strong> Last logged in: </strong> <br> <?php selectLoggedInUsers($CompanyID); ?> </span>
+                        <div class="title col-md-4">
+                            <h3>Analytics</h3>
+                        </div>
+                        <div class="container-fluid info">
+							<br> <span> <strong> Number of experiments: </strong></span> <?php selectExperiments($CompanyID); ?> <br> <br>
+							<span> <strong> Last logged in: </strong></span> <br> <?php selectLoggedInUsers($CompanyID); ?>
 							
                         </div>
                     </div>
@@ -2292,28 +2302,26 @@ function selectPrototype($ExperimentID)
             $Explanation2 = $row["Explanation2"];
             ?>
 
-            <input id="file2" type="hidden" name="file1" id="fileToUpload">
-            <label for="file2" style="display:none;" id="label2">Choose file</label><br>
+            <input id="file1" type="hidden" name="file1">
+            <label for="file1" style="display:none;" id="label1">Choose file</label><br>
 
             <?php
-
+			array_push($OldArray,$Media1);
             if ($Media1 != "")
             {
-                array_push($OldArray,$Media1);
-                echo "<img src=echo $Media1 alt='Prototype 1'><br>";
+                
+                ?> <img src="<?php echo $Media1 ?>" alt='Prototype 1'><br> <?php
             }
             ?>
 
             <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br>
 
-            <input id="file3" type="hidden" name="file2" id="fileToUpload2"><br>
-            <label for="file3" style="display:none;" id="label3">Choose file</label><br>
+            <input id="file2" type="hidden" name="file2"><br>
+            <label for="file2" style="display:none;" id="label2">Choose file</label><br>
 
             <?php
-
-            if ($Media2 != "") {
-                array_push($OldArray,$Media2);
-
+			array_push($OldArray,$Media2);
+            if ($Media2 != "") { 
                 ?>
 
 
