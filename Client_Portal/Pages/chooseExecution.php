@@ -23,9 +23,9 @@
     <div id="chooseExecutionForm">
         <h1> Choose Execution </h1>
         <form id="form" action="#" method="POST">
-            <input type="submit" name="interview" value="Interview">
-            <input type="submit" name="pitch" value="Pitch">
-            <input type="submit" name="prototype" value="Prototype">
+            <input class="execution-button" type="submit" name="interview" value="Interview">
+            <input class="execution-button" type="submit" name="pitch" value="Pitch">
+            <input class="execution-button" type="submit" name="prototype" value="Prototype">
         </form>
     </div>
 </Main>
