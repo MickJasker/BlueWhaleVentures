@@ -16,7 +16,7 @@
         require "../nav_nosearch.php"
 		?>
 		</header>
-		<div id="wrapper-profile">
+		<main id="wrapper-profile">
 			<?php
 			$ID = $_SESSION["UserID"];
 			$data = getClientProfile($ID);

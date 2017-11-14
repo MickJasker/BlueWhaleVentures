@@ -1475,8 +1475,8 @@ function selectCompanyInfo($CompanyID)
                             <h3>Analytics</h3>
                         </div>
                         <div class="container-fluid info">
-							<br> <span> <strong> Number of experiments: </strong></span> <?php selectExperiments($CompanyID); ?> <br> <br>
-							<span> <strong> Last logged in: </strong></span> <br> <?php selectLoggedInUsers($CompanyID); ?>
+                            <br> <span> <strong> Number of experiments: </strong></span> <p><?php selectExperiments($CompanyID); ?></p> <br> <br>
+                            <span> <strong> Last logged in: </strong></span> <br> <p><?php selectLoggedInUsers($CompanyID); ?></p>
 							
                         </div>
                     </div>
