@@ -611,7 +611,7 @@ function getExperimentsPreview($CompanyID)
             echo "<li class='experiment-preview'><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br><hr>";
         }
 
-        echo "<li><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
+        echo "<li class='experiment-preview'><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
         echo "</ul>";
     }
     else
@@ -1334,12 +1334,14 @@ function selectCompanyMentors($CompanyID)
                     <div class="container-fluid">
                         <a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID']; ?>">
                             <img id="profile-pic" src="<?php echo $row['ProfilePicture']; ?>" alt="Mentor Profile">
-                            <h4> <?php echo $row ['Name'] ?> </h4>
                         </a>
-                        <div id="unassign">
-                            <a onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
-                                <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
-                            </a>
+                            <div id="unassign">
+                                <a class="text" href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $row['ID']; ?>">
+                                    <h4> <?php echo $row ['Name'] ?> </h4>
+                                </a>
+                                <a class="cross" onclick="return confirm('Are you sure you want to unassign the mentor?')" href="../../Admin_Portal/Pages/clientProfile.php?companyID=<?php echo $CompanyID; ?>&action=delete&id=<?php echo $row['ID']; ?>">
+                                    <img src="../../Main/Files/Images/close.png" alt="Unassign mentor">
+                                </a>
                         </div>
                     </div>
                 </div>
@@ -1394,10 +1396,10 @@ function selectCompanyInfo($CompanyID)
                     </div>
                 </section>
                 <section class="block company-info">
-                    <div class="title col-md-4">
-                        <h3>Company Information</h3>
-                    </div>
                     <div class="content">
+                        <div class="title col-md-4">
+                            <h3>Company Information</h3>
+                        </div>
                         <div class="container-fluid logo">
                             <p>
                                 <span id="email">Email:</span> <?php echo $Email ?> <br/>
@@ -1422,12 +1424,9 @@ function selectCompanyInfo($CompanyID)
                         <h3>Analytics</h3>
                     </div>
                     <div class="content">
-                        <div class="container-fluid title">
-
-                        </div>
                         <div class="container-fluid">
 							<br> <span> <strong> Number of experiments: </strong> <?php selectExperiments($CompanyID); ?> </span> <br> <br>
-							<span> <strong> Last times logged in: </strong> <br> <?php selectLoggedInUsers($CompanyID); ?> </span>
+							<span> <strong> Last logged in: </strong> <br> <?php selectLoggedInUsers($CompanyID); ?> </span>
 							
                         </div>
                     </div>
@@ -1441,10 +1440,16 @@ function selectCompanyInfo($CompanyID)
                     <div class="content">
                         <div class="row">
                             <div onclick="assignMentor()" class="mentor-preview col-md-3">
+                                <div class="container-fluid">
                                 <a class="clientbutton" href="#">
                                     <img id="profile-pic" src="../../Main/Files/Images/add.svg" alt="Assign Mentor">
-                                    <h4> Assign Mentor </h4>
                                 </a>
+                                    <div id="unassign">
+                                        <a class="clientbutton" href="#">
+                                            <h4> Assign Mentor </h4>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                             <?php selectCompanyMentors(secure($_GET["id"])); ?>
                         </div>
