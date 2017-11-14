@@ -232,7 +232,7 @@
 
 									if ($data[6] != "")
 									{
-										if (!unlink("../../".$data[6]))
+										if (!unlink($data[6]))
 										{
 											echo "error deleting old image";
 											$upload = false;
