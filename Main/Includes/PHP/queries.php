@@ -1366,7 +1366,7 @@ function getMentorAssignedBlockInfo($UserID)
 
 function selectCompanyMentors($CompanyID)
 {
-    $sql = "SELECT m.ID, u.Name, u.ProfilePicture FROM Mentor m
+    $sql = "SELECT u.ID, u.Name, u.ProfilePicture FROM Mentor m
     INNER JOIN User u ON u.ID = m.UserID
     INNER JOIN Mentor_Company mc ON mc.MentorID = m.ID
     INNER JOIN Company c ON c.ID = mc.CompanyID
