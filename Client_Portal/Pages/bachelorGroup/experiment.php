@@ -1,7 +1,7 @@
 <?php
 	require '../../../Main/Includes/PHP/functions.php';
-	$ID = checkExperimentIDBachelor(secure($_GET["id"]), $_SESSION["UserID"]);
-	$UserID = $_SESSION["UserID"];
+    checkSession('Client');  
+	$ID = checkExperimentIDBachelor(secure($_GET["id"]), $_SESSION["CompanyID"]);
 
     if (isset($_POST['addFeedback']))
     {
