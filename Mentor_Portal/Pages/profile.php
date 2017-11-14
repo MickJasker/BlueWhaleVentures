@@ -99,6 +99,10 @@
                             $check = false;
                             echo "The companyName is empty or not between 2 and 50 characters";
                         }
+						else if (empty($_FILES['file1']['name']) || $data[3] == "")
+						{
+							echo "Please upload a profile picture";
+						}
 						else if (!empty($_FILES['file1']['name']))
 						{
 							$type = "img";

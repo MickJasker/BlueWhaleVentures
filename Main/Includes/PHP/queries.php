@@ -349,7 +349,8 @@ function getDesignSheetDataGutted($ExperimentID, $sheetType, $Language)
 {
     $sql = "SELECT SegmentID, Text  FROM `Answer` WHERE ExperimentID = '$ExperimentID' ORDER BY SegmentID";
     if ($data1 = query($sql)) {
-        echo '<form method="POST" action="#"><h1>Design sheet</h1>';
+        echo '<form method="POST" action="#"><h1>'.$sheetType.' Sheet</h1>';
+        echo '<div class="row">';
         $i = 0;
         while ($row1 = $data1->fetch_assoc()) {
             $id = $row1["SegmentID"];
@@ -359,9 +360,11 @@ function getDesignSheetDataGutted($ExperimentID, $sheetType, $Language)
             WHERE d.Type = '$sheetType' AND s.id = '$id'";
 
             if ($data2 = query($sql)) {
-                $row2 = mysqli_fetch_array($data2, MYSQLI_ASSOC);
-                echo '<h3>' . $row2["title"] . '</h3>';
-                echo '<textarea disabled class="textarea1" name="input' . $i . '" type="text" placeholder="' . $row2["description"] . '">' . $row1["Text"] . '</textarea>';
+                $row2 = mysqli_fetch_array($data2,MYSQLI_ASSOC);
+                echo '<div class="col-md-6 dsheet">';
+                echo '<h3>'.$row2["title"].'</h3>';
+                echo '<textarea disabled class="textarea1" name="input'.$i.'" type="text" placeholder="'.$row2["description"].'">'.$row1["Text"].'</textarea>';
+                echo '</div>';
                 $i++;
             }
         }
@@ -671,8 +674,8 @@ function getExperimentsPreviewMentor($CompanyID)
 //Get experiment info
 function getExperiment($id)
 {
-    $header = "";
-    $name = "";
+    $header = "chooseExecution.php";
+    $name = "Choose execution";
     $send = '';
 
     $sql = "SELECT Preparation, Conclusion FROM Pitch WHERE ExperimentID = '$id'";
@@ -914,22 +917,17 @@ function getExperimentView($id)
     }
 
     //if the execution is a Prototype
-    $sql = "SELECT Explanation1, Explanation2 FROM Prototype WHERE ExperimentID = '$id'";
+    $sql = "SELECT * FROM Prototype WHERE ExperimentID = '$id'";
     if ($data = query($sql))
     {
         $header = "prototype.php";
-        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
-
-        if ($row["Explanation1"] == "")
-        {
-            $name = "Prototype";
-            $buttonstate = "";
-        }
-        else
-        {
-            $name = "No prototype added yet";
-        }
+        $name = "Prototype";
+        $buttonstate = "";
     }
+    else
+    {
+        $name = "No prototype added yet";
+    }    
 
     //Put information on screen
     $sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
@@ -1107,12 +1105,16 @@ function getMentorBlockInfo()
             $ProfilePicture = $row["ProfilePicture"];
             $Name = $row["Name"];
 
+            if ($ProfilePicture == "")
+            {
+                $ProfilePicture = "../../Main/Files/Images/User-Standard.png";
+            }
             ?>
 
             <li id="Block" class="col-lg-4">
                 <a href="../../Admin_Portal/Pages/mentorProfile.php?id=<?php echo $ID ?>">
                     <div class="BlockLogo">
-                        <img src="<?php echo $ProfilePicture; ?>" alt="Mentor Profile">
+                        <img src="<?php echo $ProfilePicture; ?>" alt="Mentor picture">
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Name ?> </h1>
@@ -1149,7 +1151,7 @@ function getExperimentBlockInfo($CompanyID)
             <li id="Block" class="col-lg-4">
                 <a href="../../<?php echo $_SESSION['Role'];?>_Portal/Pages/experiment.php?id=<?php echo $row['ID']; ?>">
                     <div class="BlockLogo">
-                        <img src="<?php echo $Thumbnail ?>" alt="Mentor Profile">
+                        <img src="<?php echo $Thumbnail ?>" alt="Experiment picture">
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Title ?> </h1>
@@ -1180,21 +1182,17 @@ function getExperimentBlockInfoBachelor($CompanyID)
             $Completed = $row["Completed"];
 
             ?>
-
             <li id="Block" class="col-lg-4">
                 <a href="../../../<?php echo $_SESSION['Role']; ?>_Portal/Pages/bachelorGroup/experiment.php?id=<?php echo $row['ID']; ?>">
                     <div class="BlockLogo">
-                        <img src="../<?php echo $Thumbnail ?>" alt="Experiment Thumbnail">
+                        <img src="../<?php echo $Thumbnail ?>" alt="Experiment picture">
                     </div>
                     <div class="BlockTitle">
                         <h1> <?php echo $Title ?> </h1>
                     </div>
                 </a>
             </li>
-
             <?php
-
-
         }
     }
 }
@@ -1212,6 +1210,42 @@ function checkExperimentID($ID, $CompanyID)
         header('Location: index.php');
     }
 
+    return false;
+}
+
+function checkExperimentIDBachelor($ID, $CompanyID)
+{
+    $sql = "SELECT e.ID FROM Experiment e
+    INNER JOIN Company c ON e.CompanyID = c.ID
+    INNER JOIN Bachelor_Company bc ON bc.CompanyID = c.ID
+    WHERE e.ID = '$ID' AND bc.BachelorID = (
+        SELECT bc.BachelorID FROM Bachelor_Company bc
+        WHERE bc.CompanyID = '$CompanyID')";
+
+    if($data = Query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        return $row["ID"];
+    }
+
+    header('Location: ../index.php');
+    return false;
+}
+
+function checkBachelor($BachelorID, $CompanyID)
+{
+    $sql = "SELECT bc.CompanyID FROM Bachelor_Company bc
+    INNER JOIN BachelorGroup b ON bc.BachelorID = b.ID
+    INNER JOIN Bachelor_Company bc2 ON bc2.BachelorID = b.ID
+    WHERE bc.CompanyID = '$CompanyID' AND bc2.companyID = '$BachelorID'";
+
+    if($data = Query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        return $row["CompanyID"];
+    }
+
+    header('Location: ../index.php');
     return false;
 }
 
@@ -2003,9 +2037,10 @@ function selectPitch($ExperimentID)
 
             Conclusion: <br/>
             <textarea disabled class="textarea1" name="conclusionText" placeholder="Conclusion of your pitch"><?php echo $Conclusion?></textarea> <br/>
-            <input id="submit1" type="hidden" name="save" value="Save">
-	        <input id="file1" type="hidden" name="file1" style="display:none;">
-	        <label id="label2" for="file1" style="display:none;">Upload an video of your pitch</label>
+            <input id="file1" type="hidden" name="file1" style="display:none;">
+	        <label id="label2" for="file1" style="display:none;">Upload a video of your pitch</label>
+			<input id="submit1" type="hidden" name="save" value="Save">
+	        
             <?php
         }
         return $Media;
@@ -2566,23 +2601,29 @@ function assignMentor($CompanyID, $Mentor)
             INNER JOIN User u ON u.ID = m.UserID
             WHERE u.Name = '$Mentor'";
 
-    if ($data = Query($sql)) {
-        while ($row = $data->fetch_assoc()) {
-
+    if ($data = Query($sql))
+    {
+        while ($row = $data->fetch_assoc())
+        {
             $MentorID = $row['ID'];
-
         }
 
-        $sql = "INSERT INTO `Mentor_Company`(`MentorID`, `CompanyID`) VALUES ('$MentorID','$CompanyID')";
-        if (query($sql)) {
+        $sql1 = "SELECT ID FROM Mentor_Company 
+                WHERE MentorID = '$MentorID' AND CompanyID = '$CompanyID'";
 
-        }
-        else {
-            echo "Shits fucked yo";
+        if (!Query($sql1))
+        {
+            $sql2 = "INSERT INTO `Mentor_Company`(`MentorID`, `CompanyID`) VALUES ('$MentorID','$CompanyID')";
+
+            if (Query($sql2))
+            {
+                echo "Succesfully assigned the mentor";
+            }
         }
     }
-    else {
-        echo "Shits fucked yo";
+    else
+    {
+        echo "Error adding mentors";
     }
 }
 
@@ -2829,6 +2870,10 @@ function checkFirstLogin()
 				return true;
 			}
         }
+	}
+	else
+	{
+		return true;
 	}
 	return false;
 }

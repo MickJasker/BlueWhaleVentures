@@ -59,7 +59,7 @@
 
                         if ($mainimageupload) {
                             //upload the image
-							$path = "../Uploads/pitchVideo/";
+							$path = "../../Client_Portal/Uploads/pitchVideo/";
 							$file1_name = $_FILES['file1']['name'];
 							$file1_tmp_name = $_FILES['file1']['tmp_name'];
 							

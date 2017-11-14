@@ -151,8 +151,23 @@ body {
 	background-image: url('../../Files/Images/stockImages/adminbackground.jpg');
 }
 
-#wrapper-client-body{
+#wrapper-client-welcome {
 	background-image: url('../../Files/Images/stockImages/background2.jpg');
+	text-align: center;
+	height: 100%;
+	h3 {
+		color: @blue;
+		margin-top: 35vh;
+	}
+	a {
+		background-color: @blue;
+		padding: 7px;
+		color: @white;
+		text-decoration: none;
+	}
+	p {
+		font-size: 22px;
+	}
 }
 
 #wrapper-mentor-body{
@@ -1405,7 +1420,11 @@ body {
 			}
 
 			form {
-
+				.execution-button {
+					margin-left: 6%;
+					margin-top: 4%;
+					margin-bottom: 5%;
+				}
 				#questionDiv{
 					overflow: auto;
 					margin-top: 20px;
