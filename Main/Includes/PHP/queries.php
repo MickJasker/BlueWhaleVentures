@@ -1604,18 +1604,6 @@ function selectCompanyInfoGutted($CompanyID)
                         </div>
                     </div>
                 </section>
-<<<<<<< HEAD
-                <section class="block">
-                    <div class="content">
-                        <div class="title col-md-4">
-                            <h3>Company Information</h3>
-                        </div>
-                        <div class="container-fluid info">
-                            <p>
-                                <span>Email:</span> <?php echo $Email ?> <br/>
-                                <span>Phone:</span> <?php echo $Phone ?> <br/>
-                                <span>Address:</span> <?php echo $Address ?> <br/>
-=======
                 <section class="block company-info">
                     <div class="content">
                         <div class="title col-md-4">
@@ -1626,13 +1614,11 @@ function selectCompanyInfoGutted($CompanyID)
                                 <span id="email">Email:</span> <?php echo $Email ?> <br/>
                                 <span id="phone">Phone:</span> <?php echo $Phone ?> <br/>
                                 <span id="adress">Address:</span> <?php echo $Address ?> <br/>
->>>>>>> ff7741bfa6329058b5db347671e1215292f3165c
                             </p>
                         </div>
                     </div>
                 </section>
 
-<<<<<<< HEAD
                     <section class="block">
                         <div class="content">
                             <div class="container-fluid title">
@@ -1641,19 +1627,6 @@ function selectCompanyInfoGutted($CompanyID)
                             <div class="container-fluid">
                                 <?php getExperimentsPreviewBachelor(secure($_GET["id"])); ?>
                             </div>
-=======
-            <div class="row mentor-row">
-
-                <section class="block-experiments col-md-4">
-                    <div class="content">
-                        <div class="container-fluid title-experiments">
-                            <h3>Experiments</h3>
-                        </div>
-                        <div class="container-fluid">
-                            <?php getExperimentsPreviewBachelor(secure($_GET["id"])); ?>
->>>>>>> ff7741bfa6329058b5db347671e1215292f3165c
-                        </div>
-                    </div>
                 </section>
 
             </div>
@@ -1696,18 +1669,6 @@ function selectCompanyInfoGuttedMentor($CompanyID)
                         </div>
                     </div>
                 </section>
-<<<<<<< HEAD
-                <section class="block">
-                    <div class="content">
-                        <div class="title col-md-4">
-                            <h3>Company Information</h3>
-                        </div>
-                        <div class="container-fluid info">
-                            <p>
-                                <span>Email:</span> <?php echo $Email ?> <br/>
-                                <span>Phone:</span> <?php echo $Phone ?> <br/>
-                                <span>Address:</span> <?php echo $Address ?> <br/>
-=======
                 <section class="block company-info">
                     <div class="content">
                         <div class="title col-md-4">
@@ -1718,26 +1679,17 @@ function selectCompanyInfoGuttedMentor($CompanyID)
                                 <span id="email">Email:</span> <?php echo $Email ?> <br/>
                                 <span id="phone">Phone:</span> <?php echo $Phone ?> <br/>
                                 <span id="adress">Address:</span> <?php echo $Address ?> <br/>
->>>>>>> ff7741bfa6329058b5db347671e1215292f3165c
                             </p>
                         </div>
                     </div>
                 </section>
 
-<<<<<<< HEAD
                 <section class="block">
                     <div class="content">
-                        <div class="title container-fluid">
-=======
-            <div class="row mentor-row">
-
-                <section class="block-experiments col-md-4">
-                    <div class="content">
-                        <div class="container-fluid title-experiments">
->>>>>>> ff7741bfa6329058b5db347671e1215292f3165c
+                        <div class="container-fluid title">
                             <h3>Experiments</h3>
                         </div>
-                        <div class="container-fluid info">
+                        <div class="container-fluid">
                             <?php getExperimentsPreviewMentor(secure($_GET["id"])); ?>
                         </div>
                     </div>
