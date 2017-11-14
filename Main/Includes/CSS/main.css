@@ -8373,7 +8373,8 @@ footer .right {
 #wrapper-profile .content .info .text .info2 {
   padding-left: 2vh;
 }
-#wrapper-profile .content .info .text input {
+#wrapper-profile .content .info .text input,
+#wrapper-profile .content .info .text button {
   padding: 1%;
   min-width: 40%;
   border: none;
