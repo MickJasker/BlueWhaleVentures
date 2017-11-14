@@ -20,7 +20,13 @@
     <div id="pitchForm">
         <h1> Pitch </h1>
         <form id="form" action="#" method="POST" enctype="multipart/form-data">
-            <?php $videopath = selectPitch($_GET["experimentID"]); ?>
+
+            <?php
+
+            $videopath = selectPitch(secure($_GET['experimentID']));
+
+            ?>
+
         </form>
     </div>
 </Main>

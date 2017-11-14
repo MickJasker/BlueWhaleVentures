@@ -72,6 +72,10 @@ require '../Includes/PHP/functions.php';
 							{
 								echo "The E-mail adress is not correct";
 							}
+							else if (!checkEmailAvailability2($company_mail))
+							{
+								echo "Already an account with that e-mail adress exists";
+							}
 							else
 							{
 								//Implement check key, get user data from db function

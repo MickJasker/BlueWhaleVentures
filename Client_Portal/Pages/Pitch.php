@@ -43,7 +43,7 @@
 					}
 				}
                 //Image check
-                
+
 				$upload = true;
                 if ($check)
                 {
@@ -62,7 +62,7 @@
 							$path = "../../Client_Portal/Uploads/pitchVideo/";
 							$file1_name = $_FILES['file1']['name'];
 							$file1_tmp_name = $_FILES['file1']['tmp_name'];
-							
+
                             $videoResult = uploadExecute($file1_name, $file1_tmp_name, $path);
                             if ($videoResult[0] == 1) {
                                 $videopath = $videoResult[1];
@@ -71,7 +71,7 @@
                             }
                         }
                     }
-					
+
 				if ($upload) {
 					//upload data to the database
 					if (updatePitch($videopath, $_POST['preparationText'], $_POST['conclusionText'], $experimentID)) {
@@ -83,8 +83,8 @@
 					echo " - Error uploading the files - ";
 				}
                 }
-				
-				
+
+
             }
             ?>
 
