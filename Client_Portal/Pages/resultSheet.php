@@ -2,6 +2,13 @@
     require '../../Main/Includes/PHP/functions.php';
     checkSession('Client');
     $experimentID = checkExperimentID(secure($_GET["experimentid"]), $_SESSION["CompanyID"]);
+	    if ($_SESSION["traject"] == true)
+    { 
+    	if (isset($_POST["submitDesignsheet"])) 
+    	{
+    		updateDesignSheet($_POST, "Result", $_SESSION["Language"], $experimentID);
+    	}
+    }
 ?>
 
 <!DOCTYPE html>

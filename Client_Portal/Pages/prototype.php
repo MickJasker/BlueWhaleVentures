@@ -9,7 +9,6 @@
 <head>
     <title> Prototype </title>
     <link rel="stylesheet" href="../../Main/Includes/CSS/main.css">
-	<script src="../../Main/Includes/Javascript/functions.js"></script>
 </head>
 <body id="wrapper-executable">
 <header class="wrapper-nav">
@@ -142,5 +141,7 @@
 		<?php } ?>
     </div>
 </Main>
+	<script src="../../Main/Includes/Javascript/functions.js"></script>
+
 </body>
 </html>

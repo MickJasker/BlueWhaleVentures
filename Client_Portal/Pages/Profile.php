@@ -16,7 +16,7 @@
         require "../nav_nosearch.php"
 		?>
 		</header>
-		<main id="wrapper-profile">
+		<div id="wrapper-profile">
 			<?php
 			$ID = $_SESSION["UserID"];
 			$data = getClientProfile($ID);
@@ -34,7 +34,6 @@
 						<h1><?php echo $data[1]; ?></h1>
 					</div>
 				</div>
-				
 				<div class="info">
 					<div class="title">
 						<h1>Information</h1>
@@ -51,13 +50,13 @@
 									<?php selectLanguage($ID); ?>
 								</select> </br></br>
 								<h1>Upload company logo:</h1></br>
-								<?php if ($data[7] != "")
+								<?php if ($data[6] != "")
 								{
-									echo '<img src="'.$data[6].'" alt="Profile picture" height="100px">';
+									echo '<img src="'.$data[6].'" alt="Logo picture" height="100px">';
 								}
 								?>
 
-								<input type="file" name="file2" id="file2"><label for="file2">Choose logo</label></br>
+								<input type="file" style="display:none;" name="file2" id="file2"><label for="file2">Choose logo</label></br>
                                 <h1>Company information</h1></br>
 								<input type="text" name="companyName" placeholder="Company name" value="<?php echo $data[4]; ?>"> <br>
 								<textarea name="companyDescription" placeholder="Company description"> <?php echo $data[5]; ?>	</textarea><br><br>
@@ -86,13 +85,7 @@
 					</div>
 				</div>
 
-
-
-
-
 				<?php
-
-
 						if (isset($_POST['submit']))
 						{
 							$name = secure($_POST['name']);
@@ -142,15 +135,8 @@
 								$check = false;
 								echo "No branch has been choosen";
 							}
-							else if (!empty($_FILES['file1']['name']))
-							{
-								echo "Please upload a profile picture";
-							}
-							else if (!empty($_FILES['file2']['name']))
-							{
-								echo "Please upload a logo picture";
-							}
-							else if (!empty($_FILES['file1']['name']))
+							
+							if (!empty($_FILES['file1']['name']))
 							{
 								$type = "img";
 								$path = "../../Client_Portal/Uploads/profilePicture/";
@@ -162,7 +148,16 @@
 									$check = false;
 								}
 							}
-							else if (!empty($_FILES['file2']['name']))
+							else
+							{
+								if ($data[2] == "")
+								{
+									$check = false;
+									echo "Please upload a profile picture";
+								}								
+							}
+							
+							if (!empty($_FILES['file2']['name']))
 							{
 								$type = "img";
 								$path2 = "../../Client_Portal/Uploads/Logo/";
@@ -173,6 +168,14 @@
 								if (uploadCheck($file2_name, $file2_tmp_name, $file2_size, $type, $path2) == false) {
 									$check = false;
 								}
+							}
+							else
+							{
+								if ($data[7] == "")
+								{
+									$check = false;
+									echo "Please upload a logo picture";
+								}								
 							}
 
 
@@ -229,7 +232,7 @@
 
 									if ($data[6] != "")
 									{
-										if (!unlink("../../".$data[6]))
+										if (!unlink($data[6]))
 										{
 											echo "error deleting old image";
 											$upload = false;
@@ -243,7 +246,6 @@
 										if ($imageResult[0] == 1) {
 											$LPath = $imageResult[1];
 										} else {
-											echo "11";
 											$upload = false;
 										}
 									}
@@ -254,7 +256,7 @@
 								}
 								else
 								{
-									$LPath = $data[7];
+									$LPath = $data[6];
 								}
 
 								if ($upload)

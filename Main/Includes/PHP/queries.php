@@ -151,8 +151,12 @@ function insertRoleInfo($userID)
     {
         return insertMentor($userID);
     }
+	
+	if ($role == "Admin")
+	{
+		return true;
+	}
 
-    //If admin, do nothing, admin currently has no extra information
 }
 
 function insertCompany($userID)
@@ -646,14 +650,14 @@ function getExperimentsPreviewBachelor($CompanyID)
 
     if ($data = query($sql))
     {
-        echo "<ul style=list-style-type:none>";
+        echo "<ul id='experiments-list'>";
 
         while ($row = $data->fetch_assoc())
         {
             echo "<li class='experiment-preview'><a href=../../../" . $_SESSION['Role'] . "_Portal/Pages/bachelorGroup/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br><hr>";
         }
 
-        echo "<li><a href=../../../" . $_SESSION['Role'] . "_Portal/Pages/bachelorGroup/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
+        echo "<li class='experiment-preview'><a href=../../../" . $_SESSION['Role'] . "_Portal/Pages/bachelorGroup/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
         echo "</ul>";
     }
     else
@@ -672,14 +676,14 @@ function getExperimentsPreviewMentor($CompanyID)
 
     if ($data = query($sql))
     {
-        echo "<ul style=list-style-type:none>";
+        echo "<ul id='experiments-list'>";
 
         while ($row = $data->fetch_assoc())
         {
             echo "<li class='experiment-preview'><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiment.php?id=". $row["ID"] .">". $row["Title"] ."</a></li></br><hr>";
         }
 
-        echo "<li><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
+        echo "<li class='experiment-preview'><a href=../../" . $_SESSION['Role'] . "_Portal/Pages/experiments.php?id=". $CompanyID .">View all experiments</a></li></br>";
         echo "</ul>";
     }
 }
@@ -1585,7 +1589,7 @@ function selectCompanyInfoGutted($CompanyID)
                 <section class="block company-info">
                     <div class="content">
                         <div class="container-fluid logo">
-                            <img src="../<?php echo $Logo ?>">
+                            <img src="<?php echo $Logo ?>">
                         </div>
                         <div class="container-fluid discription">
                             <h3><?php echo $Name ?></h3>
@@ -1594,6 +1598,7 @@ function selectCompanyInfoGutted($CompanyID)
                         </div>
                     </div>
                 </section>
+<<<<<<< HEAD
                 <section class="block">
                     <div class="content">
                         <div class="title col-md-4">
@@ -1604,11 +1609,24 @@ function selectCompanyInfoGutted($CompanyID)
                                 <span>Email:</span> <?php echo $Email ?> <br/>
                                 <span>Phone:</span> <?php echo $Phone ?> <br/>
                                 <span>Address:</span> <?php echo $Address ?> <br/>
+=======
+                <section class="block company-info">
+                    <div class="content">
+                        <div class="title col-md-4">
+                        <h3>Company Information</h3>
+                        </div>
+                        <div class="container-fluid info">
+                            <p>
+                                <span id="email">Email:</span> <?php echo $Email ?> <br/>
+                                <span id="phone">Phone:</span> <?php echo $Phone ?> <br/>
+                                <span id="adress">Address:</span> <?php echo $Address ?> <br/>
+>>>>>>> ff7741bfa6329058b5db347671e1215292f3165c
                             </p>
                         </div>
                     </div>
                 </section>
 
+<<<<<<< HEAD
                     <section class="block">
                         <div class="content">
                             <div class="container-fluid title">
@@ -1617,8 +1635,21 @@ function selectCompanyInfoGutted($CompanyID)
                             <div class="container-fluid">
                                 <?php getExperimentsPreviewBachelor(secure($_GET["id"])); ?>
                             </div>
+=======
+            <div class="row mentor-row">
+
+                <section class="block-experiments col-md-4">
+                    <div class="content">
+                        <div class="container-fluid title-experiments">
+                            <h3>Experiments</h3>
                         </div>
-                    </section>
+                        <div class="container-fluid">
+                            <?php getExperimentsPreviewBachelor(secure($_GET["id"])); ?>
+>>>>>>> ff7741bfa6329058b5db347671e1215292f3165c
+                        </div>
+                    </div>
+                </section>
+
             </div>
         </div>
 
@@ -1650,7 +1681,7 @@ function selectCompanyInfoGuttedMentor($CompanyID)
                 <section class="block">
                     <div class="content">
                         <div class="container-fluid logo">
-                            <img src="<?php echo $Logo ?>">
+                            <img src="../<?php echo $Logo ?>">
                         </div>
                         <div class="container-fluid discription">
                             <h3><?php echo $Name ?></h3>
@@ -1659,6 +1690,7 @@ function selectCompanyInfoGuttedMentor($CompanyID)
                         </div>
                     </div>
                 </section>
+<<<<<<< HEAD
                 <section class="block">
                     <div class="content">
                         <div class="title col-md-4">
@@ -1669,14 +1701,34 @@ function selectCompanyInfoGuttedMentor($CompanyID)
                                 <span>Email:</span> <?php echo $Email ?> <br/>
                                 <span>Phone:</span> <?php echo $Phone ?> <br/>
                                 <span>Address:</span> <?php echo $Address ?> <br/>
+=======
+                <section class="block company-info">
+                    <div class="content">
+                        <div class="title col-md-4">
+                        <h3>Company Information</h3>
+                        </div>
+                        <div class="container-fluid info">
+                            <p>
+                                <span id="email">Email:</span> <?php echo $Email ?> <br/>
+                                <span id="phone">Phone:</span> <?php echo $Phone ?> <br/>
+                                <span id="adress">Address:</span> <?php echo $Address ?> <br/>
+>>>>>>> ff7741bfa6329058b5db347671e1215292f3165c
                             </p>
                         </div>
                     </div>
                 </section>
 
+<<<<<<< HEAD
                 <section class="block">
                     <div class="content">
                         <div class="title container-fluid">
+=======
+            <div class="row mentor-row">
+
+                <section class="block-experiments col-md-4">
+                    <div class="content">
+                        <div class="container-fluid title-experiments">
+>>>>>>> ff7741bfa6329058b5db347671e1215292f3165c
                             <h3>Experiments</h3>
                         </div>
                         <div class="container-fluid info">
@@ -1684,6 +1736,7 @@ function selectCompanyInfoGuttedMentor($CompanyID)
                         </div>
                     </div>
                 </section>
+
             </div>
         </div>
 
@@ -2308,14 +2361,12 @@ function selectPrototype($ExperimentID, $path)
             {
                 
                 ?>
-
                 <img src="<?php echo $path ?><?php echo $Media1 ?>" alt='Prototype 1'><br>
-                <input id="file1" type="hidden" name="file1"><br>
-                <label for="file1" style="display:none;" id="label1">Choose file</label><br>
-
                 <?php
             }
             ?>
+			<input id="file1" type="hidden" name="file1"><br>
+            <label id="label1" for="file1" style="display:none;" >Choose file</label><br>
 
             <textarea disabled class="textarea1" name="explanation1" placeholder="Explain your prototype."><?php echo $Explanation1?></textarea> <br>
 			<h2> After: </h2>
@@ -2324,16 +2375,14 @@ function selectPrototype($ExperimentID, $path)
 			array_push($OldArray,$Media2);
             if ($Media2 != "") { 
                 ?>
-
-
                 <img src="<?php echo $path ?><?php echo $Media2 ?>" alt="Prototype 2"><br>
-                <input id="file2" type="hidden" name="file2"><br>
-                <label for="file2" style="display:none;" id="label2">Choose file</label><br>
-
                 <?php
 
             }
             ?>
+			
+			<input id="file2" type="hidden" name="file2"><br>
+            <label id="label2" for="file2" style="display:none;">Choose file</label><br>
 
             <textarea disabled class="textarea1" name="explanation2" placeholder="Explain your prototype."><?php echo $Explanation2?></textarea> <br/>
             <input id="submit1" type="hidden" name="save" value="Save"><br>
