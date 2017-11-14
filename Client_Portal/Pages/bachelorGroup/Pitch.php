@@ -1,6 +1,7 @@
 <?php
 	require '../../../Main/Includes/PHP/functions.php';
 	checkSession('Client');
+	$experimentID = checkExperimentIDBachelor(secure($_GET["experimentID"]), $_SESSION["UserID"]);
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +16,7 @@
 	    <h1> Pitch </h1>
 	    <div id="pitchForm">
 	        <form id="form" action="#" method="POST" enctype="multipart/form-data">
-	            <?php $OldMedia = selectPitch($_GET["experimentID"]); ?>
+	            <?php $OldMedia = selectPitch($experimentID); ?>
 	        </form>
 	    </div>
 	</Main>

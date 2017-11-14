@@ -1,8 +1,9 @@
 <?php
-require '../../../Main/Includes/PHP/functions.php';
-$ID = secure($_GET["id"]);
-$UserID = $_SESSION["UserID"];
+	require '../../../Main/Includes/PHP/functions.php';
+	$ID = checkExperimentIDBachelor(secure($_GET["id"]), $_SESSION["UserID"]);
+	$UserID = $_SESSION["UserID"];
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>

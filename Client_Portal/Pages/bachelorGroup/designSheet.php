@@ -1,6 +1,7 @@
 <?php
 	require '../../../Main/Includes/PHP/functions.php';
 	CheckSession("Client");
+	$experimentID = checkExperimentIDBachelor(secure($_GET["experimentID"]), $_SESSION["UserID"]);
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +16,7 @@
         </header>
         <main>
 			<?php
-                getDesignSheetDataGutted($_GET["experimentID"], "Experiment", $_SESSION["Language"]);
+                getDesignSheetDataGutted($experimentID, "Experiment", $_SESSION["Language"]);
 			?>
 	</body>
 </html>

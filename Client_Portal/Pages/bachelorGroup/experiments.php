@@ -1,7 +1,6 @@
 <?php 
 	require '../../../Main/Includes/PHP/functions.php';
 	checkSession('Client');
-	$ID = secure($_GET["id"]);
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +24,6 @@
 		<Main id="wrapper-admin">
 			<ul class="list">
      			<div class="content">
-		    		<?php getExperimentBlockInfoBachelor($_GET["id"]); ?>
 				</div>
 			</ul>
 		</Main>

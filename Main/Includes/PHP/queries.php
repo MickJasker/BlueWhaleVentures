@@ -1237,6 +1237,23 @@ function checkExperimentIDBachelor($ID, $CompanyID)
     return false;
 }
 
+function checkBachelor($BachelorID, $CompanyID)
+{
+    $sql = "SELECT bc.CompanyID FROM Bachelor_Company bc
+    INNER JOIN BachelorGroup b ON bc.BachelorID = b.ID
+    INNER JOIN Bachelor_Company bc2 ON bc2.BachelorID = b.ID
+    WHERE bc.CompanyID = '$CompanyID' AND bc2.companyID = '$BachelorID'";
+
+    if($data = Query($sql))
+    {
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+        return $row["CompanyID"];
+    }
+
+    header('Location: ../index.php');
+    return false;
+}
+
 function checkExperimentIDMentor($ID, $UserID)
 {
     $sql = "SELECT `ID` FROM `Mentor` WHERE UserID = '$UserID'";
