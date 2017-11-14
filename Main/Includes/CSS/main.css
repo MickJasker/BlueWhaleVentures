@@ -6929,6 +6929,17 @@ body {
   /* Add Animation */
   /* The Close Button */
 }
+#wrapper-admin a button {
+  min-width: 200px;
+  font-size: 18px;
+  height: 35px;
+  padding: 5px;
+  border: none;
+  -webkit-transition: .2s ease;
+  -o-transition: .2s ease;
+  transition: .2s ease;
+  position: fixed;
+}
 #wrapper-admin #toggle_bachelor {
   position: fixed;
   display: block;
@@ -7508,11 +7519,11 @@ footer .right {
   text-align: left;
   height: 30px;
 }
-#wrapper-ClientProfile main .wrapper-profile {
+.wrapper-profile {
   margin-left: 10px;
   margin-top: 7%;
 }
-#wrapper-ClientProfile main .wrapper-profile .row .block {
+.wrapper-profile .row .block {
   position: relative;
   float: left;
   width: 32%;
@@ -7521,49 +7532,56 @@ footer .right {
   min-height: 35vh;
   background-color: #f2f2f2;
 }
-#wrapper-ClientProfile main .wrapper-profile .row .block .content {
+.wrapper-profile .row .block .content {
   width: 100%;
   background-color: #f2f2f2;
   height: 35vh;
   margin: 0;
 }
-#wrapper-ClientProfile main .wrapper-profile .row .block .content .title {
+.wrapper-profile .row .block .content .title {
   background-color: #0099ff;
   width: 100%;
   height: 20%;
 }
-#wrapper-ClientProfile main .wrapper-profile .row .block .content .title h3 {
+.wrapper-profile .row .block .content .title h3 {
   color: #ffffff;
 }
-#wrapper-ClientProfile main .wrapper-profile .row .block .content .info {
+.wrapper-profile .row .block .content .info {
   width: 100%;
   height: 80%;
-}
-#wrapper-ClientProfile main .wrapper-profile .row .block .content .logo {
-  height: 80%;
-  width: 100%;
   position: relative;
 }
-#wrapper-ClientProfile main .wrapper-profile .row .block .content .logo img {
+.wrapper-profile .row .block .content .info img {
   max-width: 100%;
   max-height: 100%;
   position: relative;
   height: auto;
 }
-#wrapper-ClientProfile main .wrapper-profile .row .block .content .logo p {
+.wrapper-profile .row .block .content .info p {
   color: black;
   font-size: 20px;
 }
-#wrapper-ClientProfile main .wrapper-profile .row .block .content .logo #traject {
+.wrapper-profile .row .block .content .info #traject {
   margin-top: 6%;
 }
-#wrapper-ClientProfile main .wrapper-profile .row .block .content .logo a .lock {
+.wrapper-profile .row .block .content .info a .lock {
   margin-bottom: 0;
   margin-right: 0;
   height: 25%;
   position: absolute;
 }
-#wrapper-ClientProfile main .wrapper-profile .row .block .content .discription {
+.wrapper-profile .row .block .content .logo {
+  height: 80%;
+  width: 100%;
+  position: relative;
+}
+.wrapper-profile .row .block .content .logo img {
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+  height: auto;
+}
+.wrapper-profile .row .block .content .discription {
   background-color: #0099ff;
   color: #ffffff;
   display: inline-block;
@@ -7572,37 +7590,37 @@ footer .right {
   width: 100%;
   word-wrap: break-word;
 }
-#wrapper-ClientProfile main .wrapper-profile .row .block .content .discription h3 {
+.wrapper-profile .row .block .content .discription h3 {
   margin: 2% 0 0 0;
 }
-#wrapper-ClientProfile main .wrapper-profile .row .block .content .discription p {
+.wrapper-profile .row .block .content .discription p {
   color: #ffffff;
 }
-#wrapper-ClientProfile main .wrapper-profile .mentor-row {
+.wrapper-profile .mentor-row {
   margin-top: 20px;
 }
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor {
+.wrapper-profile .mentor-row .mentor {
   overflow: hidden;
 }
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .content {
+.wrapper-profile .mentor-row .mentor .content {
   background-color: #f2f2f2;
 }
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor {
+.wrapper-profile .mentor-row .mentor .title-mentor {
   background-color: #0099ff;
   width: 100%;
   padding: 5px 9px;
 }
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor h1 {
+.wrapper-profile .mentor-row .mentor .title-mentor h1 {
   color: #ffffff;
 }
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor h2 {
+.wrapper-profile .mentor-row .mentor .title-mentor h2 {
   color: #ffffff;
 }
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .mentor .title-mentor h3 {
+.wrapper-profile .mentor-row .mentor .title-mentor h3 {
   color: #ffffff;
   margin: 0;
 }
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments {
+.wrapper-profile .mentor-row .block-experiments {
   position: relative;
   background-color: #f2f2f2;
   float: left;
@@ -7612,64 +7630,64 @@ footer .right {
   margin-left: 15px;
   max-height: 33vh;
 }
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .content .title-experiments {
+.wrapper-profile .mentor-row .block-experiments .content .title-experiments {
   background-color: #0099ff;
   width: 100%;
   margin: 0;
   height: 36px;
   padding: 5px 9px;
 }
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .content .title-experiments h3 {
+.wrapper-profile .mentor-row .block-experiments .content .title-experiments h3 {
   color: white;
   margin: 0;
 }
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .content .container-fluid #experiments-list {
+.wrapper-profile .mentor-row .block-experiments .content .container-fluid #experiments-list {
   list-style-type: none;
   padding-left: 0;
   margin-top: 2%;
 }
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .content .container-fluid #experiments-list hr {
+.wrapper-profile .mentor-row .block-experiments .content .container-fluid #experiments-list hr {
   margin-top: 5px;
   margin-bottom: 5px;
 }
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .content .container-fluid #experiments-list .experiment-preview {
+.wrapper-profile .mentor-row .block-experiments .content .container-fluid #experiments-list .experiment-preview {
   text-decoration: none;
   background-color: red;
 }
-#wrapper-ClientProfile main .wrapper-profile .mentor-row .block-experiments .content .container-fluid #experiments-list .experiment-preview a {
+.wrapper-profile .mentor-row .block-experiments .content .container-fluid #experiments-list .experiment-preview a {
   color: #0099ff;
   font-size: 20px;
 }
-#wrapper-ClientProfile main #wrapper-experiment {
+#wrapper-experiment {
   background-image: url("../../Files/Images/stockImages/stock (15).jpg");
   background-size: cover;
 }
-#wrapper-ClientProfile main #wrapper-experiment #wrapper-createExperiment {
+#wrapper-experiment #wrapper-createExperiment {
   padding-top: 80px;
 }
-#wrapper-ClientProfile main #wrapper-experiment #wrapper-createExperiment .row section {
+#wrapper-experiment #wrapper-createExperiment .row section {
   background-color: rgba(0, 153, 255, 0.9);
   height: calc(100vh - 80px);
 }
-#wrapper-ClientProfile main #wrapper-experiment #wrapper-createExperiment .row section div {
+#wrapper-experiment #wrapper-createExperiment .row section div {
   background-color: #ffffff;
   margin: 100px;
   padding: 30px;
 }
-#wrapper-ClientProfile main #wrapper-experiment #wrapper-createExperiment .row section div form input {
+#wrapper-experiment #wrapper-createExperiment .row section div form input {
   padding: 5px;
   border: none;
   background-color: #f2f2f2;
   color: #a0a0a0;
   margin-top: 5px;
 }
-#wrapper-ClientProfile main #wrapper-experiment #wrapper-createExperiment .row section div form input:focus {
+#wrapper-experiment #wrapper-createExperiment .row section div form input:focus {
   background-color: #ffffff;
   -webkit-transition: 0.2s ease;
   -o-transition: 0.2s ease;
   transition: 0.2s ease;
 }
-#wrapper-ClientProfile main #wrapper-experiment #wrapper-createExperiment .row section div form textarea {
+#wrapper-experiment #wrapper-createExperiment .row section div form textarea {
   padding: 5px;
   border: none;
   background-color: #f2f2f2;
@@ -7681,13 +7699,13 @@ footer .right {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
 }
-#wrapper-ClientProfile main #wrapper-experiment #wrapper-createExperiment .row section div form textarea:focus {
+#wrapper-experiment #wrapper-createExperiment .row section div form textarea:focus {
   background-color: #ffffff;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
 }
-#wrapper-ClientProfile main #wrapper-experiment #wrapper-createExperiment .row section div form label {
+#wrapper-experiment #wrapper-createExperiment .row section div form label {
   padding: 5px;
   background-color: #0099ff;
   color: white;
@@ -7699,14 +7717,14 @@ footer .right {
   word-wrap: break-word;
   font-weight: normal;
 }
-#wrapper-ClientProfile main #wrapper-experiment #wrapper-createExperiment .row section div form label:hover {
+#wrapper-experiment #wrapper-createExperiment .row section div form label:hover {
   background-color: #a0a0a0;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
   cursor: pointer;
 }
-#wrapper-ClientProfile main #wrapper-experiment #wrapper-createExperiment .row section div form #button {
+#wrapper-experiment #wrapper-createExperiment .row section div form #button {
   padding: 5px;
   background-color: #0099ff;
   color: white;
@@ -7715,46 +7733,46 @@ footer .right {
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
 }
-#wrapper-ClientProfile main #wrapper-experiment #wrapper-createExperiment .row section div form #button:hover {
+#wrapper-experiment #wrapper-createExperiment .row section div form #button:hover {
   background-color: #a0a0a0;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
 }
-#wrapper-ClientProfile main #wrapper-experiment #wrapper-createExperiment .row section div form #file1 {
+#wrapper-experiment #wrapper-createExperiment .row section div form #file1 {
   display: none;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable {
+#wrapper-experimentExecuteable {
   text-align: center;
   display: inline-block;
   background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
   background-size: cover;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main {
+#wrapper-experimentExecuteable main {
   padding-top: 80px;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main #experimentinfo {
+#wrapper-experimentExecuteable main #experimentinfo {
   margin-bottom: 2%;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main #textdiv {
+#wrapper-experimentExecuteable main #textdiv {
   width: 60%;
   position: relative;
   margin: auto;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main #textdiv h1 {
+#wrapper-experimentExecuteable main #textdiv h1 {
   font-size: 24px;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main #textdiv h2 {
+#wrapper-experimentExecuteable main #textdiv h2 {
   color: #0099ff;
   float: left;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main #textdiv #text {
+#wrapper-experimentExecuteable main #textdiv #text {
   width: 100%;
   height: 20vh;
   position: relative;
   padding: 10px;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main #textdiv input {
+#wrapper-experimentExecuteable main #textdiv input {
   min-width: 20%;
   height: 5vh;
   position: relative;
@@ -7765,17 +7783,17 @@ footer .right {
   float: left;
   margin: 1.5% 0 2% 0;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main #feedback {
+#wrapper-experimentExecuteable main #feedback {
   position: relative;
   width: 60%;
   height: auto;
   margin: auto;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main a {
+#wrapper-experimentExecuteable main a {
   margin: 25px;
   color: white;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main a button {
+#wrapper-experimentExecuteable main a button {
   min-width: 200px;
   font-size: 18px;
   height: 35px;
@@ -7785,13 +7803,13 @@ footer .right {
   -o-transition: .2s ease;
   transition: .2s ease;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main a button:hover {
+#wrapper-experimentExecuteable main a button:hover {
   cursor: pointer;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main .is-disabled {
+#wrapper-experimentExecuteable main .is-disabled {
   background-color: #a0a0a0;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main .feedback {
+#wrapper-experimentExecuteable main .feedback {
   margin: 50px 15% 50px 15% ;
   background-color: #f2f2f2;
   border: solid 1px;
@@ -7803,7 +7821,7 @@ footer .right {
   left: 0;
   width: 70%;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main .feedback .feedbackUser {
+#wrapper-experimentExecuteable main .feedback .feedbackUser {
   width: 100%;
   height: 28vh;
   padding: 10px;
@@ -7811,10 +7829,10 @@ footer .right {
   position: relative;
   color: white;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main .feedback .feedbackUser h2 {
+#wrapper-experimentExecuteable main .feedback .feedbackUser h2 {
   margin: auto;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main .feedback .feedbackUser .picdiv {
+#wrapper-experimentExecuteable main .feedback .feedbackUser .picdiv {
   position: relative;
   float: left;
   margin-top: .5vh;
@@ -7827,7 +7845,7 @@ footer .right {
   border: solid 1px;
   border-color: #a0a0a0;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main .feedback .feedbackUser .picdiv img {
+#wrapper-experimentExecuteable main .feedback .feedbackUser .picdiv img {
   position: relative;
   width: auto;
   max-height: 100%;
@@ -7838,7 +7856,7 @@ footer .right {
   transform: translate(-50%, -50%);
   left: 50%;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main .feedback .feedbackUser #feedbacktext {
+#wrapper-experimentExecuteable main .feedback .feedbackUser #feedbacktext {
   background-color: #0099ff;
   float: right;
   display: inline-block;
@@ -7851,43 +7869,43 @@ footer .right {
   word-wrap: break-word;
   overflow: auto;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main .feedback .feedbackUser #block {
+#wrapper-experimentExecuteable main .feedback .feedbackUser #block {
   margin: 10px;
   width: 90%;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main .feedback .feedbackUser #block h3 {
+#wrapper-experimentExecuteable main .feedback .feedbackUser #block h3 {
   text-align: left;
 }
-#wrapper-ClientProfile main #wrapper-experimentExecuteable main .feedback .feedbackUser #block p {
+#wrapper-experimentExecuteable main .feedback .feedbackUser #block p {
   text-align: left;
 }
-#wrapper-ClientProfile main #wrapper-designSheet {
+#wrapper-designSheet {
   background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
   background-size: cover;
   background-attachment: fixed;
 }
-#wrapper-ClientProfile main #wrapper-designSheet main {
+#wrapper-designSheet main {
   padding-top: 80px;
 }
-#wrapper-ClientProfile main #wrapper-designSheet main .dsheet {
+#wrapper-designSheet main .dsheet {
   padding: 0 !important;
 }
-#wrapper-ClientProfile main #wrapper-designSheet main #switch {
+#wrapper-designSheet main #switch {
   position: fixed;
   right: 80px;
   top: 100px;
 }
-#wrapper-ClientProfile main #wrapper-designSheet main #switch .switchActive {
+#wrapper-designSheet main #switch .switchActive {
   border-bottom: #0099ff solid medium;
 }
-#wrapper-ClientProfile main #wrapper-designSheet main #edit1 {
+#wrapper-designSheet main #edit1 {
   padding: 5px 15px;
   font-weight: normal;
   border: none;
   position: relative;
   margin: 10px 0 4vh 80px;
 }
-#wrapper-ClientProfile main #wrapper-designSheet main #submit1 {
+#wrapper-designSheet main #submit1 {
   display: block;
   padding: 5px 15px;
   font-weight: normal;
@@ -7895,15 +7913,15 @@ footer .right {
   position: relative;
   margin: 10px 0 4vh 0;
 }
-#wrapper-ClientProfile main #wrapper-designSheet main form {
+#wrapper-designSheet main form {
   margin: 80px;
   margin-bottom: 0px;
 }
-#wrapper-ClientProfile main #wrapper-designSheet main form textarea {
+#wrapper-designSheet main form textarea {
   width: 600px;
   height: 150px;
 }
-#wrapper-ClientProfile main #wrapper-designSheet main input[name="submitDesignsheet"] {
+#wrapper-designSheet main input[name="submitDesignsheet"] {
   display: block;
   padding: 5px 15px;
   font-weight: normal;
@@ -7911,42 +7929,42 @@ footer .right {
   position: relative;
   margin: 10px 0 4vh 0;
 }
-#wrapper-ClientProfile main #wrapper-error {
+#wrapper-error {
   font-family: "open-sans", sans-serif;
   background-image: url("../../Files/Images/stockImages/adminbackground.jpg");
   background-size: cover;
   color: #a0a0a0;
 }
-#wrapper-ClientProfile main #wrapper-error main {
+#wrapper-error main {
   margin-top: 10px;
   text-align: center;
 }
-#wrapper-ClientProfile main #wrapper-error main h1 {
+#wrapper-error main h1 {
   font-size: 200px;
   font-weight: 800;
 }
-#wrapper-ClientProfile main #wrapper-error main img {
+#wrapper-error main img {
   border-bottom: solid medium #0099ff;
 }
-#wrapper-ClientProfile main #wrapper-error main a {
+#wrapper-error main a {
   color: #0099ff;
 }
-#wrapper-ClientProfile main #wrapper-error main a:hover {
+#wrapper-error main a:hover {
   color: #a0a0a0;
   text-decoration: none;
 }
-#wrapper-ClientProfile main #wrapper-newPrototype {
+#wrapper-newPrototype {
   padding-top: 80px;
   background-image: url("../../Files/Images/stockImages/stock (20).jpg");
   background-size: cover;
   background-attachment: fixed;
 }
-#wrapper-ClientProfile main #wrapper-newPrototype main section {
+#wrapper-newPrototype main section {
   background-color: rgba(0, 153, 255, 0.9);
   min-height: calc(100vh - 80px);
   padding-top: 80px;
 }
-#wrapper-ClientProfile main #wrapper-newPrototype main section div {
+#wrapper-newPrototype main section div {
   text-align: center;
   background-color: white;
   margin: 150px;
@@ -7954,7 +7972,7 @@ footer .right {
   margin-bottom: 0;
   margin-top: 0;
 }
-#wrapper-ClientProfile main #wrapper-newPrototype main section div form textarea {
+#wrapper-newPrototype main section div form textarea {
   border: none;
   background-color: #f2f2f2;
   width: 100%;
@@ -7967,31 +7985,31 @@ footer .right {
   margin: 5px;
   padding: 5px;
 }
-#wrapper-ClientProfile main #wrapper-newPrototype main section div form textarea:focus {
+#wrapper-newPrototype main section div form textarea:focus {
   background-color: #ffffff;
   outline: thin solid #0099ff;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
 }
-#wrapper-ClientProfile main #wrapper-newPrototype main section div form label,
-#wrapper-ClientProfile main #wrapper-newPrototype main section div form input,
-#wrapper-ClientProfile main #wrapper-newPrototype main section div form button {
+#wrapper-newPrototype main section div form label,
+#wrapper-newPrototype main section div form input,
+#wrapper-newPrototype main section div form button {
   width: 100%;
   padding: 5px;
   margin: 5px;
   font-size: 18px;
   font-weight: normal;
 }
-#wrapper-ClientProfile main #wrapper-newPrototype main section div form #fileToUpload {
+#wrapper-newPrototype main section div form #fileToUpload {
   display: none;
 }
-#wrapper-ClientProfile main #wrapper-newPrototype main section div #pitchForm,
-#wrapper-ClientProfile main #wrapper-newPrototype main section div #questionForm {
+#wrapper-newPrototype main section div #pitchForm,
+#wrapper-newPrototype main section div #questionForm {
   margin: 0;
 }
-#wrapper-ClientProfile main #wrapper-newPrototype main section div #pitchForm form textarea,
-#wrapper-ClientProfile main #wrapper-newPrototype main section div #questionForm form textarea {
+#wrapper-newPrototype main section div #pitchForm form textarea,
+#wrapper-newPrototype main section div #questionForm form textarea {
   border: none;
   background-color: #f2f2f2;
   width: 100%;
@@ -8003,50 +8021,50 @@ footer .right {
   transition: 0.3s ease;
   padding: 5px;
 }
-#wrapper-ClientProfile main #wrapper-newPrototype main section div #pitchForm form textarea:focus,
-#wrapper-ClientProfile main #wrapper-newPrototype main section div #questionForm form textarea:focus {
+#wrapper-newPrototype main section div #pitchForm form textarea:focus,
+#wrapper-newPrototype main section div #questionForm form textarea:focus {
   background-color: #ffffff;
   outline: thin solid #0099ff;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
 }
-#wrapper-ClientProfile main #wrapper-newPrototype main section div #pitchForm form label,
-#wrapper-ClientProfile main #wrapper-newPrototype main section div #questionForm form label,
-#wrapper-ClientProfile main #wrapper-newPrototype main section div #pitchForm form input,
-#wrapper-ClientProfile main #wrapper-newPrototype main section div #questionForm form input,
-#wrapper-ClientProfile main #wrapper-newPrototype main section div #pitchForm form button,
-#wrapper-ClientProfile main #wrapper-newPrototype main section div #questionForm form button {
+#wrapper-newPrototype main section div #pitchForm form label,
+#wrapper-newPrototype main section div #questionForm form label,
+#wrapper-newPrototype main section div #pitchForm form input,
+#wrapper-newPrototype main section div #questionForm form input,
+#wrapper-newPrototype main section div #pitchForm form button,
+#wrapper-newPrototype main section div #questionForm form button {
   width: 100%;
   padding: 5px;
   border: none;
   font-size: 18px;
   font-weight: normal;
 }
-#wrapper-ClientProfile main #wrapper-newPrototype main section div #pitchForm form #fileToUpload,
-#wrapper-ClientProfile main #wrapper-newPrototype main section div #questionForm form #fileToUpload {
+#wrapper-newPrototype main section div #pitchForm form #fileToUpload,
+#wrapper-newPrototype main section div #questionForm form #fileToUpload {
   display: none;
 }
-#wrapper-ClientProfile main #wrapper-executable {
+#wrapper-executable {
   text-align: center;
   background-image: url("../../Files/Images/stockImages/stock (5).jpg");
   background-size: cover;
   background-attachment: fixed;
 }
-#wrapper-ClientProfile main #wrapper-executable main {
+#wrapper-executable main {
   display: inline-block;
   background-color: rgba(255, 255, 255, 0.9);
   width: 100%;
   min-height: 100vh;
   padding-top: 80px;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm form input {
+#wrapper-executable main #prototypeForm form input {
   display: none;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm {
+#wrapper-executable main #prototypeForm,
+#wrapper-executable main #interviewForm,
+#wrapper-executable main #pitchForm,
+#wrapper-executable main #chooseExecutionForm {
   padding: 15px;
   background-color: #ffffff;
   width: 90vw;
@@ -8054,103 +8072,103 @@ footer .right {
   display: inline-block;
   margin: 80px 0 5% 0;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm #add,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm #add,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm #add,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm #add {
+#wrapper-executable main #prototypeForm #add,
+#wrapper-executable main #interviewForm #add,
+#wrapper-executable main #pitchForm #add,
+#wrapper-executable main #chooseExecutionForm #add {
   margin-top: 20px;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm form .execution-button,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm form .execution-button,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm form .execution-button,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm form .execution-button {
+#wrapper-executable main #prototypeForm form .execution-button,
+#wrapper-executable main #interviewForm form .execution-button,
+#wrapper-executable main #pitchForm form .execution-button,
+#wrapper-executable main #chooseExecutionForm form .execution-button {
   margin-left: 6%;
   margin-top: 4%;
   margin-bottom: 5%;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm form #questionDiv,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm form #questionDiv,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm form #questionDiv,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm form #questionDiv {
+#wrapper-executable main #prototypeForm form #questionDiv,
+#wrapper-executable main #interviewForm form #questionDiv,
+#wrapper-executable main #pitchForm form #questionDiv,
+#wrapper-executable main #chooseExecutionForm form #questionDiv {
   overflow: auto;
   margin-top: 20px;
   float: right;
   width: 100%;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm form #questionDiv .text,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm form #questionDiv .text,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm form #questionDiv .text,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm form #questionDiv .text {
+#wrapper-executable main #prototypeForm form #questionDiv .text,
+#wrapper-executable main #interviewForm form #questionDiv .text,
+#wrapper-executable main #pitchForm form #questionDiv .text,
+#wrapper-executable main #chooseExecutionForm form #questionDiv .text {
   width: 100%;
   float: left;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm form #questionDiv h3,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm form #questionDiv h3,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm form #questionDiv h3,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm form #questionDiv h3 {
+#wrapper-executable main #prototypeForm form #questionDiv h3,
+#wrapper-executable main #interviewForm form #questionDiv h3,
+#wrapper-executable main #pitchForm form #questionDiv h3,
+#wrapper-executable main #chooseExecutionForm form #questionDiv h3 {
   text-align: left;
   padding-left: 20px;
   float: left;
   width: 50%;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm form #questionDiv .content,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm form #questionDiv .content,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm form #questionDiv .content,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm form #questionDiv .content {
+#wrapper-executable main #prototypeForm form #questionDiv .content,
+#wrapper-executable main #interviewForm form #questionDiv .content,
+#wrapper-executable main #pitchForm form #questionDiv .content,
+#wrapper-executable main #chooseExecutionForm form #questionDiv .content {
   float: left;
   width: 100%;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm form #questionDiv button,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm form #questionDiv button,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm form #questionDiv button,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm form #questionDiv button {
+#wrapper-executable main #prototypeForm form #questionDiv button,
+#wrapper-executable main #interviewForm form #questionDiv button,
+#wrapper-executable main #pitchForm form #questionDiv button,
+#wrapper-executable main #chooseExecutionForm form #questionDiv button {
   display: block;
   float: right;
   bottom: 0;
   margin-right: 20px;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm form .questions,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm form .questions,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm form .questions,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm form .questions {
+#wrapper-executable main #prototypeForm form .questions,
+#wrapper-executable main #interviewForm form .questions,
+#wrapper-executable main #pitchForm form .questions,
+#wrapper-executable main #chooseExecutionForm form .questions {
   float: left !important;
   width: 50%;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm form .questions textarea,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm form .questions textarea,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm form .questions textarea,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm form .questions textarea {
+#wrapper-executable main #prototypeForm form .questions textarea,
+#wrapper-executable main #interviewForm form .questions textarea,
+#wrapper-executable main #pitchForm form .questions textarea,
+#wrapper-executable main #chooseExecutionForm form .questions textarea {
   float: left;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm form .answers,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm form .answers,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm form .answers,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm form .answers {
+#wrapper-executable main #prototypeForm form .answers,
+#wrapper-executable main #interviewForm form .answers,
+#wrapper-executable main #pitchForm form .answers,
+#wrapper-executable main #chooseExecutionForm form .answers {
   float: left !important;
   width: 50%;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm form .answers textarea,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm form .answers textarea,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm form .answers textarea,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm form .answers textarea {
+#wrapper-executable main #prototypeForm form .answers textarea,
+#wrapper-executable main #interviewForm form .answers textarea,
+#wrapper-executable main #pitchForm form .answers textarea,
+#wrapper-executable main #chooseExecutionForm form .answers textarea {
   float: right;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm form img,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm form img,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm form img,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm form img {
+#wrapper-executable main #prototypeForm form img,
+#wrapper-executable main #interviewForm form img,
+#wrapper-executable main #pitchForm form img,
+#wrapper-executable main #chooseExecutionForm form img {
   max-width: 90%;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm form #submit1,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm form #submit1,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm form #submit1,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm form #submit1 {
+#wrapper-executable main #prototypeForm form #submit1,
+#wrapper-executable main #interviewForm form #submit1,
+#wrapper-executable main #pitchForm form #submit1,
+#wrapper-executable main #chooseExecutionForm form #submit1 {
   display: inline-block;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm form textarea,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm form textarea,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm form textarea,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm form textarea {
+#wrapper-executable main #prototypeForm form textarea,
+#wrapper-executable main #interviewForm form textarea,
+#wrapper-executable main #pitchForm form textarea,
+#wrapper-executable main #chooseExecutionForm form textarea {
   position: relative;
   width: calc(100% - 40px);
   height: 100px;
@@ -8158,18 +8176,18 @@ footer .right {
   padding: 10px;
   background-color: #f2f2f2;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm button,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm button,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm button,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm button,
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm label,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm label,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm label,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm label,
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm input,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm input,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm input,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm input {
+#wrapper-executable main #prototypeForm button,
+#wrapper-executable main #interviewForm button,
+#wrapper-executable main #pitchForm button,
+#wrapper-executable main #chooseExecutionForm button,
+#wrapper-executable main #prototypeForm label,
+#wrapper-executable main #interviewForm label,
+#wrapper-executable main #pitchForm label,
+#wrapper-executable main #chooseExecutionForm label,
+#wrapper-executable main #prototypeForm input,
+#wrapper-executable main #interviewForm input,
+#wrapper-executable main #pitchForm input,
+#wrapper-executable main #chooseExecutionForm input {
   background-color: #0099ff;
   color: white;
   -webkit-transition: 0.2s ease;
@@ -8183,28 +8201,28 @@ footer .right {
   float: left;
   display: inline-block;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm button:hover,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm button:hover,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm button:hover,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm button:hover,
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm label:hover,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm label:hover,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm label:hover,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm label:hover,
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm input:hover,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm input:hover,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm input:hover,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm input:hover {
+#wrapper-executable main #prototypeForm button:hover,
+#wrapper-executable main #interviewForm button:hover,
+#wrapper-executable main #pitchForm button:hover,
+#wrapper-executable main #chooseExecutionForm button:hover,
+#wrapper-executable main #prototypeForm label:hover,
+#wrapper-executable main #interviewForm label:hover,
+#wrapper-executable main #pitchForm label:hover,
+#wrapper-executable main #chooseExecutionForm label:hover,
+#wrapper-executable main #prototypeForm input:hover,
+#wrapper-executable main #interviewForm input:hover,
+#wrapper-executable main #pitchForm input:hover,
+#wrapper-executable main #chooseExecutionForm input:hover {
   background-color: #a0a0a0;
 }
-#wrapper-ClientProfile main #wrapper-executable main #prototypeForm .save,
-#wrapper-ClientProfile main #wrapper-executable main #interviewForm .save,
-#wrapper-ClientProfile main #wrapper-executable main #pitchForm .save,
-#wrapper-ClientProfile main #wrapper-executable main #chooseExecutionForm .save {
+#wrapper-executable main #prototypeForm .save,
+#wrapper-executable main #interviewForm .save,
+#wrapper-executable main #pitchForm .save,
+#wrapper-executable main #chooseExecutionForm .save {
   margin-top: 3%;
   margin-bottom: 5%;
 }
-#wrapper-ClientProfile main #wrapper-profile .content {
+#wrapper-profile .content {
   top: 80px;
   margin: 3% 3% 5% 3%;
   position: absolute;
@@ -8212,13 +8230,13 @@ footer .right {
   height: auto;
   padding: 0;
 }
-#wrapper-ClientProfile main #wrapper-profile .content .profile {
+#wrapper-profile .content .profile {
   width: 20%;
   height: 43vh;
   float: left;
   position: fixed;
 }
-#wrapper-ClientProfile main #wrapper-profile .content .profile .picture {
+#wrapper-profile .content .profile .picture {
   background-color: #f2f2f2;
   width: 38vh;
   height: 38vh;
@@ -8229,7 +8247,7 @@ footer .right {
   border: solid 1px;
   border-color: #a0a0a0;
 }
-#wrapper-ClientProfile main #wrapper-profile .content .profile .picture img {
+#wrapper-profile .content .profile .picture img {
   position: relative;
   width: auto;
   max-height: 100%;
@@ -8240,11 +8258,11 @@ footer .right {
   transform: translate(-50%, -50%);
   left: 50%;
 }
-#wrapper-ClientProfile main #wrapper-profile .content .profile .name {
+#wrapper-profile .content .profile .name {
   width: 38vh;
   height: 5vh;
 }
-#wrapper-ClientProfile main #wrapper-profile .content .profile .name h1 {
+#wrapper-profile .content .profile .name h1 {
   padding: 2%;
   color: #0099ff;
   font-family: "Open Sans";
@@ -8253,7 +8271,7 @@ footer .right {
   font-weight: bold;
   text-align: center;
 }
-#wrapper-ClientProfile main #wrapper-profile .content .info {
+#wrapper-profile .content .info {
   width: 65%;
   height: auto;
   min-height: 65vh;
@@ -8262,19 +8280,19 @@ footer .right {
   position: relative;
   font-family: "Open Sans";
 }
-#wrapper-ClientProfile main #wrapper-profile .content .info .title {
+#wrapper-profile .content .info .title {
   width: 100%;
   height: 5vh;
   background-color: #0099ff;
 }
-#wrapper-ClientProfile main #wrapper-profile .content .info .title h1 {
+#wrapper-profile .content .info .title h1 {
   padding: 1vh 1vh 1vh 2vh;
   color: #ffffff;
   margin: 0;
   font-size: 3vh;
   display: inline-block;
 }
-#wrapper-ClientProfile main #wrapper-profile .content .info .text {
+#wrapper-profile .content .info .text {
   width: 100%;
   height: auto;
   background-color: #f2f2f2;
@@ -8285,7 +8303,7 @@ footer .right {
   position: absolute;
   margin-bottom: 5vh;
 }
-#wrapper-ClientProfile main #wrapper-profile .content .info .text h1 {
+#wrapper-profile .content .info .text h1 {
   color: #0099ff;
   margin: 0;
   padding-bottom: 2%;
@@ -8293,30 +8311,30 @@ footer .right {
   display: inline-block;
   font-weight: bold;
 }
-#wrapper-ClientProfile main #wrapper-profile .content .info .text p {
+#wrapper-profile .content .info .text p {
   font-size: 1.8vh;
 }
-#wrapper-ClientProfile main #wrapper-profile .content .info .text .info1,
-#wrapper-ClientProfile main #wrapper-profile .content .info .text .info2 {
+#wrapper-profile .content .info .text .info1,
+#wrapper-profile .content .info .text .info2 {
   float: left;
   width: 50%;
   height: auto;
   position: relative;
   padding-bottom: 3%;
 }
-#wrapper-ClientProfile main #wrapper-profile .content .info .text .info2 {
+#wrapper-profile .content .info .text .info2 {
   padding-left: 2vh;
 }
-#wrapper-ClientProfile main #wrapper-profile .content .info .text input {
+#wrapper-profile .content .info .text input {
   padding: 1%;
   min-width: 40%;
   border: none;
   margin-bottom: 1%;
 }
-#wrapper-ClientProfile main #wrapper-profile .content .info .text #file1 {
+#wrapper-profile .content .info .text #file1 {
   display: none;
 }
-#wrapper-ClientProfile main #wrapper-profile .content .info .text label {
+#wrapper-profile .content .info .text label {
   padding: 5px;
   background-color: #0099ff;
   color: white;
@@ -8328,14 +8346,14 @@ footer .right {
   word-wrap: break-word;
   font-weight: normal;
 }
-#wrapper-ClientProfile main #wrapper-profile .content .info .text label:hover {
+#wrapper-profile .content .info .text label:hover {
   background-color: #a0a0a0;
   -webkit-transition: 0.3s ease;
   -o-transition: 0.3s ease;
   transition: 0.3s ease;
   cursor: pointer;
 }
-#wrapper-ClientProfile main #wrapper-profile .content .info .text .submit {
+#wrapper-profile .content .info .text .submit {
   bottom: 0;
   min-width: 30%;
   position: absolute;
