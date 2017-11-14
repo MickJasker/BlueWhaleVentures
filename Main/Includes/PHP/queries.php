@@ -1460,13 +1460,13 @@ function selectCompanyInfo($CompanyID)
                     </div>
                 </section>
                 <section class="block">
-                    <div class="title col-md-4">
-                        <h3>Analytics</h3>
-                    </div>
                     <div class="content">
-                        <div class="container-fluid">
-							<br> <span> <strong> Number of experiments: </strong> <?php selectExperiments($CompanyID); ?> </span> <br> <br>
-							<span> <strong> Last logged in: </strong> <br> <?php selectLoggedInUsers($CompanyID); ?> </span>
+                        <div class="title col-md-4">
+                            <h3>Analytics</h3>
+                        </div>
+                        <div class="container-fluid info">
+							<br> <span> <strong> Number of experiments: </strong></span> <?php selectExperiments($CompanyID); ?> <br> <br>
+							<span> <strong> Last logged in: </strong></span> <br> <?php selectLoggedInUsers($CompanyID); ?>
 							
                         </div>
                     </div>
