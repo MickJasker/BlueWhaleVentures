@@ -917,17 +917,23 @@ function getExperimentView($id)
     }
 
     //if the execution is a Prototype
-    $sql = "SELECT * FROM Prototype WHERE ExperimentID = '$id'";
+    $sql = "SELECT Explanation1, Explanation2 FROM Prototype WHERE ExperimentID = '$id'";
     if ($data = query($sql))
     {
         $header = "prototype.php";
-        $name = "Prototype";
-        $buttonstate = "";
+        $row = mysqli_fetch_array($data,MYSQLI_ASSOC);
+
+        if ($row["Explanation1"] == "")
+        {
+            $name = "No prototype added yet";
+        }
+        else
+        {
+            $name = "Prototype";
+            $buttonstate = ""; 
+        }
     }
-    else
-    {
-        $name = "No prototype added yet";
-    }    
+
 
     //Put information on screen
     $sql = "SELECT `CompanyID`, `Title`, `Description`, `Progress`, `Reviewed`, `ReviewScore` FROM `Experiment` WHERE id = '$id'";
