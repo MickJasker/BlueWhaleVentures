@@ -1,7 +1,7 @@
 <?php
 	require '../../../Main/Includes/PHP/functions.php';
 	checkSession('Client');
-	$experimentID = secure($_GET["experimentID"]);
+	$experimentID = checkExperimentIDBachelor(secure($_GET["experimentID"]), $_SESSION["UserID"]);
 ?>
 
 <!DOCTYPE html>

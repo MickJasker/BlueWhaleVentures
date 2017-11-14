@@ -1,6 +1,7 @@
 <?php
-	require '../../Main/Includes/PHP/functions.php';
+	require '../../../Main/Includes/PHP/functions.php';
 	checkSession('Client');
+    $experimentID = checkExperimentIDBachelor(secure($_GET["experimentID"]), $_SESSION["UserID"]);
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +16,7 @@
     <h1> Prototype </h1>
     <div id="prototypeForm">
         <form id="form" action="#" method="POST" enctype="multipart/form-data">
-            <?php $OldArray = selectPrototype(23); ?>
+            <?php $OldArray = selectPrototype($experimentID); ?>
         </form>
     </div>
 </Main>
