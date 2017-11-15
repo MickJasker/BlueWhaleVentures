@@ -2164,7 +2164,7 @@ function getClientProfile($ID)
         }
     }
 
-    $sql = "SELECT Email FROM Login WHERE UserID = '$ID'";
+    $sql = "SELECT Email FROM Company WHERE UserID = '$ID'";
     if($data = Query($sql))
     {
         while ($row = $data->fetch_assoc())
@@ -2196,7 +2196,7 @@ function updateClientProfile($ID, $name, $email, $language, $companyName, $compa
     $sql = "UPDATE `User` SET `Language`='$language', `Name`='$name', `ProfilePicture`='$PFPath' WHERE ID = '$ID'";
     if(Query($sql))
     {
-        $sql = "UPDATE `Login` SET `Email`='$email' WHERE UserID = '$ID'";
+        $sql = "UPDATE `Company` SET `Email`='$email' WHERE UserID = '$ID'";
         if(Query($sql))
         {
             $sql = "UPDATE `Company` SET `Name`='$companyName',`Description`='$companyDescription',`Logo`='$LPath',`Phone`='$phone',`Address`='$address',`Branch`='$branch' WHERE UserID = '$ID'";
