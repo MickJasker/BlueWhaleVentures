@@ -7589,9 +7589,6 @@ footer .right {
   max-height: 100%;
   position: relative;
   height: auto;
-  -webkit-transform: translate(0, 30%);
-  -ms-transform: translate(0, 30%);
-  transform: translate(0, 30%);
 }
 .wrapper-profile .row .block .content .discription {
   background-color: #0099ff;
