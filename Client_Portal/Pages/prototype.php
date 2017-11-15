@@ -124,7 +124,7 @@
 						
                         if ($upload) {
                             //upload data to the database
-                            if (updatePrototype($experimentID, $imagepath, $_POST['explanation1'], $imagepath1, $_POST['explanation2'])) {
+                            if (updatePrototype($experimentID, $imagepath, secure($_POST['explanation1']), $imagepath1, secure($_POST['explanation2']))) {
                                 header("Location: prototype.php?experimentID=".$experimentID);
                             } else {
                                 echo "Something has gone wrong with uploading the data";

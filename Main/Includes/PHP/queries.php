@@ -1485,7 +1485,7 @@ function selectCompanyInfo($CompanyID)
                             <h3>Analytics</h3>
                         </div>
                         <div class="container-fluid info">
-                            <br> <span> <strong> Number of experiments: </strong></span> <p><?php selectExperiments($CompanyID); ?></p> <br> <br>
+                            <br> <span> <strong> Number of experiments: </strong></span> <p><?php selectExperiments($CompanyID); ?></p> 
                             <span> <strong> Last logged in: </strong></span> <br> <p><?php selectLoggedInUsers($CompanyID); ?></p>
 							
                         </div>
@@ -2875,7 +2875,8 @@ function insertBachelorGroup($BachelorName)
         global $conn;
 
         $BachelorID = mysqli_insert_id($conn);
-        header('Location: bachelorGroup.php?bachelorID=' . $BachelorID );
+        //header('Location: bachelorGroup.php?bachelorID=' . $BachelorID );
+		echo '<script> sendHeader("bachelorGroup.php?bachelorID=' . $BachelorID. '") </script>';
     }
     else {
         header('Location: index.php' );
@@ -2888,7 +2889,8 @@ function insertToBachelorGroup($BachelorGroupID, $CompanyGroupID)
     $sql = "INSERT INTO `Bachelor_Company`(`BachelorID` , `CompanyID`) VALUES ('$BachelorGroupID', '$CompanyGroupID')";
     if (query($sql))
     {
-        header('Location: bachelorGroup.php?bachelorID=' . $BachelorGroupID );
+       // header('Location: bachelorGroup.php?bachelorID=' . $BachelorGroupID );
+		echo '<script> sendHeader("bachelorGroup.php?bachelorID=' . $BachelorGroupID. '") </script>';
     }
 	else {
 		return false;
@@ -2993,8 +2995,8 @@ function deleteBachelorGroupMember($CompanyID, $BachelorGroupID)
     $sql = "DELETE FROM `Bachelor_Company` WHERE CompanyID = '$CompanyID'";
 
     if (query($sql)) {
-
-        header('Location: bachelorGroup.php?bachelorID=' . $BachelorGroupID);
+        //header('Location: bachelorGroup.php?bachelorID=' . $BachelorGroupID);
+		echo '<script> sendHeader("bachelorGroup.php?bachelorID=' . $BachelorGroupID. '") </script>';
     }
     else {
         return false;
