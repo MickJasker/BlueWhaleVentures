@@ -1660,7 +1660,7 @@ function selectCompanyInfoGuttedMentor($CompanyID)
                 <section class="block">
                     <div class="content">
                         <div class="container-fluid logo">
-                            <img src="../<?php echo $Logo ?>">
+                            <img src="<?php echo $Logo ?>">
                         </div>
                         <div class="container-fluid discription">
                             <h3><?php echo $Name ?></h3>
